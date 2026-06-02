@@ -375,6 +375,26 @@ const resourceItems = {
     },
     badge: "NEW",
   },
+  downloads: {
+    id: "downloads",
+    href: "/downloads",
+    label: { en: "Downloads", th: "ดาวน์โหลด" },
+    description: {
+      en: "Download Delentia Desk GUI and SDK packages.",
+      th: "ดาวน์โหลด Delentia Desk GUI และ SDK แพ็กเกจ",
+    },
+    badge: "NEW",
+  },
+  ecosystem: {
+    id: "ecosystem",
+    href: "/ecosystem",
+    label: { en: "Ecosystem Registry", th: "รีจิสทรี Ecosystem" },
+    description: {
+      en: "Explore registered channel adapters and skills.",
+      th: "สำรวจ channel adapters และ skills ที่ลงทะเบียนไว้",
+    },
+    badge: "NEW",
+  },
   research: {
     id: "research",
     href: "/research",
@@ -514,7 +534,7 @@ export const navigationGroups: NavGroup[] = [
       {
         header: { en: "Build & Track", th: "สร้าง & ติดตาม" },
         style: "secondary",
-        items: [resourceItems.docs, resourceItems.deltaTrace, resourceItems.integration, resourceItems.roadmap, resourceItems.changelog],
+        items: [resourceItems.docs, resourceItems.downloads, resourceItems.ecosystem, resourceItems.deltaTrace, resourceItems.integration, resourceItems.roadmap, resourceItems.changelog],
       },
     ],
     summary: {
@@ -608,7 +628,7 @@ export const resourceTracks: ResourceTrack[] = [
       en: "Use this track when your team is integrating systems, connecting tooling, or preparing rollout work.",
       th: "ใช้ track นี้เมื่อทีมกำลังเชื่อมระบบ ต่อเครื่องมือ หรือเตรียม rollout จริง",
     },
-    items: [resourceItems.docs, resourceItems.integration],
+    items: [resourceItems.docs, resourceItems.downloads, resourceItems.ecosystem, resourceItems.integration],
   },
   {
     id: "track",

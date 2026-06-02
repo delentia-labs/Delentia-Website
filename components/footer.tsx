@@ -86,8 +86,8 @@ export function Footer({ locale: forcedLocale }: FooterProps) {
       { label: isTh ? "ติดต่อเรา" : "Contact", href: "/contact" },
       { label: "FAQ", href: "/faq" },
       { label: "__div1__", href: "", divider: true as const },
-      { label: "GitHub (rctlabs)", href: SOCIAL_LINKS.github, external: true },
-      { label: isTh ? "GitHub Discussions" : "GitHub Discussions", href: "https://github.com/orgs/rctlabs/discussions", external: true, badge: "LIVE" as const },
+      { label: "GitHub (delentia-labs)", href: SOCIAL_LINKS.github, external: true },
+      { label: isTh ? "GitHub Discussions" : "GitHub Discussions", href: "https://github.com/orgs/delentia-labs/discussions", external: true, badge: "LIVE" as const },
       { label: "__div2__", href: "", divider: true as const },
       { label: isTh ? "นโยบายความเป็นส่วนตัว" : "Privacy Policy", href: "/privacy" },
       { label: isTh ? "ข้อกำหนด" : "Terms", href: "/terms" },
@@ -322,7 +322,7 @@ export function Footer({ locale: forcedLocale }: FooterProps) {
               ))}
               </div>
               <a
-                href="https://status.delentia.comm"
+                href="https://status.delentia.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden sm:flex items-center gap-1.5 text-[11px] transition-colors text-warm-secondary hover:text-warm-charcoal dark:text-[#555] dark:hover:text-[#888]"

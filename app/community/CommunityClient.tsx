@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { usePathname } from "next/navigation"
 import { BookOpen, FileText, Github, MessageCircle, Sparkles, Users } from "lucide-react"
@@ -25,7 +25,7 @@ export default function CommunityClient() {
     {
       title: "Discord",
       description: language === "th" ? "ช่องสนทนาแบบ real-time สำหรับถามตอบ implementation, routing, protocol และ deployment patterns." : "Real-time discussion for implementation questions, routing, protocol, and deployment patterns.",
-      href: "https://discord.gg/rctlabs",
+      href: "https://discord.gg/delentia",
       icon: MessageCircle,
       badge: language === "th" ? "Live" : "Live",
       meta: language === "th" ? "Real-time support and discussion" : "Real-time support and discussion",
@@ -34,8 +34,8 @@ export default function CommunityClient() {
     },
     {
       title: language === "th" ? "Community forum" : "Community forum",
-      description: language === "th" ? "พื้นที่สำหรับคำถามเชิงลึก การออกแบบระบบ และบทสนทนาที่ต้องการบริบทยาวกว่าการแชตสด GitHub Discussions เปิดให้บริการแล้ว ร่วมสนทนาได้ที่ github.com/orgs/rctlabs/discussions" : "A place for deeper questions, system design discussion, and conversations that need more context than live chat. GitHub Discussions are now live — join the conversation at github.com/orgs/rctlabs/discussions.",
-      href: "https://github.com/orgs/rctlabs/discussions",
+      description: language === "th" ? "พื้นที่สำหรับคำถามเชิงลึก การออกแบบระบบ และบทสนทนาที่ต้องการบริบทยาวกว่าการแชตสด GitHub Discussions เปิดให้บริการแล้ว ร่วมสนทนาได้ที่ github.com/orgs/delentia-labs/discussions" : "A place for deeper questions, system design discussion, and conversations that need more context than live chat. GitHub Discussions are now live — join the conversation at github.com/orgs/delentia-labs/discussions.",
+      href: "https://github.com/orgs/delentia-labs/discussions",
       icon: Users,
       badge: language === "th" ? "Live" : "Live",
       meta: language === "th" ? "Long-form discussion" : "Long-form discussion",

@@ -88,7 +88,7 @@ const subscriptionPlans = [
 /* ─── PRICING TIERS ────────────────────────────────────────────────── */
 const tiers = [
   {
-    id: "rctlabs",
+    id: "delentia-platform",
     nameEn: "Delentia Platform",
     nameTh: "Delentia Platform",
     tagEn: "Research & Development",
@@ -188,22 +188,22 @@ const comparisonCategories = [
     nameEn: "Core Capabilities",
     nameTh: "ความสามารถหลัก",
     rows: [
-      { en: "Multi-LLM Orchestration", th: "Multi-LLM Orchestration", rctlabs: true, artent: "partial", signed: true },
-      { en: "FDIA Equation Engine", th: "FDIA Equation Engine", rctlabs: true, artent: "partial", signed: "partial" },
-      { en: "Cryptographic Verification", th: "Cryptographic Verification", rctlabs: "partial", artent: false, signed: true },
-      { en: "Creative AI Generation", th: "Creative AI Generation", rctlabs: false, artent: true, signed: false },
-      { en: "JITNA Protocol Support", th: "JITNA Protocol Support", rctlabs: true, artent: true, signed: true },
+      { en: "Multi-LLM Orchestration", th: "Multi-LLM Orchestration", platform: true, artent: "partial", signed: true },
+      { en: "FDIA Equation Engine", th: "FDIA Equation Engine", platform: true, artent: "partial", signed: "partial" },
+      { en: "Cryptographic Verification", th: "Cryptographic Verification", platform: "partial", artent: false, signed: true },
+      { en: "Creative AI Generation", th: "Creative AI Generation", platform: false, artent: true, signed: false },
+      { en: "JITNA Protocol Support", th: "JITNA Protocol Support", platform: true, artent: true, signed: true },
     ],
   },
   {
     nameEn: "Enterprise Features",
     nameTh: "ฟีเจอร์สำหรับองค์กร",
     rows: [
-      { en: "On-premise Deployment", th: "On-premise Deployment", rctlabs: true, artent: false, signed: true },
-      { en: "SOC2 Compliance", th: "SOC2 Compliance", rctlabs: true, artent: "partial", signed: true },
-      { en: "Custom SLA", th: "Custom SLA", rctlabs: true, artent: true, signed: true },
-      { en: "Dedicated Support", th: "Dedicated Support", rctlabs: true, artent: true, signed: true },
-      { en: "API Rate Limits", th: "API Rate Limits", rctlabs: "unlimited", artent: "10K/min", signed: "50K/min" },
+      { en: "On-premise Deployment", th: "On-premise Deployment", platform: true, artent: false, signed: true },
+      { en: "SOC2 Compliance", th: "SOC2 Compliance", platform: true, artent: "partial", signed: true },
+      { en: "Custom SLA", th: "Custom SLA", platform: true, artent: true, signed: true },
+      { en: "Dedicated Support", th: "Dedicated Support", platform: true, artent: true, signed: true },
+      { en: "API Rate Limits", th: "API Rate Limits", platform: "unlimited", artent: "10K/min", signed: "50K/min" },
     ],
   },
 ]
@@ -471,7 +471,7 @@ export default function PricingPage() {
                     className="grid grid-cols-4 text-center items-center py-3 px-4 border-t border-warm-light-gray/50 dark:border-[#2A2A2A]"
                   >
                     <div className="text-left text-xs text-[#4A4A4A] dark:text-[#CCC]">{isTh ? row.th : row.en}</div>
-                    <CellValue value={row.rctlabs} />
+                    <CellValue value={row.platform} />
                     <CellValue value={row.artent} />
                     <CellValue value={row.signed} />
                   </div>

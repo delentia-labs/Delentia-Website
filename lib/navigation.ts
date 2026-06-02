@@ -95,7 +95,7 @@ const solutionsItems: NavLeafItem[] = [
 
 const productsItems: NavLeafItem[] = [
   {
-    id: "rctlabs",
+    id: "delentia-platform",
     href: "/products/delentia-platform",
     label: { en: "Delentia Labs Platform", th: "Delentia Labs Platform" },
     description: {

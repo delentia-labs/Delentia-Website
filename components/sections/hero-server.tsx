@@ -74,8 +74,8 @@ export function HeroServer({ locale }: HeroServerProps) {
         <div className="grid items-center gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(374px,484px)] lg:gap-8 xl:grid-cols-[minmax(0,1.01fr)_minmax(394px,484px)]">
           <div className="space-y-7 lg:space-y-8">
             <div className="inline-flex items-center gap-2.5 rounded-full border border-[#e6ddd0] bg-white/96 px-3 py-1.5 shadow-[0_10px_24px_rgba(84,61,31,0.05)] dark:border-border dark:bg-card/80">
-              <Image src="/RCTicon-lightVer.svg" alt="RCT Ecosystem Logo" width={20} height={20} className="h-5 w-5 object-contain dark:hidden" />
-              <Image src="/RCTicon.svg" alt="RCT Ecosystem Logo" width={20} height={20} className="hidden h-5 w-5 object-contain dark:block" />
+              <Image src="/RCTicon-lightVer.svg" alt="RCT Ecosystem Logo" width={20} height={20} className="h-5 w-5 object-contain dark:hidden" priority />
+              <Image src="/RCTicon.svg" alt="RCT Ecosystem Logo" width={20} height={20} className="hidden h-5 w-5 object-contain dark:block" priority />
               <span className="text-xs font-medium text-warm-gray dark:text-warm-muted">{copy.badge}</span>
               <div className="h-1.5 w-1.5 rounded-full bg-warm-sage" />
             </div>
@@ -121,7 +121,7 @@ export function HeroServer({ locale }: HeroServerProps) {
                 <div key={stat.label} className="rounded-2xl border border-[#e6ddd0] bg-white px-3 py-3 transition-all duration-300 hover:border-warm-amber/25 dark:border-border dark:bg-card/72">
                   <div className="mb-2 flex items-center justify-between gap-2">
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#e6ddd0] bg-white shadow-sm dark:border-border dark:bg-card/80">
-                      <Image src={stat.iconSrc} alt="" width={18} height={18} className="object-contain" style={{ imageRendering: "pixelated" }} />
+                      <Image src={stat.iconSrc} alt="" width={18} height={18} className="object-contain" style={{ imageRendering: "pixelated" }} priority />
                     </div>
                     <div className="text-right">
                       <div className="text-lg font-bold leading-none text-warm-charcoal dark:text-warm-light-gray">{stat.value}</div>

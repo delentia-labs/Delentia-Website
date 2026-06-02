@@ -84,9 +84,9 @@ export const FOOTER_LINKS = {
     { label: "Open Protocol", href: "/open-protocol" },
   ],
   community: [
-    { label: "Discord", href: "https://discord.gg/rctlabs" },
+    { label: "Discord", href: "https://discord.gg/delentia" },
     { label: "GitHub", href: "https://github.com/delentia-labs" },
-    { label: "Twitter", href: "https://twitter.com/rctlabs" },
+    { label: "Twitter", href: "https://x.com/delentia_labs" },
   ],
   company: [
     { label: "About", href: "/about" },

@@ -5,7 +5,7 @@ export const SITE_OG_IMAGE = `${SITE_URL}/opengraph-image`
 export const SITE_VERSION = "2026.05 Snapshot"
 export const SITE_TEST_COUNT = 4849 // Enterprise full suite (private)
 export const SITE_PUBLIC_SDK_VERSION = "2.0.0"
-export const SITE_PUBLIC_SDK_TESTS = 1791 // Public SDK full suite: 1791 passed · 0 skipped · 0 failed · 0 warnings · mypy clean · ruff clean · 91% coverage (rctlabs/delentia-os)
+export const SITE_PUBLIC_SDK_TESTS = 1791 // Public SDK full suite: 1791 passed · 0 skipped · 0 failed · 0 warnings · mypy clean · ruff clean · 91% coverage (delentia-labs/delentia-os)
 // Compatibility evidence labels reused across public pages, metadata, and blog stat cards.
 export const SITE_PUBLIC_SDK_EVIDENCE_LABEL = "Public SDK verification lane"
 export const SITE_ENTERPRISE_EVIDENCE_LABEL = "Enterprise runtime snapshot"
@@ -30,7 +30,7 @@ export const SOCIAL_LINKS = {
   twitterHandle: "@ittirit_rct",
   biosite: "https://ittiritsaengow.link",                      // BIO / gravatar
   reddit: "https://www.reddit.com/user/WindLate5307/",        // Reddit
-  discord: "https://discord.gg/rctlabs",
+  discord: "https://discord.gg/delentia",
 } as const
 
 export const PUBLIC_ROUTE_PRIORITIES: Record<string, number> = {

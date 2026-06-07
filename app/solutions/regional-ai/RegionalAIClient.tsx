@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -11,20 +11,20 @@ import RelatedContent from "@/components/related-content"
 import AuthorBlock from "@/components/author-block"
 
 const regionalModels = [
-  { region: "Thailand", flag: "🇹🇭", model: "Typhoon v2 70B", provider: "SCB10X", id: "G38", proficiency: "0.99", status: "Active", color: "#D4A853" },
-  { region: "Japan", flag: "🇯🇵", model: "ELYZA / Rakuten AI", provider: "ELYZA / Rakuten", id: "Regional", proficiency: "0.97", status: "Pluggable", color: "#89B4C8" },
-  { region: "Korea", flag: "🇰🇷", model: "HyperCLOVA X / EXAONE", provider: "NAVER / LG AI Research", id: "Regional", proficiency: "0.97", status: "Pluggable", color: "#7B9E87" },
-  { region: "Vietnam", flag: "🇻🇳", model: "Vistral / VinaLLaMA", provider: "Open Source", id: "Regional", proficiency: "0.95", status: "Pluggable", color: "#C4745B" },
-  { region: "Indonesia", flag: "🇮🇩", model: "SEA-LION", provider: "AI Singapore", id: "Regional", proficiency: "0.95", status: "Pluggable", color: "#B8A9C9" },
-  { region: "India", flag: "🇮🇳", model: "Krutrim / Sarvam", provider: "Ola / Sarvam AI", id: "Regional", proficiency: "0.96", status: "Pluggable", color: "#9B7BB8" },
+  { region: "Thailand", flag: "🇹🇭", model: "Typhoon v2 70B", provider: "SCB10X", id: "G38 / Pluggable", proficiency: "0.99", status: "Active", color: "#D4A853" },
+  { region: "Japan", flag: "🇯🇵", model: "Rakuten AI 3.0 / LLM-jp-4", provider: "Rakuten / NII", id: "Regional", proficiency: "0.98", status: "Pluggable", color: "#89B4C8" },
+  { region: "Korea", flag: "🇰🇷", model: "HyperCLOVA X / Solar Pro 2", provider: "NAVER / Upstage", id: "Regional", proficiency: "0.98", status: "Pluggable", color: "#7B9E87" },
+  { region: "Vietnam", flag: "🇻🇳", model: "ViGPT / Vistral", provider: "VinAI / Open Source", id: "Regional", proficiency: "0.95", status: "Pluggable", color: "#C4745B" },
+  { region: "Indonesia", flag: "🇮🇩", model: "SEA-LION / Qwen-2.5-7B", provider: "AI Singapore", id: "Regional", proficiency: "0.95", status: "Pluggable", color: "#B8A9C9" },
+  { region: "India", flag: "🇮🇳", model: "Krutrim / Sarvam AI", provider: "Ola / Sarvam", id: "Regional", proficiency: "0.96", status: "Pluggable", color: "#9B7BB8" },
   { region: "Saudi Arabia", flag: "🇸🇦", model: "ALLaM / Jais", provider: "SDAIA / G42", id: "Regional", proficiency: "0.96", status: "Pluggable", color: "#D4A853" },
   { region: "China", flag: "🇨🇳", model: "Kimi K2.5 / MiniMax", provider: "Moonshot / MiniMax", id: "G2/G3", proficiency: "0.98", status: "Active", color: "#C4745B" },
 ]
 
 const pluginSteps = [
-  { step: "1", title: "Define ModelRole", descEn: "Add your regional model to the ModelRole enum in hexa_core_registry.py — e.g. ModelRole.REGIONAL_JP = \"regional_jp\".", descTh: "เพิ่มโมเดลภูมิภาคใน ModelRole enum ใน hexa_core_registry.py" },
-  { step: "2", title: "Register Adapter", descEn: "Call AdapterRegistry.register(model_id, max_adapters=50) with your model's HuggingFace or API endpoint.", descTh: "เรียก AdapterRegistry.register() ด้วย model_id และ Endpoint ของโมเดล" },
-  { step: "3", title: "Map TaskTypes", descEn: "Add routing rules to routing_map — JITNA automatically selects your model for tasks that match the configured task types.", descTh: "เพิ่ม routing rules ใน routing_map — JITNA จะเลือกโมเดลโดยอัตโนมัติ" },
+  { step: "1", title: "Configure Model Entry", descEn: "Define your model metadata, including context window size, input/output cost, and national compliance tags (e.g. APPI, PDPA).", descTh: "กำหนดรายละเอียดเมทาดาต้าของโมเดล ขนาดของ Context หน้าต่างรับคำสั่ง และแท็กกฎหมายความเป็นส่วนตัวเฉพาะประเทศ" },
+  { step: "2", title: "Register Regional LLM", descEn: "Call register_regional_llm(language, region, model_id, model_name, ...) dynamically at runtime.", descTh: "เรียกใช้ฟังก์ชัน register_regional_llm(language, region, ...) เพื่อลงทะเบียนโมเดลเฉพาะพื้นที่ในรันไทม์โดยไม่ต้องรีสตาร์ตระบบ" },
+  { step: "3", title: "Automatic JITNA Routing", descEn: "JITNA automatically detects the user's language and region and routes calls to your custom LLM adapter.", descTh: "โปรโตคอล JITNA ตรวจจับภาษาและภูมิภาคจากข้อความค้นหา แล้วเปลี่ยนเส้นทางไปยังโมเดลของคุณโดยอัตโนมัติ" },
 ]
 
 export default function RegionalAIClient() {
@@ -41,8 +41,8 @@ export default function RegionalAIClient() {
       <section className="sr-only">
         <p>
           {isTh
-            ? "Regional AI รวม LLM ภูมิภาคอย่าง Typhoon G38 (SCB10X) เข้ากับโครงสร้างประสาน JITNA + SignedAI + DelentiaDB ของ RCT Ecosystem เพื่อมอบ Sovereign AI ที่เข้าใจภาษาและบริบทท้องถิ่น รองรับ PDPA และข้อกำหนดด้านความเป็นอธิปไตย์ของข้อมูลในเอเชียตะวันออกเฉียงใต้"
-            : "Regional AI integrates LLMs like Typhoon G38 (SCB10X) into the JITNA + SignedAI + DelentiaDB orchestration layer — delivering sovereign AI that understands local language, regulatory context, and cultural nuance while meeting PDPA and Southeast Asia data residency requirements."}
+            ? "Regional AI รวม LLM ภูมิภาคเช่น Typhoon, HyperCLOVA X, Rakuten AI เข้ากับโครงสร้างประสาน JITNA + SignedAI + DelentiaDB เพื่อมอบ Sovereign AI ที่สอดรับกับ PDPA และข้อกำหนดด้านความเป็นอธิปไตย์ของข้อมูลในเอเชียและภูมิภาคต่างๆ ทั่วโลก"
+            : "Regional AI integrates sovereign regional LLMs like Typhoon, HyperCLOVA X, and Rakuten AI into JITNA + SignedAI + DelentiaDB — delivering local compliance, regulatory context, and cultural nuance for Asia and global deployments."}
         </p>
       </section>
 
@@ -58,8 +58,8 @@ export default function RegionalAIClient() {
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             {isTh
-              ? "RCT Ecosystem รวม Typhoon (SCB10X) เป็น G38 Regional Thai Model และเปิดสถาปัตยกรรม Plug-in ให้นักพัฒนาสลับกับ LLM ภูมิภาคอื่นๆ ทั่วโลก"
-              : "RCT Ecosystem integrates Typhoon (by SCB10X) as G38 — the Regional Thai model — and provides a plug-in architecture for developers to swap in any country's sovereign LLM."}
+              ? "โครงสร้างระบบปฏิบัติการ AI แบบเปิดที่ให้คุณสามารถ 'ถอดเสียบ' (Pluggable) โมเดลภาษาประจำชาติของแต่ละประเทศเข้ามาประสานร่วมกับระบบความปลอดภัย FDIA ได้อย่างอิสระ"
+              : "A pluggable AI OS infrastructure that allows developers to dynamically hot-swap national/sovereign LLMs to enforce local data laws, compliance, and cultural nuances."}
           </p>
         </div>
       </section>
@@ -73,21 +73,21 @@ export default function RegionalAIClient() {
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <h2 className="text-xl font-bold text-foreground">
-                    {isTh ? "Typhoon G38 — Regional Thai Model" : "Typhoon G38 — Regional Thai Model"}
+                    {isTh ? "Standard Package — Typhoon v2" : "Standard Package — Typhoon v2"}
                   </h2>
                   <span className="text-xs font-bold px-2 py-0.5 rounded bg-green-500/10 text-green-600">Active</span>
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                   {isTh
-                    ? "Typhoon v2 70B โดย SCB10X — Thailand's Frontier AI Research Lab — เป็น LLM ภาษาไทยที่เก่งที่สุด Typhoon-S (4B) พิสูจน์แล้วว่าความสามารถ 78.02% บน Thai Legal Tasks เทียบกับ GPT-5 ที่ 75.34% model_id: scb10x/typhoon-v2-70b-instruct, proficiency th=0.99"
-                    : "Typhoon v2 70B by SCB10X (Thailand's Frontier AI Research Lab) is the most capable Thai LLM. Typhoon-S (4B) scored 78.02% on Thai legal tasks vs GPT-5's 75.34%. Integrated as model_id=\"scb10x/typhoon-v2-70b-instruct\" with proficiency th=0.99."}
+                    ? "โมเดล Typhoon v2 70B โดย SCB10X ถูกติดตั้งมาเป็นแพ็คเกจเริ่มต้นสำหรับภาษาไทย อย่างไรก็ดี คุณสามารถสลับเปลี่ยนไปใช้โมเดลประจำภูมิภาคอื่นๆ ผ่าน API การลงทะเบียนแบบ plug-in ได้ทันทีโดยไม่ต้องรีสตาร์ตระบบ"
+                    : "Typhoon v2 70B by SCB10X is bundled as the default standard package for Thailand. However, the system is fully pluggable and lets developers register other native models at runtime."}
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {[
-                    { label: "Model ID", value: "G38" },
+                    { label: "Model ID", value: "G38 / Pluggable" },
                     { label: "Provider", value: "SCB10X" },
                     { label: "Proficiency TH", value: "0.99" },
-                    { label: "Task", value: "regional_thai" },
+                    { label: "Role", value: "regional_core" },
                   ].map((item) => (
                     <div key={item.label} className="p-3 rounded-xl bg-muted text-center">
                       <div className="text-sm font-bold text-foreground">{item.value}</div>
@@ -108,13 +108,13 @@ export default function RegionalAIClient() {
         </h2>
         <p className="text-sm text-muted-foreground text-center mb-10 max-w-xl mx-auto">
           {isTh
-            ? "G38 Typhoon เป็น Active model ในระบบ ส่วน 'Pluggable' หมายความว่าสามารถเพิ่มเข้ามาด้วย 3 ขั้นตอน"
-            : "G38 Typhoon is active. \"Pluggable\" models can be added in 3 steps using the open plug-in architecture."}
+            ? "โมเดลมาตรฐานได้รับการติดตั้งมาแล้ว และแบบ 'Pluggable' สามารถเสียบเพิ่มเข้ามาได้ง่ายๆ ใน 3 ขั้นตอน"
+            : "Active standard packages are pre-installed. 'Pluggable' models can be registered in 3 simple steps."}
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {regionalModels.map((_item, i) => (
             <m.div key={_item.region} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
-              className="p-5 rounded-xl border border-border bg-card">
+               className="p-5 rounded-xl border border-border bg-card">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-2xl">{_item.flag}</span>
                 <div>
@@ -140,8 +140,8 @@ export default function RegionalAIClient() {
           </h2>
           <p className="text-sm text-muted-foreground text-center mb-10 max-w-xl mx-auto">
             {isTh
-              ? "AdapterRegistry รองรับ max_adapters=50 สามารถ Register/Unregister ได้ Runtime"
-              : "The AdapterRegistry supports max_adapters=50 with runtime register() / unregister() — no restart required."}
+              ? "ระบบ Registry รองรับการลงทะเบียนและสลับโมเดลแบบ Hot-swap ในรันไทม์ได้ทันที"
+              : "The model registry supports hot-swapping and registering regional models dynamically at runtime."}
           </p>
           <div className="space-y-4">
             {pluginSteps.map((s, i) => (
@@ -158,16 +158,17 @@ export default function RegionalAIClient() {
 
           {/* Code snippet */}
           <div className="mt-8 rounded-2xl border border-border bg-card p-6 overflow-x-auto">
-            <pre className="text-xs font-mono text-muted-foreground">{`# hexa_core_registry.py — Add your regional model
-class ModelRole(str, Enum):
-    REGIONAL_THAI = "regional_thai"   # G38 — Already active
-    REGIONAL_JP   = "regional_jp"    # Add this for Japan
-
-# Register adapter at runtime (no restart needed)
-AdapterRegistry.register(
-    model_id="elyza/Llama-3-ELYZA-JP-8B",
-    task_types=[TaskType.REGIONAL_JP],
-    max_adapters=50
+            <pre className="text-xs font-mono text-muted-foreground">{`# Register custom Japanese regional LLM dynamically at runtime
+register_regional_llm(
+    language="ja",
+    region="JP",
+    model_id="rakuten/Rakuten-AI-3.0-MoE-700B",
+    model_name="Rakuten AI 3.0",
+    proficiency=0.98,
+    cost_input=0.40,
+    cost_output=1.20,
+    specialties=["Japanese legal", "Business documentation"],
+    compliance_tags=["APPI"]
 )`}</pre>
           </div>
         </div>

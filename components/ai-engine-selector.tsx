@@ -23,6 +23,7 @@ const ROLE_LABELS: Record<string, string> = {
   specialist: "Specialist",
   librarian: "Librarian",
   humanizer: "Humanizer",
+  regional_core: "Regional Core LLM",
   regional_thai: "Thai NLP (Typhoon)",
 }
 
@@ -33,6 +34,7 @@ const ROLE_COLORS: Record<string, string> = {
   specialist: "text-yellow-400",
   librarian: "text-cyan-400",
   humanizer: "text-pink-400",
+  regional_core: "text-orange-400",
   regional_thai: "text-orange-400",
 }
 

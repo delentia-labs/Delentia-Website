@@ -45,7 +45,7 @@ const roadmapData = {
       tasks: ["DNS, Search Console, and SEO warmup go live", "Early Access, Lifetime Plan, and public feedback loop open"],
     },
     {
-      phase: "Phase 6", title: "Backend Phase 1 — Full RCT OS", status: "planned" as const,
+      phase: "Phase 6", title: "Backend Phase 1 — Full Delentia OS", status: "planned" as const,
       color: "#C4745B", bg: "#FEE2E2", darkBg: "#3A1E15",
       summary: "This phase converts the public narrative into a real backend operating state.",
       tasks: ["DelentiaAI connects to live HexaCore backend", "Typhoon integration and GitHub public documentation wave launch"],
@@ -101,7 +101,7 @@ const roadmapData = {
       tasks: ["DNS, Search Console และ SEO warmup เปิดใช้งาน", "Early Access, Lifetime Plan และ public feedback loop เริ่มทำงาน"],
     },
     {
-      phase: "Phase 6", title: "Backend Phase 1 — Full RCT OS", status: "planned" as const,
+      phase: "Phase 6", title: "Backend Phase 1 — Full Delentia OS", status: "planned" as const,
       color: "#C4745B", bg: "#FEE2E2", darkBg: "#3A1E15",
       summary: "เฟสนี้คือการย้ายระบบจาก narrative สาธารณะไปสู่ backend operating state ที่ทำงานจริง",
       tasks: ["DelentiaAI เชื่อมต่อ HexaCore backend จริง", "Typhoon integration และคลื่นเอกสาร GitHub Public เปิดตัว"],
@@ -459,8 +459,8 @@ export default function RoadmapSection() {
                     </div>
                     <p className={`text-sm ${isEn ? "" : "subtitle-th"} ${isDark ? "text-warm-muted" : "text-warm-secondary"}`}>
                       {isEn
-                        ? "RCT OS 100% complete. All products launched. A fully operational Constitutional AI ecosystem."
-                        : "RCT OS สำเร็จ 100% ผลิตภัณฑ์ทุกตัวเปิดตัวแล้ว Ecosystem AI แบบ Constitutional พร้อมใช้งานเต็มรูปแบบ"}
+                        ? "Delentia OS 100% complete. All products launched. A fully operational Constitutional AI ecosystem."
+                        : "Delentia OS สำเร็จ 100% ผลิตภัณฑ์ทุกตัวเปิดตัวแล้ว Ecosystem AI แบบ Constitutional พร้อมใช้งานเต็มรูปแบบ"}
                     </p>
                   </div>
                 </div>

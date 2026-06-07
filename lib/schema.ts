@@ -18,7 +18,7 @@ export function getOrganizationSchema(locale: Locale) {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Delentia Labs',
-    alternateName: 'Reverse Component Thinking Labs',
+    alternateName: 'Delentia OS',
     url: `https://delentia.com/${locale}`,
     logo: 'https://delentia.com/RCTLogo-horizontal.svg',
     description: locale === 'th'
@@ -42,7 +42,7 @@ export function getOrganizationSchema(locale: Locale) {
       email: GENERAL_CONTACT_EMAIL,
       availableLanguage: ['en', 'th'],
     },
-    dateModified: '2026-05-19',
+    dateModified: '2026-06-07',
   }
 }
 
@@ -144,8 +144,8 @@ export function getSoftwareApplicationSchema(locale: Locale) {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: locale === 'th'
-      ? 'RCT Ecosystem - ระบบปฏิบัติการ AI แบบรัฐธรรมนูญ'
-      : 'RCT Ecosystem - Constitutional AI Operating System',
+      ? 'Delentia OS - ระบบปฏิบัติการ AI แบบรัฐธรรมนูญ'
+      : 'Delentia OS - Constitutional AI Operating System',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Any',
     offers: {
@@ -181,7 +181,7 @@ export function getSoftwareApplicationSchema(locale: Locale) {
 
 /** Structured data for Pricing page — Product + multi-tier Offers */
 export function getProductOfferSchema(locale: Locale) {
-  const name = locale === 'th' ? 'RCT Ecosystem — แพลตฟอร์ม AI ระดับองค์กร' : 'RCT Ecosystem — Constitutional AI Enterprise Platform'
+  const name = locale === 'th' ? 'Delentia OS — แพลตฟอร์ม AI ระดับองค์กร' : 'Delentia OS — Constitutional AI Enterprise Platform'
   const description = locale === 'th'
     ? `ระบบปฏิบัติการ AI สถาปัตยกรรม ${SITE_LAYER_COUNT} ชั้น พร้อม ${SITE_ALGORITHM_COUNT} อัลกอริทึม, Multi-LLM Consensus, FDIA equation และ hallucination ${SITE_HALLUCINATION_RATE}`
     : `${SITE_LAYER_COUNT}-layer Constitutional AI Operating System with ${SITE_ALGORITHM_COUNT} algorithms, Multi-LLM Consensus, FDIA equation, and ${SITE_HALLUCINATION_RATE} hallucination`
@@ -197,7 +197,7 @@ export function getProductOfferSchema(locale: Locale) {
       {
         '@type': 'Offer',
         name: locale === 'th' ? 'แผน Starter' : 'Starter',
-        description: locale === 'th' ? 'สำรวจสถาปัตยกรรม RCT Ecosystem โดยไม่มีค่าใช้จ่าย' : 'Explore the RCT Ecosystem architecture for free',
+        description: locale === 'th' ? 'สำรวจสถาปัตยกรรม Delentia OS โดยไม่มีค่าใช้จ่าย' : 'Explore the Delentia OS architecture for free',
         price: '0',
         priceCurrency: 'USD',
         availability: 'https://schema.org/InStock',
@@ -250,6 +250,102 @@ export function getPersonSchema(
       name: 'Thailand',
     },
     affiliation: {
+      '@type': 'Organization',
+      name: 'Delentia Labs',
+      url: 'https://delentia.com',
+    },
+  }
+}
+
+export function getMLModelSchema(model: {
+  name: string
+  description: string
+  version: string
+  hfRepo: string
+  license: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: model.name,
+    description: model.description,
+    softwareVersion: model.version,
+    applicationCategory: 'BusinessApplication',
+    applicationSubCategory: 'Machine Learning Model',
+    downloadUrl: `https://huggingface.co/${model.hfRepo}`,
+    license: model.license,
+    author: {
+      '@type': 'Organization',
+      name: 'Delentia Labs',
+      url: 'https://delentia.com',
+    },
+  }
+}
+
+export function getSoftwarePackageSchema(pkg: {
+  name: string
+  description: string
+  version: string
+  installCommand: string
+  repository: string
+  license: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: pkg.name,
+    description: pkg.description,
+    softwareVersion: pkg.version,
+    applicationCategory: 'DeveloperApplication',
+    downloadUrl: pkg.name.startsWith('@') 
+      ? `https://www.npmjs.com/package/${pkg.name}`
+      : `https://pypi.org/project/${pkg.name}`,
+    license: pkg.license,
+    codeRepository: pkg.repository,
+    author: {
+      '@type': 'Organization',
+      name: 'Delentia Labs',
+      url: 'https://delentia.com',
+    },
+  }
+}
+
+export function getLearningResourceSchema(resource: {
+  name: string
+  description: string
+  url: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LearningResource',
+    name: resource.name,
+    description: resource.description,
+    url: resource.url,
+    learningResourceType: 'Interactive Tutorial',
+    author: {
+      '@type': 'Organization',
+      name: 'Delentia Labs',
+      url: 'https://delentia.com',
+    },
+  }
+}
+
+export function getSoftwareSourceCodeSchema(code: {
+  name: string
+  description: string
+  codeRepository: string
+  programmingLanguage: string
+  license: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareSourceCode',
+    name: code.name,
+    description: code.description,
+    codeRepository: code.codeRepository,
+    programmingLanguage: code.programmingLanguage,
+    license: code.license,
+    author: {
       '@type': 'Organization',
       name: 'Delentia Labs',
       url: 'https://delentia.com',

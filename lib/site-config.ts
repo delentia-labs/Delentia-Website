@@ -117,6 +117,19 @@ export const PUBLIC_ROUTE_PRIORITIES: Record<string, number> = {
   "/community/events": 0.62,
   "/community/forums": 0.62,
   "/community/members": 0.60,
+  // Ecosystem Platform Hub — new developer-facing routes
+  "/ecosystem": 0.80,
+  "/ecosystem/github": 0.78,
+  "/ecosystem/github/delentia-os": 0.77,
+  "/ecosystem/github/infra": 0.72,
+  "/packages": 0.80,
+  "/packages/npm": 0.76,
+  "/packages/pypi": 0.76,
+  "/models": 0.82,
+  "/models/delentia-slm-v0.2.8-toon": 0.79,
+  "/models/delentia-slm-v0.2.9-toon": 0.79,
+  "/playground": 0.74,
+  "/downloads": 0.74,
 }
 
 export const PUBLIC_ROUTES = [
@@ -215,6 +228,19 @@ export const PUBLIC_ROUTES = [
   "/entity/intent-profiles",
   "/entity/governance-layer",
   "/entity/memory-architecture",
+  // Ecosystem Platform Hub
+  "/ecosystem",
+  "/ecosystem/github",
+  "/ecosystem/github/delentia-os",
+  "/ecosystem/github/infra",
+  "/packages",
+  "/packages/npm",
+  "/packages/pypi",
+  "/models",
+  "/models/delentia-slm-v0.2.8-toon",
+  "/models/delentia-slm-v0.2.9-toon",
+  "/playground",
+  "/downloads",
 ] as const
 
 export const NOINDEX_ROUTE_PREFIXES = [

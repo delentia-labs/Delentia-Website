@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Use a fixed deploy date instead of new Date() to avoid signal dilution:
   // Google loses trust in lastModified if all 153 pages change simultaneously every build.
   // Update SITE_LAST_DEPLOY on each production deploy that touches public routes.
-  const SITE_LAST_DEPLOY = "2026-05-23"
+  const SITE_LAST_DEPLOY = "2026-06-07"
   const lastModified = new Date(SITE_LAST_DEPLOY)
   const publicEntries = PUBLIC_ROUTES.flatMap((route) =>
     locales.map((locale) => ({

@@ -16,7 +16,7 @@ import { useMounted } from "@/hooks/use-mounted"
 import { getLocalePrefix, resolveLocale } from "@/lib/i18n"
 import { SITE_VERSION, SOCIAL_LINKS } from "@/lib/site-config"
 
-const LOGO_PNG = "/RCTLogo-horizontal.svg"
+const LOGO_PNG = "/DelentiaLogo-horizontal.svg"
 
 type FooterProps = {
   locale?: "en" | "th"
@@ -65,6 +65,10 @@ export function Footer({ locale: forcedLocale }: FooterProps) {
       { label: isTh ? "Benchmark" : "Benchmark Summary", href: "/benchmark-summary" },
       { label: isTh ? "งานวิจัย" : "Research", href: "/research" },
       { label: isTh ? "บันทึกการเปลี่ยนแปลง" : "Changelog", href: "/changelog", badge: "NEW" as const },
+      { label: isTh ? "Ecosystem Registry" : "Ecosystem Registry", href: "/ecosystem", badge: "NEW" as const },
+      { label: isTh ? "คลัง AI Models" : "AI Models Hub", href: "/models", badge: "NEW" as const },
+      { label: isTh ? "แพ็กเกจนักพัฒนา" : "Packages Hub", href: "/packages", badge: "NEW" as const },
+      { label: isTh ? "Playground & Sandbox" : "Playground & Sandbox", href: "/playground", badge: "NEW" as const },
       {
         label: isTh ? "NotebookLM Architecture Guide" : "NotebookLM Architecture Guide",
         href: "https://notebooklm.google.com/notebook/094c48f4-0f95-4c59-9962-55ef8a7e3199?authuser=1",
@@ -169,7 +173,7 @@ export function Footer({ locale: forcedLocale }: FooterProps) {
             <Link href={lh("/")} className="inline-block">
               <Image
                 src={LOGO_PNG}
-                alt="RCT — Reverse Component Thinking"
+                alt="Delentia OS"
                 width={96}
                 height={32}
                 unoptimized
@@ -334,7 +338,7 @@ export function Footer({ locale: forcedLocale }: FooterProps) {
 
             {/* Center: copyright */}
             <p className="text-[11px] text-center text-warm-secondary dark:text-[#555]">
-              &copy; {mounted ? new Date().getFullYear() : 2026} RCT Ecosystem — Reverse Component Thinking.{" "}
+              &copy; {mounted ? new Date().getFullYear() : 2026} Delentia Labs — Delentia OS.{" "}
               {t("footer.rights")}
             </p>
 

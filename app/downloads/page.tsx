@@ -1,18 +1,13 @@
 import type { Metadata } from "next"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
+import { getRequestLocale } from "@/lib/request-locale"
 
 export const revalidate = 3600
 
-export async function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "th" }]
-}
-
-type LocalePageProps = {
-  params: Promise<{ locale: "en" | "th" }>
-}
-
-export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
-  const { locale } = await params
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale()
   return createBilingualMetadata(
     locale,
     "Downloads — Delentia OS GUI & SDK",
@@ -49,10 +44,10 @@ const RELEASES = [
 
 const SDK_PACKAGES = [
   {
-    name: "@delentia/rct-edge",
+    name: "@delentia/delentia-os",
     description: "TypeScript edge SDK — JITNA v3 intent execution, FDIA scoring, WebSocket streaming",
-    install: "npm install @delentia/rct-edge",
-    docs: "https://docs.delentia.com/sdk/rct-edge",
+    install: "npm install @delentia/delentia-os",
+    docs: "https://docs.delentia.com/sdk/delentia-os",
     badge: "npm",
   },
   {
@@ -63,9 +58,9 @@ const SDK_PACKAGES = [
     badge: "npm",
   },
   {
-    name: "delentia",
+    name: "delentia-os",
     description: "Python SDK — JITNA v3, Delta Engine compression, SignedAI HexaCore client",
-    install: "pip install delentia",
+    install: "pip install delentia-os",
     docs: "https://docs.delentia.com/sdk/python",
     badge: "pypi",
   },
@@ -79,23 +74,25 @@ const PLATFORM_ICONS: Record<string, string> = {
 
 const RELEASE_BASE = "https://github.com/delentia-labs/delentia-gui/releases/download"
 
-export default async function DownloadsPage({ params }: LocalePageProps) {
-  const { locale } = await params
+export default async function DownloadsPage() {
+  const locale = await getRequestLocale()
   const isTH = locale === "th"
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-16 space-y-16">
-      {/* Header */}
-      <div className="text-center space-y-3">
-        <h1 className="text-4xl font-bold tracking-tight">
-          {isTH ? "ดาวน์โหลด" : "Downloads"}
-        </h1>
-        <p className="text-lg text-gray-500 max-w-xl mx-auto">
-          {isTH
-            ? "Delentia Desk GUI, SDK TypeScript, และ CLI ครบทุก platform"
-            : "Delentia Desk GUI, TypeScript SDK, Python SDK, and CLI — all platforms."}
-        </p>
-      </div>
+    <main className="relative min-h-screen bg-background" id="main-content">
+      <Navbar locale={locale} />
+      <div className="max-w-4xl mx-auto px-6 py-16 space-y-16">
+        {/* Header */}
+        <div className="text-center space-y-3">
+          <h1 className="text-4xl font-bold tracking-tight">
+            {isTH ? "ดาวน์โหลด" : "Downloads"}
+          </h1>
+          <p className="text-lg text-gray-500 max-w-xl mx-auto">
+            {isTH
+              ? "Delentia Desk GUI, SDK TypeScript, และ CLI ครบทุก platform"
+              : "Delentia Desk GUI, TypeScript SDK, Python SDK, and CLI — all platforms."}
+          </p>
+        </div>
 
       {/* GUI Releases */}
       <section className="space-y-6">
@@ -185,7 +182,7 @@ export default async function DownloadsPage({ params }: LocalePageProps) {
             : "Install the CLI to run JITNA workflows, deploy adapters, and manage Delentia OS."}
         </p>
         <code className="block text-sm font-mono bg-gray-100 dark:bg-gray-900 px-4 py-3 rounded-xl text-gray-700 dark:text-gray-300">
-          pip install delentia[cli]
+          pip install delentia-os[cli]
         </code>
         <p className="text-xs text-gray-400">
           {isTH
@@ -193,6 +190,8 @@ export default async function DownloadsPage({ params }: LocalePageProps) {
             : "Requires Python 3.11+ on Windows, macOS, Linux."}
         </p>
       </section>
+      </div>
+      <Footer locale={locale} />
     </main>
   )
 }

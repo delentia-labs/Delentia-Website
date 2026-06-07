@@ -151,7 +151,7 @@ export async function proxy(request: NextRequest) {
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/_vercel') ||
-    pathname.includes('.')
+    /\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff|woff2|ttf|otf|mp4|webm|json|webmanifest|map)$/.test(pathname)
   ) {
     return withAuthCookies(NextResponse.next())
   }
@@ -203,6 +203,6 @@ export async function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     '/api/:path*',
-    '/((?!_next/static|_next/image|_vercel|favicon.ico|sitemap.xml|robots.txt|opengraph-image|manifest.json|.*\\..*).*)',
+    '/((?!_next/static|_next/image|_vercel|favicon.ico|sitemap.xml|robots.txt|opengraph-image|manifest.json|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff|woff2|ttf|otf|mp4|webm|json|webmanifest|map)$).*)',
   ],
 }

@@ -46,7 +46,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   const copy = isThai
     ? {
         badge: "Reverse Component Thinking",
-        titleLine1: "RCT: ระบบปฏิบัติการ AI",
+        titleLine1: "Delentia OS: ระบบปฏิบัติการ AI",
         titleLine2: "Intent-Centric",
         titleLine3: "ลำดับที่ 1 ของโลก",
         subtitle:
@@ -62,7 +62,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       }
     : {
         badge: "Reverse Component Thinking",
-        titleLine1: "RCT: The World's 1st",
+        titleLine1: "Delentia OS: The World's 1st",
         titleLine2: "Intent-Centric",
         titleLine3: "AI Operating System",
         subtitle:
@@ -97,7 +97,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
         <div className="absolute inset-0">
           <OptimizedImage
             src={HERO_BG}
-            alt="RCT Ecosystem Hero Background"
+            alt="Delentia OS Hero Background"
             containerClassName="h-full w-full"
             objectFit="cover"
             priority
@@ -139,8 +139,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               }`}
             >
               <OptimizedImage
-                src={isDark ? "/RCTicon.svg" : "/RCTicon-lightVer.svg"}
-                alt="RCT Ecosystem Logo"
+                src={isDark ? "/DelentiaIcon.svg" : "/DelentiaIcon-lightVer.svg"}
+                alt="Delentia OS Logo"
                 containerClassName="w-5 h-5"
                 className=""
                 objectFit="contain"
@@ -167,8 +167,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                 </p>
                 <p className="sr-only">
                   {isThai
-                    ? "RCT Ecosystem คือระบบปฏิบัติการ AI แบบรัฐธรรมนูญ 10 ชั้น ใช้ FDIA gating, HexaCore 7 โมเดล และ SignedAI consensus มุ่งสู่ hallucination ต่ำกว่า 0.3% บน benchmark workloads สำหรับองค์กร"
-                    : "RCT Ecosystem is a 10-layer Constitutional AI Operating System — using FDIA gating, 7-model HexaCore routing, and SignedAI consensus to target under 0.3% hallucination on benchmarked enterprise workloads."}
+                    ? "Delentia OS คือระบบปฏิบัติการ AI แบบรัฐธรรมนูญ 10 ชั้น ใช้ FDIA gating, HexaCore 7 โมเดล และ SignedAI consensus มุ่งสู่ hallucination ต่ำกว่า 0.3% บน benchmark workloads สำหรับองค์กร"
+                    : "Delentia OS is a 10-layer Constitutional AI Operating System — using FDIA gating, 7-model HexaCore routing, and SignedAI consensus to target under 0.3% hallucination on benchmarked enterprise workloads."}
                 </p>
               </div>
             </div>

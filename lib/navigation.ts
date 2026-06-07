@@ -192,8 +192,8 @@ const technologyItems: NavLeafItem[] = [
     href: "/technology/rct-7",
     label: { en: "RCT-7 Mental OS", th: "RCT-7 Mental OS" },
     description: {
-      en: "The 7-state IntentLoop engine governing every agent action in the RCT Ecosystem.",
-      th: "Intloop Engine 7 สถานะที่ควบคุมทุก Action ของ Agent ใน RCT Ecosystem",
+      en: "The 7-state IntentLoop engine governing every agent action in Delentia OS.",
+      th: "Intloop Engine 7 สถานะที่ควบคุมทุก Action ของ Agent ใน Delentia OS",
     },
   },
   {
@@ -222,8 +222,8 @@ const companyItems: NavLeafItem[] = [
     href: "/about",
     label: { en: "About", th: "เกี่ยวกับ" },
     description: {
-      en: "Mission, positioning, and why RCT exists.",
-      th: "ภารกิจ ตำแหน่งทางการตลาด และเหตุผลที่ RCT ถูกสร้างขึ้น",
+      en: "Mission, positioning, and why Delentia OS exists.",
+      th: "ภารกิจ ตำแหน่งทางการตลาด และเหตุผลที่ Delentia OS ถูกสร้างขึ้น",
     },
   },
   {
@@ -297,8 +297,8 @@ const resourceItems = {
     href: "/benchmark/leaderboard",
     label: { en: "Industry Leaderboard", th: "Industry Leaderboard" },
     description: {
-      en: "RCT vs GPT-4 vs Claude-3 — measured FDIA, HaluEval, adversarial benchmark comparison.",
-      th: "RCT vs GPT-4 vs Claude-3 — เปรียบเทียบ FDIA, HaluEval, adversarial ที่วัดจริง",
+      en: "Delentia OS vs GPT-4 vs Claude-3 — measured FDIA, HaluEval, adversarial benchmark comparison.",
+      th: "Delentia OS vs GPT-4 vs Claude-3 — เปรียบเทียบ FDIA, HaluEval, adversarial ที่วัดจริง",
     },
   },
   deltaTrace: {
@@ -422,6 +422,36 @@ const resourceItems = {
       th: "พื้นที่เชื่อม builders, operators และ researchers เข้าด้วยกัน",
     },
   },
+  models: {
+    id: "models",
+    href: "/models",
+    label: { en: "AI Models Hub", th: "คลัง AI Models" },
+    description: {
+      en: "Fine-tuned Delentia SLMs — JITNA compliance scores and benchmark data.",
+      th: "Delentia SLMs ที่ fine-tune แล้ว พร้อมคะแนน JITNA และข้อมูล benchmark",
+    },
+    badge: "NEW",
+  },
+  packages: {
+    id: "packages",
+    href: "/packages",
+    label: { en: "Packages Hub", th: "แหล่งรวมแพ็กเกจนักพัฒนา" },
+    description: {
+      en: "Install the Delentia OS SDK for Python or Node.js in minutes.",
+      th: "ติดตั้ง Delentia OS SDK สำหรับ Python หรือ Node.js ในไม่กี่นาที",
+    },
+    badge: "NEW",
+  },
+  playground: {
+    id: "playground",
+    href: "/playground",
+    label: { en: "Playground & Sandbox", th: "ห้องทดลองออนไลน์" },
+    description: {
+      en: "Run Delentia SLMs in Google Colab and Kaggle Notebooks.",
+      th: "รัน Delentia SLMs บน Google Colab และ Kaggle Notebooks",
+    },
+    badge: "NEW",
+  },
 } satisfies Record<string, NavLeafItem>
 
 export const navigationGroups: NavGroup[] = [
@@ -536,6 +566,11 @@ export const navigationGroups: NavGroup[] = [
         style: "secondary",
         items: [resourceItems.docs, resourceItems.downloads, resourceItems.ecosystem, resourceItems.deltaTrace, resourceItems.integration, resourceItems.roadmap, resourceItems.changelog],
       },
+      {
+        header: { en: "Developer Hub", th: "แพลตฟอร์มนักพัฒนา" },
+        style: "secondary",
+        items: [resourceItems.models, resourceItems.packages, resourceItems.playground, resourceItems.useCases, resourceItems.community],
+      },
     ],
     summary: {
       en: "Task-based guidance for learning, evaluating, building, and adoption.",
@@ -543,6 +578,7 @@ export const navigationGroups: NavGroup[] = [
     },
     items: [],
   },
+
   {
     id: "company",
     label: { en: "Company", th: "บริษัท" },

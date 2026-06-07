@@ -72,7 +72,7 @@ export default function CommunityClient() {
     <ResourcePageShell
       eyebrow={language === "th" ? "Adopt / Community" : "Adopt / Community"}
       title={language === "th" ? "ชุมชนสำหรับนักพัฒนา นักวิจัย และทีม AI ระดับองค์กร" : "A community for developers, researchers, and enterprise AI teams"}
-      description={language === "th" ? "หน้า Community ไม่ใช่ landing page ทั่วไป แต่เป็นจุดเชื่อมระหว่าง evidence, implementation และ adoption paths ของ RCT ecosystem." : "The community page is not a generic landing page. It connects evidence, implementation, and adoption paths across the RCT ecosystem."}
+      description={language === "th" ? "หน้า Community ไม่ใช่ landing page ทั่วไป แต่เป็นจุดเชื่อมระหว่าง evidence, implementation และ adoption paths ของ Delentia OS" : "The community page is not a generic landing page. It connects evidence, implementation, and adoption paths across Delentia OS."}
       taxonomy={language === "th" ? ["Developer community", "Research discussion", "Implementation support", "Adoption path"] : ["Developer community", "Research discussion", "Implementation support", "Adoption path"]}
       accent="amber"
       actions={[

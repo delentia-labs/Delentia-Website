@@ -1,18 +1,14 @@
 import type { Metadata } from "next"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
+import { EcosystemOrbitalMap } from "@/components/ecosystem-orbital-map"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
+import { getRequestLocale } from "@/lib/request-locale"
 
 export const revalidate = 3600
 
-export async function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "th" }]
-}
-
-type LocalePageProps = {
-  params: Promise<{ locale: "en" | "th" }>
-}
-
-export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
-  const { locale } = await params
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale()
   return createBilingualMetadata(
     locale,
     "Ecosystem — Adapters & Skills Registry",
@@ -44,24 +40,26 @@ const SKILLS = [
   { id: "financial-analysis-skill", name: "Financial Analysis (TH)", icon: "📊", desc: "Thai GAAP + SET compliance analysis", verified: true },
 ]
 
-export default async function EcosystemPage({ params }: LocalePageProps) {
-  const { locale } = await params
+export default async function EcosystemPage() {
+  const locale = await getRequestLocale()
   const isTH = locale === "th"
 
   const verifiedCount = [...ADAPTERS, ...SKILLS].filter((x) => x.verified).length
 
   return (
-    <main className="max-w-5xl mx-auto px-6 py-16 space-y-16">
-      {/* Header */}
-      <div className="text-center space-y-3">
-        <h1 className="text-4xl font-bold tracking-tight">
-          {isTH ? "Ecosystem Registry" : "Ecosystem Registry"}
-        </h1>
-        <p className="text-lg text-gray-500 max-w-xl mx-auto">
-          {isTH
-            ? "Adapters และ Skills ที่พร้อมใช้งานกับ Delentia OS ผ่าน JITNA v3 channel"
-            : "Channel adapters and AI skills ready to connect with Delentia OS via JITNA v3."}
-        </p>
+    <main className="relative min-h-screen bg-background" id="main-content">
+      <Navbar locale={locale} />
+      <div className="max-w-5xl mx-auto px-6 py-16 space-y-16">
+        {/* Header */}
+        <div className="text-center space-y-3">
+          <h1 className="text-4xl font-bold tracking-tight">
+            {isTH ? "Ecosystem Registry" : "Ecosystem Registry"}
+          </h1>
+          <p className="text-lg text-gray-500 max-w-xl mx-auto">
+            {isTH
+              ? "Adapters และ Skills ที่พร้อมใช้งานกับ Delentia OS ผ่าน JITNA v3 channel"
+              : "Channel adapters and AI skills ready to connect with Delentia OS via JITNA v3."}
+          </p>
         {/* Stats */}
         <div className="flex justify-center gap-6 text-sm text-gray-500 pt-2">
           <span><strong className="text-gray-900 dark:text-gray-100">{ADAPTERS.length}</strong> adapters</span>
@@ -71,6 +69,9 @@ export default async function EcosystemPage({ params }: LocalePageProps) {
           </span>
         </div>
       </div>
+
+      {/* Interactive Ecosystem Orbital Map System */}
+      <EcosystemOrbitalMap locale={locale} />
 
       {/* Adapters */}
       <section className="space-y-6">
@@ -166,6 +167,8 @@ export default async function EcosystemPage({ params }: LocalePageProps) {
           </a>
         </div>
       </section>
+      </div>
+      <Footer locale={locale} />
     </main>
   )
 }

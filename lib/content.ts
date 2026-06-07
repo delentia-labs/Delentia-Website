@@ -81,7 +81,7 @@ export const teamMembers: TeamMember[] = [
     id: "1",
     name: "Ittirit Saengow",
     title: "Founder, Sole Developer, and Primary Author",
-    bio: "Creator of the RCT Ecosystem, FDIA equation, JITNA protocol, and the 7 Genome System. Builds the platform from Bangkok, Thailand.",
+    bio: "Creator of Delentia OS, FDIA equation, JITNA protocol, and the 7 Genome System. Builds the platform from Bangkok, Thailand.",
     socials: {
       github: "https://github.com/ittirit720",
       linkedin: "https://www.linkedin.com/in/ittirit-saengow/",
@@ -89,7 +89,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: "2",
-    name: "RCT Research Desk",
+    name: "Delentia Research Desk",
     title: "Editorial Review and Research Operations",
     bio: "Editorial desk used for review, disclosure, and evidence framing. Core technical authorship remains attributed to Ittirit Saengow.",
     socials: {

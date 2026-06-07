@@ -99,7 +99,7 @@ export default function HeroMetricsPanel() {
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
           <div className={`text-xs font-medium mb-0.5 ${isDark ? "text-warm-dim" : "text-warm-secondary"}`}>
-            {isTH ? "สถานะระบบ RCT" : "RCT System Status"}
+            {isTH ? "สถานะระบบ Delentia OS" : "Delentia OS Status"}
           </div>
           <div className={`text-sm font-bold font-mono ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
             Architecture &amp; Performance

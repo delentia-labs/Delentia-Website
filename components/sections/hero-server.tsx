@@ -16,8 +16,8 @@ export function HeroServer({ locale }: HeroServerProps) {
   const isThai = locale === "th"
   const copy = isThai
     ? {
-        badge: "Reverse Component Thinking",
-        titleLine1: "RCT: ระบบปฏิบัติการ AI",
+        badge: "Delentia OS",
+        titleLine1: "Delentia OS: ระบบปฏิบัติการ AI",
         titleLine2: "Intent-Centric",
         titleLine3: "อันดับ 1 ของโลก",
         subtitle:
@@ -31,8 +31,8 @@ export function HeroServer({ locale }: HeroServerProps) {
         scroll: "เลื่อนเพื่อสำรวจ",
       }
     : {
-        badge: "Reverse Component Thinking",
-        titleLine1: "RCT: The World's 1st",
+        badge: "Delentia OS",
+        titleLine1: "Delentia OS: The World's 1st",
         titleLine2: "Intent-Centric",
         titleLine3: "AI Operating System",
         subtitle:
@@ -74,8 +74,8 @@ export function HeroServer({ locale }: HeroServerProps) {
         <div className="grid items-center gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(374px,484px)] lg:gap-8 xl:grid-cols-[minmax(0,1.01fr)_minmax(394px,484px)]">
           <div className="space-y-7 lg:space-y-8">
             <div className="inline-flex items-center gap-2.5 rounded-full border border-[#e6ddd0] bg-white/96 px-3 py-1.5 shadow-[0_10px_24px_rgba(84,61,31,0.05)] dark:border-border dark:bg-card/80">
-              <Image src="/RCTicon-lightVer.svg" alt="RCT Ecosystem Logo" width={20} height={20} className="h-5 w-5 object-contain dark:hidden" priority />
-              <Image src="/RCTicon.svg" alt="RCT Ecosystem Logo" width={20} height={20} className="hidden h-5 w-5 object-contain dark:block" priority />
+              <Image src="/RCTicon-lightVer.svg" alt="Delentia OS Logo" width={20} height={20} className="h-5 w-5 object-contain dark:hidden" priority />
+              <Image src="/RCTicon.svg" alt="Delentia OS Logo" width={20} height={20} className="hidden h-5 w-5 object-contain dark:block" priority />
               <span className="text-xs font-medium text-warm-gray dark:text-warm-muted">{copy.badge}</span>
               <div className="h-1.5 w-1.5 rounded-full bg-warm-sage" />
             </div>

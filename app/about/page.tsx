@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next"
+import type { Metadata } from "next"
 import Link from "next/link"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getBreadcrumbSchema, getOrganizationSchema } from "@/lib/schema"
@@ -121,8 +121,8 @@ export default async function AboutPage() {
       phase: isTh ? "กำเนิด" : "Genesis",
       title: isTh ? "30 วันสู่ The 9 Codex" : "30-Day Documentation Sprint",
       desc: isTh
-        ? "ด้วยมือถือ Android และกลุ่มดาว LLMs (GPT, Gemini, Perplexity) สร้าง RCT Ecosystem MVP ทั้งหมดในช่วงเวลา Documentation Sprint ต่อมาพัฒนาต่อบน ROG Ally X + WSL Ubuntu + IDE อย่างเป็นระบบ ไม่มีทีม ไม่มีทุน มีแค่ Intent, Structure และ Persistence"
-        : "Armed with mobile devices and LLMs (GPT, Gemini, Perplexity), built the entire RCT Ecosystem framework in an intensive documentation sprint. Further developed on ROG Ally X + WSL Ubuntu + IDE. No team. No external funding. Just intent, structure, and persistence.",
+        ? "ด้วยมือถือ Android และกลุ่มดาว LLMs (GPT, Gemini, Perplexity) สร้าง Delentia OS MVP ทั้งหมดในช่วงเวลา Documentation Sprint ต่อมาพัฒนาต่อบน ROG Ally X + WSL Ubuntu + IDE อย่างเป็นระบบ ไม่มีทีม ไม่มีทุน มีแค่ Intent, Structure และ Persistence"
+        : "Armed with mobile devices and LLMs (GPT, Gemini, Perplexity), built the entire Delentia OS framework in an intensive documentation sprint. Further developed on ROG Ally X + WSL Ubuntu + IDE. No team. No external funding. Just intent, structure, and persistence.",
       period: isTh ? "~30 วัน (Documentation)" : "~30 days (Documentation Phase)",
       impact: isTh ? "สร้าง 9 Codices Framework" : "9 Codices framework established",
     },
@@ -163,8 +163,8 @@ export default async function AboutPage() {
     {
       title: isTh ? "Linux for AI Agents" : "Linux for AI Agents",
       description: isTh
-        ? "RCT ถูกวางตำแหน่งเป็น Constitutional AI Operating System ที่เชื่อม architecture, orchestration, verification, memory และ governance เข้าเป็นระบบเดียว"
-        : "RCT is positioned as a Constitutional AI Operating System that unifies architecture, orchestration, verification, memory, and governance into one operational layer.",
+        ? "Delentia OS ถูกวางตำแหน่งเป็น Constitutional AI Operating System ที่เชื่อม architecture, orchestration, verification, memory และ governance เข้าเป็นระบบเดียว"
+        : "Delentia OS is positioned as a Constitutional AI Operating System that unifies architecture, orchestration, verification, memory, and governance into one operational layer.",
       label: isTh ? "Operating pillar" : "Operating pillar",
       footer: isTh ? "ดูภาพระบบเชิงสถาปัตยกรรม" : "View the architecture lens",
       iconSrc: pixelIcons.architecture,
@@ -199,8 +199,8 @@ export default async function AboutPage() {
     {
       title: isTh ? "ความกดดันกลายเป็น Systems Thinking" : "Pressure Turned into Systems Thinking",
       description: isTh
-        ? "การเติบโตในคลองเตยไม่ได้ให้แค่เรื่องราว แต่มันฝึกการมอง pattern ในสภาพแวดล้อมที่ซับซ้อนและบังคับให้ทุกการตัดสินใจคุ้มค่า นี่คือฐานของ governance thinking ใน RCT"
-        : "Growing up in Khlong Toei did not just create a story. It trained pattern recognition under pressure and forced every decision to justify its cost. That discipline shows up directly in RCT governance design.",
+        ? "การเติบโตในคลองเตยไม่ได้ให้แค่เรื่องราว แต่มันฝึกการมอง pattern ในสภาพแวดล้อมที่ซับซ้อนและบังคับให้ทุกการตัดสินใจคุ้มค่า นี่คือฐานของ governance thinking ใน Delentia OS"
+        : "Growing up in Khlong Toei did not just create a story. It trained pattern recognition under pressure and forced every decision to justify its cost. That discipline shows up directly in Delentia OS governance design.",
       label: isTh ? "Systems origin" : "Systems origin",
       footer: isTh ? "ต้นทางของ systems discipline" : "Origin of systems discipline",
       iconSrc: pixelIcons.target,
@@ -253,8 +253,8 @@ export default async function AboutPage() {
     {
       title: isTh ? "Governance Core" : "Governance Core",
       summary: isTh
-        ? "ชั้นกลางคือกลไกที่ทำให้ RCT ใช้งานในบริบทธุรกิจได้จริง ผ่านกติกา การตรวจสอบ และความทรงจำที่คงอยู่ระหว่างการทำงาน"
-        : "The middle band is what makes RCT usable in enterprise settings through rules, verification, and memory that persists across operations.",
+        ? "ชั้นกลางคือกลไกที่ทำให้ Delentia OS ใช้งานในบริบทธุรกิจได้จริง ผ่านกติกา การตรวจสอบ และความทรงจำที่คงอยู่ระหว่างการทำงาน"
+        : "The middle band is what makes Delentia OS usable in enterprise settings through rules, verification, and memory that persists across operations.",
       label: isTh ? "Protocol / Verification / Memory" : "Protocol / Verification / Memory",
       items: [genomes[3], genomes[4], genomes[5]],
     },
@@ -297,7 +297,7 @@ export default async function AboutPage() {
       phase: isTh ? "Foundation layer" : "Foundation layer",
       period: isTh ? "ปลายปี 2025" : "Late 2025",
       title: isTh ? "จาก framework เชิงแนวคิด สู่ระบบคิดที่มีรัฐธรรมนูญของตัวเอง" : "From conceptual framework to a system with its own constitution",
-      capability: isTh ? "FDIA, 7 Genome System, kernel logic และ whitepaper ทำให้ RCT มีหลักคิดที่ตรวจสอบและอธิบายได้" : "FDIA, the 7 Genome System, kernel logic, and the whitepaper gave RCT an explainable constitutional base.",
+      capability: isTh ? "FDIA, 7 Genome System, kernel logic และ whitepaper ทำให้ Delentia OS มีหลักคิดที่ตรวจสอบและอธิบายได้" : "FDIA, the 7 Genome System, kernel logic, and the whitepaper gave Delentia OS an explainable constitutional base.",
       businessImpact: isTh ? "ทำให้ระบบนี้ไม่เริ่มจาก prompt tricks แต่เริ่มจาก intent architecture" : "This meant the system did not begin as prompt tricks. It began as intent architecture.",
       tone: "amber",
     },
@@ -306,22 +306,22 @@ export default async function AboutPage() {
       period: isTh ? "มกราคม 2026" : "January 2026",
       title: isTh ? "เริ่มมีโครงสร้าง runtime ที่ใช้ซ้ำ ขยายต่อ และควบคุมได้" : "Reusable, controllable runtime structure started to appear",
       capability: isTh ? "DelentiaDB, universal memory schema และ OS primitives ทำให้ระบบเก็บ state, ดึงกลับ, และจัดเส้นทางการทำงานได้จริง" : "DelentiaDB, the universal memory schema, and OS primitives made it possible to store state, recall it, and route work operationally.",
-      businessImpact: isTh ? "นี่คือจุดที่ RCT เริ่มเปลี่ยนจากเอกสารไปสู่ operating substrate" : "This is where RCT began moving from documentation into an operating substrate.",
+      businessImpact: isTh ? "นี่คือจุดที่ Delentia OS เริ่มเปลี่ยนจากเอกสารไปสู่ operating substrate" : "This is where Delentia OS began moving from documentation into an operating substrate.",
       tone: "sage",
     },
     {
       phase: isTh ? "Cross-system integration" : "Cross-system integration",
       period: isTh ? "มกราคม 2026" : "January 2026",
       title: isTh ? "ระบบเริ่มเชื่อมข้ามบริบท ไม่ได้อยู่แบบโดดเดี่ยวอีกต่อไป" : "The system started connecting across contexts instead of living in isolation",
-      capability: isTh ? "Cross-chat integration, reports, specialist studio และ frontend foundation ทำให้ RCT สื่อสารกับ layer อื่นได้ดีขึ้น" : "Cross-chat integration, reports, specialist studio, and frontend foundations improved how RCT interacted with adjacent layers.",
-      businessImpact: isTh ? "ช่วยให้ RCT เข้าใกล้สภาพของ platform มากกว่า prototype" : "It pushed RCT closer to platform behavior instead of remaining a prototype.",
+      capability: isTh ? "Cross-chat integration, reports, specialist studio และ frontend foundation ทำให้ Delentia OS สื่อสารกับ layer อื่นได้ดีขึ้น" : "Cross-chat integration, reports, specialist studio, and frontend foundations improved how Delentia OS interacted with adjacent layers.",
+      businessImpact: isTh ? "ช่วยให้ Delentia OS เข้าใกล้สภาพของ platform มากกว่า prototype" : "It pushed Delentia OS closer to platform behavior instead of remaining a prototype.",
       tone: "sky",
     },
     {
       phase: isTh ? "Governed ecosystem" : "Governed ecosystem",
       period: isTh ? "มกราคม - กุมภาพันธ์ 2026" : "January - February 2026",
       title: isTh ? "จาก module หลายตัว สู่ ecosystem ที่มี governance, attribution และ open standard" : "From many modules to an ecosystem with governance, attribution, and an open standard",
-      capability: isTh ? "การรวม 7 Genome, intent loop, open protocol และ license posture ทำให้ RCT พร้อมถูกอธิบายต่อสื่อ พาร์ทเนอร์ และคนตรวจสอบภายนอก" : "The 7 Genome integration, intent loop, open protocol, and license posture made RCT more legible to media, partners, and outside reviewers.",
+      capability: isTh ? "การรวม 7 Genome, intent loop, open protocol และ license posture ทำให้ Delentia OS พร้อมถูกอธิบายต่อสื่อ พาร์ทเนอร์ และคนตรวจสอบภายนอก" : "The 7 Genome integration, intent loop, open protocol, and license posture made Delentia OS more legible to media, partners, and outside reviewers.",
       businessImpact: isTh ? "นี่คือช่วงที่ระบบเริ่มมี public narrative และ public trust surface" : "This is the phase where the system began forming a public narrative and public trust surface.",
       tone: "sage",
     },
@@ -338,7 +338,7 @@ export default async function AboutPage() {
   const architectSignals = [
     {
       title: isTh ? "สำหรับลูกค้าองค์กร" : "For enterprise buyers",
-      description: isTh ? "อ่านหน้า about นี้เพื่อเข้าใจว่า architecture, governance และ proof culture ของ RCT เกิดจากวิธีคิดแบบไหน" : "Use this page to understand the thinking behind RCT's architecture, governance, and proof culture.",
+      description: isTh ? "อ่านหน้า about นี้เพื่อเข้าใจว่า architecture, governance และ proof culture ของ Delentia OS เกิดจากวิธีคิดแบบไหน" : "Use this page to understand the thinking behind Delentia OS's architecture, governance, and proof culture.",
       label: isTh ? "Trust lane" : "Trust lane",
       footer: isTh ? "อ่านหน้าในฐานะ evaluation surface" : "Read this page as an evaluation surface",
       iconSrc: pixelIcons.architecture,
@@ -470,8 +470,8 @@ export default async function AboutPage() {
             </p>
             <p className="mx-auto max-w-3xl text-base leading-8 text-muted-foreground md:text-lg">
               {isTh
-                ? "สร้างขึ้นบนสมการ FDIA และสถาปัตยกรรมระดับ 10-Layer ระบบนิเวศ RCT ไม่ใช่แค่การประกอบโมเดลเข้าด้วยกัน แต่เราออกแบบสายวิวัฒนาการใหม่ ที่ทุกผลลัพธ์ได้รับการตรวจสอบ รองรับงานระดับองค์กรที่อ่อนไหวที่สุด"
-                : "Built on the FDIA equation and a 10-Layer Architecture, RCT Ecosystem orchestrates models into a governed enterprise runtime. We engineer deterministic pathways where every output is verifiable, making AI safe for highly-regulated workflows."}
+                ? "สร้างขึ้นบนสมการ FDIA และสถาปัตยกรรมระดับ 10-Layer Delentia OS ไม่ใช่แค่การประกอบโมเดลเข้าด้วยกัน แต่เราออกแบบสายวิวัฒนาการใหม่ ที่ทุกผลลัพธ์ได้รับการตรวจสอบ รองรับงานระดับองค์กรที่อ่อนไหวที่สุด"
+                : "Built on the FDIA equation and a 10-Layer Architecture, Delentia OS orchestrates models into a governed enterprise runtime. We engineer deterministic pathways where every output is verifiable, making AI safe for highly-regulated workflows."}
             </p>
             <p className="mt-8 text-sm font-medium uppercase tracking-[0.16em] text-warm-amber">
               {isTh ? "สถาปนิกอิสระ • 41 Algorithms • Public SDK verified + Enterprise snapshot" : "Solo Architect • 41 Algorithms • Public SDK verified + Enterprise snapshot"}
@@ -540,8 +540,8 @@ export default async function AboutPage() {
             </h2>
             <p className="text-base leading-8 text-muted-foreground">
               {isTh
-                ? "ส่วนนี้ไม่ได้ถูกวางไว้เพื่อเล่าเรื่องชีวิตแบบโรแมนติก แต่เพื่ออธิบายว่าทำไมโครงสร้างของ RCT จึงจริงจังกับ governance, cost, verification และ resilience ตั้งแต่ต้นทาง"
-                : "This section is not here to romanticize biography. It exists to explain why RCT is unusually serious about governance, cost discipline, verification, and resilience from the first design decision."}
+                ? "ส่วนนี้ไม่ได้ถูกวางไว้เพื่อเล่าเรื่องชีวิตแบบโรแมนติก แต่เพื่ออธิบายว่าทำไมโครงสร้างของ Delentia OS จึงจริงจังกับ governance, cost, verification และ resilience ตั้งแต่ต้นทาง"
+                : "This section is not here to romanticize biography. It exists to explain why Delentia OS is unusually serious about governance, cost discipline, verification, and resilience from the first design decision."}
             </p>
           </div>
 
@@ -620,8 +620,8 @@ export default async function AboutPage() {
             <h2 className="text-4xl font-bold text-foreground">{isTh ? "ระบบ 7 Genome" : "The 7 Genome System"}</h2>
             <p className="text-muted-foreground">
               {isTh
-                ? "7 Genomes ที่เชื่อมต่อกันประกอบเป็น DNA ที่สมบูรณ์ของ RCT Ecosystem แต่ละตัวรับผิดชอบ Domain ที่สำคัญ"
-                : "Seven interconnected genomes form the complete DNA of the RCT Ecosystem — each responsible for a critical domain."}
+                ? "7 Genomes ที่เชื่อมต่อกันประกอบเป็น DNA ที่สมบูรณ์ของ Delentia OS แต่ละตัวรับผิดชอบ Domain ที่สำคัญ"
+                : "Seven interconnected genomes form the complete DNA of Delentia OS — each responsible for a critical domain."}
             </p>
           </div>
           <div className="grid gap-5 lg:grid-cols-3">
@@ -821,8 +821,8 @@ export default async function AboutPage() {
                   </blockquote>
                   <p className="mt-6 text-base leading-8 text-muted-foreground">
                     {isTh
-                      ? "ชีวประวัติในส่วนนี้ไม่ได้ถูกใช้เพื่อเล่าความลำบาก แต่เพื่ออธิบายว่าเหตุใด RCT จึงถูกออกแบบให้ยึดกับโครงสร้าง การตรวจสอบย้อนกลับ และความรับผิดชอบต่อผลลัพธ์ตั้งแต่วันแรก"
-                      : "The biography here is not used to dramatize hardship. It exists to explain why RCT was designed around structure, traceability, and outcome accountability from the beginning."}
+                      ? "ชีวประวัติในส่วนนี้ไม่ได้ถูกใช้เพื่อเล่าความลำบาก แต่เพื่ออธิบายว่าเหตุใด Delentia OS จึงถูกออกแบบให้ยึดกับโครงสร้าง การตรวจสอบย้อนกลับ และความรับผิดชอบต่อผลลัพธ์ตั้งแต่วันแรก"
+                      : "The biography here is not used to dramatize hardship. It exists to explain why Delentia OS was designed around structure, traceability, and outcome accountability from the beginning."}
                   </p>
                   <div className="mt-6 grid gap-3 sm:grid-cols-3">
                     {architectProofPoints.map((item) => (

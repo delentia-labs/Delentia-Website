@@ -25,9 +25,9 @@ const evidenceCards = [
       'Naik, N. (2024). "Probabilistic Consensus through Ensemble Validation" — arXiv:2411.06535',
     url: "https://arxiv.org/abs/2411.06535",
     relevanceEn:
-      "RCT's multi-LLM orchestration applies this same ensemble consensus principle — cross-validating outputs across multiple models to dramatically reduce hallucination.",
+      "Delentia OS's multi-LLM orchestration applies this same ensemble consensus principle — cross-validating outputs across multiple models to dramatically reduce hallucination.",
     relevanceTh:
-      "RCT ใช้หลักการ ensemble consensus เดียวกันนี้ — ตรวจสอบผลลัพธ์ข้ามหลาย LLM เพื่อลด hallucination อย่างมีนัยสำคัญ",
+      "Delentia OS ใช้หลักการ ensemble consensus เดียวกันนี้ — ตรวจสอบผลลัพธ์ข้ามหลาย LLM เพื่อลด hallucination อย่างมีนัยสำคัญ",
     color: "#7B9E87",
     stat: "+28.5%",
     statLabelEn: "Precision Gain",
@@ -48,9 +48,9 @@ const evidenceCards = [
     sourceTh: 'McKinsey & Company (2025). "The State of AI: Global Survey 2025"',
     url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
     relevanceEn:
-      "RCT Ecosystem is built for this agentic AI era — providing the orchestration infrastructure that 62% of enterprises are actively seeking.",
+      "Delentia OS is built for this agentic AI era — providing the orchestration infrastructure that 62% of enterprises are actively seeking.",
     relevanceTh:
-      "RCT Ecosystem ถูกสร้างมาเพื่อยุค agentic AI นี้ — ให้โครงสร้างพื้นฐาน orchestration ที่ 62% ขององค์กรกำลังค้นหา",
+      "Delentia OS ถูกสร้างมาเพื่อยุค agentic AI นี้ — ให้โครงสร้างพื้นฐาน orchestration ที่ 62% ขององค์กรกำลังค้นหา",
     color: "#D4A853",
     stat: "$1.5T",
     statLabelEn: "AI Spending 2025",
@@ -72,9 +72,9 @@ const evidenceCards = [
       'Luo, H. et al. (2025). "Toward Edge General Intelligence with Multi-LLM" — IEEE Transactions. อ้างอิง 34 ครั้ง',
     url: "https://ieeexplore.ieee.org/abstract/document/11175216/",
     relevanceEn:
-      "RCT's JITNA Protocol implements exactly this multi-LLM trust architecture — with cryptographic verification at every negotiation step.",
+      "Delentia OS's JITNA Protocol implements exactly this multi-LLM trust architecture — with cryptographic verification at every negotiation step.",
     relevanceTh:
-      "JITNA Protocol ของ RCT ใช้สถาปัตยกรรม multi-LLM trust นี้ — พร้อมการยืนยันด้วย cryptography ในทุกขั้นตอนการเจรจา",
+      "JITNA Protocol ของ Delentia OS ใช้สถาปัตยกรรม multi-LLM trust นี้ — พร้อมการยืนยันด้วย cryptography ในทุกขั้นตอนการเจรจา",
     color: "#89B4C8",
     stat: "34",
     statLabelEn: "Citations",
@@ -221,8 +221,8 @@ export default function EvidenceSection() {
           </h2>
           <p className="text-sm max-w-2xl mx-auto text-muted-foreground">
             {isTh
-              ? "หลักการของ RCT Ecosystem ได้รับการสนับสนุนจากงานวิจัยระดับสากลที่ผ่านการ peer-review และรายงานอุตสาหกรรมชั้นนำ"
-              : "RCT Ecosystem's principles are supported by peer-reviewed research and leading industry reports from trusted institutions."}
+              ? "หลักการของ Delentia OS ได้รับการสนับสนุนจากงานวิจัยระดับสากลที่ผ่านการ peer-review และรายงานอุตสาหกรรมชั้นนำ"
+              : "Delentia OS's principles are supported by peer-reviewed research and leading industry reports from trusted institutions."}
           </p>
         </m.div>
 
@@ -278,7 +278,7 @@ export default function EvidenceSection() {
                 </blockquote>
 
                 <div className="relative z-10 mb-5 rounded-xl border border-[#eee2d6] bg-[#fffaf6] px-3.5 py-3 text-[11px] leading-relaxed text-muted-foreground dark:border-border dark:bg-secondary/55">
-                  <span className="font-semibold">RCT:</span>{" "}
+                  <span className="font-semibold">Delentia OS:</span>{" "}
                   {isTh ? card.relevanceTh : card.relevanceEn}
                 </div>
 

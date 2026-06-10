@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 # Delentia Labs — Constitutional AI Operating System
 
@@ -54,7 +54,7 @@ Built with Next.js 16 App Router, fully bilingual (EN/TH), ISR-optimized, 152 st
 
 The website is a high-performance, fully bilingual (English + Thai) Next.js application with Incremental Static Regeneration (ISR), a complete SEO layer (hreflang, Schema.org JSON-LD, auto-sitemap), and a bilingual MDX blog system.
 
-> **Note:** This repo contains the **marketing + documentation website** only. For the Constitutional AI SDK, see [`delentia-os`](https://github.com/delentia-labs/delentia-os).
+> **Note:** This repo contains the **marketing + documentation website** only. For the Constitutional AI SDK, see [`Delentia-OS`](https://github.com/delentia-labs/Delentia-OS).
 
 [↑ Back to top](#rct-labs--constitutional-ai-operating-system)
 
@@ -168,8 +168,8 @@ Performance Guards:
 
 ```bash
 # Clone the repository
-git clone https://github.com/delentia-labs/rctlabs-website.git
-cd rctlabs-website
+git clone https://github.com/delentia-labs/Delentia-Website.git
+cd Delentia-Website
 
 # Install dependencies
 npm install
@@ -497,8 +497,12 @@ Unauthorized copying, distribution, or use is strictly prohibited.
 
 | Repository | Description | Link |
 |------------|-------------|------|
-| `delentia-os` | Open-source SDK — Constitutional AI runtime (Apache 2.0) | [github.com/delentia-labs/delentia-os](https://github.com/delentia-labs/delentia-os) |
-| `delentia-os` Docs | GitHub Pages — SDK documentation | [delentia-labs.github.io/delentia-os](https://delentia-labs.github.io/delentia-os/) |
+| `Delentia-OS` | Open-source SDK — Constitutional AI runtime (Apache 2.0) | [github.com/delentia-labs/Delentia-OS](https://github.com/delentia-labs/Delentia-OS) |
+| `Delentia-OS-Gui` | Tauri desktop app — Delentia Desk (Win/Mac/Linux) | [github.com/delentia-labs/Delentia-OS-Gui](https://github.com/delentia-labs/Delentia-OS-Gui) |
+| `Delentia-AI-SLM` | SLM fine-tuning factory — Llama 3.1 8B + QLoRA | [github.com/delentia-labs/Delentia-AI-SLM](https://github.com/delentia-labs/Delentia-AI-SLM) |
+| `Delentia-Ecosystem` | Plugin registry — LINE, Slack, skill manifests | [github.com/delentia-labs/Delentia-Ecosystem](https://github.com/delentia-labs/Delentia-Ecosystem) |
+| `Delentia-Website` | Marketing + docs site — Next.js, Vercel | [github.com/delentia-labs/Delentia-Website](https://github.com/delentia-labs/Delentia-Website) |
+| `Delentia-OS` Docs | GitHub Pages — SDK documentation | [delentia-labs.github.io/delentia-os](https://delentia-labs.github.io/delentia-os/) |
 
 ---
 
@@ -527,8 +531,8 @@ Unauthorized copying, distribution, or use is strictly prohibited.
 ### เริ่มต้นใช้งาน (Quick Start)
 
 ```bash
-git clone https://github.com/delentia-labs/rctlabs-website.git
-cd rctlabs-website
+git clone https://github.com/delentia-labs/Delentia-Website.git
+cd Delentia-Website
 npm install
 npm run dev   # → http://localhost:3005
 ```

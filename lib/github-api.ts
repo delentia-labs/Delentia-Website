@@ -1,4 +1,6 @@
 import { SITE_PUBLIC_SDK_EVIDENCE_LABEL } from "./site-config"
+import fs from "fs"
+import path from "path"
 
 // Fetch README.md from raw.githubusercontent.com with caching
 export async function fetchGithubReadme(repoName: string, locale: "en" | "th" = "en"): Promise<string> {
@@ -16,8 +18,29 @@ export async function fetchGithubReadme(repoName: string, locale: "en" | "th" = 
     const text = await res.text()
     return sanitizeMarkdown(text)
   } catch (error) {
-    console.error(`Error fetching README for ${repoName}:`, error)
-    // Return localized fallback documentation
+    console.warn(`[WARNING] GitHub fetch failed for ${repoName}. Attempting local/cached fallback.`)
+    
+    try {
+      // 1. Try local sibling directory in workspace (for local development)
+      const siblingPath = path.join(process.cwd(), "..", repoName, "README.md")
+      if (fs.existsSync(siblingPath)) {
+        console.log(`[INFO] Loaded README for ${repoName} from local sibling directory: ${siblingPath}`)
+        const text = fs.readFileSync(siblingPath, "utf-8")
+        return sanitizeMarkdown(text)
+      }
+      
+      // 2. Try cached readme directory inside website project (for Vercel deployment)
+      const cachedPath = path.join(process.cwd(), "content", "readmes", `${repoName}-README.md`)
+      if (fs.existsSync(cachedPath)) {
+        console.log(`[INFO] Loaded README for ${repoName} from cached project content: ${cachedPath}`)
+        const text = fs.readFileSync(cachedPath, "utf-8")
+        return sanitizeMarkdown(text)
+      }
+    } catch (localError) {
+      console.error(`[ERROR] Failed to read local or cached README for ${repoName}:`, localError)
+    }
+
+    // 3. Last resort fallback
     return sanitizeMarkdown(getFallbackReadme(repoName, locale))
   }
 }

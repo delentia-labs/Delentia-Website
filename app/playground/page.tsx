@@ -5,6 +5,7 @@ import { getLearningResourceSchema } from "@/lib/schema"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { getRequestLocale } from "@/lib/request-locale"
+import TraceConsoleSimulator from "@/components/demos/trace-console-simulator"
 
 export const revalidate = 3600
 
@@ -73,6 +74,11 @@ export default async function PlaygroundHubPage() {
                 ? "เข้าทดสอบการทำงานของระบบ Delentia OS และฝึกฝนโมเดลผ่านสภาพแวดล้อมจำลองระดับคลาวด์ได้ทันที"
                 : "Test Delentia OS routines and run custom model fine-tuning pipelines in secure cloud environments."}
             </p>
+          </div>
+
+          {/* Interactive Telemetry Simulator */}
+          <div className="pt-4">
+            <TraceConsoleSimulator language={locale} />
           </div>
 
           {/* Sandbox Cards Grid */}

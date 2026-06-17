@@ -6,13 +6,18 @@ export type SupabaseConfig = {
 }
 
 function getSupabaseUrl(): string {
-  return (
+  let url = (
     process.env.SUPABASE_URL ||
     process.env.supabase_url ||
     process.env.NEXT_PUBLIC_SUPABASE_URL ||
     process.env.next_public_supabase_url ||
     ""
-  )
+  ).trim().replace(/^['"]|['"]$/g, "")
+
+  if (url.endsWith("/")) {
+    url = url.slice(0, -1)
+  }
+  return url
 }
 
 function getRequiredEnv(name: string): string {
@@ -26,7 +31,7 @@ function getRequiredEnv(name: string): string {
     }
     throw new Error(`Missing required environment variable: ${name}`)
   }
-  return value
+  return value.trim().replace(/^['"]|['"]$/g, "")
 }
 
 export function getSupabaseConfig(runtime: SupabaseRuntime): SupabaseConfig {
@@ -51,10 +56,11 @@ export function getSupabaseConfig(runtime: SupabaseRuntime): SupabaseConfig {
   // (process.env.NEXT_PUBLIC_FOO) NOT dynamic bracket notation (process.env["NEXT_PUBLIC_FOO"])
   // because Next.js/webpack only inlines static accesses during build.
   const staticAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  const anonKey = staticAnonKey || process.env.supabase_anonkey || process.env.SUPABASE_ANON_KEY || process.env.supabase_anon_key
+  let anonKey = staticAnonKey || process.env.supabase_anonkey || process.env.SUPABASE_ANON_KEY || process.env.supabase_anon_key
   if (!anonKey) {
     throw new Error("Missing required environment variable: NEXT_PUBLIC_SUPABASE_ANON_KEY")
   }
+  anonKey = anonKey.trim().replace(/^['"]|['"]$/g, "")
 
   return { url, key: anonKey }
 }

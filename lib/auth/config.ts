@@ -6,11 +6,17 @@ export type SupabaseConfig = {
 }
 
 function getSupabaseUrl(): string {
-  return process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || ""
+  return (
+    process.env.SUPABASE_URL ||
+    process.env.supabase_url ||
+    process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    process.env.next_public_supabase_url ||
+    ""
+  )
 }
 
 function getRequiredEnv(name: string): string {
-  const value = process.env[name]
+  const value = process.env[name] || process.env[name.toLowerCase()] || process.env[name.toUpperCase()]
   if (!value) {
     // During `next build` on CI without env vars, return placeholder so build succeeds.
     // At runtime the real env vars must be set; the auth guard will redirect if Supabase
@@ -44,7 +50,8 @@ export function getSupabaseConfig(runtime: SupabaseRuntime): SupabaseConfig {
   // IMPORTANT: NEXT_PUBLIC_* variables must be accessed via static property syntax
   // (process.env.NEXT_PUBLIC_FOO) NOT dynamic bracket notation (process.env["NEXT_PUBLIC_FOO"])
   // because Next.js/webpack only inlines static accesses during build.
-  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const staticAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const anonKey = staticAnonKey || process.env.supabase_anonkey || process.env.SUPABASE_ANON_KEY || process.env.supabase_anon_key
   if (!anonKey) {
     throw new Error("Missing required environment variable: NEXT_PUBLIC_SUPABASE_ANON_KEY")
   }

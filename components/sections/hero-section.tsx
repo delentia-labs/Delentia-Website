@@ -135,23 +135,6 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       <div className="relative z-10 mx-auto w-full max-w-300 px-4 pt-20 pb-14 sm:px-6 sm:pb-16 lg:px-8 lg:pt-24 lg:pb-20">
         <div className="grid items-center gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(374px,484px)] lg:gap-8 xl:grid-cols-[minmax(0,1.01fr)_minmax(394px,484px)]">
           <div className="space-y-7 lg:space-y-8">
-            <div
-              className={`inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border shadow-sm ${
-                isDark ? "bg-card/80 border-border" : "border-[#e6ddd0] bg-white/96 shadow-[0_10px_24px_rgba(84,61,31,0.05)]"
-              }`}
-            >
-              <OptimizedImage
-                src={isDark ? "/DelentiaIcon.svg" : "/DelentiaIcon-lightVer.svg"}
-                alt="Delentia OS Logo"
-                containerClassName="w-5 h-5"
-                className=""
-                objectFit="contain"
-                width={20}
-                height={20}
-              />
-              <span className={`text-xs font-medium ${isDark ? "text-warm-muted" : "text-warm-gray"}`}>{copy.badge}</span>
-              <div className="h-1.5 w-1.5 rounded-full bg-warm-sage" />
-            </div>
 
             <div className="space-y-4 lg:space-y-5">
               <div>

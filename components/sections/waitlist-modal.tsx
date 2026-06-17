@@ -395,7 +395,7 @@ export function WaitlistModal({ isOpen, onClose, locale }: WaitlistModalProps) {
               
               <div className="flex flex-col sm:flex-row gap-2 pt-1">
                 <a
-                  href={isTh ? "/th/whitepaper" : "/en/whitepaper"}
+                  href={isTh ? "/th/assets/whitepaper-th.pdf" : "/en/assets/whitepaper.pdf"}
                   className="flex items-center justify-center gap-1.5 rounded bg-emerald-500 hover:bg-emerald-600 text-black font-bold py-2 px-4 text-xs transition"
                   target="_blank"
                   rel="noreferrer"
@@ -404,7 +404,7 @@ export function WaitlistModal({ isOpen, onClose, locale }: WaitlistModalProps) {
                   {isTh ? "ดาวน์โหลด Whitepaper" : "Download Whitepaper"}
                 </a>
                 <a
-                  href="https://huggingface.co/spaces/delentia/delentia-guardrails-demo"
+                  href="https://huggingface.co/spaces/Delentia/delentia-trace-ecosystem"
                   className="flex items-center justify-center gap-1.5 rounded border border-zinc-700 bg-zinc-900 text-zinc-300 hover:bg-zinc-800 py-2 px-4 text-xs transition"
                   target="_blank"
                   rel="noreferrer"

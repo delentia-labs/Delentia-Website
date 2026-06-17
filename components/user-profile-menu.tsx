@@ -122,7 +122,6 @@ export function UserProfileMenu({ user = null, isAuthenticated = false }: UserPr
 
   const localePrefix = getLocalePrefix(resolveLocale(pathname, language))
   const contactHref = `${localePrefix}/contact`
-  const accessHref = buildContactHref(language, "launch:request-access")
 
   // ── Authenticated state (Phase 8) ──────────────────────────────────────
   if (resolvedAuth && resolvedUser) {
@@ -175,6 +174,13 @@ export function UserProfileMenu({ user = null, isAuthenticated = false }: UserPr
     )
   }
 
+  const handleRequestAccessClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("open-waitlist"))
+    }
+  }
+
   // ── Unauthenticated state — current live state ─────────────────────────
   return (
     <div className="flex items-center gap-3">
@@ -184,13 +190,14 @@ export function UserProfileMenu({ user = null, isAuthenticated = false }: UserPr
       >
         {copy.contact}
       </Link>
-      <Link
-        href={accessHref}
+      <button
+        onClick={handleRequestAccessClick}
         className="inline-flex items-center gap-1.5 rounded-full bg-warm-amber px-4 py-1.5 text-[13px] font-semibold text-warm-charcoal transition-all duration-200 hover:bg-warm-amber/90 hover:scale-105 active:scale-95 whitespace-nowrap"
+        type="button"
       >
-        {language === "en" ? "Request Access" : "ขอข้อมูล"}
+        {copy.requestAccess}
         <ArrowRight size={12} />
-      </Link>
+      </button>
     </div>
   )
 }

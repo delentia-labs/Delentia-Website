@@ -23,7 +23,7 @@ declare global {
   }
 }
 
-const CAST_URL = "/assets/casts/dcpm_trace_simulation.cast"
+const CAST_URL = "https://asciinema.org/a/a32ejTeEmzl3aMfi.cast"
 const CSS_URL = "/assets/css/asciinema-player.css"
 const JS_URL = "/assets/js/asciinema-player.js"
 

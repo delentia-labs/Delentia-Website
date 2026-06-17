@@ -7,116 +7,49 @@ interface AsciinemaTerminalPlayerProps {
   className?: string
 }
 
-interface AsciinemaPlayerInstance {
-  dispose(): void
-}
-
-declare global {
-  interface Window {
-    AsciinemaPlayer?: {
-      create(
-        src: string | { url: string; fetchOpts?: Record<string, unknown> },
-        container: HTMLDivElement,
-        options: Record<string, unknown>
-      ): AsciinemaPlayerInstance
-    }
-  }
-}
-
-const CAST_URL = "https://asciinema.org/a/a32ejTeEmzl3aMfi.cast"
-const CSS_URL = "/assets/css/asciinema-player.css"
-const JS_URL = "/assets/js/asciinema-player.js"
-
 export function AsciinemaTerminalPlayer({ className }: AsciinemaTerminalPlayerProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const playerRef = useRef<AsciinemaPlayerInstance | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     let active = true
 
-    // Inject CSS if not already present
-    if (!document.querySelector(`link[href="${CSS_URL}"]`)) {
-      const link = document.createElement("link")
-      link.rel = "stylesheet"
-      link.href = CSS_URL
-      link.onerror = () => console.warn("[asciinema] Failed to load CSS:", CSS_URL)
-      document.head.appendChild(link)
+    if (!containerRef.current) return
+
+    // Create script tag
+    const script = document.createElement("script")
+    script.src = "https://asciinema.org/a/a32ejTeEmzl3aMfi.js"
+    script.id = "asciicast-a32ejTeEmzl3aMfi"
+    script.async = true
+    script.dataset.autoplay = "1"
+    script.dataset.loop = "1"
+    script.dataset.speed = "1.2"
+    script.dataset.theme = "monokai"
+    script.dataset.cols = "110"
+    script.dataset.rows = "35"
+    script.dataset.preload = "1"
+
+    script.onload = () => {
+      if (active) setIsLoaded(true)
+    }
+    script.onerror = () => {
+      if (active) setIsLoaded(true)
     }
 
-    const initPlayer = () => {
-      if (!active || !containerRef.current) return
-
-      const playerModule = window.AsciinemaPlayer
-      if (!playerModule) {
-        setError("AsciinemaPlayer not initialized")
-        return
-      }
-
-      // Cleanup previous instance
-      if (playerRef.current) {
-        try { playerRef.current.dispose() } catch { /* ignore */ }
-        playerRef.current = null
-      }
-
-      try {
-        playerRef.current = playerModule.create(
-          CAST_URL,
-          containerRef.current,
-          {
-            autoPlay: true,
-            loop: true,
-            speed: 1.2,
-            theme: "monokai",
-            fontSize: "small",
-            fit: "width",
-            idleTimeLimit: 2,
-            preload: true,
-            startAt: 0,
-            cols: 110,
-            rows: 35,
-            terminalFontFamily: "'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace, 'Courier New'",
-          }
-        )
-        if (active) setIsLoaded(true)
-      } catch (err) {
-        console.error("[asciinema] Player initialization failed:", err)
-        if (active) setError(err instanceof Error ? err.message : "Unknown error")
-      }
-    }
-
-    // Load or reuse already-loaded script
-    if (window.AsciinemaPlayer) {
-      initPlayer()
-    } else {
-      // Check if script tag already exists (loading in progress)
-      const existing = document.querySelector<HTMLScriptElement>(`script[src="${JS_URL}"]`)
-      if (existing) {
-        existing.addEventListener("load", initPlayer, { once: true })
-        existing.addEventListener("error", () => {
-          if (active) setError("Failed to load asciinema player script")
-        }, { once: true })
-      } else {
-        const script = document.createElement("script")
-        script.src = JS_URL
-        script.async = true
-        script.onload = () => {
-          if (active) initPlayer()
-        }
-        script.onerror = () => {
-          console.error("[asciinema] Failed to load:", JS_URL)
-          if (active) setError("Failed to load player script")
-        }
-        document.body.appendChild(script)
-      }
-    }
+    // Append script to container
+    containerRef.current.appendChild(script)
 
     return () => {
       active = false
-      if (playerRef.current) {
-        try { playerRef.current.dispose() } catch { /* ignore */ }
-        playerRef.current = null
+      // Cleanup script
+      if (script.parentNode) {
+        script.parentNode.removeChild(script)
+      }
+      // Cleanup injected player elements
+      const containerId = "asciicast-container-a32ejTeEmzl3aMfi"
+      const injected = document.getElementById(containerId)
+      if (injected && injected.parentNode) {
+        injected.parentNode.removeChild(injected)
       }
     }
   }, [])
@@ -142,24 +75,18 @@ export function AsciinemaTerminalPlayer({ className }: AsciinemaTerminalPlayerPr
       </div>
 
       {/* Terminal Viewport */}
-      <div className="bg-zinc-950 flex-1 relative min-h-[260px] sm:min-h-[300px]">
-        {error ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-red-400 gap-2 p-6 text-center text-xs">
-            <span className="text-base">⚠️</span>
-            <span>[ERROR] Failed to load terminal cast renderer.</span>
-            <span className="text-[10px] text-zinc-600">{error}</span>
-          </div>
-        ) : !isLoaded ? (
+      <div className="bg-zinc-950 flex-1 relative min-h-[260px] sm:min-h-[300px] flex flex-col">
+        {!isLoaded ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center text-zinc-500 gap-3">
             <div className="h-5 w-5 border-2 border-zinc-800 border-t-[#33ff33] rounded-full animate-spin" />
             <span className="text-[10px] uppercase tracking-widest text-[#33ff33]/70">Booting CLI Stream...</span>
           </div>
         ) : null}
 
-        {/* Asciinema Player Container */}
+        {/* Asciinema Player Script Embed Container */}
         <div
           ref={containerRef}
-          className={`w-full h-full text-left transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+          className={`w-full h-full text-left transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"} [&_.asciicast]:!my-0 [&_.asciicast]:!border-0 [&_iframe]:!my-0 [&_iframe]:!border-0 [&_iframe]:!min-h-[300px] [&_iframe]:!max-h-[400px]`}
         />
       </div>
 
@@ -174,3 +101,4 @@ export function AsciinemaTerminalPlayer({ className }: AsciinemaTerminalPlayerPr
     </div>
   )
 }
+

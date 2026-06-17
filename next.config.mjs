@@ -201,13 +201,14 @@ const nextConfig = {
               // GA4 (gtag/js) and GTM (gtm.js) both served from googletagmanager.com
               // unsafe-eval: React dev mode needs it for callstack reconstruction; Vercel Live Preview also needs it.
               // Production builds (NODE_ENV=production) never use eval — React strips it at build time.
-              `script-src 'self' ${!isProduction || isPreview ? "'unsafe-eval' " : ""}'unsafe-inline' https://vercel.live https://va.vercel-scripts.com https://www.googletagmanager.com`,
+              `script-src 'self' ${!isProduction || isPreview ? "'unsafe-eval' " : ""}'unsafe-inline' https://vercel.live https://va.vercel-scripts.com https://www.googletagmanager.com https://asciinema.org`,
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               // www.google.com needed for GA4 attribution pixel (1×1 tracking image)
               "img-src 'self' data: blob: https://d2xsxph8kpxj0f.cloudfront.net https://delentia.com https://www.googletagmanager.com https://www.google.com",
               // stats.g.doubleclick.net needed for GA4 attribution and conversion tracking
               "connect-src 'self' https://*.supabase.co https://vercel.live wss://*.supabase.co https://api.delentia.com https://vitals.vercel-insights.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://region1.google-analytics.com https://region1.analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://asciinema.org",
+              "frame-src 'self' https://asciinema.org",
               "frame-ancestors 'none'",
             ].join("; "),
           },

@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
@@ -8,6 +9,10 @@ import { getLocalePrefix } from "@/lib/i18n"
 import { MainPageOrchestrator } from "@/components/main-page/main-page-orchestrator"
 import { MainPageSection } from "@/components/main-page/main-page-section"
 import { DeferredSection } from "@/components/performance/deferred-section"
+
+const WaitlistModal = dynamic(() => import("@/components/sections/waitlist-modal").then((mod) => mod.WaitlistModal), {
+  ssr: false,
+})
 
 const OverviewSection = dynamic(() => import("@/components/sections/overview-section"), {
   loading: () => <div className="min-h-195 animate-pulse rounded-[28px] border border-border/60 bg-white/55 dark:bg-card/45" />,
@@ -33,6 +38,28 @@ type HomePageClientProps = {
 
 export default function HomePage({ locale, navSlot, heroSlot }: HomePageClientProps) {
   const localePrefix = getLocalePrefix(locale)
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (typeof window !== "undefined") {
+        const params = new URLSearchParams(window.location.search)
+        if (params.get("waitlist") === "true" || params.get("waitlist") === "1") {
+          setIsWaitlistOpen(true)
+        }
+      }
+    }, 0)
+
+    const handleOpenWaitlist = () => {
+      setIsWaitlistOpen(true)
+    }
+
+    window.addEventListener("open-waitlist", handleOpenWaitlist)
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener("open-waitlist", handleOpenWaitlist)
+    }
+  }, [])
 
   return (
     <MainPageOrchestrator>
@@ -121,6 +148,7 @@ export default function HomePage({ locale, navSlot, heroSlot }: HomePageClientPr
         <DeferredSection minHeightClassName="min-h-[520px]" idleTimeoutMs={2600}>
           <Footer locale={locale} />
         </DeferredSection>
+        <WaitlistModal isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} locale={locale} />
       </main>
     </MainPageOrchestrator>
   )

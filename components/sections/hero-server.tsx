@@ -1,11 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ArrowDown } from "lucide-react"
+import { ArrowDown } from "lucide-react"
 import { getLocalePrefix } from "@/lib/i18n"
 import { pixelIcons } from "@/lib/pixel-icons"
 import { SITE_ALGORITHM_COUNT, SITE_LAYER_COUNT, SITE_HEXACORE_COUNT, SITE_UPTIME } from "@/lib/site-config"
-import { HeroArchitectureIsland } from "@/components/sections/hero-architecture-island"
+import { AsciinemaTerminalPlayer } from "@/components/ui/asciinema-terminal-player"
 import { HeroOrbActivator } from "@/components/sections/hero-orb-activator"
+import { WaitlistCtaButton } from "@/components/sections/waitlist-cta-button"
 
 type HeroServerProps = {
   locale: "en" | "th"
@@ -17,9 +18,10 @@ export function HeroServer({ locale }: HeroServerProps) {
   const copy = isThai
     ? {
         badge: "Delentia OS",
-        titleLine1: "Delentia OS: ระบบปฏิบัติการ AI",
-        titleLine2: "Intent-Centric",
-        titleLine3: "อันดับ 1 ของโลก",
+        titleLine1: "Delentia OS:",
+        titleLine2: "ระบบปฏิบัติการ AI",
+        titleLine3: "Intent-Centric",
+        titleLine4: "ลำดับที่ 1 ของโลก",
         subtitle:
           "โครงการสถาปัตยกรรม AI ระดับองค์กรที่สร้างบนโมเดล 10 ชั้น กรอบอัลกอริทึม 41 รายการ 7 Genome Subsystems สมการ FDIA และ JITNA Protocol",
         ctaExplore: "สำรวจสถาปัตยกรรม",
@@ -32,9 +34,10 @@ export function HeroServer({ locale }: HeroServerProps) {
       }
     : {
         badge: "Delentia OS",
-        titleLine1: "Delentia OS: The World's 1st",
-        titleLine2: "Intent-Centric",
-        titleLine3: "AI Operating System",
+        titleLine1: "Delentia OS:",
+        titleLine2: "The World's 1st",
+        titleLine3: "Intent-Centric",
+        titleLine4: "AI Operating System",
         subtitle:
           "Enterprise AI architecture program built around a 10-layer model, a 41-algorithm framework, 7 Genome subsystems, the FDIA equation, and the JITNA Protocol.",
         ctaExplore: "Explore Architecture",
@@ -87,9 +90,11 @@ export function HeroServer({ locale }: HeroServerProps) {
               >
                 {copy.titleLine1}
                 <br />
-                <span className="font-semibold text-warm-amber">{copy.titleLine2}</span>
+                {copy.titleLine2}
                 <br />
-                {copy.titleLine3}
+                <span className="font-semibold text-warm-amber">{copy.titleLine3}</span>
+                <br />
+                {copy.titleLine4}
               </h1>
 
               <p
@@ -101,13 +106,10 @@ export function HeroServer({ locale }: HeroServerProps) {
             </div>
 
             <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
-              <a
-                href="#overview"
-                className="group inline-flex items-center gap-2 rounded-xl bg-warm-charcoal px-6 py-3 text-sm font-medium text-white shadow-sm transition-[background-color,box-shadow,transform] duration-200 hover:bg-[#333333] hover:shadow-lg dark:bg-warm-amber dark:text-dark-900 dark:hover:bg-[#E0B96A]"
-              >
-                {copy.ctaExplore}
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-              </a>
+              <WaitlistCtaButton
+                locale={locale}
+                className="group inline-flex items-center gap-2 rounded-xl bg-warm-charcoal px-6 py-3 text-sm font-medium text-white shadow-sm transition-[background-color,box-shadow,transform] duration-200 hover:bg-[#333333] hover:shadow-lg dark:bg-warm-amber dark:text-dark-900 dark:hover:bg-[#E0B96A] cursor-pointer"
+              />
               <Link
                 href={`${localePrefix}/demo/fdia`}
                 className="inline-flex items-center gap-2 rounded-xl border border-[#e6ddd0] bg-white px-6 py-3 text-sm font-medium text-warm-charcoal transition-[background-color,box-shadow] duration-200 hover:bg-[#fffdfa] hover:shadow-sm dark:border-border dark:bg-card/78 dark:text-warm-pale dark:hover:bg-secondary"
@@ -137,7 +139,7 @@ export function HeroServer({ locale }: HeroServerProps) {
           </div>
 
           <div className="group relative mx-auto w-full max-w-105 lg:-mr-2 lg:ml-0 lg:max-w-none">
-            <HeroArchitectureIsland />
+            <AsciinemaTerminalPlayer />
           </div>
         </div>
 

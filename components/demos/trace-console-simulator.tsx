@@ -170,7 +170,10 @@ export default function TraceConsoleSimulator({ language = "en" }: { language?: 
   }, [])
 
   useEffect(() => {
-    runSimulation("safe")
+    const timer = setTimeout(() => {
+      runSimulation("safe")
+    }, 0)
+    return () => clearTimeout(timer)
   }, [runSimulation])
 
   return (

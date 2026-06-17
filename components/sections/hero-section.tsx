@@ -46,9 +46,10 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   const copy = isThai
     ? {
         badge: "Reverse Component Thinking",
-        titleLine1: "Delentia OS: ระบบปฏิบัติการ AI",
-        titleLine2: "Intent-Centric",
-        titleLine3: "ลำดับที่ 1 ของโลก",
+        titleLine1: "Delentia OS:",
+        titleLine2: "ระบบปฏิบัติการ AI",
+        titleLine3: "Intent-Centric",
+        titleLine4: "ลำดับที่ 1 ของโลก",
         subtitle:
           "โครงการสถาปัตยกรรม AI ระดับองค์กรที่สร้างบนโมเดล 10 ชั้น กรอบอัลกอริทึม 41 รายการ 7 Genome Subsystems สมการ FDIA และ JITNA Protocol",
         ctaExplore: "สำรวจสถาปัตยกรรม",
@@ -62,9 +63,10 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       }
     : {
         badge: "Reverse Component Thinking",
-        titleLine1: "Delentia OS: The World's 1st",
-        titleLine2: "Intent-Centric",
-        titleLine3: "AI Operating System",
+        titleLine1: "Delentia OS:",
+        titleLine2: "The World's 1st",
+        titleLine3: "Intent-Centric",
+        titleLine4: "AI Operating System",
         subtitle:
           "Enterprise AI architecture program built around a 10-layer model, a 41-algorithm framework, 7 Genome subsystems, the FDIA equation, and the JITNA Protocol.",
         ctaExplore: "Explore Architecture",
@@ -156,9 +158,11 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                 <h1 className={`text-4xl font-bold tracking-[-0.03em] leading-[1.12] sm:text-5xl lg:text-[56px] xl:text-[58px] ${isThai ? "font-thai" : ""} ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
                   {copy.titleLine1}
                   <br />
-                  <span className="font-semibold text-warm-amber">{copy.titleLine2}</span>
+                  {copy.titleLine2}
                   <br />
-                  {copy.titleLine3}
+                  <span className="font-semibold text-warm-amber">{copy.titleLine3}</span>
+                  <br />
+                  {copy.titleLine4}
                 </h1>
               </div>
               <div>

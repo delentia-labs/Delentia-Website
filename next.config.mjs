@@ -41,6 +41,32 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Locale-prefixed static asset redirects to prevent Next.js i18n routing interference
+      {
+        source: "/th/assets/whitepaper-th.pdf",
+        destination: "/assets/technical-whitepaper-th.pdf",
+        permanent: false,
+      },
+      {
+        source: "/th/assets/whitepaper.pdf",
+        destination: "/assets/technical-whitepaper-th.pdf",
+        permanent: false,
+      },
+      {
+        source: "/en/assets/whitepaper.pdf",
+        destination: "/assets/technical-whitepaper-en.pdf",
+        permanent: false,
+      },
+      {
+        source: "/th/assets/technical-whitepaper.pdf",
+        destination: "/assets/technical-whitepaper-th.pdf",
+        permanent: false,
+      },
+      {
+        source: "/en/assets/technical-whitepaper.pdf",
+        destination: "/assets/technical-whitepaper-en.pdf",
+        permanent: false,
+      },
       // Next.js file-based metadata for app/apple-icon.tsx generates
       // <link href="/apple-icon.png"> but the actual route is /apple-icon.
       // Redirect the .png URL to the dynamic edge route.

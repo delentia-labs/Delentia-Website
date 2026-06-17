@@ -203,6 +203,6 @@ export async function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     '/api/:path*',
-    '/((?!_next/static|_next/image|_vercel|favicon.ico|sitemap.xml|robots.txt|opengraph-image|manifest.json|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff|woff2|ttf|otf|mp4|webm|json|webmanifest|map|cast)$).*)',
+    '/((?!_next/static|_next/image|_vercel|favicon.ico|sitemap.xml|robots.txt|opengraph-image|manifest.json|assets/.*|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff|woff2|ttf|otf|mp4|webm|json|webmanifest|map|cast|pdf)$).*)',
   ],
 }

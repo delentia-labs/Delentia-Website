@@ -1,0 +1,43 @@
+# Default: normalize all text files to LF on checkout (Unix-style)
+* text=auto eol=lf
+
+# Asciinema cast files MUST have Unix LF line endings
+# or the player will show the explosion 💥 error
+*.cast text eol=lf
+
+# JavaScript and TypeScript
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+
+# Web
+*.html text eol=lf
+*.css text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.mdx text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+
+# Python
+*.py text eol=lf
+
+# Binary files — no EOL conversion
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.mp4 binary
+*.webm binary
+*.pdf binary

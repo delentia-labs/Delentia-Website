@@ -62,10 +62,7 @@ export function AsciinemaTerminalPlayer({ className }: AsciinemaTerminalPlayerPr
 
       try {
         playerRef.current = playerModule.create(
-          {
-            url: CAST_URL,
-            fetchOpts: { credentials: "same-origin" },
-          },
+          CAST_URL,
           containerRef.current,
           {
             autoPlay: true,
@@ -75,6 +72,8 @@ export function AsciinemaTerminalPlayer({ className }: AsciinemaTerminalPlayerPr
             fontSize: "small",
             fit: "width",
             idleTimeLimit: 2,
+            preload: true,
+            startAt: 0,
             cols: 110,
             rows: 35,
             terminalFontFamily: "'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace, 'Courier New'",

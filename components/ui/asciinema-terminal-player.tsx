@@ -11,9 +11,18 @@ interface AsciinemaPlayerInstance {
   dispose(): void
 }
 
+interface AsciinemaPlayerSource {
+  url: string
+  fetchOpts?: Record<string, unknown>
+}
+
 interface CustomWindow extends Window {
   AsciinemaPlayer?: {
-    create(src: string, container: HTMLDivElement, options: Record<string, unknown>): AsciinemaPlayerInstance
+    create(
+      src: string | AsciinemaPlayerSource,
+      container: HTMLDivElement,
+      options: Record<string, unknown>
+    ): AsciinemaPlayerInstance
   }
 }
 
@@ -53,7 +62,12 @@ export function AsciinemaTerminalPlayer({ className }: AsciinemaTerminalPlayerPr
           }
 
           playerRef.current = playerModule.create(
-            "/assets/casts/dcpm_trace_simulation.cast",
+            {
+              url: "/assets/casts/dcpm_trace_simulation.cast",
+              fetchOpts: {
+                credentials: "same-origin"
+              }
+            },
             containerRef.current,
             {
               autoPlay: true,

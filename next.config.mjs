@@ -67,6 +67,17 @@ const nextConfig = {
         destination: "/assets/technical-whitepaper-en.pdf",
         permanent: false,
       },
+      // General fallback for all other assets to strip locale prefixes
+      {
+        source: "/th/assets/:path*",
+        destination: "/assets/:path*",
+        permanent: false,
+      },
+      {
+        source: "/en/assets/:path*",
+        destination: "/assets/:path*",
+        permanent: false,
+      },
       // Next.js file-based metadata for app/apple-icon.tsx generates
       // <link href="/apple-icon.png"> but the actual route is /apple-icon.
       // Redirect the .png URL to the dynamic edge route.

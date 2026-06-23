@@ -94,7 +94,7 @@ references:
 | การรับประกัน compliance | ❌ ไม่มี | ✅ Constitutional gate | ✅ ทั้งสองชั้น |
 | ความเร็ว Warm recall | ❌ Re-retrieve ทุกครั้ง | ✅ Delta Engine <50ms | ✅ Cached + constrained |
 
-**Hallucination rate 0.3%** ของ RCT Ecosystem ทำได้โดยการรวมทั้งสอง: RAG สำหรับ factual grounding (ผ่าน DelentiaDB และ Codex Genome) กับ Constitutional AI (FDIA gating และ SignedAI consensus) สำหรับความปลอดภัยของ reasoning และ compliance
+**Hallucination rate 0.3%** ของ RCT Ecosystem ทำได้โดยการรวมทั้งสอง: RAG สำหรับ factual grounding (ผ่าน RCTDB และ Codex Genome) กับ Constitutional AI (FDIA gating และ SignedAI consensus) สำหรับความปลอดภัยของ reasoning และ compliance
 
 ---
 
@@ -125,7 +125,7 @@ references:
 
 การเพิ่ม RAG บน Constitutional AI (แนวทาง RCT Ecosystem):
 
-1. **Knowledge retrieval** ผ่าน Codex Genome (semantic search ใน DelentiaDB Warm zone)
+1. **Knowledge retrieval** ผ่าน Codex Genome (semantic search ใน RCTDB Warm zone)
 2. **FDIA gating** ตรวจสอบคุณภาพข้อมูลที่ดึงมา (D score)
 3. **JITNA assembly** route ไปยังโมเดลที่เหมาะสมพร้อม context ที่ดึงมา
 4. **SignedAI consensus** ตรวจสอบคำตอบก่อน delivery

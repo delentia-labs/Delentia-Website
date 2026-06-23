@@ -105,7 +105,7 @@ export default async function CommunityEventsPage() {
           </article>
           <article className="rounded-xl border border-border bg-card p-5">
             <h2 className="text-base font-semibold text-foreground mb-2">{isEn ? "Technical Deep-Dive" : "Technical Deep-Dive"}</h2>
-            <p className="text-sm text-muted-foreground">{isEn ? "Focused sessions on FDIA, JITNA, DelentiaDB, and production readiness patterns." : "เซสชันเฉพาะทางด้าน FDIA, JITNA, DelentiaDB และแนวทาง production readiness"}</p>
+            <p className="text-sm text-muted-foreground">{isEn ? "Focused sessions on FDIA, JITNA, RCTDB, and production readiness patterns." : "เซสชันเฉพาะทางด้าน FDIA, JITNA, RCTDB และแนวทาง production readiness"}</p>
           </article>
           <article className="rounded-xl border border-border bg-card p-5">
             <h2 className="text-base font-semibold text-foreground mb-2">{isEn ? "Regional Meetup" : "Regional Meetup"}</h2>

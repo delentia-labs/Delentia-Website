@@ -33,7 +33,7 @@ export default async function WhitepaperPage() {
     {
       question: "What can I find in the RCT whitepapers?",
       answer:
-        "RCT whitepapers cover the 10-layer architecture, JITNA protocol, SignedAI verification, DelentiaDB memory design, and related enterprise AI concepts.",
+        "RCT whitepapers cover the 10-layer architecture, JITNA protocol, SignedAI verification, RCTDB memory design, and related enterprise AI concepts.",
     },
     {
       question: "Are the whitepapers useful for enterprise evaluation?",

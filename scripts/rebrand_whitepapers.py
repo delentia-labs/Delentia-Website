@@ -3,17 +3,20 @@ import os
 import re
 
 FOUNDATION_DIR = r"C:\Users\whale\delentia\Delentia-OS\docs\whitepapers\01_foundation"
-PRIVATE_V9_DIR = r"C:\Users\whale\delentia\Delentia-Private-OS\docs\whitepaper\v9"
+SOURCE_FOUNDATION_DIR = r"C:\Users\whale\delentia\Delentia-OS\whitepapers\01_foundation"
 
 # Files to read and write
-src_summary_en = os.path.join(FOUNDATION_DIR, "RCT_ECOSYSTEM_WHITEPAPER_v2.1.0_SUMMARY.md")
+src_summary_en = os.path.join(SOURCE_FOUNDATION_DIR, "RCT_ECOSYSTEM_WHITEPAPER_v2.1.0_SUMMARY.md")
 dest_summary_en = os.path.join(FOUNDATION_DIR, "DELENTIA_OS_EXECUTIVE_SUMMARY_EN_2026.md")
 
-src_tech_th = os.path.join(FOUNDATION_DIR, "RCT_ECOSYSTEM_WHITEPAPER_TH_2026.md")
+src_tech_th = os.path.join(SOURCE_FOUNDATION_DIR, "RCT_ECOSYSTEM_WHITEPAPER_TH_2026.md")
 dest_tech_th = os.path.join(FOUNDATION_DIR, "DELENTIA_OS_TECHNICAL_WHITEPAPER_TH_2026.md")
 
-src_tech_en = os.path.join(PRIVATE_V9_DIR, "RCT-Ecosystem-Complete-WhitePaper-v1.md")
+src_tech_en = os.path.join(SOURCE_FOUNDATION_DIR, "RCT_ECOSYSTEM_WHITEPAPER_COMPLETE_2026.md")
 dest_tech_en = os.path.join(FOUNDATION_DIR, "DELENTIA_OS_TECHNICAL_WHITEPAPER_EN_2026.md")
+
+src_draft_th = os.path.join(SOURCE_FOUNDATION_DIR, "DELENTIA_OS_PUBLIC_WHITEPAPER_v2.2.0_DRAFT.md")
+dest_draft_th = os.path.join(FOUNDATION_DIR, "DELENTIA_OS_PUBLIC_WHITEPAPER_v2.2.0_DRAFT.md")
 
 def rebrand_text(text, is_thai=False):
     # Rebrand names
@@ -26,9 +29,9 @@ def rebrand_text(text, is_thai=False):
     text = text.replace("RCTLabs", "Delentia Labs")
     text = text.replace("ArtentAI", "Delentia AI")
     text = text.replace("Artent AI", "Delentia AI")
-    text = text.replace("DelentiaDB", "DelentiaDB")
-    text = text.replace("rctdb", "delentiadb")
-    text = text.replace("RCTDB", "DelentiaDB")
+    text = text.replace("RCTDB", "RCTDB")
+    text = text.replace("rctdb", "rctdb")
+    text = text.replace("rctdb-vs-vector-databases", "rctdb-vs-vector-databases")
     
     # Update metrics
     text = text.replace("36 algorithms", "41 algorithms")
@@ -87,3 +90,4 @@ if __name__ == "__main__":
     process_file(src_summary_en, dest_summary_en, is_thai=False)
     process_file(src_tech_th, dest_tech_th, is_thai=True)
     process_file(src_tech_en, dest_tech_en, is_thai=False)
+    process_file(src_draft_th, dest_draft_th, is_thai=True)

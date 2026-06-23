@@ -63,7 +63,7 @@ Control Plane รักษา **constitutional policy set** — กลุ่ม 
 
 - **Data sovereignty policy:** ข้อมูล PII ของคนไทยสามารถประมวลผลได้เฉพาะกับ model ที่ host ใน jurisdiction ที่ได้รับอนุญาต Control Plane บังคับสิ่งนี้โดยปฏิเสธ JITNA packet ที่ route PII ของคนไทยไปยัง endpoint ที่ไม่ comply
 - **Consensus threshold policy:** Output ที่จะแสดงให้ external user เห็นต้องผ่าน Tier 4 consensus (agreement 75% จาก 4 model) ก่อนออกจากระบบ
-- **Audit requirement policy:** Output ทุก Tier 6+ สร้าง signed audit record ใน DelentiaDB ก่อน deliver
+- **Audit requirement policy:** Output ทุก Tier 6+ สร้าง signed audit record ใน RCTDB ก่อน deliver
 - **PDPA compliance policy:** Request ใดๆ ที่เกี่ยวข้องกับข้อมูลส่วนบุคคลจะ trigger intent classification สำหรับ data minimization อัตโนมัติ — ระบบจะอนุญาตเฉพาะข้อมูลขั้นต่ำที่จำเป็นสำหรับ intent ที่ระบุ
 
 การบังคับ policy เป็น stateless ในระดับ request และ stateful ในระดับระบบ: แต่ละ request ถูกประเมินอย่างอิสระ แต่ audit trail สะสมในทุก request
@@ -77,11 +77,11 @@ Control Plane ให้ real-time view ของ constitutional health ทั่
 - **Circuit breaker state:** ตอนนี้ fault isolation circuit breaker กี่ตัวที่เปิดอยู่? AI component ไหนอยู่ใน degraded mode?
 - **Warm recall ratio:** request กี่ % ที่ serve จาก warm recall vs cold LLM call? อัตรา warm recall ที่ลดลงอาจบ่งชี้ prompt drift หรือ context decay
 
-metric เหล่านี้ถูกเก็บใน DelentiaDB และแสดงผ่าน Control Plane monitoring interface สิ่งเหล่านี้ให้ governance signal ที่มองไม่เห็นใน traditional AI observability tool ใดๆ
+metric เหล่านี้ถูกเก็บใน RCTDB และแสดงผ่าน Control Plane monitoring interface สิ่งเหล่านี้ให้ governance signal ที่มองไม่เห็นใน traditional AI observability tool ใดๆ
 
 ### 5. Audit Trail — Constitutional Accountability เต็มรูปแบบ
 
-สำหรับทุก request ที่ Control Plane ประมวลผล สิ่งต่อไปนี้ถูกบันทึกใน DelentiaDB:
+สำหรับทุก request ที่ Control Plane ประมวลผล สิ่งต่อไปนี้ถูกบันทึกใน RCTDB:
 
 ```
 {
@@ -100,7 +100,7 @@ metric เหล่านี้ถูกเก็บใน DelentiaDB และ�
 }
 ```
 
-record นี้ไม่สามารถแก้ไขได้หลังสร้าง (DelentiaDB append-only constraint) มัน provide complete, tamper-resistant audit trail ที่ satisfy enterprise compliance requirements สำหรับเอกสาร AI governance
+record นี้ไม่สามารถแก้ไขได้หลังสร้าง (RCTDB append-only constraint) มัน provide complete, tamper-resistant audit trail ที่ satisfy enterprise compliance requirements สำหรับเอกสาร AI governance
 
 ---
 
@@ -117,7 +117,7 @@ RCT Ecosystem จัดระเบียบเป็น 10-layer architecture C
 | **L5** | **SignedAI Consensus** | **Multi-model verification** |
 | **L6** | **Circuit Breaker** | **Fault isolation และ fallback** |
 | **L7** | **Delta Engine** | **Warm recall และ cost optimization** |
-| **L8** | **DelentiaDB Audit** | **Constitutional audit record** |
+| **L8** | **RCTDB Audit** | **Constitutional audit record** |
 | L9 | Output Assembly | Response formatting |
 | L10 | Delivery | Client response |
 
@@ -187,7 +187,7 @@ RCT Control Plane ตอบคำถามที่ enterprise AI deployment ท
 
 คำตอบไม่ใช่ prompt ที่ดีกว่า ไม่ใช่การเลือก model อย่างระมัดระวังกว่า แต่เป็น **constitutional governance layer** ที่บังคับ policy ในระดับ architecture route อย่างชาญฉลาด audit อย่างครบถ้วน และ heal อย่างอัตโนมัติ
 
-ทุก component ใน RCT Ecosystem — FDIA, JITNA, SignedAI, Delta Engine, Circuit Breaker, DelentiaDB — ล้วนเป็น component ของ Control Plane ร่วมกัน พวกมัน implement สิ่งเดียวที่ทำให้ enterprise AI น่าเชื่อถือในระดับ scale: governance ที่ bypass ไม่ได้ ไม่สม่ำเสมอไม่ได้ และ undocument ไม่ได้
+ทุก component ใน RCT Ecosystem — FDIA, JITNA, SignedAI, Delta Engine, Circuit Breaker, RCTDB — ล้วนเป็น component ของ Control Plane ร่วมกัน พวกมัน implement สิ่งเดียวที่ทำให้ enterprise AI น่าเชื่อถือในระดับ scale: governance ที่ bypass ไม่ได้ ไม่สม่ำเสมอไม่ได้ และ undocument ไม่ได้
 
 ---
 

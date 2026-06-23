@@ -7,7 +7,7 @@ date: "2026-03-28"
 lastReviewed: "2026-05-05"
 category: "research"
 excerpt: "The Delta Engine is the memory compression and recall system at the core of the RCT Ecosystem. By storing only state changes (deltas) rather than full state snapshots, it achieves 74% lossless compression and enables warm recall in under 50 milliseconds — reducing per-request cost to near zero for repeated patterns."
-tags: ["Delta Engine", "Memory Compression", "AI Infrastructure", "DelentiaDB", "Performance", "Delentia Labs"]
+tags: ["Delta Engine", "Memory Compression", "AI Infrastructure", "RCTDB", "Performance", "Delentia Labs"]
 readTime: 8
 references:
   - "https://www.nist.gov/artificial-intelligence"
@@ -65,7 +65,7 @@ RECEIVED → VALIDATED (FDIA) → MEMORY_CHECK → [MISS] → COMPUTING → VERI
 
 1. Query arrives
 2. FDIA validates quality and intent
-3. Delta Engine checks DelentiaDB for a warm cache hit (semantic similarity > 0.95)
+3. Delta Engine checks RCTDB for a warm cache hit (semantic similarity > 0.95)
 4. **Cache miss:** full computation path activated (3–5s)
 5. HexaCore selects optimal model(s)
 6. SignedAI verifies output
@@ -78,7 +78,7 @@ RECEIVED → VALIDATED (FDIA) → MEMORY_CHECK → [HIT] → COMPLETED
 
 1. Query arrives
 2. FDIA validates quality and intent
-3. Delta Engine checks DelentiaDB — semantic similarity > 0.95 found
+3. Delta Engine checks RCTDB — semantic similarity > 0.95 found
 4. **Cache hit:** cached response returned in <50ms
 5. Cost: near-zero (no LLM call)
 
@@ -102,9 +102,9 @@ The similarity threshold of 0.95 is configurable per use case. Higher thresholds
 
 ---
 
-## 8-Dimensional DelentiaDB Schema
+## 8-Dimensional RCTDB Schema
 
-Delta Engine storage uses DelentiaDB — an 8-dimensional universal memory schema. Each record in DelentiaDB has 8 fields that enable recall, audit, and deletion:
+Delta Engine storage uses RCTDB — an 8-dimensional universal memory schema. Each record in RCTDB has 8 fields that enable recall, audit, and deletion:
 
 | Dimension | Description |
 |---|---|
@@ -123,7 +123,7 @@ The 8-dimensional schema enables queries that cross all 8 dimensions simultaneou
 
 ## Three Storage Zones
 
-DelentiaDB operates across 3 zones with different performance characteristics:
+RCTDB operates across 3 zones with different performance characteristics:
 
 | Zone | Technology | Latency | Use Case |
 |---|---|---|---|
@@ -156,7 +156,7 @@ Before storing a new delta, the system validates the F score of the response bei
 | Warm recall latency | **<50 milliseconds** |
 | Semantic similarity threshold | **0.95** (configurable) |
 | Storage zones | **3** (Hot/Warm/Cold) |
-| DelentiaDB dimensions | **8** |
+| RCTDB dimensions | **8** |
 | Recall accuracy | **96.1%** (matches vs expected) |
 
 ---
@@ -181,7 +181,7 @@ The Delta Engine makes the RCT Ecosystem's performance economics sustainable:
 - **74% compression** through delta-only storage (O(n) vs O(n²))
 - **<50ms warm recall** through semantic similarity matching (threshold: 0.95)
 - **Near-zero cost** for stable, repeating query patterns over time
-- **DelentiaDB 8-dimensional schema** for structured storage, audit, and PDPA-compliant deletion
+- **RCTDB 8-dimensional schema** for structured storage, audit, and PDPA-compliant deletion
 - **3-zone architecture** for intelligent hot/warm/cold data placement
 
 ---
@@ -189,7 +189,7 @@ The Delta Engine makes the RCT Ecosystem's performance economics sustainable:
 ## Related Reading
 
 - [Enterprise AI Memory — solution page](/solutions/enterprise-ai-memory) — see how Delta Engine powers persistent AI context at the product level
-- [DelentiaDB 8-Dimensional Memory Schema](/blog/rctdb-8-dimensional-memory-schema) — deep-dive into the storage architecture that Delta Engine writes to
+- [RCTDB 8-Dimensional Memory Schema](/blog/rctdb-8-dimensional-memory-schema) — deep-dive into the storage architecture that Delta Engine writes to
 - [HexaCore 7-Model AI Infrastructure](/blog/hexacore-7-model-ai-infrastructure) — how the 7 AI models use Delta Engine for warm recall
 - [FDIA Equation](/protocols/fdia-equation) — the quality gate that validates responses before Delta Engine commits them to storage
 

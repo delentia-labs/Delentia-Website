@@ -100,7 +100,7 @@ This is by design. High Intent means the system demands more from its inputs. A 
 The 7-State Pipeline processes every query through this classification:
 
 ```
-RECEIVED → VALIDATED (FDIA) → MEMORY_CHECK → COMPUTING → VERIFYING (SignedAI) → COMMITTING (DelentiaDB) → COMPLETED
+RECEIVED → VALIDATED (FDIA) → MEMORY_CHECK → COMPUTING → VERIFYING (SignedAI) → COMMITTING (RCTDB) → COMPLETED
 ```
 
 ### A — Architect (สถาปนิก) — The Kill Switch
@@ -152,7 +152,7 @@ The **FDIAGatekeeper** evaluates D, I, and A:
 If F falls below the minimum threshold, the query is **rejected** before any LLM call — saving cost and preventing hallucination.
 
 ### State 3: MEMORY_CHECK
-The Delta Engine checks DelentiaDB for cached responses with semantic similarity > 0.95. If found, the system returns a **warm recall** response in under 50 milliseconds, at near-zero cost.
+The Delta Engine checks RCTDB for cached responses with semantic similarity > 0.95. If found, the system returns a **warm recall** response in under 50 milliseconds, at near-zero cost.
 
 ### State 4: COMPUTING
 The HexaCore router selects the optimal model(s) from 7 available AI models based on task type, complexity, and cost priority. The system uses geopolitically balanced selection (3 Western + 3 Eastern + 1 Regional Thai).
@@ -165,8 +165,8 @@ For production-critical queries (SignedAI Tier 4/6/8), multiple models independe
 
 Consensus threshold depends on tier: Tier 4 = 75% (3/4), Tier 6 = 67%, Tier 8 = 75%.
 
-### State 6: COMMITTING (DelentiaDB)
-The verified response and its full provenance chain are stored in DelentiaDB — the 8-dimensional universal memory schema. This includes: the original query, D/I/A scores, model selections, consensus results, and timestamps.
+### State 6: COMMITTING (RCTDB)
+The verified response and its full provenance chain are stored in RCTDB — the 8-dimensional universal memory schema. This includes: the original query, D/I/A scores, model selections, consensus results, and timestamps.
 
 ### State 7: COMPLETED
 The response is delivered to the user. The Delta Engine stores only the differential state change (74% compression vs full-state storage).

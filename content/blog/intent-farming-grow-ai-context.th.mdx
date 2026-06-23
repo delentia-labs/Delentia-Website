@@ -6,8 +6,8 @@ reviewerId: "rct-research-desk"
 date: "2026-05-10"
 lastReviewed: "2026-05-07"
 category: "research"
-excerpt: "Intent farming คือการสะสม จัดระเบียบ และเสริมคุณค่า AI context อย่างเป็นระบบตามเวลา — แปลง one-shot query เป็น session ที่ฉลาดขึ้นเรื่อยๆ บทความนี้อธิบาย architecture, memory layer ของ DelentiaDB และวิธีที่ intent farming เปลี่ยน economics ของ enterprise AI"
-tags: ["Intent Farming", "AI Context", "Enterprise AI Memory", "DelentiaDB", "RCT Platform", "AI Architecture", "Warm Recall", "Context Management"]
+excerpt: "Intent farming คือการสะสม จัดระเบียบ และเสริมคุณค่า AI context อย่างเป็นระบบตามเวลา — แปลง one-shot query เป็น session ที่ฉลาดขึ้นเรื่อยๆ บทความนี้อธิบาย architecture, memory layer ของ RCTDB และวิธีที่ intent farming เปลี่ยน economics ของ enterprise AI"
+tags: ["Intent Farming", "AI Context", "Enterprise AI Memory", "RCTDB", "RCT Platform", "AI Architecture", "Warm Recall", "Context Management"]
 readTime: 13
 references:
   - "https://arxiv.org/abs/2304.01373"
@@ -26,7 +26,7 @@ Architecture นี้หมายความว่า AI system ของค�
 
 Intent farming คือทางออก มันคือการ **สะสม จัดระเบียบ และเสริมคุณค่า AI context อย่างเป็นระบบตามเวลา** — แปลง one-shot query เป็น session ที่ฉลาดขึ้นเรื่อยๆ แปลง user interaction เป็น structured knowledge ที่ compound ตลอดทุก query ถัดมา และแปลงการใช้ AI เองเป็น proprietary intelligence asset ที่คู่แข่งไม่สามารถ replicate ได้
 
-บทความนี้อธิบายว่า intent farming คืออะไร ทำไมระบบส่วนใหญ่ทำไม่ได้ ข้อกำหนด architecture สำหรับระบบที่ทำได้ และวิธีที่ RCT Platform implement มันผ่าน DelentiaDB และ JITNA protocol
+บทความนี้อธิบายว่า intent farming คืออะไร ทำไมระบบส่วนใหญ่ทำไม่ได้ ข้อกำหนด architecture สำหรับระบบที่ทำได้ และวิธีที่ RCT Platform implement มันผ่าน RCTDB และ JITNA protocol
 
 ## สิ่งที่ Query มีอยู่จริง
 
@@ -79,7 +79,7 @@ Cold context คือ intent graph ที่ aggregate และ anonymize ท�
 
 Cold context คือ organizational intelligence layer มันคือ accumulated institutional knowledge ที่ทำให้ AI system aligned กับ domain, terminology และ reasoning pattern เฉพาะของ organization มากขึ้นเรื่อยๆ — โดยไม่ต้องใช้ความพยายาม knowledge engineering อย่างชัดเจน
 
-## DelentiaDB: Memory Architecture ที่ทำให้ Intent Farming เป็นไปได้
+## RCTDB: Memory Architecture ที่ทำให้ Intent Farming เป็นไปได้
 
 Intent farming ต้องการ memory architecture ที่แตกต่างพื้นฐานจาก vector database แบบดั้งเดิม Vector database เก็บ embedding และ retrieve embedding ที่คล้ายกัน นั่นคือการ retrieve ไม่ใช่ memory AI memory ที่แท้จริงต้องการ:
 
@@ -93,7 +93,7 @@ Intent farming ต้องการ memory architecture ที่แตกต�
 
 **Cross-session linking** Memory entry จาก session ต่างกันที่อ้างอิง entities, concepts หรือ intent pattern เดียวกันต้องเชื่อมกันเพื่อ enable graph-based retrieval — retrieve ไม่ใช่แค่ memory ที่ semantically similar ที่สุด แต่ memory ที่เชื่อมกับ context graph ของ query ปัจจุบันมากที่สุด
 
-DelentiaDB implement ทั้ง 5 ข้อกำหนด มันคือ structured memory layer ที่สร้างบน vector storage ไม่ใช่การแทนที่ Vector store จัดการ semantic similarity retrieval DelentiaDB เพิ่ม temporal, intent, provenance, quality และ graph layer ที่แปลงการ retrieve เป็น memory
+RCTDB implement ทั้ง 5 ข้อกำหนด มันคือ structured memory layer ที่สร้างบน vector storage ไม่ใช่การแทนที่ Vector store จัดการ semantic similarity retrieval RCTDB เพิ่ม temporal, intent, provenance, quality และ graph layer ที่แปลงการ retrieve เป็น memory
 
 ## JITNA Protocol: การจับ Intent แบบ Real-Time
 
@@ -106,9 +106,9 @@ JITNA ทำงานควบคู่กับ primary query pipeline ใน�
 3. คำนวณ FDIA score สำหรับ intent clarity
 4. resolve entity reference กับ organizational knowledge graph
 5. ระบุ warm context pattern ที่ query นี้ activate
-6. สร้าง structured intent metadata สำหรับเก็บใน DelentiaDB
+6. สร้าง structured intent metadata สำหรับเก็บใน RCTDB
 
-เพราะ JITNA ทำงานควบคู่กัน intent capture จึงไม่เพิ่ม latency ในประสบการณ์ที่ผู้ใช้เห็น intent metadata ถูกเขียนไปยัง DelentiaDB หลังจาก response ถูกส่งกลับไปยังผู้ใช้
+เพราะ JITNA ทำงานควบคู่กัน intent capture จึงไม่เพิ่ม latency ในประสบการณ์ที่ผู้ใช้เห็น intent metadata ถูกเขียนไปยัง RCTDB หลังจาก response ถูกส่งกลับไปยังผู้ใช้
 
 นี่ไม่ใช่ post-processing batch job — มันคือ real-time asynchronous enrichment ความแตกต่างนี้สำคัญเพราะ batch enrichment สร้าง delay ระหว่าง interaction และ availability ของ learned context สำหรับ query ถัดมา asynchronous write ของ JITNA ทำให้ intent context จาก query N พร้อมสำหรับ query N+1 ใน session เดียวกัน
 
@@ -152,10 +152,10 @@ Metric ที่วินิจฉัยมากที่สุดคือ **q
 
 Enterprise AI system ที่ treat ทุก session เป็น independent กำลังทิ้ง compounding value ไว้บนโต๊ะ Intent farming คือ architectural pattern ที่แปลง AI usage เป็น accumulated organizational intelligence — AI asset เดียวที่ไม่สามารถ replicate ได้ด้วยการ adopt โมเดลใหม่กว่า
 
-ข้อกำหนดทางเทคนิคมีความเข้มข้น: temporal metadata, intent tagging, provenance chains, constitutional scoring และ cross-session linking ระบบที่ implement ข้อกำหนดเหล่านี้ใน unified memory architecture — ตามที่ DelentiaDB ทำ — สร้างเงื่อนไขสำหรับ AI system ที่ปรับปรุงจริงๆ ด้วยการใช้งาน
+ข้อกำหนดทางเทคนิคมีความเข้มข้น: temporal metadata, intent tagging, provenance chains, constitutional scoring และ cross-session linking ระบบที่ implement ข้อกำหนดเหล่านี้ใน unified memory architecture — ตามที่ RCTDB ทำ — สร้างเงื่อนไขสำหรับ AI system ที่ปรับปรุงจริงๆ ด้วยการใช้งาน
 
 เป้าหมายไม่ใช่การ retrieve ที่ดีขึ้น เป้าหมายคือ AI ที่จำได้ ในความหมายที่มีโครงสร้าง: ไม่ใช่การ recall session ที่ผ่านมาแบบ verbatim แต่เป็น model ขององค์กร intent ที่เสริมคุณค่าอย่างต่อเนื่อง ทำให้ทุก future query แม่นยำขึ้น ทุก future response มีพื้นฐานมากขึ้น และทุก future session มีคุณค่ามากกว่าครั้งก่อน
 
 ---
 
-*ขอบเขตการเปิดเผย: JITNA, DelentiaDB และ Tier 1–9 algorithm taxonomy เป็น component ของ RCT Platform มีให้ใช้เป็น open source ภายใต้ Apache 2.0 รายละเอียดการ implement, organizational intent graph schema และรายละเอียดการบังคับใช้ constitutional quality อธิบายใน [SDK documentation](https://delentia-labs.github.io/delentia-os/)*
+*ขอบเขตการเปิดเผย: JITNA, RCTDB และ Tier 1–9 algorithm taxonomy เป็น component ของ RCT Platform มีให้ใช้เป็น open source ภายใต้ Apache 2.0 รายละเอียดการ implement, organizational intent graph schema และรายละเอียดการบังคับใช้ constitutional quality อธิบายใน [SDK documentation](https://delentia-labs.github.io/delentia-os/)*

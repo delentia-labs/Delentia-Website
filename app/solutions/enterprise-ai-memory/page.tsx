@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     "Extend enterprise AI beyond the context window with persistent memory, hybrid storage, governed recall, and 74% delta compression.",
     "ขยาย AI องค์กรให้เกินข้อจำกัดของ context window ด้วย persistent memory, hybrid storage, governed recall และ delta compression 74%",
     "/solutions/enterprise-ai-memory",
-    ["enterprise AI memory", "DelentiaDB", "vector database", "AI context window", "8-dimensional schema", "delta compression"]
+    ["enterprise AI memory", "RCTDB", "vector database", "AI context window", "8-dimensional schema", "delta compression"]
   )
 }
 
@@ -33,8 +33,8 @@ export default async function Page() {
       answer: "Enterprise AI Memory achieves 74% lossless delta compression — storing only context changes rather than full snapshots, enabling persistent memory across sessions without exponential storage costs.",
     },
     {
-      question: "How does DelentiaDB differ from vector databases for enterprise AI?",
-      answer: "DelentiaDB uses an 8-dimensional schema with governed recall, audit trails, and constitutional constraints. Vector databases provide raw similarity search without governance, explainability, or right-to-erasure controls required for enterprise PDPA compliance.",
+      question: "How does RCTDB differ from vector databases for enterprise AI?",
+      answer: "RCTDB uses an 8-dimensional schema with governed recall, audit trails, and constitutional constraints. Vector databases provide raw similarity search without governance, explainability, or right-to-erasure controls required for enterprise PDPA compliance.",
     },
     {
       question: "Does Enterprise AI Memory support PDPA and data sovereignty requirements?",

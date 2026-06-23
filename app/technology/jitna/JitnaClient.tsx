@@ -22,8 +22,8 @@ const jitnaLanguageFields = [
     name: "Data",
     nameEn: "Data",
     nameTh: "ข้อมูล / ความเป็นจริง",
-    descEn: "Facts and context currently available — retrieved from DelentiaDB, external APIs, or context window. What the system actually knows right now.",
-    descTh: "ข้อเท็จจริงและ Context ที่มีอยู่ปัจจุบัน — ดึงมาจาก DelentiaDB, API ภายนอก หรือ Context Window สิ่งที่ระบบรู้จริงๆ ขณะนี้",
+    descEn: "Facts and context currently available — retrieved from RCTDB, external APIs, or context window. What the system actually knows right now.",
+    descTh: "ข้อเท็จจริงและ Context ที่มีอยู่ปัจจุบัน — ดึงมาจาก RCTDB, API ภายนอก หรือ Context Window สิ่งที่ระบบรู้จริงๆ ขณะนี้",
     color: "#7B9E87",
   },
   {
@@ -58,8 +58,8 @@ const jitnaLanguageFields = [
     name: "Memory",
     nameEn: "Memory",
     nameTh: "สิ่งที่ต้องจำ",
-    descEn: "Long-term context persisted across sessions — routing history, outcome quality, and learned patterns stored in DelentiaDB 7D. What enables continuous self-improvement.",
-    descTh: "บริบทระยะยาวที่เก็บรักษาระหว่าง Session — ประวัติ, คุณภาพผลลัพธ์ และรูปแบบที่เรียนรู้ใน DelentiaDB 7D สิ่งที่ทำให้เกิดการปรับปรุงตัวเองอย่างต่อเนื่อง",
+    descEn: "Long-term context persisted across sessions — routing history, outcome quality, and learned patterns stored in RCTDB 7D. What enables continuous self-improvement.",
+    descTh: "บริบทระยะยาวที่เก็บรักษาระหว่าง Session — ประวัติ, คุณภาพผลลัพธ์ และรูปแบบที่เรียนรู้ใน RCTDB 7D สิ่งที่ทำให้เกิดการปรับปรุงตัวเองอย่างต่อเนื่อง",
     color: "#9B7BB8",
   },
 ]
@@ -82,8 +82,8 @@ const threeLayerArchitecture = [
     nameTh: "Layer 2 — Language",
     roleEn: "Structured intent communication format",
     roleTh: "รูปแบบการสื่อสาร Intent ที่มีโครงสร้าง",
-    descEn: "The I / D / Δ / A / R / M schema — used for prompts, memory tagging, vault metadata, and DelentiaDB commits. 50+ workflow templates available.",
-    descTh: "Schema I / D / Δ / A / R / M — ใช้สำหรับ Prompt, Memory Tagging, Vault Metadata และ DelentiaDB Commit มี Template มากกว่า 50 รูปแบบ",
+    descEn: "The I / D / Δ / A / R / M schema — used for prompts, memory tagging, vault metadata, and RCTDB commits. 50+ workflow templates available.",
+    descTh: "Schema I / D / Δ / A / R / M — ใช้สำหรับ Prompt, Memory Tagging, Vault Metadata และ RCTDB Commit มี Template มากกว่า 50 รูปแบบ",
     color: "#7B9E87",
     file: "50+ workflow templates",
   },
@@ -220,8 +220,8 @@ export default function JitnaClient({ locale: propLocale }: { locale?: string })
             </h2>
             <p className="text-sm text-muted-foreground mt-2 max-w-xl mx-auto">
               {isTh
-                ? "Schema มาตรฐาน 6 Fields สำหรับแสดง Intent — ใช้ใน Prompt, Memory Tagging, Vault Metadata และ DelentiaDB Commit"
-                : "The canonical 6-field schema for structuring any intent — used in prompts, memory tagging, vault metadata, and DelentiaDB commits."}
+                ? "Schema มาตรฐาน 6 Fields สำหรับแสดง Intent — ใช้ใน Prompt, Memory Tagging, Vault Metadata และ RCTDB Commit"
+                : "The canonical 6-field schema for structuring any intent — used in prompts, memory tagging, vault metadata, and RCTDB commits."}
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

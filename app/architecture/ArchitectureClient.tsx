@@ -16,7 +16,7 @@ const layers = {
     { num: "L1", name: "Hardware Abstraction", desc: "GPU/TPU management, resource allocation, and infrastructure orchestration across cloud and edge deployments.", icon: Cpu, color: "#89B4C8" },
     { num: "L2", name: "Data Ingestion", desc: "Multi-modal data pipeline supporting text, images, audio, video, and structured datasets with real-time streaming.", icon: Database, color: "#7B9E87" },
     { num: "L3", name: "Knowledge Engine", desc: "Semantic indexing, vector search, and knowledge graph construction for intelligent information retrieval.", icon: Brain, color: "#D4A853" },
-    { num: "L4", name: "Memory & Context", desc: "DelentiaDB v2.0 with the 8-dimensional universal memory schema — Identity, Sovereignty, Context, Payload, Value, Social, Delta, Verification — for persistent context across sessions and agents.", icon: Database, color: "#C4745B" },
+    { num: "L4", name: "Memory & Context", desc: "RCTDB v2.0 with the 8-dimensional universal memory schema — Identity, Sovereignty, Context, Payload, Value, Social, Delta, Verification — for persistent context across sessions and agents.", icon: Database, color: "#C4745B" },
     { num: "L5", name: "Reasoning Core", desc: "Multi-strategy reasoning including chain-of-thought, tree-of-thought, and hybrid approaches powered by the FDIA Equation.", icon: Brain, color: "#B8A9C9" },
     { num: "L6", name: "Multi-LLM Orchestration", desc: "HexaCore 7-model roster (3 Western: Claude/Gemini/Grok · 3 Eastern: Kimi/MiniMax/DeepSeek · 1 Regional: Typhoon G38 for Thai) with JITNA dynamic routing across all task types.", icon: Network, color: "#D4A853" },
     { num: "L7", name: "Agent Framework", desc: "Autonomous agent lifecycle management with JITNA Protocol for inter-agent communication and consensus.", icon: Bot, color: "#89B4C8" },
@@ -28,7 +28,7 @@ const layers = {
     { num: "L1", name: "Hardware Abstraction", desc: "การจัดการ GPU/TPU การจัดสรรทรัพยากร และการจัดสรร Infrastructure ทั้ง Cloud และ Edge", icon: Cpu, color: "#89B4C8" },
     { num: "L2", name: "Data Ingestion", desc: "Data Pipeline แบบ Multi-modal รองรับ Text, Images, Audio, Video และ Structured Datasets พร้อม Real-time Streaming", icon: Database, color: "#7B9E87" },
     { num: "L3", name: "Knowledge Engine", desc: "Semantic Indexing, Vector Search และ Knowledge Graph สำหรับการดึงข้อมูลอัจฉริยะ", icon: Brain, color: "#D4A853" },
-    { num: "L4", name: "Memory & Context", desc: "DelentiaDB v2.0 พร้อม Schema หน่วยความจำ 8 มิติ — Identity, Sovereignty, Context, Payload, Value, Social, Delta, Verification — สำหรับการเก็บ Context ถาวรข้าม Sessions และ Agents", icon: Database, color: "#C4745B" },
+    { num: "L4", name: "Memory & Context", desc: "RCTDB v2.0 พร้อม Schema หน่วยความจำ 8 มิติ — Identity, Sovereignty, Context, Payload, Value, Social, Delta, Verification — สำหรับการเก็บ Context ถาวรข้าม Sessions และ Agents", icon: Database, color: "#C4745B" },
     { num: "L5", name: "Reasoning Core", desc: "การให้เหตุผลหลายกลยุทธ์รวม Chain-of-Thought, Tree-of-Thought กับเคลื่อนด้วยสมการ FDIA", icon: Brain, color: "#B8A9C9" },
     { num: "L6", name: "Multi-LLM Orchestration", desc: "HexaCore 7-Model Roster (3 Western: Claude/Gemini/Grok · 3 Eastern: Kimi/MiniMax/DeepSeek · 1 Regional: Typhoon G38 สำหรับภาษาไทย) คู่กับ JITNA Dynamic Routing", icon: Network, color: "#D4A853" },
     { num: "L7", name: "Agent Framework", desc: "การจัดการ Lifecycle ของ Agent อัตโนมัติพร้อม JITNA Protocol สำหรับการสื่อสารระหว่าง Agent", icon: Bot, color: "#89B4C8" },
@@ -41,7 +41,7 @@ const layers = {
 const comparisons = {
   en: [
     { feature: "Architecture", rct: "10-Layer Cognitive Stack", others: "Monolithic / 2-3 layers" },
-    { feature: "Memory", rct: "DelentiaDB v2.0 — 8D Schema", others: "No persistent memory" },
+    { feature: "Memory", rct: "RCTDB v2.0 — 8D Schema", others: "No persistent memory" },
     { feature: "Hallucination", rct: "<0.3% on benchmarks (SignedAI)", others: "12-15% typical" },
     { feature: "Multi-LLM", rct: "7-model HexaCore, dynamic routing", others: "Single provider lock-in" },
     { feature: "Self-Improvement", rct: "L10 autonomous evolution", others: "Manual updates only" },
@@ -49,7 +49,7 @@ const comparisons = {
   ],
   th: [
     { feature: "Architecture", rct: "10-Layer Cognitive Stack", others: "Monolithic / 2-3 ชั้น" },
-    { feature: "Memory", rct: "DelentiaDB v2.0 — 8D Schema", others: "ไม่มี Persistent Memory" },
+    { feature: "Memory", rct: "RCTDB v2.0 — 8D Schema", others: "ไม่มี Persistent Memory" },
     { feature: "Hallucination", rct: "<0.3% บน benchmarks (SignedAI)", others: "12-15% ทั่วไป" },
     { feature: "Multi-LLM", rct: "7-model HexaCore, Dynamic Routing", others: "ผูกกับ Provider เดียว" },
     { feature: "Self-Improvement", rct: "L10 Autonomous Evolution", others: "อัปเดตด้วยมือเท่านั้น" },
@@ -100,7 +100,7 @@ export default function ArchitecturePage() {
                 {isTh ? `${SITE_MICROSERVICE_COUNT}+ enterprise runtime components` : `${SITE_MICROSERVICE_COUNT}+ enterprise runtime components`}
               </span>
               <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1.5">
-                {isTh ? "DelentiaDB v2.0 / 8D memory schema" : "DelentiaDB v2.0 / 8D memory schema"}
+                {isTh ? "RCTDB v2.0 / 8D memory schema" : "RCTDB v2.0 / 8D memory schema"}
               </span>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
@@ -156,7 +156,7 @@ export default function ArchitecturePage() {
               <div className="grid gap-3 sm:grid-cols-2">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <div className="text-[11px] uppercase tracking-[0.28em] text-warm-amber">{isTh ? "Memory rail" : "Memory rail"}</div>
-                  <div className="mt-2 text-white">DelentiaDB v2.0 / 8D schema</div>
+                  <div className="mt-2 text-white">RCTDB v2.0 / 8D schema</div>
                   <div className="text-white/65">Identity · Sovereignty · Context</div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">

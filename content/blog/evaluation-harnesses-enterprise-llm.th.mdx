@@ -54,7 +54,7 @@ def test_fdia_architect_gate_zero():
 ### ระดับ 2: Integration Tests (Service Contracts)
 **Scope:** วิธีที่ components สองอย่างหรือมากกว่า interact กัน  
 **จำนวน:** ~800 tests  
-**ตรวจสอบอะไร:** JITNA handshakes, DelentiaDB write-read cycles, HexaCore routing logic
+**ตรวจสอบอะไร:** JITNA handshakes, RCTDB write-read cycles, HexaCore routing logic
 
 ```python
 def test_jitna_propose_accept_cycle():
@@ -109,7 +109,7 @@ def test_jitna_normalizer_strips_injection():
 ### ระดับ 7: Chaos Tests (Resilience Contracts)
 **Scope:** พฤติกรรมของระบบภายใต้เงื่อนไขความล้มเหลว  
 **จำนวน:** ~200 tests  
-**สถานการณ์:** Model provider outage, network partition, DelentiaDB hot zone เต็ม, SignedAI consensus deadlock  
+**สถานการณ์:** Model provider outage, network partition, RCTDB hot zone เต็ม, SignedAI consensus deadlock  
 **คุณสมบัติหลัก:** ทุก chaos scenario ต้องมี graceful degradation path ที่กำหนดไว้ — ไม่อนุญาต undefined behavior
 
 ### ระดับ 8: Property-Based Tests (Mathematical Invariants)
@@ -144,14 +144,14 @@ def test_fdia_mathematical_properties(D, I, A):
 RCT evaluation harness ออกแบบตาม **4 หลักการที่กำหนด architecture ไม่ใช่แค่จำนวน:**
 
 ### หลักการที่ 1: Mathematical Invariants ก่อน
-ทุกระบบหลักมี mathematical invariants ที่ต้องคงอยู่โดยไม่มีเงื่อนไข สำหรับ FDIA: Architect gate invariant สำหรับ SignedAI: consensus threshold invariant สำหรับ DelentiaDB: PDPA erasure invariant สิ่งเหล่านี้ถูก implement เป็น property-based tests (ระดับ 8) โดยใช้ Hypothesis — ไม่ใช่ตัวอย่างที่เขียนด้วยมือ
+ทุกระบบหลักมี mathematical invariants ที่ต้องคงอยู่โดยไม่มีเงื่อนไข สำหรับ FDIA: Architect gate invariant สำหรับ SignedAI: consensus threshold invariant สำหรับ RCTDB: PDPA erasure invariant สิ่งเหล่านี้ถูก implement เป็น property-based tests (ระดับ 8) โดยใช้ Hypothesis — ไม่ใช่ตัวอย่างที่เขียนด้วยมือ
 
 Property-based testing สร้าง test cases หลายพันได้อัตโนมัติ คุณเขียน property ส่วน framework หา edge cases
 
 ### หลักการที่ 2: Contract Tests ที่ทุก Service Boundary
 แต่ละ runtime component ใน 62 องค์ประกอบของ enterprise RCT Ecosystem มี contract ที่กำหนดไว้ — อะไรที่รับ, อะไรที่ return, error อะไรที่ raise Contract tests ตรวจสอบว่าแต่ละ service ตอบสนอง contract ของมันโดยไม่คำนึงถึงการเปลี่ยนแปลง implementation
 
-ถ้าไม่มี contract tests การเปลี่ยน DelentiaDB query format จะทำให้ Delta Engine พังโดยไม่มีเสียง ด้วย contract tests CI pipeline จะปฏิเสธการเปลี่ยนแปลงที่ boundary
+ถ้าไม่มี contract tests การเปลี่ยน RCTDB query format จะทำให้ Delta Engine พังโดยไม่มีเสียง ด้วย contract tests CI pipeline จะปฏิเสธการเปลี่ยนแปลงที่ boundary
 
 ### หลักการที่ 3: Chaos ก่อน Production
 Chaos tests ระดับ 7 รัน failure scenarios ที่กำหนดไว้ล่วงหน้าในสภาพแวดล้อม isolated ก่อนทุก production deployment สถานการณ์มาจาก threat model ของระบบ — ไม่ใช่จาก incidents ที่ผ่านมา

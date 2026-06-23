@@ -48,8 +48,8 @@ const solutions = [
     color: "#7B9E87",
     titleEn: "Enterprise AI Memory",
     titleTh: "Enterprise AI Memory",
-    descEn: "Overcome context window limitations with DelentiaDB v2.0 — a 3-layer hybrid database (Vector + Graph + SQL) with 8D Schema for complete contextual memory.",
-    descTh: "เอาชนะข้อจำกัด Context Window ด้วย DelentiaDB v2.0 — ฐานข้อมูล Hybrid 3 ชั้น พร้อม 8D Schema",
+    descEn: "Overcome context window limitations with RCTDB v2.0 — a 3-layer hybrid database (Vector + Graph + SQL) with 8D Schema for complete contextual memory.",
+    descTh: "เอาชนะข้อจำกัด Context Window ด้วย RCTDB v2.0 — ฐานข้อมูล Hybrid 3 ชั้น พร้อม 8D Schema",
     stats: [
       { label: "Compression", value: "74%" },
       { label: "DB Layers", value: "3" },
@@ -115,7 +115,7 @@ export default function SolutionsPage() {
         {
           question: "โซลูชันเหล่านี้ใช้ร่วมกันได้หรือไม่",
           answer:
-            "ได้ และจริง ๆ แล้วถูกออกแบบให้ทำงานร่วมกัน SignedAI จัดการ verification, DelentiaDB จัดการ memory และ routing layer จัดการ model orchestration ทำให้ได้ระบบที่เสถียรและตรวจสอบย้อนหลังได้มากกว่าใช้เครื่องมือเดี่ยว",
+            "ได้ และจริง ๆ แล้วถูกออกแบบให้ทำงานร่วมกัน SignedAI จัดการ verification, RCTDB จัดการ memory และ routing layer จัดการ model orchestration ทำให้ได้ระบบที่เสถียรและตรวจสอบย้อนหลังได้มากกว่าใช้เครื่องมือเดี่ยว",
         },
         {
           question: "เหมาะกับ use case แบบใด",
@@ -132,7 +132,7 @@ export default function SolutionsPage() {
         {
           question: "Do these solutions work together?",
           answer:
-            "Yes. They are designed to work as a system: SignedAI handles verification, DelentiaDB handles persistent memory, and the routing layer selects the right model and policy path for each task.",
+            "Yes. They are designed to work as a system: SignedAI handles verification, RCTDB handles persistent memory, and the routing layer selects the right model and policy path for each task.",
         },
         {
           question: "What kinds of use cases fit these solutions?",
@@ -242,7 +242,7 @@ export default function SolutionsPage() {
                 },
                 {
                   title: isTh ? "Memory Layer" : "Memory Layer",
-                  body: isTh ? "DelentiaDB v2.0 ทำ persistent context ข้าม session และข้าม workflow" : "DelentiaDB v2.0 preserves context across sessions and workflows.",
+                  body: isTh ? "RCTDB v2.0 ทำ persistent context ข้าม session และข้าม workflow" : "RCTDB v2.0 preserves context across sessions and workflows.",
                 },
                 {
                   title: isTh ? "Routing Layer" : "Routing Layer",
@@ -354,7 +354,7 @@ export default function SolutionsPage() {
           </div>
           <div className="bg-card border border-border rounded-xl p-6 space-y-3">
             <h3 className="text-lg font-semibold text-foreground mb-4">Enterprise Features</h3>
-            {["10-Layer architecture with Enterprise Hardening", "DelentiaDB v2.0 — 8D universal memory (74% compression)", "8 regional markets (PDPA, APPI, PIPA, PIPL)", "Prometheus + Grafana monitoring", "OpenAPI 3.1.0 (14 endpoints)", "13 Universal Adapters"].map((f, i) => (
+            {["10-Layer architecture with Enterprise Hardening", "RCTDB v2.0 — 8D universal memory (74% compression)", "8 regional markets (PDPA, APPI, PIPA, PIPL)", "Prometheus + Grafana monitoring", "OpenAPI 3.1.0 (14 endpoints)", "13 Universal Adapters"].map((f, i) => (
               <div key={i} className="flex items-center gap-3 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-green-500 shrink-0" />{f}</div>
             ))}
           </div>
@@ -403,7 +403,7 @@ const result = await client.execute({
               <span className="text-xs font-semibold uppercase tracking-wider text-warm-amber">SMEs</span>
             </div>
             <h2 className="text-2xl font-bold text-foreground">{isTh ? "สำหรับ SMEs" : "For SMEs"}</h2>
-            <p className="text-muted-foreground">{isTh ? "Enterprise-grade AI ในราคาที่เข้าถึงได้ — 3.74x cost reduction ผ่าน DelentiaDB compression" : "Enterprise-grade AI without enterprise costs — 3.74x cost reduction through DelentiaDB compression."}</p>
+            <p className="text-muted-foreground">{isTh ? "Enterprise-grade AI ในราคาที่เข้าถึงได้ — 3.74x cost reduction ผ่าน RCTDB compression" : "Enterprise-grade AI without enterprise costs — 3.74x cost reduction through RCTDB compression."}</p>
             <Link href={localHref("/pricing")} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-warm-amber text-white text-sm font-medium hover:bg-[#C49A48] transition-colors">
               {isTh ? "ดูราคา" : "View Pricing"} <ArrowRight className="w-4 h-4" />
             </Link>
@@ -419,7 +419,7 @@ const result = await client.execute({
               <span className="text-2xl font-mono text-green-500">$0.003/query</span>
             </div>
             <div className="pt-3 border-t border-border">
-              <p className="text-xs text-muted-foreground">3.74x cost reduction through DelentiaDB compression and intelligent caching.</p>
+              <p className="text-xs text-muted-foreground">3.74x cost reduction through RCTDB compression and intelligent caching.</p>
             </div>
           </div>
         </div>

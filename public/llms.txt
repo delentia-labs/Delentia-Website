@@ -12,7 +12,7 @@ Welcome to Delentia Labs. We build Constitutional AI infrastructure featuring a 
 
 ## Products & Solutions
 - Delentia AI: Architecture of Intent platform for intelligent enterprise operations and orchestration. Powered by Analysearch Intent Mode.
-- DelentiaDB: Enterprise AI Memory for persistent, stateful context.
+- RCTDB: Enterprise AI Memory for persistent, stateful context.
 
 ## Navigation & Discovery
 - Home: https://delentia.com/ (Available in EN and TH)

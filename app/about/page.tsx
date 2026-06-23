@@ -305,7 +305,7 @@ export default async function AboutPage() {
       phase: isTh ? "Memory and runtime" : "Memory and runtime",
       period: isTh ? "มกราคม 2026" : "January 2026",
       title: isTh ? "เริ่มมีโครงสร้าง runtime ที่ใช้ซ้ำ ขยายต่อ และควบคุมได้" : "Reusable, controllable runtime structure started to appear",
-      capability: isTh ? "DelentiaDB, universal memory schema และ OS primitives ทำให้ระบบเก็บ state, ดึงกลับ, และจัดเส้นทางการทำงานได้จริง" : "DelentiaDB, the universal memory schema, and OS primitives made it possible to store state, recall it, and route work operationally.",
+      capability: isTh ? "RCTDB, universal memory schema และ OS primitives ทำให้ระบบเก็บ state, ดึงกลับ, และจัดเส้นทางการทำงานได้จริง" : "RCTDB, the universal memory schema, and OS primitives made it possible to store state, recall it, and route work operationally.",
       businessImpact: isTh ? "นี่คือจุดที่ Delentia OS เริ่มเปลี่ยนจากเอกสารไปสู่ operating substrate" : "This is where Delentia OS began moving from documentation into an operating substrate.",
       tone: "sage",
     },

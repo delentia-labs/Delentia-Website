@@ -33,7 +33,7 @@ Before examining each genome, it is important to understand the design constrain
 
 A modular AI system can add capability by adding modules. But adding modules without a shared information schema creates a proliferation of interfaces — N modules require O(N²) integration surfaces to fully connect. At enterprise scale, this becomes unmanageable: systems have hundreds of services, and each new capability requires negotiating yet another integration contract.
 
-The 7 Genome System solves this through a different approach: **shared genome expression**. Every genome in the system understands the same data primitives (FDIA score, intent vector, DelentiaDB memory state) because they all express from the same foundational blueprint (G1). Adding a new capability does not require a new interface contract — it requires expressing a new genome within an already-understood schema.
+The 7 Genome System solves this through a different approach: **shared genome expression**. Every genome in the system understands the same data primitives (FDIA score, intent vector, RCTDB memory state) because they all express from the same foundational blueprint (G1). Adding a new capability does not require a new interface contract — it requires expressing a new genome within an already-understood schema.
 
 The practical consequence: the 7 genomes have a total of 7 integration surfaces (each genome connects to the loop), not 21.
 
@@ -95,13 +95,13 @@ The practical consequence: the 7 genomes have a total of 7 integration surfaces 
 
 **What it contains:**
 - **Intent Omnibox:** classifies any input (voice, text, structured data, image description) into the system's intent schema
-- **Memory Timeline:** DelentiaDB-backed persistent memory across sessions — the user's context does not reset between interactions
+- **Memory Timeline:** RCTDB-backed persistent memory across sessions — the user's context does not reset between interactions
 - **Sovereignty Vault:** user-owned memory encryption and selective disclosure controls
 - **L1–L5 Intelligence Ladder:** escalation from simple lookup (L1) through creative synthesis (L3) to autonomous multi-step planning (L5)
 
 **Why the memory layer is part of a genome, not a database service:** A database service stores and retrieves. The ARTENT Genome *understands* what is stored — it maintains the semantic relationships between stored context items, enabling warm recall that is contextually relevant, not just chronologically recent.
 
-**Interconnection:** G4 receives routing instructions from G3, stores outcomes to DelentiaDB (which feeds G7's improvement loop), and passes high-stakes outputs to G5 for consensus verification when the FDIA score indicates verification is required.
+**Interconnection:** G4 receives routing instructions from G3, stores outcomes to RCTDB (which feeds G7's improvement loop), and passes high-stakes outputs to G5 for consensus verification when the FDIA score indicates verification is required.
 
 ---
 
@@ -129,17 +129,17 @@ INTAKE → ROUTER → SIGNERS → ATTESTATION → CONSENSUS → REPORT
 - TIER_6 (67% consensus, 6 models): ~$2.00  
 - TIER_8 (75% consensus, 8 models): ~$5.00
 
-**Interconnection:** G5 receives verification requests from G4, queries G1 for constitutional constraints to check against, and reports verified outputs back to G4 for delivery. All verification events are logged to DelentiaDB (G4's memory layer) for G7's audit trail.
+**Interconnection:** G5 receives verification requests from G4, queries G1 for constitutional constraints to check against, and reports verified outputs back to G4 for delivery. All verification events are logged to RCTDB (G4's memory layer) for G7's audit trail.
 
 ---
 
 ### G6 — Vault Genome: The Sovereignty Layer
 
-**Role:** Data protection, constitutional constraint enforcement, and audit trail management across all 8 DelentiaDB dimensions.
+**Role:** Data protection, constitutional constraint enforcement, and audit trail management across all 8 RCTDB dimensions.
 
 **What it enforces:**
 - **Constitutional prohibitions:** When A=0 in the FDIA equation, output is unconditionally blocked regardless of D, I, or model confidence. This is a mathematical hard gate, not a preference
-- **User memory sovereignty:** Users own their stored context in DelentiaDB — selective disclosure means users can grant or revoke system access to their memory at any time
+- **User memory sovereignty:** Users own their stored context in RCTDB — selective disclosure means users can grant or revoke system access to their memory at any time
 - **Cross-domain contamination prevention:** G6 ensures that sensitive context from one domain (e.g., medical) does not bleed into queries in another domain (e.g., legal) without explicit user authorization
 - **Audit trail integrity:** All constitutional decisions (why an output was blocked, what rule triggered) are logged with timestamps and rule references
 
@@ -159,7 +159,7 @@ IDLE → RECEIVE → PARSE → ROUTE → EXECUTE → VERIFY → ADAPT
 ```
 
 - **IDLE:** System at rest, monitoring for intent signals
-- **RECEIVE:** Intent signal received and logged to DelentiaDB
+- **RECEIVE:** Intent signal received and logged to RCTDB
 - **PARSE:** G1/G2 parse the intent into the system's canonical schema
 - **ROUTE:** G3 selects optimal processing path
 - **EXECUTE:** G4 processes the query
@@ -183,7 +183,7 @@ G2 (Algorithms) ← performance feedback ←────────────
    ↓ algorithm selection                                            │
 G3 (Routing) ← routing optimization ←──────────────────────────── │
    ↓ routed query                                                   │
-G4 (Execution) → memory stored in DelentiaDB                            │
+G4 (Execution) → memory stored in RCTDB                            │
    ↓ high-stakes outputs                                            │
 G5 (Attestation) → cryptographic audit trail                       │
    ↓ compliance monitoring                                          │

@@ -1,13 +1,13 @@
 ---
-title: "DelentiaDB v2.0: Universal Memory Schema 8 มิติสำหรับระบบ AI"
+title: "RCTDB v2.0: Universal Memory Schema 8 มิติสำหรับระบบ AI"
 author: "Ittirit Saengow"
 authorId: "ittirit-saengow"
 reviewerId: "rct-research-desk"
 date: "2026-03-28"
 lastReviewed: "2026-05-05"
 category: "research"
-excerpt: "DelentiaDB คือสถาปัตยกรรมหน่วยความจำสากลของ RCT Ecosystem — schema 8 มิติที่ออกแบบสำหรับ AI memory ที่มีโครงสร้าง, การติดตาม provenance เต็มรูปแบบ และสิทธิการลบข้อมูลตาม PDPA บทความนี้อธิบาย schema, สาม storage zone และเหตุใด traditional vector database จึงไม่เพียงพอสำหรับ AI องค์กร"
-tags: ["DelentiaDB", "Memory Architecture", "AI Infrastructure", "Vector Database", "PDPA", "Delentia Labs"]
+excerpt: "RCTDB คือสถาปัตยกรรมหน่วยความจำสากลของ RCT Ecosystem — schema 8 มิติที่ออกแบบสำหรับ AI memory ที่มีโครงสร้าง, การติดตาม provenance เต็มรูปแบบ และสิทธิการลบข้อมูลตาม PDPA บทความนี้อธิบาย schema, สาม storage zone และเหตุใด traditional vector database จึงไม่เพียงพอสำหรับ AI องค์กร"
+tags: ["RCTDB", "Memory Architecture", "AI Infrastructure", "Vector Database", "PDPA", "Delentia Labs"]
 readTime: 9
 references:
   - "https://www.pinecone.io/"
@@ -20,7 +20,7 @@ references:
   - "https://arxiv.org/abs/2301.07608"
 ---
 
-# DelentiaDB v2.0: Universal Memory Schema 8 มิติสำหรับระบบ AI
+# RCTDB v2.0: Universal Memory Schema 8 มิติสำหรับระบบ AI
 
 Memory คือปัญหาที่ยังไม่ได้รับการแก้ไขของ AI องค์กร
 
@@ -31,7 +31,7 @@ AI deployment ส่วนใหญ่ปฏิบัติต่อ memory เ�
 3. **Cache response ที่ผ่านการตรวจสอบ** สำหรับ recall เร็วโดยไม่ต้อง re-generate
 4. **ติดตาม provenance** ของข้อมูลทุกชิ้นที่ใช้ใน output ใดก็ตาม
 
-**DelentiaDB v2.0** คือคำตอบของ RCT Ecosystem สำหรับปัญหานี้ — universal memory schema ที่ออกแบบเฉพาะสำหรับระบบ constitutional AI
+**RCTDB v2.0** คือคำตอบของ RCT Ecosystem สำหรับปัญหานี้ — universal memory schema ที่ออกแบบเฉพาะสำหรับระบบ constitutional AI
 
 ---
 
@@ -39,7 +39,7 @@ AI deployment ส่วนใหญ่ปฏิบัติต่อ memory เ�
 
 Vector database (Pinecone, Weaviate, Qdrant) ยอดเยี่ยมสำหรับ semantic search จัดเก็บ embedding และเปิดใช้ "ค้นหาเอกสารที่คล้ายกันทาง semantic กับ query นี้" แต่ไม่ได้ออกแบบสำหรับ:
 
-| ความต้องการ | Vector Database | DelentiaDB |
+| ความต้องการ | Vector Database | RCTDB |
 |---|---|---|
 | **Full provenance tracking** | ไม่ — เก็บ embedding ไม่ใช่ reasoning chain | ใช่ — 8 มิติจับ context ครบถ้วน |
 | **สิทธิการลบตาม PDPA** | ยาก — แยก data ของคนหนึ่งได้ยาก | ใช่ — record ที่ linked UUID พร้อม tombstone |
@@ -48,7 +48,7 @@ Vector database (Pinecone, Weaviate, Qdrant) ยอดเยี่ยมสำ�
 | **Constitutional constraints** | ไม่ | ใช่ — FDIA scores เก็บกับทุก record |
 | **Multi-jurisdictional control** | ไม่ | ใช่ — provenance dimension ติดตาม jurisdiction |
 
-DelentiaDB ไม่ใช่การแทนที่ vector database — แต่เป็น layer *เหนือ* พวกมัน DelentiaDB จัดการ record keeping ที่มีโครงสร้าง, provenance และ compliance native embedding search ทำหน้าที่เป็น dimension หนึ่งภายใน schema 8 มิติที่กว้างกว่า
+RCTDB ไม่ใช่การแทนที่ vector database — แต่เป็น layer *เหนือ* พวกมัน RCTDB จัดการ record keeping ที่มีโครงสร้าง, provenance และ compliance native embedding search ทำหน้าที่เป็น dimension หนึ่งภายใน schema 8 มิติที่กว้างกว่า
 
 ---
 
@@ -68,7 +68,7 @@ hash ไม่ใช่ของ raw text — แต่เป็นของ sem
 **ประเภท:** JSON object ที่มีค่า D, I, A, F (0.0–1.0 แต่ละตัว)  
 **วัตถุประสงค์:** บันทึกสถานะ quality gate ณ เวลาที่เก็บ
 
-ทุก DelentiaDB record เก็บ FDIA scores ณ เวลาที่ record ถูกสร้าง ซึ่งเปิดใช้:
+ทุก RCTDB record เก็บ FDIA scores ณ เวลาที่ record ถูกสร้าง ซึ่งเปิดใช้:
 - กรอง record ตาม quality threshold ขั้นต่ำก่อนใช้ใน RAG
 - Audit ว่าทำไมระบบถึงผลิต output เฉพาะ (D, I, A เป็นอย่างไรในขณะนั้น)
 - ตรวจจับเมื่อ data quality เสื่อมลงเมื่อเวลาผ่านไป (D score ของ record ที่เก็บสามารถเปรียบเทียบกับ D score ปัจจุบันสำหรับแหล่งข้อมูลเดียวกัน)
@@ -80,7 +80,7 @@ hash ไม่ใช่ของ raw text — แต่เป็นของ sem
 
 ข้อมูลส่วนบุคคลทั้งหมดที่ไหลผ่าน RCT Ecosystem linked กับ `subject_uuid` — identifier ภายในสำหรับ data subject เมื่อ data subject ใช้สิทธิการลบตาม PDPA มาตรา 33:
 
-1. DelentiaDB records ทั้งหมดที่มี `subject_uuid` ที่สอดคล้องถูก retrieve
+1. RCTDB records ทั้งหมดที่มี `subject_uuid` ที่สอดคล้องถูก retrieve
 2. `tombstone_timestamp` ถูก set บนแต่ละ record
 3. การ read operation ในอนาคตเคารพ tombstone — ข้อมูลถูก erase สำหรับวัตถุประสงค์การเข้าถึงทั้งหมด
 4. tombstone record เองถูกเก็บไว้สำหรับระยะเวลา audit trail ที่กฎหมายกำหนด
@@ -162,9 +162,9 @@ Record ย้ายระหว่าง zone โดยอัตโนมัต�
 
 ---
 
-## DelentiaDB เทียบกับ Traditional Vector Database
+## RCTDB เทียบกับ Traditional Vector Database
 
-| Feature | Pinecone | Weaviate | DelentiaDB v2.0 |
+| Feature | Pinecone | Weaviate | RCTDB v2.0 |
 |---|---|---|---|
 | Semantic search | ✅ | ✅ | ✅ (ผ่าน embedding ใน query_hash) |
 | Full provenance | ❌ | ❌ | ✅ |
@@ -179,7 +179,7 @@ Record ย้ายระหว่าง zone โดยอัตโนมัต�
 
 ## สรุป
 
-DelentiaDB v2.0 ปิดช่องว่างระหว่างสิ่งที่ระบบ AI ต้องการและสิ่งที่ traditional database ให้:
+RCTDB v2.0 ปิดช่องว่างระหว่างสิ่งที่ระบบ AI ต้องการและสิ่งที่ traditional database ให้:
 
 - **8 มิติ:** query_hash, fdia_scores, subject_uuid, model_chain, consensus_result, delta_chain, timestamp, provenance
 - **3 storage zone:** Hot (<1ms), Warm (1–5ms), Cold (10ms+)
@@ -187,7 +187,7 @@ DelentiaDB v2.0 ปิดช่องว่างระหว่างสิ่�
 - **PDPA compliance:** UUID-linked tombstone pattern สำหรับสิทธิการลบ
 - **Audit trail สมบูรณ์:** การตัดสินใจ AI ทุกอย่างสร้างขึ้นใหม่ได้พร้อม context ครบถ้วน
 
-DelentiaDB คือ memory layer ที่ทำให้ constitutional AI ใช้งานได้จริงในระดับองค์กร
+RCTDB คือ memory layer ที่ทำให้ constitutional AI ใช้งานได้จริงในระดับองค์กร
 
 ---
 

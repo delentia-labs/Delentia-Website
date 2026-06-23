@@ -329,8 +329,8 @@ export default function DynamicAIRoutingPage() {
               {
                 title: isEn ? "Enterprise AI Memory" : "Enterprise AI Memory",
                 description: isEn
-                  ? "DelentiaDB persistent memory layer that gives routed models context-awareness across long-running sessions."
-                  : "DelentiaDB Memory Layer ที่ให้โมเดลที่ Route มามีความสามารถจำ Context ได้นาน",
+                  ? "RCTDB persistent memory layer that gives routed models context-awareness across long-running sessions."
+                  : "RCTDB Memory Layer ที่ให้โมเดลที่ Route มามีความสามารถจำ Context ได้นาน",
                 href: "/solutions/enterprise-ai-memory",
                 category: isEn ? "Solution" : "โซลูชัน",
               },

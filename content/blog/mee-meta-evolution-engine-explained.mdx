@@ -46,7 +46,7 @@ Where:
 - **dG/dt** — the rate of intelligence evolution (how fast G-level grows per step)
 - **α** — the adaptive learning rate (adjusts between 0.01 and 0.1 based on feedback quality)
 - **Δ** — the meta-algorithm composition function (combines memory, metacognition, and feedback)
-- **M** — memory from DelentiaDB (successful patterns from previous inference cycles)
+- **M** — memory from RCTDB (successful patterns from previous inference cycles)
 - **Π** — metacognition (the system's self-model: what it knows it knows, and what it does not)
 - **R(t)** — feedback signal at time t (quality scores, failure signals, constitutional violations)
 
@@ -71,9 +71,9 @@ The target evolution rate is **dG/dt > 0.5 per step**, with observed rates rangi
 
 MEE does not operate in isolation. It draws on three integration points that are already part of the RCT Ecosystem:
 
-### 1. DelentiaDB (Memory)
+### 1. RCTDB (Memory)
 
-MEE reads the [8-dimensional memory schema in DelentiaDB](/solutions/enterprise-ai-memory) to identify which patterns led to successful outcomes. Rather than reprocessing raw training data, it uses the compressed delta store — meaning it reads only what changed, not the full history. This keeps the evolution cycle fast even as memory grows.
+MEE reads the [8-dimensional memory schema in RCTDB](/solutions/enterprise-ai-memory) to identify which patterns led to successful outcomes. Rather than reprocessing raw training data, it uses the compressed delta store — meaning it reads only what changed, not the full history. This keeps the evolution cycle fast even as memory grows.
 
 ### 2. Delta Engine (Compression)
 
@@ -91,7 +91,7 @@ Beyond adapting existing algorithms, MEE can spawn entirely new algorithms when 
 2. **Composition request** — MEE's Δ function assembles a candidate algorithm from existing primitives
 3. **Constitutional gate** — the candidate is evaluated against the [FDIA equation](/protocols/fdia-equation) before activation
 4. **Signing** — if it passes, the new algorithm receives an Ed25519 signature and enters the active roster
-5. **Memory update** — the spawn event is written to DelentiaDB as a new episodic entry
+5. **Memory update** — the spawn event is written to RCTDB as a new episodic entry
 
 This spawning loop means MEE is not just adaptive — it is generative. The [algorithm surface grows](/algorithms) without manual intervention, while every new addition remains within constitutional bounds.
 
@@ -112,7 +112,7 @@ The practical implication: a system running MEE reaches G-level 90 in fewer inte
 
 Enterprise AI reliability is usually measured at a point in time: does the model perform well on the current test set? MEE shifts the frame to a trajectory question: does the system's performance improve, stay flat, or degrade over deployment lifetime?
 
-With MEE active, the answer is governed. Performance evolves on a constitutional track — α ensures the evolution is neither too aggressive nor too passive, DelentiaDB ensures the evolution builds on real outcomes, and the FDIA equation ensures no new algorithm is activated without passing quality gates.
+With MEE active, the answer is governed. Performance evolves on a constitutional track — α ensures the evolution is neither too aggressive nor too passive, RCTDB ensures the evolution builds on real outcomes, and the FDIA equation ensures no new algorithm is activated without passing quality gates.
 
 The result is an AI system where reliability is not a property to be defended, but a trajectory to be steered.
 

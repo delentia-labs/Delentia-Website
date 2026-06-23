@@ -44,10 +44,10 @@ RCT Ecosystem คือคำตอบของฉันสำหรับปั
 |---|---|---|
 | Resource allocation | Model routing (LLM ไหน process task ไหน) | HexaCore 7-model router |
 | Access control | Authorization gates (ใครขอ AI capability อะไรได้) | FDIA Architect gate (ตัวแปร A) |
-| State management | Persistent AI memory ตลอด session | DelentiaDB 8-dimensional schema |
+| State management | Persistent AI memory ตลอด session | RCTDB 8-dimensional schema |
 | Scheduling | Intent prioritization และ task queueing | Intent Loop Engine (7 states) |
 | Error isolation | Constitutional kill switch (ป้องกัน cascade failure) | FDIA: A=0 → F=0 ไม่มีเงื่อนไข |
-| Audit trail | Decision provenance สำหรับ compliance | DelentiaDB dimension 8: provenance |
+| Audit trail | Decision provenance สำหรับ compliance | RCTDB dimension 8: provenance |
 
 LLM คือ application มันให้ความสามารถเดียว: text generation ตาม context มันไม่สามารถควบคุมตัวเอง, route task ไป model ที่เหมาะกว่า, รักษา state ตลอด session หรือบังคับใช้ access policy นั่นคืองานของ OS
 
@@ -86,9 +86,9 @@ JITNA packet format กำหนด:
 ### Layer 3: Memory Layer (Storage)
 **เทียบกับ traditional OS:** File system + memory management
 
-DelentiaDB + Delta Engine สร้าง memory layer ของ Intent OS Intent OS มีลำดับชั้น: hot zone (in-memory, <1ms) → warm zone (warm cache, 1–5ms) → cold zone (persistent storage, 10ms+)
+RCTDB + Delta Engine สร้าง memory layer ของ Intent OS Intent OS มีลำดับชั้น: hot zone (in-memory, <1ms) → warm zone (warm cache, 1–5ms) → cold zone (persistent storage, 10ms+)
 
-8-dimensional DelentiaDB schema ออกแบบสำหรับ AI memory ไม่ใช่ general-purpose storage:
+8-dimensional RCTDB schema ออกแบบสำหรับ AI memory ไม่ใช่ general-purpose storage:
 1. `query_hash` — semantic fingerprint สำหรับ cache lookup
 2. `fdia_scores` — ค่า D, I, A, F ณ เวลา processing
 3. `subject_uuid` — PDPA-compliant anonymized reference
@@ -131,9 +131,9 @@ Intent OS ตอบคำถามทั้งสามทาง architectural �
 
 - **Authorization:** FDIA Architect gate (A) ต้องการสำหรับทุก query ไม่มี query ถูก process โดยไม่ตรวจสอบ A นี่ไม่ใช่ policy — มันคือ mathematical invariant
 
-- **Audit trail:** ทุก query สร้าง DelentiaDB record พร้อม dimension 8 (provenance) นี่ไม่ใช่ log file — มันคือ structured record ที่สามารถตอบ "ทำไม information นี้จึงถูกใช้ใน response นี้?" สำหรับ PDPA Section 33
+- **Audit trail:** ทุก query สร้าง RCTDB record พร้อม dimension 8 (provenance) นี่ไม่ใช่ log file — มันคือ structured record ที่สามารถตอบ "ทำไม information นี้จึงถูกใช้ใน response นี้?" สำหรับ PDPA Section 33
 
-- **Right to erasure:** เมื่อ data subject ขอ erasure `subject_uuid` จะถูก tombstone ใน DelentiaDB query ถัดมาที่จะดึง UUID นั้นได้รับข้อมูลเป็นศูนย์ — ไม่ใช่ placeholder ไม่ใช่ error ไม่มีอะไร การ erase สมบูรณ์
+- **Right to erasure:** เมื่อ data subject ขอ erasure `subject_uuid` จะถูก tombstone ใน RCTDB query ถัดมาที่จะดึง UUID นั้นได้รับข้อมูลเป็นศูนย์ — ไม่ใช่ placeholder ไม่ใช่ error ไม่มีอะไร การ erase สมบูรณ์
 
 ---
 
@@ -155,7 +155,7 @@ LLM API ตอบคำถาม capability Intent OS ตอบคำถาม g
 
 **JITNA (Just In Time Nodal Assembly):** Inter-agent communication protocol ของ RCT Intent OS กำหนด standardized negotiation, execution และ verification flow สำหรับ AI agent
 
-**DelentiaDB:** 8-dimensional memory schema ของ RCT Intent OS ออกแบบสำหรับ AI memory (semantic lookup, provenance tracking, PDPA compliance) แทน general-purpose storage
+**RCTDB:** 8-dimensional memory schema ของ RCT Intent OS ออกแบบสำหรับ AI memory (semantic lookup, provenance tracking, PDPA compliance) แทน general-purpose storage
 
 ---
 

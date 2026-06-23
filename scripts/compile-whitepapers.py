@@ -12,7 +12,8 @@ COMPILATION_MAP = [
     ("DELENTIA_OS_EXECUTIVE_SUMMARY_EN_2026.md", "whitepaper.pdf"),
     ("DELENTIA_OS_EXECUTIVE_SUMMARY_TH_2026.md", "whitepaper-th.pdf"),
     ("DELENTIA_OS_TECHNICAL_WHITEPAPER_EN_2026.md", "technical-whitepaper-en.pdf"),
-    ("DELENTIA_OS_TECHNICAL_WHITEPAPER_TH_2026.md", "technical-whitepaper-th.pdf")
+    ("DELENTIA_OS_TECHNICAL_WHITEPAPER_TH_2026.md", "technical-whitepaper-th.pdf"),
+    ("DELENTIA_OS_PUBLIC_WHITEPAPER_v2.2.0_DRAFT.md", "delentia-public-whitepaper-v2.2.0-draft.pdf")
 ]
 
 # Premium Minimalist White CSS stylesheet for clean printing

@@ -29,7 +29,7 @@ export default async function SolutionsPage() {
     {
       question: "What problems do the Delentia Labs solutions solve?",
       answer:
-        "Delentia Labs solutions address enterprise AI hallucination, context loss, intent drift, and inefficient single-model routing by combining SignedAI verification, DelentiaDB memory, and multi-tier orchestration.",
+        "Delentia Labs solutions address enterprise AI hallucination, context loss, intent drift, and inefficient single-model routing by combining SignedAI verification, RCTDB memory, and multi-tier orchestration.",
     },
     {
       question: "Which solution should an enterprise evaluate first?",

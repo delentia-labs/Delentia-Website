@@ -302,8 +302,8 @@ export default async function PlatformPage() {
         </div>
       </section>
 
-      {/* DelentiaDB Section */}
-      <section id="DelentiaDB" className="mx-auto max-w-6xl px-4 py-24">
+      {/* RCTDB Section */}
+      <section id="RCTDB" className="mx-auto max-w-6xl px-4 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1 bg-card border border-border rounded-lg p-6 space-y-4">
             <div className="grid grid-cols-3 gap-4">
@@ -327,12 +327,12 @@ export default async function PlatformPage() {
             <div className="p-3 rounded-lg bg-warm-amber/10 w-fit">
               <Database className="w-6 h-6 text-warm-amber" />
             </div>
-            <h2 className="text-foreground">{p("DelentiaDB_title")}</h2>
+            <h2 className="text-foreground">{p("RCTDB_title")}</h2>
             <p className="text-muted-foreground leading-relaxed">
-              {p("DelentiaDB_desc")}
+              {p("RCTDB_desc")}
             </p>
             <ul className="space-y-3">
-              {[p("DelentiaDB_feature_1"), p("DelentiaDB_feature_2"), p("DelentiaDB_feature_3"), p("DelentiaDB_feature_4")].map((item, i) => (
+              {[p("RCTDB_feature_1"), p("RCTDB_feature_2"), p("RCTDB_feature_3"), p("RCTDB_feature_4")].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
                   <Zap className="w-4 h-4 text-warm-amber shrink-0" />
                   {item}

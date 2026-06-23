@@ -31,7 +31,7 @@ lastEvidenceReview: "2026-05-21"
 | ระดับ | ประเภท | จำนวน Tests | ตรวจสอบอะไร |
 |---|---|---|---|
 | L1 | Unit Tests | 1,343 | Algorithms, FDIA math, Delta Engine, JITNA |
-| L2 | Integration Tests | 34 | FDIA+JITNA interactions, DeltaEngine+DelentiaDB, HexaCore+SignedAI |
+| L2 | Integration Tests | 34 | FDIA+JITNA interactions, DeltaEngine+RCTDB, HexaCore+SignedAI |
 | L3 | Service Tests | 1,889 | 62 runtime components × ~30 tests ต่อ service |
 | L4 | Contract Tests | ~200 | Pact-style provider/consumer contracts |
 | L5 | Performance Tests | ~500 | Cold start, warm recall, throughput |
@@ -64,7 +64,7 @@ Unit tests ที่ระดับนี้ทดสอบ **components เด�
 - Low-FDIA query triggers escalation path ที่ถูกต้อง
 - High-intent query ต้องการคุณภาพข้อมูลที่สูงขึ้นตาม FDIA formula
 
-**Delta Engine + DelentiaDB:**
+**Delta Engine + RCTDB:**
 - Write → Commit → Read cycle สมบูรณ์
 - Delta chain traversal ส่งคืน full history
 - PDPA erasure propagates ผ่าน delta chain ถูกต้อง
@@ -87,7 +87,7 @@ Unit tests ที่ระดับนี้ทดสอบ **components เด�
 - `POST /process` พร้อม payload ที่เกิน rate limit → HTTP 429
 - `GET /metrics` (ถ้า applicable) → Prometheus metrics format ที่ valid
 
-62 runtime components ครอบคลุมทุก HexaCore component, DelentiaDB zones, JITNA network, SignedAI engine, Delta Engine และ integration adapters ในสภาพแวดล้อม enterprise
+62 runtime components ครอบคลุมทุก HexaCore component, RCTDB zones, JITNA network, SignedAI engine, Delta Engine และ integration adapters ในสภาพแวดล้อม enterprise
 
 ---
 
@@ -128,7 +128,7 @@ Tests ครอบคลุม OWASP AI Security Risk A01–A10:
 
 - **A01 Prompt Injection:** JITNA Normalizer strips known injection vectors
 - **A02 Insecure Output Handling:** SignedAI ตรวจสอบ output ก่อน delivery ทุก response
-- **A03 Training Data Poisoning:** Provenance validation สำหรับทุก DelentiaDB record
+- **A03 Training Data Poisoning:** Provenance validation สำหรับทุก RCTDB record
 - **A04 Model DoS:** Rate limiting + circuit breaker testing
 - **A05 Supply Chain Vulnerabilities:** Model provider trust chain verification
 - **A06 Sensitive Information Disclosure:** PDPA erasure + data leakage prevention
@@ -144,7 +144,7 @@ Tests ครอบคลุม OWASP AI Security Risk A01–A10:
 **~300 chaos tests** ตรวจสอบพฤติกรรมภายใต้เงื่อนไขที่ล้มเหลว:
 
 - **Model provider outage:** HexaCore ควร failover ไปยัง backup provider ภายใน 500ms
-- **DelentiaDB hot zone เต็ม:** Delta Engine ควร gracefully defer ไปยัง cold zone
+- **RCTDB hot zone เต็ม:** Delta Engine ควร gracefully defer ไปยัง cold zone
 - **SignedAI consensus timeout:** ระบบควร acknowledge result พร้อม reduced confidence ไม่ crash
 - **JITNA network partition:** แต่ละ agent ควร operate ใน local mode โดยไม่มี undefined state
 - **Cascading circuit break:** เมื่อ N services พังพร้อมกัน ระบบควร serve degraded responses ไม่ใช่ panic

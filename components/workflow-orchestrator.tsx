@@ -51,7 +51,7 @@ const MOCK_WORKFLOWS: Workflow[] = [
   {
     id: "wf-002",
     name: "Data Sync Flow",
-    description: "Sync data between DelentiaDB and external services",
+    description: "Sync data between RCTDB and external services",
     status: "paused",
     lastRun: "2026-03-12T18:45:00Z",
     steps: [

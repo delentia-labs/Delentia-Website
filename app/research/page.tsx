@@ -11,10 +11,10 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "Research & Releases — Delentia Labs Architecture, Algorithms, and Protocol Papers",
     "งานวิจัยและรีลีส — เอกสารสถาปัตยกรรม อัลกอริทึม และโปรโตคอลของ Delentia Labs",
-    "Explore Delentia Labs research, version history, architecture papers, algorithm releases, SignedAI verification, DelentiaDB memory design, and JITNA protocol specifications for enterprise constitutional AI.",
-    "สำรวจงานวิจัยและประวัติรีลีสของ Delentia Labs ครอบคลุมสถาปัตยกรรม อัลกอริทึม SignedAI การออกแบบ DelentiaDB และข้อกำหนดโปรโตคอล JITNA สำหรับ constitutional AI ระดับองค์กร",
+    "Explore Delentia Labs research, version history, architecture papers, algorithm releases, SignedAI verification, RCTDB memory design, and JITNA protocol specifications for enterprise constitutional AI.",
+    "สำรวจงานวิจัยและประวัติรีลีสของ Delentia Labs ครอบคลุมสถาปัตยกรรม อัลกอริทึม SignedAI การออกแบบ RCTDB และข้อกำหนดโปรโตคอล JITNA สำหรับ constitutional AI ระดับองค์กร",
     "/research",
-    ["RCT research", "constitutional AI research", "JITNA RFC", "DelentiaDB paper", "SignedAI verification research"]
+    ["RCT research", "constitutional AI research", "JITNA RFC", "RCTDB paper", "SignedAI verification research"]
   )
 }
 

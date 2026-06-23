@@ -102,9 +102,9 @@ The FDIA equation `F = (D^I) × A` includes data quality measurement (D) as a co
 
 This is not a policy check that can be bypassed. It is a mathematical constraint: if the data provenance score falls below threshold, the FDIA gate rejects the request. The AI does not process the data.
 
-### DelentiaDB: Complete Audit Trail for Every Decision
+### RCTDB: Complete Audit Trail for Every Decision
 
-Every AI decision in the RCT Ecosystem is committed to DelentiaDB — the 8-dimensional universal memory schema — with full provenance:
+Every AI decision in the RCT Ecosystem is committed to RCTDB — the 8-dimensional universal memory schema — with full provenance:
 
 - The original query (anonymized where required)
 - The data provenance scores (lawful basis, consent status, data age)
@@ -130,11 +130,11 @@ The JITNA protocol includes data zone separation that prevents personal data fro
 
 - The packet is flagged with jurisdiction metadata
 - Cross-border transmission requires explicit approval in the packet header
-- All cross-border transfers are logged with the DelentiaDB audit trail
+- All cross-border transfers are logged with the RCTDB audit trail
 
 ### Delta Engine: Systematic Right-to-Erasure
 
-Because DelentiaDB uses an append-only schema with UUID-linked records, data subject records can be cryptographically tombstoned. Unlike vector databases that cannot easily delete specific individual data, DelentiaDB's 8-dimensional schema associates all personal data with a `subject_uuid`. Erasure sets a `tombstone` flag on all records linked to that UUID, preventing future reads without deleting the chain of record access (which itself may be required for compliance).
+Because RCTDB uses an append-only schema with UUID-linked records, data subject records can be cryptographically tombstoned. Unlike vector databases that cannot easily delete specific individual data, RCTDB's 8-dimensional schema associates all personal data with a `subject_uuid`. Erasure sets a `tombstone` flag on all records linked to that UUID, preventing future reads without deleting the chain of record access (which itself may be required for compliance).
 
 ---
 
@@ -143,10 +143,10 @@ Because DelentiaDB uses an append-only schema with UUID-linked records, data sub
 | PDPA Requirement | Generic AI Deployment | Constitutional AI (Delentia Labs) |
 |---|---|---|
 | **Lawful basis verification** | Manual policy, often undocumented | FDIA data quality score includes provenance check |
-| **Audit trail for decisions** | Ad-hoc logging, if any | DelentiaDB: complete, structured, every decision |
+| **Audit trail for decisions** | Ad-hoc logging, if any | RCTDB: complete, structured, every decision |
 | **Section 33 explainability** | Post-hoc reconstruction | FDIA scores + JITNA packet log = structured explanation |
 | **Cross-border transfer control** | Manual exception management | JITNA protocol jurisdiction metadata |
-| **Right-to-erasure** | Technically infeasible (vector stores) | DelentiaDB tombstone pattern (UUID-linked) |
+| **Right-to-erasure** | Technically infeasible (vector stores) | RCTDB tombstone pattern (UUID-linked) |
 | **Human authorization for high-risk AI** | Optional add-on | FDIA Architect gate (A variable) |
 | **Data minimization enforcement** | Policy only | FDIA Data quality score penalizes excess data |
 
@@ -174,7 +174,7 @@ PDPA compliance for AI systems is an architectural challenge, not a policy chall
 
 Constitutional AI takes the opposite approach: embed compliance into the mathematical and structural constraints of the system, so that the AI cannot operate outside those constraints regardless of user behavior or model behavior.
 
-Delentia Labs' implementation — FDIA gating, DelentiaDB audit trails, JITNA jurisdiction control, and Architect authorization — addresses the core PDPA requirements architecturally, not procedurally.
+Delentia Labs' implementation — FDIA gating, RCTDB audit trails, JITNA jurisdiction control, and Architect authorization — addresses the core PDPA requirements architecturally, not procedurally.
 
 ---
 

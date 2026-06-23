@@ -26,14 +26,14 @@ export const researchPapers: ResearchPaper[] = [
   },
   {
     id: "3",
-    title: "DelentiaDB v2.0 and Delta Engine: Persistent Memory with 91.5% Measured Compression (Design Floor ≥74%)",
+    title: "RCTDB v2.0 and Delta Engine: Persistent Memory with 91.5% Measured Compression (Design Floor ≥74%)",
     authors: ["Ittirit Saengow"],
     date: "2026-03-21",
     category: "ethics",
     abstract: "A technical paper describing how persistent enterprise memory, provenance tracking, and Delta Engine compression support governed AI workloads.",
-    tags: ["DelentiaDB", "Memory", "Compression"],
+    tags: ["RCTDB", "Memory", "Compression"],
     downloadUrl: "/blog/rctdb-8-dimensional-memory-architecture",
-    citationText: "Saengow, I. (2026). DelentiaDB v2.0 and Delta Engine: Persistent Memory with 91.5% Measured Compression (Design Floor ≥74%).",
+    citationText: "Saengow, I. (2026). RCTDB v2.0 and Delta Engine: Persistent Memory with 91.5% Measured Compression (Design Floor ≥74%).",
   },
 ]
 

@@ -93,7 +93,7 @@ The RCT Platform's RFC-006 Fault Isolation specification defines the fault isola
 
 **Constitutional quality gates.** Every component output must pass a constitutional quality evaluation before being passed to the next stage. If the quality score falls below the constitutional threshold, the output is blocked and the circuit breaker state for that component is updated.
 
-**Signed failure records.** When a circuit breaker opens, the RCT Platform generates a signed failure record in DelentiaDB. This record contains the component identity, the failure signal, the FDIA scores at the time of failure, and the timestamp. Engineers can reconstruct exactly why a circuit opened and what the quality signal looked like before it opened.
+**Signed failure records.** When a circuit breaker opens, the RCT Platform generates a signed failure record in RCTDB. This record contains the component identity, the failure signal, the FDIA scores at the time of failure, and the timestamp. Engineers can reconstruct exactly why a circuit opened and what the quality signal looked like before it opened.
 
 **Automatic fallback routing.** When a primary provider's circuit is open, the JITNA protocol's routing layer automatically selects the next eligible provider from the HexaCore registry that has the highest current quality signal for the current intent type. This is circuit breaker + intelligent routing in a single mechanism.
 

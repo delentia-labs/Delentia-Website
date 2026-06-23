@@ -38,8 +38,8 @@ export default async function PackagesHubPage() {
       version: pypiInfo.version,
       downloads: pypiInfo.downloads,
       desc: isTH
-        ? "SDK สำหรับภาษา Python ในการเขียนโปรโตคอล JITNA v3, การประเมินคะแนน FDIA และระบบหน่วยความจำ DelentiaDB"
-        : "Python SDK to initialize JITNA v3 protocols, compute FDIA scores, and interact with DelentiaDB memory.",
+        ? "SDK สำหรับภาษา Python ในการเขียนโปรโตคอล JITNA v3, การประเมินคะแนน FDIA และระบบหน่วยความจำ RCTDB"
+        : "Python SDK to initialize JITNA v3 protocols, compute FDIA scores, and interact with RCTDB memory.",
       tags: ["Python 3.10+", "PyPI", "AI Engineers", "Data Science"],
       href: "/packages/pypi",
     },

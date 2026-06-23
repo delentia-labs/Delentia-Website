@@ -7,7 +7,7 @@ date: "2026-03-28"
 lastReviewed: "2026-05-05"
 category: "research"
 excerpt: "Delta Engine คือระบบบีบอัดและ recall หน่วยความจำที่เป็นแกนกลางของ RCT Ecosystem โดยการจัดเก็บเฉพาะการเปลี่ยนแปลงของสถานะ (delta) แทนที่จะเป็น snapshot สถานะเต็ม ระบบบรรลุการบีบอัดแบบ lossless 74% และ warm recall ใต้ 50 มิลลิวินาที ลดต้นทุนต่อ request เหลือเกือบศูนย์สำหรับรูปแบบที่ซ้ำ"
-tags: ["Delta Engine", "Memory Compression", "AI Infrastructure", "DelentiaDB", "Performance", "Delentia Labs"]
+tags: ["Delta Engine", "Memory Compression", "AI Infrastructure", "RCTDB", "Performance", "Delentia Labs"]
 readTime: 8
 references:
   - "https://www.nist.gov/artificial-intelligence"
@@ -65,7 +65,7 @@ RECEIVED → VALIDATED (FDIA) → MEMORY_CHECK → [MISS] → COMPUTING → VERI
 
 1. Query เข้ามา
 2. FDIA ตรวจสอบคุณภาพและ intent
-3. Delta Engine ตรวจสอบ DelentiaDB หา warm cache hit (semantic similarity > 0.95)
+3. Delta Engine ตรวจสอบ RCTDB หา warm cache hit (semantic similarity > 0.95)
 4. **Cache miss:** เปิดใช้งาน full computation path (3–5 วินาที)
 5. HexaCore เลือกโมเดลที่เหมาะสม
 6. SignedAI ตรวจสอบ output
@@ -78,7 +78,7 @@ RECEIVED → VALIDATED (FDIA) → MEMORY_CHECK → [HIT] → COMPLETED
 
 1. Query เข้ามา
 2. FDIA ตรวจสอบคุณภาพและ intent
-3. Delta Engine ตรวจสอบ DelentiaDB — พบ semantic similarity > 0.95
+3. Delta Engine ตรวจสอบ RCTDB — พบ semantic similarity > 0.95
 4. **Cache hit:** ส่งคืน response จาก cache ใน <50ms
 5. ต้นทุน: เกือบศูนย์ (ไม่มีการเรียก LLM)
 
@@ -102,9 +102,9 @@ threshold similarity ที่ 0.95 ปรับได้ตาม use case thre
 
 ---
 
-## 8-Dimensional DelentiaDB Schema
+## 8-Dimensional RCTDB Schema
 
-Delta Engine storage ใช้ DelentiaDB — schema หน่วยความจำสากล 8 มิติ แต่ละ record ใน DelentiaDB มี 8 field ที่เปิดใช้งาน recall, audit และ deletion:
+Delta Engine storage ใช้ RCTDB — schema หน่วยความจำสากล 8 มิติ แต่ละ record ใน RCTDB มี 8 field ที่เปิดใช้งาน recall, audit และ deletion:
 
 | มิติ | คำอธิบาย |
 |---|---|
@@ -123,7 +123,7 @@ schema 8 มิติเปิดใช้ query ที่ข้ามทุก 
 
 ## Three Storage Zones
 
-DelentiaDB ทำงานใน 3 zone ที่มีลักษณะประสิทธิภาพต่างกัน:
+RCTDB ทำงานใน 3 zone ที่มีลักษณะประสิทธิภาพต่างกัน:
 
 | Zone | เทคโนโลยี | Latency | Use Case |
 |---|---|---|---|
@@ -156,7 +156,7 @@ Delta Engine เชื่อมต่อกับสมการ FDIA ที่ 
 | Latency warm recall | **<50 มิลลิวินาที** |
 | Semantic similarity threshold | **0.95** (ปรับได้) |
 | Storage zones | **3** (Hot/Warm/Cold) |
-| มิติ DelentiaDB | **8** |
+| มิติ RCTDB | **8** |
 | Recall accuracy | **96.1%** (matches vs expected) |
 
 ---
@@ -181,7 +181,7 @@ Delta Engine ทำให้เศรษฐศาสตร์ประสิท�
 - **บีบอัด 74%** ผ่าน delta-only storage (O(n) vs O(n²))
 - **Warm recall <50ms** ผ่าน semantic similarity matching (threshold: 0.95)
 - **ต้นทุนเกือบศูนย์** สำหรับรูปแบบ query ที่เสถียรและซ้ำในระยะยาว
-- **DelentiaDB 8-dimensional schema** สำหรับ storage, audit และการลบตาม PDPA
+- **RCTDB 8-dimensional schema** สำหรับ storage, audit และการลบตาม PDPA
 - **สถาปัตยกรรม 3 zone** สำหรับการจัดวาง hot/warm/cold ที่ชาญฉลาด
 
 ---

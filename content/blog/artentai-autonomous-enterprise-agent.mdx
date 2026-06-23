@@ -92,7 +92,7 @@ Step 4: Generate variance analysis [JITNA slot: 2000ms, 8000 tokens]
 Step 5: FDIA score: "Send to CFO email" → 0.94 (PASS, requires SignedAI)
 Step 6: SignedAI consensus: 4/7 models agree → verified
 Step 7: Send report [JITNA slot: 500ms, irreversible action]
-Step 8: Generate audit trail → stored in DelentiaDB
+Step 8: Generate audit trail → stored in RCTDB
 ```
 
 ### Pillar 3 — SignedAI-Verified Decision Chains
@@ -113,7 +113,7 @@ Each model signs its verdict with an Ed25519 key. The consensus tier (TIER_S, TI
 | TIER_6 | 6/7 models | High-value decisions, external communications |
 | TIER_8 | 7/7 models | Irreversible actions, compliance-sensitive operations |
 
-The signed consensus record is stored in DelentiaDB permanently. If a regulator asks "which models agreed that this action was appropriate?" the answer is available with cryptographic proof, not a statistical inference.
+The signed consensus record is stored in RCTDB permanently. If a regulator asks "which models agreed that this action was appropriate?" the answer is available with cryptographic proof, not a statistical inference.
 
 ### Pillar 4 — Delta Engine Context Management
 

@@ -31,7 +31,7 @@ references:
 
 ระบบ AI แบบโมดูลาร์สามารถเพิ่มความสามารถโดยเพิ่ม Module แต่การเพิ่ม Module โดยไม่มี Schema ข้อมูลร่วมกันสร้างการแพร่กระจายของ Interface — N Module ต้องการ O(N²) พื้นผิวการรวมระบบเพื่อเชื่อมต่อกันอย่างสมบูรณ์ ในระดับองค์กร สิ่งนี้จัดการได้ยาก: ระบบมี Service หลายร้อยรายการ และแต่ละความสามารถใหม่ต้องเจรจา Interface Contract ใหม่อีกครั้ง
 
-ระบบ 7 Genome แก้ปัญหานี้ด้วยแนวทางที่แตกต่าง: **Shared Genome Expression** ทุก Genome ในระบบเข้าใจ Data Primitives เดียวกัน (FDIA Score, Intent Vector, สถานะ Memory DelentiaDB) เพราะทุก Genome แสดงออกจาก Blueprint พื้นฐานเดียวกัน (G1) การเพิ่มความสามารถใหม่ไม่ต้องการ Interface Contract ใหม่ — แต่ต้องการการแสดงออก Genome ใหม่ภายใน Schema ที่เข้าใจแล้ว
+ระบบ 7 Genome แก้ปัญหานี้ด้วยแนวทางที่แตกต่าง: **Shared Genome Expression** ทุก Genome ในระบบเข้าใจ Data Primitives เดียวกัน (FDIA Score, Intent Vector, สถานะ Memory RCTDB) เพราะทุก Genome แสดงออกจาก Blueprint พื้นฐานเดียวกัน (G1) การเพิ่มความสามารถใหม่ไม่ต้องการ Interface Contract ใหม่ — แต่ต้องการการแสดงออก Genome ใหม่ภายใน Schema ที่เข้าใจแล้ว
 
 ผลลัพธ์ในทางปฏิบัติ: 7 Genome มีพื้นผิวการรวมระบบรวม 7 จุด (แต่ละ Genome เชื่อมต่อกับ Loop) ไม่ใช่ 21
 
@@ -89,7 +89,7 @@ references:
 
 **สิ่งที่ประกอบด้วย:**
 - **Intent Omnibox:** จำแนก Input ใดก็ได้ (เสียง ข้อความ ข้อมูล Structured คำอธิบายรูปภาพ) เป็น Intent Schema ของระบบ
-- **Memory Timeline:** Memory ถาวรที่รองรับ DelentiaDB ข้ามเซสชัน — Context ของผู้ใช้ไม่ Reset ระหว่าง Interaction
+- **Memory Timeline:** Memory ถาวรที่รองรับ RCTDB ข้ามเซสชัน — Context ของผู้ใช้ไม่ Reset ระหว่าง Interaction
 - **Sovereignty Vault:** การเข้ารหัส Memory ที่ผู้ใช้เป็นเจ้าของและการควบคุม Selective Disclosure
 - **L1–L5 Intelligence Ladder:** การยกระดับจาก Lookup ง่ายๆ (L1) ผ่านการสังเคราะห์สร้างสรรค์ (L3) ไปจนถึงการวางแผน Multi-step อัตโนมัติ (L5)
 
@@ -121,11 +121,11 @@ INTAKE → ROUTER → SIGNERS → ATTESTATION → CONSENSUS → REPORT
 
 ### G6 — Vault Genome: Sovereignty Layer
 
-**บทบาท:** การปกป้องข้อมูล การบังคับใช้ Constitutional Constraint และการจัดการ Audit Trail ใน 8 มิติ DelentiaDB
+**บทบาท:** การปกป้องข้อมูล การบังคับใช้ Constitutional Constraint และการจัดการ Audit Trail ใน 8 มิติ RCTDB
 
 **สิ่งที่บังคับใช้:**
 - **Constitutional Prohibitions:** เมื่อ A=0 ใน FDIA Equation Output ถูกบล็อกโดยไม่มีเงื่อนไขโดยไม่คำนึงถึง D, I หรือ Confidence ของโมเดล นี่คือ Hard Gate ทางคณิตศาสตร์ ไม่ใช่ Preference
-- **User Memory Sovereignty:** ผู้ใช้เป็นเจ้าของ Context ที่เก็บไว้ใน DelentiaDB — Selective Disclosure หมายความว่าผู้ใช้สามารถให้หรือเพิกถอนการเข้าถึง Memory ของระบบได้ทุกเวลา
+- **User Memory Sovereignty:** ผู้ใช้เป็นเจ้าของ Context ที่เก็บไว้ใน RCTDB — Selective Disclosure หมายความว่าผู้ใช้สามารถให้หรือเพิกถอนการเข้าถึง Memory ของระบบได้ทุกเวลา
 - **Cross-Domain Contamination Prevention:** G6 ให้แน่ใจว่า Context ที่ละเอียดอ่อนจาก Domain หนึ่ง (เช่น การแพทย์) ไม่รั่วไหลเข้า Query ใน Domain อื่น (เช่น กฎหมาย) โดยไม่ได้รับอนุญาตจากผู้ใช้อย่างชัดเจน
 - **Audit Trail Integrity:** การตัดสินใจทาง Constitutional ทั้งหมด (ทำไม Output ถูกบล็อก กฎใดที่ Trigger) ถูก Log พร้อม Timestamp และการอ้างอิงกฎ
 
@@ -141,7 +141,7 @@ IDLE → RECEIVE → PARSE → ROUTE → EXECUTE → VERIFY → ADAPT
 ```
 
 - **IDLE:** ระบบพักผ่อน ตรวจสอบสัญญาณ Intent
-- **RECEIVE:** สัญญาณ Intent ได้รับและ Log ลง DelentiaDB
+- **RECEIVE:** สัญญาณ Intent ได้รับและ Log ลง RCTDB
 - **PARSE:** G1/G2 Parse Intent เป็น Schema Canonical ของระบบ
 - **ROUTE:** G3 เลือกเส้นทางประมวลผลที่เหมาะสม
 - **EXECUTE:** G4 ประมวลผล Query
@@ -163,7 +163,7 @@ G2 (Algorithms) ← performance feedback ←────────────
    ↓ algorithm selection                                    │
 G3 (Routing) ← routing optimization ←─────────────────── │
    ↓ routed query                                           │
-G4 (Execution) → memory stored in DelentiaDB                    │
+G4 (Execution) → memory stored in RCTDB                    │
    ↓ high-stakes outputs                                    │
 G5 (Attestation) → cryptographic audit trail               │
    ↓ compliance monitoring                                  │

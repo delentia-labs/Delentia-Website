@@ -81,7 +81,7 @@ Component ที่มี blast radius ขนาดใหญ่จะได้�
 - **FDIA Constraint:** เมื่อ A = 0, F ต้องเท่ากับ 0 เสมอ ไม่มีข้อยกเว้น
 - **SignedAI Constraint:** Tier 6 consensus ต้องการความเห็นตรงกันจากอย่างน้อย 4 จาก 6 model
 - **JITNA Constraint:** ทุก packet ต้องมี Ed25519 signature ที่ถูกต้อง
-- **DelentiaDB Constraint:** ไม่มี record ใดที่สามารถแก้ไขได้โดยไม่สร้าง version ใหม่ (append-only)
+- **RCTDB Constraint:** ไม่มี record ใดที่สามารถแก้ไขได้โดยไม่สร้าง version ใหม่ (append-only)
 
 Constitutional constraints คือรากฐานของความน่าเชื่อถือ ถ้า constraint ใดๆ ได้รับการพิสูจน์ว่าใช้ได้ภายใต้ทุกเงื่อนไข ผู้ใช้สามารถไว้วางใจในคุณสมบัตินั้นๆ ของระบบได้ — แม้ว่าพวกเขาจะไม่เข้าใจ implementation ทั้งหมด
 
@@ -124,7 +124,7 @@ Component แต่ละตัวอาจถูกต้องในแบบ 
 
 **เป้าหมาย:** บันทึกพฤติกรรมของระบบอย่างต่อเนื่องและตรวจจับการเบี่ยงเบนจาก constitutional constraints
 
-RCT Ecosystem ใช้ DelentiaDB — universal memory schema 8 มิติ — เพื่อบันทึก:
+RCT Ecosystem ใช้ RCTDB — universal memory schema 8 มิติ — เพื่อบันทึก:
 - ทุกการประเมิน FDIA (คะแนน D, I, A)
 - ทุก JITNA transaction (packets, negotiations, outcomes)
 - ทุกผลลัพธ์ SignedAI consensus

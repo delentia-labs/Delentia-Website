@@ -63,7 +63,7 @@ User Query → Hardcoded Agent Chain → Output
 
 ### ด้วย JITNA (RCT Ecosystem)
 ```
-User Query → FDIA Validation → Agent Assembly (JITNA) → Negotiation → Execution → SignedAI Verification → DelentiaDB Commit → Output
+User Query → FDIA Validation → Agent Assembly (JITNA) → Negotiation → Execution → SignedAI Verification → RCTDB Commit → Output
 ```
 
 ทุกขั้นตอนมีโครงสร้าง ลงนาม และสามารถ replay ได้
@@ -163,8 +163,8 @@ Tool-calling มอง AI เป็น function executor JITNA มอง AI เ�
 ### JITNA + SignedAI
 สำหรับงานที่มีความสำคัญสูง JITNA จะ route การดำเนินการผ่านระบบ consensus ของ SignedAI โมเดลหลายตัวประมวลผลงานอย่างเป็นอิสระและต้องบรรลุข้อตกลง (Tier 4: 75% (3/4), Tier 6: 67%, Tier 8: 75%) ก่อนที่ผลลัพธ์จะถูก commit
 
-### JITNA + DelentiaDB
-ทุก JITNA transaction ที่เสร็จสมบูรณ์ถูก commit ไปยัง DelentiaDB — 8-dimensional universal memory schema ซึ่งหมายความว่า:
+### JITNA + RCTDB
+ทุก JITNA transaction ที่เสร็จสมบูรณ์ถูก commit ไปยัง RCTDB — 8-dimensional universal memory schema ซึ่งหมายความว่า:
 - ทุก agent interaction ถูกบันทึกอย่างถาวร
 - transaction ใดก็ตามสามารถ replay ได้จากจุดใดก็ได้
 - Delta Engine บีบอัด stored state ได้ 74%
@@ -244,7 +244,7 @@ JITNA ไม่ใช่ agent framework อีกตัวหนึ่ง ม�
 - **Specification:** RFC-001 v2.0 (52 หน้า)
 - **รูปแบบหลัก:** PROPOSE → COUNTER → ACCEPT/REJECT
 - **ความปลอดภัย:** packet ลงนาม Ed25519, ห่วงโซ่ SHA-256 replay
-- **การผสานรวม:** FDIA gating, SignedAI consensus, DelentiaDB memory, HexaCore routing
+- **การผสานรวม:** FDIA gating, SignedAI consensus, RCTDB memory, HexaCore routing
 - **ปรัชญา:** Agent คือผู้ร่วมงานที่มี agency ไม่ใช่เครื่องมือ passive
 
 ถ้า FDIA รับประกันคุณภาพ และ SignedAI รับประกัน consensus JITNA รับประกันว่า agent ทุกตัวในระบบสามารถสื่อสาร — อย่างชัดเจน ปลอดภัย และรับผิดชอบได้

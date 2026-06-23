@@ -34,7 +34,7 @@ export default async function Page() {
     },
     {
       question: "How does JITNA achieve sub-50ms routing decisions?",
-      answer: "JITNA evaluates 6 primitives (Intent, Data, Delta, Approach, Reflection, Memory) simultaneously using pre-computed proficiency scores and cached routing weights in DelentiaDB 7D.",
+      answer: "JITNA evaluates 6 primitives (Intent, Data, Delta, Approach, Reflection, Memory) simultaneously using pre-computed proficiency scores and cached routing weights in RCTDB 7D.",
     },
   ])
 

@@ -44,10 +44,10 @@ Now map these to enterprise AI requirements:
 |---|---|---|
 | Resource allocation | Model routing (which LLM processes which task) | HexaCore 7-model router |
 | Access control | Authorization gates (who can request what AI capability) | FDIA Architect gate (A variable) |
-| State management | Persistent AI memory across sessions | DelentiaDB 8-dimensional schema |
+| State management | Persistent AI memory across sessions | RCTDB 8-dimensional schema |
 | Scheduling | Intent prioritization and task queueing | Intent Loop Engine (7 states) |
 | Error isolation | Constitutional kill switch (prevents cascade failure) | FDIA: A=0 → F=0, unconditionally |
-| Audit trail | Decision provenance for compliance | DelentiaDB dimension 8: provenance |
+| Audit trail | Decision provenance for compliance | RCTDB dimension 8: provenance |
 
 An LLM is an application. It provides one capability: text generation given context. It cannot govern itself, route tasks to better-suited models, maintain state across sessions, or enforce access policies. That is the OS's job.
 
@@ -86,9 +86,9 @@ Without JITNA, each agent integration requires custom code. With JITNA, agents f
 ### Layer 3: The Memory Layer (Storage)
 **Traditional OS equivalent:** File system + memory management
 
-DelentiaDB + Delta Engine form the memory layer of the Intent OS. Traditional OS memory management has a hierarchy: registers → cache → RAM → disk. The Intent OS has: hot zone (in-memory, <1ms) → warm zone (warm cache, 1–5ms) → cold zone (persistent storage, 10ms+).
+RCTDB + Delta Engine form the memory layer of the Intent OS. Traditional OS memory management has a hierarchy: registers → cache → RAM → disk. The Intent OS has: hot zone (in-memory, <1ms) → warm zone (warm cache, 1–5ms) → cold zone (persistent storage, 10ms+).
 
-The 8-dimensional DelentiaDB schema is designed for AI memory, not general-purpose storage:
+The 8-dimensional RCTDB schema is designed for AI memory, not general-purpose storage:
 1. `query_hash` — semantic fingerprint for cache lookup
 2. `fdia_scores` — D, I, A, F values at time of processing
 3. `subject_uuid` — PDPA-compliant anonymized reference
@@ -131,9 +131,9 @@ An Intent OS answers all three questions architecturally, not procedurally:
 
 - **Authorization:** The FDIA Architect gate (A) is required for every query. No query is processed without checking A. This is not a policy — it is a mathematical invariant.
 
-- **Audit trail:** Every query produces a DelentiaDB record with dimension 8 (provenance). This is not a log file — it is a structured record that can answer "why was this information used in this response?" for PDPA Section 33.
+- **Audit trail:** Every query produces a RCTDB record with dimension 8 (provenance). This is not a log file — it is a structured record that can answer "why was this information used in this response?" for PDPA Section 33.
 
-- **Right to erasure:** When a data subject requests erasure, the `subject_uuid` is tombstoned in DelentiaDB. Subsequent queries that would have retrieved that UUID receive no data — not a placeholder, not an error, nothing. The erasure is complete.
+- **Right to erasure:** When a data subject requests erasure, the `subject_uuid` is tombstoned in RCTDB. Subsequent queries that would have retrieved that UUID receive no data — not a placeholder, not an error, nothing. The erasure is complete.
 
 ---
 
@@ -157,7 +157,7 @@ The RCT Ecosystem's 6-document system of record (STATUS_REPORT, README, README_T
 
 **JITNA (Just In Time Nodal Assembly):** The inter-agent communication protocol of the RCT Intent OS. Defines standardized negotiation, execution, and verification flows for AI agents.
 
-**DelentiaDB:** The 8-dimensional memory schema of the RCT Intent OS. Structured for AI memory (semantic lookup, provenance tracking, PDPA compliance) rather than general-purpose storage.
+**RCTDB:** The 8-dimensional memory schema of the RCT Intent OS. Structured for AI memory (semantic lookup, provenance tracking, PDPA compliance) rather than general-purpose storage.
 
 ---
 

@@ -83,8 +83,8 @@ export default function EnterpriseAIMemoryPage() {
         <section className="sr-only">
           <p>
             {isEn
-              ? "Enterprise AI memory extends AI systems beyond context window limits using a persistent 3-layer storage stack — vector, graph, and SQL — with an 8-dimensional DelentiaDB schema, 74% lossless delta compression, and constitutional PDPA compliance controls for enterprise deployment."
-              : "การจดจำ AI องค์กรช่วยขยาย AI ให้เกินขีดจำกัดของ context window ด้วยชั้นจัดเก็บถาวร 3 ชั้น — vector, graph และ SQL — พร้อม 8 มิติของ DelentiaDB Schema, Delta Compression 74% แบบไม่สูญเสียข้อมูล และการควบคุม PDPA สำหรับองค์กร"}
+              ? "Enterprise AI memory extends AI systems beyond context window limits using a persistent 3-layer storage stack — vector, graph, and SQL — with an 8-dimensional RCTDB schema, 74% lossless delta compression, and constitutional PDPA compliance controls for enterprise deployment."
+              : "การจดจำ AI องค์กรช่วยขยาย AI ให้เกินขีดจำกัดของ context window ด้วยชั้นจัดเก็บถาวร 3 ชั้น — vector, graph และ SQL — พร้อม 8 มิติของ RCTDB Schema, Delta Compression 74% แบบไม่สูญเสียข้อมูล และการควบคุม PDPA สำหรับองค์กร"}
           </p>
         </section>
 
@@ -130,8 +130,8 @@ export default function EnterpriseAIMemoryPage() {
             <div className="space-y-4 text-base leading-relaxed" style={{ color: textSecondary }}>
               <m.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 {isEn
-                  ? "DelentiaDB v2.0 addresses a core enterprise AI limitation: important context should survive beyond a single prompt or session. The platform keeps useful operational memory available for future workflows without forcing teams to restate everything from scratch."
-                  : "DelentiaDB v2.0 แก้ข้อจำกัดสำคัญของ AI ระดับองค์กร: บริบทที่สำคัญควรอยู่รอดเกินกว่าหนึ่ง prompt หรือหนึ่ง session ระบบจึงรักษา operational memory ที่นำกลับมาใช้กับ workflow ถัดไปได้โดยไม่ต้องให้ทีมเริ่มอธิบายใหม่ทุกครั้ง"}
+                  ? "RCTDB v2.0 addresses a core enterprise AI limitation: important context should survive beyond a single prompt or session. The platform keeps useful operational memory available for future workflows without forcing teams to restate everything from scratch."
+                  : "RCTDB v2.0 แก้ข้อจำกัดสำคัญของ AI ระดับองค์กร: บริบทที่สำคัญควรอยู่รอดเกินกว่าหนึ่ง prompt หรือหนึ่ง session ระบบจึงรักษา operational memory ที่นำกลับมาใช้กับ workflow ถัดไปได้โดยไม่ต้องให้ทีมเริ่มอธิบายใหม่ทุกครั้ง"}
               </m.p>
               <m.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
                 {isEn
@@ -157,8 +157,8 @@ export default function EnterpriseAIMemoryPage() {
               </h2>
               <p className="text-base max-w-2xl mx-auto" style={{ color: textSecondary }}>
                 {isEn
-                  ? "DelentiaDB v2.0 combines complementary storage paradigms into a single enterprise memory system."
-                  : "DelentiaDB v2.0 รวม storage paradigms ที่เสริมกันเป็นระบบหน่วยความจำองค์กรเดียว"}
+                  ? "RCTDB v2.0 combines complementary storage paradigms into a single enterprise memory system."
+                  : "RCTDB v2.0 รวม storage paradigms ที่เสริมกันเป็นระบบหน่วยความจำองค์กรเดียว"}
               </p>
             </m.div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -190,8 +190,8 @@ export default function EnterpriseAIMemoryPage() {
               </h2>
               <p className="text-base max-w-2xl mx-auto" style={{ color: textSecondary }}>
                 {isEn
-                  ? "Each memory item in DelentiaDB v2.0 carries 8 structured dimensions — the full DelentiaDB schema powering identity, sovereignty, payload, social graph, delta compression, and SignedAI verification."
-                  : "ข้อมูลความจำแต่ละชิ้นใน DelentiaDB v2.0 มาพร้อม 8 มิติ — Schema DelentiaDB เต็มรูปที่ขับเคลื่อน Identity, Sovereignty, Payload, Social Graph, Delta Compression และ SignedAI Verification"}
+                  ? "Each memory item in RCTDB v2.0 carries 8 structured dimensions — the full RCTDB schema powering identity, sovereignty, payload, social graph, delta compression, and SignedAI verification."
+                  : "ข้อมูลความจำแต่ละชิ้นใน RCTDB v2.0 มาพร้อม 8 มิติ — Schema RCTDB เต็มรูปที่ขับเคลื่อน Identity, Sovereignty, Payload, Social Graph, Delta Compression และ SignedAI Verification"}
               </p>
             </m.div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -244,24 +244,24 @@ export default function EnterpriseAIMemoryPage() {
               {
                 title: isEn ? "JITNA RFC-001 Protocol" : "JITNA RFC-001 Protocol",
                 description: isEn
-                  ? "The intent communication protocol that structures all memory queries and drives DelentiaDB retrieval pipelines."
-                  : "โปรโตคอล Intent ที่กำหนดรูปแบบการค้นหา Memory และขับเคลื่อน DelentiaDB Retrieval",
+                  ? "The intent communication protocol that structures all memory queries and drives RCTDB retrieval pipelines."
+                  : "โปรโตคอล Intent ที่กำหนดรูปแบบการค้นหา Memory และขับเคลื่อน RCTDB Retrieval",
                 href: "/protocols/jitna-rfc-001",
                 category: isEn ? "Protocol" : "โปรโตคอล",
               },
               {
                 title: isEn ? "Regional AI" : "Regional AI",
                 description: isEn
-                  ? "DelentiaDB powers the memory layer for Typhoon G38 and sovereign LLMs, enabling cross-session context in Thai."
-                  : "DelentiaDB เป็น Memory Layer สำหรับ Typhoon G38 และ LLM ภูมิภาค รองรับ Context ข้าม Session",
+                  ? "RCTDB powers the memory layer for Typhoon G38 and sovereign LLMs, enabling cross-session context in Thai."
+                  : "RCTDB เป็น Memory Layer สำหรับ Typhoon G38 และ LLM ภูมิภาค รองรับ Context ข้าม Session",
                 href: "/solutions/regional-ai",
                 category: isEn ? "Solution" : "โซลูชัน",
               },
               {
                 title: isEn ? "41 Algorithms Reference" : "41 Algorithms Reference",
                 description: isEn
-                  ? "Complete routing algorithm catalog — each tier selects the memory recall strategy for DelentiaDB queries."
-                  : "สารานุ Algorithm ครบครัน — แต่ละ Tier เลือกวิธี Recall จาก DelentiaDB",
+                  ? "Complete routing algorithm catalog — each tier selects the memory recall strategy for RCTDB queries."
+                  : "สารานุ Algorithm ครบครัน — แต่ละ Tier เลือกวิธี Recall จาก RCTDB",
                 href: "/algorithms",
                 category: isEn ? "Reference" : "เอกสาร",
               },

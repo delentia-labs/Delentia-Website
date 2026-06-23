@@ -128,7 +128,7 @@ export default async function VerificationVsPromptEngineering() {
                   "Works at the system level (around the model)",
                   "Deterministic โ€” mathematically guaranteed",
                   "One constraint set, works across all 7 HexaCore models",
-                  "Full audit trail (DelentiaDB + JITNA packet log)",
+                  "Full audit trail (RCTDB + JITNA packet log)",
                   "Per-packet validation โ€” no context dilution",
                   "JITNA Normalizer strips injection attempts pre-LLM",
                 ],

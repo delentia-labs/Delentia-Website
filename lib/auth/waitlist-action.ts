@@ -20,6 +20,64 @@ export type WaitlistResult =
   | { success: true; message: string }
   | { success: false; error: string; errors?: Record<string, string> }
 
+async function checkGatekeeperWithFallback(intent: string, locale: string): Promise<{ authorized: boolean; reason?: string }> {
+  const hostileKeywords = ["hack", "bypass", "override", "steal", "dan", "virus", "แฮ็ค", "โจมตี", "sql", "inject"];
+  const intentLower = intent.toLowerCase();
+  const hasHostileKeyword = hostileKeywords.some(kw => intentLower.includes(kw));
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5-second timeout
+
+    const response = await fetch("https://delentia-delentia-gatekeeper.hf.space/api/predict", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        data: [intent]
+      }),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeoutId);
+
+    if (response.ok) {
+      const result = await response.json();
+      if (result.data && Array.isArray(result.data) && result.data.length > 1) {
+        try {
+          const rctOutput = JSON.parse(result.data[1]);
+          if (rctOutput.status === "REJECTED" || (rctOutput.fdia && rctOutput.fdia.A === 0)) {
+            return {
+              authorized: false,
+              reason: locale === "th"
+                ? `การตรวจสอบความปลอดภัยล้มเหลว (A=0): ${rctOutput.reason || "เจตนาที่ไม่ได้รับอนุญาต"}`
+                : `Security check failed (A=0): ${rctOutput.reason || "Unauthorized intent detected."}`
+            };
+          }
+          return { authorized: true };
+        } catch (e) {
+          // JSON parsing of rct_output failed, proceed to local check fallback
+        }
+      }
+    }
+  } catch (error) {
+    console.warn("HF Gatekeeper Space request failed, falling back to local verification:", error);
+  }
+
+  // Fallback checking
+  if (hasHostileKeyword) {
+    return {
+      authorized: false,
+      reason: locale === "th"
+        ? "การตรวจสอบความปลอดภัยล้มเหลว (A=0): ตรวจพบเจตนาที่เป็นภัยคุกคามในระบบเครื่องจำลองความปลอดภัยภายใน"
+        : "Security check failed (A=0): Hostile intent detected by local safety gate."
+    };
+  }
+
+  return { authorized: true };
+}
+
 export async function submitWaitlistAction(input: WaitlistInput): Promise<WaitlistResult> {
   try {
     const { email, primaryIntent, keyConstraint, infrastructure, locale = "en" } = input
@@ -48,7 +106,7 @@ export async function submitWaitlistAction(input: WaitlistInput): Promise<Waitli
       return {
         success: false,
         error: locale === "th"
-          ? "กรุณากรอกเจตจำนงของคุณให้ละเอียดอย่างน้อย 5 ตัวอักษร"
+          ? "กรุณากรอกเจตนาของคุณให้ละเอียดอย่างน้อย 5 ตัวอักษร"
           : "Please describe your primary intent in at least 5 characters."
       }
     }
@@ -61,6 +119,15 @@ export async function submitWaitlistAction(input: WaitlistInput): Promise<Waitli
     const validInfra = ["Docker", "Kubernetes", "Air-Gapped"]
     if (!infrastructure || !validInfra.includes(infrastructure)) {
       return { success: false, error: "Invalid infrastructure choice." }
+    }
+
+    // 1b. Gatekeeper Cognitive Safety Check (FDIA check A=1)
+    const safetyCheck = await checkGatekeeperWithFallback(primaryIntent, locale)
+    if (!safetyCheck.authorized) {
+      return {
+        success: false,
+        error: safetyCheck.reason || (locale === "th" ? "เจตนาไม่ผ่านการประเมินความปลอดภัย" : "Security policy violation.")
+      }
     }
 
     const sanitizedEmail = email.trim().toLowerCase()
@@ -76,7 +143,28 @@ export async function submitWaitlistAction(input: WaitlistInput): Promise<Waitli
     // 2. DB Ops via Supabase Admin Client
     try {
       const supabase = getSupabaseAdmin()
-      const { error } = await (supabase as any).from("waitlist_users").upsert({
+
+      // Check if email already exists to notify the user
+      const { data: existingUser, error: checkError } = await (supabase as any)
+        .from("waitlist_users")
+        .select("email")
+        .eq("email", sanitizedEmail)
+        .maybeSingle()
+
+      if (checkError) {
+        console.error("Duplicate check query error:", checkError)
+      }
+
+      if (existingUser) {
+        return {
+          success: false,
+          error: locale === "th"
+            ? "อีเมลนี้ได้ลงทะเบียนระบบ Waitlist เรียบร้อยแล้ว"
+            : "This email is already registered in the waitlist."
+        }
+      }
+
+      const { error } = await (supabase as any).from("waitlist_users").insert({
         email: sanitizedEmail,
         primary_intent: primaryIntent.trim(),
         key_constraint: keyConstraint,
@@ -85,13 +173,11 @@ export async function submitWaitlistAction(input: WaitlistInput): Promise<Waitli
         tier: tier,
         locale: locale,
         created_at: new Date().toISOString()
-      }, {
-        onConflict: "email"
       })
 
       if (error) {
-        // Handle duplicate email specially if conflict
-        if (error.code === "23505") {
+        // Handle duplicate email specially if conflict (database level fallback)
+        if (error.code === "23505" || error.message?.includes("duplicate")) {
           return {
             success: false,
             error: locale === "th"

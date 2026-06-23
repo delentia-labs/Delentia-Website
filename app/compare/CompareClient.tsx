@@ -34,8 +34,8 @@ export default function CompareClient() {
       icon: FileSearch,
     },
     {
-      slug: "DelentiaDB-vs-vector-databases",
-      title: language === "th" ? "DelentiaDB เทียบกับ Vector Databases" : "DelentiaDB vs Vector Databases",
+      slug: "RCTDB-vs-vector-databases",
+      title: language === "th" ? "RCTDB เทียบกับ Vector Databases" : "RCTDB vs Vector Databases",
       description: language === "th" ? "เทียบ memory model แบบมีโครงสร้างกับ similarity search แบบ embedding สำหรับงาน knowledge management ระดับองค์กร." : "Compare structured memory against embedding-based similarity search for enterprise knowledge management.",
       tags: language === "th" ? ["Memory", "Knowledge", "Embeddings"] : ["Memory", "Knowledge", "Embeddings"],
       icon: Database,

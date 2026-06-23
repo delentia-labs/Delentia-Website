@@ -14,9 +14,9 @@ function getSupabaseUrl(): string {
     ""
   ).trim().replace(/^['"]|['"]$/g, "")
 
-  if (url.endsWith("/")) {
-    url = url.slice(0, -1)
-  }
+  // Strip trailing /rest/v1 and trailing slashes
+  url = url.replace(/\/rest\/v1\/?$/, "")
+  url = url.replace(/\/$/, "")
   return url
 }
 

@@ -59,12 +59,12 @@ const VAULTS = [
     name: "Middleware Vault",
     count: 92,
     en: {
-      desc: "The integration and protocol vault. Contains JITNA RFC-001 specification files, API gateway configurations, DelentiaDB schema definitions, LLM adapter specifications, and system health monitoring baselines.",
-      categories: ["JITNA RFC-001 Spec", "API Gateway Configs", "DelentiaDB Schema Definitions", "LLM Adapter Specs", "System Health Baselines"],
+      desc: "The integration and protocol vault. Contains JITNA RFC-001 specification files, API gateway configurations, RCTDB schema definitions, LLM adapter specifications, and system health monitoring baselines.",
+      categories: ["JITNA RFC-001 Spec", "API Gateway Configs", "RCTDB Schema Definitions", "LLM Adapter Specs", "System Health Baselines"],
     },
     th: {
-      desc: "Vault การรวมระบบและโปรโตคอล มีไฟล์ข้อกำหนด JITNA RFC-001, การตั้งค่า API Gateway, คำนิยาม DelentiaDB Schema, ข้อกำหนด LLM Adapter และ Baselines การตรวจสอบสถานะระบบ",
-      categories: ["JITNA RFC-001 Spec", "API Gateway Configs", "DelentiaDB Schema Definitions", "LLM Adapter Specs", "System Health Baselines"],
+      desc: "Vault การรวมระบบและโปรโตคอล มีไฟล์ข้อกำหนด JITNA RFC-001, การตั้งค่า API Gateway, คำนิยาม RCTDB Schema, ข้อกำหนด LLM Adapter และ Baselines การตรวจสอบสถานะระบบ",
+      categories: ["JITNA RFC-001 Spec", "API Gateway Configs", "RCTDB Schema Definitions", "LLM Adapter Specs", "System Health Baselines"],
     },
     color: "border-emerald-500/30 bg-emerald-500/5",
     accent: "text-emerald-500",

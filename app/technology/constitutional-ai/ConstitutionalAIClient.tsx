@@ -225,7 +225,7 @@ const related = [
   { href: "/technology/jitna", label: "JITNA Protocol" },
   { href: "/technology/rct-7-thinking", label: "RCT-7 Thinking" },
   { href: "/products/signed-ai", label: "SignedAI" },
-  { href: "/solutions/enterprise-ai-memory", label: "Vault (DelentiaDB)" },
+  { href: "/solutions/enterprise-ai-memory", label: "Vault (RCTDB)" },
   { href: "/algorithms", label: "Algorithm Registry" },
 ]
 

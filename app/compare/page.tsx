@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "constitutional AI vs RAG",
       "RCT vs LLM APIs",
       "verification vs prompt engineering",
-      "DelentiaDB vs vector database",
+      "RCTDB vs vector database",
       "AI methodology comparison",
     ]
   )
@@ -39,7 +39,7 @@ export default async function ComparePage() {
       { "@type": "WebPage", "name": "Constitutional AI vs RAG", "url": `${SITE_URL}${localePrefix}/compare/constitutional-ai-vs-rag` },
       { "@type": "WebPage", "name": "Delentia Labs vs LLM APIs", "url": `${SITE_URL}${localePrefix}/compare/delentia-labs-vs-llm-apis` },
       { "@type": "WebPage", "name": "Verification vs Prompt Engineering", "url": `${SITE_URL}${localePrefix}/compare/verification-vs-prompt-engineering` },
-      { "@type": "WebPage", "name": "DelentiaDB vs Vector Databases", "url": `${SITE_URL}${localePrefix}/compare/delentiadb-vs-vector-databases` }
+      { "@type": "WebPage", "name": "RCTDB vs Vector Databases", "url": `${SITE_URL}${localePrefix}/compare/rctdb-vs-vector-databases` }
     ]
   }
 

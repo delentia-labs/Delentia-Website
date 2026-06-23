@@ -94,7 +94,7 @@ export default async function CommunityMembersPage() {
           </article>
           <article className="rounded-xl border border-border bg-card p-5">
             <h2 className="text-base font-semibold text-foreground mb-2">{isEn ? "Research Interest Tags" : "แท็กความสนใจวิจัย"}</h2>
-            <p className="text-sm text-muted-foreground">{isEn ? "Map members by FDIA, JITNA, DelentiaDB, and governance themes." : "จัดกลุ่มสมาชิกตามหัวข้อ FDIA, JITNA, DelentiaDB และ governance"}</p>
+            <p className="text-sm text-muted-foreground">{isEn ? "Map members by FDIA, JITNA, RCTDB, and governance themes." : "จัดกลุ่มสมาชิกตามหัวข้อ FDIA, JITNA, RCTDB และ governance"}</p>
           </article>
           <article className="rounded-xl border border-border bg-card p-5">
             <h2 className="text-base font-semibold text-foreground mb-2">{isEn ? "Collaboration Match" : "การจับคู่ความร่วมมือ"}</h2>

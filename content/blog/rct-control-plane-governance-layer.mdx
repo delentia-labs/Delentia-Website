@@ -63,7 +63,7 @@ Examples of constitutional policies in the RCT Ecosystem:
 
 - **Data sovereignty policy:** Thai PII data can only be processed by models hosted in authorized jurisdictions. The Control Plane enforces this by rejecting JITNA packets that route Thai PII to non-compliant endpoints.
 - **Consensus threshold policy:** Outputs that will be shown to external users must pass Tier 4 consensus (75% agreement from 4 models) before leaving the system.
-- **Audit requirement policy:** All Tier 6+ outputs generate a signed audit record in DelentiaDB before being delivered.
+- **Audit requirement policy:** All Tier 6+ outputs generate a signed audit record in RCTDB before being delivered.
 - **PDPA compliance policy:** Any request involving personal data automatically triggers intent classification for data minimization — the system only permits use of the minimum data necessary for the stated intent.
 
 Policy enforcement is stateless at the request level and stateful at the system level: each request is evaluated independently, but the audit trail accumulates across all requests.
@@ -77,11 +77,11 @@ The Control Plane provides a real-time view of constitutional health across the 
 - **Circuit breaker state:** How many fault isolation circuit breakers are open right now? Which AI components are in degraded mode?
 - **Warm recall ratio:** What fraction of requests are being served from warm recall vs cold LLM calls? A declining warm recall ratio may indicate prompt drift or context decay.
 
-These metrics are stored in DelentiaDB and surfaced through the Control Plane monitoring interface. They provide governance signal that is invisible to any traditional AI observability tool.
+These metrics are stored in RCTDB and surfaced through the Control Plane monitoring interface. They provide governance signal that is invisible to any traditional AI observability tool.
 
 ### 5. Audit Trail (Full Constitutional Accountability)
 
-For every request processed by the Control Plane, the following is recorded in DelentiaDB:
+For every request processed by the Control Plane, the following is recorded in RCTDB:
 
 ```
 {
@@ -100,7 +100,7 @@ For every request processed by the Control Plane, the following is recorded in D
 }
 ```
 
-This record cannot be modified after creation (DelentiaDB append-only constraint). It provides a complete, tamper-resistant audit trail that satisfies enterprise compliance requirements for AI governance documentation.
+This record cannot be modified after creation (RCTDB append-only constraint). It provides a complete, tamper-resistant audit trail that satisfies enterprise compliance requirements for AI governance documentation.
 
 ---
 
@@ -117,7 +117,7 @@ The RCT Ecosystem is organized as a 10-layer architecture. The Control Plane is 
 | **L5** | **SignedAI Consensus** | **Multi-model verification** |
 | **L6** | **Circuit Breaker** | **Fault isolation and fallback** |
 | **L7** | **Delta Engine** | **Warm recall and cost optimization** |
-| **L8** | **DelentiaDB Audit** | **Constitutional audit record** |
+| **L8** | **RCTDB Audit** | **Constitutional audit record** |
 | L9 | Output Assembly | Response formatting |
 | L10 | Delivery | Client response |
 
@@ -187,7 +187,7 @@ The RCT Control Plane answers the question that every enterprise AI deployment m
 
 The answer is not better prompts. It is not more careful model selection. It is a **constitutional governance layer** that enforces policy architecturally, routes intelligently, audits completely, and heals automatically.
 
-Every component in the RCT Ecosystem — FDIA, JITNA, SignedAI, Delta Engine, Circuit Breaker, DelentiaDB — is a component of the Control Plane. Together, they implement the only thing that makes enterprise AI trustworthy at scale: governance that cannot be bypassed, cannot be inconsistent, and cannot be undocumented.
+Every component in the RCT Ecosystem — FDIA, JITNA, SignedAI, Delta Engine, Circuit Breaker, RCTDB — is a component of the Control Plane. Together, they implement the only thing that makes enterprise AI trustworthy at scale: governance that cannot be bypassed, cannot be inconsistent, and cannot be undocumented.
 
 ---
 

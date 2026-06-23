@@ -91,7 +91,7 @@ In the RCT Ecosystem, this takes the form of the FDIA equation `F = (D^I) × A`:
 | Compliance guarantee | ❌ None | ✅ Constitutional gate | ✅ Both layers |
 | Warm recall speed | ❌ Re-retrieves every time | ✅ Delta Engine <50ms | ✅ Cached + constrained |
 
-The **0.3% hallucination rate** of the RCT Ecosystem is achieved by combining both: RAG for factual grounding (via DelentiaDB and Codex Genome) with Constitutional AI (FDIA gating and SignedAI consensus) for reasoning safety and compliance.
+The **0.3% hallucination rate** of the RCT Ecosystem is achieved by combining both: RAG for factual grounding (via RCTDB and Codex Genome) with Constitutional AI (FDIA gating and SignedAI consensus) for reasoning safety and compliance.
 
 ---
 
@@ -122,7 +122,7 @@ The **0.3% hallucination rate** of the RCT Ecosystem is achieved by combining bo
 
 Adding RAG on top of Constitutional AI (the RCT Ecosystem approach):
 
-1. **Knowledge retrieval** via Codex Genome (semantic search in DelentiaDB Warm zone)
+1. **Knowledge retrieval** via Codex Genome (semantic search in RCTDB Warm zone)
 2. **FDIA gating** validates retrieved information quality (D score)
 3. **JITNA assembly** routes to optimal model(s) with retrieved context
 4. **SignedAI consensus** verifies the response before delivery

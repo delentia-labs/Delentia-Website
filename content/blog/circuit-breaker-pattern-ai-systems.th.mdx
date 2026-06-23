@@ -93,7 +93,7 @@ RFC-006 Fault Isolation specification ของ RCT Platform กำหนด fau
 
 **Constitutional quality gates** ทุก component output ต้องผ่าน constitutional quality evaluation ก่อนส่งไปยัง stage ถัดไป หาก quality score ต่ำกว่า constitutional threshold output จะถูกบล็อกและ circuit breaker state สำหรับ component นั้นจะถูกอัปเดต
 
-**Signed failure records** เมื่อ circuit breaker เปิด RCT Platform สร้าง signed failure record ใน DelentiaDB record นี้ประกอบด้วย component identity, failure signal, FDIA scores ณ เวลาที่ล้มเหลว และ timestamp Engineer สามารถ reconstruct ได้ว่าทำไมวงจรถึงเปิดและ quality signal มีลักษณะอย่างไรก่อนเปิด
+**Signed failure records** เมื่อ circuit breaker เปิด RCT Platform สร้าง signed failure record ใน RCTDB record นี้ประกอบด้วย component identity, failure signal, FDIA scores ณ เวลาที่ล้มเหลว และ timestamp Engineer สามารถ reconstruct ได้ว่าทำไมวงจรถึงเปิดและ quality signal มีลักษณะอย่างไรก่อนเปิด
 
 **Automatic fallback routing** เมื่อวงจรของ primary provider เปิด JITNA protocol's routing layer จะเลือก provider ที่มีสิทธิ์ถัดไปโดยอัตโนมัติจาก HexaCore registry ที่มี quality signal ปัจจุบันสูงสุดสำหรับ intent type ปัจจุบัน นี่คือ circuit breaker + intelligent routing ในกลไกเดียว
 

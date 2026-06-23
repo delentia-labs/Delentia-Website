@@ -6,7 +6,7 @@ reviewerId: "rct-research-desk"
 date: "2026-05-17"
 lastReviewed: "2026-05-12"
 category: "engineering"
-excerpt: "Blueprint สถาปัตยกรรมสำหรับการนำ FDIA, SignedAI และ Delta Engine ของ delentia-os ไปใช้กับ Institutional Trading บทความนี้ Map IntentLoop 7 สถานะเข้ากับ Trading Pipeline แบบสมบูรณ์ — ตั้งแต่การรับข้อมูลผ่านการกรองความเสี่ยงหลายโมเดลและการ Log ผลลัพธ์การเทรดลง DelentiaDB"
+excerpt: "Blueprint สถาปัตยกรรมสำหรับการนำ FDIA, SignedAI และ Delta Engine ของ delentia-os ไปใช้กับ Institutional Trading บทความนี้ Map IntentLoop 7 สถานะเข้ากับ Trading Pipeline แบบสมบูรณ์ — ตั้งแต่การรับข้อมูลผ่านการกรองความเสี่ยงหลายโมเดลและการ Log ผลลัพธ์การเทรดลง RCTDB"
 tags: ["Algorithmic Trading", "AI Trading", "FDIA", "SignedAI", "Delta Engine", "HexaCore", "Intent Loop", "Fintech AI", "delentia-os"]
 readTime: 14
 references:
@@ -44,7 +44,7 @@ MEMORY_CHECK → Memory Delta Engine (Warm Recall)
 VALIDATED    → FDIA Scorer (Constitutional Validation)
 COMPUTING    → Multi-model Analysis (LLM Ensemble)
 VERIFYING    → SignedAI Risk Gatekeeper
-COMMITTING   → DelentiaDB Trade Outcome Logging
+COMMITTING   → RCTDB Trade Outcome Logging
 (ADAPT)      → G7 Performance Feedback
 ```
 
@@ -112,9 +112,9 @@ Output การวิเคราะห์หลายโมเดลไม่�
 
 **Cryptographic Signature มีความสำคัญ** หากการเทรดสร้างการขาดทุนและองค์กรต้องการ Audit การตัดสินใจ — สำหรับ Compliance, Risk Management, Regulatory Review — Signed Consensus Output ให้บันทึกที่เปลี่ยนแปลงไม่ได้: โมเดลใดประเมินการเทรด แต่ละโมเดลสรุปอย่างไร Consensus ถึงหรือไม่ Timestamp ใด และ FDIA Score เป็นเท่าไรเมื่อตัดสินใจ
 
-### Stage 6: COMMITTING — DelentiaDB Trade Outcome Logging
+### Stage 6: COMMITTING — RCTDB Trade Outcome Logging
 
-หลัง Consensus ถึงหรือการเทรดถูกบล็อก ผลลัพธ์ถูก Log ลง DelentiaDB เป็น Loop Intent Memory:
+หลัง Consensus ถึงหรือการเทรดถูกบล็อก ผลลัพธ์ถูก Log ลง RCTDB เป็น Loop Intent Memory:
 
 ```python
 outcome = {
@@ -187,7 +187,7 @@ def compute_position_size(f_score, kelly_fraction, available_capital):
 1. **FDIA Decision Trace** — สำหรับทุกการตัดสินใจเทรด: D Score, I Classification, A Status, F Score ที่ได้, Constitutional Rule ที่ใช้
 2. **SignedAI Consensus Record** — Multi-model Agreement ที่ Ed25519-signed, Timestamped พร้อม Identity ของโมเดล
 3. **Delta Engine Recall Log** — การตัดสินใจก่อนหน้าใดที่แจ้งข้อมูล Warm Recall
-4. **DelentiaDB Outcome Log** — Post-trade Performance, Loop Duration, G7 Adaptation Signals
+4. **RCTDB Outcome Log** — Post-trade Performance, Loop Duration, G7 Adaptation Signals
 
 Artifacts เหล่านี้รวมกันตอบคำถามด้านกฎระเบียบ: "ในวันที่ X ระบบของคุณตัดสินใจลด Semiconductor Exposure 6% แสดงให้เราเห็นว่าการตัดสินใจนั้นเกิดขึ้นอย่างไร" คำตอบไม่ใช่ "AI แนะนำ" — แต่เป็น Decision Trace ที่ Reproduce ได้และ Verify ทางคณิตศาสตร์
 

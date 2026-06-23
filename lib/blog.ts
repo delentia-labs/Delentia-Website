@@ -250,7 +250,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
       evidenceNote: "Eval set: RCT internal synthetic + production edge cases; external audit pending", verifiedAt: "2026-04-15",
     },
   ],
-  // ── MEMORY / DelentiaDB CLUSTER ──────────────────────────────────────────────────
+  // ── MEMORY / RCTDB CLUSTER ──────────────────────────────────────────────────
   "delta-engine-74-percent-compression": [
     {
       value: "74%", label: "Lossless compression rate",
@@ -876,7 +876,7 @@ const BLOG_RELATED_MAP: Record<string, [string, string, string]> = {
     "hexacore-7-model-ai-infrastructure",
   ],
 
-  // ── Memory / DelentiaDB ───────────────────────────────────────────────────────────
+  // ── Memory / RCTDB ───────────────────────────────────────────────────────────
   "delta-engine-74-percent-compression": [
     "rctdb-8-dimensional-memory-schema",
     "enterprise-ai-memory-systems-explained",
@@ -1050,8 +1050,8 @@ export function getPostReviewDate(post: BlogPost) {
 }
 
 export function getPostJourney(post: BlogPost) {
-  // Memory cluster: delentiadb | delta (before generic memory check)
-  if (post.slug.includes("delentiadb") || post.slug.includes("delta")) {
+  // Memory cluster: rctdb | delta (before generic memory check)
+  if (post.slug.includes("rctdb") || post.slug.includes("delta")) {
     return {
       solutionHref: "/solutions/enterprise-ai-memory",
       solutionLabel: "Explore Enterprise AI Memory",

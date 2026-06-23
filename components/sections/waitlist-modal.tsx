@@ -41,7 +41,7 @@ export function WaitlistModal({ isOpen, onClose, locale }: WaitlistModalProps) {
         ? "rct@delentia-kernel:~$ ./request_access.sh"
         : "rct@delentia-kernel:~$ ./request_access.sh",
       isTh
-        ? "[SYSTEM] เริ่มต้นระบบคัดกรองเจตจำนงระดับชั้น Kernel..."
+        ? "[SYSTEM] เริ่มต้นระบบคัดกรองเจตนาระดับชั้น Kernel..."
         : "[SYSTEM] Initializing Kernel Intent Validation sequence...",
       isTh
         ? "[SYSTEM] สมการควบคุมหลัก: F = D^I * A (Human-in-the-Loop)"
@@ -152,7 +152,7 @@ export function WaitlistModal({ isOpen, onClose, locale }: WaitlistModalProps) {
     if (intent.trim().length < 5) {
       setErrorMsg(
         isTh 
-          ? "กรุณากรอกเจตจำนงให้ละเอียดกว่านี้อย่างน้อย 5 ตัวอักษร" 
+          ? "กรุณากรอกเจตนาให้ละเอียดกว่านี้อย่างน้อย 5 ตัวอักษร" 
           : "Intent must be at least 5 characters long."
       )
       return
@@ -389,20 +389,15 @@ export function WaitlistModal({ isOpen, onClose, locale }: WaitlistModalProps) {
               </div>
               <p className="text-zinc-400 leading-relaxed text-[11px]">
                 {isTh 
-                  ? "ระบบได้เข้ารหัสโปรไฟล์และเจตจำนงของคุณเข้าสู่บัญชี Kernel เรียบร้อย ทีมสถาปนิกจะตรวจสอบ Use-case และส่งรหัสผ่านสิทธิ์ให้ทางอีเมลองค์กรของคุณ"
+                  ? "ระบบได้เข้ารหัสโปรไฟล์และเจตนาของคุณเข้าสู่บัญชี Kernel เรียบร้อย ทีมสถาปนิกจะตรวจสอบ Use-case และส่งรหัสผ่านสิทธิ์ให้ทางอีเมลองค์กรของคุณ"
                   : "Your corporate credentials and intent vectors have been locked into the registry. The Architect will review and deliver access coordinates via your corporate email."}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-2 pt-1">
-                <a
-                  href={isTh ? "/th/assets/whitepaper-th.pdf" : "/en/assets/whitepaper.pdf"}
-                  className="flex items-center justify-center gap-1.5 rounded bg-emerald-500 hover:bg-emerald-600 text-black font-bold py-2 px-4 text-xs transition"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <div className="flex items-center justify-center gap-1.5 rounded border border-zinc-800 bg-zinc-950 text-zinc-500 py-2 px-4 text-xs select-none">
                   <FileText size={14} />
-                  {isTh ? "ดาวน์โหลด Whitepaper" : "Download Whitepaper"}
-                </a>
+                  {isTh ? "เอกสารอยู่ระหว่างปรับปรุงใหม่ (Under Review)" : "Whitepaper Under Review"}
+                </div>
                 <a
                   href="https://huggingface.co/spaces/Delentia/delentia-trace-ecosystem"
                   className="flex items-center justify-center gap-1.5 rounded border border-zinc-700 bg-zinc-900 text-zinc-300 hover:bg-zinc-800 py-2 px-4 text-xs transition"

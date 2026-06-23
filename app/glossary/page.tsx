@@ -30,8 +30,8 @@ const glossaryTerms = [
     entityHref: "/en/entity/governance-layer",
   },
   {
-    term: "DelentiaDB",
-    termTh: "DelentiaDB (ฐานข้อมูลหน่วยความจำ AI)",
+    term: "RCTDB",
+    termTh: "RCTDB (ฐานข้อมูลหน่วยความจำ AI)",
     definition: "Universal memory schema with 8 dimensions: query_hash, fdia_scores, subject_uuid, model_chain, consensus_result, delta_chain, timestamp, provenance. Enables PDPA-compliant right to erasure via UUID tombstone pattern.",
     definitionTh: "Schema หน่วยความจำ AI ที่ครอบคลุม 8 มิติ: query_hash, fdia_scores, subject_uuid, model_chain, consensus_result, delta_chain, timestamp, provenance รองรับ right to erasure ตาม PDPA",
     entityHref: "/en/entity/memory-architecture",
@@ -102,8 +102,8 @@ const glossaryTerms = [
   {
     term: "Intent Operating System",
     termTh: "Intent Operating System (ระบบปฏิบัติการ Intent)",
-    definition: "An AI orchestration layer that functions like an operating system — managing resource allocation (model routing), access control (FDIA gate), state management (DelentiaDB), and audit trails (provenance). The RCT Ecosystem is an Intent OS.",
-    definitionTh: "ชั้น orchestration ของ AI ที่ทำหน้าที่เหมือน OS — จัดการ resource allocation, access control (FDIA), state management (DelentiaDB), และ audit trails",
+    definition: "An AI orchestration layer that functions like an operating system — managing resource allocation (model routing), access control (FDIA gate), state management (RCTDB), and audit trails (provenance). The RCT Ecosystem is an Intent OS.",
+    definitionTh: "ชั้น orchestration ของ AI ที่ทำหน้าที่เหมือน OS — จัดการ resource allocation, access control (FDIA), state management (RCTDB), และ audit trails",
   },
   // ─── AI Architecture Concepts ──────────────────────────────────
   {
@@ -148,22 +148,22 @@ const glossaryTerms = [
   {
     term: "Intent Farming",
     termTh: "Intent Farming (การเพาะปลูกเจตนา)",
-    definition: "The systematic practice of accumulating, organizing, and enriching AI context over time across sessions. Rather than starting cold with every interaction, Intent Farming stores user goals, constraints, domain preferences, and conversation history in DelentiaDB and recalls them via the Delta Engine warm recall mechanism (under 50ms). A well-farmed context reduces LLM cost by up to 3× and improves response relevance by building on established understanding rather than re-deriving it each time.",
-    definitionTh: "การสะสม จัดระเบียบ และเพิ่มคุณค่า AI context อย่างเป็นระบบข้ามหลาย sessions แทนที่จะเริ่มต้น cold ทุกครั้ง Intent Farming เก็บเป้าหมาย ข้อจำกัด domain preferences และ conversation history ใน DelentiaDB และเรียกคืนผ่าน Delta Engine warm recall ในเวลาต่ำกว่า 50ms ลด LLM cost ได้ถึง 3 เท่าและเพิ่ม relevance โดยใช้ความเข้าใจที่สะสมแล้วแทนการ derive ใหม่",
+    definition: "The systematic practice of accumulating, organizing, and enriching AI context over time across sessions. Rather than starting cold with every interaction, Intent Farming stores user goals, constraints, domain preferences, and conversation history in RCTDB and recalls them via the Delta Engine warm recall mechanism (under 50ms). A well-farmed context reduces LLM cost by up to 3× and improves response relevance by building on established understanding rather than re-deriving it each time.",
+    definitionTh: "การสะสม จัดระเบียบ และเพิ่มคุณค่า AI context อย่างเป็นระบบข้ามหลาย sessions แทนที่จะเริ่มต้น cold ทุกครั้ง Intent Farming เก็บเป้าหมาย ข้อจำกัด domain preferences และ conversation history ใน RCTDB และเรียกคืนผ่าน Delta Engine warm recall ในเวลาต่ำกว่า 50ms ลด LLM cost ได้ถึง 3 เท่าและเพิ่ม relevance โดยใช้ความเข้าใจที่สะสมแล้วแทนการ derive ใหม่",
     entityHref: "/en/blog/intent-farming-grow-ai-context",
   },
   {
     term: "Intent Signal",
     termTh: "Intent Signal (สัญญาณเจตนา)",
-    definition: "Any observable indicator of a user's underlying goal, preference, or constraint that can be captured and stored to improve future AI interactions. Intent Signals include explicit statements ('I need a PDPA-compliant response'), implicit patterns (frequently queried topics), and behavioral cues (which answers the user expands or dismisses). These signals are the raw material of Intent Farming and the fuel for DelentiaDB's 8-dimensional memory schema.",
+    definition: "Any observable indicator of a user's underlying goal, preference, or constraint that can be captured and stored to improve future AI interactions. Intent Signals include explicit statements ('I need a PDPA-compliant response'), implicit patterns (frequently queried topics), and behavioral cues (which answers the user expands or dismisses). These signals are the raw material of Intent Farming and the fuel for RCTDB's 8-dimensional memory schema.",
     definitionTh: "ตัวบ่งชี้ที่สังเกตได้ของเป้าหมาย preferences หรือข้อจำกัดพื้นฐานของผู้ใช้ที่สามารถจับและเก็บไว้เพื่อปรับปรุง AI interactions ในอนาคต ได้แก่ คำชัดเจน ('ต้องการคำตอบที่ PDPA compliant'), รูปแบบ implicit (หัวข้อที่ query บ่อย) และ behavioral cues เหล่านี้คือวัตถุดิบของ Intent Farming",
     entityHref: "/en/blog/intent-farming-grow-ai-context",
   },
   {
     term: "Genome System",
     termTh: "Genome System (ระบบ 7 Genome)",
-    definition: "The biological metaphor describing how the RCT Ecosystem's seven core modules (G1–G7) form a closed, circular architecture. Each genome expresses from a shared foundational blueprint (G1), meaning all modules operate on the same data primitives (FDIA score, intent vector, DelentiaDB memory state). The circular loop — G1 Architect → G2 Codex → G3 JITNA → G4 ARTENT → G5 SignedAI → G6 Vault → G7 RCT-7 → back to G1 — means performance signals from each completed operation feed back to improve the system's future routing, algorithm selection, and domain understanding continuously.",
-    definitionTh: "Metaphor ทางชีวภาพที่อธิบายวิธีที่ 7 Module หลักของ RCT Ecosystem (G1–G7) ก่อตัวเป็น Architecture แบบวงกลมปิด แต่ละ Genome แสดงออกจาก Blueprint พื้นฐานร่วมกัน (G1) หมายความว่า Module ทั้งหมดทำงานบน Data Primitives เดียวกัน (FDIA Score, Intent Vector, DelentiaDB Memory State) Loop แบบวงกลม — G1 → G2 → G3 → G4 → G5 → G6 → G7 → กลับ G1 — หมายความว่าสัญญาณ Performance จากการดำเนินงานแต่ละครั้งป้อนกลับเพื่อปรับปรุง Routing, การเลือก Algorithm และความเข้าใจ Domain ในอนาคตอย่างต่อเนื่อง",
+    definition: "The biological metaphor describing how the RCT Ecosystem's seven core modules (G1–G7) form a closed, circular architecture. Each genome expresses from a shared foundational blueprint (G1), meaning all modules operate on the same data primitives (FDIA score, intent vector, RCTDB memory state). The circular loop — G1 Architect → G2 Codex → G3 JITNA → G4 ARTENT → G5 SignedAI → G6 Vault → G7 RCT-7 → back to G1 — means performance signals from each completed operation feed back to improve the system's future routing, algorithm selection, and domain understanding continuously.",
+    definitionTh: "Metaphor ทางชีวภาพที่อธิบายวิธีที่ 7 Module หลักของ RCT Ecosystem (G1–G7) ก่อตัวเป็น Architecture แบบวงกลมปิด แต่ละ Genome แสดงออกจาก Blueprint พื้นฐานร่วมกัน (G1) หมายความว่า Module ทั้งหมดทำงานบน Data Primitives เดียวกัน (FDIA Score, Intent Vector, RCTDB Memory State) Loop แบบวงกลม — G1 → G2 → G3 → G4 → G5 → G6 → G7 → กลับ G1 — หมายความว่าสัญญาณ Performance จากการดำเนินงานแต่ละครั้งป้อนกลับเพื่อปรับปรุง Routing, การเลือก Algorithm และความเข้าใจ Domain ในอนาคตอย่างต่อเนื่อง",
     entityHref: "/en/blog/rct-7-genome-system",
   },
   {
@@ -232,8 +232,8 @@ const glossaryTerms = [
   {
     term: "UUID Tombstone Pattern",
     termTh: "UUID Tombstone Pattern (รูปแบบ tombstone สำหรับ UUID)",
-    definition: "A PDPA-compliant data erasure method where a subject's uuid is marked as 'tombstoned' rather than physically deleted, ensuring no data is retrievable while maintaining referential integrity. Used in DelentiaDB for right-to-erasure requests.",
-    definitionTh: "วิธีลบข้อมูลแบบ PDPA compliant ที่ mark UUID ว่า tombstoned แทนการลบจริง ทำให้ไม่สามารถ retrieve ข้อมูลได้ แต่ยังคง referential integrity ใช้ใน DelentiaDB",
+    definition: "A PDPA-compliant data erasure method where a subject's uuid is marked as 'tombstoned' rather than physically deleted, ensuring no data is retrievable while maintaining referential integrity. Used in RCTDB for right-to-erasure requests.",
+    definitionTh: "วิธีลบข้อมูลแบบ PDPA compliant ที่ mark UUID ว่า tombstoned แทนการลบจริง ทำให้ไม่สามารถ retrieve ข้อมูลได้ แต่ยังคง referential integrity ใช้ใน RCTDB",
     entityHref: "/en/entity/memory-architecture",
   },
   {
@@ -245,8 +245,8 @@ const glossaryTerms = [
   {
     term: "Hot Zone",
     termTh: "Hot Zone (โซนร้อน — หน่วยความจำเร็ว)",
-    definition: "The fastest-access tier of the DelentiaDB memory hierarchy. Keeps most-frequently-accessed semantic cache entries in-memory for under 1ms access. Capacity-limited; entries migrate to warm and cold zones based on access frequency.",
-    definitionTh: "ชั้นเข้าถึงเร็วที่สุดในลำดับชั้นหน่วยความจำ DelentiaDB เก็บ semantic cache ที่ใช้บ่อยไว้ใน memory เข้าถึงได้ในเวลาต่ำกว่า 1ms",
+    definition: "The fastest-access tier of the RCTDB memory hierarchy. Keeps most-frequently-accessed semantic cache entries in-memory for under 1ms access. Capacity-limited; entries migrate to warm and cold zones based on access frequency.",
+    definitionTh: "ชั้นเข้าถึงเร็วที่สุดในลำดับชั้นหน่วยความจำ RCTDB เก็บ semantic cache ที่ใช้บ่อยไว้ใน memory เข้าถึงได้ในเวลาต่ำกว่า 1ms",
     entityHref: "/en/entity/memory-architecture",
   },
   // ─── Testing & Quality Concepts ────────────────────────────────
@@ -285,21 +285,21 @@ const glossaryTerms = [
   {
     term: "PDPA Section 33",
     termTh: "PDPA มาตรา 33 (สิทธิ์ขอคำอธิบาย)",
-    definition: "Thailand's Personal Data Protection Act Section 33 grants data subjects the right to request an explanation of automated decisions made about them. RCT's DelentiaDB provenance trail (dimension 8) automatically satisfies this requirement.",
-    definitionTh: "มาตรา 33 ของ PDPA ไทย ให้สิทธิ์เจ้าของข้อมูลขอคำอธิบายสำหรับการตัดสินใจอัตโนมัติ DelentiaDB dimension 8 (provenance) ตอบสนองข้อกำหนดนี้โดยอัตโนมัติ",
+    definition: "Thailand's Personal Data Protection Act Section 33 grants data subjects the right to request an explanation of automated decisions made about them. RCT's RCTDB provenance trail (dimension 8) automatically satisfies this requirement.",
+    definitionTh: "มาตรา 33 ของ PDPA ไทย ให้สิทธิ์เจ้าของข้อมูลขอคำอธิบายสำหรับการตัดสินใจอัตโนมัติ RCTDB dimension 8 (provenance) ตอบสนองข้อกำหนดนี้โดยอัตโนมัติ",
   },
   {
     term: "PDPA Right to Erasure",
     termTh: "PDPA สิทธิ์ลบข้อมูล",
-    definition: "The right of data subjects under PDPA (and GDPR) to request permanent deletion of their personal data. In DelentiaDB, this is implemented via the UUID tombstone pattern — marking subject data as erased without breaking referential integrity.",
-    definitionTh: "สิทธิ์ของเจ้าของข้อมูลตาม PDPA (และ GDPR) ในการขอลบข้อมูลส่วนบุคคลถาวร ใน DelentiaDB ใช้ UUID tombstone pattern ที่ mark ข้อมูลว่าถูกลบโดยไม่ทำลาย referential integrity",
+    definition: "The right of data subjects under PDPA (and GDPR) to request permanent deletion of their personal data. In RCTDB, this is implemented via the UUID tombstone pattern — marking subject data as erased without breaking referential integrity.",
+    definitionTh: "สิทธิ์ของเจ้าของข้อมูลตาม PDPA (และ GDPR) ในการขอลบข้อมูลส่วนบุคคลถาวร ใน RCTDB ใช้ UUID tombstone pattern ที่ mark ข้อมูลว่าถูกลบโดยไม่ทำลาย referential integrity",
     entityHref: "/en/entity/memory-architecture",
   },
   {
     term: "Audit Trail",
     termTh: "Audit Trail (เส้นทางการตรวจสอบ)",
-    definition: "A chronological record of all AI decisions, with sufficient detail to reconstruct what happened, when, and why. DelentiaDB's 8-dimensional schema automatically generates audit trails for every RCT Ecosystem query.",
-    definitionTh: "บันทึกลำดับเวลาของการตัดสินใจ AI ทั้งหมด พร้อมรายละเอียดเพียงพอสำหรับ reconstruct ว่าเกิดอะไร เมื่อไร และทำไม DelentiaDB ทำสิ่งนี้โดยอัตโนมัติ",
+    definition: "A chronological record of all AI decisions, with sufficient detail to reconstruct what happened, when, and why. RCTDB's 8-dimensional schema automatically generates audit trails for every RCT Ecosystem query.",
+    definitionTh: "บันทึกลำดับเวลาของการตัดสินใจ AI ทั้งหมด พร้อมรายละเอียดเพียงพอสำหรับ reconstruct ว่าเกิดอะไร เมื่อไร และทำไม RCTDB ทำสิ่งนี้โดยอัตโนมัติ",
     entityHref: "/en/entity/memory-architecture",
   },
   // ─── SEO & Authority Concepts ──────────────────────────────────
@@ -375,8 +375,8 @@ const glossaryTerms = [
   {
     term: "RCT-KnowledgeVault Genome",
     termTh: "RCT-KnowledgeVault Genome (จีโนมสถาปัตยกรรมหน่วยความจำ)",
-    definition: "Memory architecture — the persistent storage genome of the RCT 7-Genome System. Manages the DelentiaDB schema, Delta Engine compression, and the hot/warm/cold zone memory hierarchy.",
-    definitionTh: "สถาปัตยกรรมหน่วยความจำ — genome จัดเก็บข้อมูลถาวรของระบบ 7 Genome ของ RCT จัดการ DelentiaDB schema, Delta Engine compression และลำดับชั้นหน่วยความจำ",
+    definition: "Memory architecture — the persistent storage genome of the RCT 7-Genome System. Manages the RCTDB schema, Delta Engine compression, and the hot/warm/cold zone memory hierarchy.",
+    definitionTh: "สถาปัตยกรรมหน่วยความจำ — genome จัดเก็บข้อมูลถาวรของระบบ 7 Genome ของ RCT จัดการ RCTDB schema, Delta Engine compression และลำดับชั้นหน่วยความจำ",
     entityHref: "/en/entity/memory-architecture",
   },
   {

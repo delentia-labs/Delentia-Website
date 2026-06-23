@@ -236,8 +236,8 @@ export default function JITNAPage() {
             </h3>
             <p className="text-sm text-muted-foreground">
               {language === "th"
-                ? "หน้า Philosophy นี้อธิบายหลักการเชิงแนวคิดของ JITNA หน้า Technology อธิบาย 6 Primitives (I, D, Δ, A, R, M), routing logic, proficiency scoring และ DelentiaDB integration"
-                : "This Philosophy page covers JITNA's conceptual principles. The Technology page covers the 6 Primitives (I, D, Δ, A, R, M), routing logic, proficiency scoring, and DelentiaDB integration."}
+                ? "หน้า Philosophy นี้อธิบายหลักการเชิงแนวคิดของ JITNA หน้า Technology อธิบาย 6 Primitives (I, D, Δ, A, R, M), routing logic, proficiency scoring และ RCTDB integration"
+                : "This Philosophy page covers JITNA's conceptual principles. The Technology page covers the 6 Primitives (I, D, Δ, A, R, M), routing logic, proficiency scoring, and RCTDB integration."}
             </p>
           </div>
           <Link

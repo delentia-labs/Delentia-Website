@@ -116,8 +116,8 @@ const PIPELINE = [
     badge: "SignedAI",
     titleEn: "Verify & Sign",
     titleTh: "ยืนยัน & เซ็น",
-    descEn: "ED25519 cryptographic signature + DelentiaDB audit trail.",
-    descTh: "ลายเซ็น ED25519 และ audit trail ใน DelentiaDB",
+    descEn: "ED25519 cryptographic signature + RCTDB audit trail.",
+    descTh: "ลายเซ็น ED25519 และ audit trail ใน RCTDB",
     href: "/products/signed-ai",
   },
   {

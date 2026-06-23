@@ -36,7 +36,7 @@ const faqSchemaData = [
   },
   {
     question: "What is Intent Farming and how does it reduce AI costs over time?",
-    answer: "Intent Farming is the systematic practice of accumulating and enriching AI context over time, converting one-shot queries into progressively smarter sessions. Instead of starting cold each session, the DelentiaDB memory layer preserves intent history across 8 dimensions. The Delta Engine compresses this context by 74%, enabling warm recall in under 50ms. Over time, the percentage of queries served from warm cache increases — reducing LLM calls, cutting costs, and improving response quality through compounding context. The RCT Platform's warm recall rate improves by approximately 3–5% per week of operation.",
+    answer: "Intent Farming is the systematic practice of accumulating and enriching AI context over time, converting one-shot queries into progressively smarter sessions. Instead of starting cold each session, the RCTDB memory layer preserves intent history across 8 dimensions. The Delta Engine compresses this context by 74%, enabling warm recall in under 50ms. Over time, the percentage of queries served from warm cache increases — reducing LLM calls, cutting costs, and improving response quality through compounding context. The RCT Platform's warm recall rate improves by approximately 3–5% per week of operation.",
   },
 ]
 

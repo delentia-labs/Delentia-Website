@@ -63,7 +63,7 @@ Problems:
 
 ### With JITNA (RCT Ecosystem)
 ```
-User Query → FDIA Validation → Agent Assembly (JITNA) → Negotiation → Execution → SignedAI Verification → DelentiaDB Commit → Output
+User Query → FDIA Validation → Agent Assembly (JITNA) → Negotiation → Execution → SignedAI Verification → RCTDB Commit → Output
 ```
 
 Every step is structured, signed, and replayable.
@@ -163,8 +163,8 @@ Every JITNA packet's `intent` field is evaluated by the FDIA gatekeeper. If the 
 ### JITNA + SignedAI
 For high-criticality tasks, JITNA routes execution through the SignedAI consensus system. Multiple models independently process the task and must reach agreement (Tier 4: 75% (3/4), Tier 6: 67%, Tier 8: 75%) before the result is committed.
 
-### JITNA + DelentiaDB
-Every completed JITNA transaction is committed to DelentiaDB — the 8-dimensional universal memory schema. This means:
+### JITNA + RCTDB
+Every completed JITNA transaction is committed to RCTDB — the 8-dimensional universal memory schema. This means:
 - Every agent interaction is permanently recorded
 - Any transaction can be replayed from any point
 - The Delta Engine compresses stored state by 74%
@@ -244,7 +244,7 @@ Key takeaways:
 - **Specification:** RFC-001 v2.0 (52 pages)
 - **Core pattern:** PROPOSE → COUNTER → ACCEPT/REJECT
 - **Security:** Ed25519 signed packets, SHA-256 replay chain
-- **Integration:** FDIA gating, SignedAI consensus, DelentiaDB memory, HexaCore routing
+- **Integration:** FDIA gating, SignedAI consensus, RCTDB memory, HexaCore routing
 - **Philosophy:** Agents are collaborators with agency, not passive tools
 
 If FDIA ensures quality, and SignedAI ensures consensus, then JITNA ensures that every agent in the system can communicate — clearly, securely, and accountably.

@@ -373,8 +373,8 @@ export default function HallucinationPreventionPage() {
               {
                 title: isEn ? "Enterprise AI Memory" : "Enterprise AI Memory",
                 description: isEn
-                  ? "DelentiaDB persistent memory layer for long-running enterprise AI workloads."
-                  : "ชั้น Memory ถาวร DelentiaDB สำหรับงาน AI ระดับองค์กรระยะยาว",
+                  ? "RCTDB persistent memory layer for long-running enterprise AI workloads."
+                  : "ชั้น Memory ถาวร RCTDB สำหรับงาน AI ระดับองค์กรระยะยาว",
                 href: "/solutions/enterprise-ai-memory",
                 category: isEn ? "Solution" : "โซลูชัน",
               },

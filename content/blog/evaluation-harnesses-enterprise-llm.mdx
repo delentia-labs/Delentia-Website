@@ -51,7 +51,7 @@ def test_fdia_architect_gate_zero():
 ### Level 2: Integration Tests (Service Contracts)
 **Scope:** How two or more components interact  
 **Count:** ~800 tests  
-**What they verify:** JITNA handshakes, DelentiaDB write-read cycles, HexaCore routing logic
+**What they verify:** JITNA handshakes, RCTDB write-read cycles, HexaCore routing logic
 
 ```python
 def test_jitna_propose_accept_cycle():
@@ -106,7 +106,7 @@ def test_jitna_normalizer_strips_injection():
 ### Level 7: Chaos Tests (Resilience Contracts)
 **Scope:** System behavior under failure conditions  
 **Count:** ~200 tests  
-**Scenarios:** Model provider outage, network partition, DelentiaDB hot zone full, SignedAI consensus deadlock  
+**Scenarios:** Model provider outage, network partition, RCTDB hot zone full, SignedAI consensus deadlock  
 **Key property:** Every chaos scenario must have a defined graceful degradation path — no undefined behavior allowed
 
 ### Level 8: Property-Based Tests (Mathematical Invariants)
@@ -141,14 +141,14 @@ A common mistake: teams add tests after finding bugs. This creates a harness tha
 The RCT evaluation harness is designed around **four principles that determine architecture, not just count:**
 
 ### Principle 1: Mathematical Invariants First
-Every core system has mathematical invariants that must hold unconditionally. For FDIA: the Architect gate invariant. For SignedAI: the consensus threshold invariant. For DelentiaDB: the PDPA erasure invariant. These are implemented as property-based tests (Level 8) using Hypothesis — not as hand-written examples.
+Every core system has mathematical invariants that must hold unconditionally. For FDIA: the Architect gate invariant. For SignedAI: the consensus threshold invariant. For RCTDB: the PDPA erasure invariant. These are implemented as property-based tests (Level 8) using Hypothesis — not as hand-written examples.
 
 Property-based testing generates thousands of test cases automatically. You write the property, the framework finds the edge cases.
 
 ### Principle 2: Contract Tests at Every Service Boundary
 Each of the 62 microservices in the RCT Ecosystem has a defined contract — what it accepts, what it returns, what errors it raises. Contract tests verify that each service satisfies its contract regardless of implementation changes.
 
-Without contract tests, a change to the DelentiaDB query format breaks the Delta Engine silently. With contract tests, the CI pipeline rejects the change at the boundary.
+Without contract tests, a change to the RCTDB query format breaks the Delta Engine silently. With contract tests, the CI pipeline rejects the change at the boundary.
 
 ### Principle 3: Chaos Before Production
 Level 7 chaos tests run a predefined set of failure scenarios in isolated environments before every production deployment. The scenarios are derived from the system's threat model — not from past incidents.
@@ -204,7 +204,7 @@ A: Level 4 contract tests verify that each HexaCore model satisfies the output s
 
 **Q: How do you handle PDPA compliance testing?**
 
-A: Level 6 security tests include dedicated PDPA compliance tests: (1) write a record → (2) request erasure → (3) verify UUID tombstone → (4) verify no retrievable data. This runs on every commit that touches DelentiaDB.
+A: Level 6 security tests include dedicated PDPA compliance tests: (1) write a record → (2) request erasure → (3) verify UUID tombstone → (4) verify no retrievable data. This runs on every commit that touches RCTDB.
 
 ---
 

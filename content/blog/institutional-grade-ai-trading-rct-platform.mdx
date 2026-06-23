@@ -6,7 +6,7 @@ reviewerId: "rct-research-desk"
 date: "2026-05-17"
 lastReviewed: "2026-05-12"
 category: "engineering"
-excerpt: "An architectural blueprint for applying delentia-os's FDIA, SignedAI, and Delta Engine to institutional trading. This article maps the 7-state IntentLoop to a complete news-driven trading pipeline — from data ingestion through multi-model risk gating and DelentiaDB trade outcome logging."
+excerpt: "An architectural blueprint for applying delentia-os's FDIA, SignedAI, and Delta Engine to institutional trading. This article maps the 7-state IntentLoop to a complete news-driven trading pipeline — from data ingestion through multi-model risk gating and RCTDB trade outcome logging."
 tags: ["Algorithmic Trading", "AI Trading", "FDIA", "SignedAI", "Delta Engine", "HexaCore", "Intent Loop", "Fintech AI", "delentia-os"]
 readTime: 14
 references:
@@ -46,7 +46,7 @@ MEMORY_CHECK → Memory Delta Engine (warm recall)
 VALIDATED    → FDIA Scorer (constitutional validation)
 COMPUTING    → Multi-model Analysis (LLM ensemble)
 VERIFYING    → SignedAI Risk Gatekeeper
-COMMITTING   → DelentiaDB Trade Outcome Logging
+COMMITTING   → RCTDB Trade Outcome Logging
 (ADAPT)      → G7 Performance Feedback
 ```
 
@@ -163,12 +163,12 @@ For a high-risk signal (TIER_6, 67% consensus required), six models independentl
 
 **The cryptographic signature matters.** If a trade produces a loss and the organization needs to audit the decision — for compliance, for risk management, for regulatory review — the signed consensus output provides an immutable record: exactly which models evaluated the trade, what each model concluded, whether consensus was reached, at what timestamp, and what the FDIA score was at the time of decision. This is not a log that someone can edit retroactively. It is a signed attestation.
 
-### Stage 6: COMMITTING — DelentiaDB Trade Outcome Logging
+### Stage 6: COMMITTING — RCTDB Trade Outcome Logging
 
-After consensus is reached (or the trade is blocked), the outcome is logged to DelentiaDB as a Loop Intent Memory:
+After consensus is reached (or the trade is blocked), the outcome is logged to RCTDB as a Loop Intent Memory:
 
 ```python
-# Logged in DelentiaDB for G7 ADAPT cycle
+# Logged in RCTDB for G7 ADAPT cycle
 outcome = {
     "loop_id": signal.timestamp,
     "fdia_score": result.f_score,
@@ -264,7 +264,7 @@ For institutional deployments subject to regulatory oversight (MiFID II, SEC, SE
 1. **FDIA decision trace** — for every trade decision: D score, I classification, A status, resulting F score, constitutional rule applied
 2. **SignedAI consensus record** — Ed25519-signed multi-model agreement, timestamped, with model identities
 3. **Delta Engine recall log** — which prior decisions informed warm recall, at what compression ratio
-4. **DelentiaDB outcome log** — post-trade performance, loop duration, G7 adaptation signals
+4. **RCTDB outcome log** — post-trade performance, loop duration, G7 adaptation signals
 
 These artifacts together answer the regulatory question: "On date X, your system made a decision to reduce semiconductor exposure by 6%. Show us exactly how that decision was made." The answer is not "the AI recommended it" — it is a reproducible, mathematically-verified decision trace.
 

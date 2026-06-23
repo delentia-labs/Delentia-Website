@@ -174,7 +174,7 @@ Operators should monitor three Studio-specific metrics:
 The Specialist Studio does not operate in isolation — it connects to the full RCT ecosystem:
 
 - **[Circuit Breaker Pattern](/en/blog/circuit-breaker-pattern-ai-systems)** — Provides fault isolation at the Studio boundary. If a Studio's primary model provider degrades, the Circuit Breaker opens and routes to fallback providers without service interruption.
-- **[Intent Farming](/en/blog/intent-farming-grow-ai-context)** — The Studio's DelentiaDB persistence builds domain-specific intent profiles over time, reducing cold-start costs with each session.
+- **[Intent Farming](/en/blog/intent-farming-grow-ai-context)** — The Studio's RCTDB persistence builds domain-specific intent profiles over time, reducing cold-start costs with each session.
 - **[RCT Control Plane](/en/blog/rct-control-plane-governance-layer)** — Governs Studio lifecycle, enforces organizational policy across multiple Studio instances, and provides the audit trail required for regulatory compliance.
 - **[Evaluation Harnesses](/en/blog/evaluation-harnesses-enterprise-llm)** — Domain-specific test suites validate Studio configuration before production deployment.
 

@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const LLM_API_FAQS = [
   {
     question: "What is the difference between Delentia Labs and a bare LLM API?",
-    answer: "A bare LLM API (OpenAI, Claude, Gemini) gives you raw model access with no governance, no persistent memory, and no compliance guarantees. You are responsible for all safety, audit, and PDPA compliance yourself. Delentia Labs is a constitutional AI operating system that adds the FDIA framework (deterministic safety), DelentiaDB (PDPA-compliant persistent memory), JITNA Protocol (agent orchestration), and HexaCore routing (cost optimization) on top of any LLM.",
+    answer: "A bare LLM API (OpenAI, Claude, Gemini) gives you raw model access with no governance, no persistent memory, and no compliance guarantees. You are responsible for all safety, audit, and PDPA compliance yourself. Delentia Labs is a constitutional AI operating system that adds the FDIA framework (deterministic safety), RCTDB (PDPA-compliant persistent memory), JITNA Protocol (agent orchestration), and HexaCore routing (cost optimization) on top of any LLM.",
   },
   {
     question: "Does Delentia Labs replace the LLM API or sit on top of it?",
@@ -32,7 +32,7 @@ const LLM_API_FAQS = [
   },
   {
     question: "How does Delentia Labs achieve PDPA compliance that bare LLM APIs cannot?",
-    answer: "Bare LLM APIs are stateless โ€” they process a request and forget it. PDPA compliance requires persistence: the ability to prove what data was used, when, and why (Section 33), and the ability to permanently delete a person's data on request (Section 34). DelentiaDB stores every query as an 8-dimensional record with full provenance. When a data subject requests erasure, their subject_uuid is tombstoned โ€” ensuring no retrievable data remains.",
+    answer: "Bare LLM APIs are stateless โ€” they process a request and forget it. PDPA compliance requires persistence: the ability to prove what data was used, when, and why (Section 33), and the ability to permanently delete a person's data on request (Section 34). RCTDB stores every query as an 8-dimensional record with full provenance. When a data subject requests erasure, their subject_uuid is tombstoned โ€” ensuring no retrievable data remains.",
   },
   {
     question: "What is the 3.74x cost reduction from HexaCore routing?",
@@ -71,7 +71,7 @@ const useCases = [
     scenario: "Enterprise regulated AI (PDPA, finance, healthcare)",
     llm: "โ",
     rct: "โ…",
-    reason: "Requires audit trail, right to erasure, and Section 33 explainability โ€” all provided by RCT's DelentiaDB + JITNA.",
+    reason: "Requires audit trail, right to erasure, and Section 33 explainability โ€” all provided by RCT's RCTDB + JITNA.",
   },
   {
     scenario: "Quick prototyping / developer experiments",
@@ -95,7 +95,7 @@ const useCases = [
     scenario: "Research / academic use",
     llm: "โ…",
     rct: "โ…",
-    reason: "Both work. RCT adds reproducibility via signed, verifiable outputs (SignedAI + DelentiaDB).",
+    reason: "Both work. RCT adds reproducibility via signed, verifiable outputs (SignedAI + RCTDB).",
   },
 ]
 
@@ -166,7 +166,7 @@ export default async function RCTvsLLMAPIs() {
                 titleColor: "text-warm-amber",
                 points: [
                   "7 HexaCore models, intelligently routed",
-                  "DelentiaDB: 8-dimensional persistent memory across sessions",
+                  "RCTDB: 8-dimensional persistent memory across sessions",
                   "FDIA kill switch: A=0 โ’ output=0, always",
                   "Full audit trail: every decision cryptographically logged",
                   "PDPA compliance: UUID tombstone right-to-erasure",
@@ -202,7 +202,7 @@ export default async function RCTvsLLMAPIs() {
               <div>
                 <p className="font-bold text-foreground mb-1">The Hidden Cost of Bare API Access</p>
                 <p className="text-warm-dim text-sm leading-relaxed">
-                  A bare LLM API charges you premium rates for every token โ€” even tokens that retrieve information you already paid for last week. RCT&apos;s Delta Engine + DelentiaDB warm recall ({"<"}50ms) means repeated queries are served from memory, not from an LLM API call. Over a typical enterprise workload, this produces a <strong className="text-warm-amber">3.74x cost reduction</strong> vs always calling Claude Opus directly.
+                  A bare LLM API charges you premium rates for every token โ€” even tokens that retrieve information you already paid for last week. RCT&apos;s Delta Engine + RCTDB warm recall ({"<"}50ms) means repeated queries are served from memory, not from an LLM API call. Over a typical enterprise workload, this produces a <strong className="text-warm-amber">3.74x cost reduction</strong> vs always calling Claude Opus directly.
                 </p>
               </div>
             </div>
@@ -276,7 +276,7 @@ export default async function RCTvsLLMAPIs() {
           <div className="rounded-2xl border border-warm-amber/20 bg-warm-amber/5 p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h2 className="text-xl font-bold text-foreground mb-2">Explore the Architecture</h2>
-              <p className="text-warm-dim">Read how FDIA, JITNA, and DelentiaDB work together to provide constitutional AI guarantees</p>
+              <p className="text-warm-dim">Read how FDIA, JITNA, and RCTDB work together to provide constitutional AI guarantees</p>
             </div>
             <div className="flex gap-3 shrink-0">
               <Link

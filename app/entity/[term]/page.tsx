@@ -38,7 +38,7 @@ const entities: Record<string, {
     type: "Open Communication Standard",
     definition: "Just In Time Nodal Assembly — an open agent-to-agent communication protocol (RFC-001 v2.0) that defines how AI agents discover, negotiate tasks, execute work, and verify results.",
     description: "JITNA (Just In Time Nodal Assembly) is the protocol layer of the Delentia OS — sometimes described as 'the HTTP of Agentic AI.' It defines a standardized packet format (JITNAPacket) with Ed25519 cryptographic signatures, a negotiation flow (PROPOSE → COUNTER → ACCEPT/REJECT), and a SHA-256 checkpoint replay chain. Unlike tool-calling APIs that treat AI as passive executors, JITNA treats agents as autonomous collaborators who can negotiate and refuse tasks. Defined in RFC-001 v2.0, a 52-page open specification.",
-    relatedTerms: ["FDIA Equation", "SignedAI", "DelentiaDB", "HexaCore Consensus", "RFC-001 v2.0"],
+    relatedTerms: ["FDIA Equation", "SignedAI", "RCTDB", "HexaCore Consensus", "RFC-001 v2.0"],
     relatedArticles: [
       { title: "JITNA — Just In Time Nodal Assembly", href: "/en/blog/jitna-language-release" },
       { title: "SignedAI Multi-LLM Consensus", href: "/en/blog/signedai-multi-llm-consensus-explained" },
@@ -50,7 +50,7 @@ const entities: Record<string, {
     type: "Constitutional AI Operating System",
     definition: "The world's first intent-centric Constitutional AI Operating System — featuring a 10-layer model, a microservice runtime snapshot, and absolute governance validation.",
     description: "Delentia OS is the core platform governing AI intent execution, persistent memory routing, and cryptographic verification loops. It replaces simple prompt workflows with structured operational layers, mapping every model query to verified data paths, consensus checks, and human authorization bounds. Designed by Ittirit Saengow to bring high predictability and trust to enterprise AI architectures.",
-    relatedTerms: ["FDIA Equation", "JITNA Protocol", "SignedAI", "DelentiaDB", "HexaCore Consensus"],
+    relatedTerms: ["FDIA Equation", "JITNA Protocol", "SignedAI", "RCTDB", "HexaCore Consensus"],
     relatedArticles: [
       { title: "About Delentia Labs", href: "/en/about" },
       { title: "JITNA Protocol Specifications", href: "/en/technology/jitna" },
@@ -71,13 +71,13 @@ const entities: Record<string, {
     sourceUrl: "https://delentia.com/en/models",
   },
   "delentia-db": {
-    name: "DelentiaDB",
+    name: "RCTDB",
     type: "8-Dimensional Memory Database",
     definition: "An 8-dimensional persistent context and memory database designed specifically to route and recall AI agent intent histories.",
-    description: "DelentiaDB stores and indexes agent execution histories across 8 dimensions (including timestamp, intent classification, JITNA signature, and provenance). By utilizing the Delta Engine to only write incremental state changes (deltas), it reduces average storage overhead by 74% and enables warm context recall in under 50 milliseconds.",
+    description: "RCTDB stores and indexes agent execution histories across 8 dimensions (including timestamp, intent classification, JITNA signature, and provenance). By utilizing the Delta Engine to only write incremental state changes (deltas), it reduces average storage overhead by 74% and enables warm context recall in under 50 milliseconds.",
     relatedTerms: ["Memory Architecture", "Delta Engine", "Delentia OS", "JITNA Protocol"],
     relatedArticles: [
-      { title: "DelentiaDB 8-Dimensional Memory Schema", href: "/en/blog/rctdb-8-dimensional-memory-schema" },
+      { title: "RCTDB 8-Dimensional Memory Schema", href: "/en/blog/rctdb-8-dimensional-memory-schema" },
       { title: "Delta Engine 74% Compression", href: "/en/blog/delta-engine-74-percent-compression" },
     ],
     sourceUrl: "https://delentia.com/en/blog/rctdb-8-dimensional-memory-schema",
@@ -97,9 +97,9 @@ const entities: Record<string, {
   "rct-kernel": {
     name: "RCT Kernel",
     type: "AI Operating System Core",
-    definition: "The central orchestration module of the Delentia OS Ecosystem — coordinates the FDIA gating, JITNA protocol, HexaCore routing, SignedAI consensus, and DelentiaDB memory across the broader runtime service graph.",
+    definition: "The central orchestration module of the Delentia OS Ecosystem — coordinates the FDIA gating, JITNA protocol, HexaCore routing, SignedAI consensus, and RCTDB memory across the broader runtime service graph.",
     description: "The RCT Kernel is the core runtime of the Delentia OS Ecosystem. It implements the 7-State Intent Loop Pipeline (RECEIVED → VALIDATED → MEMORY_CHECK → COMPUTING → VERIFYING → COMMITTING → COMPLETED) and coordinates all subsystems. Built on constitutional constraints — every component of the kernel has defined invariants that cannot be violated. Implemented in Python (`core/kernel/fdia.py`) with 41 algorithms across Tier 1–9 complexity levels.",
-    relatedTerms: ["FDIA Equation", "Intent Loop Engine", "Delta Engine", "DelentiaDB", "HexaCore Consensus"],
+    relatedTerms: ["FDIA Equation", "Intent Loop Engine", "Delta Engine", "RCTDB", "HexaCore Consensus"],
     relatedArticles: [
       { title: "The RCT-7 Process Explained", href: "/en/blog/rct-7-process-explained" },
       { title: "Enterprise Snapshot Testing Methodology", href: "/en/blog/rct-ecosystem-4849-tests-methodology" },
@@ -123,8 +123,8 @@ const entities: Record<string, {
     name: "Governance Layer",
     type: "Constitutional AI Component",
     definition: "The set of constitutional constraints, authorization policies, and audit trail systems that collectively ensure every AI output in the Delentia OS Ecosystem is authorized, traceable, and compliant.",
-    description: "The Governance Layer of the Delentia OS Ecosystem encompasses: the FDIA Architect gate (A variable), SignedAI consensus tiers (S/4/6/8), DelentiaDB provenance tracking (dimension 8: provenance), JITNA jurisdiction zone enforcement, and the PDPA-compliant right-to-erasure mechanism (UUID tombstone pattern). Together, these components ensure that every AI action in the system has a documented lawful basis, a verifiable authorization chain, and a complete audit trail. The Governance Layer is what converts Delentia OS from a capable AI platform into a constitutionally compliant enterprise infrastructure.",
-    relatedTerms: ["FDIA Equation", "SignedAI", "DelentiaDB", "PDPA Compliance", "Architect Gate"],
+    description: "The Governance Layer of the Delentia OS Ecosystem encompasses: the FDIA Architect gate (A variable), SignedAI consensus tiers (S/4/6/8), RCTDB provenance tracking (dimension 8: provenance), JITNA jurisdiction zone enforcement, and the PDPA-compliant right-to-erasure mechanism (UUID tombstone pattern). Together, these components ensure that every AI action in the system has a documented lawful basis, a verifiable authorization chain, and a complete audit trail. The Governance Layer is what converts Delentia OS from a capable AI platform into a constitutionally compliant enterprise infrastructure.",
+    relatedTerms: ["FDIA Equation", "SignedAI", "RCTDB", "PDPA Compliance", "Architect Gate"],
     relatedArticles: [
       { title: "PDPA AI Compliance Thailand", href: "/en/blog/pdpa-ai-compliance-thailand" },
       { title: "Benchmark Summary", href: "/en/benchmark-summary" },
@@ -135,11 +135,11 @@ const entities: Record<string, {
   "memory-architecture": {
     name: "Memory Architecture",
     type: "AI Infrastructure Component",
-    definition: "The three-tier persistent memory system of the Delentia OS Ecosystem — comprising DelentiaDB (8-dimensional schema), the Delta Engine (74% compression via delta-only storage), and a Hot/Warm/Cold zone structure enabling sub-50ms warm recall.",
-    description: "Delentia OS's memory architecture is composed of three interconnected systems: (1) DelentiaDB v2.0 — an 8-dimensional universal schema that stores every AI decision with full provenance; (2) the Delta Engine — which compresses stored state by 74% by storing only incremental changes (deltas) rather than full state snapshots; and (3) the three-zone storage system (Hot: <1ms, Warm: 1–5ms, Cold: 10ms+) that intelligently places records based on access frequency. This architecture enables warm recall in <50ms for repeated queries, reducing AI inference cost to near-zero for stable patterns over time.",
-    relatedTerms: ["DelentiaDB", "Delta Engine", "JITNA Protocol", "FDIA Equation"],
+    definition: "The three-tier persistent memory system of the Delentia OS Ecosystem — comprising RCTDB (8-dimensional schema), the Delta Engine (74% compression via delta-only storage), and a Hot/Warm/Cold zone structure enabling sub-50ms warm recall.",
+    description: "Delentia OS's memory architecture is composed of three interconnected systems: (1) RCTDB v2.0 — an 8-dimensional universal schema that stores every AI decision with full provenance; (2) the Delta Engine — which compresses stored state by 74% by storing only incremental changes (deltas) rather than full state snapshots; and (3) the three-zone storage system (Hot: <1ms, Warm: 1–5ms, Cold: 10ms+) that intelligently places records based on access frequency. This architecture enables warm recall in <50ms for repeated queries, reducing AI inference cost to near-zero for stable patterns over time.",
+    relatedTerms: ["RCTDB", "Delta Engine", "JITNA Protocol", "FDIA Equation"],
     relatedArticles: [
-      { title: "DelentiaDB 8-Dimensional Memory Schema", href: "/en/blog/rctdb-8-dimensional-memory-schema" },
+      { title: "RCTDB 8-Dimensional Memory Schema", href: "/en/blog/rctdb-8-dimensional-memory-schema" },
       { title: "Delta Engine 74% Compression", href: "/en/blog/delta-engine-74-percent-compression" },
     ],
     sourceUrl: "https://delentia.com/en/blog/rctdb-8-dimensional-memory-schema",

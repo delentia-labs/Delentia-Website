@@ -40,7 +40,7 @@ $$dG/dt = \alpha \cdot \Delta(M, \Pi, R(t))$$
 - **dG/dt** — อัตราวิวัฒนาการของความฉลาด (G-level เพิ่มขึ้นเร็วแค่ไหนต่อขั้นตอน)
 - **α** — adaptive learning rate (ปรับระหว่าง 0.01 ถึง 0.1 ตามคุณภาพของ feedback)
 - **Δ** — ฟังก์ชันการประกอบ meta-algorithm (รวม memory, metacognition และ feedback เข้าด้วยกัน)
-- **M** — memory จาก DelentiaDB (รูปแบบที่ประสบความสำเร็จจากรอบ inference ก่อนหน้า)
+- **M** — memory จาก RCTDB (รูปแบบที่ประสบความสำเร็จจากรอบ inference ก่อนหน้า)
 - **Π** — metacognition (self-model ของระบบ: รู้ว่าตัวเองรู้อะไร และไม่รู้อะไร)
 - **R(t)** — สัญญาณ feedback ณ เวลา t (คะแนนคุณภาพ, สัญญาณความล้มเหลว, การละเมิดรัฐธรรมนูญ)
 
@@ -65,9 +65,9 @@ MEE นำเสนอ G-level เป็นตัวแทนที่วัด�
 
 MEE ไม่ทำงานโดดเดี่ยว แต่ดึงจาก 3 จุดเชื่อมต่อที่เป็นส่วนหนึ่งของ RCT Ecosystem อยู่แล้ว:
 
-### 1. DelentiaDB (Memory)
+### 1. RCTDB (Memory)
 
-MEE อ่าน [8-dimensional memory schema ใน DelentiaDB](/solutions/enterprise-ai-memory) เพื่อระบุว่ารูปแบบใดนำไปสู่ผลลัพธ์ที่ดี แทนที่จะประมวลผลข้อมูล training ดิบซ้ำ ระบบใช้ compressed delta store — อ่านเฉพาะส่วนที่เปลี่ยนแปลง ไม่ใช่ประวัติทั้งหมด ทำให้รอบวิวัฒนาการทำงานเร็วแม้ memory จะเติบโตขึ้น
+MEE อ่าน [8-dimensional memory schema ใน RCTDB](/solutions/enterprise-ai-memory) เพื่อระบุว่ารูปแบบใดนำไปสู่ผลลัพธ์ที่ดี แทนที่จะประมวลผลข้อมูล training ดิบซ้ำ ระบบใช้ compressed delta store — อ่านเฉพาะส่วนที่เปลี่ยนแปลง ไม่ใช่ประวัติทั้งหมด ทำให้รอบวิวัฒนาการทำงานเร็วแม้ memory จะเติบโตขึ้น
 
 ### 2. Delta Engine (การบีบอัด)
 
@@ -85,7 +85,7 @@ Self-Evolving orchestrator ทริกเกอร์รอบ MEE evolution �
 2. **Composition request** — ฟังก์ชัน Δ ของ MEE ประกอบ algorithm ผู้สมัครจาก primitive ที่มีอยู่
 3. **Constitutional gate** — ผู้สมัครถูกประเมินกับ [FDIA equation](/protocols/fdia-equation) ก่อนเปิดใช้งาน
 4. **Signing** — หากผ่าน algorithm ใหม่จะได้รับลายเซ็น Ed25519 และเข้าสู่รายชื่อที่ active
-5. **Memory update** — เหตุการณ์ spawn ถูกบันทึกใน DelentiaDB เป็น episodic entry ใหม่
+5. **Memory update** — เหตุการณ์ spawn ถูกบันทึกใน RCTDB เป็น episodic entry ใหม่
 
 วงรอบ spawning นี้หมายความว่า MEE ไม่ใช่แค่ adaptive แต่เป็น generative ด้วย พื้นที่ algorithm ขยายตัวโดยไม่ต้องแทรกแซงด้วยมือ ขณะที่ทุก addition ใหม่ยังอยู่ภายใน constitutional bounds
 
@@ -106,7 +106,7 @@ MEE v2 (ALGO-07) เสร็จสิ้นการ integrate เต็มร�
 
 ความน่าเชื่อถือของ AI องค์กรมักวัด ณ จุดเวลาหนึ่ง: โมเดลทำงานได้ดีบน test set ปัจจุบันหรือเปล่า MEE เปลี่ยนกรอบเป็นคำถามเชิงเส้นทาง: ประสิทธิภาพของระบบดีขึ้น คงที่ หรือเสื่อมลงตลอดช่วงชีวิตการ deploy?
 
-เมื่อ MEE ทำงาน คำตอบถูกกำกับดูแล ประสิทธิภาพวิวัฒนาการบน constitutional track — α รับประกันว่าวิวัฒนาการไม่ aggressive และไม่ passive เกินไป, DelentiaDB รับประกันว่าวิวัฒนาการสร้างจากผลลัพธ์จริง และ FDIA equation รับประกันว่าไม่มี algorithm ใหม่ถูกเปิดใช้งานโดยไม่ผ่าน quality gate
+เมื่อ MEE ทำงาน คำตอบถูกกำกับดูแล ประสิทธิภาพวิวัฒนาการบน constitutional track — α รับประกันว่าวิวัฒนาการไม่ aggressive และไม่ passive เกินไป, RCTDB รับประกันว่าวิวัฒนาการสร้างจากผลลัพธ์จริง และ FDIA equation รับประกันว่าไม่มี algorithm ใหม่ถูกเปิดใช้งานโดยไม่ผ่าน quality gate
 
 ผลลัพธ์คือระบบ AI ที่ความน่าเชื่อถือไม่ใช่สมบัติที่ต้องปกป้อง แต่เป็นเส้นทางที่สามารถบังคับทิศทางได้
 

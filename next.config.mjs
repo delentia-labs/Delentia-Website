@@ -166,7 +166,7 @@ const nextConfig = {
       // Compare page redirects
       {
         source: "/compare/rctdb-vs-vector-databases",
-        destination: "/compare/delentiadb-vs-vector-databases",
+        destination: "/compare/rctdb-vs-vector-databases",
         permanent: true,
       },
       {

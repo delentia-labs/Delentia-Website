@@ -78,7 +78,7 @@ export default async function EditorialPolicyPage() {
                 <strong className="text-foreground">All Delentia Labs articles are written by authors with direct, first-hand experience</strong> in the topics they cover. This is not a guest blog platform.
               </p>
               <p>
-                <strong className="text-foreground">Ittirit Saengow</strong> (อิทธิฤทธิ์ แซ่โง้ว) authors all core concept articles — FDIA, JITNA, RCT-7, HexaCore, Delta Engine, DelentiaDB, SignedAI — because these concepts were created by him. Every technical claim is derived from the implementation, not secondary research.
+                <strong className="text-foreground">Ittirit Saengow</strong> (อิทธิฤทธิ์ แซ่โง้ว) authors all core concept articles — FDIA, JITNA, RCT-7, HexaCore, Delta Engine, RCTDB, SignedAI — because these concepts were created by him. Every technical claim is derived from the implementation, not secondary research.
               </p>
               <p className="border-l-2 border-warm-amber/40 pl-4">
                 Articles previously attributed to fictional author names (Dr. Alex Patel, Dr. Sarah Chen, Prof. James Wilson) were corrected on 2026-03-28 and reassigned to the verified author.

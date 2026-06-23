@@ -1,5 +1,5 @@
 ---
-title: "DelentiaDB v2.0: The 8-Dimensional Universal Memory Schema for AI Systems"
+title: "RCTDB v2.0: The 8-Dimensional Universal Memory Schema for AI Systems"
 author: "Ittirit Saengow"
 authorId: "ittirit-saengow"
 reviewerId: "rct-research-desk"
@@ -9,8 +9,8 @@ claimScope: "enterprise-methodology"
 evidenceLane: "Research / benchmark scope"
 lastEvidenceReview: "2026-05-21"
 category: "research"
-excerpt: "DelentiaDB is the universal memory architecture of the RCT Ecosystem — an 8-dimensional schema designed for structured AI memory, full provenance tracking, and PDPA-compliant right-to-erasure. This article explains the schema, three storage zones, and why traditional vector databases fall short for enterprise AI."
-tags: ["DelentiaDB", "Memory Architecture", "AI Infrastructure", "Vector Database", "PDPA", "Delentia Labs"]
+excerpt: "RCTDB is the universal memory architecture of the RCT Ecosystem — an 8-dimensional schema designed for structured AI memory, full provenance tracking, and PDPA-compliant right-to-erasure. This article explains the schema, three storage zones, and why traditional vector databases fall short for enterprise AI."
+tags: ["RCTDB", "Memory Architecture", "AI Infrastructure", "Vector Database", "PDPA", "Delentia Labs"]
 readTime: 9
 references:
   - "https://www.pinecone.io/"
@@ -23,7 +23,7 @@ references:
   - "https://arxiv.org/abs/2301.07608"
 ---
 
-# DelentiaDB v2.0: The 8-Dimensional Universal Memory Schema for AI Systems
+# RCTDB v2.0: The 8-Dimensional Universal Memory Schema for AI Systems
 
 Memory is the unsolved problem of enterprise AI.
 
@@ -34,7 +34,7 @@ Most AI deployments treat memory as an afterthought — a vector database that s
 3. **Cache verified responses** for fast recall without re-generation
 4. **Track provenance** of every piece of information used in any output
 
-**DelentiaDB v2.0** is the RCT Ecosystem's answer to this problem — a universal memory schema designed specifically for constitutional AI systems.
+**RCTDB v2.0** is the RCT Ecosystem's answer to this problem — a universal memory schema designed specifically for constitutional AI systems.
 
 ---
 
@@ -42,7 +42,7 @@ Most AI deployments treat memory as an afterthought — a vector database that s
 
 Vector databases (Pinecone, Weaviate, Qdrant) are excellent for semantic search. They store embeddings and enable "find documents semantically similar to this query." They are not designed for:
 
-| Requirement | Vector Database | DelentiaDB |
+| Requirement | Vector Database | RCTDB |
 |---|---|---|
 | **Full provenance tracking** | No — stores embeddings, not reasoning chains | Yes — 8 dimensions capture full context |
 | **PDPA right to erasure** | Difficult — cannot easily isolate one person's data | Yes — UUID-linked records with tombstone support |
@@ -51,7 +51,7 @@ Vector databases (Pinecone, Weaviate, Qdrant) are excellent for semantic search.
 | **Constitutional constraints** | No | Yes — FDIA scores stored with every record |
 | **Multi-jurisdictional control** | No | Yes — provenance dimension tracks jurisdiction |
 
-DelentiaDB is not a replacement for vector databases — it is the layer *above* them. DelentiaDB manages structured record keeping, provenance, and compliance. The native embedding search functions as one dimension within the broader 8-dimensional schema.
+RCTDB is not a replacement for vector databases — it is the layer *above* them. RCTDB manages structured record keeping, provenance, and compliance. The native embedding search functions as one dimension within the broader 8-dimensional schema.
 
 ---
 
@@ -71,7 +71,7 @@ The hash is not of the raw text — it is of the semantic embedding vector. This
 **Type:** JSON object containing D, I, A, F values (0.0–1.0 each)  
 **Purpose:** Records the quality gate state at time of storage
 
-Every DelentiaDB record stores the FDIA scores at the time the record was created. This enables:
+Every RCTDB record stores the FDIA scores at the time the record was created. This enables:
 - Filtering records by minimum quality threshold before use in RAG
 - Auditing why the system produced a specific output (what were D, I, A at that moment)
 - Detecting when data quality has degraded over time (the D score of a stored record can be compared to current D score for the same data source)
@@ -83,7 +83,7 @@ Every DelentiaDB record stores the FDIA scores at the time the record was create
 
 All personal data flowing through the RCT Ecosystem is linked to a `subject_uuid` — an internal identifier for the data subject. When a data subject invokes their right to erasure under PDPA Section 33:
 
-1. All DelentiaDB records with the corresponding `subject_uuid` are retrieved
+1. All RCTDB records with the corresponding `subject_uuid` are retrieved
 2. A `tombstone_timestamp` is set on each record
 3. Future read operations respect the tombstone — the data is effectively erased for all access purposes
 4. The tombstone record itself is retained for the legally required audit trail period
@@ -136,7 +136,7 @@ Full state reconstruction: traverse the delta chain from oldest to newest, apply
 **Type:** ISO 8601 with timezone and precision to millisecond  
 **Purpose:** Temporal ordering, TTL enforcement, retention policy management
 
-Every DelentiaDB record has a timestamp that enables:
+Every RCTDB record has a timestamp that enables:
 - Ordering of delta chain reconstruction
 - TTL enforcement (records older than policy lifetime are migrated to cold storage)
 - Time-range queries for compliance reporting
@@ -190,9 +190,9 @@ Records automatically migrate between zones based on access frequency and age. T
 
 ---
 
-## DelentiaDB vs Traditional Vector Databases
+## RCTDB vs Traditional Vector Databases
 
-| Feature | Pinecone | Weaviate | DelentiaDB v2.0 |
+| Feature | Pinecone | Weaviate | RCTDB v2.0 |
 |---|---|---|---|
 | Semantic search | ✅ | ✅ | ✅ (via embedding in query_hash) |
 | Full provenance | ❌ | ❌ | ✅ |
@@ -207,7 +207,7 @@ Records automatically migrate between zones based on access frequency and age. T
 
 ## Summary
 
-DelentiaDB v2.0 closes the gap between what AI systems need and what traditional databases provide:
+RCTDB v2.0 closes the gap between what AI systems need and what traditional databases provide:
 
 - **8 dimensions:** query_hash, fdia_scores, subject_uuid, model_chain, consensus_result, delta_chain, timestamp, provenance
 - **3 storage zones:** Hot (<1ms), Warm (1–5ms), Cold (10ms+)
@@ -215,17 +215,17 @@ DelentiaDB v2.0 closes the gap between what AI systems need and what traditional
 - **PDPA compliance:** UUID-linked tombstone pattern for right-to-erasure
 - **Full audit trail:** Every AI decision reconstructable with complete context
 
-DelentiaDB is the memory layer that makes constitutional AI operationally viable at enterprise scale.
+RCTDB is the memory layer that makes constitutional AI operationally viable at enterprise scale.
 
 ---
 
 ## Related Reading
 
-- [Enterprise AI Memory — solution page](/solutions/enterprise-ai-memory) — how DelentiaDB powers persistent context at the product level with governed recall
-- [Delta Engine: 74% Memory Compression](/blog/delta-engine-74-percent-compression) — deep-dive into the delta-chain storage mechanism underlying DelentiaDB's compression
-- [PDPA AI Compliance Thailand](/blog/pdpa-ai-compliance-thailand) — practical guide to PDPA Section 33 right-to-erasure using DelentiaDB subject_uuid
-- [FDIA Equation](/protocols/fdia-equation) — the quality gate that generates fdia_scores stored in every DelentiaDB record
-- [HexaCore 7-Model AI Infrastructure](/blog/hexacore-7-model-ai-infrastructure) — how DelentiaDB model_chain tracks which of the 7 HexaCore models produced each output
+- [Enterprise AI Memory — solution page](/solutions/enterprise-ai-memory) — how RCTDB powers persistent context at the product level with governed recall
+- [Delta Engine: 74% Memory Compression](/blog/delta-engine-74-percent-compression) — deep-dive into the delta-chain storage mechanism underlying RCTDB's compression
+- [PDPA AI Compliance Thailand](/blog/pdpa-ai-compliance-thailand) — practical guide to PDPA Section 33 right-to-erasure using RCTDB subject_uuid
+- [FDIA Equation](/protocols/fdia-equation) — the quality gate that generates fdia_scores stored in every RCTDB record
+- [HexaCore 7-Model AI Infrastructure](/blog/hexacore-7-model-ai-infrastructure) — how RCTDB model_chain tracks which of the 7 HexaCore models produced each output
 
 ---
 

@@ -86,7 +86,7 @@ Examples from the RCT Ecosystem:
 - **FDIA Constraint:** When A = 0, F must equal 0. Always. No exceptions.
 - **SignedAI Constraint:** A Tier 6 consensus requires agreement from at least 4 of 6 models.
 - **JITNA Constraint:** Every packet must have a valid Ed25519 signature.
-- **DelentiaDB Constraint:** No record can be modified without creating a new version (append-only).
+- **RCTDB Constraint:** No record can be modified without creating a new version (append-only).
 
 Constitutional constraints are the foundation of trust. If any constraint is proven to hold under all conditions, users can trust that specific property of the system — even if they do not understand the full implementation.
 
@@ -129,7 +129,7 @@ The geopolitical balance of the HexaCore system (3 Western + 3 Eastern + 1 Regio
 
 **Goal:** Continuously record system behavior and detect deviations from constitutional constraints.
 
-The RCT Ecosystem uses DelentiaDB — an 8-dimensional universal memory schema — to record:
+The RCT Ecosystem uses RCTDB — an 8-dimensional universal memory schema — to record:
 - Every FDIA evaluation (D, I, A scores)
 - Every JITNA transaction (packets, negotiations, outcomes)
 - Every SignedAI consensus result

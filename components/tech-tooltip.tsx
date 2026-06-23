@@ -17,9 +17,9 @@ const definitions = {
     en: "Constitutional AI is an approach where model behavior is constrained by explicit principles, policies, and review loops.",
     th: "Constitutional AI คือแนวทางที่กำกับพฤติกรรมโมเดลด้วยหลักการ นโยบาย และวงจรตรวจสอบอย่างชัดเจน",
   },
-  DelentiaDB: {
-    en: "DelentiaDB is the persistent memory layer that stores long-term context, sessions, and structured recall.",
-    th: "DelentiaDB คือเลเยอร์หน่วยความจำถาวรที่เก็บบริบทยาว เซสชัน และข้อมูลสำหรับการเรียกคืนอย่างเป็นระบบ",
+  RCTDB: {
+    en: "RCTDB is the persistent memory layer that stores long-term context, sessions, and structured recall.",
+    th: "RCTDB คือเลเยอร์หน่วยความจำถาวรที่เก็บบริบทยาว เซสชัน และข้อมูลสำหรับการเรียกคืนอย่างเป็นระบบ",
   },
   "7 Genome": {
     en: "The 7 Genome System is the set of seven specialized subsystems that coordinate continuous cognitive improvement.",

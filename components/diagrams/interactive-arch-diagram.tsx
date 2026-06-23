@@ -36,7 +36,7 @@ const layersData: Record<"en" | "th", LayerItem[]> = {
     { id: 5, name: "Application & Middleware", icon: Layers, desc: "Gateways, APIs, and service-to-service coordination across the platform.", microservices: ["Gateway API", "Kernel API", "Slack Gateway", "API Proxy"], tech: ["FastAPI", "Express", "gRPC", "MCP"] },
     { id: 4, name: "Operating Systems", icon: Cpu, desc: "Runtime control, autoscaling, and execution environment management.", microservices: ["Kernel", "HRM Controller", "Adaptive Timeout", "Halting Detection"], tech: ["Docker", "Kubernetes", "Linux"] },
     { id: 3, name: "Network & Security", icon: Shield, desc: "Verification, IAM, encryption, and policy enforcement across the stack.", microservices: ["SignedAI", "GIGO Protection", "Observability"], tech: ["SHA-256", "JWT", "OAuth 2.0"] },
-    { id: 2, name: "Data Management", icon: Database, desc: "Persistent memory, vector search, graph retrieval, and structured storage.", microservices: ["DelentiaDB", "Vector Search", "GraphRAG", "MemoryRAG"], tech: ["PostgreSQL", "Pinecone", "Neo4j"] },
+    { id: 2, name: "Data Management", icon: Database, desc: "Persistent memory, vector search, graph retrieval, and structured storage.", microservices: ["RCTDB", "Vector Search", "GraphRAG", "MemoryRAG"], tech: ["PostgreSQL", "Pinecone", "Neo4j"] },
     { id: 1, name: "Infrastructure & Hardware", icon: Server, desc: "Compute, storage, load balancing, and edge delivery foundations.", microservices: ["Compute Cluster", "Object Storage", "CDN Edge", "Load Balancer"], tech: ["AWS", "Cloudflare", "Vercel Edge"] },
   ],
   th: [
@@ -48,7 +48,7 @@ const layersData: Record<"en" | "th", LayerItem[]> = {
     { id: 5, name: "Application & Middleware", icon: Layers, desc: "Gateways, APIs และการเชื่อมต่อ service-to-service ของแพลตฟอร์ม", microservices: ["Gateway API", "Kernel API", "Slack Gateway", "API Proxy"], tech: ["FastAPI", "Express", "gRPC", "MCP"] },
     { id: 4, name: "Operating Systems", icon: Cpu, desc: "การควบคุม runtime, autoscaling และสภาพแวดล้อมการประมวลผล", microservices: ["Kernel", "HRM Controller", "Adaptive Timeout", "Halting Detection"], tech: ["Docker", "Kubernetes", "Linux"] },
     { id: 3, name: "Network & Security", icon: Shield, desc: "Verification, IAM, encryption และการบังคับใช้นโยบายความปลอดภัยทั้งระบบ", microservices: ["SignedAI", "GIGO Protection", "Observability"], tech: ["SHA-256", "JWT", "OAuth 2.0"] },
-    { id: 2, name: "Data Management", icon: Database, desc: "Persistent memory, vector search, graph retrieval และ structured storage", microservices: ["DelentiaDB", "Vector Search", "GraphRAG", "MemoryRAG"], tech: ["PostgreSQL", "Pinecone", "Neo4j"] },
+    { id: 2, name: "Data Management", icon: Database, desc: "Persistent memory, vector search, graph retrieval และ structured storage", microservices: ["RCTDB", "Vector Search", "GraphRAG", "MemoryRAG"], tech: ["PostgreSQL", "Pinecone", "Neo4j"] },
     { id: 1, name: "Infrastructure & Hardware", icon: Server, desc: "Compute, storage, load balancing และ edge delivery ที่เป็นรากฐานทั้งหมด", microservices: ["Compute Cluster", "Object Storage", "CDN Edge", "Load Balancer"], tech: ["AWS", "Cloudflare", "Vercel Edge"] },
   ],
 }

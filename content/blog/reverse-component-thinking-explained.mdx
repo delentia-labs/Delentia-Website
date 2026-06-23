@@ -74,7 +74,7 @@ Before any code is written, every component defines its invariants — condition
 Examples from the RCT Ecosystem:
 - `A = 0 → F = 0` (FDIA): No AI output without authorization. Always.
 - SHA-256 determinism: The same inputs always produce the same outputs (verified across 10 runs).
-- Append-only memory: DelentiaDB records can never be modified, only versioned.
+- Append-only memory: RCTDB records can never be modified, only versioned.
 
 Constitutional constraints are not preferences. They are proofs. If a component cannot be shown to satisfy its constraint under adversarial conditions, it is redesigned — not patched.
 

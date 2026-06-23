@@ -77,7 +77,7 @@ export default function Image() {
 
           {/* Layers representation */}
           <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-            {["JITNA Core", "Delta Engine", "DelentiaDB", "SignedAI", "Channel Connectors"].map((layer, idx) => (
+            {["JITNA Core", "Delta Engine", "RCTDB", "SignedAI", "Channel Connectors"].map((layer, idx) => (
               <div
                 key={layer}
                 style={{

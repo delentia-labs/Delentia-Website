@@ -7,7 +7,7 @@ date: "2026-05-16"
 lastReviewed: "2026-05-12"
 category: "engineering"
 excerpt: "Dynamic AI memory gets most of the attention, but enterprise AI deployments fail most often on static knowledge — facts that don't change, rules that must always apply, and institutional knowledge that needs to be consistent across all agents. Vault-1068 is the RCT Ecosystem's answer: a constitutional access-controlled static knowledge layer."
-tags: ["Knowledge Vault", "Vault-1068", "Static Knowledge", "Constitutional AI", "Enterprise AI", "DelentiaDB", "Genome System", "AI Architecture"]
+tags: ["Knowledge Vault", "Vault-1068", "Static Knowledge", "Constitutional AI", "Enterprise AI", "RCTDB", "Genome System", "AI Architecture"]
 readTime: 10
 references:
   - "https://delentia-labs.github.io/delentia-os/architecture/"
@@ -68,7 +68,7 @@ If G6's access check fails (wrong domain, prohibited combination, expired author
 
 ## The 8-Dimensional Knowledge Schema
 
-All knowledge stored in Vault-1068 is indexed across the same 8 dimensions used by the DelentiaDB (dynamic memory layer), ensuring that static and dynamic knowledge can be queried with the same interface:
+All knowledge stored in Vault-1068 is indexed across the same 8 dimensions used by the RCTDB (dynamic memory layer), ensuring that static and dynamic knowledge can be queried with the same interface:
 
 | Dimension | What it captures for static knowledge |
 |---|---|
@@ -96,12 +96,12 @@ The 8-dimensional indexing means that a single knowledge item can be retrieved v
 - Compliance checklists and certification requirements
 
 **Does NOT go in Vault-1068:**
-- User conversation context (→ DelentiaDB via G4/ARTENT)
+- User conversation context (→ RCTDB via G4/ARTENT)
 - Dynamic market data or real-time feeds (→ specialized adapters)
 - Model weights or configurations (→ G3/JITNA routing layer)
 - Unverified or draft knowledge (→ staging environment, not production Vault)
 
-The distinction is important: Vault-1068 stores what is *known to be true and authorized*. Dynamic memory (DelentiaDB) stores what *was said or observed*. Mixing these creates exactly the class of failure Vault-1068 is designed to prevent — an agent that "remembers" a user saying something treating it as an authoritative fact.
+The distinction is important: Vault-1068 stores what is *known to be true and authorized*. Dynamic memory (RCTDB) stores what *was said or observed*. Mixing these creates exactly the class of failure Vault-1068 is designed to prevent — an agent that "remembers" a user saying something treating it as an authoritative fact.
 
 ---
 
@@ -166,19 +166,19 @@ Resolution: Constitutional access control prevents agents without domain authori
 
 ## Integration with the Broader RCT Ecosystem
 
-Vault-1068 is one of the static-knowledge anchors that the dynamic system (DelentiaDB + Delta Engine) operates against. The combined architecture:
+Vault-1068 is one of the static-knowledge anchors that the dynamic system (RCTDB + Delta Engine) operates against. The combined architecture:
 
 - **Vault-1068** answers "what is definitively true"
-- **DelentiaDB** answers "what has been observed and learned"
+- **RCTDB** answers "what has been observed and learned"
 - **Delta Engine** answers "what changed recently and what is the most efficient path to recall"
 
 An agent that needs to answer a compliance question uses all three:
 1. Vault-1068 retrieves the authoritative regulatory rule
-2. DelentiaDB retrieves the organization's historical compliance decisions for context
+2. RCTDB retrieves the organization's historical compliance decisions for context
 3. Delta Engine determines whether a warm-recall answer exists or a full LLM call is required
 
-Neither Vault-1068 nor DelentiaDB alone is sufficient. The regulatory rule without organizational context is incomplete. The organizational context without the authoritative rule is potentially wrong. The combination, mediated by FDIA scoring and G6 constitutional enforcement, produces answers that are both accurate and contextually appropriate.
+Neither Vault-1068 nor RCTDB alone is sufficient. The regulatory rule without organizational context is incomplete. The organizational context without the authoritative rule is potentially wrong. The combination, mediated by FDIA scoring and G6 constitutional enforcement, produces answers that are both accurate and contextually appropriate.
 
 ---
 
-*Related articles: [7 Genome System](/en/blog/rct-7-genome-system) · [DelentiaDB 8-Dimensional Memory](/en/blog/rctdb-8-dimensional-memory-schema) · [Delta Engine 74% Compression](/en/blog/delta-engine-74-percent-compression) · [Specialist Studio](/en/blog/specialist-studio-explained)*
+*Related articles: [7 Genome System](/en/blog/rct-7-genome-system) · [RCTDB 8-Dimensional Memory](/en/blog/rctdb-8-dimensional-memory-schema) · [Delta Engine 74% Compression](/en/blog/delta-engine-74-percent-compression) · [Specialist Studio](/en/blog/specialist-studio-explained)*

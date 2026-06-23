@@ -6,8 +6,8 @@ reviewerId: "rct-research-desk"
 date: "2026-05-10"
 lastReviewed: "2026-05-07"
 category: "research"
-excerpt: "Intent farming is the systematic practice of accumulating, organizing, and enriching AI context over time — converting one-shot queries into progressively smarter sessions. This article explains the architecture, the DelentiaDB memory layer, and how intent farming changes the economics of enterprise AI."
-tags: ["Intent Farming", "AI Context", "Enterprise AI Memory", "DelentiaDB", "RCT Platform", "AI Architecture", "Warm Recall", "Context Management"]
+excerpt: "Intent farming is the systematic practice of accumulating, organizing, and enriching AI context over time — converting one-shot queries into progressively smarter sessions. This article explains the architecture, the RCTDB memory layer, and how intent farming changes the economics of enterprise AI."
+tags: ["Intent Farming", "AI Context", "Enterprise AI Memory", "RCTDB", "RCT Platform", "AI Architecture", "Warm Recall", "Context Management"]
 readTime: 13
 references:
   - "https://arxiv.org/abs/2304.01373"
@@ -26,7 +26,7 @@ This architecture means your AI system learns nothing from use. An analyst who q
 
 Intent farming is the antidote. It is the systematic practice of **accumulating, organizing, and enriching AI context over time** — converting one-shot queries into progressively smarter sessions, converting user interactions into structured knowledge that compounds across every subsequent query, and converting AI usage itself into a proprietary intelligence asset that competitors cannot replicate.
 
-This article explains what intent farming is, why most systems cannot do it, the architectural requirements for a system that can, and how the RCT Platform implements it through DelentiaDB and the JITNA protocol.
+This article explains what intent farming is, why most systems cannot do it, the architectural requirements for a system that can, and how the RCT Platform implements it through RCTDB and the JITNA protocol.
 
 ## What a Query Actually Contains
 
@@ -79,7 +79,7 @@ Cold context is the aggregated, anonymized intent graph across all users in an o
 
 Cold context is the organizational intelligence layer. It is the accumulated institutional knowledge that makes the AI system progressively more aligned with the specific domain, terminology, and reasoning patterns of the organization — without any explicit knowledge engineering effort.
 
-## DelentiaDB: The Memory Architecture That Makes Intent Farming Possible
+## RCTDB: The Memory Architecture That Makes Intent Farming Possible
 
 Intent farming requires a memory architecture fundamentally different from a traditional vector database. A vector database stores embeddings and retrieves similar embeddings. That is retrieval, not memory. True AI memory requires:
 
@@ -93,7 +93,7 @@ Intent farming requires a memory architecture fundamentally different from a tra
 
 **Cross-session linking.** Memory entries from different sessions that reference the same entities, concepts, or intent patterns must be linked to enable graph-based retrieval — retrieving not just the most semantically similar memory, but the memory most connected to the current query's context graph.
 
-DelentiaDB implements all five requirements. It is a structured memory layer built on top of vector storage, not a replacement for it. The vector store handles semantic similarity retrieval. DelentiaDB adds the temporal, intent, provenance, quality, and graph layers that convert retrieval into memory.
+RCTDB implements all five requirements. It is a structured memory layer built on top of vector storage, not a replacement for it. The vector store handles semantic similarity retrieval. RCTDB adds the temporal, intent, provenance, quality, and graph layers that convert retrieval into memory.
 
 ## The JITNA Protocol: Real-Time Intent Capture
 
@@ -106,9 +106,9 @@ JITNA operates in parallel with the primary query pipeline. While the user's que
 3. Computing the FDIA score for the intent clarity
 4. Resolving entity references against the organizational knowledge graph
 5. Identifying which warm context patterns this query activates
-6. Generating structured intent metadata for storage in DelentiaDB
+6. Generating structured intent metadata for storage in RCTDB
 
-Because JITNA runs in parallel, intent capture adds zero latency to the user-facing response. The intent metadata is written to DelentiaDB after the response is returned to the user.
+Because JITNA runs in parallel, intent capture adds zero latency to the user-facing response. The intent metadata is written to RCTDB after the response is returned to the user.
 
 This is not a post-processing batch job — it is real-time asynchronous enrichment. The distinction matters because batch enrichment introduces a delay between interaction and availability of the learned context for subsequent queries. JITNA's asynchronous write ensures that intent context from query N is available for query N+1 in the same session.
 
@@ -162,10 +162,10 @@ The most diagnostic metric is **quality delta**: if warm context retrieval is no
 
 Enterprise AI systems that treat every session as independent are leaving compounding value on the table. Intent farming is the architectural pattern that converts AI usage into accumulated organizational intelligence — the only AI asset that cannot be replicated by adopting a newer model.
 
-The technical requirements are demanding: temporal metadata, intent tagging, provenance chains, constitutional scoring, and cross-session linking. Systems that implement these requirements in a unified memory architecture — as DelentiaDB does — create the conditions for AI systems that genuinely improve with use.
+The technical requirements are demanding: temporal metadata, intent tagging, provenance chains, constitutional scoring, and cross-session linking. Systems that implement these requirements in a unified memory architecture — as RCTDB does — create the conditions for AI systems that genuinely improve with use.
 
 The goal is not better retrieval. The goal is AI that remembers, in the structured sense: not verbatim recall of past sessions, but a continuously enriched model of organizational intent that makes every future query more precise, every future response more grounded, and every future session more valuable than the last.
 
 ---
 
-*Disclosure: JITNA, DelentiaDB, and the Tier 1–9 algorithm taxonomy are components of the RCT Platform, available as open source under Apache 2.0. Implementation specifics, organizational intent graph schemas, and constitutional quality enforcement details are described in the [SDK documentation](https://delentia-labs.github.io/delentia-os/).*
+*Disclosure: JITNA, RCTDB, and the Tier 1–9 algorithm taxonomy are components of the RCT Platform, available as open source under Apache 2.0. Implementation specifics, organizational intent graph schemas, and constitutional quality enforcement details are described in the [SDK documentation](https://delentia-labs.github.io/delentia-os/).*

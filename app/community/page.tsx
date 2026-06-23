@@ -35,7 +35,7 @@ export default async function CommunityPage() {
     {
       question: "What topics are discussed in the Delentia OS community?",
       answer:
-        "Community discussions cover FDIA, JITNA, SignedAI, DelentiaDB, enterprise deployment patterns, benchmarking, and practical AI governance workflows.",
+        "Community discussions cover FDIA, JITNA, SignedAI, RCTDB, enterprise deployment patterns, benchmarking, and practical AI governance workflows.",
     },
   ])
 

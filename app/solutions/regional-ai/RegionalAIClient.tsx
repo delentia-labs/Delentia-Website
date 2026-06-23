@@ -41,8 +41,8 @@ export default function RegionalAIClient() {
       <section className="sr-only">
         <p>
           {isTh
-            ? "Regional AI รวม LLM ภูมิภาคเช่น Typhoon, HyperCLOVA X, Rakuten AI เข้ากับโครงสร้างประสาน JITNA + SignedAI + DelentiaDB เพื่อมอบ Sovereign AI ที่สอดรับกับ PDPA และข้อกำหนดด้านความเป็นอธิปไตย์ของข้อมูลในเอเชียและภูมิภาคต่างๆ ทั่วโลก"
-            : "Regional AI integrates sovereign regional LLMs like Typhoon, HyperCLOVA X, and Rakuten AI into JITNA + SignedAI + DelentiaDB — delivering local compliance, regulatory context, and cultural nuance for Asia and global deployments."}
+            ? "Regional AI รวม LLM ภูมิภาคเช่น Typhoon, HyperCLOVA X, Rakuten AI เข้ากับโครงสร้างประสาน JITNA + SignedAI + RCTDB เพื่อมอบ Sovereign AI ที่สอดรับกับ PDPA และข้อกำหนดด้านความเป็นอธิปไตย์ของข้อมูลในเอเชียและภูมิภาคต่างๆ ทั่วโลก"
+            : "Regional AI integrates sovereign regional LLMs like Typhoon, HyperCLOVA X, and Rakuten AI into JITNA + SignedAI + RCTDB — delivering local compliance, regulatory context, and cultural nuance for Asia and global deployments."}
         </p>
       </section>
 
@@ -194,8 +194,8 @@ register_regional_llm(
             <h3 className="font-bold text-foreground mb-2">{isTh ? "RCT ประสานโมเดล" : "RCT orchestrates models"}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
               {isTh
-                ? "RCT ใช้ JITNA + SignedAI + DelentiaDB ในการ Route, Verify และ Persist ผลลัพธ์จากโมเดล Typhoon — ทำให้ปัญญา AI ภาษาไทยอยู่ใน Enterprise-grade Infrastructure"
-                : "RCT uses JITNA + SignedAI + DelentiaDB to route, verify, and persist results from Typhoon — putting Thai-language AI intelligence inside enterprise-grade infrastructure."}
+                ? "RCT ใช้ JITNA + SignedAI + RCTDB ในการ Route, Verify และ Persist ผลลัพธ์จากโมเดล Typhoon — ทำให้ปัญญา AI ภาษาไทยอยู่ใน Enterprise-grade Infrastructure"
+                : "RCT uses JITNA + SignedAI + RCTDB to route, verify, and persist results from Typhoon — putting Thai-language AI intelligence inside enterprise-grade infrastructure."}
             </p>
           </div>
         </div>

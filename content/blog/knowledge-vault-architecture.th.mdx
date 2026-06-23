@@ -7,7 +7,7 @@ date: "2026-05-16"
 lastReviewed: "2026-05-12"
 category: "engineering"
 excerpt: "Dynamic AI Memory ได้รับความสนใจมากที่สุด แต่การ Deploy AI ระดับองค์กรล้มเหลวบ่อยที่สุดกับ Static Knowledge — ข้อเท็จจริงที่ไม่เปลี่ยนแปลง กฎที่ต้องใช้เสมอ และความรู้องค์กรที่ต้องสอดคล้องกันข้าม Agent ทุกตัว Vault-1068 คือคำตอบของ RCT Ecosystem"
-tags: ["Knowledge Vault", "Vault-1068", "Static Knowledge", "Constitutional AI", "Enterprise AI", "DelentiaDB", "Genome System", "AI Architecture"]
+tags: ["Knowledge Vault", "Vault-1068", "Static Knowledge", "Constitutional AI", "Enterprise AI", "RCTDB", "Genome System", "AI Architecture"]
 readTime: 10
 references:
   - "https://delentia-labs.github.io/delentia-os/architecture/"
@@ -64,7 +64,7 @@ Agent → G3 (JITNA routing) → G6 (access check) → Vault-1068 (retrieval) �
 
 ## Schema ความรู้ 8 มิติ
 
-ความรู้ทั้งหมดที่เก็บใน Vault-1068 ถูก Index ใน 8 มิติเดียวกับที่ใช้โดย DelentiaDB (Dynamic Memory Layer):
+ความรู้ทั้งหมดที่เก็บใน Vault-1068 ถูก Index ใน 8 มิติเดียวกับที่ใช้โดย RCTDB (Dynamic Memory Layer):
 
 | มิติ | สิ่งที่ Capture สำหรับ Static Knowledge |
 |---|---|
@@ -90,7 +90,7 @@ Agent → G3 (JITNA routing) → G6 (access check) → Vault-1068 (retrieval) �
 - Checklist Compliance และข้อกำหนดการรับรอง
 
 **ไม่เข้า Vault-1068:**
-- Context การสนทนาของผู้ใช้ (→ DelentiaDB ผ่าน G4/ARTENT)
+- Context การสนทนาของผู้ใช้ (→ RCTDB ผ่าน G4/ARTENT)
 - ข้อมูลตลาด Dynamic หรือ Feed แบบ Real-time (→ Adapter เฉพาะทาง)
 - Config ของ Model (→ G3/JITNA Routing Layer)
 - ความรู้ที่ยังไม่ Verify หรือเป็น Draft (→ Staging Environment)
@@ -133,15 +133,15 @@ Agent → G3 (JITNA routing) → G6 (access check) → Vault-1068 (retrieval) �
 
 ## การรวมกับ RCT Ecosystem ที่กว้างขึ้น
 
-Vault-1068 คือหนึ่งในจุดยึด Static Knowledge ที่ระบบ Dynamic (DelentiaDB + Delta Engine) ทำงานบนนั้น Architecture รวม:
+Vault-1068 คือหนึ่งในจุดยึด Static Knowledge ที่ระบบ Dynamic (RCTDB + Delta Engine) ทำงานบนนั้น Architecture รวม:
 
 - **Vault-1068** ตอบ "อะไรที่เป็นความจริงอย่างแน่ชัด"
-- **DelentiaDB** ตอบ "อะไรที่ถูกสังเกตและเรียนรู้"
+- **RCTDB** ตอบ "อะไรที่ถูกสังเกตและเรียนรู้"
 - **Delta Engine** ตอบ "อะไรที่เปลี่ยนแปลงเมื่อเร็วๆ นี้และเส้นทางที่มีประสิทธิภาพที่สุดสู่การ Recall คืออะไร"
 
 Agent ที่ต้องตอบคำถาม Compliance ใช้ทั้งสาม:
 1. Vault-1068 ดึงกฎระเบียบ Authoritative
-2. DelentiaDB ดึงการตัดสินใจ Compliance ในอดีตขององค์กรสำหรับ Context
+2. RCTDB ดึงการตัดสินใจ Compliance ในอดีตขององค์กรสำหรับ Context
 3. Delta Engine กำหนดว่ามีคำตอบ Warm-recall อยู่หรือต้องการการเรียก LLM แบบเต็ม
 
 ---

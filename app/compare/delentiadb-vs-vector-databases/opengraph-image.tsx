@@ -1,6 +1,6 @@
 ﻿import { ImageResponse } from "next/og"
 
-export const alt = "DelentiaDB vs Vector Databases — AI Memory vs Semantic Search | Delentia Labs"
+export const alt = "RCTDB vs Vector Databases — AI Memory vs Semantic Search | Delentia Labs"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -34,7 +34,7 @@ export default function OgImage() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 20, maxWidth: 900 }}>
             <h1 style={{ fontSize: 56, fontWeight: 700, color: "#f9fafb", margin: 0, lineHeight: 1.1, letterSpacing: "-0.025em" }}>
-              DelentiaDB vs Vector Databases
+              RCTDB vs Vector Databases
             </h1>
             <p style={{ fontSize: 24, color: "#9ca3af", margin: 0, lineHeight: 1.5 }}>
               Constitutional AI memory with full audit trail vs embedding-based semantic search — the architectural difference.

@@ -58,7 +58,7 @@ export default async function LocaleHomePage({ params }: LocalePageProps) {
           {
             question: "Delentia Labs รองรับการใช้งานระดับองค์กรหรือไม่?",
             answer:
-              "รองรับ โดยเน้นสถาปัตยกรรม 10 ชั้น การตรวจสอบหลายโมเดล ระบบหน่วยความจำ DelentiaDB และแนวทางการ deploy ที่เหมาะกับงานระดับองค์กร",
+              "รองรับ โดยเน้นสถาปัตยกรรม 10 ชั้น การตรวจสอบหลายโมเดล ระบบหน่วยความจำ RCTDB และแนวทางการ deploy ที่เหมาะกับงานระดับองค์กร",
           },
         ]
       : [
@@ -75,7 +75,7 @@ export default async function LocaleHomePage({ params }: LocalePageProps) {
           {
             question: "Is Delentia Labs designed for enterprise deployment?",
             answer:
-              "Yes. The platform is positioned around a 10-layer architecture, multi-model verification, DelentiaDB memory, and deployment paths suitable for enterprise requirements.",
+              "Yes. The platform is positioned around a 10-layer architecture, multi-model verification, RCTDB memory, and deployment paths suitable for enterprise requirements.",
           },
         ]
   )

@@ -161,7 +161,7 @@ export function getSoftwareApplicationSchema(locale: Locale) {
       `${SITE_MICROSERVICE_COUNT}+ Runtime Components`,
       'Multi-LLM Consensus',
       'SignedAI Verification',
-      'DelentiaDB v2.0',
+      'RCTDB v2.0',
       'JITNA Protocol',
       `${SITE_UPTIME} Availability Target`,
       'Bilingual Support (EN/TH)',

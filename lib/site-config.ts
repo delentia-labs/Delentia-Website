@@ -31,6 +31,9 @@ export const SOCIAL_LINKS = {
   biosite: "https://ittiritsaengow.link",                      // BIO / gravatar
   reddit: "https://www.reddit.com/user/WindLate5307/",        // Reddit
   discord: "https://discord.gg/delentia",
+  kick: "https://kick.com/slumdog-arch",
+  twitch: "https://www.twitch.tv/slumdog_arch",
+  youtube: "https://www.youtube.com/@Slumdog_Arch",
 } as const
 
 export const PUBLIC_ROUTE_PRIORITIES: Record<string, number> = {

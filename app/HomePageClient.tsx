@@ -10,6 +10,10 @@ import { MainPageOrchestrator } from "@/components/main-page/main-page-orchestra
 import { MainPageSection } from "@/components/main-page/main-page-section"
 import { DeferredSection } from "@/components/performance/deferred-section"
 
+import { LiveStreamTicker } from "@/components/sections/live-stream-ticker"
+import { InteractiveMcpWidget } from "@/components/sections/interactive-mcp-widget"
+import { SovereignPricingSection } from "@/components/sections/sovereign-pricing-section"
+
 const WaitlistModal = dynamic(() => import("@/components/sections/waitlist-modal").then((mod) => mod.WaitlistModal), {
   ssr: false,
 })
@@ -73,7 +77,12 @@ export default function HomePage({ locale, navSlot, heroSlot }: HomePageClientPr
         </div>
         {heroSlot}
 
-        {/* ── Phase A4: ภาพรวม RCT Ecosystem ขึ้นมาก่อน ──────────── */}
+        {/* ── Interactive Live MCP Terminal Gateway ──────────── */}
+        <MainPageSection sectionId="mcp-widget" tone="raised">
+          <InteractiveMcpWidget locale={locale} />
+        </MainPageSection>
+
+        {/* ── Phase A4: ภาพรวม Ecosystem ──────────── */}
         <MainPageSection sectionId="overview" tone="base">
           <OverviewSection locale={locale} />
         </MainPageSection>
@@ -96,6 +105,11 @@ export default function HomePage({ locale, navSlot, heroSlot }: HomePageClientPr
           </DeferredSection>
         </MainPageSection>
 
+        {/* ── Sovereign Subscription & Early Access Pricing ──────────── */}
+        <MainPageSection sectionId="pricing" tone="base">
+          <SovereignPricingSection locale={locale} />
+        </MainPageSection>
+
         <MainPageSection sectionId="cta" tone="settle" continuityMode="settle">
           <section className="relative overflow-hidden py-16 md:py-24">
             <div className="homepage-ambient-layer absolute inset-0">
@@ -111,12 +125,12 @@ export default function HomePage({ locale, navSlot, heroSlot }: HomePageClientPr
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(247,241,235,0.2),transparent_32%,rgba(212,168,83,0.04)_100%)] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.035),transparent_32%,rgba(212,168,83,0.03)_100%)]" />
               <div className="relative z-10 mx-auto max-w-2xl space-y-6 text-center">
                 <h2 className={`text-foreground ${locale === "th" ? "font-thai" : ""}`}>
-                  {locale === "en" ? "Ready to Build with Intent?" : "พร้อมเริ่มต้นสร้างระบบ AI ที่ขับเคลื่อนด้วยเจตนาหรือยัง?"}
+                  {locale === "en" ? "Ready to Build Sovereign AI?" : "พร้อมเริ่มต้นสร้าง Sovereign AI หรือยัง?"}
                 </h2>
                 <p className={`text-muted-foreground ${locale === "th" ? "subtitle-th" : ""}`}>
                   {locale === "en"
-                    ? "Explore the architecture, read the protocols, or experience the live demo to see how RCT assembles intelligence around purpose."
-                    : "สำรวจสถาปัตยกรรม อ่านโปรโตคอล หรือทดลองเดโม เพื่อดูว่า RCT เชื่อมข้อมูล เจตนา และการตัดสินใจเข้าด้วยกันอย่างไรในบริบทระดับองค์กร"}
+                    ? "Explore the 10-layer architecture, experience the live MCP gateway, or evaluate sovereign deployment for your enterprise."
+                    : "สำรวจสถาปัตยกรรม 10 เลเยอร์ ทดลองเชื่อมต่อ MCP Gateway หรือประเมินการ Deploy แบบ Sovereign สำหรับองค์กรของคุณ"}
                 </p>
                 <div className="flex flex-col justify-center gap-4 sm:flex-row">
                   <Link
@@ -127,22 +141,23 @@ export default function HomePage({ locale, navSlot, heroSlot }: HomePageClientPr
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
-                    href={`${localePrefix}/protocols`}
+                    href={`${localePrefix}/pricing`}
                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-border px-6 py-3 font-medium text-foreground transition-colors hover:bg-secondary"
                   >
-                    {locale === "en" ? "Explore Protocols" : "สำรวจ Protocol Docs"}
+                    {locale === "en" ? "View Pricing Plans" : "ดูแพ็กเกจราคา"}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
                     href={`${localePrefix}/contact`}
                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-border px-6 py-3 font-medium text-foreground transition-colors hover:bg-secondary"
                   >
-                    {locale === "en" ? "Contact Us" : "ติดต่อทีมงาน"}
+                    {locale === "en" ? "Contact Enterprise" : "ติดต่อฝ่ายขาย"}
+                    <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
               </div>
             </div>
-            </div>
+          </div>
           </section>
         </MainPageSection>
         <DeferredSection minHeightClassName="min-h-[520px]" idleTimeoutMs={2600}>

@@ -4,6 +4,28 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Font family mappings */
+:root {
+  --font-thai: var(--rct-font-thai);
+  --rct-font-thai: var(--rct-font-thai);
+}
+
+.font-display {
+  font-family: var(--font-display), var(--rct-font-thai), var(--font-thai), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+.font-sans {
+  font-family: var(--font-sans), var(--rct-font-thai), var(--font-thai), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+.font-thai {
+  font-family: var(--rct-font-thai), var(--font-thai), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace !important;
+}
+
 /* ==========================================================================
    RCT LABS ENTERPRISE DESIGN SYSTEM
    Theme: "Tech Authority" — Warm Enterprise × Scientific Precision

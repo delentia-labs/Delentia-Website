@@ -50,7 +50,7 @@ export default function FDIASection() {
           ? "The ultimate outcome — the Future that is created and shaped by the entire FDIA pipeline."
           : "ผลลัพธ์สุดท้าย — Future ที่ถูกสร้างและกำหนดโดย FDIA Pipeline ทั้งหมด",
       color: "#D4A853",
-      toneClass: "bg-amber-100 text-[#D4A853] dark:bg-[#3A2E15]",
+      toneClass: "bg-amber-500/15 text-amber-500 border border-amber-500/30 dark:bg-amber-500/20 dark:text-amber-400 dark:border-amber-500/40",
     },
     {
       letter: "D",
@@ -60,7 +60,7 @@ export default function FDIASection() {
           ? "Raw data ingestion, validation, and quality scoring — the essential inputs."
           : "การรับข้อมูลดิบ ตรวจสอบ และให้คะแนนคุณภาพ — Input ที่จำเป็น",
       color: "#89B4C8",
-      toneClass: "bg-sky-100 text-[#89B4C8] dark:bg-[#152A3A]",
+      toneClass: "bg-sky-500/15 text-sky-500 border border-sky-500/30 dark:bg-sky-500/20 dark:text-sky-400 dark:border-sky-500/40",
     },
     {
       letter: "I",
@@ -70,7 +70,7 @@ export default function FDIASection() {
           ? "The exponential amplifier — clarity of purpose that multiplies Data's power."
           : "ตัวขยายแบบ Exponential — ความชัดเจนของเป้าหมายที่ขยายพลัง Data",
       color: "#C4745B",
-      toneClass: "bg-rose-100 text-[#C4745B] dark:bg-[#3A1E15]",
+      toneClass: "bg-rose-500/15 text-rose-500 border border-rose-500/30 dark:bg-rose-500/20 dark:text-rose-400 dark:border-rose-500/40",
     },
     {
       letter: "A",
@@ -80,7 +80,7 @@ export default function FDIASection() {
           ? "The Human-in-the-Loop — ensuring ethical, strategic application of AI."
           : "Human-in-the-Loop — ผู้กำกับดูแลการใช้ AI อย่างมีจริยธรรม",
       color: "#7B9E87",
-      toneClass: "bg-emerald-100 text-[#7B9E87] dark:bg-[#1E3A25]",
+      toneClass: "bg-emerald-500/15 text-emerald-500 border border-emerald-500/30 dark:bg-emerald-500/20 dark:text-emerald-400 dark:border-emerald-500/40",
     },
   ]
 
@@ -121,11 +121,11 @@ export default function FDIASection() {
               whileHover={prefersReducedMotion ? undefined : { y: -3, scale: 1.004 }}
               viewport={{ once: true }}
               transition={prefersReducedMotion ? undefined : { duration: 0.44, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
-              className="main-page-reactive-surface rounded-[20px] border border-[rgba(176,150,111,0.14)] bg-[#fcfcfa] p-4 dark:bg-[linear-gradient(180deg,rgba(32,28,25,0.92),rgba(24,22,21,0.94))]"
+              className="rounded-[20px] border border-amber-900/10 bg-white/90 p-5 shadow-sm transition-all duration-300 hover:border-amber-400/40 hover:shadow-md dark:border-neutral-800 dark:bg-[#13141a] dark:hover:border-amber-400/40 dark:hover:bg-[#181922] dark:shadow-lg"
             >
-              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#7A5910] dark:text-warm-amber">{card.eyebrow}</div>
-              <h3 className="mt-2 text-base font-semibold text-foreground sm:text-lg">{card.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-[14px]">{card.body}</p>
+              <div className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-amber-700 dark:text-amber-400">{card.eyebrow}</div>
+              <h3 className="mt-2 text-base font-bold text-neutral-900 dark:text-white sm:text-lg">{card.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-[14px]">{card.body}</p>
             </m.div>
           ))}
         </div>
@@ -141,23 +141,23 @@ export default function FDIASection() {
                 whileTap={prefersReducedMotion ? undefined : { scale: 0.995 }}
                 viewport={{ once: true }}
                 transition={prefersReducedMotion ? undefined : { duration: 0.44, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                className="main-page-reactive-card group flex-1 rounded-[20px] border border-[rgba(176,150,111,0.14)] bg-[#fcfcfa] p-3.5 transition-[box-shadow,transform,background-color] duration-200 hover:bg-[#f8f7f4] dark:bg-[linear-gradient(180deg,rgba(32,28,25,0.92),rgba(24,22,21,0.94))] dark:hover:bg-[linear-gradient(180deg,rgba(38,32,28,0.96),rgba(27,24,22,0.98))]"
+                className="group flex-1 rounded-[20px] border border-amber-900/10 bg-white/90 p-4 shadow-sm transition-all duration-300 hover:border-amber-400/40 hover:shadow-md dark:border-neutral-800 dark:bg-[#13141a] dark:hover:border-amber-400/40 dark:hover:bg-[#181922] dark:shadow-lg"
               >
                 <div className="flex items-center gap-2.5 mb-2">
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-mono font-bold text-base transition-transform duration-200 group-hover:scale-105 ${stage.toneClass}`}>
                     {stage.letter}
                   </div>
-                  <div className="text-sm font-bold text-foreground">
+                  <div className="text-sm font-bold text-neutral-900 dark:text-white">
                     {stage.name}
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                <p className="text-xs sm:text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
                   {stage.desc}
                 </p>
               </m.div>
               {i < 3 && (
                 <div className="flex items-center justify-center shrink-0 px-2">
-                  <span className="text-warm-amber text-xl font-bold">→</span>
+                  <span className="text-amber-500 dark:text-amber-400 text-xl font-bold">→</span>
                 </div>
               )}
             </React.Fragment>
@@ -175,17 +175,17 @@ export default function FDIASection() {
               whileTap={prefersReducedMotion ? undefined : { scale: 0.995 }}
               viewport={{ once: true }}
               transition={prefersReducedMotion ? undefined : { duration: 0.44, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-              className="main-page-reactive-card group rounded-[20px] border border-[rgba(176,150,111,0.14)] bg-[#fcfcfa] p-3.5 transition-[box-shadow,transform,background-color] duration-200 hover:bg-[#f8f7f4] dark:bg-[linear-gradient(180deg,rgba(32,28,25,0.92),rgba(24,22,21,0.94))] dark:hover:bg-[linear-gradient(180deg,rgba(38,32,28,0.96),rgba(27,24,22,0.98))]"
+              className="group rounded-[20px] border border-amber-900/10 bg-white/90 p-4 shadow-sm transition-all duration-300 hover:border-amber-400/40 hover:shadow-md dark:border-neutral-800 dark:bg-[#13141a] dark:hover:border-amber-400/40 dark:hover:bg-[#181922] dark:shadow-lg"
             >
               <div className="flex items-center gap-2.5 mb-2">
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-mono font-bold text-base transition-transform duration-200 group-hover:scale-105 ${stage.toneClass}`}>
                   {stage.letter}
                 </div>
-                <div className="text-sm font-bold text-foreground">
+                <div className="text-sm font-bold text-neutral-900 dark:text-white">
                   {stage.name}
                 </div>
               </div>
-              <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">
+              <p className="text-xs sm:text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
                 {stage.desc}
               </p>
             </m.div>

@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next"
+import type { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
@@ -12,10 +12,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return createBilingualMetadata(
     locale,
-    "Constitutional AI vs RAG โ€” Hallucination Prevention Comparison",
-    "Constitutional AI vs RAG โ€” เน€เธเธฃเธตเธขเธเน€เธ—เธตเธขเธเธเธฒเธฃเธฅเธ” Hallucination",
-    "RAG grounds AI responses in documents. Constitutional AI constrains what the system can output. This comparison explains the architectural difference, use cases, and why combining both achieves 0.3% hallucination in the RCT Ecosystem.",
-    "RAG เธเนเธงเธขเธขเธถเธ”เธเธณเธ•เธญเธเธเธฑเธเน€เธญเธเธชเธฒเธฃ เธชเนเธงเธ Constitutional AI เธเธงเธเธเธธเธกเธชเธดเนเธเธ—เธตเนเธฃเธฐเธเธเธชเธฒเธกเธฒเธฃเธ–เธเธฅเนเธญเธขเธญเธญเธเธกเธฒเนเธ”เน เธซเธเนเธฒเธเธตเนเธญเธเธดเธเธฒเธขเธเธงเธฒเธกเธ•เนเธฒเธเน€เธเธดเธเธชเธ–เธฒเธเธฑเธ•เธขเธเธฃเธฃเธก use cases เนเธฅเธฐเน€เธซเธ•เธธเธเธฅเธ—เธตเนเธเธฒเธฃเธฃเธงเธกเธ—เธฑเนเธเธชเธญเธเนเธเธงเธ—เธฒเธเธเนเธงเธขเนเธซเน RCT Ecosystem เธ—เธณ hallucination เนเธ”เนเน€เธเธตเธขเธ 0.3%",
+    "Constitutional AI vs RAG — Hallucination Prevention Comparison",
+    "Constitutional AI vs RAG — เปรียบเทียบการลด Hallucination",
+    "RAG grounds AI responses in documents. Constitutional AI constrains what the system can output. This comparison explains the architectural difference, use cases, and why combining both achieves 0.3% hallucination in the Delentia OS Ecosystem.",
+    "RAG ช่วยยึดคำตอบกับเอกสาร ส่วน Constitutional AI ควบคุมสิ่งที่ระบบสามารถปล่อยออกมาได้ หน้านี้อธิบายความต่างเชิงสถาปัตยกรรม use cases และเหตุผลที่การรวมทั้งสองแนวทางช่วยให้ Delentia Ecosystem ทำ hallucination ได้เพียง 0.3%",
     "/compare/constitutional-ai-vs-rag",
     ["constitutional AI vs RAG", "hallucination prevention", "AI safety comparison"]
   )
@@ -24,23 +24,23 @@ export async function generateMetadata(): Promise<Metadata> {
 const COMPARE_FAQS = [
   {
     question: "What is the difference between Constitutional AI and RAG?",
-    answer: "RAG (Retrieval-Augmented Generation) grounds AI responses in retrieved documents but cannot deterministically prevent unsafe outputs. Constitutional AI constrains what the system can output through mathematical rules โ€” in the RCT Ecosystem, the FDIA equation's Architect gate (A=0โ’F=0) ensures output is blocked unconditionally when required. RAG is about knowledge quality; Constitutional AI is about behavioral guarantees.",
+    answer: "RAG (Retrieval-Augmented Generation) grounds AI responses in retrieved documents but cannot deterministically prevent unsafe outputs. Constitutional AI constrains what the system can output through mathematical rules — in the Delentia Ecosystem, the FDIA equation's Architect gate (A=0 -> F=0) ensures output is blocked unconditionally when required. RAG is about knowledge quality; Constitutional AI is about behavioral guarantees.",
   },
   {
     question: "Can you use RAG and Constitutional AI together?",
-    answer: "Yes. The RCT Ecosystem combines both approaches. RAG provides factual grounding through RCTDB retrieval, while Constitutional AI (FDIA framework) provides deterministic safety constraints. Together, they achieve a 0.3% hallucination rate โ€” compared to ~3โ€“5% for RAG alone and ~12โ€“15% for unguarded LLMs.",
+    answer: "Yes. The Delentia Ecosystem combines both approaches. RAG provides factual grounding through RCTDB retrieval, while Constitutional AI (FDIA framework) provides deterministic safety constraints. Together, they achieve a 0.3% hallucination rate — compared to ~3-5% for RAG alone and ~12-15% for unguarded LLMs.",
   },
   {
     question: "Does RAG prevent hallucinations?",
-    answer: "RAG reduces hallucination by grounding responses in retrieved documents, but it does not deterministically prevent them. A model can still ignore retrieved context or confabulate. RAG-only systems typically achieve 3โ€“5% hallucination rates. Constitutional AI adds mathematical safety constraints on top of retrieval to reduce this further.",
+    answer: "RAG reduces hallucination by grounding responses in retrieved documents, but it does not deterministically prevent them. A model can still ignore retrieved context or confabulate. RAG-only systems typically achieve 3-5% hallucination rates. Constitutional AI adds mathematical safety constraints on top of retrieval to reduce this further.",
   },
   {
     question: "What is a constitutional AI kill switch?",
-    answer: "In the RCT Ecosystem, the FDIA Architect variable (A) acts as a constitutional kill switch. When A=0, the system mathematically guarantees F=0 โ€” no output is produced regardless of what any LLM would generate. This is implemented as a hard gate in core/kernel/fdia.py, not a soft preference.",
+    answer: "In the Delentia Ecosystem, the FDIA Architect variable (A) acts as a constitutional kill switch. When A=0, the system mathematically guarantees F=0 — no output is produced regardless of what any LLM would generate. This is implemented as a hard gate in core/kernel/fdia.py, not a soft preference.",
   },
   {
     question: "How does Constitutional AI provide a PDPA audit trail?",
-    answer: "Every RCT Ecosystem query writes its full provenance chain to RCTDB โ€” an 8-dimensional memory schema that records the query hash, FDIA scores (D, I, A, F), model chain, consensus result, and provenance trail. This automatically generates the audit evidence required for PDPA Section 33 (right to explanation) and Section 34 (right to object).",
+    answer: "Every Delentia Ecosystem query writes its full provenance chain to RCTDB — an 8-dimensional memory schema that records the query hash, FDIA scores (D, I, A, F), model chain, consensus result, and provenance trail. This automatically generates the audit evidence required for PDPA Section 33 (right to explanation) and Section 34 (right to object).",
   },
 ]
 
@@ -91,7 +91,7 @@ export default async function CompareConstitutionalAIvsRAG() {
               Constitutional AI vs RAG
             </h1>
             <p className="text-xl text-warm-dim max-w-2xl mx-auto mb-8">
-              Two different approaches to preventing AI hallucination. Understanding the difference determines whether your enterprise AI is compliant โ€” or just confident.
+              Two different approaches to preventing AI hallucination. Understanding the difference determines whether your enterprise AI is compliant — or just confident.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <span className="px-4 py-2 rounded-lg border border-white/10 bg-white/5 text-warm-dim">Hallucination Prevention</span>
@@ -112,9 +112,9 @@ export default async function CompareConstitutionalAIvsRAG() {
                 points: [
                   "Grounds responses in retrieved documents",
                   "Updates knowledge without retraining",
-                  "Probabilistic safety โ€” model may still ignore context",
+                  "Probabilistic safety — model may still ignore context",
                   "No audit trail for automated decisions",
-                  "Hallucination rate: ~3โ€“5%",
+                  "Hallucination rate: ~3-5%",
                 ],
                 verdict: "Best for: knowledge-intensive retrieval tasks",
                 verdictColor: "text-blue-400",
@@ -125,21 +125,21 @@ export default async function CompareConstitutionalAIvsRAG() {
                 color: "border-warm-amber/30 from-warm-amber/8",
                 points: [
                   "Mathematical constraints on system output",
-                  "Deterministic kill switch (A=0 โ’ F=0, always)",
+                  "Deterministic kill switch (A=0 -> F=0, always)",
                   "Multi-model consensus (SignedAI Tiers S/4/6/8)",
-                  "Full audit trail โ’ PDPA/GDPR compliance",
-                  "Hallucination rate: ~1โ€“2%",
+                  "Full audit trail -> PDPA/GDPR compliance",
+                  "Hallucination rate: ~1-2%",
                 ],
                 verdict: "Best for: regulated industries + compliance",
                 verdictColor: "text-warm-amber",
               },
               {
                 icon: Zap,
-                title: "RAG + Constitutional AI (RCT Ecosystem)",
+                title: "RAG + Constitutional AI (Delentia OS)",
                 color: "border-green-400/30 from-green-400/8",
                 points: [
                   "Factual grounding AND structural safety constraints",
-                  "0.3% hallucination rate (vs 12โ€“15% industry)",
+                  "0.3% hallucination rate (vs 12-15% industry)",
                   "Warm recall <50ms for repeated patterns",
                   "Complete PDPA audit trail from RCTDB",
                   "Architect gate mandatory for critical decisions",
@@ -154,7 +154,7 @@ export default async function CompareConstitutionalAIvsRAG() {
                 <ul className="space-y-2 mb-6">
                   {points.map((pt) => (
                     <li key={pt} className="text-sm text-warm-dim flex items-start gap-2">
-                      <span className="mt-0.5 shrink-0">โ€ข</span>{pt}
+                      <span className="mt-0.5 shrink-0">•</span> {pt}
                     </li>
                   ))}
                 </ul>
@@ -174,7 +174,7 @@ export default async function CompareConstitutionalAIvsRAG() {
                   <th className="text-left px-6 py-4 text-warm-dim font-semibold">Feature</th>
                   <th className="text-center px-4 py-4 text-blue-400 font-semibold">RAG Only</th>
                   <th className="text-center px-4 py-4 text-warm-amber font-semibold">Constitutional AI</th>
-                  <th className="text-center px-4 py-4 text-green-400 font-semibold">Combined (RCT)</th>
+                  <th className="text-center px-4 py-4 text-green-400 font-semibold">Combined (Delentia)</th>
                 </tr>
               </thead>
               <tbody>
@@ -217,5 +217,3 @@ export default async function CompareConstitutionalAIvsRAG() {
     </>
   )
 }
-
-

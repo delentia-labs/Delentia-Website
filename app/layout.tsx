@@ -1,4 +1,4 @@
-﻿import type React from "react"
+import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Space_Grotesk, Space_Mono, Kanit } from "next/font/google"
 import { LocaleLangSync } from "@/components/locale-lang-sync"
@@ -59,17 +59,17 @@ const verification = googleSiteVerification || bingSiteVerification
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
-  display: "optional",
+  display: "swap",
   preload: true,
   adjustFontFallback: true,
 })
 
-/* Body: Inter — preload=false: body text loads after LCP */
+/* Body: Inter — preload=true for clean first render */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: "optional",
-  preload: false,
+  display: "swap",
+  preload: true,
 })
 
 /* Mono: Space Mono */
@@ -77,26 +77,16 @@ const spaceMono = Space_Mono({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-mono",
-  display: "optional",
+  display: "swap",
   preload: false,
 })
 
-/* Thai: Kanit (matches Space Grotesk geometric style) — preload:true, optional:
-   Changed from "fallback" → "optional" to fix 5.1s LCP Render Delay (05 May 2026).
-   Root cause: with "fallback", if Kanit downloads within the 3s swap window
-   (which it does on most connections since it's preloaded), the browser RE-PAINTS
-   the H1 when the web font arrives — Lighthouse captures LCP at that LAST repaint
-   (~5s on throttled 4G). "optional" commits to system Thai font at 100ms with NO
-   subsequent swap: LCP is measured at first paint (~0.5–1.5s), not the repaint.
-   adjustFontFallback generates size-adjusted CSS so CLS=0 when fallback is used.
-   Trade-off: on cold/uncached loads, Thai H1 uses Leelawadee UI / Tahoma.
-   On subsequent visits (cached font), Kanit renders correctly.
-   Weights reduced to 3: 400 (body), 600 (semibold), 700 (H1 bold). */
+/* Thai: Kanit (matches geometric style) — display: swap for instant clean typography */
 const kanit = Kanit({
   subsets: ["thai", "latin"],
-  weight: ["400", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--rct-font-thai",
-  display: "optional",
+  display: "swap",
   preload: true,
   adjustFontFallback: true,
 })
@@ -220,25 +210,6 @@ export default async function RootLayout({
         {/* Locale bootstrap: set html[lang] immediately from URL to prevent Thai→Inter font flash */}
         <script dangerouslySetInnerHTML={{ __html: localeBootstrapScript }} />
         <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
-        {/* Font preloads — Next.js 16 variable-mode fonts don't inject preload
-            links automatically (missing <link rel="preload" as="font"> in HTML).
-            Manually adding them here ensures fonts start downloading with the HTML
-            document, before the CSS file that contains @font-face is even parsed.
-            Hashes are content-based (stable until font config changes). */}
-        <link
-          rel="preload"
-          as="font"
-          type="font/woff2"
-          href="/_next/static/media/36966cca54120369-s.p.woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          as="font"
-          type="font/woff2"
-          href="/_next/static/media/25f7d470e08d7a87-s.p.woff2"
-          crossOrigin="anonymous"
-        />
         {/* Preconnect to image CDN for faster LCP */}
         <link rel="preconnect" href="https://d2xsxph8kpxj0f.cloudfront.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://d2xsxph8kpxj0f.cloudfront.net" />

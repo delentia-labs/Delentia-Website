@@ -23,14 +23,14 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
   return createBilingualMetadata(
     locale,
-    "Delentia Labs — Constitutional AI Operating System | Public SDK + Enterprise Evidence Lanes",
-    "Delentia Labs — ระบบปฏิบัติการ AI แบบรัฐธรรมนูญ | Public SDK + Enterprise Evidence Lanes",
-    `Delentia Labs presents a constitutional AI operating system with 10-layer architecture, a 41-algorithm framework, and explicit evidence lanes that separate ${SITE_PUBLIC_SDK_EVIDENCE_LABEL.toLowerCase()} from ${SITE_ENTERPRISE_EVIDENCE_LABEL.toLowerCase()} and benchmark disclosures.`,
-    `Delentia Labs นำเสนอระบบปฏิบัติการ AI แบบรัฐธรรมนูญที่มีสถาปัตยกรรม 10 ชั้น กรอบอัลกอริทึม 41 รายการ และแยก evidence lanes อย่างชัดเจนระหว่าง ${SITE_PUBLIC_SDK_EVIDENCE_LABEL.toLowerCase()} กับ ${SITE_ENTERPRISE_EVIDENCE_LABEL.toLowerCase()} รวมถึง benchmark disclosures.`,
+    "Delentia OS — Sovereign Cybersecurity & Cognitive AI Operating System | 10-Layer Stack",
+    "Delentia OS — ระบบปฏิบัติการสมองกลและความมั่นคงปลอดภัยไซเบอร์ระดับองค์กร | 10 เลเยอร์",
+    `Delentia OS presents a sovereign cybersecurity and cognitive AI operating system with 10-layer architecture, 41-algorithm framework, FDIA Veto Gate, CORD Shannon Security Engine, and 1+4 Pillars Bonsai 27B model.`,
+    `Delentia OS นำเสนอระบบปฏิบัติการสมองกลและความมั่นคงปลอดภัยไซเบอร์ระดับองค์กร 10 เลเยอร์, 41 อัลกอริทึม, เกราะความปลอดภัย FDIA, เครื่องมือรักษาความปลอดภัย CORD Shannon Entropy และโมเดล 1+4 Pillars Bonsai 27B`,
     "/",
     locale === "th"
-      ? ["ระบบ AI สำหรับองค์กร", "ป้องกัน AI hallucination", "ระบบตรวจสอบผลลัพธ์ AI", "โครงสร้างพื้นฐาน AI ประเทศไทย", "AI governance"]
-      : ["FDIA equation", "intent operating system", "AI hallucination solution", "enterprise AI Thailand", "AI governance platform"]
+      ? ["Sovereign AI", "Cybersecurity AI OS", "ระบบ AI สำหรับองค์กร", "ป้องกัน AI hallucination", "FDIA Equation", "RCT 7 Thinking"]
+      : ["Sovereign AI OS", "Cybersecurity AI", "FDIA equation", "10-layer cognitive OS", "enterprise AI Thailand", "AI governance platform"]
   )
 }
 

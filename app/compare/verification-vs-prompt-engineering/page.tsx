@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next"
+import type { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
@@ -12,10 +12,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return createBilingualMetadata(
     locale,
-    "Verification vs Prompt Engineering โ€” Which Ensures AI Safety?",
-    "Verification vs Prompt Engineering โ€” เธญเธฐเนเธฃเธ—เธณเนเธซเน AI เธเธฅเธญเธ”เธ เธฑเธขเธเธงเนเธฒ",
+    "Verification vs Prompt Engineering — Which Ensures AI Safety?",
+    "Verification vs Prompt Engineering — อะไรทำให้ AI ปลอดภัยกว่า",
     "Prompt engineering tells models what to do. Constitutional AI verification ensures the system cannot violate constraints. Learn why verification is deterministic and why that matters for enterprise AI compliance.",
-    "Prompt engineering เธเธทเธญเธเธฒเธฃเธเธญเธเนเธกเน€เธ”เธฅเธงเนเธฒเธเธงเธฃเธ—เธณเธญเธฐเนเธฃ เธชเนเธงเธ constitutional AI verification เธเธทเธญเธเธฒเธฃเธ—เธณเนเธซเนเธฃเธฐเธเธเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฅเธฐเน€เธกเธดเธ”เธเนเธญเธเธณเธเธฑเธ”เนเธ”เน เน€เธฃเธตเธขเธเธฃเธนเนเธงเนเธฒเธ—เธณเนเธกเนเธเธงเธ—เธฒเธ verification เธเธถเธ deterministic เนเธฅเธฐเธชเธณเธเธฑเธเธ•เนเธญ compliance เธฃเธฐเธ”เธฑเธเธญเธเธเนเธเธฃ",
+    "Prompt engineering คือการบอกโมเดลว่าควรทำอะไร ส่วน constitutional AI verification คือการทำให้ระบบไม่สามารถละเมิดข้อจำกัดได้ เรียนรู้ว่าทำไมแนวทาง verification จึง deterministic และสำคัญต่อ compliance ระดับองค์กร",
     "/compare/verification-vs-prompt-engineering",
     ["verification vs prompt engineering", "AI safety", "constitutional AI verification"]
   )
@@ -60,7 +60,7 @@ export default async function VerificationVsPromptEngineering() {
     },
     {
       question: "Is constitutional AI verification compatible with any LLM?",
-      answer: "Yes. RCT's verification layer is model-agnostic and works identically across GPT-4, Claude, Typhoon, and other models in the HexaCore ensemble. The same constitutional constraints apply regardless of which underlying model generates the response.",
+      answer: "Yes. Delentia's verification layer is model-agnostic and works identically across GPT-4, Claude, Typhoon, and other models in the HexaCore ensemble. The same constitutional constraints apply regardless of which underlying model generates the response.",
     },
   ])
 
@@ -81,7 +81,7 @@ export default async function VerificationVsPromptEngineering() {
               Verification vs Prompt Engineering
             </h1>
             <p className="text-xl text-warm-dim max-w-2xl mx-auto mb-8">
-              Prompt engineering is probabilistic. Constitutional AI verification is deterministic. For enterprise compliance, the difference is not philosophical โ€” it is legal.
+              Prompt engineering is probabilistic. Constitutional AI verification is deterministic. For enterprise compliance, the difference is not philosophical — it is legal.
             </p>
           </div>
         </section>
@@ -93,8 +93,8 @@ export default async function VerificationVsPromptEngineering() {
             <div>
               <p className="font-bold text-foreground mb-1">The Critical Difference</p>
               <p className="text-warm-dim text-sm leading-relaxed">
-                Prompt engineering adds tokens that make certain outputs <em>more probable</em>. A model can still ignore them โ€” especially on long conversations, adversarial inputs, or after fine-tuning.
-                Constitutional AI constraints are evaluated by the <strong className="text-warm-amber">system</strong>, not the model. When A=0 in the FDIA equation, <strong className="text-foreground">F=0 โ€” always</strong>. No model can override this.
+                Prompt engineering adds tokens that make certain outputs <em>more probable</em>. A model can still ignore them — especially on long conversations, adversarial inputs, or after fine-tuning.
+                Constitutional AI constraints are evaluated by the <strong className="text-warm-amber">system</strong>, not the model. When A=0 in the FDIA equation, <strong className="text-foreground">F=0 — always</strong>. No model can override this.
               </p>
             </div>
           </div>
@@ -110,13 +110,13 @@ export default async function VerificationVsPromptEngineering() {
                 titleColor: "text-blue-400",
                 points: [
                   "Works at the model level (text input)",
-                  "Probabilistic โ€” model may ignore",
+                  "Probabilistic — model may ignore",
                   "Different prompts needed per LLM",
                   "No audit trail built-in",
                   "Vulnerable to context dilution (long conversations)",
                   "Vulnerable to prompt injection attacks",
                 ],
-                verdict: "โ“ Excellent for task formatting & style",
+                verdict: "✓ Excellent for task formatting & style",
                 verdictColor: "text-blue-400",
               },
               {
@@ -126,23 +126,23 @@ export default async function VerificationVsPromptEngineering() {
                 titleColor: "text-warm-amber",
                 points: [
                   "Works at the system level (around the model)",
-                  "Deterministic โ€” mathematically guaranteed",
+                  "Deterministic — mathematically guaranteed",
                   "One constraint set, works across all 7 HexaCore models",
                   "Full audit trail (RCTDB + JITNA packet log)",
-                  "Per-packet validation โ€” no context dilution",
+                  "Per-packet validation — no context dilution",
                   "JITNA Normalizer strips injection attempts pre-LLM",
                 ],
-                verdict: "โ“ Required for regulated industry compliance",
+                verdict: "✓ Required for regulated industry compliance",
                 verdictColor: "text-warm-amber",
               },
             ].map(({ title, subtitle, color, titleColor, points, verdict, verdictColor }) => (
               <div key={title} className={`rounded-2xl border bg-linear-to-br ${color} to-transparent p-6`}>
                 <h2 className={`text-xl font-bold ${titleColor} mb-1`}>{title}</h2>
-                <p className="text-warm-dim text-sm mb-5">{subtitle}</p>
-                <ul className="space-y-2.5 mb-6">
+                <p className="text-xs text-warm-dim mb-4">{subtitle}</p>
+                <ul className="space-y-2 mb-6">
                   {points.map((pt) => (
                     <li key={pt} className="text-sm text-warm-dim flex items-start gap-2">
-                      <span className="mt-0.5 shrink-0">โ€ข</span>{pt}
+                      <span className="mt-0.5 shrink-0">•</span> {pt}
                     </li>
                   ))}
                 </ul>
@@ -152,15 +152,16 @@ export default async function VerificationVsPromptEngineering() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-8">
-          <h2 className="text-2xl font-bold text-foreground mb-6">Capability Matrix</h2>
+        {/* Feature comparison table */}
+        <section className="mx-auto max-w-7xl px-4 py-12">
+          <h2 className="text-2xl font-bold text-foreground mb-8">Feature Comparison Table</h2>
           <div className="rounded-2xl border border-white/10 overflow-hidden">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-white/10 bg-white/5">
                   <th className="text-left px-6 py-4 text-warm-dim font-semibold">Capability</th>
                   <th className="text-center px-4 py-4 text-blue-400 font-semibold">Prompt Engineering</th>
-                  <th className="text-center px-4 py-4 text-warm-amber font-semibold">Constitutional Verification</th>
+                  <th className="text-center px-4 py-4 text-warm-amber font-semibold">Constitutional AI</th>
                 </tr>
               </thead>
               <tbody>
@@ -173,21 +174,11 @@ export default async function VerificationVsPromptEngineering() {
                 ))}
               </tbody>
             </table>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-7xl px-4 py-12">
-          <div className="rounded-2xl border border-warm-amber/20 bg-warm-amber/5 p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h2 className="text-xl font-bold text-foreground mb-2">Read the Full Analysis</h2>
-              <p className="text-warm-dim">Detailed explanation of 4 prompt engineering failure modes and FDIA's 3-level verification</p>
+            <div className="px-6 py-3 bg-white/3 border-t border-white/10 flex gap-6 text-xs text-warm-dim">
+              <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-green-400" /> Yes</span>
+              <span className="flex items-center gap-1.5"><MinusCircle className="w-3.5 h-3.5 text-warm-amber/60" /> Partial</span>
+              <span className="flex items-center gap-1.5"><XCircle className="w-3.5 h-3.5 text-red-400/70" /> No</span>
             </div>
-            <Link
-              href={`${localePrefix}/blog/verification-vs-prompt-engineering`}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-warm-amber text-background font-semibold text-sm hover:bg-warm-amber/90 transition shrink-0"
-            >
-              Read Article <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </section>
 
@@ -196,5 +187,3 @@ export default async function VerificationVsPromptEngineering() {
     </>
   )
 }
-
-

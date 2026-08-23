@@ -11,41 +11,55 @@ export default function Icon() {
         style={{
           width: 32,
           height: 32,
-          background: "#0A0A0A",
-          borderRadius: 7,
+          background: "#FFFFFF",
+          border: "2px solid #000000",
+          borderRadius: 8,
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          padding: "3px 4px",
+          gap: "1.5px",
+          overflow: "hidden",
         }}
       >
-        <svg
-          width="22"
-          height="22"
-          viewBox="0 0 22 22"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        {/* Top layer with eyes */}
+        <div
+          style={{
+            width: "100%",
+            height: "7px",
+            background: "#76C455",
+            borderRadius: "3px 3px 2px 2px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "4px",
+          }}
         >
-          {/* Outer orbital arc */}
-          <path
-            d="M 19 9.5 A 9.5 9.5 0 1 1 12.5 2"
-            stroke="#D3A853"
-            strokeWidth="2.8"
-            strokeLinecap="round"
-            fill="none"
-          />
-          {/* Inner orbital arc */}
-          <path
-            d="M 16 11 A 6.5 6.5 0 1 1 10 4.5"
-            stroke="#D3A853"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            fill="none"
-          />
-          {/* Brand accent node */}
-          <circle cx="12.5" cy="2" r="2.2" fill="#D3A853" />
-        </svg>
+          <div style={{ width: "3.5px", height: "3.5px", background: "#221F20", borderRadius: "50%" }} />
+          <div style={{ width: "3.5px", height: "3.5px", background: "#221F20", borderRadius: "50%" }} />
+        </div>
+        {/* Middle layer */}
+        <div
+          style={{
+            width: "100%",
+            height: "6px",
+            background: "#498F34",
+            borderRadius: "2px",
+          }}
+        />
+        {/* Bottom layer */}
+        <div
+          style={{
+            width: "100%",
+            height: "6px",
+            background: "#2F5A24",
+            borderRadius: "2px",
+          }}
+        />
       </div>
     ),
     { ...size }
   )
 }
+

@@ -178,13 +178,12 @@ export async function generateMetadata(): Promise<Metadata> {
     verification,
     icons: {
       icon: [
-        { url: "/icon.svg", type: "image/svg+xml" },
-        { url: "/icon", type: "image/png", sizes: "32x32" },
+        { url: "/icon.svg?v=2", type: "image/svg+xml" },
+        { url: "/favicon.ico?v=2", sizes: "any" },
+        { url: "/favicon.png?v=2", type: "image/png", sizes: "32x32" },
       ],
-      // Explicit apple entry ensures <link rel="apple-touch-icon"> is included
-      // even when explicit icons config overrides file-based metadata merging.
-      // Points to the dynamic edge route /apple-icon (app/apple-icon.tsx).
-      apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
+      shortcut: "/favicon.ico?v=2",
+      apple: [{ url: "/apple-touch-icon.png?v=2", sizes: "180x180", type: "image/png" }],
     },
     manifest: "/manifest.webmanifest",
     // Note: generator field removed — do not expose internal tooling

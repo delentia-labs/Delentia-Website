@@ -452,6 +452,16 @@ const resourceItems = {
     },
     badge: "NEW",
   },
+  mcpPortal: {
+    id: "mcpPortal",
+    href: "https://delentia-gateway-main-c7624a5.zuplo.site",
+    label: { en: "MCP Portal & Pricing", th: "พอร์ทัล MCP & ราคา" },
+    description: {
+      en: "Enterprise Sovereign AI MCP gateway, API key management, and subscription plans.",
+      th: "เกตเวย์ Sovereign AI MCPs จัดการคีย์ API และสมัครแพ็กเกจการใช้งานจริง",
+    },
+    badge: "LIVE",
+  },
 } satisfies Record<string, NavLeafItem>
 
 export const navigationGroups: NavGroup[] = [
@@ -569,7 +579,7 @@ export const navigationGroups: NavGroup[] = [
       {
         header: { en: "Developer Hub", th: "แพลตฟอร์มนักพัฒนา" },
         style: "secondary",
-        items: [resourceItems.models, resourceItems.packages, resourceItems.playground, resourceItems.useCases, resourceItems.community],
+        items: [resourceItems.mcpPortal, resourceItems.models, resourceItems.packages, resourceItems.playground, resourceItems.useCases, resourceItems.community],
       },
     ],
     summary: {

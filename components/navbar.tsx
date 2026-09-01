@@ -323,6 +323,16 @@ export function Navbar({ variant = "default", locale: forcedLocale }: NavbarProp
             />
 
             <div className="flex items-center gap-2 shrink-0">
+              <Link
+                href="https://delentia-gateway-main-c7624a5.zuplo.site"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:inline-flex items-center justify-center gap-1.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white px-3.5 py-1.5 text-xs font-semibold shadow-sm transition-all hover:scale-105"
+              >
+                <span>MCP Portal</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-pulse" />
+              </Link>
+
               <UtilityActions
                 mode="desktop"
                 onOpenSearch={prepareAndOpenSearch}

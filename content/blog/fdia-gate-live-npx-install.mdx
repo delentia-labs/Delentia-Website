@@ -1,0 +1,94 @@
+---
+title: "FDIA Is Live: A Deterministic Authorization Gate for AI Agents, Installable in One Command"
+author: "Ittirit Saengow"
+authorId: "ittirit-saengow"
+reviewerId: "rct-research-desk"
+date: "2026-09-11"
+lastReviewed: "2026-09-11"
+category: "engineering"
+excerpt: "evaluate_fdia is a live MCP tool — deployed on Cloudflare Workers, installable via npx, covered by CI — that computes a deterministic authorization score before an AI agent acts. This post explains what it does and why it matters for two audiences: developers wiring it into an agent, and decision-makers evaluating whether it's worth adopting."
+tags: ["FDIA", "MCP Gateway", "AI Guardrails", "Agentic AI Security", "Delentia Labs"]
+readTime: 9
+references:
+  - "https://modelcontextprotocol.io/"
+  - "https://www.npmjs.com/package/delentia-mcp"
+  - "https://registry.modelcontextprotocol.io/?q=delentia"
+---
+
+# FDIA Is Live: A Deterministic Authorization Gate for AI Agents
+
+Most "AI guardrails" today mean one of two things: a second LLM asked to judge the first LLM's output (probabilistic, slow, and itself capable of being wrong), or a prompt-engineered instruction hoping the model behaves. Neither gives you a hard, mathematically reproducible answer to the question that actually matters before an agent takes an action: **should this specific action be allowed to happen at all?**
+
+`evaluate_fdia` is our answer to that question. It's one of 5 tools in the Delentia MCP gateway, and as of this week it's live, tested, and installable in one command. This post is split into two sections — pick the one relevant to you, or read both.
+
+---
+
+## For Developers
+
+### What it actually computes
+
+```
+F = D^I × A
+```
+
+- **D** (Data Quality) — a 0.0–1.0 score you provide, representing how sufficient/trustworthy the input data is for this action.
+- **I** (Intent Precision) — an exponent ≥ 1.0 representing how precisely the action matches a stated goal.
+- **A** (Authorization) — 0 or 1. This is the hard gate: **when A = 0, F collapses to exactly 0 regardless of D or I.** No amount of "good data" can rescue an unauthorized action.
+
+`A` isn't something you set by hand on every call — it's evaluated dynamically against a policy of wildcard-matched rules (`configure_policy` manages this policy), so `evaluate_fdia` can look at an `action_name` like `drop_database` or `read_telemetry` and resolve authorization from rules your team defines, not a hardcoded allowlist.
+
+### Install it right now
+
+```json
+{
+  "mcpServers": {
+    "delentia-sovereign": {
+      "command": "npx",
+      "args": ["-y", "delentia-mcp"]
+    }
+  }
+}
+```
+
+Drop that into your Claude Desktop or Claude Code MCP config and all 5 tools (`evaluate_fdia`, `configure_policy`, `rct_think`, `compress_context`, `orchestrate_swarm`) are available immediately — no account, no API key, 50 free calls/day. We verified this exact config works end-to-end before publishing this post.
+
+### What we found and fixed this week (we're telling you because it matters)
+
+During a hardening pass, we found that `evaluate_fdia` could previously return `verdict: "AUTHORIZED"` with a `NaN` `future_score` when given malformed numeric input — `Math.pow` on an invalid domain (e.g. a negative `data_quality`) produces `NaN`, which compared `false` against every threshold check in the code and fell through to the authorized branch. That's exactly the kind of bug a "deterministic gate" cannot have. It's fixed: malformed input now fails closed (`SECURITY_POLICY_VIOLATION`, `future_score: 0`, `authorized: false`), covered by a regression test, and verified against the live production endpoint, not just locally.
+
+We're not hiding this because a gate that has been stress-tested and had a real bug caught and fixed is more trustworthy than one that's never been looked at closely — not less.
+
+### Current state, honestly
+
+- 38 tests passing in CI on every push (`.github/workflows/ci.yml`).
+- `evaluate_fdia` and `configure_policy` are the most mature of the 5 tools — real computation, schema-validated policy writes, SHA-256 audit digests on every evaluation.
+- `rct_think` (the reasoning tool) computes a real, input-dependent score today, via a self-contained heuristic — not an LLM call. That's a deliberate tradeoff (zero added latency/cost/API-key dependency) documented in `docs/RCT7_SCORING_SPEC.md`, not a limitation we're hiding.
+- The FDIA formula is currently implemented independently in three places across our repos (this TS gateway plus two Python modules elsewhere) with no shared contract test yet — on our roadmap, not resolved.
+
+---
+
+## For Decision-Makers
+
+### The problem this solves
+
+When you give an AI agent the ability to take real actions — write to a database, call a paid API, modify infrastructure — you need an answer to "should this happen?" that doesn't depend on trusting the same model that might hallucinate the action in the first place. Asking a second LLM to check the first LLM's work is still a probabilistic judgment call, and it's still vulnerable to the same class of failure.
+
+FDIA is a **mathematical** gate, not a judgment call. Given the same inputs, it produces the same answer every time, and that answer is independently auditable — every evaluation produces a SHA-256 digest you can log and check later.
+
+### What "live" actually means here
+
+This isn't a whitepaper concept or a demo. It's deployed on Cloudflare's global edge network, published on npm, listed on the official MCP Registry, and — as of this week — hardened against a real bug we found and fixed in the process. You can install it and call it from Claude or Cursor in under a minute.
+
+### Where this fits, and where it doesn't (yet)
+
+We position this as a **deterministic AI guardrail gateway** — the same category as products like Portkey or Kong's AI Gateway — not a complete "AI operating system." That's a deliberate, narrower claim than some of our earlier marketing made, and we'd rather you evaluate us against what's actually shipped:
+
+- ✅ Ready to evaluate today: request authorization gating (`evaluate_fdia`), policy management (`configure_policy`), context compression (`compress_context`), multi-agent task routing (`orchestrate_swarm`).
+- 🔶 Early but real: structured reasoning traces (`rct_think`) — useful for auditability today, not yet backed by independent third-party validation of its output quality.
+- ⏳ Not yet built: a real, monitored SLA (our uptime figures today are internal targets, not independently measured); cross-session memory that avoids re-sending unchanged context on every call.
+
+If you're evaluating this for a production agent deployment, we'd rather you know exactly what's proven versus what's still on the roadmap than discover the gap yourself later.
+
+---
+
+*This article documents the state of the Delentia MCP gateway as of 2026-09-11. See `TESTING_CANONICAL.md` and `ROADMAP.md` in the [delentia-mcp-ecosystem repository](https://github.com/delentia-labs/delentia-mcp-ecosystem) for the living, code-verified version of every claim made here.*

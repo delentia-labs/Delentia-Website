@@ -3,7 +3,7 @@ import Link from "next/link"
 import { ArrowDown } from "lucide-react"
 import { getLocalePrefix } from "@/lib/i18n"
 import { pixelIcons } from "@/lib/pixel-icons"
-import { SITE_ALGORITHM_COUNT, SITE_LAYER_COUNT, SITE_HEXACORE_COUNT, SITE_UPTIME } from "@/lib/site-config"
+import { SITE_MCP_LIVE_TOOL_COUNT, SITE_MCP_TEST_COUNT, SITE_HEXACORE_COUNT } from "@/lib/site-config"
 import { AsciinemaTerminalPlayer } from "@/components/ui/asciinema-terminal-player"
 import { HeroOrbActivator } from "@/components/sections/hero-orb-activator"
 import { WaitlistCtaButton } from "@/components/sections/waitlist-cta-button"
@@ -17,43 +17,43 @@ export function HeroServer({ locale }: HeroServerProps) {
   const isThai = locale === "th"
   const copy = isThai
     ? {
-        badge: "Delentia OS v0.5",
+        badge: "Live on Cloudflare Workers · npx delentia-mcp",
         titleLine1: "Delentia OS:",
-        titleLine2: "Sovereign Cybersecurity",
-        titleLine3: "& Cognitive AI OS",
-        titleLine4: "ลำดับที่ 1 ของโลก",
+        titleLine2: "Deterministic AI",
+        titleLine3: "Guardrails",
+        titleLine4: "สำหรับ Agentic Systems",
         subtitle:
-          "ระบบปฏิบัติการสมองกลและความมั่นคงปลอดภัยไซเบอร์ระดับองค์กร สร้างบนสถาปัตยกรรม 10 เลเยอร์, CORD Shannon Security Engine, 41 อัลกอริทึม, เกราะความปลอดภัย FDIA และโมเดล 1+4 Pillars Bonsai 27B",
-        ctaExplore: "สำรวจสถาปัตยกรรม 10 เลเยอร์",
+          "MCP gateway ที่ใช้งานจริงวันนี้ — บังคับ authorization ด้วยสมการคณิตศาสตร์ (FDIA), reasoning แบบมีโครงสร้าง (RCT-7) และ policy control สำหรับ AI agent ติดตั้งผ่าน npx ได้ทันที ส่วนหนึ่งของสถาปัตยกรรม constitutional AI ที่กำลังพัฒนาต่อเนื่อง",
+        ctaExplore: "สำรวจสถาปัตยกรรม",
         ctaDemo: "ดู Live MCP Terminal",
-        statAlgorithms: "Algorithms",
-        statLayers: "Layers",
-        statGenomes: "Genomes",
-        statUptime: "Uptime",
+        statAlgorithms: "Live Tools",
+        statLayers: "Tests Passing",
+        statGenomes: "HexaCore Models",
+        statUptime: "Deployed",
         scroll: "เลื่อนเพื่อสำรวจ",
       }
     : {
-        badge: "Delentia OS v0.5",
+        badge: "Live on Cloudflare Workers · npx delentia-mcp",
         titleLine1: "Delentia OS:",
-        titleLine2: "The World's 1st Sovereign",
-        titleLine3: "Cybersecurity &",
-        titleLine4: "Cognitive AI OS",
+        titleLine2: "Deterministic AI",
+        titleLine3: "Guardrails",
+        titleLine4: "for Agentic Systems",
         subtitle:
-          "Enterprise sovereign cybersecurity and cognitive AI operating system built on a 10-layer stack, CORD Shannon Entropy Security Engine, 41-algorithm framework, FDIA Veto Gate, and the 1+4 Pillars Bonsai 27B model.",
-        ctaExplore: "Explore 10-Layer Stack",
+          "A live MCP gateway enforcing mathematical authorization (FDIA), structured reasoning (RCT-7), and policy control for AI agents — installable via npx today. Part of a broader constitutional AI architecture still in active development.",
+        ctaExplore: "Explore Architecture",
         ctaDemo: "View Live MCP Terminal",
-        statAlgorithms: "Algorithms",
-        statLayers: "Layers",
-        statGenomes: "Genomes",
-        statUptime: "Uptime",
+        statAlgorithms: "Live Tools",
+        statLayers: "Tests Passing",
+        statGenomes: "HexaCore Models",
+        statUptime: "Deployed",
         scroll: "Scroll to explore",
       }
 
   const stats = [
-    { value: String(SITE_ALGORITHM_COUNT), label: copy.statAlgorithms, iconSrc: pixelIcons.brain },
-    { value: String(SITE_LAYER_COUNT), label: copy.statLayers, iconSrc: pixelIcons.layers },
+    { value: String(SITE_MCP_LIVE_TOOL_COUNT), label: copy.statAlgorithms, iconSrc: pixelIcons.brain },
+    { value: String(SITE_MCP_TEST_COUNT), sublabel: "CI", label: copy.statLayers, iconSrc: pixelIcons.layers },
     { value: String(SITE_HEXACORE_COUNT), label: copy.statGenomes, iconSrc: pixelIcons.genome },
-    { value: SITE_UPTIME.replace(" SLA", ""), sublabel: "SLA", label: copy.statUptime, iconSrc: pixelIcons.cpu },
+    { value: "Cloudflare", sublabel: "Workers", label: copy.statUptime, iconSrc: pixelIcons.cpu },
   ]
 
   return (

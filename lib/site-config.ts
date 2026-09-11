@@ -17,6 +17,12 @@ export const SITE_ALGORITHM_COUNT = 41
 export const SITE_LAYER_COUNT = 10 // Product layers L1-L10; L11 = CI/CD pipeline layer (internal only)
 export const SITE_HEXACORE_COUNT = 9
 export const SITE_CONSENSUS_MODELS = 9 // HexaCore roster: 3W (Claude/Gemini/Grok) + 3E (Kimi/MiniMax/DeepSeek) + 1TH (Typhoon) + 1Local (Ollama) + 1LPU (Groq LPU); mirrors SITE_HEXACORE_COUNT
+// The live MCP gateway (delentia-mcp-ecosystem, deployed on Cloudflare
+// Workers) — the one part of the ecosystem installable and runnable today
+// via `npx delentia-mcp`. Update these two only when the gateway's tool
+// count or test suite actually changes; see TESTING_CANONICAL.md in that repo.
+export const SITE_MCP_LIVE_TOOL_COUNT = 5 // evaluate_fdia, configure_policy, rct_think, compress_context, orchestrate_swarm
+export const SITE_MCP_TEST_COUNT = 37 // tests/ecosystem.test.mjs + deep-ecosystem.test.mjs + test_fdia_policy_engine.mjs, all passing in CI
 // Neither of these two is backed by an independent monitoring system or a
 // published benchmark dataset/methodology yet — say so in the value itself so
 // the caveat travels with the data to every consumer, not just this file.

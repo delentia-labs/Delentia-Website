@@ -12,7 +12,7 @@ import { useMounted } from "@/hooks/use-mounted"
 import { useIdleActivation } from "@/hooks/use-idle-activation"
 import { pixelIcons } from "@/lib/pixel-icons"
 import { useCardSpotlight } from "@/hooks/use-card-spotlight"
-import { SITE_ALGORITHM_COUNT, SITE_LAYER_COUNT, SITE_HEXACORE_COUNT, SITE_UPTIME } from "@/lib/site-config"
+import { SITE_MCP_LIVE_TOOL_COUNT, SITE_MCP_TEST_COUNT, SITE_HEXACORE_COUNT } from "@/lib/site-config"
 
 const HeroArchitectureVisual = dynamic(() => import("@/components/sections/hero-architecture-visual"), {
   loading: () => (
@@ -45,37 +45,37 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
   const copy = isThai
     ? {
-        badge: "Reverse Component Thinking",
+        badge: "Live on Cloudflare Workers · npx delentia-mcp",
         titleLine1: "Delentia OS:",
-        titleLine2: "ระบบปฏิบัติการ AI",
-        titleLine3: "Intent-Centric",
-        titleLine4: "ลำดับที่ 1 ของโลก",
+        titleLine2: "Deterministic AI",
+        titleLine3: "Guardrails",
+        titleLine4: "สำหรับ Agentic Systems",
         subtitle:
-          "โครงการสถาปัตยกรรม AI ระดับองค์กรที่สร้างบนโมเดล 10 ชั้น กรอบอัลกอริทึม 41 รายการ 7 Genome Subsystems สมการ FDIA และ JITNA Protocol",
+          "MCP gateway ที่ใช้งานจริงวันนี้ — บังคับ authorization ด้วยสมการคณิตศาสตร์ (FDIA), reasoning แบบมีโครงสร้าง (RCT-7) และ policy control สำหรับ AI agent ติดตั้งผ่าน npx ได้ทันที ส่วนหนึ่งของสถาปัตยกรรม constitutional AI ที่กำลังพัฒนาต่อเนื่อง",
         ctaExplore: "สำรวจสถาปัตยกรรม",
         ctaDemo: "ดู Live Demo",
         ctaEarlyAccess: "เข้าร่วม Early Access",
-        statAlgorithms: "Algorithms",
-        statLayers: "Layers",
-        statGenomes: "Genomes",
-        statUptime: "Uptime",
+        statAlgorithms: "Live Tools",
+        statLayers: "Tests Passing",
+        statGenomes: "HexaCore Models",
+        statUptime: "Deployed",
         scroll: "เลื่อนเพื่อสำรวจ",
       }
     : {
-        badge: "Reverse Component Thinking",
+        badge: "Live on Cloudflare Workers · npx delentia-mcp",
         titleLine1: "Delentia OS:",
-        titleLine2: "The World's 1st",
-        titleLine3: "Intent-Centric",
-        titleLine4: "AI Operating System",
+        titleLine2: "Deterministic AI",
+        titleLine3: "Guardrails",
+        titleLine4: "for Agentic Systems",
         subtitle:
-          "Enterprise AI architecture program built around a 10-layer model, a 41-algorithm framework, 7 Genome subsystems, the FDIA equation, and the JITNA Protocol.",
+          "A live MCP gateway enforcing mathematical authorization (FDIA), structured reasoning (RCT-7), and policy control for AI agents — installable via npx today. Part of a broader constitutional AI architecture still in active development.",
         ctaExplore: "Explore Architecture",
         ctaDemo: "View Live Demo",
         ctaEarlyAccess: "Join Early Access",
-        statAlgorithms: "Algorithms",
-        statLayers: "Layers",
-        statGenomes: "Genomes",
-        statUptime: "Uptime",
+        statAlgorithms: "Live Tools",
+        statLayers: "Tests Passing",
+        statGenomes: "HexaCore Models",
+        statUptime: "Deployed",
         scroll: "Scroll to explore",
       }
 
@@ -86,10 +86,10 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   }
 
   const stats = [
-    { value: String(SITE_ALGORITHM_COUNT), label: copy.statAlgorithms, iconSrc: pixelIcons.brain },
-    { value: String(SITE_LAYER_COUNT), label: copy.statLayers, iconSrc: pixelIcons.layers },
+    { value: String(SITE_MCP_LIVE_TOOL_COUNT), label: copy.statAlgorithms, iconSrc: pixelIcons.brain },
+    { value: String(SITE_MCP_TEST_COUNT), sublabel: "CI", label: copy.statLayers, iconSrc: pixelIcons.layers },
     { value: String(SITE_HEXACORE_COUNT), label: copy.statGenomes, iconSrc: pixelIcons.genome },
-    { value: SITE_UPTIME.replace(" SLA", ""), sublabel: "SLA", label: copy.statUptime, iconSrc: pixelIcons.cpu },
+    { value: "Cloudflare", sublabel: "Workers", label: copy.statUptime, iconSrc: pixelIcons.cpu },
   ]
 
   return (
@@ -154,8 +154,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
                 </p>
                 <p className="sr-only">
                   {isThai
-                    ? "Delentia OS คือระบบปฏิบัติการ AI แบบรัฐธรรมนูญ 10 ชั้น ใช้ FDIA gating, HexaCore 7 โมเดล และ SignedAI consensus มุ่งสู่ hallucination ต่ำกว่า 0.3% บน benchmark workloads สำหรับองค์กร"
-                    : "Delentia OS is a 10-layer Constitutional AI Operating System — using FDIA gating, 7-model HexaCore routing, and SignedAI consensus to target under 0.3% hallucination on benchmarked enterprise workloads."}
+                    ? "Delentia OS คือ MCP gateway ที่ deploy จริงบน Cloudflare Workers ใช้ FDIA mathematical gating, RCT-7 structured reasoning และ policy control สำหรับ AI agent ติดตั้งผ่าน npx ได้วันนี้ เป็นส่วนหนึ่งของ constitutional AI architecture ที่ใหญ่กว่าซึ่งกำลังพัฒนาต่อเนื่อง"
+                    : "Delentia OS is a live MCP gateway deployed on Cloudflare Workers — using FDIA mathematical gating, RCT-7 structured reasoning, and policy control for AI agents, installable via npx today. Part of a broader constitutional AI architecture still in active development."}
                 </p>
               </div>
             </div>

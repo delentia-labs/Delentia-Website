@@ -23,14 +23,14 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
   return createBilingualMetadata(
     locale,
-    "Delentia OS — Sovereign Cybersecurity & Cognitive AI Operating System | 10-Layer Stack",
-    "Delentia OS — ระบบปฏิบัติการสมองกลและความมั่นคงปลอดภัยไซเบอร์ระดับองค์กร | 10 เลเยอร์",
-    `Delentia OS presents a sovereign cybersecurity and cognitive AI operating system with 10-layer architecture, 41-algorithm framework, FDIA Veto Gate, CORD Shannon Security Engine, and 1+4 Pillars Bonsai 27B model.`,
-    `Delentia OS นำเสนอระบบปฏิบัติการสมองกลและความมั่นคงปลอดภัยไซเบอร์ระดับองค์กร 10 เลเยอร์, 41 อัลกอริทึม, เกราะความปลอดภัย FDIA, เครื่องมือรักษาความปลอดภัย CORD Shannon Entropy และโมเดล 1+4 Pillars Bonsai 27B`,
+    "Delentia OS — Deterministic AI Guardrails for Agentic Systems",
+    "Delentia OS — Deterministic AI Guardrails สำหรับ Agentic Systems",
+    `Delentia OS is a live MCP gateway — deployed on Cloudflare Workers, installable via npx — enforcing FDIA mathematical authorization, RCT-7 structured reasoning, and policy control for AI agents. Part of a broader constitutional AI architecture still in active development.`,
+    `Delentia OS คือ MCP gateway ที่ deploy จริงบน Cloudflare Workers ติดตั้งผ่าน npx ได้ บังคับ authorization ด้วยสมการ FDIA, RCT-7 structured reasoning และ policy control สำหรับ AI agent เป็นส่วนหนึ่งของ constitutional AI architecture ที่กำลังพัฒนาต่อเนื่อง`,
     "/",
     locale === "th"
-      ? ["Sovereign AI", "Cybersecurity AI OS", "ระบบ AI สำหรับองค์กร", "ป้องกัน AI hallucination", "FDIA Equation", "RCT 7 Thinking"]
-      : ["Sovereign AI OS", "Cybersecurity AI", "FDIA equation", "10-layer cognitive OS", "enterprise AI Thailand", "AI governance platform"]
+      ? ["MCP Gateway", "AI Guardrails", "FDIA Equation", "ป้องกัน AI hallucination", "RCT-7 Thinking", "Agentic AI Security"]
+      : ["MCP Gateway", "AI Guardrails", "FDIA equation", "Agentic AI security", "RCT-7 Thinking", "AI governance platform"]
   )
 }
 

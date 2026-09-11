@@ -123,7 +123,7 @@ INTAKE → ROUTER → SIGNERS → ATTESTATION → CONSENSUS → REPORT
 
 **Why Ed25519 signatures:** A multi-model consensus without cryptographic attestation is just an average — any post-hoc modification of the output cannot be detected. Ed25519 signatures create an immutable audit trail: the output that was agreed upon, the models that signed it, and the moment of consensus are permanently verifiable.
 
-**Cost structure by tier:**
+**Cost structure by tier (internal estimate based on 2026 model API pricing, not an audited figure):**
 - TIER_S: ~$0.10 per verification
 - TIER_4 (50% consensus, 4 models): ~$0.80
 - TIER_6 (67% consensus, 6 models): ~$2.00  

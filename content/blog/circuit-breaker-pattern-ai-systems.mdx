@@ -83,7 +83,7 @@ Where:
 
 When A = 0, the circuit is forced open at the equation level. When D falls below a configurable threshold, I becomes an amplifier of the degradation — because a low-quality context with a high-precision intent still produces an unreliable F score. The equation provides a **continuous quality signal** rather than a binary success/failure signal, which is exactly what AI circuit breakers need.
 
-This is fundamentally different from the boolean circuit breakers used in microservices. A traditional circuit breaker says: "the service returned an error, open the circuit." An FDIA-based circuit breaker says: "the service returned a syntactically valid response, but the quality signal predicts that this response will be incorrect 78% of the time — open the circuit."
+This is fundamentally different from the boolean circuit breakers used in microservices. A traditional circuit breaker says: "the service returned an error, open the circuit." An FDIA-based circuit breaker says: "the service returned a syntactically valid response, but the quality signal predicts (in internal testing) that this response will be incorrect roughly 78% of the time — open the circuit."
 
 ## RFC-006: How RCT Platform Implements Fault Isolation
 
@@ -139,12 +139,12 @@ The last metric — agent handoff rejection rate — is unique to multi-agent sy
 
 ## Key Numbers from RCT Platform's Fault Isolation Layer
 
-The RCT Platform's constitutional architecture achieves measurable fault isolation outcomes:
+The RCT Platform's constitutional architecture targets the following fault isolation outcomes in internal benchmarks (not yet independently audited):
 
-- **0.3% hallucination rate** (vs. 12–15% industry baseline) — the result of multi-layer quality gates that implement circuit breaker logic between every pipeline stage
-- **<50ms warm recall latency** — maintained even under fault conditions because circuit breakers shed degraded traffic before it can create backpressure
+- **0.3% hallucination rate target** (vs. 12–15% industry baseline) — the intended result of multi-layer quality gates that implement circuit breaker logic between every pipeline stage
+- **<50ms warm recall latency target** — intended to hold even under fault conditions because circuit breakers shed degraded traffic before it can create backpressure
 - **ED25519 signed outputs** — every output that passes through the circuit breaker system carries a cryptographic signature that proves it was not produced under a DEGRADED or OPEN circuit state
-- **7 fallback providers in HexaCore** — when one provider's circuit opens, automatic routing to the next provider happens in under 100ms
+- **9 fallback providers in HexaCore** — when one provider's circuit opens, automatic routing to the next provider is designed to happen in under 100ms (internal benchmark target)
 
 ## When Circuit Breakers Are Not Enough
 

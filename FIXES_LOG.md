@@ -1,5 +1,19 @@
 # Fixes & Improvements Log
 > Generated: 2026-03-28 | Phase 1 + Phase 2 (Critical + Performance)
+> Updated: 2026-09-11 | Integrity audit follow-up (see below)
+
+---
+
+## ✅ 2026-09-11 — Integrity audit follow-up
+
+External audit of the live MCP gateway + Delentia-OS + Delentia-Private-OS found that the Phase 1 "stats data consistency fix" below (2026-03-28) resolved an internal *inconsistency* by adopting the larger, enterprise-only numbers — which itself created a new problem: `SITE_TEST_COUNT` and `SITE_MICROSERVICE_COUNT` were quoting private-repo counts as if they belonged to the public SDK, which `Delentia-OS/docs/release/PUBLIC_RELEASE_PROVENANCE.md` explicitly prohibits ("Never quote private test counts, service counts, or operational claims as if they belong to the public repository").
+
+- **Fixed:** `lib/site-config.ts` — `SITE_UPTIME` and `SITE_HALLUCINATION_RATE` now state their own caveat inline ("target", "self-reported, not yet independently monitored" / "pending published benchmark methodology") instead of presenting unmonitored numbers as measured facts.
+- **Fixed:** `Delentia-OS/microservices/gateway-api/gateway_main.py` — `/delentia/system/stats` no longer hardcodes `testCount: 4849` / `microserviceCount: 62` (those are the private enterprise repo's numbers); now reports the public repo's own verified `TESTING_CANONICAL.md` checkpoint (1,791) and its own 5 reference microservices, plus a live-introspected algorithm count instead of a hardcoded 41.
+- **Fixed:** the same file was missing the `/rctlabs/system/stats` route that `app/api/stats/route.ts` actually fetches — every live-stats request was 404ing and silently falling back to static constants. Added an alias route.
+- **Found, not yet fixed (needs an editorial decision, not a code fix):** `content/blog/hexacore-7-model-ai-infrastructure.mdx` describes a 7-model roster in detail (table, per-model pricing, "0.3% hallucination" claim in prose) but `site-config.ts` has said 9 models for a while — the article needs a real rewrite or an explicit "superseded" note, not a find-and-replace.
+- **Found, not yet fixed:** `app/about/opengraph-image.tsx` hardcodes `"0.3%"` and `"7"` inline, bypassing `site-config.ts` entirely — these constants no longer match the source of truth.
+- **Found, not yet fixed:** `delentia-mcp-ecosystem/BENCHMARK_REPORT.md` labels itself "100% VERIFIED" but contains unpopulated template placeholders (literal `"undefined"` strings) in its headline numbers.
 
 ---
 

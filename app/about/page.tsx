@@ -174,8 +174,8 @@ export default async function AboutPage() {
     {
       title: isTh ? "Intent Loop + Memory" : "Intent Loop + Memory",
       description: isTh
-        ? "ระบบ warm recall ต่ำกว่า 50ms และลดต้นทุน 60-75% จากการวนกลับมาใช้ memory เดิมก่อนคำนวณใหม่"
-        : "Warm recall under 50ms and 60-75% cost reduction by routing through memory before recomputation.",
+        ? "เป้าหมาย warm recall ต่ำกว่า 50ms และประมาณการลดต้นทุน 60-75% (Benchmark ภายใน) จากการวนกลับมาใช้ memory เดิมก่อนคำนวณใหม่"
+        : "Target warm recall under 50ms and an internal-benchmark estimate of 60-75% cost reduction by routing through memory before recomputation.",
       label: isTh ? "Operating pillar" : "Operating pillar",
       footer: isTh ? "อ่านแนวคิดด้าน memory-first routing" : "Review memory-first routing",
       iconSrc: pixelIcons.database,
@@ -185,8 +185,8 @@ export default async function AboutPage() {
     {
       title: isTh ? "Delta Engine Compression" : "Delta Engine Compression",
       description: isTh
-        ? "เก็บเฉพาะ state ที่เปลี่ยนแปลง ลดภาระหน่วยความจำเฉลี่ย 74% พร้อม reconstruction ระดับต่ำกว่า 1ms"
-        : "Stores only changed state, reducing memory overhead by 74% on average with sub-millisecond reconstruction.",
+        ? "เก็บเฉพาะ state ที่เปลี่ยนแปลง ลดภาระหน่วยความจำเฉลี่ยสูงสุด 74% (Benchmark ภายใน แปรผันตาม input จริง) พร้อม reconstruction ระดับต่ำกว่า 1ms"
+        : "Stores only changed state, reducing memory overhead by up to 74% on average (internal benchmark; varies with real input) with sub-millisecond reconstruction.",
       label: isTh ? "Operating pillar" : "Operating pillar",
       footer: isTh ? "ดู logic การบีบอัดเชิง runtime" : "Inspect runtime compression logic",
       iconSrc: pixelIcons.formula,

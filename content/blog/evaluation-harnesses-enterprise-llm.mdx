@@ -1,7 +1,7 @@
 ---
 title: "Evaluation Harnesses for Enterprise LLMs: Beyond Vibe-Testing"
 author: "Ittirit Saengow"
-excerpt: "Most AI teams evaluate their LLM deployments by looking at outputs and deciding if they seem right. This is vibe-testing. Here is a rigorous alternative — how the RCT Ecosystem runs 4,849 automated tests across 8 evaluation levels to produce verifiable enterprise trust signals."
+excerpt: "Most AI teams evaluate their LLM deployments by looking at outputs and deciding if they seem right. This is vibe-testing. Here is a rigorous alternative — how the RCT Ecosystem's enterprise (private) test suite runs 4,849 automated tests across 8 evaluation levels to produce verifiable enterprise trust signals. (The separate public SDK maintains its own smaller, independently-reproducible suite — see TESTING_CANONICAL.md.)"
 date: "2026-03-28"
 lastReviewed: "2026-05-06"
 authorId: "ittirit-saengow"
@@ -25,7 +25,9 @@ The root cause is almost always the same. **The team did not have an evaluation 
 
 Vibe-testing means: *we looked at the outputs, and they seemed right.* It is fast, feels intuitive, and is fundamentally insufficient for production AI systems.
 
-An evaluation harness is a systematic, automated set of quality gates that a system must pass every time code changes. Here is how we built one for the RCT Ecosystem — 4,849 tests, 8 levels, 0 failures — and why the architecture of your harness matters as much as the tests themselves.
+An evaluation harness is a systematic, automated set of quality gates that a system must pass every time code changes. Here is how we built one for the RCT Ecosystem — 4,849 tests, 8 levels, 0 failures, in our enterprise (private) snapshot — and why the architecture of your harness matters as much as the tests themselves.
+
+> **Evidence lane note:** the 4,849-test figure is an enterprise/private snapshot, not the public open-source SDK's own test suite (which is smaller and independently reproducible — see TESTING_CANONICAL.md in the `delentia-os` repo). Treat counts and rates below as self-reported until an external audit confirms them.
 
 ---
 
@@ -167,7 +169,7 @@ Penetration testing is valuable but not sufficient for production AI systems. Se
 
 Three months after deploying the RCT evaluation harness in its current form:
 
-- **Pre-production bug detection rate:** 98.7% (bugs found in CI before reaching production)
+- **Pre-production bug detection rate (self-reported):** 98.7% (bugs found in CI before reaching production)
 - **Production incident rate:** 0 critical incidents since v5.0.0 (March 2026)
 - **Deployment confidence:** Daily deployments, no deployment freeze window required
 - **Compliance audit time:** Reduced from weeks to hours — test results are the compliance evidence

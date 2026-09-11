@@ -18,16 +18,20 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
 /* ─── DATA ─── */
+// NOTE: all "rct"/"single" figures below are internal, self-reported benchmarks
+// (not independently audited) — see the disclaimer rendered above the Key
+// Metrics section and TESTING_CANONICAL.md in the delentia-mcp-ecosystem repo
+// for what is actually verified today.
 const benchmarks = [
-  { metricEn: "Accuracy", metricTh: "ความแม่นยำ", rct: "99.7%", single: "85%", rctVal: 99.7, singleVal: 85, color: "#7B9E87", icon: Shield },
-  { metricEn: "Hallucination Rate", metricTh: "อัตรา Hallucination", rct: "0.3%", single: "15%", rctVal: 0.3, singleVal: 15, color: "#C4745B", icon: TrendingUp, inverted: true },
-  { metricEn: "Warm Recall Latency (p95)", metricTh: "Warm Recall Latency (p95)", rct: "<50ms", single: "~300ms", rctVal: 50, singleVal: 300, color: "#D4A853", icon: Clock, inverted: true },
-  { metricEn: "Cost Efficiency", metricTh: "ประสิทธิภาพต้นทุน", rct: "3.74× less", single: "Baseline", rctVal: 73, singleVal: 0, color: "#89B4C8", icon: DollarSign },
+  { metricEn: "Accuracy (internal benchmark)", metricTh: "ความแม่นยำ (Benchmark ภายใน)", rct: "99.7%", single: "85%", rctVal: 99.7, singleVal: 85, color: "#7B9E87", icon: Shield },
+  { metricEn: "Hallucination Rate (target)", metricTh: "อัตรา Hallucination (เป้าหมาย)", rct: "0.3%", single: "15%", rctVal: 0.3, singleVal: 15, color: "#C4745B", icon: TrendingUp, inverted: true },
+  { metricEn: "Warm Recall Latency (p95, target)", metricTh: "Warm Recall Latency (p95, เป้าหมาย)", rct: "<50ms", single: "~300ms", rctVal: 50, singleVal: 300, color: "#D4A853", icon: Clock, inverted: true },
+  { metricEn: "Cost Efficiency (internal estimate)", metricTh: "ประสิทธิภาพต้นทุน (ประมาณการภายใน)", rct: "3.74× less", single: "Baseline", rctVal: 73, singleVal: 0, color: "#89B4C8", icon: DollarSign },
   { metricEn: "Audit Trail", metricTh: "Audit Trail", rct: "Full", single: "None", rctVal: 100, singleVal: 0, color: "#B8A9C9", icon: CheckCircle },
   { metricEn: "Cryptographic Signing", metricTh: "Cryptographic Signing", rct: "Yes", single: "No", rctVal: 100, singleVal: 0, color: "#D4A853", icon: Shield },
-  { metricEn: "FDIA Protocol Score", metricTh: "FDIA Protocol Score", rct: "0.92", single: "~0.65", rctVal: 92, singleVal: 65, color: "#C4745B", icon: TrendingUp },
-  { metricEn: "L4 Virtuoso Benchmark", metricTh: "L4 Virtuoso Benchmark", rct: "389/390", single: "N/A", rctVal: 99.7, singleVal: 0, color: "#B8A9C9", icon: Shield },
-  { metricEn: "Uptime SLA", metricTh: "Uptime SLA", rct: "99.98%", single: "No SLA", rctVal: 100, singleVal: 80, color: "#7B9E87", icon: CheckCircle },
+  { metricEn: "FDIA Protocol Score (internal benchmark)", metricTh: "FDIA Protocol Score (Benchmark ภายใน)", rct: "0.92", single: "~0.65", rctVal: 92, singleVal: 65, color: "#C4745B", icon: TrendingUp },
+  { metricEn: "L4 Virtuoso Benchmark (internal)", metricTh: "L4 Virtuoso Benchmark (ภายใน)", rct: "389/390", single: "N/A", rctVal: 99.7, singleVal: 0, color: "#B8A9C9", icon: Shield },
+  { metricEn: "Uptime SLA (design target)", metricTh: "Uptime SLA (เป้าหมาย)", rct: "99.98%", single: "No SLA", rctVal: 100, singleVal: 80, color: "#7B9E87", icon: CheckCircle },
 ]
 
 const radarData = [
@@ -62,20 +66,20 @@ const featureComparison = [
 ]
 
 const counterStats = [
-  { value: 99.7, suffix: "%", labelEn: "Accuracy", labelTh: "ความแม่นยำ", color: "#7B9E87", icon: Shield },
-  { value: 0.3, suffix: "%", labelEn: "Hallucination Rate", labelTh: "อัตรา Hallucination", color: "#C4745B", icon: Activity },
-  { value: 73, suffix: "%", labelEn: "Cost Savings", labelTh: "ประหยัดต้นทุน", color: "#D4A853", icon: DollarSign },
-  { value: 50, suffix: "ms", labelEn: "Warm Recall (p95)", labelTh: "Warm Recall (p95)", color: "#89B4C8", icon: Zap, prefix: "<" },
+  { value: 99.7, suffix: "%", labelEn: "Accuracy (benchmark)", labelTh: "ความแม่นยำ (Benchmark)", color: "#7B9E87", icon: Shield },
+  { value: 0.3, suffix: "%", labelEn: "Hallucination Rate (target)", labelTh: "อัตรา Hallucination (เป้าหมาย)", color: "#C4745B", icon: Activity },
+  { value: 73, suffix: "%", labelEn: "Cost Savings (estimate)", labelTh: "ประหยัดต้นทุน (ประมาณการ)", color: "#D4A853", icon: DollarSign },
+  { value: 50, suffix: "ms", labelEn: "Warm Recall (p95, target)", labelTh: "Warm Recall (p95, เป้าหมาย)", color: "#89B4C8", icon: Zap, prefix: "<" },
 ]
 
 const platformRows = [
-  { cap: { en: "Hallucination Rate", th: "อัตรา Hallucination" }, rct: { label: "0.3%", type: "good" }, lc: { label: "~12–15%", type: "bad" }, agpt: { label: "~10–20%", type: "bad" } },
-  { cap: { en: "Accuracy Rate", th: "ความแม่นยำ" }, rct: { label: "99.7%", type: "good" }, lc: { label: "~85%", type: "mid" }, agpt: { label: "~80%", type: "mid" } },
+  { cap: { en: "Hallucination Rate (target)", th: "อัตรา Hallucination (เป้าหมาย)" }, rct: { label: "0.3%", type: "good" }, lc: { label: "~12–15%", type: "bad" }, agpt: { label: "~10–20%", type: "bad" } },
+  { cap: { en: "Accuracy Rate (benchmark)", th: "ความแม่นยำ (Benchmark)" }, rct: { label: "99.7%", type: "good" }, lc: { label: "~85%", type: "mid" }, agpt: { label: "~80%", type: "mid" } },
   { cap: { en: "Cryptographic Audit Trail", th: "Cryptographic Audit Trail" }, rct: { label: "✓ Full", type: "check" }, lc: { label: "✗ None", type: "cross" }, agpt: { label: "✗ None", type: "cross" } },
-  { cap: { en: "Multi-LLM Consensus", th: "Multi-LLM Consensus" }, rct: { label: "✓ 7 HexaCore LLMs", type: "check" }, lc: { label: "~ Manual wiring", type: "partial" }, agpt: { label: "✗ Single model", type: "cross" } },
+  { cap: { en: "Multi-LLM Consensus", th: "Multi-LLM Consensus" }, rct: { label: "✓ 9 HexaCore LLMs", type: "check" }, lc: { label: "~ Manual wiring", type: "partial" }, agpt: { label: "✗ Single model", type: "cross" } },
   { cap: { en: "Persistent Memory", th: "Persistent Memory" }, rct: { label: "✓ RCTDB v2.0", type: "check" }, lc: { label: "~ Plugin-based", type: "partial" }, agpt: { label: "~ Limited", type: "partial" } },
-  { cap: { en: "Warm Recall (p95)", th: "Warm Recall (p95)" }, rct: { label: "<50ms", type: "good" }, lc: { label: "~350–600ms", type: "bad" }, agpt: { label: "~500ms–2s", type: "bad" } },
-  { cap: { en: "Cost per Query", th: "ต้นทุนต่อ Query" }, rct: { label: "3.74× vs all-Claude baseline", type: "good" }, lc: { label: "Baseline", type: "mid" }, agpt: { label: "+20–40% overhead", type: "bad" } },
+  { cap: { en: "Warm Recall (p95, target)", th: "Warm Recall (p95, เป้าหมาย)" }, rct: { label: "<50ms", type: "good" }, lc: { label: "~350–600ms", type: "bad" }, agpt: { label: "~500ms–2s", type: "bad" } },
+  { cap: { en: "Cost per Query (estimate)", th: "ต้นทุนต่อ Query (ประมาณการ)" }, rct: { label: "3.74× vs all-Claude baseline", type: "good" }, lc: { label: "Baseline", type: "mid" }, agpt: { label: "+20–40% overhead", type: "bad" } },
   { cap: { en: "Enterprise Compliance", th: "Enterprise Compliance" }, rct: { label: "✓ Full audit+sign", type: "check" }, lc: { label: "✗ DIY only", type: "cross" }, agpt: { label: "✗ None", type: "cross" } },
   { cap: { en: "Intent-Centric Processing", th: "Intent-Centric Processing" }, rct: { label: "✓ FDIA equation", type: "check" }, lc: { label: "✗ Prompt-centric", type: "cross" }, agpt: { label: "✗ Goal-decomp only", type: "cross" } },
   { cap: { en: "Self-Evolution (Learning)", th: "Self-Evolution" }, rct: { label: "✓ 7-Genome system", type: "check" }, lc: { label: "✗ Static chains", type: "cross" }, agpt: { label: "~ Experimental", type: "partial" } },
@@ -219,8 +223,8 @@ export default function BenchmarkPage() {
               className={`text-base sm:text-lg max-w-2xl mx-auto ${isDark ? "text-[#888]" : "text-warm-gray"}`}
             >
               {isEn
-                ? "RCT SignedAI achieves 99.7% accuracy vs 85% for single LLM, with 60% cost savings, full audit trails, and cryptographic signing."
-                : "RCT SignedAI ความแม่นยำ 99.7% เทียบกับ 85% สำหรับ Single LLM พร้อมประหยัดต้นทุน 60% Audit Trails ครบถ้วน และ Cryptographic Signing"}
+                ? "Internal benchmarks: RCT SignedAI targets 99.7% accuracy vs 85% for single LLM, with up to 60% estimated cost savings, full audit trails, and cryptographic signing. Figures below are self-reported and not yet independently audited."
+                : "Benchmark ภายใน: RCT SignedAI ตั้งเป้าความแม่นยำ 99.7% เทียบกับ 85% สำหรับ Single LLM พร้อมประมาณการประหยัดต้นทุนสูงสุด 60% Audit Trails ครบถ้วน และ Cryptographic Signing ตัวเลขด้านล่างเป็นข้อมูลที่รายงานเอง ยังไม่ผ่านการตรวจสอบอิสระ"}
             </m.p>
           </div>
         </section>
@@ -550,16 +554,16 @@ export default function BenchmarkPage() {
               </h2>
               <p className={`text-sm ${isDark ? "text-[#888]" : "text-warm-gray"}`}>
                 {isEn
-                  ? "First ever 0-failure milestone across the entire test suite — March 21, 2026"
-                  : "Milestone 0 ความล้มเหลวครั้งแรก ในชุดทดสอบทั้งหมด — 21 มีนาคม 2026"}
+                  ? "First 0-failure milestone across the enterprise (private) test suite — March 21, 2026. The public open-source SDK maintains its own separate, smaller verified suite — see TESTING_CANONICAL.md in the delentia-os repo."
+                  : "Milestone 0 ความล้มเหลวครั้งแรก ในชุดทดสอบ enterprise (private) ทั้งหมด — 21 มีนาคม 2026 ส่วน public open-source SDK มีชุดทดสอบแยกของตัวเองที่เล็กกว่า — ดู TESTING_CANONICAL.md ใน repo delentia-os"}
               </p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
               {[
-                { value: "4,849", label: isEn ? "Passed" : "ผ่าน", color: "#7B9E87" },
+                { value: "4,849", label: isEn ? "Passed (enterprise, private)" : "ผ่าน (enterprise, private)", color: "#7B9E87" },
                 { value: "0", label: isEn ? "Failed" : "ล้มเหลว", color: "#C4745B" },
-                { value: "6,738+", label: isEn ? "Total Tests" : "Tests ทั้งหมด", color: "#D4A853" },
-                { value: "0.92", label: isEn ? "FDIA Accuracy" : "FDIA Accuracy", color: "#89B4C8" },
+                { value: "6,738+", label: isEn ? "Total Tests (enterprise, private)" : "Tests ทั้งหมด (enterprise, private)", color: "#D4A853" },
+                { value: "0.92", label: isEn ? "FDIA Accuracy (internal benchmark)" : "FDIA Accuracy (Benchmark ภายใน)", color: "#89B4C8" },
               ].map((s, i) => (
                 <m.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                   className={`p-5 rounded-2xl border text-center ${isDark ? "bg-[#1E1E1E] border-[#2A2A2A]" : "bg-white border-warm-light-gray"}`}>
@@ -570,8 +574,8 @@ export default function BenchmarkPage() {
             </div>
             <div className={`p-5 rounded-xl border text-sm leading-relaxed ${isDark ? "bg-[#1E1E1E] border-[#2A2A2A] text-[#999]" : "bg-white border-warm-light-gray text-[#4A4A4A]"}`}>
               {isEn
-                ? "FDIA accuracy 0.92 vs industry average ~0.65. Test pyramid: Unit → Integration → Contract → Component → API → E2E → Performance → Security (8 levels). Zero failures across 6,738+ tests represents the first clean run in project history."
-                : "FDIA Accuracy 0.92 เทียบกับอุตสาหกรรมที่ ~0.65 Test Pyramid: Unit→Integration→Contract→Component→API→E2E→Performance→Security (8 ระดับ) ผ่าน 6,738+ Tests โดยไม่มีความล้มเหลวเลย — ครั้งแรกในประวัติศาสตร์โปรเจกต์"}
+                ? "FDIA accuracy 0.92 (internal benchmark) vs industry average ~0.65. Test pyramid: Unit → Integration → Contract → Component → API → E2E → Performance → Security (8 levels). Zero failures across 6,738+ tests (enterprise, private snapshot) represents the first clean run in project history — not independently audited."
+                : "FDIA Accuracy 0.92 (Benchmark ภายใน) เทียบกับอุตสาหกรรมที่ ~0.65 Test Pyramid: Unit→Integration→Contract→Component→API→E2E→Performance→Security (8 ระดับ) ผ่าน 6,738+ Tests (enterprise, private snapshot) โดยไม่มีความล้มเหลวเลย — ครั้งแรกในประวัติศาสตร์โปรเจกต์ ยังไม่ผ่านการตรวจสอบอิสระ"}
             </div>
           </div>
         </section>

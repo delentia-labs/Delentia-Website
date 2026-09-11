@@ -6,7 +6,7 @@ reviewerId: "rct-research-desk"
 date: "2026-03-28"
 lastReviewed: "2026-05-05"
 category: "research"
-excerpt: "The Delta Engine is the memory compression and recall system at the core of the RCT Ecosystem. By storing only state changes (deltas) rather than full state snapshots, it achieves 74% lossless compression and enables warm recall in under 50 milliseconds — reducing per-request cost to near zero for repeated patterns."
+excerpt: "The Delta Engine is the memory compression and recall system at the core of the RCT Ecosystem. By storing only state changes (deltas) rather than full state snapshots, it targets up to 74% lossless compression and warm recall under 50 milliseconds in internal benchmarks — reducing per-request cost toward zero for repeated patterns. These figures are self-reported and not yet independently audited."
 tags: ["Delta Engine", "Memory Compression", "AI Infrastructure", "RCTDB", "Performance", "Delentia Labs"]
 readTime: 8
 references:
@@ -25,6 +25,8 @@ Every AI system that learns from interactions faces the same fundamental tension
 Most systems resolve this by deciding what to keep and what to discard — losing information in the process. The **Delta Engine** takes a different approach: it stores everything, but in a radically more efficient form.
 
 Instead of storing the full state of every interaction, the Delta Engine stores only **the difference between states** — the delta. Full state can always be reconstructed from any checkpoint by applying all subsequent deltas. But normal read operations access only the delta stream, not the full state, making recall dramatically faster and cheaper.
+
+> **Note on the figures below:** the compression, latency, and accuracy numbers in this article are internal benchmarks measured against Delentia Labs' own enterprise (private) workload. They are not yet independently audited, and real-world results vary by input. See the [Delta Engine `compress_context` tool source](https://github.com/delentia-labs/delentia-mcp-ecosystem) for the deployed public implementation's actual, per-request computed behavior.
 
 ---
 
@@ -50,7 +52,7 @@ Delta 2: { added_context: [Δ1], query: "How does A gate work?", response: "..."
 
 Storage grows as O(n) — each delta only contains the incremental change.
 
-**Result: 74% compression vs full-state storage**, measured across the RCT Ecosystem production workload (v5.4.5).
+**Result: up to 74% compression vs full-state storage** in internal benchmarks against the RCT Ecosystem enterprise (private) workload (v5.4.5) — not yet independently audited.
 
 ---
 
@@ -149,15 +151,17 @@ Before storing a new delta, the system validates the F score of the response bei
 
 ## Performance Summary
 
+*All figures below are internal benchmarks (enterprise, private workload), not yet independently audited.*
+
 | Metric | Value |
 |---|---|
-| Memory compression | **74% lossless** |
-| Cold start latency | **3–5 seconds** |
-| Warm recall latency | **<50 milliseconds** |
+| Memory compression | **up to 74% lossless** (internal benchmark) |
+| Cold start latency | **3–5 seconds** (internal benchmark) |
+| Warm recall latency | **<50 milliseconds** (internal benchmark) |
 | Semantic similarity threshold | **0.95** (configurable) |
 | Storage zones | **3** (Hot/Warm/Cold) |
 | RCTDB dimensions | **8** |
-| Recall accuracy | **96.1%** (matches vs expected) |
+| Recall accuracy | **96.1%** (internal benchmark; matches vs expected) |
 
 ---
 
@@ -178,8 +182,8 @@ Yes. The semantic similarity engine uses multilingual embeddings that cover Thai
 
 The Delta Engine makes the RCT Ecosystem's performance economics sustainable:
 
-- **74% compression** through delta-only storage (O(n) vs O(n²))
-- **<50ms warm recall** through semantic similarity matching (threshold: 0.95)
+- **Up to 74% compression** (internal benchmark) through delta-only storage (O(n) vs O(n²))
+- **<50ms warm recall target** through semantic similarity matching (threshold: 0.95)
 - **Near-zero cost** for stable, repeating query patterns over time
 - **RCTDB 8-dimensional schema** for structured storage, audit, and PDPA-compliant deletion
 - **3-zone architecture** for intelligent hot/warm/cold data placement

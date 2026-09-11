@@ -127,9 +127,9 @@ This record is the basis for Section 33 PDPA explanations: "Your loan applicatio
 **Type:** Reference pointer to parent checkpoint or delta  
 **Purpose:** Enables full state reconstruction from incremental storage
 
-The delta_chain dimension implements the Delta Engine compression (74% vs full-state storage). Each non-checkpoint record contains a pointer to its parent delta, forming a linked chain back to the last checkpoint.
+The delta_chain dimension implements the Delta Engine compression (up to 74% vs full-state storage, internal benchmark). Each non-checkpoint record contains a pointer to its parent delta, forming a linked chain back to the last checkpoint.
 
-Full state reconstruction: traverse the delta chain from oldest to newest, applying each delta in sequence. The final state equals the original full state, with 100% fidelity.
+Full state reconstruction: traverse the delta chain from oldest to newest, applying each delta in sequence. By construction the final state equals the original full state (lossless reconstruction is a design property of the delta-chain algorithm, not a measured benchmark).
 
 ### Dimension 7: timestamp
 
@@ -210,8 +210,8 @@ Records automatically migrate between zones based on access frequency and age. T
 RCTDB v2.0 closes the gap between what AI systems need and what traditional databases provide:
 
 - **8 dimensions:** query_hash, fdia_scores, subject_uuid, model_chain, consensus_result, delta_chain, timestamp, provenance
-- **3 storage zones:** Hot (<1ms), Warm (1–5ms), Cold (10ms+)
-- **74% compression** via Delta Engine delta-chain storage
+- **3 storage zones (internal benchmark targets):** Hot (<1ms), Warm (1–5ms), Cold (10ms+)
+- **Up to 74% compression** (internal benchmark) via Delta Engine delta-chain storage
 - **PDPA compliance:** UUID-linked tombstone pattern for right-to-erasure
 - **Full audit trail:** Every AI decision reconstructable with complete context
 

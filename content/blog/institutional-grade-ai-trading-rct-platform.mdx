@@ -77,7 +77,7 @@ Before calling any LLM, the system queries the Delta Engine for existing analysi
 - What was the outcome of previous FDIA-validated decisions in this domain?
 - What is the current portfolio state? (positions, exposure, available liquidity)
 
-The Delta Engine compresses market state to ~26% of its original size while maintaining semantic warmth — the ability to retrieve contextually relevant prior decisions without sequential scanning. If a warm-recall match exists above the configured threshold, the system can skip the full LLM analysis for non-novel signals, reducing per-decision cost by orders of magnitude.
+In internal benchmarks, the Delta Engine compresses market state to roughly ~26% of its original size (illustrative figure, not independently audited) while maintaining semantic warmth — the ability to retrieve contextually relevant prior decisions without sequential scanning. If a warm-recall match exists above the configured threshold, the system can skip the full LLM analysis for non-novel signals, reducing per-decision cost by orders of magnitude.
 
 ```python
 from core.delta_engine import DeltaEngine
@@ -200,7 +200,7 @@ Full multi-model LLM analysis is triggered only when:
 - Signal impact score exceeds the configured novelty threshold
 - The signal involves a constitutional domain (positions near allocation limits, high-value trades requiring TIER_6 gating)
 
-In practice, this means 70–80% of routine signals (confirmation of known trends, incremental news on existing positions) are processed without full LLM analysis. LLM calls are reserved for genuinely novel signals where human-equivalent judgment is actually needed.
+In an illustrative deployment, this could mean roughly 70–80% of routine signals (confirmation of known trends, incremental news on existing positions) are processed without full LLM analysis — an architectural estimate, not a measured production result, since (as noted above) this article describes a blueprint rather than a deployed trading system. LLM calls are reserved for genuinely novel signals where human-equivalent judgment is actually needed.
 
 ---
 

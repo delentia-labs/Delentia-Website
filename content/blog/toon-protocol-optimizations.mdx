@@ -6,7 +6,7 @@ reviewerId: "rct-research-desk"
 date: "2026-06-17"
 lastReviewed: "2026-06-17"
 category: "research"
-excerpt: "Discover how TOON Protocol compresses token footprints by 38.4% while the FDIA equation gates system intents to maintain alignment and reduce costs."
+excerpt: "Discover how TOON Protocol targets a 38.4% token footprint reduction (internal benchmark) while the FDIA equation gates system intents to maintain alignment and reduce costs."
 tags: ["TOON Protocol", "Token Optimization", "FDIA Equation", "LLM Cost"]
 readTime: 6
 references:
@@ -19,7 +19,9 @@ references:
 
 Building production LLM applications for the enterprise requires a careful balance between safety and resource consumption. In **Delentia OS**, we resolve this tension using two core techniques: **TOON Protocol** for token optimization, and **FDIA Gating** for safety consensus.
 
-Together, these mechanisms allow us to compress token overhead by **38.4%** while keeping hallucination rates below **0.3%**.
+Together, these mechanisms target token overhead compression of **38.4%** while keeping hallucination rates below a **0.3% target** — figures from internal benchmarks, not yet independently audited.
+
+> **Note:** the specific percentages in this article are self-reported internal benchmarks. See [how-to-reduce-ai-hallucination](/blog/how-to-reduce-ai-hallucination) for a more fully-hedged treatment of the hallucination-rate claim, and TESTING_CANONICAL.md in the delentia-mcp-ecosystem repo for what is independently verifiable today.
 
 ---
 
@@ -35,7 +37,7 @@ The **Token-Optimized Orchestration Network (TOON) Protocol** implements dynamic
 2. **Grammar Constraints:** Leveraging JSON schemas and strict compiler-guided formats directly on the LLM logit biases to prevent token waste in formatting.
 3. **Intent Caching:** Reusing computed intent embeddings to bypass repetitive system prompt ingestion.
 
-In benchmark tests across 10,000 corporate documents, the TOON Protocol achieved an average of **38.4% token reduction** with zero loss in semantic accuracy or execution quality.
+In internal benchmark tests across 10,000 corporate documents, the TOON Protocol reported an average of **38.4% token reduction** with no measured loss in semantic accuracy or execution quality — not yet independently audited.
 
 ---
 

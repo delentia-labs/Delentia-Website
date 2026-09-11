@@ -15,8 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "Press & Media — Constitutional AI from Thailand",
     "สื่อมวลชนและข่าวประชาสัมพันธ์ — Constitutional AI จากประเทศไทย",
-    "Press kit, fact sheet, story angles, and media contact for Delentia Labs — a constitutional AI operating system built by a solo developer in Bangkok, Thailand. 62 microservices, 4,849 passing tests, benchmark hallucination target: 0.3%.",
-    "Press kit, fact sheet, มุมข่าว และข้อมูลติดต่อสื่อสำหรับ Delentia Labs — constitutional AI operating system ที่สร้างโดยผู้พัฒนาคนเดียวจากกรุงเทพฯ ประเทศไทย พร้อม 62 microservices, 4,849 passing tests และ Benchmark Hallucination Target 0.3%",
+    "Press kit, fact sheet, story angles, and media contact for Delentia Labs — a constitutional AI operating system built by a solo developer in Bangkok, Thailand. 62 microservices and 4,849 passing tests (enterprise, private snapshot); benchmark hallucination target: 0.3% (internal, pending independent validation).",
+    "Press kit, fact sheet, มุมข่าว และข้อมูลติดต่อสื่อสำหรับ Delentia Labs — constitutional AI operating system ที่สร้างโดยผู้พัฒนาคนเดียวจากกรุงเทพฯ ประเทศไทย พร้อม 62 microservices, 4,849 passing tests (enterprise, private snapshot) และ Benchmark Hallucination Target 0.3% (เป้าหมายภายใน รอการตรวจสอบอิสระ)",
     "/press",
     ["press kit", "media contact", "constitutional AI Thailand", "Delentia Labs press"]
   )
@@ -27,15 +27,15 @@ const facts = [
   { label: "First Public Release", labelTh: "เวอร์ชันสาธารณะแรก", value: "August 11, 2025 (30 days)" },
   { label: "Enterprise Version", labelTh: "เวอร์ชัน Enterprise", value: "v5.4.5" },
   { label: "Public SDK", labelTh: "Public SDK (GitHub)", value: "v1.0.2a0 (Apache 2.0)" },
-  { label: "Microservices", labelTh: "Microservices", value: "62" },
-  { label: "Algorithms", labelTh: "Algorithms", value: "41 (Tier 1–9)" },
-  { label: "AI Models (HexaCore)", labelTh: "โมเดล AI (HexaCore)", value: "7 (3 Western + 3 Eastern + 1 Thai)" },
-  { label: "Test Suite", labelTh: "ชุดทดสอบ", value: "4,849 passed / 0 failed / 0 errors" },
-  { label: "Benchmark Hallucination Target", labelTh: "เป้าหมาย Benchmark Hallucination", value: "0.3% (industry: 12–15%)" },
-  { label: "FDIA Benchmark Accuracy", labelTh: "ความแม่นยำ FDIA (Benchmark)", value: "0.92 vs ~0.65 baseline" },
-  { label: "Memory Compression", labelTh: "การบีบอัดหน่วยความจำ", value: "74% lossless (Delta Engine)" },
-  { label: "Uptime Design SLA Target", labelTh: "เป้าหมาย Design SLA", value: "99.98% (design target)" },
-  { label: "Warm Recall", labelTh: "Warm Recall", value: "<50ms" },
+  { label: "Microservices", labelTh: "Microservices", value: "62 (enterprise, private snapshot)" },
+  { label: "Algorithms", labelTh: "Algorithms", value: "41 designed (Tier 1–9; public SDK ships a subset)" },
+  { label: "AI Models (HexaCore)", labelTh: "โมเดล AI (HexaCore)", value: "9 (3 Western + 3 Eastern + 1 Thai + 1 Local + 1 LPU)" },
+  { label: "Test Suite", labelTh: "ชุดทดสอบ", value: "4,849 passed / 0 failed (enterprise, private) — public SDK: 1,791 passed" },
+  { label: "Benchmark Hallucination Target", labelTh: "เป้าหมาย Benchmark Hallucination", value: "0.3% target (industry: 12–15%; pending independent validation)" },
+  { label: "FDIA Benchmark Accuracy", labelTh: "ความแม่นยำ FDIA (Benchmark)", value: "0.92 vs ~0.65 baseline (internal benchmark)" },
+  { label: "Memory Compression", labelTh: "การบีบอัดหน่วยความจำ", value: "up to 74% (internal benchmark; varies per input)" },
+  { label: "Uptime Design SLA Target", labelTh: "เป้าหมาย Design SLA", value: "99.98% (design target, not yet independently monitored)" },
+  { label: "Warm Recall", labelTh: "Warm Recall", value: "<50ms (internal benchmark target)" },
   { label: "Budget", labelTh: "งบประมาณ", value: "$0 (bootstrapped)" },
   { label: "Team Size", labelTh: "ขนาดทีม", value: "1 (sole developer)" },
   { label: "Location", labelTh: "ที่ตั้ง", value: "Bangkok, Thailand" },
@@ -48,8 +48,8 @@ const storyAngles = [
     headlineTh: "นักพัฒนาคนเดียวจากไทยสร้าง Constitutional AI OS ระดับ Enterprise ในเวลา 30 วัน ด้วยต้นทุนศูนย์บาท",
     angle: "Human interest / entrepreneurship",
     angleTh: "ความสนใจมนุษย์ / ผู้ประกอบการ",
-    hook: "While Silicon Valley needs $100M and 50 engineers, Ittirit Saengow built a production-grade AI operating system with 62 microservices from a single Android phone in Bangkok.",
-    hookTh: "ขณะที่ Silicon Valley ต้องใช้เงิน 100 ล้านดอลลาร์และวิศวกร 50 คน อิทธิฤทธิ์ แซ่โง้ว สร้าง AI OS ระดับ production ที่มี 62 microservices จากโทรศัพท์ Android เครื่องเดียวในกรุงเทพฯ",
+    hook: "While Silicon Valley needs $100M and 50 engineers, Ittirit Saengow built an AI operating system with 62 microservices (enterprise, private snapshot) from a single Android phone in Bangkok.",
+    hookTh: "ขณะที่ Silicon Valley ต้องใช้เงิน 100 ล้านดอลลาร์และวิศวกร 50 คน อิทธิฤทธิ์ แซ่โง้ว สร้าง AI OS ที่มี 62 microservices (enterprise, private snapshot) จากโทรศัพท์ Android เครื่องเดียวในกรุงเทพฯ",
     badgeClass: "border-warm-amber/30 bg-warm-amber/10 text-warm-amber",
     cardClass: "border-warm-amber/20",
   },
@@ -111,7 +111,7 @@ export default async function PressPage() {
     alternateName: "Reverse Component Thinking Labs",
     url: "https://delentia.com",
     logo: "https://delentia.com/RCTLogo-horizontal.svg",
-    description: "Constitutional AI Operating System built by a solo developer in Bangkok, Thailand — 62 microservices, 4,849 passing tests, 0.3% benchmark hallucination target.",
+    description: "Constitutional AI Operating System built by a solo developer in Bangkok, Thailand — 62 microservices and 4,849 passing tests (enterprise, private snapshot), 0.3% benchmark hallucination target (internal, pending independent validation).",
     foundingDate: "2024",
     founder: { "@type": "Person", name: "Ittirit Saengow", jobTitle: "The Architect" },
     location: { "@type": "Place", addressLocality: "Bangkok", addressCountry: "TH" },
@@ -145,8 +145,8 @@ export default async function PressPage() {
             {/* Hero stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
               {[
-                { value: "62", label: isTh ? "Microservices" : "Microservices" },
-                { value: "4,849", label: isTh ? "Tests ผ่าน" : "Tests Passing" },
+                { value: "62", label: isTh ? "Microservices (enterprise, private)" : "Microservices (enterprise, private)" },
+                { value: "4,849", label: isTh ? "Tests ผ่าน (enterprise, private)" : "Tests Passing (enterprise, private)" },
                 { value: "0.3%", label: isTh ? "เป้าหมาย Benchmark Hallucination" : "Benchmark Hallucination Target" },
                 { value: "99.98%", label: isTh ? "เป้าหมาย Design SLA" : "Uptime Design SLA Target" },
               ].map((s) => (
@@ -192,8 +192,8 @@ export default async function PressPage() {
                 </p>
                 <p className="text-muted-foreground leading-relaxed max-w-3xl mb-4">
                   {isTh
-                    ? "อิทธิฤทธิ์ แซ่โง้ว คือผู้สร้างเพียงคนเดียวของ RCT (Reverse Component Thinking) Ecosystem — Constitutional AI Operating System ที่ประกอบด้วย 62 microservices, 41 algorithms, AI models 7 ตัวในระบบ HexaCore และ automated tests กว่า 4,849 รายการ สร้างขึ้นภายใน 30 วัน ในช่วงมิถุนายน–สิงหาคม 2025 โดยไม่มีเงินลงทุนภายนอก จากกรุงเทพฯ ประเทศไทย"
-                    : "Ittirit Saengow is the sole creator of the RCT (Reverse Component Thinking) Ecosystem — a constitutional AI operating system comprising 62 microservices, 41 algorithms, 7 HexaCore AI models, and 4,849 automated tests. Built over 30 days in June–August 2025 with zero investment capital, from Bangkok, Thailand. Before Delentia Labs, Ittirit ran four businesses, studied facility management at the Faculty of Architecture (completing a 4-year program in 6.5 years), and developed the FDIA equation, JITNA protocol, and 7-Genome system as conceptual frameworks before implementing them in code."}
+                    ? "อิทธิฤทธิ์ แซ่โง้ว คือผู้สร้างเพียงคนเดียวของ RCT (Reverse Component Thinking) Ecosystem — Constitutional AI Operating System ที่ประกอบด้วย 62 microservices และ automated tests กว่า 4,849 รายการ (enterprise, private snapshot) 41 algorithms ที่ออกแบบไว้ (public SDK เปิดให้ใช้บางส่วน) และ AI models 9 ตัวในระบบ HexaCore สร้างขึ้นภายใน 30 วัน ในช่วงมิถุนายน–สิงหาคม 2025 โดยไม่มีเงินลงทุนภายนอก จากกรุงเทพฯ ประเทศไทย"
+                    : "Ittirit Saengow is the sole creator of the RCT (Reverse Component Thinking) Ecosystem — a constitutional AI operating system comprising 62 microservices and 4,849 automated tests (enterprise, private snapshot), 41 designed algorithms (the public SDK ships a subset), and 9 HexaCore AI models. Built over 30 days in June–August 2025 with zero investment capital, from Bangkok, Thailand. Before Delentia Labs, Ittirit ran four businesses, studied facility management at the Faculty of Architecture (completing a 4-year program in 6.5 years), and developed the FDIA equation, JITNA protocol, and 7-Genome system as conceptual frameworks before implementing them in code."}
                 </p>
                 <div className="flex gap-3">
                   <a href="https://github.com/ittirit720" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-warm-dim hover:text-warm-amber transition">

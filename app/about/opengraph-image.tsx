@@ -1,5 +1,5 @@
 ﻿import { ImageResponse } from "next/og"
-import { SITE_ENTERPRISE_EVIDENCE_LABEL, SITE_PUBLIC_SDK_EVIDENCE_LABEL, SITE_PUBLIC_SDK_TESTS, SITE_TEST_COUNT } from "@/lib/site-config"
+import { SITE_ENTERPRISE_EVIDENCE_LABEL, SITE_PUBLIC_SDK_EVIDENCE_LABEL, SITE_PUBLIC_SDK_TESTS, SITE_TEST_COUNT, SITE_HEXACORE_COUNT } from "@/lib/site-config"
 
 export const alt = "About Delentia Labs — Constitutional AI platform with separate public SDK and enterprise evidence lanes"
 export const size = { width: 1200, height: 630 }
@@ -116,8 +116,8 @@ export default function AboutOgImage() {
           <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
             {[
               { value: SITE_PUBLIC_SDK_TESTS.toLocaleString(), label: SITE_PUBLIC_SDK_EVIDENCE_LABEL },
-              { value: "0.3%", label: "Hallucination Rate" },
-              { value: "7", label: "HexaCore Models" },
+              { value: "0.3%", label: "Hallucination Target" },
+              { value: String(SITE_HEXACORE_COUNT), label: "HexaCore Models" },
               { value: SITE_TEST_COUNT.toLocaleString(), label: SITE_ENTERPRISE_EVIDENCE_LABEL },
             ].map((stat) => (
               <div key={stat.label} style={{ display: "flex", flexDirection: "column", gap: 4 }}>

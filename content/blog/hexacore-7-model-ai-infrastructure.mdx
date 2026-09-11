@@ -6,7 +6,7 @@ reviewerId: "rct-research-desk"
 date: "2026-03-28"
 lastReviewed: "2026-05-05"
 category: "research"
-excerpt: "HexaCore is the multi-model AI routing infrastructure at the heart of the RCT Ecosystem. This article explains how 7 AI models (3 Western + 3 Eastern + 1 Regional Thai) are selected, balanced, and verified to achieve 0.3% hallucination and 30-40% cost savings vs single-model deployments."
+excerpt: "HexaCore is the multi-model AI routing infrastructure at the heart of the RCT Ecosystem. This article explains how the original 7-model roster (3 Western + 3 Eastern + 1 Regional Thai; since expanded to 9) was selected, balanced, and verified toward a 0.3% hallucination target and an estimated 30-40% cost savings vs single-model deployments — internal benchmarks, not yet independently audited."
 tags: ["HexaCore", "Multi-LLM", "AI Infrastructure", "SignedAI", "Constitutional AI", "Delentia Labs"]
 readTime: 10
 references:
@@ -27,7 +27,9 @@ A single AI model is a single point of failure. It reflects the training data, c
 
 HexaCore is the multi-model AI infrastructure I designed for the RCT Ecosystem. It routes tasks across 7 AI models — selected for complementary strengths, cost profiles, and geopolitical diversity — and verifies results through SignedAI consensus before any output reaches users.
 
-The result: **0.3% hallucination rate** (industry: 12–15%), **30–40% cost reduction** vs always using the most capable model, and guaranteed geopolitical balance in every production decision.
+The result: a **0.3% hallucination rate target** (industry: 12–15%), an estimated **30–40% cost reduction** vs always using the most capable model, and intended geopolitical balance in every production decision. These are internal benchmark figures, not yet independently audited.
+
+> **Roster update:** the model table below (7 models: 3 Western + 3 Eastern + 1 Thai) reflects the HexaCore configuration at the time this article was written. The roster has since grown to 9 models (adding a local/offline adapter and a low-latency LPU-hosted model) — see `SITE_HEXACORE_COUNT` in the delentia.com codebase for the current count. This article has not yet been updated with the full 9-model table.
 
 ---
 

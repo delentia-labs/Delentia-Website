@@ -56,7 +56,7 @@ export default function CompanyClient() {
         {
           question: "อะไรทำให้ Delentia Labs แตกต่างจาก LangChain หรือ AutoGPT",
           answer:
-            "Delentia Labs ใช้ constitutional architecture ที่ทุก AI output ต้องผ่าน governance และ policy verification ก่อน ต่างจาก framework อื่นที่เน้นเพียง orchestration โดยเราแสดง benchmark evidence สำหรับ FDIA accuracy 0.92 เทียบกับ baseline อุตสาหกรรม 0.65 พร้อม full audit trail, Delta Engine compression 74% และ PDPA compliance by design",
+            "Delentia Labs ใช้ constitutional architecture ที่ทุก AI output ต้องผ่าน governance และ policy verification ก่อน ต่างจาก framework อื่นที่เน้นเพียง orchestration โดยเราแสดง internal benchmark สำหรับ FDIA accuracy 0.92 เทียบกับ baseline อุตสาหกรรม 0.65 (ยังไม่ผ่านการตรวจสอบอิสระ) พร้อม full audit trail, Delta Engine compression สูงสุด 74% (แปรผันตาม input จริง) และ PDPA compliance by design",
         },
       ]
     : [
@@ -68,7 +68,7 @@ export default function CompanyClient() {
         {
           question: "What makes this different from LangChain or AutoGPT?",
           answer:
-            "Delentia Labs uses a constitutional architecture where every AI output must pass governance and policy verification before execution. Unlike orchestration-only frameworks, Delentia Labs provides full audit trails, 74% Delta Engine memory compression, PDPA compliance by design, and benchmark evidence for a measured FDIA accuracy of 0.92 versus the 0.65 industry baseline.",
+            "Delentia Labs uses a constitutional architecture where every AI output must pass governance and policy verification before execution. Unlike orchestration-only frameworks, Delentia Labs provides full audit trails, up to 74% Delta Engine memory compression (varies with real input), PDPA compliance by design, and an internal benchmark measuring FDIA accuracy at 0.92 versus a 0.65 industry baseline — not yet independently audited.",
         },
       ]
 

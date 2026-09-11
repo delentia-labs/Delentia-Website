@@ -17,8 +17,11 @@ export const SITE_ALGORITHM_COUNT = 41
 export const SITE_LAYER_COUNT = 10 // Product layers L1-L10; L11 = CI/CD pipeline layer (internal only)
 export const SITE_HEXACORE_COUNT = 9
 export const SITE_CONSENSUS_MODELS = 9 // HexaCore roster: 3W (Claude/Gemini/Grok) + 3E (Kimi/MiniMax/DeepSeek) + 1TH (Typhoon) + 1Local (Ollama) + 1LPU (Groq LPU); mirrors SITE_HEXACORE_COUNT
-export const SITE_UPTIME = "99.98% SLA"
-export const SITE_HALLUCINATION_RATE = "0.3% benchmark"
+// Neither of these two is backed by an independent monitoring system or a
+// published benchmark dataset/methodology yet — say so in the value itself so
+// the caveat travels with the data to every consumer, not just this file.
+export const SITE_UPTIME = "99.9% SLA target (self-reported, not yet independently monitored)"
+export const SITE_HALLUCINATION_RATE = "<0.3% target (pending published benchmark methodology)"
 
 export const SOCIAL_LINKS = {
   github: "https://github.com/delentia-labs",                         // org

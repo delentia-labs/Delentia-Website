@@ -57,8 +57,8 @@ const caseStudies = [
       { label: { en: "Response latency", th: "Response latency" }, before: "420ms", after: "185ms", delta: "-56%" },
     ],
     quote: {
-      en: "SignedAI eliminated the risk of AI-generated financial misinformation — our compliance team now approves AI outputs on the first pass.",
-      th: "SignedAI ขจัดความเสี่ยงจากข้อมูลทางการเงินที่ AI สร้างผิดพลาด — ทีม Compliance อนุมัติผลลัพธ์ AI ได้ทันทีในครั้งแรก",
+      en: "A hypothetical scenario, not a reported result: modeling multi-LLM consensus on a compliance-review workload where a single-model baseline's confident-but-wrong outputs would otherwise require manual re-checking before every approval.",
+      th: "สถานการณ์สมมติ ไม่ใช่ผลลัพธ์ที่รายงานจริง: จำลองการทำงานของ Multi-LLM Consensus บนงาน Compliance Review ที่ Single-model baseline มักให้ผลลัพธ์ที่มั่นใจแต่ผิด จนต้องตรวจซ้ำด้วยมือทุกครั้งก่อนอนุมัติ",
     },
   },
   {
@@ -69,8 +69,8 @@ const caseStudies = [
       { label: { en: "Audit trail completeness", th: "ความสมบูรณ์ Audit Trail" }, before: "0%", after: "100%", delta: "New" },
     ],
     quote: {
-      en: "Multi-LLM consensus on patient data analysis reduced false positives by 95.8% — critical for regulatory submissions.",
-      th: "Multi-LLM Consensus ในการวิเคราะห์ข้อมูลผู้ป่วยลด False Positive 95.8% — สำคัญมากสำหรับ Regulatory Submission",
+      en: "A hypothetical scenario, not a reported result: modeling how cross-checking patient-data analysis across independent models could catch a false positive that a single model produced with high confidence, before it reaches a regulatory submission.",
+      th: "สถานการณ์สมมติ ไม่ใช่ผลลัพธ์ที่รายงานจริง: จำลองการ Cross-check การวิเคราะห์ข้อมูลผู้ป่วยข้ามหลายโมเดลอิสระ เพื่อดักจับ False Positive ที่โมเดลเดียวสร้างขึ้นด้วยความมั่นใจสูง ก่อนถึงขั้น Regulatory Submission",
     },
   },
   {
@@ -81,8 +81,8 @@ const caseStudies = [
       { label: { en: "Lawyer override rate", th: "อัตราที่ทนายต้องแก้ไข" }, before: "43%", after: "3%", delta: "-93%" },
     ],
     quote: {
-      en: "We processed 10,000+ contracts with 98.6% fewer AI hallucinations. Attorneys now trust the AI output enough to use it in first drafts.",
-      th: "เราประมวลผลสัญญากว่า 10,000 ฉบับโดยลด AI Hallucination ได้ 98.6% ทนายความไว้วางใจผลลัพธ์ AI พอจะใช้ใน Draft แรก",
+      en: "This scenario is illustrative, not a reported result — but the problem it models is real and independently documented: a 2024 Stanford RegLab/HAI study (Magesh, Surani, Dahl, Suzgun, Manning & Ho) found leading legal AI research tools — including products marketed as \"hallucination-free\" — hallucinated in 17-33% of real queries. That documented gap between marketing claims and measured reality is the specific failure mode cryptographically-verified multi-model consensus is designed to catch before an unverified answer reaches a lawyer's desk.",
+      th: "สถานการณ์นี้เป็นการจำลอง ไม่ใช่ผลลัพธ์ที่รายงานจริง — แต่ปัญหาที่จำลองอยู่นั้นเป็นเรื่องจริงและมีงานวิจัยรองรับ: งานวิจัยปี 2024 จาก Stanford RegLab/HAI (Magesh, Surani, Dahl, Suzgun, Manning & Ho) พบว่าเครื่องมือ AI ด้านกฎหมายชั้นนำ — รวมถึงผลิตภัณฑ์ที่โฆษณาว่า \"hallucination-free\" — เกิด Hallucination จริง 17-33% ของ query จริง ช่องว่างระหว่างคำโฆษณากับผลวัดจริงนี้เองคือปัญหาเฉพาะที่ Multi-model Consensus แบบ Cryptographically-verified ถูกออกแบบมาเพื่อดักจับ ก่อนที่คำตอบที่ยังไม่ผ่านการยืนยันจะไปถึงมือทนายความ",
     },
   },
 ]

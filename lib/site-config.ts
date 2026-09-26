@@ -4,14 +4,14 @@ export const SITE_DESCRIPTION = "Enterprise AI architecture and verification pla
 export const SITE_OG_IMAGE = `${SITE_URL}/opengraph-image`
 export const SITE_VERSION = "2026.05 Snapshot"
 export const SITE_TEST_COUNT = 4849 // Enterprise full suite (private)
-export const SITE_PUBLIC_SDK_VERSION = "2.0.0"
-export const SITE_PUBLIC_SDK_TESTS = 1791 // Public SDK full suite: 1791 passed · 0 skipped · 0 failed · 0 warnings · mypy clean · ruff clean · 91% coverage (delentia-labs/delentia-os)
+export const SITE_PUBLIC_SDK_VERSION = "2.3.0" // matches pyproject.toml / `delentia version` in delentia-labs/delentia-os as of 2026-09-26
+export const SITE_PUBLIC_SDK_TESTS = 2820 // Public SDK full suite: 2820 passed · 10 skipped · 1 xfailed · 0 failed · mypy clean · ruff clean · 81.68% coverage - verified from a real green CI run (delentia-labs/delentia-os, commit bcca70d, 2026-09-26). Update this alongside SITE_PUBLIC_SDK_COVERAGE from the same CI run's own reported numbers, not by hand-estimating.
 // Compatibility evidence labels reused across public pages, metadata, and blog stat cards.
 export const SITE_PUBLIC_SDK_EVIDENCE_LABEL = "Public SDK verification lane"
 export const SITE_ENTERPRISE_EVIDENCE_LABEL = "Enterprise runtime snapshot"
 export const SITE_RESEARCH_EVIDENCE_LABEL = "Research evaluation lane"
-export const SITE_PUBLIC_SDK_COVERAGE = "91%"
-export const SITE_EVIDENCE_LAST_UPDATED = "2026-05-27"
+export const SITE_PUBLIC_SDK_COVERAGE = "81.68%"
+export const SITE_EVIDENCE_LAST_UPDATED = "2026-09-26"
 export const SITE_MICROSERVICE_COUNT = 62
 export const SITE_ALGORITHM_COUNT = 41
 export const SITE_LAYER_COUNT = 10 // Product layers L1-L10; L11 = CI/CD pipeline layer (internal only)

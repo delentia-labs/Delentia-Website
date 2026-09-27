@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getBreadcrumbSchema } from "@/lib/schema"
-import { SITE_URL } from "@/lib/site-config"
+import { SITE_URL, SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale()
@@ -65,7 +65,7 @@ export default async function JitnaRFC001Page() {
     },
     {
       title: "Performance Targets",
-      body: "JITNA targets a full packet round-trip latency of under 200ms at the 99th percentile. Consensus accuracy across multi-agent deployments has been measured at 96.1%. The hallucination rate for responses produced through JITNA's Reflection primitive is 0.3%, compared to the 12–15% industry average for single-model deployments without verification.",
+      body: `JITNA targets a full packet round-trip latency of under 200ms at the 99th percentile. Consensus accuracy across multi-agent deployments is an internal design target of 96.1% (self-reported, not yet independently benchmarked). The hallucination rate targeted for responses produced through JITNA's Reflection primitive is ${SITE_HALLUCINATION_RATE}, compared to an estimated 12–15% industry average for single-model deployments without verification.`,
     },
   ] : [
     {
@@ -90,7 +90,7 @@ export default async function JitnaRFC001Page() {
     },
     {
       title: "Performance Targets",
-      body: "JITNA มี latency เป้าหมายต่ำกว่า 200ms ที่ percentile ที่ 99 ความแม่นยำ consensus ในการ deploy multi-agent อยู่ที่ 96.1% อัตรา hallucination สำหรับ response ที่ผ่าน Reflection primitive อยู่ที่ 0.3% เทียบกับ 12–15% ค่าเฉลี่ยอุตสาหกรรมสำหรับการ deploy โมเดลเดียวโดยไม่มี verification",
+      body: `JITNA มี latency เป้าหมายต่ำกว่า 200ms ที่ percentile ที่ 99 ความแม่นยำ consensus ในการ deploy multi-agent เป็นเป้าหมายภายในที่ 96.1% (self-reported ยังไม่ผ่านการ benchmark อิสระ) อัตรา hallucination ที่เป็นเป้าหมายสำหรับ response ที่ผ่าน Reflection primitive อยู่ที่ ${SITE_HALLUCINATION_RATE} เทียบกับค่าเฉลี่ยอุตสาหกรรมประมาณ 12–15% สำหรับการ deploy โมเดลเดียวโดยไม่มี verification`,
     },
   ]
 
@@ -123,7 +123,7 @@ export default async function JitnaRFC001Page() {
           <div className="mb-12 grid gap-4 sm:grid-cols-4">
             {[
               { label: isEn ? "Primitives" : "Primitives", value: "6" },
-              { label: isEn ? "Accuracy" : "ความแม่นยำ", value: "96.1%" },
+              { label: isEn ? "Accuracy (design target)" : "ความแม่นยำ (เป้าหมาย)", value: "96.1%" },
               { label: isEn ? "Latency" : "Latency", value: "<200ms" },
               { label: isEn ? "Signing" : "Signing", value: "Ed25519" },
             ].map((stat) => (

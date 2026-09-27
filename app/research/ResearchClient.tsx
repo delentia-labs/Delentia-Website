@@ -5,7 +5,7 @@ import { Activity, BookOpen, Brain, Container, FileText, GitBranch, Key, Layers,
 import { useLanguage } from "@/components/language-provider"
 import { ResourceCardGrid, ResourcePageShell, ResourceSection } from "@/components/resource/resource-shell"
 import { getLocalePrefix, resolveLocale } from "@/lib/i18n"
-import { SITE_MICROSERVICE_COUNT, SITE_TEST_COUNT, SITE_VERSION } from "@/lib/site-config"
+import { SITE_HALLUCINATION_RATE, SITE_MICROSERVICE_COUNT, SITE_TEST_COUNT, SITE_VERSION } from "@/lib/site-config"
 
 export default function ResearchClient() {
   const pathname = usePathname()
@@ -55,8 +55,8 @@ export default function ResearchClient() {
     },
     {
       slug: "signedai-consensus",
-      title: language === "th" ? "SignedAI: Multi-LLM Attestation ที่มี hallucination 0.3%" : "SignedAI: Multi-LLM Attestation with 0.3% Hallucination Rate",
-      description: language === "th" ? "งานแกนกลางด้าน verification สำหรับสภาพแวดล้อมกำกับดูแลสูง พร้อม auditability และการรับรองผลลัพธ์แบบหลายโมเดล." : "Consensus-based AI verification designed for regulated environments, with a measured 0.3% hallucination rate and full auditability.",
+      title: language === "th" ? `SignedAI: Multi-LLM Attestation ที่มีเป้าหมาย hallucination ${SITE_HALLUCINATION_RATE}` : `SignedAI: Multi-LLM Attestation Targeting a ${SITE_HALLUCINATION_RATE} Hallucination Rate`,
+      description: language === "th" ? "งานแกนกลางด้าน verification สำหรับสภาพแวดล้อมกำกับดูแลสูง พร้อม auditability และการรับรองผลลัพธ์แบบหลายโมเดล." : `Consensus-based AI verification designed for regulated environments, targeting a ${SITE_HALLUCINATION_RATE} hallucination rate with full auditability.`,
       href: `${localePrefix}/solutions/ai-hallucination-prevention`,
       badge: language === "th" ? "Core" : "Core",
       meta: language === "th" ? "Verification paper | 2026" : "Verification paper | 2026",

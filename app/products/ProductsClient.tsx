@@ -10,7 +10,7 @@ import { Palette, ShieldCheck, ArrowRight, Layers, Cpu, Zap } from "lucide-react
 import OptimizedImage from "@/components/ui/optimized-image"
 import { getLocaleFromPathname } from "@/lib/i18n"
 import { pixelIcons } from "@/lib/pixel-icons"
-import { SITE_ENTERPRISE_EVIDENCE_LABEL, SITE_PUBLIC_SDK_EVIDENCE_LABEL, SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
+import { SITE_ENTERPRISE_EVIDENCE_LABEL, SITE_HALLUCINATION_RATE, SITE_PUBLIC_SDK_EVIDENCE_LABEL, SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
 
 const PIXEL_LABS = pixelIcons.algorithms
 const PIXEL_ARTENT = pixelIcons.brain
@@ -86,7 +86,7 @@ export default function ProductsPage() {
 
   const productMetrics = [
     { value: `${SITE_PUBLIC_SDK_TESTS}`, labelEn: SITE_PUBLIC_SDK_EVIDENCE_LABEL, labelTh: SITE_PUBLIC_SDK_EVIDENCE_LABEL, color: "#D4A853" },
-    { value: "99.7%", labelEn: "Verified Accuracy", labelTh: "ความแม่นยำที่ตรวจสอบได้", color: "#7B9E87" },
+    { value: SITE_HALLUCINATION_RATE, labelEn: "Hallucination Rate", labelTh: "อัตรา Hallucination", color: "#7B9E87" },
     { value: "3", labelEn: "Core Products", labelTh: "ผลิตภัณฑ์หลัก", color: "#B8A9C9" },
   ]
   const faqs = isTh

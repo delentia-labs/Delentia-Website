@@ -88,7 +88,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
   // ── GOVERNANCE / HALLUCINATION CLUSTER ─────────────────────────────────────
   "constitutional-ai-vs-rag-comparison": [
     {
-      value: "0.3%", label: "Hallucination rate",
+      value: SITE_HALLUCINATION_RATE, label: "Hallucination rate",
       detail: "RCT dual-layer: RAG + constitutional controls in production",
       type: "outcome", evidenceType: "source",
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",
@@ -168,7 +168,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
   ],
   "designing-low-hallucination-ai-systems": [
     {
-      value: "0.3%", label: "Target hallucination rate",
+      value: SITE_HALLUCINATION_RATE, label: "Target hallucination rate",
       detail: "Systems-design approach: Retrieve + Verify + Sign architecture",
       type: "outcome", evidenceType: "source",
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",
@@ -212,7 +212,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
   // ── SIGNEAI / HEXACORE CLUSTER ──────────────────────────────────────────────
   "signedai-multi-llm-consensus-explained": [
     {
-      value: "0.3%", label: "Consensus hallucination rate",
+      value: SITE_HALLUCINATION_RATE, label: "Consensus hallucination rate",
       detail: "7-model HexaCore consensus; each model independently verifies before signing",
       type: "outcome", evidenceType: "source",
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",
@@ -244,7 +244,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
       evidenceRef: "https://delentia.com/products/signed-ai", verifiedAt: "2026-04-15",
     },
     {
-      value: "99.7%", label: "Consensus accuracy",
+      value: "99.7%", label: "Consensus accuracy (internal design target)",
       detail: "HexaCore consensus vs ~85% single-LLM — measured on constitutional AI eval set",
       type: "operational", evidenceType: "benchmark-assumption",
       evidenceNote: "Eval set: RCT internal synthetic + production edge cases; external audit pending", verifiedAt: "2026-04-15",
@@ -491,7 +491,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
       evidenceRef: "https://www.nist.gov/system/files/documents/2023/01/26/AI_RMF_1.0.pdf", verifiedAt: "2026-04-15",
     },
     {
-      value: "0.3%", label: "Hallucination ceiling",
+      value: SITE_HALLUCINATION_RATE, label: "Hallucination ceiling (target)",
       detail: "Constitutional runtime controls — required to satisfy PDPA accuracy obligations",
       type: "operational", evidenceType: "source",
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",

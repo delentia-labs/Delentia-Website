@@ -3,15 +3,16 @@ import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getBreadcrumbSchema, getFAQSchema } from "@/lib/schema"
 import HallucinationPreventionPage from "./HallucinationPreventionClient"
+import { SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale()
   return createBilingualMetadata(
     locale,
-    "AI Hallucination Prevention — 99.7% Accuracy with Multi-LLM Consensus",
-    "ป้องกัน AI Hallucination — ความแม่นยำ 99.7% ด้วย Multi-LLM Consensus",
-    "Reduce AI hallucination from 15% to 0.3% with SignedAI multi-LLM consensus verification. Cryptographic signing, complete audit trails, and enterprise-grade accuracy for regulated industries.",
-    "ลด AI Hallucination จาก 15% เหลือ 0.3% ด้วย SignedAI Multi-LLM Consensus Cryptographic Signing และ Audit Trails สำหรับอุตสาหกรรมที่มีการกำกับดูแล",
+    "AI Hallucination Prevention — Multi-LLM Consensus Verification",
+    "ป้องกัน AI Hallucination — Multi-LLM Consensus Verification",
+    `Target a hallucination rate of ${SITE_HALLUCINATION_RATE} (vs an estimated 12-15% industry average) with SignedAI multi-LLM consensus verification. Cryptographic signing, complete audit trails, and enterprise-grade accuracy for regulated industries.`,
+    `มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} (เทียบกับค่าเฉลี่ยอุตสาหกรรมประมาณ 12-15%) ด้วย SignedAI Multi-LLM Consensus Cryptographic Signing และ Audit Trails สำหรับอุตสาหกรรมที่มีการกำกับดูแล`,
     "/solutions/ai-hallucination-prevention",
     ["reduce AI hallucination", "multi-LLM consensus", "SignedAI verification", "AI accuracy", "cryptographic AI signing"]
   )
@@ -33,7 +34,7 @@ export default async function Page() {
       answer: "AI hallucination occurs when a language model generates plausible-sounding but factually incorrect content. It happens due to statistical pattern matching without ground-truth verification.",
     },
     {
-      question: "How does Delentia Labs reduce hallucination to 0.3%?",
+      question: `How does Delentia Labs target a ${SITE_HALLUCINATION_RATE} hallucination rate?`,
       answer: "RCT's SignedAI uses multi-LLM consensus — multiple models independently process the same query, and results are cryptographically signed only when consensus exceeds threshold across 8 quality dimensions.",
     },
   ])

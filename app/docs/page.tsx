@@ -121,7 +121,7 @@ export default async function DocsPage() {
                 { layer: "L8", name: "Regional Language", icon: Globe, desc: "8 markets, compliance frameworks" },
                 { layer: "L7", name: "Universal Adapters", icon: Workflow, desc: "13 adapters: Home Assistant, Terraform, n8n..." },
                 { layer: "L6", name: "JITNA Protocol", icon: FileText, desc: "RFC-001 v2.0, AI-to-AI communication" },
-                { layer: "L5", name: "SignedAI", icon: CheckCircle, desc: "Multi-LLM consensus, 0.3% hallucination" },
+                { layer: "L5", name: "SignedAI", icon: CheckCircle, desc: "Multi-LLM consensus, <0.3% hallucination target" },
                 { layer: "L4", name: "RCTDB v2.0", icon: Database, desc: "8D memory, Registry/Vault/Governance" },
                 { layer: "L3", name: "41 Algorithms", icon: GitBranch, desc: "9 tiers: Foundation, Intelligence, Consciousness" },
                 { layer: "L2", name: "OS Primitives", icon: Terminal, desc: "Process Model, Scheduler, IPC, 6 RFCs" },

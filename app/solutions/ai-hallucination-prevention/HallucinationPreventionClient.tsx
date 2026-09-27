@@ -12,6 +12,7 @@ import { Shield, AlertTriangle, Eye, Lock, Layers, BarChart3, ArrowRight } from 
 import { getBreadcrumbSchema } from "@/lib/schema"
 import AuthorBlock from "@/components/author-block"
 import RelatedContent from "@/components/related-content"
+import { SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 const verificationSteps = [
   {
@@ -118,8 +119,8 @@ export default function HallucinationPreventionPage() {
         <section className="sr-only">
           <p>
             {isEn
-              ? "AI hallucination prevention applies multi-model consensus verification to reduce fabricated outputs from a 15% baseline to below 0.3% — essential for enterprise deployments in financial services, healthcare, and legal domains where accuracy and auditability are non-negotiable."
-              : "การป้องกัน AI Hallucination ใช้การตรวจสอบความถูกต้องด้วยหลายโมเดลพร้อมกัน เพื่อลดผลลัพธ์ที่ผิดพลาดจากค่าเฝ้า 15% ลงเหลือต่ำกว่า 0.3% จำเป็นอย่างยิ่งสำหรับการใช้งานระดับองค์กรในแวดการเงิน สาธารณสุข และกฎหมาย ซึ่งความแม่นยำและการตรวจสอบได้เป็นสิ่งที่ต่อรองไม่ได้"}
+              ? `AI hallucination prevention applies multi-model consensus verification, targeting a hallucination rate of ${SITE_HALLUCINATION_RATE} down from an estimated 15% single-model baseline — essential for enterprise deployments in financial services, healthcare, and legal domains where accuracy and auditability are non-negotiable.`
+              : `การป้องกัน AI Hallucination ใช้การตรวจสอบความถูกต้องด้วยหลายโมเดลพร้อมกัน โดยมีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} ลดลงจากค่าเฝ้าประมาณ 15% ของโมเดลเดียว จำเป็นอย่างยิ่งสำหรับการใช้งานระดับองค์กรในแวดการเงิน สาธารณสุข และกฎหมาย ซึ่งความแม่นยำและการตรวจสอบได้เป็นสิ่งที่ต่อรองไม่ได้`}
           </p>
         </section>
 
@@ -139,8 +140,8 @@ export default function HallucinationPreventionPage() {
             <m.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
               className="text-lg mb-10" style={{ color: textSecondary }}>
               {isEn
-                ? "Target AI hallucination below 0.3% using SignedAI Multi-LLM consensus verification — benchmarked against standard single-LLM baselines."
-                : "เป้าหมาย AI Hallucination ต่ำกว่า 0.3% ด้วย SignedAI Multi-LLM Consensus Verification — Benchmarked เทียบกับ Single-LLM มาตรฐาน"}
+                ? `Target a hallucination rate of ${SITE_HALLUCINATION_RATE} using SignedAI Multi-LLM consensus verification — benchmarked against standard single-LLM baselines.`
+                : `เป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} ด้วย SignedAI Multi-LLM Consensus Verification — Benchmarked เทียบกับ Single-LLM มาตรฐาน`}
             </m.p>
             <m.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -191,14 +192,17 @@ export default function HallucinationPreventionPage() {
             </m.div>
             <m.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
               className="p-8 rounded-3xl border text-center" style={{ background: isDark ? "#1E1E1E" : "#FAF6F0", borderColor: cardBorder }}>
-              <div className="text-7xl font-bold mb-2" style={{ color: "#C4745B" }}>15%</div>
+              <div className="text-7xl font-bold mb-2" style={{ color: "#C4745B" }}>15%*</div>
               <p className="text-xs font-semibold uppercase tracking-wider mb-6" style={{ color: textMuted }}>
                 {isEn ? "Average Hallucination Rate" : "อัตรา Hallucination เฉลี่ย"}
               </p>
               <div className="h-px w-full mb-6" style={{ background: cardBorder }} />
-              <div className="text-7xl font-bold mb-2" style={{ color: "#7B9E87" }}>0.3%</div>
+              <div className="text-7xl font-bold mb-2" style={{ color: "#7B9E87" }}>&lt;0.3%*</div>
               <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: textMuted }}>
                 {isEn ? "With SignedAI Verification" : "ด้วย SignedAI Verification"}
+              </p>
+              <p className="text-[11px] mt-3" style={{ color: textMuted }}>
+                {isEn ? "* Based on internal benchmark testing — not from live enterprise deployments." : "* อ้างอิงจากการทดสอบ Benchmark ภายใน ไม่ใช่จาก Enterprise ที่ Deploy จริง"}
               </p>
             </m.div>
           </div>

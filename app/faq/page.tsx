@@ -4,6 +4,7 @@ import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getFAQSchema, getBreadcrumbSchema } from "@/lib/schema"
 import { FAQClient } from "./FAQClient"
+import { SITE_UPTIME, SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 const faqSchemaData = [
   {
@@ -20,11 +21,11 @@ const faqSchemaData = [
   },
   {
     question: "What is the RCT HexaCore 7-model architecture?",
-    answer: "HexaCore is the 7-model AI infrastructure of the RCT Ecosystem: 3 Western LLMs + 3 Eastern LLMs + 1 Thai regional model (Typhoon v2). All 7 models run in parallel for critical queries through the HexaCore Consensus mechanism, which requires constitutional agreement thresholds (50–100% depending on tier) before releasing output. This delivers 3.74x cost reduction vs single-model deployments while reducing hallucination to 0.3%.",
+    answer: `HexaCore is the 7-model AI infrastructure of the RCT Ecosystem: 3 Western LLMs + 3 Eastern LLMs + 1 Thai regional model (Typhoon v2). All 7 models run in parallel for critical queries through the HexaCore Consensus mechanism, which requires constitutional agreement thresholds (50–100% depending on tier) before releasing output. This delivers 3.74x cost reduction vs single-model deployments while targeting a hallucination rate of ${SITE_HALLUCINATION_RATE}.`,
   },
   {
-    question: "How does SignedAI reduce hallucination to 0.3%?",
-    answer: "SignedAI routes each critical query through 4–8 models simultaneously and applies a constitutional consensus threshold: Tier 4 requires 50% agreement, Tier 6 requires 67%, Tier 8 requires 75%, and Tier S (sovereign) requires 100%. If consensus is not reached, the query is escalated rather than releasing an unverified output. The industry average hallucination rate is 12–15%; RCT achieves 0.3% through this multi-LLM verification layer.",
+    question: `How does SignedAI target a hallucination rate of ${SITE_HALLUCINATION_RATE}?`,
+    answer: `SignedAI routes each critical query through 4–8 models simultaneously and applies a constitutional consensus threshold: Tier 4 requires 50% agreement, Tier 6 requires 67%, Tier 8 requires 75%, and Tier S (sovereign) requires 100%. If consensus is not reached, the query is escalated rather than releasing an unverified output. The industry average hallucination rate is estimated at 12–15% in published research; RCT's own hallucination rate is ${SITE_HALLUCINATION_RATE} through this multi-LLM verification layer.`,
   },
   {
     question: "What is the Delta Engine's 74% compression capability?",
@@ -32,7 +33,7 @@ const faqSchemaData = [
   },
   {
     question: "How does the Circuit Breaker Pattern work in AI pipelines?",
-    answer: "The Circuit Breaker Pattern in AI systems has three states: CLOSED (normal operation — requests flow through), OPEN (failure threshold exceeded — requests are blocked and fallback providers are used), and HALF-OPEN (test mode — limited traffic allowed to check recovery). In the RCT Platform, the FDIA score acts as the trip signal: when F drops below 0.7, the breaker opens. RFC-006 Fault Isolation implements this across all 62 microservices, enabling 7 fallback LLM providers with automatic switching. This is why the RCT Platform maintains 99.9% uptime SLA even when individual model providers experience outages.",
+    answer: `The Circuit Breaker Pattern in AI systems has three states: CLOSED (normal operation — requests flow through), OPEN (failure threshold exceeded — requests are blocked and fallback providers are used), and HALF-OPEN (test mode — limited traffic allowed to check recovery). In the RCT Platform, the FDIA score acts as the trip signal: when F drops below 0.7, the breaker opens. RFC-006 Fault Isolation implements this across all 62 microservices, enabling 7 fallback LLM providers with automatic switching. This is why the RCT Platform is designed for a ${SITE_UPTIME} even when individual model providers experience outages.`,
   },
   {
     question: "What is Intent Farming and how does it reduce AI costs over time?",

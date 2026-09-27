@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getBreadcrumbSchema, getDefinedTermSchema } from "@/lib/schema"
+import { SITE_UPTIME, SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 const glossaryTerms = [
   // ─── Core RCT Concepts ───────────────────────────────────────────
@@ -25,8 +26,8 @@ const glossaryTerms = [
   {
     term: "SignedAI",
     termTh: "SignedAI",
-    definition: "The multi-LLM consensus verification system of the RCT Ecosystem. Routes critical queries through 4–8 models simultaneously and requires agreement before releasing results. Achieves 0.3% hallucination rate vs 12–15% industry average.",
-    definitionTh: "ระบบตรวจสอบ consensus หลาย LLM ของ RCT Ecosystem ส่งคำถามสำคัญผ่าน 4–8 โมเดลพร้อมกัน และต้องการ agreement ก่อนส่งผลลัพธ์ ลด hallucination rate เหลือ 0.3%",
+    definition: `The multi-LLM consensus verification system of the RCT Ecosystem. Routes critical queries through 4–8 models simultaneously and requires agreement before releasing results. Targets a ${SITE_HALLUCINATION_RATE} hallucination rate vs an estimated 12–15% industry average.`,
+    definitionTh: `ระบบตรวจสอบ consensus หลาย LLM ของ RCT Ecosystem ส่งคำถามสำคัญผ่าน 4–8 โมเดลพร้อมกัน และต้องการ agreement ก่อนส่งผลลัพธ์ มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE}`,
     entityHref: "/en/entity/governance-layer",
   },
   {
@@ -75,8 +76,8 @@ const glossaryTerms = [
   {
     term: "Fault Isolation Layer",
     termTh: "Fault Isolation Layer (ชั้นแยกความผิดพลาด)",
-    definition: "RFC-006 of the RCT Platform — an architectural boundary that contains failures within a single service or agent, preventing them from propagating across the entire system. When a component's FDIA score drops below threshold, the isolation layer automatically routes around the failing component and activates a fallback provider. Combined with the Circuit Breaker Pattern, this enables the RCT Ecosystem to maintain 99.9% uptime SLA across 62 microservices.",
-    definitionTh: "RFC-006 ของ RCT Platform — ขอบเขตสถาปัตยกรรมที่กักความผิดพลาดไว้ใน service หรือ agent เดียว ป้องกันไม่ให้แพร่กระจายทั่วระบบ เมื่อคะแนน FDIA ของส่วนประกอบต่ำกว่า threshold ชั้นนี้จะ route อัตโนมัติข้ามส่วนที่ล้มเหลวและเปิดใช้ fallback provider ทำให้ RCT Ecosystem รักษา uptime SLA 99.9% ทั่ว 62 microservices",
+    definition: `RFC-006 of the RCT Platform — an architectural boundary that contains failures within a single service or agent, preventing them from propagating across the entire system. When a component's FDIA score drops below threshold, the isolation layer automatically routes around the failing component and activates a fallback provider. Combined with the Circuit Breaker Pattern, this is designed to give the RCT Ecosystem a ${SITE_UPTIME} across 62 microservices.`,
+    definitionTh: `RFC-006 ของ RCT Platform — ขอบเขตสถาปัตยกรรมที่กักความผิดพลาดไว้ใน service หรือ agent เดียว ป้องกันไม่ให้แพร่กระจายทั่วระบบ เมื่อคะแนน FDIA ของส่วนประกอบต่ำกว่า threshold ชั้นนี้จะ route อัตโนมัติข้ามส่วนที่ล้มเหลวและเปิดใช้ fallback provider ออกแบบให้ RCT Ecosystem มีเป้าหมาย ${SITE_UPTIME} ทั่ว 62 microservices`,
     entityHref: "/en/blog/circuit-breaker-pattern-ai-systems",
   },
   // ─── Constitutional AI Concepts ────────────────────────────────
@@ -129,8 +130,8 @@ const glossaryTerms = [
   {
     term: "Hallucination Control",
     termTh: "Hallucination Control (การควบคุมการหลอนของ AI)",
-    definition: "The system-level discipline of reducing unsupported or overconfident outputs through retrieval quality, memory design, routing, verification, and evaluation loops. RCT achieves 0.3% vs 12–15% industry average.",
-    definitionTh: "วินัยระดับระบบในการลดผลลัพธ์ที่ไร้หลักฐานหรือมั่นใจเกินจริง ผ่าน retrieval quality, memory design, routing, verification และ evaluation loops — RCT ทำได้ 0.3%",
+    definition: `The system-level discipline of reducing unsupported or overconfident outputs through retrieval quality, memory design, routing, verification, and evaluation loops. RCT targets ${SITE_HALLUCINATION_RATE} vs an estimated 12–15% industry average.`,
+    definitionTh: `วินัยระดับระบบในการลดผลลัพธ์ที่ไร้หลักฐานหรือมั่นใจเกินจริง ผ่าน retrieval quality, memory design, routing, verification และ evaluation loops — RCT มีเป้าหมาย ${SITE_HALLUCINATION_RATE}`,
   },
   {
     term: "Verification Layer",

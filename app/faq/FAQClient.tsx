@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ChevronDown, BookOpen, Zap, Tag, History, HelpCircle } from "lucide-react"
+import { SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 type FAQClientProps = {
   locale: "en" | "th"
@@ -31,8 +32,8 @@ const faqCategories = [
       {
         qEn: "What makes RCT different from LangChain or AutoGPT?",
         qTh: "RCT แตกต่างจาก LangChain หรือ AutoGPT อย่างไร?",
-        aEn: "RCT is a complete ecosystem, not just a framework. It includes its own equation (FDIA), protocol (JITNA), database (RCTDB), 41 algorithms, and 7 genome subsystems. While LangChain focuses on chaining LLM calls and AutoGPT on autonomous agents, RCT provides end-to-end AI governance with built-in quality control (0.3% hallucination rate vs industry 12-15%), cost optimization, and evolutionary improvement.",
-        aTh: "RCT เป็น Ecosystem ที่สมบูรณ์ ไม่ใช่แค่ Framework มี Equation (FDIA), Protocol (JITNA), Database (RCTDB), 41 Algorithms และ 7 Genome Subsystems พร้อม Hallucination Rate เพียง 0.3% เทียบกับ Industry 12-15%",
+        aEn: `RCT is a complete ecosystem, not just a framework. It includes its own equation (FDIA), protocol (JITNA), database (RCTDB), 41 algorithms, and 7 genome subsystems. While LangChain focuses on chaining LLM calls and AutoGPT on autonomous agents, RCT provides end-to-end AI governance with built-in quality control (targeting a ${SITE_HALLUCINATION_RATE} hallucination rate vs an industry estimate of 12-15%), cost optimization, and evolutionary improvement.`,
+        aTh: `RCT เป็น Ecosystem ที่สมบูรณ์ ไม่ใช่แค่ Framework มี Equation (FDIA), Protocol (JITNA), Database (RCTDB), 41 Algorithms และ 7 Genome Subsystems พร้อมเป้าหมาย Hallucination Rate ${SITE_HALLUCINATION_RATE} เทียบกับ Industry 12-15%`,
       },
       {
         qEn: "Is RCT open source?",
@@ -75,14 +76,14 @@ const faqCategories = [
       {
         qEn: "What is the RCT HexaCore 7-model architecture?",
         qTh: "สถาปัตยกรรม HexaCore 7 โมเดลของ RCT คืออะไร?",
-        aEn: "HexaCore is the 7-model AI infrastructure: 3 Western LLMs + 3 Eastern LLMs + 1 Thai regional model (Typhoon v2). For critical queries, all 7 models process in parallel through the HexaCore Consensus mechanism, which enforces constitutional agreement thresholds (50–100% by tier) before any output is released. This achieves 3.74x cost reduction vs single-model deployments while reducing hallucination to 0.3%.",
-        aTh: "HexaCore คือโครงสร้าง AI 7 โมเดล: LLM ตะวันตก 3 ตัว + ตะวันออก 3 ตัว + โมเดลไทย 1 ตัว (Typhoon v2) สำหรับ query สำคัญ ทั้ง 7 โมเดลประมวลผลพร้อมกันผ่านกลไก HexaCore Consensus ที่บังคับ threshold รัฐธรรมนูญ (50–100% ตาม Tier) ก่อนปล่อยผลลัพธ์ ทำให้ลดต้นทุน 3.74 เท่าและ hallucination เหลือ 0.3%",
+        aEn: `HexaCore is the 7-model AI infrastructure: 3 Western LLMs + 3 Eastern LLMs + 1 Thai regional model (Typhoon v2). For critical queries, all 7 models process in parallel through the HexaCore Consensus mechanism, which enforces constitutional agreement thresholds (50–100% by tier) before any output is released. This achieves 3.74x cost reduction vs single-model deployments while targeting a ${SITE_HALLUCINATION_RATE} hallucination rate.`,
+        aTh: `HexaCore คือโครงสร้าง AI 7 โมเดล: LLM ตะวันตก 3 ตัว + ตะวันออก 3 ตัว + โมเดลไทย 1 ตัว (Typhoon v2) สำหรับ query สำคัญ ทั้ง 7 โมเดลประมวลผลพร้อมกันผ่านกลไก HexaCore Consensus ที่บังคับ threshold รัฐธรรมนูญ (50–100% ตาม Tier) ก่อนปล่อยผลลัพธ์ ทำให้ลดต้นทุน 3.74 เท่าและมีเป้าหมาย hallucination ${SITE_HALLUCINATION_RATE}`,
       },
       {
-        qEn: "How does SignedAI reduce hallucination to 0.3%?",
-        qTh: "SignedAI ลด hallucination เหลือ 0.3% ได้อย่างไร?",
-        aEn: "SignedAI routes critical queries through 4–8 models simultaneously and requires constitutional consensus: Tier 4 = 50% agreement, Tier 6 = 67%, Tier 8 = 75%, Tier S = 100%. If consensus is not reached, the system escalates rather than releasing an unverified output. The industry average hallucination rate is 12–15%; RCT achieves 0.3% through this multi-model verification layer combined with Ed25519 cryptographic signatures on all consensus decisions.",
-        aTh: "SignedAI ส่ง query สำคัญผ่าน 4–8 โมเดลพร้อมกันและต้องการ consensus รัฐธรรมนูญ: Tier 4 = 50%, Tier 6 = 67%, Tier 8 = 75%, Tier S = 100% ถ้าไม่ถึง threshold ระบบจะ escalate ไม่ใช่ปล่อยผลลัพธ์ที่ยังไม่ verified อุตสาหกรรม hallucinate ที่ 12–15% แต่ RCT ทำได้ 0.3% ผ่าน multi-model verification layer พร้อมลายเซ็น Ed25519",
+        qEn: `How does SignedAI target a ${SITE_HALLUCINATION_RATE} hallucination rate?`,
+        qTh: `SignedAI มีเป้าหมาย hallucination ${SITE_HALLUCINATION_RATE} ได้อย่างไร?`,
+        aEn: `SignedAI routes critical queries through 4–8 models simultaneously and requires constitutional consensus: Tier 4 = 50% agreement, Tier 6 = 67%, Tier 8 = 75%, Tier S = 100%. If consensus is not reached, the system escalates rather than releasing an unverified output. The industry average hallucination rate is estimated at 12–15% in published research; RCT's own hallucination rate is ${SITE_HALLUCINATION_RATE} through this multi-model verification layer combined with Ed25519 cryptographic signatures on all consensus decisions.`,
+        aTh: `SignedAI ส่ง query สำคัญผ่าน 4–8 โมเดลพร้อมกันและต้องการ consensus รัฐธรรมนูญ: Tier 4 = 50%, Tier 6 = 67%, Tier 8 = 75%, Tier S = 100% ถ้าไม่ถึง threshold ระบบจะ escalate ไม่ใช่ปล่อยผลลัพธ์ที่ยังไม่ verified อุตสาหกรรม hallucinate ที่ 12–15% (ประมาณการจากงานวิจัยที่เผยแพร่) แต่ RCT มีเป้าหมาย ${SITE_HALLUCINATION_RATE} ผ่าน multi-model verification layer พร้อมลายเซ็น Ed25519`,
       },
       {
         qEn: "What is the Delta Engine's 74% compression capability?",

@@ -2,7 +2,7 @@
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getBreadcrumbSchema } from "@/lib/schema"
-import { SITE_URL } from "@/lib/site-config"
+import { SITE_URL, SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 import SignedAIPage from "./SignedAIClient"
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -29,7 +29,7 @@ export default async function Page() {
     "@context": "https://schema.org",
     "@type": "HowTo",
     "name": "How SignedAI Verifies AI Responses",
-    "description": "SignedAI uses a 6-stage cryptographic pipeline — INTAKE through REPORT — to produce ED25519-signed, consensus-verified AI responses with a 0.3% hallucination rate.",
+    "description": `SignedAI uses a 6-stage cryptographic pipeline — INTAKE through REPORT — to produce ED25519-signed, consensus-verified AI responses, targeting a hallucination rate of ${SITE_HALLUCINATION_RATE}.`,
     "totalTime": "PT200MS",
     "step": [
       { "@type": "HowToStep", "position": 1, "name": "INTAKE", "text": "Receive and validate the incoming request. Token normalization and schema validation run before any model is invoked." },

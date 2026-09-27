@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation"
 import { getLocaleFromPathname } from "@/lib/i18n"
 import { ArrowRight, Layers, Cpu, Brain, Shield, Database, Network, Bot, AppWindow, RefreshCw } from "lucide-react"
 import { LazyInteractiveArchDiagram } from "@/components/diagrams/lazy-diagram-wrapper"
-import { SITE_ENTERPRISE_EVIDENCE_LABEL, SITE_MICROSERVICE_COUNT, SITE_PUBLIC_SDK_COVERAGE, SITE_PUBLIC_SDK_EVIDENCE_LABEL, SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
+import { SITE_ENTERPRISE_EVIDENCE_LABEL, SITE_HALLUCINATION_RATE, SITE_MICROSERVICE_COUNT, SITE_PUBLIC_SDK_COVERAGE, SITE_PUBLIC_SDK_EVIDENCE_LABEL, SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
 
 const layers = {
   en: [
@@ -20,7 +20,7 @@ const layers = {
     { num: "L5", name: "Reasoning Core", desc: "Multi-strategy reasoning including chain-of-thought, tree-of-thought, and hybrid approaches powered by the FDIA Equation.", icon: Brain, color: "#B8A9C9" },
     { num: "L6", name: "Multi-LLM Orchestration", desc: "HexaCore 7-model roster (3 Western: Claude/Gemini/Grok · 3 Eastern: Kimi/MiniMax/DeepSeek · 1 Regional: Typhoon G38 for Thai) with JITNA dynamic routing across all task types.", icon: Network, color: "#D4A853" },
     { num: "L7", name: "Agent Framework", desc: "Autonomous agent lifecycle management with JITNA Protocol for inter-agent communication and consensus.", icon: Bot, color: "#89B4C8" },
-    { num: "L8", name: "Safety & Verification", desc: "Consensus-based verification, traceability, and policy controls designed to hold hallucination risk to 0.3% on benchmarked workloads.", icon: Shield, color: "#7B9E87" },
+    { num: "L8", name: "Safety & Verification", desc: `Consensus-based verification, traceability, and policy controls designed to target a hallucination rate of ${SITE_HALLUCINATION_RATE} on benchmarked workloads.`, icon: Shield, color: "#7B9E87" },
     { num: "L9", name: "Application Layer", desc: "Domain-specific assistants, enterprise workflows, and solution packages built on the shared platform core.", icon: AppWindow, color: "#C4745B" },
     { num: "L10", name: "Self-Evolving Orchestrator", desc: "Continuous self-improvement through performance monitoring, A/B testing, and adaptive algorithm selection.", icon: RefreshCw, color: "#B8A9C9" },
   ],
@@ -32,7 +32,7 @@ const layers = {
     { num: "L5", name: "Reasoning Core", desc: "การให้เหตุผลหลายกลยุทธ์รวม Chain-of-Thought, Tree-of-Thought กับเคลื่อนด้วยสมการ FDIA", icon: Brain, color: "#B8A9C9" },
     { num: "L6", name: "Multi-LLM Orchestration", desc: "HexaCore 7-Model Roster (3 Western: Claude/Gemini/Grok · 3 Eastern: Kimi/MiniMax/DeepSeek · 1 Regional: Typhoon G38 สำหรับภาษาไทย) คู่กับ JITNA Dynamic Routing", icon: Network, color: "#D4A853" },
     { num: "L7", name: "Agent Framework", desc: "การจัดการ Lifecycle ของ Agent อัตโนมัติพร้อม JITNA Protocol สำหรับการสื่อสารระหว่าง Agent", icon: Bot, color: "#89B4C8" },
-    { num: "L8", name: "Safety & Verification", desc: "ชั้น consensus-based verification, traceability และ policy controls ที่ทำให้ hallucination risk เหลือ 0.3% ใน benchmark workloads", icon: Shield, color: "#7B9E87" },
+    { num: "L8", name: "Safety & Verification", desc: `ชั้น consensus-based verification, traceability และ policy controls ที่มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} ใน benchmark workloads`, icon: Shield, color: "#7B9E87" },
     { num: "L9", name: "Application Layer", desc: "ชั้นสำหรับ assistants, enterprise workflows และ solution packages ที่สร้างบน platform core เดียวกัน", icon: AppWindow, color: "#C4745B" },
     { num: "L10", name: "Self-Evolving Orchestrator", desc: "การปรับปรุงตัวเองต่อเนื่องผ่าน Performance Monitoring, A/B Testing และ Adaptive Algorithm Selection", icon: RefreshCw, color: "#B8A9C9" },
   ],
@@ -42,7 +42,7 @@ const comparisons = {
   en: [
     { feature: "Architecture", rct: "10-Layer Cognitive Stack", others: "Monolithic / 2-3 layers" },
     { feature: "Memory", rct: "RCTDB v2.0 — 8D Schema", others: "No persistent memory" },
-    { feature: "Hallucination", rct: "<0.3% on benchmarks (SignedAI)", others: "12-15% typical" },
+    { feature: "Hallucination", rct: `${SITE_HALLUCINATION_RATE} (SignedAI)`, others: "12-15% typical" },
     { feature: "Multi-LLM", rct: "7-model HexaCore, dynamic routing", others: "Single provider lock-in" },
     { feature: "Self-Improvement", rct: "L10 autonomous evolution", others: "Manual updates only" },
     { feature: "Protocol", rct: "JITNA open standard", others: "Proprietary APIs" },
@@ -50,7 +50,7 @@ const comparisons = {
   th: [
     { feature: "Architecture", rct: "10-Layer Cognitive Stack", others: "Monolithic / 2-3 ชั้น" },
     { feature: "Memory", rct: "RCTDB v2.0 — 8D Schema", others: "ไม่มี Persistent Memory" },
-    { feature: "Hallucination", rct: "<0.3% บน benchmarks (SignedAI)", others: "12-15% ทั่วไป" },
+    { feature: "Hallucination", rct: `${SITE_HALLUCINATION_RATE} (SignedAI)`, others: "12-15% ทั่วไป" },
     { feature: "Multi-LLM", rct: "7-model HexaCore, Dynamic Routing", others: "ผูกกับ Provider เดียว" },
     { feature: "Self-Improvement", rct: "L10 Autonomous Evolution", others: "อัปเดตด้วยมือเท่านั้น" },
     { feature: "Protocol", rct: "JITNA Open Standard", others: "Proprietary APIs" },
@@ -116,7 +116,7 @@ export default function ArchitecturePage() {
                   tone: "text-warm-amber",
                 },
                 {
-                  value: "<0.3%",
+                  value: SITE_HALLUCINATION_RATE,
                   label: isTh ? "Benchmark scope" : "Benchmark scope",
                   tone: "text-warm-sky",
                 },

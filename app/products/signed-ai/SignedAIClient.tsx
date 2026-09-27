@@ -8,12 +8,13 @@ import { usePathname } from "next/navigation"
 import { getLocaleFromPathname } from "@/lib/i18n"
 import { ShieldCheck, ArrowRight, Lock, Eye, BarChart3, Layers } from "lucide-react"
 import { getBreadcrumbSchema } from "@/lib/schema"
+import { SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 const features = [
-  { icon: Layers, color: "#7B9E87", titleEn: "Multi-LLM Consensus", titleTh: "Multi-LLM Consensus", descEn: "Standard 7-model HexaCore roster (3W+3E+1TH) for consensus verification. Tier 8 God Mode engages all 8 signers for critical decisions. Cross-verification benchmarks hallucination below 0.3%.", descTh: "HexaCore 7 Models มาตรฐาน (3W+3E+1TH) สำหรับ Consensus Verification Tier 8 God Mode ใช้ 8 Signers สำหรับการตัดสินใจสำคัญ Cross-Verification Benchmark Hallucination ต่ำกว่า 0.3%" },
+  { icon: Layers, color: "#7B9E87", titleEn: "Multi-LLM Consensus", titleTh: "Multi-LLM Consensus", descEn: `Standard 7-model HexaCore roster (3W+3E+1TH) for consensus verification. Tier 8 God Mode engages all 8 signers for critical decisions. Cross-verification targets a hallucination rate of ${SITE_HALLUCINATION_RATE}.`, descTh: `HexaCore 7 Models มาตรฐาน (3W+3E+1TH) สำหรับ Consensus Verification Tier 8 God Mode ใช้ 8 Signers สำหรับการตัดสินใจสำคัญ Cross-Verification มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE}` },
   { icon: Lock, color: "#D4A853", titleEn: "Cryptographic Signing", titleTh: "Cryptographic Signing", descEn: "Every verified response is cryptographically signed — tamper-proof and legally auditable.", descTh: "ทุกคำตอบที่ตรวจสอบแล้วถูก Cryptographically Signed — ป้องกันการแก้ไขและตรวจสอบทางกฎหมายได้" },
   { icon: Eye, color: "#C4745B", titleEn: "Complete Audit Trails", titleTh: "Complete Audit Trails", descEn: "Full transparency — every step from query to response is logged and traceable.", descTh: "ความโปร่งใสเต็มรูปแบบ — ทุกขั้นตอนจาก Query ถึง Response ถูกบันทึกและตรวจสอบย้อนหลังได้" },
-  { icon: BarChart3, color: "#89B4C8", titleEn: "99.7% Benchmark Accuracy", titleTh: "99.7% Benchmark Accuracy", descEn: "Benchmark hallucination below 0.3% on standard workloads — enterprise-grade accuracy for critical applications.", descTh: "Benchmark Hallucination ต่ำกว่า 0.3% บน Workloads มาตรฐาน — ความแม่นยำระดับ Enterprise สำหรับแอปพลิเคชันสำคัญ" },
+  { icon: BarChart3, color: "#89B4C8", titleEn: "Benchmark Accuracy Target", titleTh: "Benchmark Accuracy Target", descEn: `Targeting a hallucination rate of ${SITE_HALLUCINATION_RATE} on standard workloads — enterprise-grade accuracy for critical applications.`, descTh: `มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} บน Workloads มาตรฐาน — ความแม่นยำระดับ Enterprise สำหรับแอปพลิเคชันสำคัญ` },
 ]
 
 const pipeline = [
@@ -33,8 +34,7 @@ const pricingTiers = [
 ]
 
 const stats = [
-  { value: "99.7%", label: "Constitutional Accuracy" },
-  { value: "0.3%", label: "Hallucination Rate" },
+  { value: SITE_HALLUCINATION_RATE, label: "Hallucination Rate" },
   { value: "7", label: "HexaCore Models" },
   { value: "4", label: "Voting Methods" },
 ]
@@ -59,8 +59,8 @@ export default function SignedAIPage() {
       <section className="sr-only">
         <p>
           {isTh
-            ? "SignedAI คือ Multi-LLM Verification Consensus API ที่ใช้ HexaCore 7 โมเดล (3 ตะวันตก + 3 ตะวันออก + 1 ไทย) เพื่อ benchmark hallucination ต่ำกว่า 0.3% ผ่าน cryptographic signing ด้วย ED25519 RFC 8032 — รองรับ Tier S, 4, 6 และ 8 สำหรับทุกระดับความเสี่ยงขององค์กร"
-            : "SignedAI is a multi-LLM verification consensus API that uses HexaCore 7 models (3 Western + 3 Eastern + 1 Thai) to benchmark hallucination below 0.3% through ED25519 RFC 8032 cryptographic signing — with Tier S, 4, 6, and 8 consensus levels for every enterprise risk tier."}
+            ? `SignedAI คือ Multi-LLM Verification Consensus API ที่ใช้ HexaCore 7 โมเดล (3 ตะวันตก + 3 ตะวันออก + 1 ไทย) เพื่อมีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} ผ่าน cryptographic signing ด้วย ED25519 RFC 8032 — รองรับ Tier S, 4, 6 และ 8 สำหรับทุกระดับความเสี่ยงขององค์กร`
+            : `SignedAI is a multi-LLM verification consensus API that uses HexaCore 7 models (3 Western + 3 Eastern + 1 Thai) to target a hallucination rate of ${SITE_HALLUCINATION_RATE} through ED25519 RFC 8032 cryptographic signing — with Tier S, 4, 6, and 8 consensus levels for every enterprise risk tier.`}
         </p>
       </section>
 
@@ -73,8 +73,8 @@ export default function SignedAIPage() {
           <h1 className="text-5xl font-bold text-foreground">SignedAI</h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             {isTh
-              ? "Multi-LLM Verification Consensus API — Cryptographically Signed Responses จาก HexaCore 7 Models ลด Hallucination ลงต่ำกว่า 0.3% ในการทดสอบ Benchmark พร้อม Audit Trails"
-              : "Multi-LLM verification consensus API — cryptographically signed responses from HexaCore 7 Models, benchmarking hallucination below 0.3% on standard workloads, with complete audit trails and ED25519 RFC 8032 signing."}
+              ? `Multi-LLM Verification Consensus API — Cryptographically Signed Responses จาก HexaCore 7 Models มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} ในการทดสอบ Benchmark พร้อม Audit Trails`
+              : `Multi-LLM verification consensus API — cryptographically signed responses from HexaCore 7 Models, targeting a hallucination rate of ${SITE_HALLUCINATION_RATE} on standard workloads, with complete audit trails and ED25519 RFC 8032 signing.`}
           </p>
         </div>
       </section>
@@ -111,8 +111,8 @@ export default function SignedAIPage() {
           </p>
           <p>
             {isTh
-              ? "LLMs แต่ละตัวมีข้อผิดพลาดเฉพาะ — ข้อจำกัดของ Training Data, Model Bias และ Hallucination Patterns SignedAI ใช้ Multi-LLM Consensus เพื่อ Cross-Verify Outputs ผ่าน HexaCore 7-Model Roster ลด Hallucination ลงต่ำกว่า 0.3% ในการทดสอบ Benchmark"
-              : "Individual LLMs have unique failure modes — training data cutoffs, model bias, and hallucination patterns. SignedAI uses multi-LLM consensus to cross-verify outputs across the HexaCore 7-model roster, benchmarking hallucination below 0.3% on standard workloads."}
+              ? `LLMs แต่ละตัวมีข้อผิดพลาดเฉพาะ — ข้อจำกัดของ Training Data, Model Bias และ Hallucination Patterns SignedAI ใช้ Multi-LLM Consensus เพื่อ Cross-Verify Outputs ผ่าน HexaCore 7-Model Roster มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} ในการทดสอบ Benchmark`
+              : `Individual LLMs have unique failure modes — training data cutoffs, model bias, and hallucination patterns. SignedAI uses multi-LLM consensus to cross-verify outputs across the HexaCore 7-model roster, targeting a hallucination rate of ${SITE_HALLUCINATION_RATE} on standard workloads.`}
           </p>
           <p>
             {isTh

@@ -31,7 +31,7 @@ export default async function BenchmarkPage() {
     "creator": { "@type": "Organization", "name": "Delentia Labs", "url": "https://delentia.com" },
     "license": "https://www.apache.org/licenses/LICENSE-2.0",
     "variableMeasured": [
-      { "@type": "PropertyValue", "name": "Hallucination Rate", "value": "0.3%", "unitText": "percent" },
+      { "@type": "PropertyValue", "name": "Hallucination Rate (design target, self-reported)", "value": "<0.3%", "unitText": "percent" },
       { "@type": "PropertyValue", "name": "Public SDK Verified Tests", "value": SITE_PUBLIC_SDK_TESTS, "unitText": "count" },
       { "@type": "PropertyValue", "name": "Validation Tiers", "value": 9, "unitText": "count" }
     ]

@@ -13,7 +13,7 @@ import {
 import OptimizedImage from "@/components/ui/optimized-image"
 import { getLocaleFromPathname } from "@/lib/i18n"
 import { pixelIcons } from "@/lib/pixel-icons"
-import { SITE_ENTERPRISE_EVIDENCE_LABEL } from "@/lib/site-config"
+import { SITE_ENTERPRISE_EVIDENCE_LABEL, SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 const PIXEL_SHIELD = pixelIcons.shield
 const PIXEL_BRAIN = pixelIcons.brain
@@ -27,12 +27,12 @@ const solutions = [
     color: "#C4745B",
     titleEn: "AI Hallucination Prevention",
     titleTh: "การป้องกัน AI Hallucination",
-    descEn: "Target hallucination below 0.3% with Multi-LLM consensus verification via SignedAI — benchmarked at 99.7% accuracy through cryptographic audit trails.",
-    descTh: "ลดเป้าหมาย Hallucination ให้ต่ำกว่า 0.3% ด้วย Multi-LLM Consensus Verification ผ่าน SignedAI — ความแม่นยำ 99.7% ในการทดสอบ Benchmark",
+    descEn: `Targeting a hallucination rate of ${SITE_HALLUCINATION_RATE} with Multi-LLM consensus verification via SignedAI through cryptographic audit trails.`,
+    descTh: `มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} ด้วย Multi-LLM Consensus Verification ผ่าน SignedAI ด้วย Cryptographic Audit Trails`,
     stats: [
-      { label: "Accuracy", value: "99.7%" },
-      { label: "Hallucination", value: "0.3%" },
+      { label: "Hallucination Rate (target)", value: "<0.3%" },
       { label: "LLMs Verified", value: "Up to 7" },
+      { label: "Signing", value: "ED25519" },
     ],
     features: [
       { en: "Multi-LLM Consensus Mechanism", th: "Multi-LLM Consensus Mechanism" },
@@ -101,9 +101,9 @@ export default function SolutionsPage() {
   const localHref = (href: string) => `${localePrefix}${href}`
 
   const proofPoints = [
-    { value: "0.3%", labelEn: "Hallucination", labelTh: "Hallucination", color: "#C4745B" },
-    { value: "99.7%", labelEn: "Verified Accuracy", labelTh: "ความแม่นยำที่ตรวจสอบได้", color: "#7B9E87" },
+    { value: "<0.3%", labelEn: "Hallucination (target)", labelTh: "Hallucination (เป้าหมาย)", color: "#C4745B" },
     { value: "7", labelEn: "HexaCore Models", labelTh: "HexaCore Models", color: "#D4A853" },
+    { value: "41", labelEn: "Algorithms", labelTh: "Algorithms", color: "#7B9E87" },
   ]
   const faqs = isTh
     ? [
@@ -340,7 +340,7 @@ export default function SolutionsPage() {
             <p className="text-muted-foreground">{isTh ? "Deploy AI ด้วยความมั่นใจ — Audit Trails ครบถ้วน, Compliance Frameworks และ Enterprise Security" : "Deploy AI with confidence — full audit trails, compliance frameworks, and enterprise-grade security."}</p>
             <ul className="space-y-2">
               {[
-                { icon: Shield, t: "0.3% benchmark evidence with SignedAI" },
+                { icon: Shield, t: "<0.3% benchmark hallucination target with SignedAI" },
                 { icon: Lock, t: "ED25519 + JWT RS256 + RBAC" },
                 { icon: Users, t: "Availability target for enterprise programs" },
                 { icon: Zap, t: `${SITE_ENTERPRISE_EVIDENCE_LABEL}: 62 runtime components` },

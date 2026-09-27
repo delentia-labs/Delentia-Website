@@ -3,6 +3,7 @@ import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import Link from "next/link"
 import { fetchGithubReadme } from "@/lib/github-api"
 import { MDXContent } from "@/components/mdx-content"
+import { SITE_UPTIME } from "@/lib/site-config"
 
 export const revalidate = 3600
 
@@ -89,7 +90,7 @@ export default async function DelentiaInfraGithubPage({ params }: LocalePageProp
           </div>
           <div className="space-y-1">
             <span className="text-xs text-gray-400 uppercase tracking-wider">{isTH ? "สเตตัสการรัน" : "Uptime Target"}</span>
-            <p className="font-bold text-sm">99.99% SLA</p>
+            <p className="font-bold text-sm">{SITE_UPTIME}</p>
           </div>
         </div>
       </div>

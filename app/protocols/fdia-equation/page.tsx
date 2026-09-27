@@ -13,6 +13,7 @@ import { Compass, Database, Target, User, ArrowRight, FlaskConical } from "lucid
 import AuthorBlock from "@/components/author-block"
 import RelatedContent from "@/components/related-content"
 import { PROTOCOL_LINKS } from "@/lib/internal-links"
+import { SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 const components = [
   {
@@ -147,7 +148,7 @@ export default function FDIAEquationPage() {
     },
     {
       question: "How does FDIA prevent AI hallucination?",
-      answer: "FDIA evaluates eight quality dimensions — Data quality (D), Intent clarity (I) and Architect approval (A) — before any output is accepted. Outputs that fall below the threshold are rejected and re-routed, reducing hallucination to 0.3% in production.",
+      answer: `FDIA evaluates eight quality dimensions — Data quality (D), Intent clarity (I) and Architect approval (A) — before any output is accepted. Outputs that fall below the threshold are rejected and re-routed, targeting a hallucination rate of ${SITE_HALLUCINATION_RATE}.`,
     },
   ])
 

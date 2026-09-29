@@ -3,15 +3,18 @@ export const SITE_NAME = "Delentia Labs"
 export const SITE_DESCRIPTION = "Enterprise AI architecture and verification platform built around FDIA, JITNA, SignedAI, and staged deployment evidence."
 export const SITE_OG_IMAGE = `${SITE_URL}/opengraph-image`
 export const SITE_VERSION = "2026.05 Snapshot"
-export const SITE_TEST_COUNT = 4849 // Enterprise full suite (private)
+// Round 50: the private enterprise count (4,849) is not independently verifiable and was
+// withdrawn (see /corrections). Every page that shows "verified tests" now shows the
+// CI-verified public count below.
+export const SITE_TEST_COUNT = 3910
 export const SITE_PUBLIC_SDK_VERSION = "2.3.0" // matches pyproject.toml / `delentia version` in delentia-labs/delentia-os as of 2026-09-26
-export const SITE_PUBLIC_SDK_TESTS = 2820 // Public SDK full suite: 2820 passed · 10 skipped · 1 xfailed · 0 failed · mypy clean · ruff clean · 81.68% coverage - verified from a real green CI run (delentia-labs/delentia-os, commit bcca70d, 2026-09-26). Update this alongside SITE_PUBLIC_SDK_COVERAGE from the same CI run's own reported numbers, not by hand-estimating.
+export const SITE_PUBLIC_SDK_TESTS = 3910 // Delentia-OS CI run 36395589538 (commit b1d4ff8, 2026-09-28): 3910 passed · 13 skipped · 1 xfailed · 0 failed on Python 3.10/3.11/3.12, coverage 88.32%. Update from a real green CI run only.
 // Compatibility evidence labels reused across public pages, metadata, and blog stat cards.
 export const SITE_PUBLIC_SDK_EVIDENCE_LABEL = "Public SDK verification lane"
-export const SITE_ENTERPRISE_EVIDENCE_LABEL = "Enterprise runtime snapshot"
+export const SITE_ENTERPRISE_EVIDENCE_LABEL = "CI-verified full suite" // was "Enterprise runtime snapshot" (withdrawn: not verifiable)
 export const SITE_RESEARCH_EVIDENCE_LABEL = "Research evaluation lane"
-export const SITE_PUBLIC_SDK_COVERAGE = "81.68%"
-export const SITE_EVIDENCE_LAST_UPDATED = "2026-09-26"
+export const SITE_PUBLIC_SDK_COVERAGE = "88.32%"
+export const SITE_EVIDENCE_LAST_UPDATED = "2026-09-28"
 export const SITE_MICROSERVICE_COUNT = 62
 export const SITE_ALGORITHM_COUNT = 41
 export const SITE_LAYER_COUNT = 10 // Product layers L1-L10; L11 = CI/CD pipeline layer (internal only)
@@ -21,8 +24,8 @@ export const SITE_CONSENSUS_MODELS = 9 // HexaCore roster: 3W (Claude/Gemini/Gro
 // Workers) — the one part of the ecosystem installable and runnable today
 // via `npx delentia-mcp`. Update these two only when the gateway's tool
 // count or test suite actually changes; see TESTING_CANONICAL.md in that repo.
-export const SITE_MCP_LIVE_TOOL_COUNT = 5 // evaluate_fdia, configure_policy, rct_think, compress_context, orchestrate_swarm
-export const SITE_MCP_TEST_COUNT = 37 // tests/ecosystem.test.mjs + deep-ecosystem.test.mjs + test_fdia_policy_engine.mjs, all passing in CI
+export const SITE_MCP_LIVE_TOOL_COUNT = 6 // evaluate_fdia, configure_policy, rct_think, compress_context, expand_context, orchestrate_swarm
+export const SITE_MCP_TEST_COUNT = 286 // delentia-mcp ecosystem-ci run 36397567036 (2026-09-28), all passing
 // Neither of these two is backed by an independent monitoring system or a
 // published benchmark dataset/methodology yet — say so in the value itself so
 // the caveat travels with the data to every consumer, not just this file.
@@ -67,6 +70,8 @@ export const PUBLIC_ROUTE_PRIORITIES: Record<string, number> = {
   "/thailand-enterprise-trust": 0.73,
   "/glossary": 0.72,
   "/editorial-policy": 0.72,
+  "/corrections": 0.7,
+  "/status": 0.6,
   "/roadmap": 0.75,
   "/contact": 0.75,
   "/docs": 0.7,
@@ -199,6 +204,8 @@ export const PUBLIC_ROUTES = [
   "/blog",
   "/methodology",
   "/editorial-policy",
+  "/corrections",
+  "/status",
   "/glossary",
   "/evaluation",
   "/evaluation/enterprise-ai-governance-vs-generic-copilots",

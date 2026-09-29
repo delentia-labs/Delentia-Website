@@ -404,7 +404,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
     },
     {
       value: `${SITE_PUBLIC_SDK_TESTS} tests`, label: SITE_PUBLIC_SDK_EVIDENCE_LABEL,
-      detail: `Use the public SDK checkpoint as the open proof lane; ${SITE_TEST_COUNT.toLocaleString()} tests remain a separate ${SITE_ENTERPRISE_EVIDENCE_LABEL.toLowerCase()}`,
+      detail: `CI-verified on every push to the public repository (Python 3.10–3.12)`,
       type: "mechanism", evidenceType: "source",
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",
     },
@@ -417,8 +417,8 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
   ],
   "evaluation-harnesses-enterprise-llm": [
     {
-      value: `${SITE_TEST_COUNT.toLocaleString()} tests`, label: "Enterprise snapshot suite",
-      detail: `Broader runtime evaluation across the enterprise-private snapshot; public SDK checkpoint is ${SITE_PUBLIC_SDK_TESTS} tests`,
+      value: `${SITE_TEST_COUNT.toLocaleString()} tests`, label: "CI-verified test suite",
+      detail: `Public Delentia-OS suite, run by CI on every push; coverage ${SITE_PUBLIC_SDK_COVERAGE}`,
       type: "outcome", evidenceType: "source",
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",
     },
@@ -437,8 +437,8 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
   ],
   "rct-ecosystem-4849-tests-methodology": [
     {
-      value: `${SITE_TEST_COUNT.toLocaleString()}`, label: "Tests in enterprise snapshot",
-      detail: `0 failures, 0 errors across the larger suite, disclosed separately from the ${SITE_PUBLIC_SDK_EVIDENCE_LABEL.toLowerCase()}`,
+      value: `${SITE_TEST_COUNT.toLocaleString()}`, label: "CI-verified tests",
+      detail: `The 4,849-test enterprise figure this article discussed was withdrawn (not independently verifiable); this is the public CI count`,
       type: "outcome", evidenceType: "source",
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",
     },
@@ -469,8 +469,8 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
       evidenceRef: "https://delentia.com/methodology", verifiedAt: "2026-04-15",
     },
     {
-      value: `${SITE_TEST_COUNT.toLocaleString()}`, label: "Enterprise test gates per cycle",
-      detail: "0 failures allowed to proceed to next stage in the enterprise snapshot; public SDK uses its own smaller verified checkpoint",
+      value: `${SITE_TEST_COUNT.toLocaleString()}`, label: "CI test gate per change",
+      detail: "Every change must pass the public CI suite before it merges",
       type: "operational", evidenceType: "source",
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",
     },
@@ -553,8 +553,8 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
       evidenceRef: "https://delentia.com/methodology", verifiedAt: "2026-04-15",
     },
     {
-      value: `${SITE_TEST_COUNT.toLocaleString()} / 0 fail`, label: "Enterprise quality gate result",
-      detail: `Enterprise snapshot passes the larger suite, while ${SITE_PUBLIC_SDK_EVIDENCE_LABEL.toLowerCase()} remains the public proof lane`,
+      value: `${SITE_TEST_COUNT.toLocaleString()} / 0 fail`, label: "CI quality gate result",
+      detail: `Public CI run on Python 3.10–3.12, coverage ${SITE_PUBLIC_SDK_COVERAGE}`,
       type: "operational", evidenceType: "source",
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",
     },
@@ -749,6 +749,32 @@ function escapeComparisonOperators(content: string) {
   })
 }
 
+// Posts are prose, not MDX programs: a bare `{` in text (e.g. `JSON { "status": "ok" }`
+// or `\text{...}` in a formula) was compiled as a JavaScript expression and crashed the
+// whole article ("Could not parse expression with acorn"). Braces outside code fences and
+// inline code are shown as text instead.
+function escapeBareBraces(content: string) {
+  return mapMarkdownLinesOutsideFences(content, (line, inFence) => {
+    if (inFence) {
+      return line
+    }
+
+    return line
+      .split("`")
+      .map((part, i) =>
+        i % 2 === 1
+          ? part
+          : part
+              // `{"<"}` is the one expression posts use on purpose: keep its meaning.
+              .replace(/\{\s*(["'])<\1\s*\}/g, "&lt;")
+              .replace(/\{\s*(["'])>\1\s*\}/g, "&gt;")
+              .replace(/\{/g, "&#123;")
+              .replace(/\}/g, "&#125;")
+      )
+      .join("`")
+  })
+}
+
 function localizeInlineLinks(content: string, locale: BlogLocale) {
   return content.replace(/\]\(\/(?:en|th)(\/[^)]+)\)/g, (_, suffix: string) => {
     const localizedHref = locale === "th" ? `/th${suffix}` : suffix
@@ -759,7 +785,7 @@ function localizeInlineLinks(content: string, locale: BlogLocale) {
 function normalizeBlogContent(content: string, locale: BlogLocale) {
   return demoteMarkdownBodyH1(
     stripLeadingMarkdownTitle(
-      escapeComparisonOperators(localizeInlineLinks(content, locale))
+      escapeBareBraces(escapeComparisonOperators(localizeInlineLinks(content, locale)))
     )
   )
 }

@@ -343,7 +343,7 @@ export default function SolutionsPage() {
                 { icon: Shield, t: "<0.3% benchmark hallucination target with SignedAI" },
                 { icon: Lock, t: "ED25519 + JWT RS256 + RBAC" },
                 { icon: Users, t: "Availability target for enterprise programs" },
-                { icon: Zap, t: `${SITE_ENTERPRISE_EVIDENCE_LABEL}: 62 runtime components` },
+                { icon: Zap, t: `${SITE_ENTERPRISE_EVIDENCE_LABEL}: a private enterprise service layer` },
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground"><item.icon className="w-4 h-4 text-warm-amber shrink-0" />{item.t}</li>
               ))}

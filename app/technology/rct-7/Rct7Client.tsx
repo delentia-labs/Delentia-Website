@@ -111,7 +111,7 @@ export default function Rct7Client({ locale: propLocale }: { locale?: string }) 
             {[
               { value: "7", label: isTh ? "สถานะ IntentLoop" : "IntentLoop States", color: "#D4A853" },
               { value: "<50ms", label: isTh ? "Routing Latency" : "Routing Latency", color: "#7B9E87" },
-              { value: "4,849", label: isTh ? "Tests Passed" : "Tests Passed", color: "#89B4C8" },
+              { value: "7,109", label: isTh ? "Tests Passed" : "Tests Passed", color: "#89B4C8" },
               { value: "G7→G1", label: isTh ? "Feedback Loop" : "Feedback Loop", color: "#C4745B" },
             ].map((s, i) => (
               <m.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}

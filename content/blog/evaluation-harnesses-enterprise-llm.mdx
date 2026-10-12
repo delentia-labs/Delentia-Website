@@ -1,7 +1,7 @@
 ---
 title: "Evaluation Harnesses for Enterprise LLMs: Beyond Vibe-Testing"
 author: "Ittirit Saengow"
-excerpt: "Most AI teams evaluate their LLM deployments by looking at outputs and deciding if they seem right. This is vibe-testing. Here is a rigorous alternative — how the RCT Ecosystem's enterprise (private) test suite runs 4,849 automated tests across 8 evaluation levels to produce verifiable enterprise trust signals. (The separate public SDK maintains its own smaller, independently-reproducible suite — see TESTING_CANONICAL.md.)"
+excerpt: "Most AI teams evaluate their LLM deployments by looking at outputs and deciding if they seem right. This is vibe-testing. Here is a rigorous alternative — how the RCT Ecosystem's public test suite runs 7,109 automated tests across 8 evaluation levels to produce verifiable enterprise trust signals. (The separate public SDK maintains its own smaller, independently-reproducible suite — see TESTING_CANONICAL.md.)"
 date: "2026-03-28"
 lastReviewed: "2026-05-06"
 authorId: "ittirit-saengow"
@@ -25,9 +25,9 @@ The root cause is almost always the same. **The team did not have an evaluation 
 
 Vibe-testing means: *we looked at the outputs, and they seemed right.* It is fast, feels intuitive, and is fundamentally insufficient for production AI systems.
 
-An evaluation harness is a systematic, automated set of quality gates that a system must pass every time code changes. Here is how we built one for the RCT Ecosystem — 4,849 tests, 8 levels, 0 failures, in our enterprise (private) snapshot — and why the architecture of your harness matters as much as the tests themselves.
+An evaluation harness is a systematic, automated set of quality gates that a system must pass every time code changes. Here is how we built one for the RCT Ecosystem — 7,109 tests, 8 levels, 0 failures, in our public repository CI — and why the architecture of your harness matters as much as the tests themselves.
 
-> **Evidence lane note:** the 4,849-test figure is an enterprise/private snapshot, not the public open-source SDK's own test suite (which is smaller and independently reproducible — see TESTING_CANONICAL.md in the `delentia-os` repo). Treat counts and rates below as self-reported until an external audit confirms them.
+> **Evidence lane note:** the 7,109-test figure is the public repository CI, not the public open-source SDK's own test suite (which is smaller and independently reproducible — see TESTING_CANONICAL.md in the `delentia-os` repo). Treat counts and rates below as self-reported until an external audit confirms them.
 
 ---
 
@@ -148,7 +148,7 @@ Every core system has mathematical invariants that must hold unconditionally. Fo
 Property-based testing generates thousands of test cases automatically. You write the property, the framework finds the edge cases.
 
 ### Principle 2: Contract Tests at Every Service Boundary
-Each of the 62 microservices in the RCT Ecosystem has a defined contract — what it accepts, what it returns, what errors it raises. Contract tests verify that each service satisfies its contract regardless of implementation changes.
+Each service in the RCT Ecosystem's enterprise layer has a defined contract — what it accepts, what it returns, what errors it raises. Contract tests verify that each service satisfies its contract regardless of implementation changes.
 
 Without contract tests, a change to the RCTDB query format breaks the Delta Engine silently. With contract tests, the CI pipeline rejects the change at the boundary.
 
@@ -174,7 +174,7 @@ Three months after deploying the RCT evaluation harness in its current form:
 - **Deployment confidence:** Daily deployments, no deployment freeze window required
 - **Compliance audit time:** Reduced from weeks to hours — test results are the compliance evidence
 
-The 4,849 tests are not a vanity metric. Each one represents a specific property of the system that is now monitored continuously. When the number is 4,849/0/0 (passed/failed/errors), I can deploy. When it is anything else, I cannot.
+The 7,109 tests are not a vanity metric. Each one represents a specific property of the system that is now monitored continuously. When the number is 7,109/0/0 (passed/failed/errors), I can deploy. When it is anything else, I cannot.
 
 ---
 
@@ -190,13 +190,13 @@ If you are building an enterprise LLM system and currently vibe-testing, here is
 
 4. **Week 4:** Add 3 chaos scenarios for your most critical service (what happens when the LLM API times out? what happens when the database is full?).
 
-After 4 weeks, you have 11–15 tests — not 4,849. But you have the architecture. The tests accumulate as the system grows. The architecture is what enables that accumulation.
+After 4 weeks, you have 11–15 tests — not 7,109. But you have the architecture. The tests accumulate as the system grows. The architecture is what enables that accumulation.
 
 ---
 
 ## Frequently Asked Questions
 
-**Q: 4,849 tests sounds like a lot. How long does the test suite take to run?**
+**Q: 7,109 tests sounds like a lot. How long does the test suite take to run?**
 
 A: The full suite runs in ~8 minutes in CI (GitHub Actions). This is fast enough for continuous deployment. Property-based tests are the slowest (Level 8: ~3 minutes) because Hypothesis generates thousands of examples per test.
 
@@ -212,10 +212,10 @@ A: Level 6 security tests include dedicated PDPA compliance tests: (1) write a r
 
 ### Related Resources
 
-- 📊 [Benchmark Summary — 4,849/0/0 full test results with methodology](/en/benchmark-summary)
+- 📊 [Benchmark Summary — 7,109/0/0 full test results with methodology](/en/benchmark-summary)
 - ⚙️ [FDIA Equation — the mathematical invariant that Level 1 and Level 8 tests verify](/en/blog/fdia-equation-explained)
 - 🧠 [Intent Operating System — the 4-layer architecture tested by this harness](/en/blog/intent-operating-system-explained)
 
 ---
 
-*Ittirit Saengow is the sole developer of the RCT Ecosystem. All test counts are from the live test suite (v5.4.5, March 21, 2026). Read the [Benchmark Summary](/en/benchmark-summary) for the full metric breakdown.*
+*Ittirit Saengow is the sole developer of the RCT Ecosystem. All test counts are from the live test suite ((private snapshot), March 21, 2026). Read the [Benchmark Summary](/en/benchmark-summary) for the full metric breakdown.*

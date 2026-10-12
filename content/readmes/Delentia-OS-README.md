@@ -73,10 +73,10 @@ If you're arriving from social media or seeing RCT Platform for the first time, 
 | 5 Reference Microservices | ✅ `microservices/` (297 passing tests) | — |
 | CLI (`rct` entry point) | ✅ editable install or built wheel | — |
 | Genome / Creator Profile API | ❌ 501 stub (`genome_api.py`) | ✅ Full implementation |
-| Full Production Microservice Stack | ❌ | ✅ 62 microservices |
+| Full Production Microservice Stack | ❌ | ✅ private enterprise layer (not in this repository) |
 | Enterprise Dashboard | ❌ | ✅ |
 | Docker Compose + full infra | ❌ | ✅ |
-| 8-level test pyramid (4,849 tests) | ❌ | ✅ private |
+| 8-level test pyramid (7,109 tests) | ❌ | ✅ private |
 
 > **Stable SDK** means: API is stable, CI enforces 90% coverage floor, packages published on PyPI + npm.  
 > **Enterprise** means: runs at [delentia.com](https://delentia.com) — contact for licensing.
@@ -123,7 +123,7 @@ Accuracy: **0.92** (industry baseline: ~0.65). Implemented in [`core/fdia/fdia.p
 | **Hallucination Rate** | 0.3% (vs industry 12–15%) — 97% reduction via SignedAI |
 | **Memory Compression** | 91.5% measured (design floor ≥74%) via Delta Engine (stores state diffs, not full state) |
 | **Intent Recall Speed** | Cold start 3–5s → Warm recall <50ms (Intent Loop) |
-| **Uptime SLA** | 99.98% |
+| **Uptime SLA** | no SLA |
 | **Languages** | 8 regional pairs (JP, KR, CN, TW, TH, VN, ID, US) |
 | **Universal Adapters** | 13 (Home Assistant, Terraform, n8n, Obsidian, Playwright, ...) |
 | **FDIA Accuracy** | 0.92 (industry baseline: ~0.65) |
@@ -182,7 +182,7 @@ SDK Modules: signedai/ · core/ · rct_control_plane/
              5 reference microservices
 ```
 
-> **Enterprise layer** (62 microservices, proprietary) runs in production at [delentia.com](https://delentia.com).
+> **Enterprise layer** (proprietary, not in this repository) is described at [delentia.com](https://delentia.com).
 
 ---
 
@@ -591,7 +591,7 @@ Full OpenAPI 3.1.0 specification: [`contracts/openapi.yaml`](contracts/openapi.y
 ✅ **GitHub Action** — `rct-policy-gate` for CI/CD governance enforcement  
 
 Previous milestone:  
-✅ **4,849 Passed · 16 Skipped · 0 Failed · 0 Errors** — Complete private enterprise test suite (all 62 microservices)  
+✅ **7,109 Passed · 16 Skipped · 0 Failed · 0 Errors** — Private enterprise test suite (not in this repository)  
 
 Full SDK changelog → [CHANGELOG.md](CHANGELOG.md)
 
@@ -713,7 +713,7 @@ This is not a research paper. It runs in production at [delentia.com](https://de
 | **X / Twitter** | [@ittirit_rct](https://x.com/ittirit_rct) |
 | **Reddit** | [u/WindLate5307](https://www.reddit.com/user/WindLate5307/) |
 | **BIO** | [ittiritsaengow.link](https://ittiritsaengow.link) |
-| **Docs** | [rctlabs.github.io/delentia-os](https://delentia-labs.github.io/delentia-os/) |
+| **Docs** | [rctlabs.github.io/Delentia-OS](https://delentia-labs.github.io/Delentia-OS/) |
 | **Location** | Klong Toei, Bangkok, Thailand 🇹🇭 |
 | **Started** | June 2025 |
 | **Turning Point** | August 11, 2025 |
@@ -726,7 +726,7 @@ This is not a research paper. It runs in production at [delentia.com](https://de
 | Aug 11, 2025 | Commitment to build RCT OS |
 | Oct 2025 | JITNA Protocol RFC-001 drafted |
 | Dec 2025 | Foundation whitepaper (~100 pages) |
-| Jan 2026 | 41 algorithms complete, 4,849 enterprise tests |
+| Jan 2026 | 41 algorithms complete, 7,109 enterprise tests |
 | Feb 2026 | 3,053 Python files, Level 4 Virtuoso stress test |
 | Apr 2026 | Public SDK — 723 tests, 89%+ coverage, Apache 2.0 release |
 | May 2026 | Enterprise CLI Design System — Unicode block wordmark, FDIA formula card, boot animation, PyPI v1.0.4b0 live |
@@ -748,7 +748,7 @@ Delentia OS is the open-source core. The full ecosystem extends across:
 | [Delentia-Ecosystem](https://github.com/delentia-labs/Delentia-Ecosystem) | Plugin registry — LINE, Slack, skill manifests | ✅ Apache 2.0 |
 | [Delentia-Infra-Public](https://github.com/delentia-labs/Delentia-Infra-Public) | Community deployment — Docker, K8s, Helm, Terraform | ✅ Apache 2.0 |
 | [Delentia-Infra-Enterprise](https://github.com/delentia-labs/Delentia-Infra-Enterprise) | Enterprise HA — EKS/GKE, Vault, PDPA/GDPR compliance | 🔒 Proprietary |
-| [Delentia-Private-OS](https://github.com/delentia-labs/Delentia-Private-OS) | Enterprise platform — 62 microservices, 4,849 tests | 🔒 Proprietary |
+| [Delentia-Private-OS](https://github.com/delentia-labs/Delentia-Private-OS) | Enterprise platform — private | 🔒 Proprietary |
 | [Delentia-Website](https://github.com/delentia-labs/Delentia-Website) | Marketing + docs site — Next.js, Vercel | 🔒 Proprietary |
 
 ---

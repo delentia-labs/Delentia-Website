@@ -196,14 +196,14 @@ Pareto frontier มี {VPS, Kubernetes} ด้วยความเร็วท
 
 ## Benchmark ประสิทธิภาพ
 
-MOIP v1 ผสานรวมใน RCT Ecosystem v5.4.5 ผ่านการตรวจสอบใน 4,849-test suite เต็มรูปแบบ ด้วย 0 ความล้มเหลว บริการบรรลุคะแนน **9.1/10** บน MOIP benchmark evaluation set ด้วย **100% accuracy** ในการระบุ Pareto frontier — วิธีแก้ปัญหา Pareto-optimal ทั้งหมดถูกรวมอย่างถูกต้อง และไม่มีวิธีแก้ปัญหาที่ถูกครอบงำถูกรวมอย่างผิดพลาด
+MOIP v1 ผสานรวมใน the RCT Ecosystem ผ่านการตรวจสอบใน 7,109-test suite เต็มรูปแบบ ด้วย 0 ความล้มเหลว บริการบรรลุคะแนน **9.1/10** บน MOIP benchmark evaluation set ด้วย **100% accuracy** ในการระบุ Pareto frontier — วิธีแก้ปัญหา Pareto-optimal ทั้งหมดถูกรวมอย่างถูกต้อง และไม่มีวิธีแก้ปัญหาที่ถูกครอบงำถูกรวมอย่างผิดพลาด
 
 เป้าหมายประสิทธิภาพหลัก:
 - **Frontier discovery:** O(n²), deterministic — ไม่มีการประมาณ ไม่มีความสุ่ม
 - **Ranking speed:** ต่ำกว่า 100ms สำหรับชุดผู้สมัคร 50 วิธีแก้ปัญหา
 - **Constraint evaluation:** O(n·m) โดยที่ n = ผู้สมัคร, m = จำนวน constraint — ทำงานก่อน frontier เพื่อลด n
 
-**ขอบเขต reproducibility:** คะแนน 9.1/10 และตัวเลข 100% accuracy วัดจาก MOIP internal benchmark set (RCT Ecosystem v5.4.5, เมษายน 2026) benchmark ครอบคลุม Pareto correctness แบบ deterministic, ความแม่นยำของ constraint filtering และการจัดแนว ranking กับ weight ที่ระบุ ประสิทธิภาพ production จะแตกต่างกันตามขนาดชุดผู้สมัครและจำนวนวัตถุประสงค์ — ตัวเลข <100ms วัดที่ n=50 วิธีแก้ปัญหา, 4 วัตถุประสงค์บน reference hardware methodology benchmark อิสระและ caveat เผยแพร่ที่ [Benchmark Summary →](/benchmark-summary)
+**ขอบเขต reproducibility:** คะแนน 9.1/10 และตัวเลข 100% accuracy วัดจาก MOIP internal benchmark set (the RCT Ecosystem, เมษายน 2026) benchmark ครอบคลุม Pareto correctness แบบ deterministic, ความแม่นยำของ constraint filtering และการจัดแนว ranking กับ weight ที่ระบุ ประสิทธิภาพ production จะแตกต่างกันตามขนาดชุดผู้สมัครและจำนวนวัตถุประสงค์ — ตัวเลข <100ms วัดที่ n=50 วิธีแก้ปัญหา, 4 วัตถุประสงค์บน reference hardware methodology benchmark อิสระและ caveat เผยแพร่ที่ [Benchmark Summary →](/benchmark-summary)
 
 ## สิ่งที่ MOIP เปลี่ยนแปลงสำหรับ AI governance ขององค์กร
 

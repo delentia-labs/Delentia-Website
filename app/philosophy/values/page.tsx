@@ -69,13 +69,13 @@ const VALUES: ValueItem[] = [
     en: {
       title: "Verifiable Truth",
       subtitle: "Evidence first, claim second — always",
-      body: "Our enterprise private snapshot 4,849-test suite is not a marketing number. It is the gate through which every feature must pass before it is claimed publicly, while the public SDK verified lane remains separate. The FDIA equation F=(D^I)×A is not a metaphor; it is implemented code with measurable outputs. Benchmark hallucination target: 0.3% vs 12–15% industry average — that figure exists in our CI pipeline, not only in our copy.",
+      body: "Our public repository CI 7,109-test suite is not a marketing number. It is the gate through which every feature must pass before it is claimed publicly, while the public SDK verified lane remains separate. The FDIA equation F=(D^I)×A is not a metaphor; it is implemented code with measurable outputs. Benchmark hallucination target: 0.3% vs 12–15% industry average — that figure exists in our CI pipeline, not only in our copy.",
       pill: "Evidence Culture",
     },
     th: {
       title: "ความจริงที่พิสูจน์ได้",
       subtitle: "หลักฐานก่อน การอ้างสิทธิ์ภายหลัง — เสมอ",
-      body: "ชุดทดสอบ 4,849 รายการใน enterprise private snapshot ของเราไม่ใช่ตัวเลขการตลาด แต่เป็นประตูที่ทุกฟีเจอร์ต้องผ่านก่อนจะประกาศต่อสาธารณะ และยังแยกจาก public SDK verified lane อย่างชัดเจน สมการ FDIA F=(D^I)×A ไม่ใช่คำอุปมา แต่เป็นโค้ดที่ implement จริงพร้อมผลลัพธ์ที่วัดได้ Benchmark Hallucination Target: 0.3% เทียบกับค่าเฉลี่ยอุตสาหกรรม 12–15% — ตัวเลขนั้นอยู่ใน CI pipeline ของเรา ไม่ใช่แค่ในเนื้อหาการตลาด",
+      body: "ชุดทดสอบ 7,109 รายการใน public repository CI ของเราไม่ใช่ตัวเลขการตลาด แต่เป็นประตูที่ทุกฟีเจอร์ต้องผ่านก่อนจะประกาศต่อสาธารณะ และยังแยกจาก public SDK verified lane อย่างชัดเจน สมการ FDIA F=(D^I)×A ไม่ใช่คำอุปมา แต่เป็นโค้ดที่ implement จริงพร้อมผลลัพธ์ที่วัดได้ Benchmark Hallucination Target: 0.3% เทียบกับค่าเฉลี่ยอุตสาหกรรม 12–15% — ตัวเลขนั้นอยู่ใน CI pipeline ของเรา ไม่ใช่แค่ในเนื้อหาการตลาด",
       pill: "วัฒนธรรมหลักฐาน",
     },
     color: "border-emerald-500/30 bg-emerald-500/5",

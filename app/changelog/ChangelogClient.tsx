@@ -127,7 +127,7 @@ export default function ChangelogClient() {
       title: language === "th" ? "Ecosystem link hardening · platformDocs · /docs redirect · E-E-A-T sameAs · MkDocs canonical fix" : "Ecosystem link hardening · platformDocs · /docs redirect · E-E-A-T sameAs · MkDocs canonical fix",
       description: language === "th" ? "แก้ไข critical SEO bug ใน mkdocs.yml (site_url ชี้ผิดโดเมน) เพิ่ม platformDocs ใน SOCIAL_LINKS เพิ่มลิงก์ SDK Documentation ใน footer เพิ่ม redirect /docs → GitHub Pages ขยาย authors.ts sameAs จาก 3 เป็น 7 platforms เพิ่ม social icons LinkedIn + X/Twitter ใน MkDocs footer และอัปเดต README.md ด้วย Docs badge + author table ครบถ้วน" : "Fixed critical SEO canonical bug in mkdocs.yml (site_url was pointing to non-existent delentia.com/docs). Added platformDocs to SOCIAL_LINKS, SDK Documentation link in footer Technology column, /docs+/en/docs+/th/docs → GitHub Pages redirects, expanded authors.ts sameAs from 3 to 7 platforms for E-E-A-T, LinkedIn+X social icons in MkDocs footer, and README.md Docs badge + full author table.",
       icon: Globe,
-      highlights: language === "th" ? ["mkdocs.yml site_url → GitHub Pages (critical fix)", "platformDocs ใน SOCIAL_LINKS", "SDK Documentation ใน footer Technology", "/docs redirect → delentia-labs.github.io/delentia-os", "sameAs ขยาย 3 → 7 platforms (E-E-A-T)", "MkDocs footer: LinkedIn + X icons", "SITE_VERSION → 2026.05 Snapshot"] : ["mkdocs.yml site_url → GitHub Pages (critical fix)", "platformDocs in SOCIAL_LINKS", "SDK Documentation in footer Technology column", "/docs redirect → delentia-labs.github.io/delentia-os", "sameAs expanded 3 → 7 platforms (E-E-A-T)", "MkDocs footer: LinkedIn + X icons", "SITE_VERSION → 2026.05 Snapshot"],
+      highlights: language === "th" ? ["mkdocs.yml site_url → GitHub Pages (critical fix)", "platformDocs ใน SOCIAL_LINKS", "SDK Documentation ใน footer Technology", "/docs redirect → delentia-labs.github.io/Delentia-OS", "sameAs ขยาย 3 → 7 platforms (E-E-A-T)", "MkDocs footer: LinkedIn + X icons", "SITE_VERSION → 2026.05 Snapshot"] : ["mkdocs.yml site_url → GitHub Pages (critical fix)", "platformDocs in SOCIAL_LINKS", "SDK Documentation in footer Technology column", "/docs redirect → delentia-labs.github.io/Delentia-OS", "sameAs expanded 3 → 7 platforms (E-E-A-T)", "MkDocs footer: LinkedIn + X icons", "SITE_VERSION → 2026.05 Snapshot"],
       tone: "border-green-500/25 bg-green-500/10 text-green-600 dark:text-green-400",
     },
     {
@@ -167,12 +167,12 @@ export default function ChangelogClient() {
       tone: "border-blue-500/25 bg-blue-500/10 text-blue-600 dark:text-blue-400",
     },
     {
-      version: "Ecosystem v5.4.5",
+      version: "Ecosystem (private snapshot)",
       date: "2026-03-21",
-      title: language === "th" ? "Backend Ecosystem v5.4.5 — 4,849 tests ผ่าน, Tier 8-9 algorithms สมบูรณ์" : "Backend Ecosystem v5.4.5 — 4,849 passing tests, Tier 8-9 algorithms complete",
-      description: language === "th" ? "ระบบ backend ecosystem ผ่าน 4,849 automated tests บน CI/CD pipeline — Tier 8 (Synthesis) และ Tier 9 (Autonomy) algorithm tiers สมบูรณ์ครบถ้วน GitHub Actions pipeline ทำงานบนทุก PR" : "The backend ecosystem reached 4,849 passing automated tests across the CI/CD pipeline. Tier 8 (Synthesis) and Tier 9 (Autonomy) algorithm tiers are now complete, with GitHub Actions running on every PR.",
+      title: language === "th" ? "Backend Ecosystem (private snapshot) — Tier 8-9 algorithms สมบูรณ์ (ตัวเลขจำนวน tests ที่เคยประกาศถูกถอน)" : "Backend Ecosystem (private snapshot) — Tier 8-9 algorithms complete (the test count first published here was withdrawn)",
+      description: language === "th" ? "ตัวเลขจำนวน tests ที่เคยประกาศไว้ตรงนี้ถูกถอนเพราะตรวจสอบอิสระไม่ได้ (ดูหน้า Corrections) — Tier 8 (Synthesis) และ Tier 9 (Autonomy) algorithm tiers สมบูรณ์ครบถ้วน GitHub Actions pipeline ทำงานบนทุก PR" : "The test count first published here was withdrawn because it could not be independently verified (see Corrections). Tier 8 (Synthesis) and Tier 9 (Autonomy) algorithm tiers are now complete, with GitHub Actions running on every PR.",
       icon: BookOpen,
-      highlights: language === "th" ? ["4,849 tests (pytest + Hypothesis)", "Tier 8-9 algorithm rollout สมบูรณ์", "GitHub Actions CI/CD", "v5.4.5 released Mar 21, 2026"] : ["4,849 tests (pytest + Hypothesis)", "Tier 8-9 algorithm rollout complete", "GitHub Actions CI/CD", "v5.4.5 released Mar 21, 2026"],
+      highlights: language === "th" ? ["Tier 8-9 algorithm rollout สมบูรณ์", "GitHub Actions CI/CD"] : ["Tier 8-9 algorithm rollout complete", "GitHub Actions CI/CD"],
       tone: "border-teal-500/25 bg-teal-500/10 text-teal-600 dark:text-teal-400",
     },
     {

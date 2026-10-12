@@ -438,7 +438,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
   "rct-ecosystem-4849-tests-methodology": [
     {
       value: `${SITE_TEST_COUNT.toLocaleString()}`, label: "CI-verified tests",
-      detail: `The 4,849-test enterprise figure this article discussed was withdrawn (not independently verifiable); this is the public CI count`,
+      detail: `The 7,109-test enterprise figure this article discussed was withdrawn (not independently verifiable); this is the public CI count`,
       type: "outcome", evidenceType: "source",
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",
     },
@@ -449,7 +449,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",
     },
     {
-      value: "v5.4.5", label: "Verified platform version",
+      value: "2.3.0", label: "Public package version",
       detail: "Enterprise baseline — full test suite passes on every commit",
       type: "operational", evidenceType: "source",
       evidenceRef: "https://delentia.com/benchmark", verifiedAt: "2026-04-15",
@@ -514,7 +514,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
       value: "8 language pairs", label: "SEA adapter coverage",
       detail: "EN/TH/MY/ID/VN/MM/KH/LA — regional linguistic compliance built-in",
       type: "operational", evidenceType: "benchmark-assumption",
-      evidenceNote: "Target adapter count; active pairs in v5.4.5: EN+TH; others on roadmap", verifiedAt: "2026-04-15",
+      evidenceNote: "Target adapter count; active pairs in (private snapshot): EN+TH; others on roadmap", verifiedAt: "2026-04-15",
     },
   ],
   "thai-ai-platform-vision-2030": [
@@ -532,7 +532,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
     },
     {
       value: "<4 months", label: "Foundation build time",
-      detail: "Zero external capital, one person — from first prototype to v5.4.5 in under 4 months",
+      detail: "Zero external capital, one person — from first prototype to (private snapshot) in under 4 months",
       type: "operational", evidenceType: "source",
       evidenceRef: "https://delentia.com/products/delentia-platform", verifiedAt: "2026-04-20",
     },
@@ -542,7 +542,7 @@ const BLOG_HERO_METRICS: Partial<Record<string, BlogHeroMetric[]>> = {
   "reverse-component-thinking-explained": [
     {
       value: "30-day build", label: "Full constitutional AI OS",
-      detail: "RCT Ecosystem v5.4.5 — zero capital bootstrap from concept to production",
+      detail: "the RCT Ecosystem — zero capital bootstrap from concept to production",
       type: "outcome", evidenceType: "source",
       evidenceRef: "https://delentia.com/products/delentia-platform", verifiedAt: "2026-04-15",
     },

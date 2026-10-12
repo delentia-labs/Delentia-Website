@@ -30,11 +30,11 @@ const VAULTS = [
     count: 584,
     en: {
       desc: "The primary agent knowledge vault. Contains ARTENT operating protocols, intent classification training data, WF-00 through WF-05 phase definitions, error taxonomy, and the full history of agent session data. Organized by intent category and domain.",
-      categories: ["Intent Classification Corpus", "WF Phase Definitions", "Error Taxonomy (4,849 cases)", "Domain Knowledge (41 sectors)", "Session History Archive"],
+      categories: ["Intent Classification Corpus", "WF Phase Definitions", "Error Taxonomy", "Domain Knowledge (41 sectors)", "Session History Archive"],
     },
     th: {
       desc: "Vault ความรู้ Agent หลัก มี ARTENT Operating Protocols, ข้อมูล Training การจำแนก Intent, คำนิยามเฟส WF-00 ถึง WF-05, Error Taxonomy และประวัติ Session Data ของ Agent ทั้งหมด จัดระเบียบตาม Intent Category และ Domain",
-      categories: ["Intent Classification Corpus", "WF Phase Definitions", "Error Taxonomy (4,849 cases)", "Domain Knowledge (41 sectors)", "Session History Archive"],
+      categories: ["Intent Classification Corpus", "WF Phase Definitions", "Error Taxonomy", "Domain Knowledge (41 sectors)", "Session History Archive"],
     },
     color: "border-warm-amber/30 bg-warm-amber/5",
     accent: "text-warm-amber",

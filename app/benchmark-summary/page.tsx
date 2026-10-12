@@ -29,8 +29,8 @@ const BENCHMARK_FAQS = [
     answer: "The FDIA accuracy score of 0.92 is intended to measure how accurately the FDIA equation predicts output quality versus human-evaluated ground truth, on a factual question-answering benchmark (n=1,000). This figure is not yet in our public claim registry (docs/distribution/CLAIM_REGISTRY.md in the delentia-os repo) alongside a runnable reproduction script, unlike the Delta Engine and throughput numbers on this page — treat it as directional pending that verification, not as an independently reproducible result yet. The industry baseline of approximately 0.65 is likewise an approximation, not a cited external source.",
   },
   {
-    question: "What does the 4,849/0/0 test result mean?",
-    answer: `It refers to an enterprise private snapshot of the broader RCT runtime rather than the public SDK checkpoint. Public readers should use the open SDK checkpoint of ${SITE_PUBLIC_SDK_TESTS} verified tests as the public SDK verified lane and treat the 4,849 figure as separately disclosed enterprise context.`,
+    question: "What does the 7,109 passed / 0 failed test result mean?",
+    answer: `It is the result of the public repository's continuous-integration run (Python 3.12, 2026-10-12, commit e78c9c4): 7,109 passed, 32 skipped, 1 expected failure, 0 failed, 91.08% coverage. Anyone can re-run it from the public repository. The earlier 4,849 figure from a private suite was withdrawn because it could not be independently verified.`,
   },
   {
     question: "What is warm recall and how fast is it?",

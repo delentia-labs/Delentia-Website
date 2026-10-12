@@ -36,7 +36,7 @@ export const SOCIAL_LINKS = {
   github: "https://github.com/delentia-labs",                         // org
   githubPersonal: "https://github.com/ittirit720",             // personal
   platformGithub: "https://github.com/delentia-labs/delentia-os",  // open-source SDK
-  platformDocs: "https://delentia-labs.github.io/delentia-os/",    // GitHub Pages docs
+  platformDocs: "https://delentia-labs.github.io/Delentia-OS/",    // GitHub Pages docs
   linkedin: "https://www.linkedin.com/in/ittirit-saengow/",   // personal LinkedIn
   twitter: "https://x.com/ittirit_rct",                       // personal X
   twitterHandle: "@ittirit_rct",

@@ -49,7 +49,7 @@ export const authorProfiles: AuthorProfile[] = [
       "https://x.com/ittirit_rct",
       "https://www.reddit.com/user/WindLate5307/",
       "https://ittiritsaengow.link",
-      "https://delentia-labs.github.io/delentia-os/",
+      "https://delentia-labs.github.io/Delentia-OS/",
     ],
     profileType: "person",
     isSoleDeveloper: true,

@@ -713,7 +713,7 @@ This is not a research paper. It runs in production at [delentia.com](https://de
 | **X / Twitter** | [@ittirit_rct](https://x.com/ittirit_rct) |
 | **Reddit** | [u/WindLate5307](https://www.reddit.com/user/WindLate5307/) |
 | **BIO** | [ittiritsaengow.link](https://ittiritsaengow.link) |
-| **Docs** | [rctlabs.github.io/delentia-os](https://delentia-labs.github.io/delentia-os/) |
+| **Docs** | [rctlabs.github.io/Delentia-OS](https://delentia-labs.github.io/Delentia-OS/) |
 | **Location** | Klong Toei, Bangkok, Thailand 🇹🇭 |
 | **Started** | June 2025 |
 | **Turning Point** | August 11, 2025 |

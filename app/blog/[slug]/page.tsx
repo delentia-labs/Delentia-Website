@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { getBlogPostBySlug, getAllBlogPosts, getBlogCategoryLabel, getBlogHeroMetrics, getBlogPublicationType, getPostJourney, getPostReviewDate, getResolvedAuthorProfile, getResolvedReviewerProfile, slugifyHeading, getRelatedPosts } from "@/lib/blog"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
+import { ClaimsCorrectionNotice, containsWithdrawnClaim } from "@/components/claims-correction-notice"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
@@ -249,6 +250,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <article className="min-w-0">
             <div className="max-w-[75ch]">
               <div className="rounded-4xl border border-border/70 bg-card/88 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.05)] md:p-10">
+                {containsWithdrawnClaim(post.content) ? <ClaimsCorrectionNotice locale={locale} localePrefix={localePrefix} /> : null}
                 <MDXContent content={post.content} locale={locale} />
               </div>
 

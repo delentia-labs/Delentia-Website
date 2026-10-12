@@ -1,7 +1,7 @@
 ---
 title: "Evaluation Harnesses สำหรับ Enterprise LLMs: เกินกว่าแค่ Vibe-Testing"
 author: "Ittirit Saengow"
-excerpt: "ทีม AI ส่วนใหญ่ยังพึ่ง vibe-testing บทความนี้อธิบาย evaluation harness ที่เข้มงวดและใช้ snapshot แบบ enterprise-private 4,849 tests ของ RCT Ecosystem เป็นตัวอย่างด้าน methodology ไม่ใช่ public proof ของ SDK"
+excerpt: "ทีม AI ส่วนใหญ่ยังพึ่ง vibe-testing บทความนี้อธิบาย evaluation harness ที่เข้มงวดและใช้ snapshot แบบ enterprise-private 7,109 tests ของ RCT Ecosystem เป็นตัวอย่างด้าน methodology ไม่ใช่ public proof ของ SDK"
 date: "2026-03-28"
 lastReviewed: "2026-05-13"
 authorId: "ittirit-saengow"
@@ -28,7 +28,7 @@ lastEvidenceReview: "2026-05-21"
 
 Vibe-testing หมายถึง: *เราดู output แล้วมันดูถูกต้อง* มันเร็ว รู้สึก intuitive และไม่เพียงพออย่างพื้นฐานสำหรับ production AI systems
 
-Evaluation harness คือชุด quality gates ที่เป็นระบบและ automated ที่ระบบต้องผ่านทุกครั้งที่โค้ดเปลี่ยน บทความนี้ใช้ snapshot แบบ enterprise-private 4,849 tests ของ RCT Ecosystem เป็นตัวอย่างด้าน methodology ไม่ใช่ proof lane สาธารณะของ open SDK และอธิบายว่าทำไม architecture ของ harness สำคัญพอๆ กับตัว tests เอง
+Evaluation harness คือชุด quality gates ที่เป็นระบบและ automated ที่ระบบต้องผ่านทุกครั้งที่โค้ดเปลี่ยน บทความนี้ใช้ snapshot แบบ enterprise-private 7,109 tests ของ RCT Ecosystem เป็นตัวอย่างด้าน methodology ไม่ใช่ proof lane สาธารณะของ open SDK และอธิบายว่าทำไม architecture ของ harness สำคัญพอๆ กับตัว tests เอง
 
 ---
 
@@ -175,7 +175,7 @@ Penetration testing มีคุณค่าแต่ไม่เพียงพ
 - **ความมั่นใจในการ deploy:** Daily deployments ไม่ต้องการ deployment freeze window
 - **เวลา compliance audit:** ลดจากหลายสัปดาห์เหลือหลายชั่วโมง — ผลการทดสอบคือหลักฐาน compliance
 
-snapshot 4,849 tests ในบทความนี้ไม่ได้ถูกเสนอเป็น proof ของ GitHub repo แต่เป็น operating threshold ของ environment ฝั่ง enterprise ซึ่งแต่ละ test แทนคุณสมบัติเฉพาะที่ถูก monitor อย่างต่อเนื่อง ถ้าผลไม่เขียว deployment จะถูกบล็อก
+snapshot 7,109 tests ในบทความนี้ไม่ได้ถูกเสนอเป็น proof ของ GitHub repo แต่เป็น operating threshold ของ environment ฝั่ง enterprise ซึ่งแต่ละ test แทนคุณสมบัติเฉพาะที่ถูก monitor อย่างต่อเนื่อง ถ้าผลไม่เขียว deployment จะถูกบล็อก
 
 ---
 
@@ -191,13 +191,13 @@ snapshot 4,849 tests ในบทความนี้ไม่ได้ถู�
 
 4. **สัปดาห์ที่ 4:** เพิ่ม 3 chaos scenarios สำหรับ service ที่สำคัญที่สุดของคุณ (เกิดอะไรขึ้นเมื่อ LLM API timeout? เกิดอะไรขึ้นเมื่อ database เต็ม?)
 
-หลัง 4 สัปดาห์ คุณมี 11–15 tests — ไม่ใช่ 4,849 แต่คุณมี architecture Tests สะสมเมื่อระบบเติบโต Architecture คือสิ่งที่เปิดให้การสะสมนั้นเป็นไปได้
+หลัง 4 สัปดาห์ คุณมี 11–15 tests — ไม่ใช่ 7,109 แต่คุณมี architecture Tests สะสมเมื่อระบบเติบโต Architecture คือสิ่งที่เปิดให้การสะสมนั้นเป็นไปได้
 
 ---
 
 ## คำถามที่พบบ่อย
 
-**ถาม: 4,849 tests ฟังดูเยอะมาก test suite ทั้งหมดใช้เวลานานแค่ไหน?**
+**ถาม: 7,109 tests ฟังดูเยอะมาก test suite ทั้งหมดใช้เวลานานแค่ไหน?**
 
 ตอบ: Full suite รันใน ~8 นาทีใน CI (GitHub Actions) เร็วพอสำหรับ continuous deployment Property-based tests ช้าที่สุด (ระดับ 8: ~3 นาที) เพราะ Hypothesis สร้างตัวอย่างหลายพันรายการต่อ test
 

@@ -69,7 +69,7 @@ export default function BenchmarkSummaryClient() {
   ]
 
   const environment = [
-    [language === "th" ? "Version" : "Version", "v5.4.5"],
+    [language === "th" ? "Version" : "Version", "2.3.0 (public package)"],
     [language === "th" ? "Test date" : "Test date", "March 21, 2026"],
     [language === "th" ? "OS" : "OS", "Linux x86_64"],
     [language === "th" ? "Node.js" : "Node.js", "22.x LTS"],

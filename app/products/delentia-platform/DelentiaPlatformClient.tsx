@@ -26,9 +26,9 @@ const features = [
   },
   {
     iconSrc: pixelIcons.shield, color: "#C4745B",
-    titleEn: "4,849 Verified Tests / 0 Failures", titleTh: "4,849 Tests ผ่าน / 0 ครั้งผิดพลาด",
-    descEn: "8-level test pyramid: Unit → Integration → System → Performance → Security → Chaos → Digital Twin → Hypothesis. v5.4.5 canonical. Zero errors.",
-    descTh: "8-Level Test Pyramid: Unit → Integration → System → Performance → Security → Chaos → Digital Twin → Hypothesis v5.4.5 Canonical — Zero Errors",
+    titleEn: "7,109 Verified Tests / 0 Failures", titleTh: "7,109 Tests ผ่าน / 0 ครั้งผิดพลาด",
+    descEn: "Public repository CI (Python 3.12, 2026-10-12): 7,109 passed, 0 failed.",
+    descTh: "CI ของรีโป public (Python 3.12, 12 ต.ค. 2026): ผ่าน 7,109, ล้มเหลว 0",
   },
   {
     iconSrc: pixelIcons.genome, color: "#89B4C8",
@@ -73,7 +73,7 @@ export default function DelentiaPlatformPage() {
       <section className="mx-auto max-w-4xl px-4 pb-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {([
-            { value: "4,849", label: isTh ? "Tests ผ่าน / 0 ผิด" : "Verified Tests" },
+            { value: "7,109", label: isTh ? "Tests ผ่าน / 0 ผิด" : "Verified Tests" },
             { value: "41", label: isTh ? "Production Algorithms" : "Production Algorithms" },
             { value: "62", label: isTh ? "Microservices" : "Microservices" },
             { value: "7", label: isTh ? "Genome System" : "Genome System" },
@@ -118,13 +118,13 @@ export default function DelentiaPlatformPage() {
           </p>
           <p>
             {isTh
-              ? "4,849 Tests ผ่าน / 0 ที่ล้มเหลว (เวอร์ชัน v5.4.5, 21 มีนาคม 2026) ครอบคลุม 8 ระดับ: Unit → Integration → System → Performance → Security → Chaos → Digital Twin → Hypothesis — ภายใต้ 41 Production Algorithms และ 62 Microservices"
-              : "4,849 tests passing / 0 failures (v5.4.5, March 21 2026). Covers 8 levels: Unit → Integration → System → Performance → Security → Chaos → Digital Twin → Hypothesis — powering the 41 algorithms."}
+              ? "7,109 Tests ผ่าน / 0 ที่ล้มเหลว (CI ของรีโป public, 12 ตุลาคม 2026) ครอบคลุม 41 algorithms ของรีโป"
+              : "7,109 tests passing / 0 failures (public CI, 2026-10-12). Covers the 41 algorithms and the agent runtime in the public repository."}
           </p>
           <p>
             {isTh
-              ? "ด้วย Test Cases อัตโนมัติ 4,849 รายการที่ผ่าน / 0 ล้มเหลว Delentia Platform ครอบคลุม Unit Testing, Integration Testing, Performance Benchmarking และ Regression Analysis ซึ่งแต่ละ Test Case ถูกสร้างเพื่อให้ Algorithm Tier สามารถทำงานได้อย่างถูกต้องใน Production"
-              : "With 4,849 verified passing tests / 0 failures, Delentia Platform covers unit testing, integration testing, performance benchmarking, and regression analysis. Each test is mapped to specific algorithm tiers to ensure every component works correctly in production."}
+              ? "ด้วย Test Cases อัตโนมัติ 7,109 รายการที่ผ่าน / 0 ล้มเหลว Delentia Platform ครอบคลุม Unit Testing, Integration Testing, Performance Benchmarking และ Regression Analysis ซึ่งแต่ละ Test Case ถูกสร้างเพื่อให้ Algorithm Tier สามารถทำงานได้อย่างถูกต้องใน Production"
+              : "With 7,109 verified passing tests / 0 failures, Delentia Platform covers unit testing, integration testing, performance benchmarking, and regression analysis. Passing tests show the code does what the tests check; they do not measure production behaviour."}
           </p>
           <p>
             {isTh
@@ -194,7 +194,7 @@ export default function DelentiaPlatformPage() {
               {
                 titleEn: "JITNA Protocol Gateway", titleTh: "JITNA Protocol Gateway",
                 descEn: "Every agent interaction passes through JITNA RFC-001 before execution — structured, signed, and auditable across the platform's services.",
-                descTh: "ทุก Agent Interaction ผ่าน JITNA RFC-001 ก่อน Execution — มีโครงสร้าง, Signed และตรวจสอบได้ทั้ง 62 Microservices",
+                descTh: "ทุก Agent Interaction ผ่าน JITNA RFC-001 ก่อน Execution — มีโครงสร้าง, Signed และตรวจสอบได้ทั้ง เลเยอร์บริการระดับองค์กร (private)",
                 color: "#C4745B",
               },
             ].map((item, i) => (

@@ -6,16 +6,16 @@ export const SITE_VERSION = "2026.05 Snapshot"
 // Round 50: the private enterprise count (4,849) is not independently verifiable and was
 // withdrawn (see /corrections). Every page that shows "verified tests" now shows the
 // CI-verified public count below.
-export const SITE_TEST_COUNT = 3910
+export const SITE_TEST_COUNT = 7109 // same suite as SITE_PUBLIC_SDK_TESTS: the public repository CI (the private suite is not counted anywhere)
 export const SITE_PUBLIC_SDK_VERSION = "2.3.0" // matches pyproject.toml / `delentia version` in delentia-labs/delentia-os as of 2026-09-26
-export const SITE_PUBLIC_SDK_TESTS = 3910 // Delentia-OS CI run 36395589538 (commit b1d4ff8, 2026-09-28): 3910 passed · 13 skipped · 1 xfailed · 0 failed on Python 3.10/3.11/3.12, coverage 88.32%. Update from a real green CI run only.
+export const SITE_PUBLIC_SDK_TESTS = 7109 // Delentia-OS CI run 38231121128 (commit e78c9c4, 2026-10-12): 7109 passed · 32 skipped · 1 xfailed · 0 failed on Python 3.12, coverage 91.08%. Update from a real green CI run only.
 // Compatibility evidence labels reused across public pages, metadata, and blog stat cards.
 export const SITE_PUBLIC_SDK_EVIDENCE_LABEL = "Public SDK verification lane"
 export const SITE_ENTERPRISE_EVIDENCE_LABEL = "CI-verified full suite" // was "Enterprise runtime snapshot" (withdrawn: not verifiable)
 export const SITE_RESEARCH_EVIDENCE_LABEL = "Research evaluation lane"
-export const SITE_PUBLIC_SDK_COVERAGE = "88.32%"
-export const SITE_EVIDENCE_LAST_UPDATED = "2026-09-28"
-export const SITE_MICROSERVICE_COUNT = 62
+export const SITE_PUBLIC_SDK_COVERAGE = "91.08%"
+export const SITE_EVIDENCE_LAST_UPDATED = "2026-10-12"
+export const SITE_MICROSERVICE_COUNT = 53 // measured 2026-10-12: 53 services of the private layer answered at the same time on one machine (not a production figure; 62 was a count of folders and is withdrawn)
 export const SITE_ALGORITHM_COUNT = 41
 export const SITE_LAYER_COUNT = 10 // Product layers L1-L10; L11 = CI/CD pipeline layer (internal only)
 export const SITE_HEXACORE_COUNT = 9
@@ -29,7 +29,7 @@ export const SITE_MCP_TEST_COUNT = 286 // delentia-mcp ecosystem-ci run 36397567
 // Neither of these two is backed by an independent monitoring system or a
 // published benchmark dataset/methodology yet — say so in the value itself so
 // the caveat travels with the data to every consumer, not just this file.
-export const SITE_UPTIME = "99.9% SLA target (self-reported, not yet independently monitored)"
+export const SITE_UPTIME = "No SLA offered; uptime is not independently monitored"
 export const SITE_HALLUCINATION_RATE = "<0.3% target (pending published benchmark methodology)"
 
 export const SOCIAL_LINKS = {

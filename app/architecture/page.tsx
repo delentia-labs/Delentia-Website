@@ -24,7 +24,7 @@ const faqItems = [
   {
     question: "How many runtime components does the architecture include?",
     answer:
-      "The production architecture includes 62 runtime components (microservices) distributed across 10 layers, covering memory, routing, verification, orchestration, and self-evolution. Each component is independently deployable and composable.",
+      "The production architecture includes a private enterprise service layer distributed across 10 layers, covering memory, routing, verification, orchestration, and self-evolution. Each component is independently deployable and composable.",
   },
   {
     question: "Can the architecture be deployed on-premise?",

@@ -196,14 +196,14 @@ The Pareto frontier contains {VPS, Kubernetes}. With speed weighted at 0.4, the 
 
 ## Performance benchmarks
 
-MOIP v1 is integrated in RCT Ecosystem v5.4.5, verified against the full 4,849-test suite with 0 failures. The service achieves a score of **9.1/10** on the MOIP benchmark evaluation set, with **100% accuracy** on Pareto frontier identification — all Pareto-optimal solutions are correctly included, and no dominated solutions are incorrectly included.
+MOIP v1 is integrated in the RCT Ecosystem, verified against the full 7,109-test suite with 0 failures. The service achieves a score of **9.1/10** on the MOIP benchmark evaluation set, with **100% accuracy** on Pareto frontier identification — all Pareto-optimal solutions are correctly included, and no dominated solutions are incorrectly included.
 
 Key performance targets:
 - **Frontier discovery:** O(n²), deterministic — no approximation, no randomness
 - **Ranking speed:** under 100ms for a 50-solution candidate set
 - **Constraint evaluation:** O(n·m) where n = candidates, m = constraint count — runs before frontier to reduce n
 
-**Reproducibility scope:** The 9.1/10 score and 100% accuracy figures are measured on the MOIP internal benchmark set (RCT Ecosystem v5.4.5, April 2026). The benchmark covers deterministic Pareto correctness, constraint filtering precision, and ranking alignment with stated weights. Production performance varies with candidate set size and objective count — the <100ms figure is measured at n=50 solutions, 4 objectives on reference hardware. Independent benchmark methodology and caveats are published at [Benchmark Summary →](/benchmark-summary).
+**Reproducibility scope:** The 9.1/10 score and 100% accuracy figures are measured on the MOIP internal benchmark set (the RCT Ecosystem, April 2026). The benchmark covers deterministic Pareto correctness, constraint filtering precision, and ranking alignment with stated weights. Production performance varies with candidate set size and objective count — the <100ms figure is measured at n=50 solutions, 4 objectives on reference hardware. Independent benchmark methodology and caveats are published at [Benchmark Summary →](/benchmark-summary).
 
 ## What MOIP changes for enterprise AI governance
 

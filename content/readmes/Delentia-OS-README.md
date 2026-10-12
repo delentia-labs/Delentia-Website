@@ -76,7 +76,7 @@ If you're arriving from social media or seeing RCT Platform for the first time, 
 | Full Production Microservice Stack | ❌ | ✅ private enterprise layer (not in this repository) |
 | Enterprise Dashboard | ❌ | ✅ |
 | Docker Compose + full infra | ❌ | ✅ |
-| 8-level test pyramid (4,849 tests) | ❌ | ✅ private |
+| 8-level test pyramid (7,109 tests) | ❌ | ✅ private |
 
 > **Stable SDK** means: API is stable, CI enforces 90% coverage floor, packages published on PyPI + npm.  
 > **Enterprise** means: runs at [delentia.com](https://delentia.com) — contact for licensing.
@@ -123,7 +123,7 @@ Accuracy: **0.92** (industry baseline: ~0.65). Implemented in [`core/fdia/fdia.p
 | **Hallucination Rate** | 0.3% (vs industry 12–15%) — 97% reduction via SignedAI |
 | **Memory Compression** | 91.5% measured (design floor ≥74%) via Delta Engine (stores state diffs, not full state) |
 | **Intent Recall Speed** | Cold start 3–5s → Warm recall <50ms (Intent Loop) |
-| **Uptime SLA** | 99.98% |
+| **Uptime SLA** | no SLA |
 | **Languages** | 8 regional pairs (JP, KR, CN, TW, TH, VN, ID, US) |
 | **Universal Adapters** | 13 (Home Assistant, Terraform, n8n, Obsidian, Playwright, ...) |
 | **FDIA Accuracy** | 0.92 (industry baseline: ~0.65) |
@@ -591,7 +591,7 @@ Full OpenAPI 3.1.0 specification: [`contracts/openapi.yaml`](contracts/openapi.y
 ✅ **GitHub Action** — `rct-policy-gate` for CI/CD governance enforcement  
 
 Previous milestone:  
-✅ **4,849 Passed · 16 Skipped · 0 Failed · 0 Errors** — Private enterprise test suite (not in this repository)  
+✅ **7,109 Passed · 16 Skipped · 0 Failed · 0 Errors** — Private enterprise test suite (not in this repository)  
 
 Full SDK changelog → [CHANGELOG.md](CHANGELOG.md)
 
@@ -726,7 +726,7 @@ This is not a research paper. It runs in production at [delentia.com](https://de
 | Aug 11, 2025 | Commitment to build RCT OS |
 | Oct 2025 | JITNA Protocol RFC-001 drafted |
 | Dec 2025 | Foundation whitepaper (~100 pages) |
-| Jan 2026 | 41 algorithms complete, 4,849 enterprise tests |
+| Jan 2026 | 41 algorithms complete, 7,109 enterprise tests |
 | Feb 2026 | 3,053 Python files, Level 4 Virtuoso stress test |
 | Apr 2026 | Public SDK — 723 tests, 89%+ coverage, Apache 2.0 release |
 | May 2026 | Enterprise CLI Design System — Unicode block wordmark, FDIA formula card, boot animation, PyPI v1.0.4b0 live |

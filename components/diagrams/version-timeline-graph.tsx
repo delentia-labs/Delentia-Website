@@ -22,7 +22,7 @@ const versions: VersionPoint[] = [
   { ver: "5.4.0", name: "Pre-API Sprint", date: "Mar 19 2026", scope: 36, verification: 4504, status: "production" },
   { ver: "5.4.2", name: "Deterministic", date: "Mar 20 2026", scope: 38, verification: 4869, status: "production" },
   { ver: "5.4.4", name: "Flaky Fix", date: "Mar 20 2026", scope: 39, verification: 3429, status: "production" },
-  { ver: "5.4.5", name: "Full Suite Green", date: "Mar 21 2026", scope: 41, verification: 4849, status: "latest" },
+  { ver: "5.4.5", name: "Full Suite Green (count withdrawn)", date: "Mar 21 2026", scope: 41, verification: 4849, status: "latest" },
   { ver: "SDK 1.0α", name: "Public SDK Alpha", date: "Apr 2026", scope: 5, verification: 591, status: "public-alpha" },
   { ver: "6.0.0", name: "Full API Layer", date: "Q1 2027", scope: 48, verification: 5200, status: "planned" },
   { ver: "7.0.0", name: "Multi-Cloud", date: "Q2 2027", scope: 56, verification: 6100, status: "planned" },

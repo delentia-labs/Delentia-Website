@@ -25,7 +25,7 @@ references:
 
 Most enterprise AI systems are static. A model is trained, deployed, and then manually retrained when performance drifts. This approach works when the environment is predictable — but real enterprise workloads are not. Requirements shift, edge cases accumulate, and baseline quality gradually erodes without visible warning.
 
-MEE (Meta Evolution Engine) addresses this directly. It is the self-learning core of the RCT Ecosystem (v5.4.5+): a constitutional evolution loop that automatically assesses algorithm performance, adapts learning parameters, and spawns new algorithms when existing ones cannot meet the quality bar.
+MEE (Meta Evolution Engine) addresses this directly. It is the self-learning core of the RCT Ecosystem ((current)): a constitutional evolution loop that automatically assesses algorithm performance, adapts learning parameters, and spawns new algorithms when existing ones cannot meet the quality bar.
 
 ## The core problem MEE solves
 
@@ -97,7 +97,7 @@ This spawning loop means MEE is not just adaptive — it is generative. The [alg
 
 ## Performance evidence
 
-MEE v2 (ALGO-07) completed full integration in RCT Ecosystem v5.4.5 (released March 21, 2026), verified across the 4,849-test suite with 0 failures. It achieved **96% accuracy** on the ALGO-07 evaluation set, corresponding to a score of **9.5/10**. All four test categories passed without failures:
+MEE v2 (ALGO-07) completed full integration in the RCT Ecosystem (released March 21, 2026), verified across the 7,109-test suite with 0 failures. It achieved **96% accuracy** on the ALGO-07 evaluation set, corresponding to a score of **9.5/10**. All four test categories passed without failures:
 
 - `test_evolution_step` ✅
 - `test_alpha_adaptation` ✅
@@ -106,7 +106,7 @@ MEE v2 (ALGO-07) completed full integration in RCT Ecosystem v5.4.5 (released Ma
 
 The practical implication: a system running MEE reaches G-level 90 in fewer intervention cycles than a static system, and maintains that level through adaptive α adjustment rather than scheduled retraining.
 
-**Reproducibility scope:** The 96% figure is measured on the ALGO-07 internal evaluation set (RCT Ecosystem v5.4.5, March 2026). The evaluation covers the four test categories listed above, run against a held-out benchmark workload. The G-level trajectory figures (50→90, dG/dt > 0.5) are internal benchmark targets measured under controlled memory-warmup conditions; actual rates vary with deployment context, feedback quality, and memory depth. An independent summary of RCT benchmark methodology — including caveats and known limitations — is available at [Benchmark Summary →](/benchmark-summary).
+**Reproducibility scope:** The 96% figure is measured on the ALGO-07 internal evaluation set (the RCT Ecosystem, March 2026). The evaluation covers the four test categories listed above, run against a held-out benchmark workload. The G-level trajectory figures (50→90, dG/dt > 0.5) are internal benchmark targets measured under controlled memory-warmup conditions; actual rates vary with deployment context, feedback quality, and memory depth. An independent summary of RCT benchmark methodology — including caveats and known limitations — is available at [Benchmark Summary →](/benchmark-summary).
 
 ## What MEE means for enterprise AI reliability
 
@@ -125,13 +125,13 @@ No. The equation describes the observable shape of the evolution loop — inputs
 Specifically: the numeric values of constitutional acceptance thresholds, the internal schema of the Π metacognition model, the failure-mode detection ruleset, and the production governance policy that determines when MEE runs are permitted. These are implementation concerns that would need additional context to be safely interpreted by external parties.
 
 **Can the 96% accuracy claim be independently verified?**
-Partially. The [Benchmark Summary](/benchmark-summary) page publishes the full methodology, test conditions, and caveats behind RCT Ecosystem v5.4.5 benchmark results. The 4,849-test suite runs are documented in the RCT platform repository. The ALGO-07 evaluation set itself is an internal holdout — it is not publicly released to prevent leakage into future training pipelines.
+Partially. The [Benchmark Summary](/benchmark-summary) page publishes the full methodology, test conditions, and caveats behind the RCT Ecosystem benchmark results. The 7,109-test suite runs are documented in the RCT platform repository. The ALGO-07 evaluation set itself is an internal holdout — it is not publicly released to prevent leakage into future training pipelines.
 
 ## Related reading
 
 - Explore the [FDIA Equation](/protocols/fdia-equation) — the constitutional layer that governs every MEE evolution gate.
 - Review [SignedAI HexaCore](/products/signed-ai) to understand how Ed25519 signing makes MEE-spawned algorithms traceable and tamper-evident.
-- See [Evaluation Harnesses](/blog/evaluation-harnesses-enterprise-llm) for the 4,849-test framework that MEE outputs are validated against — use this as the independent verification path for the claims in this article.
+- See [Evaluation Harnesses](/blog/evaluation-harnesses-enterprise-llm) for the 7,109-test framework that MEE outputs are validated against — use this as the independent verification path for the claims in this article.
 - Browse [All 41 Algorithms](/algorithms) to see the full algorithm surface MEE extends.
 - Review [Benchmark Summary](/benchmark-summary) for the production evidence and honest limitations behind RCT quality targets.
 

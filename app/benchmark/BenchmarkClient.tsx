@@ -31,7 +31,7 @@ const benchmarks = [
   { metricEn: "Cryptographic Signing", metricTh: "Cryptographic Signing", rct: "Yes", single: "No", rctVal: 100, singleVal: 0, color: "#D4A853", icon: Shield },
   { metricEn: "FDIA Protocol Score (internal benchmark)", metricTh: "FDIA Protocol Score (Benchmark ภายใน)", rct: "0.92", single: "~0.65", rctVal: 92, singleVal: 65, color: "#C4745B", icon: TrendingUp },
   { metricEn: "L4 Virtuoso Benchmark (internal)", metricTh: "L4 Virtuoso Benchmark (ภายใน)", rct: "389/390", single: "N/A", rctVal: 99.7, singleVal: 0, color: "#B8A9C9", icon: Shield },
-  { metricEn: "Uptime SLA (design target)", metricTh: "Uptime SLA (เป้าหมาย)", rct: "99.98%", single: "No SLA", rctVal: 100, singleVal: 80, color: "#7B9E87", icon: CheckCircle },
+  { metricEn: "Uptime SLA (design target)", metricTh: "Uptime SLA (เป้าหมาย)", rct: "none published", single: "No SLA", rctVal: 100, singleVal: 80, color: "#7B9E87", icon: CheckCircle },
 ]
 
 const radarData = [
@@ -545,12 +545,12 @@ export default function BenchmarkPage() {
           </div>
         </section>
 
-        {/* v5.4.5 Milestone */}
-        <section className={`py-16 px-4 transition-colors duration-300 ${isDark ? "bg-[#141414]" : "bg-warm-cream/50"}`} aria-label="v5.4.5 milestone">
+        {/* test infrastructure milestone */}
+        <section className={`py-16 px-4 transition-colors duration-300 ${isDark ? "bg-[#141414]" : "bg-warm-cream/50"}`} aria-label="test infrastructure milestone">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
               <h2 className={`text-3xl font-bold mb-2 ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
-                {isEn ? "Test Infrastructure v5.4.5" : "Test Infrastructure v5.4.5"}
+                {isEn ? "Test infrastructure (public CI)" : "Test infrastructure (public CI)"}
               </h2>
               <p className={`text-sm ${isDark ? "text-[#888]" : "text-warm-gray"}`}>
                 {isEn
@@ -560,7 +560,7 @@ export default function BenchmarkPage() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
               {[
-                { value: "4,849", label: isEn ? "Passed (enterprise, private)" : "ผ่าน (enterprise, private)", color: "#7B9E87" },
+                { value: "7,109", label: isEn ? "Passed (public repository, CI-verified)" : "ผ่าน (public repository, CI-verified)", color: "#7B9E87" },
                 { value: "0", label: isEn ? "Failed" : "ล้มเหลว", color: "#C4745B" },
                 { value: "6,738+", label: isEn ? "Total Tests (enterprise, private)" : "Tests ทั้งหมด (enterprise, private)", color: "#D4A853" },
                 { value: "0.92", label: isEn ? "FDIA Accuracy (internal benchmark)" : "FDIA Accuracy (Benchmark ภายใน)", color: "#89B4C8" },
@@ -591,7 +591,7 @@ export default function BenchmarkPage() {
                 { href: "/en/blog/signedai-multi-llm-consensus-explained", labelEn: "SignedAI: Multi-LLM Consensus to Prevent Hallucination at Scale", labelTh: "SignedAI: Multi-LLM Consensus ป้องกัน Hallucination" },
                 { href: "/en/blog/hexacore-7-model-ai-infrastructure", labelEn: "HexaCore 7-Model AI Infrastructure: Cost Reduction at Scale", labelTh: "HexaCore 7 โมเดล AI Infrastructure: ลดต้นทุนในระดับ Scale" },
                 { href: "/en/blog/delta-engine-74-percent-compression", labelEn: "Delta Engine: 74% Lossless Memory Compression", labelTh: "Delta Engine: บีบอัดหน่วยความจำ 74% แบบ Lossless" },
-                { href: "/en/blog/rct-ecosystem-4849-tests-methodology", labelEn: "4,849 Tests, 0 Failures: How RCT Verifies Everything", labelTh: "4,849 Tests, 0 Failures: วิธีที่ RCT ตรวจสอบทุกอย่าง" },
+                { href: "/en/blog/rct-ecosystem-4849-tests-methodology", labelEn: "7,109 Tests, 0 Failures: How RCT Verifies Everything", labelTh: "7,109 Tests, 0 Failures: วิธีที่ RCT ตรวจสอบทุกอย่าง" },
               ].map((item) => (
                 <Link key={item.href} href={item.href} className={`flex items-start gap-3 rounded-xl border p-4 transition-colors hover:-translate-y-0.5 ${isDark ? "border-[#2a2a2a] hover:border-[#444] hover:bg-[#1a1a1a]" : "border-warm-light-gray/50 hover:border-warm-amber/40 hover:bg-white"}`}>
                   <ArrowRight size={14} className="mt-1 shrink-0 text-warm-amber" />

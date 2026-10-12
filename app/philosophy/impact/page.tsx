@@ -52,9 +52,9 @@ export default async function ImpactPage() {
       titleEn: "Solo-Developer Proof of Possibility",
       titleTh: "Solo-Developer Proof of Possibility",
       descEn:
-        "One engineer, zero-dollar infrastructure budget, 30-day bootstrap sprint. The result: a multi-LLM consensus platform with Constitutional AI enforcement, PDPA-native architecture, and an enterprise private snapshot covering 4,849 automated tests. This is the most important claim Delentia Labs has proven — that enterprise-grade AI systems do not require enterprise-sized teams or budgets.",
+        "One engineer, zero-dollar infrastructure budget, 30-day bootstrap sprint. The result: a multi-LLM consensus platform with Constitutional AI enforcement, PDPA-native architecture, and the public repository CI covering 7,109 automated tests. This is the most important claim Delentia Labs has proven — that enterprise-grade AI systems do not require enterprise-sized teams or budgets.",
       descTh:
-        "วิศวกรหนึ่งคน งบประมาณ infrastructure เป็นศูนย์ sprint bootstrap 30 วัน ผลลัพธ์: platform multi-LLM consensus พร้อม Constitutional AI enforcement สถาปัตยกรรม PDPA-native และ enterprise private snapshot ที่ครอบคลุมการทดสอบอัตโนมัติ 4,849 รายการ นี่คือข้อพิสูจน์ที่สำคัญที่สุดของ Delentia Labs — ระบบ AI ระดับองค์กรไม่จำเป็นต้องมีทีมหรืองบประมาณขนาดองค์กร",
+        "วิศวกรหนึ่งคน งบประมาณ infrastructure เป็นศูนย์ sprint bootstrap 30 วัน ผลลัพธ์: platform multi-LLM consensus พร้อม Constitutional AI enforcement สถาปัตยกรรม PDPA-native และ public repository CI ที่ครอบคลุมการทดสอบอัตโนมัติ 7,109 รายการ นี่คือข้อพิสูจน์ที่สำคัญที่สุดของ Delentia Labs — ระบบ AI ระดับองค์กรไม่จำเป็นต้องมีทีมหรืองบประมาณขนาดองค์กร",
     },
     {
       icon: FlaskConical,
@@ -63,9 +63,9 @@ export default async function ImpactPage() {
       titleEn: "Evidence-Culture Discipline",
       titleTh: "วัฒนธรรม Evidence-Culture",
       descEn:
-        "The enterprise private snapshot covers 4,849 automated tests across unit, integration, and end-to-end layers. Backend-validated coverage sits at 66.7% with a public 100% target. The test count is not a vanity metric — it is the organization's commitment to evidence culture, visible and trackable from day one.",
+        "The public repository CI covers 7,109 automated tests across unit, integration, and end-to-end layers. Backend-validated coverage sits at 66.7% with a public 100% target. The test count is not a vanity metric — it is the organization's commitment to evidence culture, visible and trackable from day one.",
       descTh:
-        "enterprise private snapshot ครอบคลุมการทดสอบอัตโนมัติ 4,849 รายการในชั้น unit, integration และ end-to-end โดยมี backend-validated coverage 66.7% และเป้าหมายสาธารณะ 100% จำนวนการทดสอบไม่ใช่ตัวชี้วัดความภาคภูมิใจ — มันคือความมุ่งมั่นขององค์กรต่อ evidence culture ที่มองเห็นและติดตามได้ตั้งแต่วันแรก",
+        "public repository CI ครอบคลุมการทดสอบอัตโนมัติ 7,109 รายการในชั้น unit, integration และ end-to-end โดยมี backend-validated coverage 66.7% และเป้าหมายสาธารณะ 100% จำนวนการทดสอบไม่ใช่ตัวชี้วัดความภาคภูมิใจ — มันคือความมุ่งมั่นขององค์กรต่อ evidence culture ที่มองเห็นและติดตามได้ตั้งแต่วันแรก",
     },
     {
       icon: Award,

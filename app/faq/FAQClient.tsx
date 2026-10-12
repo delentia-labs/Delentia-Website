@@ -64,8 +64,8 @@ const faqCategories = [
       {
         qEn: "What are the 41 Algorithms?",
         qTh: "41 Algorithms คืออะไร?",
-        aEn: "The 41 algorithms span across the 10-layer architecture, covering everything from data ingestion (Layer 1) to autonomous improvement (Layer 10). They include algorithms for intent classification, context compression (74% lossless), hallucination detection, and cost optimization (3.74x reduction). The current public engineering snapshot reports 4,849 passing tests across the platform.",
-        aTh: "41 Algorithms กระจายอยู่ใน 10 ชั้นของสถาปัตยกรรม ครอบคลุมตั้งแต่ Data Ingestion ถึง Autonomous Improvement รวมถึง Intent Classification, Context Compression (74% lossless), Hallucination Detection และ Cost Optimization (3.74x reduction) โดย public engineering snapshot ปัจจุบันรายงานผลการทดสอบที่ผ่านทั้งหมด 4,849 รายการทั่วทั้งแพลตฟอร์ม",
+        aEn: "The 41 algorithms span across the 10-layer architecture, covering everything from data ingestion (Layer 1) to autonomous improvement (Layer 10). They include algorithms for intent classification, context compression (74% lossless), hallucination detection, and cost optimization (3.74x reduction). The public repository's CI (Python 3.12, 2026-10-12) reports 7,109 passing tests.",
+        aTh: "41 Algorithms กระจายอยู่ใน 10 ชั้นของสถาปัตยกรรม ครอบคลุมตั้งแต่ Data Ingestion ถึง Autonomous Improvement รวมถึง Intent Classification, Context Compression (74% lossless), Hallucination Detection และ Cost Optimization (3.74x reduction) โดย public engineering snapshot ปัจจุบันรายงานผลการทดสอบที่ผ่านทั้งหมด 7,109 รายการในรีโป public (CI)",
       },
       {
         qEn: "What LLM providers are supported?",
@@ -196,7 +196,7 @@ const faqCategories = [
 ] as const
 
 const versions = [
-  { ver: "5.4.5", name: "Full Suite Green — 4,849 Tests", date: "2026-03-21", status: "LATEST" },
+  { ver: "5.4.5", name: "Full Suite Green (test count withdrawn, see Corrections)", date: "2026-03-21", status: "LATEST" },
   { ver: "2.7.0", name: "Enterprise Integration Suite", date: "2026-03-10", status: "PRODUCTION" },
   { ver: "2.1.0", name: "Enterprise Refactor Edition", date: "2026-02-15", status: "PRODUCTION" },
   { ver: "8.0", name: "Universal Integration & Open Standard", date: "2026-02-02", status: "PRODUCTION" },

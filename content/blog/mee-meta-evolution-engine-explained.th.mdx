@@ -19,7 +19,7 @@ references:
 
 ระบบ AI สำหรับองค์กรส่วนใหญ่ยังคงเป็น "ระบบนิ่ง" — ฝึกโมเดล นำไปใช้งาน แล้วค่อยฝึกใหม่ด้วยมือเมื่อประสิทธิภาพเริ่มตกต่ำ วิธีนี้ใช้ได้เมื่อสภาพแวดล้อมคาดเดาได้ แต่ภาระงานจริงในองค์กรไม่เป็นเช่นนั้น ความต้องการเปลี่ยนไปตลอด กรณีพิเศษสะสมเพิ่มขึ้น และคุณภาพพื้นฐานก็ค่อยๆ เสื่อมลงโดยไม่มีสัญญาณเตือนที่ชัดเจน
 
-MEE (Meta Evolution Engine) แก้ปัญหานี้โดยตรง เป็นแกนกลางการเรียนรู้ด้วยตัวเองของ RCT Ecosystem (v5.4.5+): วงรอบวิวัฒนาการเชิงรัฐธรรมนูญที่ประเมินประสิทธิภาพของอัลกอริทึมโดยอัตโนมัติ ปรับอัตราการเรียนรู้ และสร้างอัลกอริทึมใหม่เมื่ออัลกอริทึมที่มีอยู่ไม่สามารถรักษาคุณภาพที่กำหนดไว้
+MEE (Meta Evolution Engine) แก้ปัญหานี้โดยตรง เป็นแกนกลางการเรียนรู้ด้วยตัวเองของ RCT Ecosystem ((current)): วงรอบวิวัฒนาการเชิงรัฐธรรมนูญที่ประเมินประสิทธิภาพของอัลกอริทึมโดยอัตโนมัติ ปรับอัตราการเรียนรู้ และสร้างอัลกอริทึมใหม่เมื่ออัลกอริทึมที่มีอยู่ไม่สามารถรักษาคุณภาพที่กำหนดไว้
 
 ## ปัญหาหลักที่ MEE แก้ไข
 
@@ -91,7 +91,7 @@ Self-Evolving orchestrator ทริกเกอร์รอบ MEE evolution �
 
 ## หลักฐานประสิทธิภาพ
 
-MEE v2 (ALGO-07) เสร็จสิ้นการ integrate เต็มรูปแบบใน RCT Ecosystem v5.4.5 (เปิดตัว 21 มีนาคม 2026) ผ่านการตรวจสอบใน test suite 4,849 รายการ ด้วย 0 ความล้มเหลว บรรลุ **96% accuracy** บน ALGO-07 evaluation set ซึ่งเทียบเท่ากับคะแนน **9.5/10** ทั้งสี่ test category ผ่านโดยไม่มีความล้มเหลว:
+MEE v2 (ALGO-07) เสร็จสิ้นการ integrate เต็มรูปแบบใน the RCT Ecosystem (เปิดตัว 21 มีนาคม 2026) ผ่านการตรวจสอบใน test suite 7,109 รายการ ด้วย 0 ความล้มเหลว บรรลุ **96% accuracy** บน ALGO-07 evaluation set ซึ่งเทียบเท่ากับคะแนน **9.5/10** ทั้งสี่ test category ผ่านโดยไม่มีความล้มเหลว:
 
 - `test_evolution_step` ✅
 - `test_alpha_adaptation` ✅
@@ -100,7 +100,7 @@ MEE v2 (ALGO-07) เสร็จสิ้นการ integrate เต็มร�
 
 ผลลัพธ์ที่ปฏิบัติได้จริง: ระบบที่ใช้ MEE จะถึง G-level 90 ใน intervention cycle น้อยกว่าระบบนิ่ง และรักษาระดับนั้นผ่านการปรับ adaptive α แทนการฝึกใหม่ตามกำหนด
 
-**ขอบเขต reproducibility:** ตัวเลข 96% วัดจาก ALGO-07 internal evaluation set (RCT Ecosystem v5.4.5, มีนาคม 2026) การประเมินครอบคลุม 4 test category ที่ระบุข้างต้น รันกับ benchmark workload แบบ held-out ตัวเลขเส้นทาง G-level (50→90, dG/dt > 0.5) คือ internal benchmark target วัดภายใต้เงื่อนไข memory-warmup ที่ควบคุม อัตราจริงจะแตกต่างกันตาม deployment context, คุณภาพ feedback และความลึกของ memory สรุป benchmark methodology อย่างอิสระ รวมถึง caveat และข้อจำกัดที่ทราบ มีที่ [Benchmark Summary →](/benchmark-summary)
+**ขอบเขต reproducibility:** ตัวเลข 96% วัดจาก ALGO-07 internal evaluation set (the RCT Ecosystem, มีนาคม 2026) การประเมินครอบคลุม 4 test category ที่ระบุข้างต้น รันกับ benchmark workload แบบ held-out ตัวเลขเส้นทาง G-level (50→90, dG/dt > 0.5) คือ internal benchmark target วัดภายใต้เงื่อนไข memory-warmup ที่ควบคุม อัตราจริงจะแตกต่างกันตาม deployment context, คุณภาพ feedback และความลึกของ memory สรุป benchmark methodology อย่างอิสระ รวมถึง caveat และข้อจำกัดที่ทราบ มีที่ [Benchmark Summary →](/benchmark-summary)
 
 ## MEE มีความหมายอะไรต่อความน่าเชื่อถือของ AI องค์กร
 
@@ -119,12 +119,12 @@ MEE v2 (ALGO-07) เสร็จสิ้นการ integrate เต็มร�
 โดยเฉพาะ: ค่าตัวเลขของ constitutional acceptance threshold, internal schema ของ Π metacognition model, failure-mode detection ruleset และ production governance policy ที่กำหนดว่าเมื่อใด MEE run ได้รับอนุญาต สิ่งเหล่านี้เป็นเรื่องของ implementation ที่ต้องการบริบทเพิ่มเติมเพื่อให้บุคคลภายนอกตีความได้อย่างปลอดภัย
 
 **claim ความแม่นยำ 96% สามารถตรวจสอบอิสระได้หรือไม่?**
-ได้บางส่วน หน้า [Benchmark Summary](/benchmark-summary) เผยแพร่ methodology เต็มรูปแบบ เงื่อนไขการทดสอบ และ caveat เบื้องหลังผล benchmark RCT Ecosystem v5.4.5 การรัน test suite 4,849 รายการมีเอกสารใน RCT platform repository ALGO-07 evaluation set นั้นเองเป็น internal holdout — ไม่เผยแพร่สาธารณะเพื่อป้องกันการ leakage เข้า training pipeline ในอนาคต
+ได้บางส่วน หน้า [Benchmark Summary](/benchmark-summary) เผยแพร่ methodology เต็มรูปแบบ เงื่อนไขการทดสอบ และ caveat เบื้องหลังผล benchmark the RCT Ecosystem การรัน test suite 7,109 รายการมีเอกสารใน RCT platform repository ALGO-07 evaluation set นั้นเองเป็น internal holdout — ไม่เผยแพร่สาธารณะเพื่อป้องกันการ leakage เข้า training pipeline ในอนาคต
 
 ## บทความที่เกี่ยวข้อง
 
 - ศึกษา [FDIA Equation](/protocols/fdia-equation) — constitutional layer ที่กำกับทุก MEE evolution gate
 - ทบทวน [SignedAI HexaCore](/products/signed-ai) เพื่อเข้าใจว่า Ed25519 signing ทำให้ algorithm ที่ MEE spawn ตรวจสอบย้อนกลับได้และป้องกันการแก้ไขอย่างไร
-- ดู [Evaluation Harnesses](/blog/evaluation-harnesses-enterprise-llm) สำหรับ framework ทดสอบ 4,849 รายการที่ใช้ตรวจสอบ MEE output — ใช้เป็นเส้นทาง independent verification สำหรับ claim ในบทความนี้
+- ดู [Evaluation Harnesses](/blog/evaluation-harnesses-enterprise-llm) สำหรับ framework ทดสอบ 7,109 รายการที่ใช้ตรวจสอบ MEE output — ใช้เป็นเส้นทาง independent verification สำหรับ claim ในบทความนี้
 - เรียกดู [41 Algorithms ทั้งหมด](/algorithms) เพื่อดูพื้นที่ algorithm ที่ MEE ขยาย
 - ทบทวน [Benchmark Summary](/benchmark-summary) สำหรับหลักฐานการใช้งานจริงและข้อจำกัดที่ตรงไปตรงมาเบื้องหลัง RCT quality target

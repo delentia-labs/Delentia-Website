@@ -9,7 +9,7 @@ import { SITE_UPTIME, SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 const faqSchemaData = [
   {
     question: "What is the RCT Ecosystem?",
-    answer: "RCT is a constitutional AI operating system built by a solo developer in Bangkok, Thailand — 41 algorithms, a private enterprise service layer, 7 HexaCore AI models, and 4,849 automated tests passing at 0 failures. It combines the FDIA equation (F=D^I×A), JITNA Protocol (RFC-001), 10-layer architecture, and 7 genome subsystems.",
+    answer: "RCT is a constitutional AI operating system built by a solo developer in Bangkok, Thailand — 41 algorithms, a private enterprise service layer, 7 HexaCore AI models, and 7,109 automated tests passing at 0 failures. It combines the FDIA equation (F=D^I×A), JITNA Protocol (RFC-001), 10-layer architecture, and 7 genome subsystems.",
   },
   {
     question: "How does the JITNA Protocol work?",
@@ -17,7 +17,7 @@ const faqSchemaData = [
   },
   {
     question: "What infrastructure does RCT require?",
-    answer: "RCT runs on a service-based architecture with PostgreSQL, Redis, and optional Ollama for local LLM inference, validated by 4,849 passing tests across 8 test levels. It scales from Docker Compose (33 containers) to Kubernetes (57 resources with HPA, PDB, NetworkPolicy, ArgoCD).",
+    answer: "RCT runs on a service-based architecture with PostgreSQL, Redis, and optional Ollama for local LLM inference, validated by 7,109 passing tests in the public repository's CI. It scales from Docker Compose (33 containers) to Kubernetes (57 resources with HPA, PDB, NetworkPolicy, ArgoCD).",
   },
   {
     question: "What is the RCT HexaCore 7-model architecture?",

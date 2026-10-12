@@ -156,8 +156,8 @@ const faqCategories = [
       {
         qEn: "What infrastructure does RCT require?",
         qTh: "RCT ต้องการ Infrastructure อะไรบ้าง?",
-        aEn: "RCT runs across a 62-microservice architecture with PostgreSQL, Redis, and optional Ollama for local LLM inference. Minimum local evaluation setups can start smaller, while enterprise deployments can scale into containerized runtime boundaries and Kubernetes-style orchestration.",
-        aTh: "RCT ทำงานบนสถาปัตยกรรม 62 microservices พร้อม PostgreSQL, Redis และ Ollama (optional) สำหรับ local LLM inference โดยการประเมินในเครื่องเริ่มจากสเกลเล็กได้ และการ deploy ระดับองค์กรสามารถขยายไปยัง containerized runtime boundaries และ Kubernetes-style orchestration",
+        aEn: "RCT runs across a service-based architecture with PostgreSQL, Redis, and optional Ollama for local LLM inference. Minimum local evaluation setups can start smaller, while enterprise deployments can scale into containerized runtime boundaries and Kubernetes-style orchestration.",
+        aTh: "RCT ทำงานบนสถาปัตยกรรมแบบหลายบริการ (microservices) พร้อม PostgreSQL, Redis และ Ollama (optional) สำหรับ local LLM inference โดยการประเมินในเครื่องเริ่มจากสเกลเล็กได้ และการ deploy ระดับองค์กรสามารถขยายไปยัง containerized runtime boundaries และ Kubernetes-style orchestration",
       },
       {
         qEn: "Does RCT support external integrations?",

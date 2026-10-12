@@ -9,7 +9,7 @@ import { SITE_UPTIME, SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 const faqSchemaData = [
   {
     question: "What is the RCT Ecosystem?",
-    answer: "RCT is a constitutional AI operating system built by a solo developer in Bangkok, Thailand — 62 microservices, 41 algorithms, 7 HexaCore AI models, and 4,849 automated tests passing at 0 failures. It combines the FDIA equation (F=D^I×A), JITNA Protocol (RFC-001), 10-layer architecture, and 7 genome subsystems.",
+    answer: "RCT is a constitutional AI operating system built by a solo developer in Bangkok, Thailand — 41 algorithms, a private enterprise service layer, 7 HexaCore AI models, and 4,849 automated tests passing at 0 failures. It combines the FDIA equation (F=D^I×A), JITNA Protocol (RFC-001), 10-layer architecture, and 7 genome subsystems.",
   },
   {
     question: "How does the JITNA Protocol work?",
@@ -17,7 +17,7 @@ const faqSchemaData = [
   },
   {
     question: "What infrastructure does RCT require?",
-    answer: "RCT runs on a 62-microservice architecture with PostgreSQL, Redis, and optional Ollama for local LLM inference, validated by 4,849 passing tests across 8 test levels. It scales from Docker Compose (33 containers) to Kubernetes (57 resources with HPA, PDB, NetworkPolicy, ArgoCD).",
+    answer: "RCT runs on a service-based architecture with PostgreSQL, Redis, and optional Ollama for local LLM inference, validated by 4,849 passing tests across 8 test levels. It scales from Docker Compose (33 containers) to Kubernetes (57 resources with HPA, PDB, NetworkPolicy, ArgoCD).",
   },
   {
     question: "What is the RCT HexaCore 7-model architecture?",
@@ -33,7 +33,7 @@ const faqSchemaData = [
   },
   {
     question: "How does the Circuit Breaker Pattern work in AI pipelines?",
-    answer: `The Circuit Breaker Pattern in AI systems has three states: CLOSED (normal operation — requests flow through), OPEN (failure threshold exceeded — requests are blocked and fallback providers are used), and HALF-OPEN (test mode — limited traffic allowed to check recovery). In the RCT Platform, the FDIA score acts as the trip signal: when F drops below 0.7, the breaker opens. RFC-006 Fault Isolation implements this across all 62 microservices, enabling 7 fallback LLM providers with automatic switching. This is why the RCT Platform is designed for a ${SITE_UPTIME} even when individual model providers experience outages.`,
+    answer: `The Circuit Breaker Pattern in AI systems has three states: CLOSED (normal operation — requests flow through), OPEN (failure threshold exceeded — requests are blocked and fallback providers are used), and HALF-OPEN (test mode — limited traffic allowed to check recovery). In the RCT Platform, the FDIA score acts as the trip signal: when F drops below 0.7, the breaker opens. RFC-006 Fault Isolation implements this across the platform's services, enabling 7 fallback LLM providers with automatic switching. This is why the RCT Platform is designed for a ${SITE_UPTIME} even when individual model providers experience outages.`,
   },
   {
     question: "What is Intent Farming and how does it reduce AI costs over time?",

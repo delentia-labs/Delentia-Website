@@ -148,7 +148,7 @@ Every core system has mathematical invariants that must hold unconditionally. Fo
 Property-based testing generates thousands of test cases automatically. You write the property, the framework finds the edge cases.
 
 ### Principle 2: Contract Tests at Every Service Boundary
-Each of the 62 microservices in the RCT Ecosystem has a defined contract — what it accepts, what it returns, what errors it raises. Contract tests verify that each service satisfies its contract regardless of implementation changes.
+Each service in the RCT Ecosystem's enterprise layer has a defined contract — what it accepts, what it returns, what errors it raises. Contract tests verify that each service satisfies its contract regardless of implementation changes.
 
 Without contract tests, a change to the RCTDB query format breaks the Delta Engine silently. With contract tests, the CI pipeline rejects the change at the boundary.
 

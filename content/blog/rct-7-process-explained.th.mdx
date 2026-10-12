@@ -23,7 +23,7 @@ references:
 
 RCT ย่อมาจาก **Reverse Component Thinking** — ระเบียบวิธีสำหรับการแยกย่อยระบบใดก็ตามให้เป็นชิ้นส่วนที่เล็กที่สุดที่ verify ได้ แล้วสร้างใหม่ด้วยการรับประกันแบบ constitutional ในทุกชั้น เลข "7" ใน RCT-7 หมายถึงเจ็ดขั้นตอนเฉพาะที่ประกอบเป็นวงจรต่อเนื่องของการวิเคราะห์ การสร้าง การตรวจสอบ และการปรับปรุง
 
-บทความนี้อธิบายแต่ละขั้นตอน ว่าทำไมลำดับถึงสำคัญ และ RCT-7 ขับเคลื่อน RCT Ecosystem ทั้งหมดได้อย่างไร — รวมถึงสมการ FDIA โปรโตคอล JITNA และสถาปัตยกรรม 62 microservices
+บทความนี้อธิบายแต่ละขั้นตอน ว่าทำไมลำดับถึงสำคัญ และ RCT-7 ขับเคลื่อน RCT Ecosystem ทั้งหมดได้อย่างไร — รวมถึงสมการ FDIA โปรโตคอล JITNA และสถาปัตยกรรมแบบหลายบริการ (microservices)
 
 ---
 
@@ -97,7 +97,7 @@ RCT Ecosystem implement สิ่งนี้ผ่าน **8-Level Test Pyramid
 |---|---|---|---|
 | L1 | Unit | 1,343 | ความถูกต้องของ function แต่ละตัว |
 | L2 | Integration | 34 | การโต้ตอบระหว่าง module |
-| L3 | Service | 1,889 | พฤติกรรม microservice (62 services) |
+| L3 | Service | 1,889 | พฤติกรรม microservice (เลเยอร์ enterprise) |
 | L4 | Contract | - | ความสอดคล้องกับ API contract |
 | L5 | Performance | - | Latency และ throughput |
 | L6 | Security | OWASP A01-A10 | การสแกนช่องโหว่ |

@@ -27,7 +27,7 @@ But it has a structural flaw: **quality is assessed after construction, not desi
 
 RCT inverts this. You start with the desired outcome — specified precisely, mathematically where possible — and then decompose backwards to find the smallest components that must each be true for that outcome to occur.
 
-Any references in this article to 62 microservices or 4,849 tests should be read as an enterprise-private snapshot or enterprise environment evidence lane, not as the public SDK proof lane.
+Any references in this article to the enterprise service layer or 4,849 tests should be read as an enterprise-private snapshot or enterprise environment evidence lane, not as the public SDK proof lane.
 
 ---
 
@@ -84,7 +84,7 @@ Every complex component is decomposed until each remaining piece satisfies two c
 - **Single responsibility:** Does exactly one thing.
 - **Independent verifiability:** Can be tested in isolation.
 
-This decomposition was applied to build the RCT Ecosystem's 62-microservice architecture. Each microservice has exactly one responsibility (FDIA scoring, JITNA validation, Delta Engine compression, etc.) and its own test suite (contributing to 4,849 total passing tests).
+This decomposition was applied to build the RCT Ecosystem's service-based architecture. Each microservice has exactly one responsibility (FDIA scoring, JITNA validation, Delta Engine compression, etc.) and its own test suite (contributing to 4,849 total passing tests).
 
 ### 3. Quality by Structure, Not Testing
 

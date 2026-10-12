@@ -64,7 +64,7 @@ export default function DelentiaPlatformPage() {
           <p className="text-lg text-muted-foreground leading-relaxed">
             {isTh
               ? "Constitutional AI Operating Environment — ศูนย์กลางของ RCT Ecosystem ที่ 7 Genome มาบรรจบกัน, รัน 41 Production Algorithms และ FDIA ควบคุมทุก Inference"
-              : "The Constitutional AI Operating Environment where 7 Genomes converge. Runs 41 production algorithms across 62 microservices, with FDIA governing every inference — F\u00a0=\u00a0(D\u1da1)\u00a0\u00d7\u00a0A."}
+              : "The Constitutional AI Operating Environment where 7 Genomes converge. Runs 41 algorithms, with FDIA governing every inference — F\u00a0=\u00a0(D\u1da1)\u00a0\u00d7\u00a0A."}
           </p>
         </div>
       </section>
@@ -119,7 +119,7 @@ export default function DelentiaPlatformPage() {
           <p>
             {isTh
               ? "4,849 Tests ผ่าน / 0 ที่ล้มเหลว (เวอร์ชัน v5.4.5, 21 มีนาคม 2026) ครอบคลุม 8 ระดับ: Unit → Integration → System → Performance → Security → Chaos → Digital Twin → Hypothesis — ภายใต้ 41 Production Algorithms และ 62 Microservices"
-              : "4,849 tests passing / 0 failures (v5.4.5, March 21 2026). Covers 8 levels: Unit → Integration → System → Performance → Security → Chaos → Digital Twin → Hypothesis — powering 41 production algorithms across 62 microservices."}
+              : "4,849 tests passing / 0 failures (v5.4.5, March 21 2026). Covers 8 levels: Unit → Integration → System → Performance → Security → Chaos → Digital Twin → Hypothesis — powering the 41 algorithms."}
           </p>
           <p>
             {isTh
@@ -193,7 +193,7 @@ export default function DelentiaPlatformPage() {
               },
               {
                 titleEn: "JITNA Protocol Gateway", titleTh: "JITNA Protocol Gateway",
-                descEn: "Every agent interaction passes through JITNA RFC-001 before execution — structured, signed, and auditable across all 62 microservices.",
+                descEn: "Every agent interaction passes through JITNA RFC-001 before execution — structured, signed, and auditable across the platform's services.",
                 descTh: "ทุก Agent Interaction ผ่าน JITNA RFC-001 ก่อน Execution — มีโครงสร้าง, Signed และตรวจสอบได้ทั้ง 62 Microservices",
                 color: "#C4745B",
               },

@@ -73,7 +73,7 @@ If you're arriving from social media or seeing RCT Platform for the first time, 
 | 5 Reference Microservices | ✅ `microservices/` (297 passing tests) | — |
 | CLI (`rct` entry point) | ✅ editable install or built wheel | — |
 | Genome / Creator Profile API | ❌ 501 stub (`genome_api.py`) | ✅ Full implementation |
-| Full Production Microservice Stack | ❌ | ✅ 62 microservices |
+| Full Production Microservice Stack | ❌ | ✅ private enterprise layer (not in this repository) |
 | Enterprise Dashboard | ❌ | ✅ |
 | Docker Compose + full infra | ❌ | ✅ |
 | 8-level test pyramid (4,849 tests) | ❌ | ✅ private |
@@ -182,7 +182,7 @@ SDK Modules: signedai/ · core/ · rct_control_plane/
              5 reference microservices
 ```
 
-> **Enterprise layer** (62 microservices, proprietary) runs in production at [delentia.com](https://delentia.com).
+> **Enterprise layer** (proprietary, not in this repository) is described at [delentia.com](https://delentia.com).
 
 ---
 
@@ -591,7 +591,7 @@ Full OpenAPI 3.1.0 specification: [`contracts/openapi.yaml`](contracts/openapi.y
 ✅ **GitHub Action** — `rct-policy-gate` for CI/CD governance enforcement  
 
 Previous milestone:  
-✅ **4,849 Passed · 16 Skipped · 0 Failed · 0 Errors** — Complete private enterprise test suite (all 62 microservices)  
+✅ **4,849 Passed · 16 Skipped · 0 Failed · 0 Errors** — Private enterprise test suite (not in this repository)  
 
 Full SDK changelog → [CHANGELOG.md](CHANGELOG.md)
 
@@ -748,7 +748,7 @@ Delentia OS is the open-source core. The full ecosystem extends across:
 | [Delentia-Ecosystem](https://github.com/delentia-labs/Delentia-Ecosystem) | Plugin registry — LINE, Slack, skill manifests | ✅ Apache 2.0 |
 | [Delentia-Infra-Public](https://github.com/delentia-labs/Delentia-Infra-Public) | Community deployment — Docker, K8s, Helm, Terraform | ✅ Apache 2.0 |
 | [Delentia-Infra-Enterprise](https://github.com/delentia-labs/Delentia-Infra-Enterprise) | Enterprise HA — EKS/GKE, Vault, PDPA/GDPR compliance | 🔒 Proprietary |
-| [Delentia-Private-OS](https://github.com/delentia-labs/Delentia-Private-OS) | Enterprise platform — 62 microservices, 4,849 tests | 🔒 Proprietary |
+| [Delentia-Private-OS](https://github.com/delentia-labs/Delentia-Private-OS) | Enterprise platform — private | 🔒 Proprietary |
 | [Delentia-Website](https://github.com/delentia-labs/Delentia-Website) | Marketing + docs site — Next.js, Vercel | 🔒 Proprietary |
 
 ---

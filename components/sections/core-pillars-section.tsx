@@ -171,7 +171,7 @@ export default function CorePillarsSection({ locale }: CorePillarsSectionProps) 
       title: "Delta Memory Engine",
       desc:
         locale === "en"
-          ? "Stores only state changes, not full snapshots. 74% compression with <1ms state reconstruction."
+          ? "Stores only state changes, not full snapshots. Delta storage that is 39–90% smaller than full snapshots, measured in bytes."
           : "บันทึกเฉพาะสิ่งที่เปลี่ยนแปลง ลดหน่วยความจำ 74% พร้อม reconstruction <1ms",
       color: "#C4745B",
       statClass: "text-warm-terracotta",

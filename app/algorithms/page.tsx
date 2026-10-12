@@ -47,7 +47,7 @@ export default async function AlgorithmsPage() {
     {
       question: "What validates the 41-algorithm framework?",
       answer:
-        `The algorithm framework is presented through multiple evidence lanes. ${SITE_PUBLIC_SDK_EVIDENCE_LABEL} covers the open SDK and public release path, while ${SITE_ENTERPRISE_EVIDENCE_LABEL.toLowerCase()} covers the larger runtime footprint. The 0.3% hallucination figure is disclosed as a controlled-workload benchmark rather than a blanket production guarantee.`,
+        `The algorithm framework is presented through multiple evidence lanes. ${SITE_PUBLIC_SDK_EVIDENCE_LABEL} covers the open SDK and public release path, while ${SITE_ENTERPRISE_EVIDENCE_LABEL.toLowerCase()} covers the larger runtime footprint. No hallucination rate is claimed; an earlier figure was withdrawn because it could not be reproduced.`,
     },
     {
       question: "How does the algorithm tier system relate to the RCT 10-layer architecture?",

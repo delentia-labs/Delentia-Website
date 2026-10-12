@@ -218,9 +218,9 @@ export default function FdiaClient() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <m.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 }}
                 className="p-6 rounded-2xl border text-center" style={{ background: cardBg, borderColor: "rgba(196,116,91,0.4)" }}>
-                <div className="text-4xl font-bold mb-1" style={{ color: "#C4745B" }}>0.92</div>
+                <div className="text-4xl font-bold mb-1" style={{ color: "#C4745B" }}>11/12</div>
                 <div className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: textSecondary }}>
-                  {isEn ? "FDIA Protocol Score (v1)" : "FDIA Protocol Score (v1)"}
+                  {isEn ? "FDIA rank test (hand-written cases)" : "FDIA rank test (hand-written cases)"}
                 </div>
                 <div className="text-xs" style={{ color: isDark ? "#666" : "#999" }}>
                   {isEn ? "RCT Ecosystem benchmark" : "Benchmark RCT Ecosystem"}

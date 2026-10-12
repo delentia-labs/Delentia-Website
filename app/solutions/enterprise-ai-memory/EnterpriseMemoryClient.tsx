@@ -83,7 +83,7 @@ export default function EnterpriseAIMemoryPage() {
         <section className="sr-only">
           <p>
             {isEn
-              ? "Enterprise AI memory extends AI systems beyond context window limits using a persistent 3-layer storage stack — vector, graph, and SQL — with an 8-dimensional RCTDB schema, 74% lossless delta compression, and constitutional PDPA compliance controls for enterprise deployment."
+              ? "Enterprise AI memory extends AI systems beyond context window limits using a persistent 3-layer storage stack — vector, graph, and SQL — with an 8-dimensional RCTDB schema, delta storage (39–90% smaller than full snapshots, measured in bytes), and constitutional PDPA compliance controls for enterprise deployment."
               : "การจดจำ AI องค์กรช่วยขยาย AI ให้เกินขีดจำกัดของ context window ด้วยชั้นจัดเก็บถาวร 3 ชั้น — vector, graph และ SQL — พร้อม 8 มิติของ RCTDB Schema, Delta Compression 74% แบบไม่สูญเสียข้อมูล และการควบคุม PDPA สำหรับองค์กร"}
           </p>
         </section>

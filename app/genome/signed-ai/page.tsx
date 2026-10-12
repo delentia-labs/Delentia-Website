@@ -16,8 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "G5 — SignedAI Genome: 8D Verification & Consensus",
     "G5 — SignedAI Genome: การตรวจสอบ 8 มิติและฉันทามติ",
-    "SignedAI Genome delivers AI output verification through 8-dimensional scoring and a 7-model HexaCore consensus pipeline — achieving a 0.3% benchmark hallucination target vs 12–15% industry average.",
-    "SignedAI Genome ให้การตรวจสอบ Output AI ผ่านการให้คะแนน 8 มิติและ Pipeline ฉันทามติ HexaCore 7 โมเดล — บรรลุ Benchmark Hallucination Target 0.3%",
+    "SignedAI Genome verifies AI output through 8-dimensional scoring and a 7-model HexaCore consensus pipeline. No hallucination rate is claimed.",
+    "SignedAI Genome ให้การตรวจสอบ Output AI ผ่านการให้คะแนน 8 มิติและ Pipeline ฉันทามติ HexaCore 7 โมเดล (ไม่ได้อ้างอัตรา hallucination)",
     "/genome/signed-ai",
     ["SignedAI", "AI verification", "8D scoring", "HexaCore consensus", "hallucination reduction", "AI attestation"]
   )
@@ -97,7 +97,7 @@ export default async function GenomeSignedAIPage() {
 
   const faq = getFAQSchema([
     {
-      question: isTh ? "SignedAI บรรลุ 0.3% Hallucination ได้อย่างไร?" : "How does SignedAI achieve 0.3% hallucination?",
+      question: isTh ? "SignedAI ลด Hallucination ได้อย่างไร?" : "How does SignedAI reduce hallucination?",
       answer: isTh
         ? "โดยการรัน Task บนโมเดลอิสระ 7 ตัวพร้อมกัน (แทนที่จะเป็น 1 ตัว) และต้องการฉันทามติ 75% ก่อนการส่งมอบ Hallucinations มักเกิดจากโมเดลเดียว เมื่อ 6 จาก 7 โมเดลไม่เห็นด้วย Output นั้นถูกตั้งธงโดยอัตโนมัติ"
         : "By running tasks across 7 independent models simultaneously (instead of 1) and requiring 75% consensus before delivery. Hallucinations are typically single-model artifacts. When 6 of 7 models disagree, that output is automatically flagged.",
@@ -136,8 +136,8 @@ export default async function GenomeSignedAIPage() {
               <h1 className="text-4xl md:text-5xl font-bold text-foreground">SignedAI Genome</h1>
               <p className="text-xl text-foreground/70 max-w-2xl">
                 {isTh
-                  ? "การตรวจสอบ 8 มิติและฉันทามติ HexaCore 7 โมเดล — Benchmark Hallucination Target 0.3%"
-                  : "8-dimensional scoring and 7-model HexaCore consensus — 0.3% benchmark hallucination target."}
+                  ? "การตรวจสอบ 8 มิติและฉันทามติ HexaCore 7 โมเดล (ไม่ได้อ้างอัตรา hallucination)"
+                  : "8-dimensional scoring and 7-model HexaCore consensus. No hallucination rate is claimed."}
               </p>
             </div>
 
@@ -147,7 +147,7 @@ export default async function GenomeSignedAIPage() {
                 <p className="text-xs font-semibold text-rose-400 uppercase tracking-widest">
                   {isTh ? "Benchmark Hallucination Target" : "Benchmark Hallucination Target"}
                 </p>
-                <p className="text-4xl font-bold text-foreground">0.3%</p>
+                <p className="text-4xl font-bold text-foreground">not claimed</p>
                 <p className="text-sm text-foreground/60">{isTh ? "ผ่าน SignedAI Tier-4 Consensus Pipeline" : "via SignedAI Tier-4 Consensus Pipeline"}</p>
               </div>
               <div className="p-6 rounded-xl border border-border bg-card space-y-2">

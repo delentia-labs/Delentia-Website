@@ -52,9 +52,9 @@ export default async function EthicsPage() {
       titleEn: "Benchmark-Honest Claims",
       titleTh: "ยืนยันด้วย Benchmark เสมอ",
       descEn:
-        "Every public claim is qualified with evidence. We write 'Benchmark hallucination target: 0.3%' and 'FDIA benchmark accuracy: 0.92 vs ~0.65 baseline' — never stripped of context. We do not inflate numbers or delete qualifiers under time pressure.",
+        "Every public claim is qualified with evidence. We write 'no hallucination rate is claimed' and 'FDIA rank accuracy: 11 of 12 on a tiny hand-written set (a smoke test)' — never stripped of context. We do not inflate numbers or delete qualifiers under time pressure.",
       descTh:
-        "ทุกข้อความสาธารณะต้องมีหลักฐานรองรับ เราเขียน 'Benchmark hallucination target: 0.3%' และ 'FDIA benchmark accuracy: 0.92 vs ~0.65 baseline' โดยไม่ตัดบริบทออก ไม่ขยายตัวเลขหรือลบ qualifier ใดๆ แม้อยู่ภายใต้แรงกดดัน",
+        "ทุกข้อความสาธารณะต้องมีหลักฐานรองรับ เราเขียน 'ไม่ได้อ้างอัตรา hallucination' และ 'FDIA rank accuracy: 11 จาก 12 ในชุดทดสอบเล็ก (smoke test)' โดยไม่ตัดบริบทออก ไม่ขยายตัวเลขหรือลบ qualifier ใดๆ แม้อยู่ภายใต้แรงกดดัน",
     },
     {
       icon: Shield,

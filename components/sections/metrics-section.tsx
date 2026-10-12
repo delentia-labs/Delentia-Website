@@ -24,7 +24,7 @@ const PIXEL_ICONS = [
 ]
 
 const metrics = [
-  { label: { en: "Overall Accuracy", th: "ความแม่นยำโดยรวม" }, value: "96.1%", bar: 96.1, color: "#7B9E87" },
+  { label: { en: "Overall Accuracy", th: "ความแม่นยำโดยรวม" }, value: "not measured", bar: 96.1, color: "#7B9E87" },
   { label: { en: "Hallucination Benchmark", th: "Benchmark Hallucination" }, value: SITE_HALLUCINATION_RATE, bar: 99.7, color: "#7B9E87" },
   { label: { en: "Response Latency", th: "Response Latency" }, value: "< 200ms", bar: 80, color: "#D4A853" },
   { label: { en: "Availability Target", th: "Availability Target" }, value: SITE_UPTIME, bar: 99.9, color: "#7B9E87" },

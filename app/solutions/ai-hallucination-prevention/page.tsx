@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     "AI Hallucination Prevention — Multi-LLM Consensus Verification",
     "ป้องกัน AI Hallucination — Multi-LLM Consensus Verification",
     `Target a hallucination rate of ${SITE_HALLUCINATION_RATE} (vs an estimated 12-15% industry average) with SignedAI multi-LLM consensus verification. Cryptographic signing, complete audit trails, and enterprise-grade accuracy for regulated industries.`,
-    `มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} (เทียบกับค่าเฉลี่ยอุตสาหกรรมประมาณ 12-15%) ด้วย SignedAI Multi-LLM Consensus Cryptographic Signing และ Audit Trails สำหรับอุตสาหกรรมที่มีการกำกับดูแล`,
+    `ไม่ได้อ้างอัตรา hallucination (เทียบกับค่าเฉลี่ยอุตสาหกรรมประมาณ 12-15%) ด้วย SignedAI Multi-LLM Consensus Cryptographic Signing และ Audit Trails สำหรับอุตสาหกรรมที่มีการกำกับดูแล`,
     "/solutions/ai-hallucination-prevention",
     ["reduce AI hallucination", "multi-LLM consensus", "SignedAI verification", "AI accuracy", "cryptographic AI signing"]
   )

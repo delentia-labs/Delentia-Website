@@ -15,8 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "Constitutional AI vs RAG — Hallucination Prevention Comparison",
     "Constitutional AI vs RAG — เปรียบเทียบการลด Hallucination",
-    `RAG grounds AI responses in documents. Constitutional AI constrains what the system can output. This comparison explains the architectural difference, use cases, and why combining both targets a ${SITE_HALLUCINATION_RATE} hallucination rate in the Delentia OS Ecosystem.`,
-    `RAG ช่วยยึดคำตอบกับเอกสาร ส่วน Constitutional AI ควบคุมสิ่งที่ระบบสามารถปล่อยออกมาได้ หน้านี้อธิบายความต่างเชิงสถาปัตยกรรม use cases และเหตุผลที่การรวมทั้งสองแนวทางช่วยให้ Delentia Ecosystem มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE}`,
+    `RAG grounds AI responses in documents. Constitutional AI constrains what the system can output. This comparison explains the architectural difference, use cases, and why combining both is designed to reduce hallucinations in the Delentia OS Ecosystem.`,
+    `RAG ช่วยยึดคำตอบกับเอกสาร ส่วน Constitutional AI ควบคุมสิ่งที่ระบบสามารถปล่อยออกมาได้ หน้านี้อธิบายความต่างเชิงสถาปัตยกรรม use cases และเหตุผลที่การรวมทั้งสองแนวทางช่วยให้ Delentia Ecosystem ไม่ได้อ้างอัตรา hallucination`,
     "/compare/constitutional-ai-vs-rag",
     ["constitutional AI vs RAG", "hallucination prevention", "AI safety comparison"]
   )
@@ -29,7 +29,7 @@ const COMPARE_FAQS = [
   },
   {
     question: "Can you use RAG and Constitutional AI together?",
-    answer: `Yes. The Delentia Ecosystem combines both approaches. RAG provides factual grounding through RCTDB retrieval, while Constitutional AI (FDIA framework) provides deterministic safety constraints. Together, they target a ${SITE_HALLUCINATION_RATE} hallucination rate — compared to an estimated ~3-5% for RAG alone and ~12-15% for unguarded LLMs.`,
+    answer: `Yes. The Delentia Ecosystem combines both approaches. RAG provides factual grounding through RCTDB retrieval, while Constitutional AI (FDIA framework) provides deterministic safety constraints. Together, they are designed to reduce hallucinations (no hallucination rate is claimed).`,
   },
   {
     question: "Does RAG prevent hallucinations?",

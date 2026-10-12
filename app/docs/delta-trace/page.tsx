@@ -24,14 +24,14 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "Delta Engine Compression — RCT Platform",
     "Delta Engine Compression — RCT Platform",
-    "Visualize RCT's 74% memory compression claim. The Delta Engine stores only state changes — not full snapshots — enabling sub-millisecond rollback to any past agent state.",
+    "Visualize how the Delta Engine stores only what changed. The Delta Engine stores only state changes — not full snapshots — enabling sub-millisecond rollback to any past agent state.",
     "ดู RCT Delta Engine บีบอัด Memory 74% จริง — เก็บเฉพาะ state changes ไม่ใช่ full snapshots ทำให้ rollback ทุก tick ได้ใน <1ms",
     "/docs/delta-trace",
     [
       "delta engine compression",
       "RCT memory optimization",
       "agent state rollback",
-      "74% compression claim",
+      "delta storage",
       "constitutional AI memory",
     ]
   )
@@ -119,7 +119,7 @@ export default async function DeltaTracePage() {
           <p className="text-muted-foreground text-lg max-w-2xl mb-8 leading-relaxed">
             {isTh
               ? "RCT Delta Engine เก็บเฉพาะ state ที่เปลี่ยนแปลงใน simulation แต่ละ tick แทนที่จะเก็บ full snapshot — ลดขนาดหน่วยความจำลง 74% และยังสามารถ replay กลับไปทุก tick ได้ใน <1ms"
-              : "Instead of storing a full agent state snapshot every tick, the RCT Delta Engine records only what changed. This achieves 74% memory compression while retaining full rollback capability to any past tick."}
+              : "Instead of storing a full agent state snapshot every tick, the RCT Delta Engine records only what changed. This makes storage 39–90% smaller than full snapshots (measured in bytes) while retaining full rollback capability to any past tick."}
           </p>
 
           <div className="flex flex-wrap gap-3">

@@ -30,7 +30,7 @@ export default async function Page() {
   const faqSchema = getFAQSchema([
     {
       question: "How much compression does Enterprise AI Memory achieve compared to storing full conversation context?",
-      answer: "Enterprise AI Memory achieves 74% lossless delta compression — storing only context changes rather than full snapshots, enabling persistent memory across sessions without exponential storage costs.",
+      answer: "Enterprise AI Memory stores only context changes (39–90% smaller than full snapshots, measured in bytes) — storing only context changes rather than full snapshots, enabling persistent memory across sessions without exponential storage costs.",
     },
     {
       question: "How does RCTDB differ from vector databases for enterprise AI?",

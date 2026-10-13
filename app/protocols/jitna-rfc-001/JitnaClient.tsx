@@ -76,14 +76,14 @@ const useCases = [
     titleTh: "การประสานงาน Multi-Agent",
     descEn: "Multiple AI agents negotiate and reach consensus using JITNA packets. Each agent proposes, counters, and verifies until consensus is achieved.",
     descTh: "AI Agents หลายตัวเจรจาและบรรลุฉันทามติโดยใช้ JITNA Packets แต่ละ Agent เสนอ โต้แย้ง และตรวจสอบจนกว่าจะบรรลุฉันทามติ",
-    metricEn: "96.1% consensus accuracy",
-    metricTh: "ความแม่นยำฉันทามติ 96.1%",
+    metricEn: "consensus accuracy: not measured",
+    metricTh: "ความแม่นยำฉันทามติ: ยังไม่ได้วัด",
   },
   {
     titleEn: "Hallucination Prevention",
     titleTh: "การป้องกัน Hallucination",
-    descEn: `JITNA's Reflection primitive enables self-verification. Agents check their own outputs against intent before delivery, targeting a hallucination rate of ${SITE_HALLUCINATION_RATE}.`,
-    descTh: `Reflection Primitive ของ JITNA ทำให้เกิด Self-Verification Agents ตรวจสอบผลลัพธ์ของตนเองกับ Intent ก่อนส่งมอบ มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE}`,
+    descEn: `JITNA's Reflection primitive enables self-verification. Agents check their own outputs against intent before delivery, with no cost or hallucination figure claimed.`,
+    descTh: `Reflection Primitive ของ JITNA ทำให้เกิด Self-Verification Agents ตรวจสอบผลลัพธ์ของตนเองกับ Intent ก่อนส่งมอบ ไม่ได้อ้างอัตรา hallucination`,
     metricEn: `${SITE_HALLUCINATION_RATE} hallucination rate`,
     metricTh: `อัตรา Hallucination ${SITE_HALLUCINATION_RATE}`,
   },
@@ -109,8 +109,8 @@ const specs = [
   { labelEn: "Protocol Version", labelTh: "เวอร์ชัน Protocol", value: "RFC-001 v2.0" },
   { labelEn: "Packet Format", labelTh: "รูปแบบ Packet", value: "JSON-LD" },
   { labelEn: "Latency", labelTh: "Latency", value: "< 200ms" },
-  { labelEn: "Accuracy (design target)", labelTh: "ความแม่นยำ (เป้าหมาย)", value: "96.1%" },
-  { labelEn: "Hallucination Rate (target)", labelTh: "อัตรา Hallucination (เป้าหมาย)", value: "<0.3%" },
+  { labelEn: "Accuracy (design target)", labelTh: "ความแม่นยำ (เป้าหมาย)", value: "not measured" },
+  { labelEn: "Hallucination Rate (target)", labelTh: "อัตรา Hallucination (เป้าหมาย)", value: "not claimed" },
   { labelEn: "License", labelTh: "ใบอนุญาต", value: "Apache 2.0" },
 ]
 
@@ -173,8 +173,8 @@ export default function JitnaClient() {
             <m.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
               className="flex flex-wrap justify-center gap-3">
               {[
-                { v: "96.1%", l: isEn ? "Consensus Accuracy (target)" : "ความแม่นยำฉันทามติ (เป้าหมาย)" },
-                { v: "<0.3%", l: isEn ? "Hallucination Rate (target)" : "อัตรา Hallucination (เป้าหมาย)" },
+                { v: "not measured", l: isEn ? "Consensus Accuracy (target)" : "ความแม่นยำฉันทามติ (เป้าหมาย)" },
+                { v: "not claimed", l: isEn ? "Hallucination Rate (target)" : "อัตรา Hallucination (เป้าหมาย)" },
                 { v: "< 200ms", l: isEn ? "Packet Latency" : "Latency ของ Packet" },
               ].map((stat) => (
                 <div key={stat.v} className="px-5 py-3 rounded-xl border text-center" style={{ background: isDark ? "#1E1E1E" : "white", borderColor: cardBorder }}>
@@ -430,8 +430,8 @@ export default function JitnaClient() {
               {
                 title: isEn ? "AI Hallucination Prevention" : "การป้องกัน AI Hallucination",
                 description: isEn
-                  ? "How SignedAI consensus targets a hallucination rate under 0.3%."
-                  : "SignedAI Consensus มีเป้าหมาย Hallucination ต่ำกว่า 0.3% ได้อย่างไร",
+                  ? "How SignedAI consensus works toward fewer hallucinations (no rate is claimed)."
+                  : "SignedAI Consensus ลด Hallucination ได้อย่างไร",
                 href: "/solutions/ai-hallucination-prevention",
                 category: isEn ? "Solution" : "โซลูชัน",
               },

@@ -77,7 +77,7 @@ const metrics: Metric[] = [
     id: "cost",
     name: "Cost Efficiency",
     nameTh: "ประสิทธิภาพต้นทุน",
-    rctValue: "3.74",
+    rctValue: "not measured",
     industryValue: "1",
     improvement: "274%",
     unit: "x reduction",

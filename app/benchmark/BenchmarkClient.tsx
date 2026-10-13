@@ -23,14 +23,14 @@ import { Footer } from "@/components/footer"
 // Metrics section and TESTING_CANONICAL.md in the delentia-mcp-ecosystem repo
 // for what is actually verified today.
 const benchmarks = [
-  { metricEn: "Accuracy (internal benchmark)", metricTh: "ความแม่นยำ (Benchmark ภายใน)", rct: "99.7%", single: "85%", rctVal: 99.7, singleVal: 85, color: "#7B9E87", icon: Shield },
-  { metricEn: "Hallucination Rate (target)", metricTh: "อัตรา Hallucination (เป้าหมาย)", rct: "0.3%", single: "15%", rctVal: 0.3, singleVal: 15, color: "#C4745B", icon: TrendingUp, inverted: true },
-  { metricEn: "Warm Recall Latency (p95, target)", metricTh: "Warm Recall Latency (p95, เป้าหมาย)", rct: "<50ms", single: "~300ms", rctVal: 50, singleVal: 300, color: "#D4A853", icon: Clock, inverted: true },
-  { metricEn: "Cost Efficiency (internal estimate)", metricTh: "ประสิทธิภาพต้นทุน (ประมาณการภายใน)", rct: "3.74× less", single: "Baseline", rctVal: 73, singleVal: 0, color: "#89B4C8", icon: DollarSign },
+  { metricEn: "Accuracy (internal benchmark)", metricTh: "ความแม่นยำ (Benchmark ภายใน)", rct: "not measured", single: "not measured", rctVal: 0, singleVal: 0, color: "#7B9E87", icon: Shield },
+  { metricEn: "Hallucination Rate (target)", metricTh: "อัตรา Hallucination (เป้าหมาย)", rct: "not claimed", single: "not measured", rctVal: 0, singleVal: 0, color: "#C4745B", icon: TrendingUp, inverted: true },
+  { metricEn: "Warm Recall Latency (p95, target)", metricTh: "Warm Recall Latency (p95, เป้าหมาย)", rct: "<50ms", single: "not measured", rctVal: 50, singleVal: 0, color: "#D4A853", icon: Clock, inverted: true },
+  { metricEn: "Cost Efficiency (internal estimate)", metricTh: "ประสิทธิภาพต้นทุน (ประมาณการภายใน)", rct: "not measured", single: "not measured", rctVal: 0, singleVal: 0, color: "#89B4C8", icon: DollarSign },
   { metricEn: "Audit Trail", metricTh: "Audit Trail", rct: "Full", single: "None", rctVal: 100, singleVal: 0, color: "#B8A9C9", icon: CheckCircle },
   { metricEn: "Cryptographic Signing", metricTh: "Cryptographic Signing", rct: "Yes", single: "No", rctVal: 100, singleVal: 0, color: "#D4A853", icon: Shield },
-  { metricEn: "FDIA Protocol Score (internal benchmark)", metricTh: "FDIA Protocol Score (Benchmark ภายใน)", rct: "0.92", single: "~0.65", rctVal: 92, singleVal: 65, color: "#C4745B", icon: TrendingUp },
-  { metricEn: "L4 Virtuoso Benchmark (internal)", metricTh: "L4 Virtuoso Benchmark (ภายใน)", rct: "389/390", single: "N/A", rctVal: 99.7, singleVal: 0, color: "#B8A9C9", icon: Shield },
+  { metricEn: "FDIA Protocol Score (internal benchmark)", metricTh: "FDIA Protocol Score (Benchmark ภายใน)", rct: "not measured", single: "not measured", rctVal: 0, singleVal: 0, color: "#C4745B", icon: TrendingUp },
+  { metricEn: "L4 Virtuoso Benchmark (internal)", metricTh: "L4 Virtuoso Benchmark (ภายใน)", rct: "not measured", single: "N/A", rctVal: 0, singleVal: 0, color: "#B8A9C9", icon: Shield },
   { metricEn: "Uptime SLA (design target)", metricTh: "Uptime SLA (เป้าหมาย)", rct: "none published", single: "No SLA", rctVal: 100, singleVal: 80, color: "#7B9E87", icon: CheckCircle },
 ]
 
@@ -73,13 +73,13 @@ const counterStats = [
 ]
 
 const platformRows = [
-  { cap: { en: "Hallucination Rate (target)", th: "อัตรา Hallucination (เป้าหมาย)" }, rct: { label: "0.3%", type: "good" }, lc: { label: "~12–15%", type: "bad" }, agpt: { label: "~10–20%", type: "bad" } },
-  { cap: { en: "Accuracy Rate (benchmark)", th: "ความแม่นยำ (Benchmark)" }, rct: { label: "99.7%", type: "good" }, lc: { label: "~85%", type: "mid" }, agpt: { label: "~80%", type: "mid" } },
+  { cap: { en: "Hallucination Rate (target)", th: "อัตรา Hallucination (เป้าหมาย)" }, rct: { label: "not measured", type: "mid" }, lc: { label: "not measured", type: "mid" }, agpt: { label: "not measured", type: "mid" } },
+  { cap: { en: "Accuracy Rate (benchmark)", th: "ความแม่นยำ (Benchmark)" }, rct: { label: "not measured", type: "mid" }, lc: { label: "not measured", type: "mid" }, agpt: { label: "not measured", type: "mid" } },
   { cap: { en: "Cryptographic Audit Trail", th: "Cryptographic Audit Trail" }, rct: { label: "✓ Full", type: "check" }, lc: { label: "✗ None", type: "cross" }, agpt: { label: "✗ None", type: "cross" } },
   { cap: { en: "Multi-LLM Consensus", th: "Multi-LLM Consensus" }, rct: { label: "✓ 9 HexaCore LLMs", type: "check" }, lc: { label: "~ Manual wiring", type: "partial" }, agpt: { label: "✗ Single model", type: "cross" } },
   { cap: { en: "Persistent Memory", th: "Persistent Memory" }, rct: { label: "✓ RCTDB v2.0", type: "check" }, lc: { label: "~ Plugin-based", type: "partial" }, agpt: { label: "~ Limited", type: "partial" } },
-  { cap: { en: "Warm Recall (p95, target)", th: "Warm Recall (p95, เป้าหมาย)" }, rct: { label: "<50ms", type: "good" }, lc: { label: "~350–600ms", type: "bad" }, agpt: { label: "~500ms–2s", type: "bad" } },
-  { cap: { en: "Cost per Query (estimate)", th: "ต้นทุนต่อ Query (ประมาณการ)" }, rct: { label: "3.74× vs all-Claude baseline", type: "good" }, lc: { label: "Baseline", type: "mid" }, agpt: { label: "+20–40% overhead", type: "bad" } },
+  { cap: { en: "Warm Recall (p95, target)", th: "Warm Recall (p95, เป้าหมาย)" }, rct: { label: "<50ms", type: "good" }, lc: { label: "not measured", type: "mid" }, agpt: { label: "not measured", type: "mid" } },
+  { cap: { en: "Cost per Query (estimate)", th: "ต้นทุนต่อ Query (ประมาณการ)" }, rct: { label: "not measured", type: "mid" }, lc: { label: "not measured", type: "mid" }, agpt: { label: "not measured", type: "mid" } },
   { cap: { en: "Enterprise Compliance", th: "Enterprise Compliance" }, rct: { label: "✓ Full audit+sign", type: "check" }, lc: { label: "✗ DIY only", type: "cross" }, agpt: { label: "✗ None", type: "cross" } },
   { cap: { en: "Intent-Centric Processing", th: "Intent-Centric Processing" }, rct: { label: "✓ FDIA equation", type: "check" }, lc: { label: "✗ Prompt-centric", type: "cross" }, agpt: { label: "✗ Goal-decomp only", type: "cross" } },
   { cap: { en: "Self-Evolution (Learning)", th: "Self-Evolution" }, rct: { label: "✓ 7-Genome system", type: "check" }, lc: { label: "✗ Static chains", type: "cross" }, agpt: { label: "~ Experimental", type: "partial" } },
@@ -563,7 +563,7 @@ export default function BenchmarkPage() {
                 { value: "7,109", label: isEn ? "Passed (public repository, CI-verified)" : "ผ่าน (public repository, CI-verified)", color: "#7B9E87" },
                 { value: "0", label: isEn ? "Failed" : "ล้มเหลว", color: "#C4745B" },
                 { value: "6,738+", label: isEn ? "Total Tests (enterprise, private)" : "Tests ทั้งหมด (enterprise, private)", color: "#D4A853" },
-                { value: "0.92", label: isEn ? "FDIA Accuracy (internal benchmark)" : "FDIA Accuracy (Benchmark ภายใน)", color: "#89B4C8" },
+                { value: "not measured", label: isEn ? "FDIA Accuracy (internal benchmark)" : "FDIA Accuracy (Benchmark ภายใน)", color: "#89B4C8" },
               ].map((s, i) => (
                 <m.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                   className={`p-5 rounded-2xl border text-center ${isDark ? "bg-[#1E1E1E] border-[#2A2A2A]" : "bg-white border-warm-light-gray"}`}>
@@ -574,8 +574,8 @@ export default function BenchmarkPage() {
             </div>
             <div className={`p-5 rounded-xl border text-sm leading-relaxed ${isDark ? "bg-[#1E1E1E] border-[#2A2A2A] text-[#999]" : "bg-white border-warm-light-gray text-[#4A4A4A]"}`}>
               {isEn
-                ? "FDIA accuracy 0.92 (internal benchmark) vs industry average ~0.65. Test pyramid: Unit → Integration → Contract → Component → API → E2E → Performance → Security (8 levels). Zero failures across 6,738+ tests (enterprise, private snapshot) represents the first clean run in project history — not independently audited."
-                : "FDIA Accuracy 0.92 (Benchmark ภายใน) เทียบกับอุตสาหกรรมที่ ~0.65 Test Pyramid: Unit→Integration→Contract→Component→API→E2E→Performance→Security (8 ระดับ) ผ่าน 6,738+ Tests (enterprise, private snapshot) โดยไม่มีความล้มเหลวเลย — ครั้งแรกในประวัติศาสตร์โปรเจกต์ ยังไม่ผ่านการตรวจสอบอิสระ"}
+                ? "The only FDIA accuracy measured in the public repository is 11 of 12 cases on a tiny hand-written rank test, which is a smoke test, not a benchmark. The public CI suite passes with 0 failures (7,109 passed, 2026-10-12)."
+                : "ค่า FDIA accuracy เดียวที่วัดได้ในรีโปสาธารณะคือ 11 จาก 12 เคสในชุดทดสอบเล็กที่เขียนด้วยมือ ซึ่งเป็น smoke test ไม่ใช่ benchmark ชุดทดสอบ CI สาธารณะผ่านโดยไม่มีความล้มเหลว (7,109 ผ่าน, 12 ต.ค. 2026)"}
             </div>
           </div>
         </section>

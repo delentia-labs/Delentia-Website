@@ -40,8 +40,8 @@ const PHASES = [
   },
   {
     id: "Phase III",
-    en: { title: "The Crucible", subtitle: "2022–2023", body: "Enterprise pilots that failed publicly. Each failure was documented, published, and fed back into the system design. The Crucible phase produced the Hallucination Reduction Pipeline that would become SignedAI's 8D scoring methodology and the 0.3% benchmark target." },
-    th: { title: "The Crucible — เบ้าหลอม", subtitle: "2022–2023", body: "Pilot ระดับองค์กรที่ล้มเหลวต่อสาธารณะ ความล้มเหลวแต่ละครั้งถูกบันทึก เผยแพร่ และป้อนกลับเข้าสู่การออกแบบระบบ เฟส Crucible ผลิต Hallucination Reduction Pipeline ที่จะกลายเป็นวิธีการให้คะแนน 8D ของ SignedAI และเป้าหมาย Benchmark 0.3%" },
+    en: { title: "The Crucible", subtitle: "2022–2023", body: "Enterprise pilots that failed publicly. Each failure was documented, published, and fed back into the system design. The Crucible phase produced the Hallucination Reduction Pipeline that would become SignedAI's 8D scoring methodology." },
+    th: { title: "The Crucible — เบ้าหลอม", subtitle: "2022–2023", body: "Pilot ระดับองค์กรที่ล้มเหลวต่อสาธารณะ ความล้มเหลวแต่ละครั้งถูกบันทึก เผยแพร่ และป้อนกลับเข้าสู่การออกแบบระบบ เฟส Crucible ผลิต Hallucination Reduction Pipeline ที่จะกลายเป็นวิธีการให้คะแนน 8D ของ SignedAI" },
     color: "border-rose-400/30 bg-rose-400/5",
     tag: "Failure → Learning",
   },
@@ -54,8 +54,8 @@ const PHASES = [
   },
   {
     id: "Phase V",
-    en: { title: "The Genesis", subtitle: "2024–Present", body: "Constitutional AI operationalized. The 7 Genome System is live. The JITNA language specification is published as an open RFC. SignedAI consensus pipeline achieves sub-0.3% hallucination on controlled benchmarks. The Architect's Genome becomes the permanent WHY — the north star all other genomes navigate toward." },
-    th: { title: "The Genesis — การก่อกำเนิด", subtitle: "2024–ปัจจุบัน", body: "Constitutional AI ถูกปฏิบัติงานจริง ระบบ 7 Genome พร้อมใช้งาน JITNA Language Specification เผยแพร่เป็น open RFC SignedAI Consensus Pipeline บรรลุ Hallucination ต่ำกว่า 0.3% บน Controlled Benchmarks Architect's Genome กลายเป็น WHY ถาวร — ดาวเหนือที่ Genomes อื่นทุกตัวนำทางไปหา" },
+    en: { title: "The Genesis", subtitle: "2024–Present", body: "Constitutional AI operationalized. The 7 Genome System is live. The JITNA language specification is published as an open RFC. The SignedAI consensus pipeline is built; no hallucination rate is claimed. The Architect's Genome becomes the permanent WHY — the north star all other genomes navigate toward." },
+    th: { title: "The Genesis — การก่อกำเนิด", subtitle: "2024–ปัจจุบัน", body: "Constitutional AI ถูกปฏิบัติงานจริง ระบบ 7 Genome พร้อมใช้งาน JITNA Language Specification เผยแพร่เป็น open RFC SignedAI Consensus Pipeline พร้อมใช้งาน (ไม่ได้อ้างอัตรา hallucination) Architect's Genome กลายเป็น WHY ถาวร — ดาวเหนือที่ Genomes อื่นทุกตัวนำทางไปหา" },
     color: "border-violet-400/30 bg-violet-400/5",
     tag: "Genesis",
   },

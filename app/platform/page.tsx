@@ -84,11 +84,11 @@ export default async function PlatformPage() {
 
   const performanceMetrics = [
     { metric: p("metric_hallucination"), rct: SITE_HALLUCINATION_RATE, industry: "12-15%", improvement: locale === "th" ? "หลักฐาน benchmark" : "Benchmark evidence" },
-    { metric: p("metric_compression"), rct: "up to 74% lossless (internal benchmark)", industry: "30-40%", improvement: locale === "th" ? "Benchmark ภายใน" : "Internal benchmark" },
-    { metric: p("metric_latency"), rct: "0.07-1.5s (internal benchmark)", industry: "2-5s", improvement: locale === "th" ? "Benchmark ภายใน" : "Internal benchmark" },
+    { metric: p("metric_compression"), rct: "39–90% smaller than full snapshots, measured in bytes", industry: "n/a", improvement: locale === "th" ? "วัดเป็นไบต์" : "Measured in bytes" },
+    { metric: p("metric_latency"), rct: "0.07-1.5s (internal benchmark)", industry: "2-5s", improvement: locale === "th" ? "วัดเป็นไบต์" : "Measured in bytes" },
     { metric: locale === "th" ? "เป้าหมายความพร้อมใช้งาน" : "Availability Target", rct: SITE_UPTIME, industry: "99.5%", improvement: locale === "th" ? "เป้าหมายปฏิบัติการ" : "Operational target" },
     { metric: p("metric_coverage"), rct: `${SITE_PUBLIC_SDK_TESTS} verified / ${SITE_PUBLIC_SDK_COVERAGE}`, industry: "70-80%", improvement: locale === "th" ? "public SDK proof lane" : "Public SDK proof lane" },
-    { metric: p("metric_cost"), rct: "3.74x reduction (internal estimate)", industry: "1x baseline", improvement: locale === "th" ? "ประมาณการภายใน" : "Internal estimate" },
+    { metric: p("metric_cost"), rct: "not measured", industry: "1x baseline", improvement: locale === "th" ? "ประมาณการภายใน" : "Internal estimate" },
   ]
 
   const regionalMarkets = [

@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "RCTDB vs Vector Databases — AI Memory vs Semantic Search",
     "RCTDB vs Vector Databases — AI Memory เทียบกับ Semantic Search",
-    "Pinecone and Weaviate are great for semantic search. RCTDB is designed for AI memory — full PDPA audit trail, 8-dimensional provenance, UUID tombstone erasure, and Delta Engine 74% compression. Here is the architectural difference.",
+    "Pinecone and Weaviate are great for semantic search. RCTDB is designed for AI memory — full PDPA audit trail, 8-dimensional provenance, UUID tombstone erasure, and Delta Engine delta storage. Here is the architectural difference.",
     "Pinecone และ Weaviate เหมาะสำหรับ semantic search ส่วน RCTDB ถูกออกแบบเพื่อ AI memory พร้อม PDPA audit trail, provenance 8 มิติ, การลบแบบ UUID tombstone และ Delta Engine compression 74% นี่คือความต่างเชิงสถาปัตยกรรม",
     "/compare/rctdb-vs-vector-databases",
     ["RCTDB vs vector databases", "AI memory", "semantic search comparison"]
@@ -42,7 +42,7 @@ const RCTDB_FAQS = [
   },
   {
     question: "What is the 8-dimensional RCTDB schema?",
-    answer: "RCTDB stores 8 dimensions per record: (1) query_hash — semantic fingerprint, (2) fdia_scores — D/I/A/F values, (3) subject_uuid — PDPA-compliant subject reference, (4) model_chain — which LLMs were used, (5) consensus_result — SignedAI agreement level, (6) delta_chain — incremental state for 74% compression, (7) timestamp — immutable creation time, (8) provenance — source documentation and access log.",
+    answer: "RCTDB stores 8 dimensions per record: (1) query_hash — semantic fingerprint, (2) fdia_scores — D/I/A/F values, (3) subject_uuid — PDPA-compliant subject reference, (4) model_chain — which LLMs were used, (5) consensus_result — SignedAI agreement level, (6) delta_chain — incremental state (39–90% smaller than full snapshots, measured in bytes), (7) timestamp — immutable creation time, (8) provenance — source documentation and access log.",
   },
   {
     question: "What is Delta Engine compression and how does it save 74% storage?",
@@ -58,7 +58,7 @@ const rows = [
   { feature: "FDIA score storage (D/I/A/F)", pinecone: "no", weaviate: "no", RCTDB: "yes" },
   { feature: "Model chain provenance", pinecone: "no", weaviate: "no", RCTDB: "yes" },
   { feature: "SignedAI consensus tracking", pinecone: "no", weaviate: "no", RCTDB: "yes" },
-  { feature: "Delta compression (74% lossless)", pinecone: "no", weaviate: "no", RCTDB: "yes" },
+  { feature: "Delta storage (39–90% smaller than full snapshots, measured in bytes)", pinecone: "no", weaviate: "no", RCTDB: "yes" },
   { feature: "PDPA Section 33 evidence (auto)", pinecone: "no", weaviate: "no", RCTDB: "yes" },
   { feature: "Warm recall (<50ms on cache hit)", pinecone: "partial", weaviate: "partial", RCTDB: "yes" },
   { feature: "Multi-tenant data isolation", pinecone: "yes", weaviate: "yes", RCTDB: "yes" },
@@ -172,7 +172,7 @@ export default async function RCTDBvsVectorDBs() {
                   "Native subject_uuid for PDPA right-to-erasure",
                   "UUID tombstone deletes data subject access instantly",
                   "Automatic Section 33 explainability audit evidence",
-                  "Delta Engine 74% compression for state changes",
+                  "Delta Engine: delta storage for state changes (39–90% smaller than full snapshots, measured in bytes)",
                   "Stores FDIA scores, model chains, and consensus results",
                   "Integrated directly with JITNA protocol and SignedAI",
                 ],

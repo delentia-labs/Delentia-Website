@@ -186,7 +186,7 @@ export default async function AboutPage() {
       title: isTh ? "Delta Engine Compression" : "Delta Engine Compression",
       description: isTh
         ? "เก็บเฉพาะ state ที่เปลี่ยนแปลง ลดภาระหน่วยความจำเฉลี่ยสูงสุด 74% (Benchmark ภายใน แปรผันตาม input จริง) พร้อม reconstruction ระดับต่ำกว่า 1ms"
-        : "Stores only changed state, reducing memory overhead by up to 74% on average (internal benchmark; varies with real input) with sub-millisecond reconstruction.",
+        : "Stores only changed state, reducing memory overhead (39–90% smaller than full snapshots, measured in bytes; varies with real input) with sub-millisecond reconstruction.",
       label: isTh ? "Operating pillar" : "Operating pillar",
       footer: isTh ? "ดู logic การบีบอัดเชิง runtime" : "Inspect runtime compression logic",
       iconSrc: pixelIcons.formula,
@@ -271,7 +271,7 @@ export default async function AboutPage() {
   const values = [
     { icon: Eye, title: isTh ? "Radical Honesty" : "Radical Honesty", desc: isTh ? "เรายอมรับความไม่แน่นอน ทุก Output มี Confidence Score ไม่ใช่ความแน่นอนเทียม" : "We embrace uncertainty. Every system output includes confidence scores, not false certainty." },
     { icon: Heart, title: isTh ? "Survivor's Empathy" : "Survivor's Empathy", desc: isTh ? "ออกแบบสำหรับผู้ที่มีทรัพยากรจำกัด ถ้ามันทำงานบนมือถือได้ มันทำงานได้ทุกที่" : "Designed for those with limited resources. If it works on a single phone, it works everywhere." },
-    { icon: Shield, title: isTh ? "Verifiable Truth" : "Verifiable Truth", desc: isTh ? "ทุก AI Output ต้องตรวจสอบได้ โดยหลักฐาน benchmark ปัจจุบันชี้ไปที่ hallucination ระดับ 0.3% บน controlled workloads และยังอยู่ในช่วงขยายผลเชิงระบบ" : "Every AI output must be verifiable. Current benchmark evidence points to 0.3% hallucination on controlled workloads while the broader system rollout is still maturing." },
+    { icon: Shield, title: isTh ? "Verifiable Truth" : "Verifiable Truth", desc: isTh ? "ทุก AI Output ต้องตรวจสอบได้ ปัจจุบันเรายังไม่อ้างอัตรา hallucination (ตัวเลขที่เคยใช้ถูกถอนเพราะทำซ้ำไม่ได้) และยังอยู่ในช่วงขยายผลเชิงระบบ" : "Every AI output must be verifiable. We do not currently claim a hallucination rate (an earlier figure was withdrawn because it could not be reproduced) while the broader system rollout is still maturing." },
     { icon: Sparkles, title: isTh ? "Human-Centric Power" : "Human-Centric Power", desc: isTh ? "AI ไม่ใช่พระเอก พระเอกตัวจริงคือ Intent และมนุษย์ผู้ลงนามการตัดสินใจสุดท้าย" : "AI is not the hero. The real hero is the Intent behind it, and the human who signs the final decision." },
     { icon: Target, title: isTh ? "Long-Term Stewardship" : "Long-Term Stewardship", desc: isTh ? "ทุกบรรทัดโค้ดเป็นส่วนหนึ่งของสิ่งมีชีวิต เราสร้างเพื่อทศวรรษ ไม่ใช่ไตรมาส" : "Every line of code is part of a living organism. We build for decades, not quarters." },
   ]
@@ -409,7 +409,7 @@ export default async function AboutPage() {
             "name": "How does Delentia Labs prevent AI hallucination in enterprise deployments?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Delentia Labs uses a multi-layer verification architecture: the FDIA equation decomposes intent into auditable components, SignedAI runs multi-LLM consensus scoring, and the memory layer cross-checks outputs against governed knowledge. Public pages disclose benchmark claims only with explicit scope; the current 0.3% hallucination figure is framed as controlled-workload benchmark evidence, not a universal production guarantee."
+              "text": "Delentia Labs uses a multi-layer verification architecture: the FDIA equation decomposes intent into auditable components, SignedAI runs multi-LLM consensus scoring, and the memory layer cross-checks outputs against governed knowledge. Public pages disclose benchmark claims only with explicit scope; no hallucination rate is currently claimed (an earlier figure was withdrawn because it could not be reproduced)."
             }
           },
           {

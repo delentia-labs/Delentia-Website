@@ -14,20 +14,20 @@ export default function BenchmarkSummaryClient() {
 
   const metrics = [
     {
-      title: language === "th" ? "Hallucination rate 0.3%" : "0.3% hallucination rate",
+      title: language === "th" ? "ไม่ได้อ้างอัตรา hallucination" : "No hallucination rate is claimed",
       description: language === "th" ? "วัดบน controlled enterprise workloads พร้อม cross-check กับ SignedAI disagreement logs และ manual validation sample." : "Measured on controlled enterprise workloads and cross-checked against SignedAI disagreement logs plus a manual validation sample.",
       href: `${localePrefix}/solutions/ai-hallucination-prevention`,
       icon: ShieldCheck,
-      badge: "0.3%",
+      badge: "not claimed",
       meta: language === "th" ? "Trust metric" : "Trust metric",
       tags: ["Verification", "Consensus", "Validation"],
     },
     {
-      title: language === "th" ? "FDIA accuracy 0.92" : "0.92 FDIA accuracy",
+      title: language === "th" ? "FDIA: 11 จาก 12 เคสในชุดทดสอบเล็ก" : "FDIA: 11 of 12 on a tiny hand-written set",
       description: language === "th" ? "ใช้เป็น public-safe summary ของวิธีที่สมการ FDIA สัมพันธ์กับ human-evaluated ground truth ใน benchmark factual QA." : "A public-safe summary of how the FDIA equation tracks human-evaluated ground truth in the factual QA benchmark.",
       href: `${localePrefix}/methodology`,
       icon: BarChart3,
-      badge: "0.92",
+      badge: "11/12",
       meta: language === "th" ? "Method-linked metric" : "Method-linked metric",
       tags: ["FDIA", "Ground truth", "Methodology"],
     },
@@ -90,8 +90,8 @@ export default function BenchmarkSummaryClient() {
         { href: `${localePrefix}/evaluation`, label: language === "th" ? "ไปหน้า evaluation" : "Go to evaluation", variant: "secondary" },
       ]}
       stats={[
-        { label: language === "th" ? "Hallucination" : "Hallucination", value: "0.3%", detail: language === "th" ? "controlled enterprise workload" : "controlled enterprise workload" },
-        { label: language === "th" ? "FDIA accuracy" : "FDIA accuracy", value: "0.92", detail: language === "th" ? "benchmark factual QA" : "benchmark factual QA" },
+        { label: language === "th" ? "Hallucination" : "Hallucination", value: "not claimed", detail: language === "th" ? "controlled enterprise workload" : "controlled enterprise workload" },
+        { label: language === "th" ? "FDIA accuracy" : "FDIA accuracy", value: "11 of 12", detail: language === "th" ? "ชุดทดสอบเล็กที่เขียนด้วยมือ (smoke test)" : "tiny hand-written set (a smoke test)" },
         { label: language === "th" ? "Warm recall" : "Warm recall", value: "<50ms", detail: language === "th" ? "hot-zone cache hits" : "hot-zone cache hits" },
         { label: language === "th" ? "Public SDK" : "Public SDK", value: `${SITE_PUBLIC_SDK_TESTS}`, detail: language === "th" ? `verified • updated ${SITE_EVIDENCE_LAST_UPDATED}` : `verified • updated ${SITE_EVIDENCE_LAST_UPDATED}` },
       ]}

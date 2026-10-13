@@ -32,8 +32,8 @@ const faqCategories = [
       {
         qEn: "What makes RCT different from LangChain or AutoGPT?",
         qTh: "RCT แตกต่างจาก LangChain หรือ AutoGPT อย่างไร?",
-        aEn: `RCT is a complete ecosystem, not just a framework. It includes its own equation (FDIA), protocol (JITNA), database (RCTDB), 41 algorithms, and 7 genome subsystems. While LangChain focuses on chaining LLM calls and AutoGPT on autonomous agents, RCT provides end-to-end AI governance with built-in quality control (targeting a ${SITE_HALLUCINATION_RATE} hallucination rate vs an industry estimate of 12-15%), cost optimization, and evolutionary improvement.`,
-        aTh: `RCT เป็น Ecosystem ที่สมบูรณ์ ไม่ใช่แค่ Framework มี Equation (FDIA), Protocol (JITNA), Database (RCTDB), 41 Algorithms และ 7 Genome Subsystems พร้อมเป้าหมาย Hallucination Rate ${SITE_HALLUCINATION_RATE} เทียบกับ Industry 12-15%`,
+        aEn: `RCT is a complete ecosystem, not just a framework. It includes its own equation (FDIA), protocol (JITNA), database (RCTDB), 41 algorithms, and 7 genome subsystems. While LangChain focuses on chaining LLM calls and AutoGPT on autonomous agents, RCT provides end-to-end AI governance with built-in quality control (no hallucination rate is claimed), cost optimization, and evolutionary improvement.`,
+        aTh: `RCT เป็น Ecosystem ที่สมบูรณ์ ไม่ใช่แค่ Framework มี Equation (FDIA), Protocol (JITNA), Database (RCTDB), 41 Algorithms และ 7 Genome Subsystems พร้อมไม่ได้อ้างอัตรา Hallucination`,
       },
       {
         qEn: "Is RCT open source?",
@@ -64,8 +64,8 @@ const faqCategories = [
       {
         qEn: "What are the 41 Algorithms?",
         qTh: "41 Algorithms คืออะไร?",
-        aEn: "The 41 algorithms span across the 10-layer architecture, covering everything from data ingestion (Layer 1) to autonomous improvement (Layer 10). They include algorithms for intent classification, context compression (74% lossless), hallucination detection, and cost optimization (3.74x reduction). The public repository's CI (Python 3.12, 2026-10-12) reports 7,109 passing tests.",
-        aTh: "41 Algorithms กระจายอยู่ใน 10 ชั้นของสถาปัตยกรรม ครอบคลุมตั้งแต่ Data Ingestion ถึง Autonomous Improvement รวมถึง Intent Classification, Context Compression (74% lossless), Hallucination Detection และ Cost Optimization (3.74x reduction) โดย public engineering snapshot ปัจจุบันรายงานผลการทดสอบที่ผ่านทั้งหมด 7,109 รายการในรีโป public (CI)",
+        aEn: "The 41 algorithms span across the 10-layer architecture, covering everything from data ingestion (Layer 1) to autonomous improvement (Layer 10). They include algorithms for intent classification, context compression, hallucination detection, and cost-aware routing. The public repository's CI (Python 3.12, 2026-10-12) reports 7,109 passing tests.",
+        aTh: "41 Algorithms กระจายอยู่ใน 10 ชั้นของสถาปัตยกรรม ครอบคลุมตั้งแต่ Data Ingestion ถึง Autonomous Improvement รวมถึง Intent Classification, Context Compression, Hallucination Detection และ Cost-aware routing โดย public engineering snapshot ปัจจุบันรายงานผลการทดสอบที่ผ่านทั้งหมด 7,109 รายการในรีโป public (CI)",
       },
       {
         qEn: "What LLM providers are supported?",
@@ -76,17 +76,17 @@ const faqCategories = [
       {
         qEn: "What is the RCT HexaCore 7-model architecture?",
         qTh: "สถาปัตยกรรม HexaCore 7 โมเดลของ RCT คืออะไร?",
-        aEn: `HexaCore is the 7-model AI infrastructure: 3 Western LLMs + 3 Eastern LLMs + 1 Thai regional model (Typhoon v2). For critical queries, all 7 models process in parallel through the HexaCore Consensus mechanism, which enforces constitutional agreement thresholds (50–100% by tier) before any output is released. This achieves 3.74x cost reduction vs single-model deployments while targeting a ${SITE_HALLUCINATION_RATE} hallucination rate.`,
-        aTh: `HexaCore คือโครงสร้าง AI 7 โมเดล: LLM ตะวันตก 3 ตัว + ตะวันออก 3 ตัว + โมเดลไทย 1 ตัว (Typhoon v2) สำหรับ query สำคัญ ทั้ง 7 โมเดลประมวลผลพร้อมกันผ่านกลไก HexaCore Consensus ที่บังคับ threshold รัฐธรรมนูญ (50–100% ตาม Tier) ก่อนปล่อยผลลัพธ์ ทำให้ลดต้นทุน 3.74 เท่าและมีเป้าหมาย hallucination ${SITE_HALLUCINATION_RATE}`,
+        aEn: `HexaCore is the 7-model AI infrastructure: 3 Western LLMs + 3 Eastern LLMs + 1 Thai regional model (Typhoon v2). For critical queries, all 7 models process in parallel through the HexaCore Consensus mechanism, which enforces constitutional agreement thresholds (50–100% by tier) before any output is released. Routing simple queries to cheaper models is designed to lower cost with no cost or hallucination figure claimed.`,
+        aTh: `HexaCore คือโครงสร้าง AI 7 โมเดล: LLM ตะวันตก 3 ตัว + ตะวันออก 3 ตัว + โมเดลไทย 1 ตัว (Typhoon v2) สำหรับ query สำคัญ ทั้ง 7 โมเดลประมวลผลพร้อมกันผ่านกลไก HexaCore Consensus ที่บังคับ threshold รัฐธรรมนูญ (50–100% ตาม Tier) ก่อนปล่อยผลลัพธ์ ซึ่งออกแบบมาเพื่อลดต้นทุนและลด hallucination (ไม่ได้อ้างตัวเลข)`,
       },
       {
-        qEn: `How does SignedAI target a ${SITE_HALLUCINATION_RATE} hallucination rate?`,
-        qTh: `SignedAI มีเป้าหมาย hallucination ${SITE_HALLUCINATION_RATE} ได้อย่างไร?`,
-        aEn: `SignedAI routes critical queries through 4–8 models simultaneously and requires constitutional consensus: Tier 4 = 50% agreement, Tier 6 = 67%, Tier 8 = 75%, Tier S = 100%. If consensus is not reached, the system escalates rather than releasing an unverified output. The industry average hallucination rate is estimated at 12–15% in published research; RCT's own hallucination rate is ${SITE_HALLUCINATION_RATE} through this multi-model verification layer combined with Ed25519 cryptographic signatures on all consensus decisions.`,
-        aTh: `SignedAI ส่ง query สำคัญผ่าน 4–8 โมเดลพร้อมกันและต้องการ consensus รัฐธรรมนูญ: Tier 4 = 50%, Tier 6 = 67%, Tier 8 = 75%, Tier S = 100% ถ้าไม่ถึง threshold ระบบจะ escalate ไม่ใช่ปล่อยผลลัพธ์ที่ยังไม่ verified อุตสาหกรรม hallucinate ที่ 12–15% (ประมาณการจากงานวิจัยที่เผยแพร่) แต่ RCT มีเป้าหมาย ${SITE_HALLUCINATION_RATE} ผ่าน multi-model verification layer พร้อมลายเซ็น Ed25519`,
+        qEn: `How does SignedAI reduce hallucinations?`,
+        qTh: `SignedAI ลด hallucination ได้อย่างไร?`,
+        aEn: `SignedAI routes critical queries through 4–8 models simultaneously and requires constitutional consensus: Tier 4 = 50% agreement, Tier 6 = 67%, Tier 8 = 75%, Tier S = 100%. If consensus is not reached, the system escalates rather than releasing an unverified output. The industry average hallucination rate is estimated at 12–15% in published research; RCT does not claim a hallucination rate; it works toward fewer hallucinations through this multi-model verification layer combined with Ed25519 cryptographic signatures on all consensus decisions.`,
+        aTh: `SignedAI ส่ง query สำคัญผ่าน 4–8 โมเดลพร้อมกันและต้องการ consensus รัฐธรรมนูญ: Tier 4 = 50%, Tier 6 = 67%, Tier 8 = 75%, Tier S = 100% ถ้าไม่ถึง threshold ระบบจะ escalate ไม่ใช่ปล่อยผลลัพธ์ที่ยังไม่ verified อุตสาหกรรม hallucinate ที่ 12–15% (ประมาณการจากงานวิจัยที่เผยแพร่) แต่ RCT ไม่ได้อ้างอัตรา hallucination ผ่าน multi-model verification layer พร้อมลายเซ็น Ed25519`,
       },
       {
-        qEn: "What is the Delta Engine's 74% compression capability?",
+        qEn: "How much does the Delta Engine save?",
         qTh: "Delta Engine บีบอัด 74% ทำงานอย่างไร?",
         aEn: "The Delta Engine stores only incremental state changes (deltas) rather than full state snapshots. This achieves 74% average lossless compression with sub-1ms reconstruction, enabling warm recall under 50ms compared to a full cold-start LLM call of 3–5 seconds. It is what allows RCT to maintain deep context across long sessions without proportional memory cost or latency increase.",
         aTh: "Delta Engine เก็บเฉพาะการเปลี่ยนแปลง (deltas) แทนสถานะเต็ม บีบอัดได้ 74% แบบ lossless พร้อม reconstruction ต่ำกว่า 1ms ทำให้ warm recall ต่ำกว่า 50ms เทียบกับ cold-start LLM call 3–5 วินาที นี่คือสิ่งที่ทำให้ RCT รักษา context ยาวได้โดยไม่เพิ่มต้นทุนหน่วยความจำหรือ latency ตามสัดส่วน",
@@ -106,8 +106,8 @@ const faqCategories = [
       {
         qEn: "What is the RCT Specialist Studio?",
         qTh: "RCT Specialist Studio คืออะไร?",
-        aEn: "The Specialist Studio is RCT's domain orchestration layer — a configuration framework that adapts the core platform (FDIA scoring, SignedAI verification, JITNA routing) to the specific requirements of a vertical domain such as legal, medical, financial, or compliance. Each Specialist Studio deployment includes domain-specific FDIA calibration (what counts as 'desirable' or 'authorized' in that domain), custom Verification Tier assignments (e.g. TIER_6 mandatory for all medical dosing decisions), and constitutional prohibitions specific to that field. The result is a 3.74× efficiency improvement over generic AI deployments, because every routing decision, memory schema, and verification threshold is tuned to domain reality rather than generic defaults.",
-        aTh: "Specialist Studio คือ Domain Orchestration Layer ของ RCT — Framework การกำหนดค่าที่ปรับแต่ง Platform หลัก (FDIA Scoring, SignedAI Verification, JITNA Routing) ให้ตรงกับความต้องการเฉพาะของ Vertical Domain เช่น กฎหมาย การแพทย์ การเงิน หรือ Compliance การ Deploy Specialist Studio แต่ละครั้งรวม FDIA Calibration เฉพาะ Domain (อะไรนับว่า 'น่าต้องการ' หรือ 'ได้รับอนุญาต' ใน Domain นั้น), การกำหนด Verification Tier แบบกำหนดเอง (เช่น TIER_6 บังคับสำหรับการตัดสินใจเรื่องยาทุกครั้ง) และ Constitutional Prohibitions เฉพาะสาขา ผลลัพธ์คือการปรับปรุงประสิทธิภาพ 3.74 เท่าเมื่อเทียบกับการ Deploy AI แบบทั่วไป เพราะทุก Routing Decision, Memory Schema และ Verification Threshold ถูก Tune ตามความเป็นจริงของ Domain",
+        aEn: "The Specialist Studio is RCT's domain orchestration layer — a configuration framework that adapts the core platform (FDIA scoring, SignedAI verification, JITNA routing) to the specific requirements of a vertical domain such as legal, medical, financial, or compliance. Each Specialist Studio deployment includes domain-specific FDIA calibration (what counts as 'desirable' or 'authorized' in that domain), custom Verification Tier assignments (e.g. TIER_6 mandatory for all medical dosing decisions), and constitutional prohibitions specific to that field. The aim is a better fit than a generic AI deployment, because every routing decision, memory schema, and verification threshold is tuned to domain reality rather than generic defaults.",
+        aTh: "Specialist Studio คือ Domain Orchestration Layer ของ RCT — Framework การกำหนดค่าที่ปรับแต่ง Platform หลัก (FDIA Scoring, SignedAI Verification, JITNA Routing) ให้ตรงกับความต้องการเฉพาะของ Vertical Domain เช่น กฎหมาย การแพทย์ การเงิน หรือ Compliance การ Deploy Specialist Studio แต่ละครั้งรวม FDIA Calibration เฉพาะ Domain (อะไรนับว่า 'น่าต้องการ' หรือ 'ได้รับอนุญาต' ใน Domain นั้น), การกำหนด Verification Tier แบบกำหนดเอง (เช่น TIER_6 บังคับสำหรับการตัดสินใจเรื่องยาทุกครั้ง) และ Constitutional Prohibitions เฉพาะสาขา เป้าหมายคือให้เหมาะกว่าการ Deploy AI แบบทั่วไป เพราะทุก Routing Decision, Memory Schema และ Verification Threshold ถูก Tune ตามความเป็นจริงของ Domain",
       },
       {
         qEn: "What is the RCT 7 Genome System?",

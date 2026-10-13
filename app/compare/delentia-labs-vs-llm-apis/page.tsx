@@ -28,15 +28,15 @@ const LLM_API_FAQS = [
   },
   {
     question: "Does Delentia Labs replace the LLM API or sit on top of it?",
-    answer: "Delentia Labs sits on top of multiple LLM APIs. The HexaCore router includes 7 models (Claude Opus, Kimi K2.5, MiniMax, Gemini Flash, Grok, DeepSeek, and Typhoon v2 for Thai). Delentia Labs intelligently routes each query to the appropriate model — you do not need to manage individual API calls. This produces a 3.74x cost reduction compared to always using a premium model.",
+    answer: "Delentia Labs sits on top of multiple LLM APIs. The HexaCore router includes 7 models (Claude Opus, Kimi K2.5, MiniMax, Gemini Flash, Grok, DeepSeek, and Typhoon v2 for Thai). Delentia Labs intelligently routes each query to the appropriate model — you do not need to manage individual API calls. Routing simple queries to cheaper models is designed to lower cost; no measured saving is claimed.",
   },
   {
     question: "How does Delentia Labs achieve PDPA compliance that bare LLM APIs cannot?",
     answer: "Bare LLM APIs are stateless — they process a request and forget it. PDPA compliance requires persistence: the ability to prove what data was used, when, and why (Section 33), and the ability to permanently delete a person's data on request (Section 34). RCTDB stores every query as an 8-dimensional record with full provenance. When a data subject requests erasure, their subject_uuid is tombstoned — ensuring no retrievable data remains.",
   },
   {
-    question: "What is the 3.74x cost reduction from HexaCore routing?",
-    answer: "Instead of routing every query to Claude Opus (the most expensive model), HexaCore analyzes each task and selects the optimal model. Simple retrieval tasks go to faster, cheaper models. Complex synthesis tasks go to premium models only when required. Over a 10,000-query enterprise workload, this produces a 3.74x average cost reduction versus always using Claude Opus.",
+    question: "How does HexaCore routing affect cost?",
+    answer: "Instead of routing every query to Claude Opus (the most expensive model), HexaCore analyzes each task and selects the optimal model. Simple retrieval tasks go to faster, cheaper models. Complex synthesis tasks go to premium models only when required. No measured cost saving is claimed.",
   },
   {
     question: "Is vendor lock-in a concern with Delentia Labs?",
@@ -59,7 +59,7 @@ const rows = [
   { feature: "Constitutional kill switch (A=0 -> F=0)", llm: "no", rct: "yes" },
   { feature: "Thai-language model support (Typhoon v2)", llm: "partial", rct: "yes" },
   { feature: "Vendor-neutral (swap models freely)", llm: "no", rct: "yes" },
-  { feature: "Cost optimization (3.74x vs single model)", llm: "no", rct: "yes" },
+  { feature: "Cost-aware model routing", llm: "no", rct: "yes" },
   { feature: "ISO/PDPA compliance documentation", llm: "no", rct: "yes" },
   { feature: "Direct API access (no middleware)", llm: "yes", rct: "partial" },
   { feature: "Open source components (Apache 2.0)", llm: "no", rct: "yes" },
@@ -172,7 +172,7 @@ export default async function RCTvsLLMAPIs() {
                   "UUID tombstone right-to-erasure built-in",
                   "JITNA Protocol for agent-to-agent orchestration",
                   "Vendor-neutral — swap models without code changes",
-                  "Cost: 3.74x average savings via intelligent routing",
+                  "Cost: routes simple tasks to cheaper models (saving not measured)",
                 ],
                 verdict: "Best for: enterprise production, regulated industries",
                 verdictColor: "text-warm-amber",

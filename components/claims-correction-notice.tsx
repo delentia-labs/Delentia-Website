@@ -13,6 +13,10 @@ const WITHDRAWN_PATTERNS = [
   /zero[- ]knowledge|ZK[- ]FDIA/i, // zk_fdia.py is a commitment, not a zero-knowledge proof
   /tamper[- ]proof/i,              // audit logs are tamper-evident; anchoring (tier A3) is not deployed yet
   /94\.7\s?%/,                     // "unprotected LLM" baseline was never measured
+  /3\.74\s?[x×]/,                  // cost reduction: an internal estimate, no reproducible measurement (Round 79)
+  /96\.1\s?%/,                     // consensus / recall accuracy: no reproducible measurement (Round 79)
+  /FDIA accuracy( score)?( of)? 0\.92|0\.92 FDIA|FDIA-accuracy 0\.92/i, // the only measured FDIA accuracy is 11 of 12 hand-written cases (Round 79)
+  /5\.4\.5/,                       // names no repository or release (Round 79)
 ]
 
 export function containsWithdrawnClaim(text: string): boolean {
@@ -32,8 +36,8 @@ export function ClaimsCorrectionNotice({ locale, localePrefix }: { locale: strin
       </div>
       <p className="text-muted-foreground">
         {isTh
-          ? "บทความนี้เขียนก่อนการตรวจหลักฐานรอบล่าสุด ตัวเลขบางตัวในบทความถูกถอนแล้ว เช่น อัตรา hallucination 0.3%, 4,849 tests ของชุดทดสอบ enterprise, uptime/SLA 99.9x%, การบีบอัด 74.2–91.5% และคำว่า zero-knowledge หรือ tamper-proof เพราะวัดซ้ำหรือพิสูจน์ไม่ได้ ตัวเลขที่วัดจริงและเหตุผลของแต่ละข้ออยู่ที่"
-          : "This article predates our latest evidence review. Some figures in it have been withdrawn because they could not be reproduced or verified: the 0.3% hallucination rate, 4,849 enterprise tests, 99.9x% uptime/SLA, 74.2–91.5% compression, and the terms zero-knowledge and tamper-proof. The measured figures and the reason for each correction are on the"}{" "}
+          ? "บทความนี้เขียนก่อนการตรวจหลักฐานรอบล่าสุด ตัวเลขบางตัวในบทความถูกถอนแล้ว เช่น อัตรา hallucination 0.3%, 4,849 tests ของชุดทดสอบ enterprise, uptime/SLA 99.9x%, การบีบอัด 74.2–91.5%, ต้นทุนลดลง 3.74 เท่า, ความแม่นยำ 96.1%, FDIA accuracy 0.92, เลขเวอร์ชัน v5.4.5 และคำว่า zero-knowledge หรือ tamper-proof เพราะวัดซ้ำหรือพิสูจน์ไม่ได้ ตัวเลขที่วัดจริงและเหตุผลของแต่ละข้ออยู่ที่"
+          : "This article predates our latest evidence review. Some figures in it have been withdrawn because they could not be reproduced or verified: the 0.3% hallucination rate, 4,849 enterprise tests, 99.9x% uptime/SLA, 74.2–91.5% compression, a 3.74x cost reduction, 96.1% accuracy, an FDIA accuracy of 0.92, the version label v5.4.5, and the terms zero-knowledge and tamper-proof. The measured figures and the reason for each correction are on the"}{" "}
         <Link href={`${localePrefix}/corrections`} className="font-medium text-amber-600 underline underline-offset-2 dark:text-amber-400">
           {isTh ? "หน้าการแก้ไขข้อมูล" : "corrections page"}
         </Link>

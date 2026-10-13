@@ -43,7 +43,7 @@ const verificationSteps = [
 
 const comparisonData = [
   { metric: "Accuracy Rate", single: "85%", signedAI: "99.7%*", improvement: "+17.3%" },
-  { metric: "Hallucination Rate", single: "15%", signedAI: "0.3%*", improvement: "-98%" },
+  { metric: "Hallucination Rate", single: "15%", signedAI: "not claimed", improvement: "-98%" },
   { metric: "Audit Trail", single: "None", signedAI: "Complete", improvement: "New" },
   { metric: "Verification", single: "Self-check", signedAI: "Multi-LLM", improvement: "7x" },
   { metric: "Tamper Proof", single: "No", signedAI: "Cryptographic", improvement: "New" },
@@ -119,8 +119,8 @@ export default function HallucinationPreventionPage() {
         <section className="sr-only">
           <p>
             {isEn
-              ? `AI hallucination prevention applies multi-model consensus verification, targeting a hallucination rate of ${SITE_HALLUCINATION_RATE} down from an estimated 15% single-model baseline — essential for enterprise deployments in financial services, healthcare, and legal domains where accuracy and auditability are non-negotiable.`
-              : `การป้องกัน AI Hallucination ใช้การตรวจสอบความถูกต้องด้วยหลายโมเดลพร้อมกัน โดยมีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} ลดลงจากค่าเฝ้าประมาณ 15% ของโมเดลเดียว จำเป็นอย่างยิ่งสำหรับการใช้งานระดับองค์กรในแวดการเงิน สาธารณสุข และกฎหมาย ซึ่งความแม่นยำและการตรวจสอบได้เป็นสิ่งที่ต่อรองไม่ได้`}
+              ? `AI hallucination prevention applies multi-model consensus verification, with no hallucination rate claimed down from an estimated 15% single-model baseline — essential for enterprise deployments in financial services, healthcare, and legal domains where accuracy and auditability are non-negotiable.`
+              : `การป้องกัน AI Hallucination ใช้การตรวจสอบความถูกต้องด้วยหลายโมเดลพร้อมกัน โดยไม่ได้อ้างอัตรา hallucination ลดลงจากค่าเฝ้าประมาณ 15% ของโมเดลเดียว จำเป็นอย่างยิ่งสำหรับการใช้งานระดับองค์กรในแวดการเงิน สาธารณสุข และกฎหมาย ซึ่งความแม่นยำและการตรวจสอบได้เป็นสิ่งที่ต่อรองไม่ได้`}
           </p>
         </section>
 
@@ -197,7 +197,7 @@ export default function HallucinationPreventionPage() {
                 {isEn ? "Average Hallucination Rate" : "อัตรา Hallucination เฉลี่ย"}
               </p>
               <div className="h-px w-full mb-6" style={{ background: cardBorder }} />
-              <div className="text-7xl font-bold mb-2" style={{ color: "#7B9E87" }}>&lt;0.3%*</div>
+              <div className="text-7xl font-bold mb-2" style={{ color: "#7B9E87" }}>not claimed</div>
               <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: textMuted }}>
                 {isEn ? "With SignedAI Verification" : "ด้วย SignedAI Verification"}
               </p>

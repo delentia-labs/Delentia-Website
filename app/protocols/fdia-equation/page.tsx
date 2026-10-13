@@ -148,7 +148,7 @@ export default function FDIAEquationPage() {
     },
     {
       question: "How does FDIA prevent AI hallucination?",
-      answer: `FDIA evaluates eight quality dimensions — Data quality (D), Intent clarity (I) and Architect approval (A) — before any output is accepted. Outputs that fall below the threshold are rejected and re-routed, targeting a hallucination rate of ${SITE_HALLUCINATION_RATE}.`,
+      answer: `FDIA evaluates eight quality dimensions — Data quality (D), Intent clarity (I) and Architect approval (A) — before any output is accepted. Outputs that fall below the threshold are rejected and re-routed, with no cost or hallucination figure claimed.`,
     },
   ])
 

@@ -306,7 +306,7 @@ const resourceItems = {
     href: "/docs/delta-trace",
     label: { en: "Delta Compression", th: "Delta Compression" },
     description: {
-      en: "Interactive 74% memory compression visualizer — drag the slider to replay agent states.",
+      en: "Interactive delta-storage visualizer — drag the slider to replay agent states.",
       th: "Visualizer บีบอัด memory 74% แบบ interactive — ลาก slider เพื่อ replay agent states",
     },
   },

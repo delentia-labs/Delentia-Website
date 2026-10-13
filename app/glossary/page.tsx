@@ -26,8 +26,8 @@ const glossaryTerms = [
   {
     term: "SignedAI",
     termTh: "SignedAI",
-    definition: `The multi-LLM consensus verification system of the RCT Ecosystem. Routes critical queries through 4–8 models simultaneously and requires agreement before releasing results. Targets a ${SITE_HALLUCINATION_RATE} hallucination rate vs an estimated 12–15% industry average.`,
-    definitionTh: `ระบบตรวจสอบ consensus หลาย LLM ของ RCT Ecosystem ส่งคำถามสำคัญผ่าน 4–8 โมเดลพร้อมกัน และต้องการ agreement ก่อนส่งผลลัพธ์ มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE}`,
+    definition: `The multi-LLM consensus verification system of the RCT Ecosystem. Routes critical queries through 4–8 models simultaneously and requires agreement before releasing results. No hallucination rate is claimed.`,
+    definitionTh: `ระบบตรวจสอบ consensus หลาย LLM ของ RCT Ecosystem ส่งคำถามสำคัญผ่าน 4–8 โมเดลพร้อมกัน และต้องการ agreement ก่อนส่งผลลัพธ์ ไม่ได้อ้างอัตรา hallucination`,
     entityHref: "/en/entity/governance-layer",
   },
   {
@@ -47,8 +47,8 @@ const glossaryTerms = [
   {
     term: "HexaCore",
     termTh: "HexaCore (โครงสร้าง 7 โมเดล AI)",
-    definition: "The 7-model AI infrastructure of the RCT Ecosystem: 3 Western models + 3 Eastern models + 1 Thai regional model (Typhoon v2). Provides 3.74x cost reduction vs single-model deployments through intelligent task routing.",
-    definitionTh: "โครงสร้าง AI 7 โมเดลของ RCT Ecosystem: โมเดลตะวันตก 3 ตัว + ตะวันออก 3 ตัว + ไทย 1 ตัว (Typhoon v2) ลดต้นทุน 3.74 เท่าด้วย intelligent routing",
+    definition: "The 7-model AI infrastructure of the RCT Ecosystem: 3 Western models + 3 Eastern models + 1 Thai regional model (Typhoon v2). Routes tasks to cheaper models where it can; no saving is claimed.",
+    definitionTh: "โครงสร้าง AI 7 โมเดลของ RCT Ecosystem: โมเดลตะวันตก 3 ตัว + ตะวันออก 3 ตัว + ไทย 1 ตัว (Typhoon v2) ส่งงานง่ายไปโมเดลที่ถูกกว่า (ไม่ได้อ้างตัวเลขการประหยัด)",
     entityHref: "/en/entity/governance-layer",
   },
   {
@@ -130,8 +130,8 @@ const glossaryTerms = [
   {
     term: "Hallucination Control",
     termTh: "Hallucination Control (การควบคุมการหลอนของ AI)",
-    definition: `The system-level discipline of reducing unsupported or overconfident outputs through retrieval quality, memory design, routing, verification, and evaluation loops. RCT targets ${SITE_HALLUCINATION_RATE} vs an estimated 12–15% industry average.`,
-    definitionTh: `วินัยระดับระบบในการลดผลลัพธ์ที่ไร้หลักฐานหรือมั่นใจเกินจริง ผ่าน retrieval quality, memory design, routing, verification และ evaluation loops — RCT มีเป้าหมาย ${SITE_HALLUCINATION_RATE}`,
+    definition: `The system-level discipline of reducing unsupported or overconfident outputs through retrieval quality, memory design, routing, verification, and evaluation loops. RCT does not claim a hallucination rate.`,
+    definitionTh: `วินัยระดับระบบในการลดผลลัพธ์ที่ไร้หลักฐานหรือมั่นใจเกินจริง ผ่าน retrieval quality, memory design, routing, verification และ evaluation loops — RCT ไม่ได้อ้างอัตรา hallucination`,
   },
   {
     term: "Verification Layer",

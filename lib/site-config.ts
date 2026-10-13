@@ -15,7 +15,7 @@ export const SITE_ENTERPRISE_EVIDENCE_LABEL = "CI-verified full suite" // was "E
 export const SITE_RESEARCH_EVIDENCE_LABEL = "Research evaluation lane"
 export const SITE_PUBLIC_SDK_COVERAGE = "91.08%"
 export const SITE_EVIDENCE_LAST_UPDATED = "2026-10-12"
-export const SITE_MICROSERVICE_COUNT = 53 // measured 2026-10-12: 53 services of the private layer answered at the same time on one machine (not a production figure; 62 was a count of folders and is withdrawn)
+export const SITE_MICROSERVICE_COUNT = 52 // measured 2026-10-12: 52 services of the private layer answered at the same time as containers on one machine (a 53rd cannot run yet); not a production figure. 62 was a count of folders and is withdrawn
 export const SITE_ALGORITHM_COUNT = 41
 export const SITE_LAYER_COUNT = 10 // Product layers L1-L10; L11 = CI/CD pipeline layer (internal only)
 export const SITE_HEXACORE_COUNT = 9

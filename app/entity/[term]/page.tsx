@@ -135,7 +135,7 @@ const entities: Record<string, {
   "memory-architecture": {
     name: "Memory Architecture",
     type: "AI Infrastructure Component",
-    definition: "The three-tier persistent memory system of the Delentia OS Ecosystem — comprising RCTDB (8-dimensional schema), the Delta Engine (74% compression via delta-only storage), and a Hot/Warm/Cold zone structure enabling sub-50ms warm recall.",
+    definition: "The three-tier persistent memory system of the Delentia OS Ecosystem — comprising RCTDB (8-dimensional schema), the Delta Engine (delta-only storage, 39–90% smaller than full snapshots, measured in bytes), and a Hot/Warm/Cold zone structure enabling sub-50ms warm recall.",
     description: "Delentia OS's memory architecture is composed of three interconnected systems: (1) RCTDB v2.0 — an 8-dimensional universal schema that stores every AI decision with full provenance; (2) the Delta Engine — which compresses stored state by 74% by storing only incremental changes (deltas) rather than full state snapshots; and (3) the three-zone storage system (Hot: <1ms, Warm: 1–5ms, Cold: 10ms+) that intelligently places records based on access frequency. This architecture enables warm recall in <50ms for repeated queries, reducing AI inference cost to near-zero for stable patterns over time.",
     relatedTerms: ["RCTDB", "Delta Engine", "JITNA Protocol", "FDIA Equation"],
     relatedArticles: [

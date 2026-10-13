@@ -123,7 +123,7 @@ const PIPELINE = [
   {
     Icon: CheckCircle2,
     color: "#C4745B",
-    badge: "<0.3%* halluc.",
+    badge: "no rate claimed",
     titleEn: "Trusted Output",
     titleTh: "คำตอบที่เชื่อถือได้",
     descEn: "Auditable, provable enterprise-grade response with full provenance.",

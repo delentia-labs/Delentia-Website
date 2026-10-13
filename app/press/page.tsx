@@ -15,8 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "Press & Media — Constitutional AI from Thailand",
     "สื่อมวลชนและข่าวประชาสัมพันธ์ — Constitutional AI จากประเทศไทย",
-    "Press kit, fact sheet, story angles, and media contact for Delentia Labs — a constitutional AI operating system built by a solo developer in Bangkok, Thailand. A private enterprise service layer and 7,109 passing tests (public repository, CI-verified); benchmark hallucination target: 0.3% (internal, pending independent validation).",
-    "Press kit, fact sheet, มุมข่าว และข้อมูลติดต่อสื่อสำหรับ Delentia Labs — constitutional AI operating system ที่สร้างโดยผู้พัฒนาคนเดียวจากกรุงเทพฯ ประเทศไทย พร้อมเลเยอร์บริการระดับองค์กร (private), 7,109 passing tests (public repository, CI-verified) และ Benchmark Hallucination Target 0.3% (เป้าหมายภายใน รอการตรวจสอบอิสระ)",
+    "Press kit, fact sheet, story angles, and media contact for Delentia Labs — a constitutional AI operating system built by a solo developer in Bangkok, Thailand. A private enterprise service layer and 7,109 passing tests (public repository, CI-verified); no hallucination rate is claimed.",
+    "Press kit, fact sheet, มุมข่าว และข้อมูลติดต่อสื่อสำหรับ Delentia Labs — constitutional AI operating system ที่สร้างโดยผู้พัฒนาคนเดียวจากกรุงเทพฯ ประเทศไทย พร้อมเลเยอร์บริการระดับองค์กร (private), 7,109 passing tests (public repository, CI-verified) (ไม่ได้อ้างอัตรา hallucination)",
     "/press",
     ["press kit", "media contact", "constitutional AI Thailand", "Delentia Labs press"]
   )
@@ -31,9 +31,9 @@ const facts = [
   { label: "Algorithms", labelTh: "Algorithms", value: "41 designed (Tier 1–9; public SDK ships a subset)" },
   { label: "AI Models (HexaCore)", labelTh: "โมเดล AI (HexaCore)", value: "9 (3 Western + 3 Eastern + 1 Thai + 1 Local + 1 LPU)" },
   { label: "Test Suite", labelTh: "ชุดทดสอบ", value: "7,109 passed / 0 failed (public repository, CI-verified) — public CI" },
-  { label: "Benchmark Hallucination Target", labelTh: "เป้าหมาย Benchmark Hallucination", value: "0.3% target (industry: 12–15%; pending independent validation)" },
-  { label: "FDIA Benchmark Accuracy", labelTh: "ความแม่นยำ FDIA (Benchmark)", value: "0.92 vs ~0.65 baseline (internal benchmark)" },
-  { label: "Memory Compression", labelTh: "การบีบอัดหน่วยความจำ", value: "up to 74% (internal benchmark; varies per input)" },
+  { label: "Benchmark Hallucination Target", labelTh: "เป้าหมาย Benchmark Hallucination", value: "not claimed (an earlier figure was withdrawn)" },
+  { label: "FDIA Benchmark Accuracy", labelTh: "ความแม่นยำ FDIA (Benchmark)", value: "11 of 12 hand-written cases (a smoke test, not a benchmark)" },
+  { label: "Memory Compression", labelTh: "การบีบอัดหน่วยความจำ", value: "39–90% smaller than snapshots (measured in bytes)" },
   { label: "Uptime Design SLA Target", labelTh: "เป้าหมาย Design SLA", value: "none published (no SLA is offered)" },
   { label: "Warm Recall", labelTh: "Warm Recall", value: "<50ms (internal benchmark target)" },
   { label: "Budget", labelTh: "งบประมาณ", value: "$0 (bootstrapped)" },
@@ -58,8 +58,8 @@ const storyAngles = [
     headlineTh: "Constitutional AI: สถาปัตยกรรมที่พิสูจน์ได้ว่าป้องกัน Hallucination",
     angle: "Technology / AI safety",
     angleTh: "เทคโนโลยี / ความปลอดภัย AI",
-    hook: "FDIA equation F = (D^I) × A introduces a mathematical kill switch: when A=0, no AI output is produced — regardless of model, prompt, or context. Benchmark hallucination target: 0.3% vs 12–15% industry average.",
-    hookTh: "สมการ FDIA F = (D^I) × A สร้างสวิตช์ตัดทางคณิตศาสตร์: เมื่อ A=0 จะไม่มี AI output เกิดขึ้นเลย ไม่ว่าโมเดล prompt หรือบริบทจะเป็นอะไร Benchmark Hallucination Target: 0.3% เทียบกับค่าเฉลี่ยอุตสาหกรรม 12–15%",
+    hook: "FDIA equation F = (D^I) × A introduces a mathematical kill switch: when A=0, no AI output is produced — regardless of model, prompt, or context. No hallucination rate is claimed.",
+    hookTh: "สมการ FDIA F = (D^I) × A สร้างสวิตช์ตัดทางคณิตศาสตร์: เมื่อ A=0 จะไม่มี AI output เกิดขึ้นเลย ไม่ว่าโมเดล prompt หรือบริบทจะเป็นอะไร ไม่ได้อ้างอัตรา hallucination",
     badgeClass: "border-sky-400/30 bg-sky-400/10 text-sky-400",
     cardClass: "border-sky-400/20",
   },
@@ -111,7 +111,7 @@ export default async function PressPage() {
     alternateName: "Reverse Component Thinking Labs",
     url: "https://delentia.com",
     logo: "https://delentia.com/RCTLogo-horizontal.svg",
-    description: "Constitutional AI Operating System built by a solo developer in Bangkok, Thailand — a private enterprise service layer and 7,109 passing tests (public repository, CI-verified), 0.3% benchmark hallucination target (internal, pending independent validation).",
+    description: "Constitutional AI Operating System built by a solo developer in Bangkok, Thailand — a private enterprise service layer and 7,109 passing tests (public repository, CI-verified); no hallucination rate is claimed.",
     foundingDate: "2024",
     founder: { "@type": "Person", name: "Ittirit Saengow", jobTitle: "The Architect" },
     location: { "@type": "Place", addressLocality: "Bangkok", addressCountry: "TH" },
@@ -147,7 +147,7 @@ export default async function PressPage() {
               {[
                 { value: "62", label: isTh ? "Microservices (enterprise, private)" : "Microservices (enterprise, private)" },
                 { value: "7,109", label: isTh ? "Tests ผ่าน (public repository, CI-verified)" : "Tests Passing (public repository, CI-verified)" },
-                { value: "0.3%", label: isTh ? "เป้าหมาย Benchmark Hallucination" : "Benchmark Hallucination Target" },
+                { value: "not claimed", label: isTh ? "เป้าหมาย Benchmark Hallucination" : "Benchmark Hallucination Target" },
                 { value: "no SLA", label: isTh ? "เป้าหมาย Design SLA" : "Uptime Design SLA Target" },
               ].map((s) => (
                 <div key={s.label} className="rounded-xl border border-warm-amber/20 bg-warm-amber/5 px-4 py-3">

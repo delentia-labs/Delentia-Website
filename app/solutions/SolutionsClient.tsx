@@ -28,9 +28,9 @@ const solutions = [
     titleEn: "AI Hallucination Prevention",
     titleTh: "การป้องกัน AI Hallucination",
     descEn: `Targeting a hallucination rate of ${SITE_HALLUCINATION_RATE} with Multi-LLM consensus verification via SignedAI through cryptographic audit trails.`,
-    descTh: `มีเป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} ด้วย Multi-LLM Consensus Verification ผ่าน SignedAI ด้วย Cryptographic Audit Trails`,
+    descTh: `ไม่ได้อ้างอัตรา hallucination ด้วย Multi-LLM Consensus Verification ผ่าน SignedAI ด้วย Cryptographic Audit Trails`,
     stats: [
-      { label: "Hallucination Rate (target)", value: "<0.3%" },
+      { label: "Hallucination Rate (target)", value: "not claimed" },
       { label: "LLMs Verified", value: "Up to 7" },
       { label: "Signing", value: "ED25519" },
     ],
@@ -101,7 +101,7 @@ export default function SolutionsPage() {
   const localHref = (href: string) => `${localePrefix}${href}`
 
   const proofPoints = [
-    { value: "<0.3%", labelEn: "Hallucination (target)", labelTh: "Hallucination (เป้าหมาย)", color: "#C4745B" },
+    { value: "not claimed", labelEn: "Hallucination (target)", labelTh: "Hallucination (เป้าหมาย)", color: "#C4745B" },
     { value: "7", labelEn: "HexaCore Models", labelTh: "HexaCore Models", color: "#D4A853" },
     { value: "41", labelEn: "Algorithms", labelTh: "Algorithms", color: "#7B9E87" },
   ]
@@ -340,7 +340,7 @@ export default function SolutionsPage() {
             <p className="text-muted-foreground">{isTh ? "Deploy AI ด้วยความมั่นใจ — Audit Trails ครบถ้วน, Compliance Frameworks และ Enterprise Security" : "Deploy AI with confidence — full audit trails, compliance frameworks, and enterprise-grade security."}</p>
             <ul className="space-y-2">
               {[
-                { icon: Shield, t: "<0.3% benchmark hallucination target with SignedAI" },
+                { icon: Shield, t: "Multi-model consensus with SignedAI (no hallucination rate claimed)" },
                 { icon: Lock, t: "ED25519 + JWT RS256 + RBAC" },
                 { icon: Users, t: "Availability target for enterprise programs" },
                 { icon: Zap, t: `${SITE_ENTERPRISE_EVIDENCE_LABEL}: a private enterprise service layer` },
@@ -354,7 +354,7 @@ export default function SolutionsPage() {
           </div>
           <div className="bg-card border border-border rounded-xl p-6 space-y-3">
             <h3 className="text-lg font-semibold text-foreground mb-4">Enterprise Features</h3>
-            {["10-Layer architecture with Enterprise Hardening", "RCTDB v2.0 — 8D universal memory (74% compression)", "8 regional markets (PDPA, APPI, PIPA, PIPL)", "Prometheus + Grafana monitoring", "OpenAPI 3.1.0 (14 endpoints)", "13 Universal Adapters"].map((f, i) => (
+            {["10-Layer architecture with Enterprise Hardening", "RCTDB v2.0 — 8D universal memory (delta storage)", "8 regional markets (PDPA, APPI, PIPA, PIPL)", "Prometheus + Grafana monitoring", "OpenAPI 3.1.0 (14 endpoints)", "13 Universal Adapters"].map((f, i) => (
               <div key={i} className="flex items-center gap-3 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-green-500 shrink-0" />{f}</div>
             ))}
           </div>
@@ -403,7 +403,7 @@ const result = await client.execute({
               <span className="text-xs font-semibold uppercase tracking-wider text-warm-amber">SMEs</span>
             </div>
             <h2 className="text-2xl font-bold text-foreground">{isTh ? "สำหรับ SMEs" : "For SMEs"}</h2>
-            <p className="text-muted-foreground">{isTh ? "Enterprise-grade AI ในราคาที่เข้าถึงได้ — 3.74x cost reduction ผ่าน RCTDB compression" : "Enterprise-grade AI without enterprise costs — 3.74x cost reduction through RCTDB compression."}</p>
+            <p className="text-muted-foreground">{isTh ? "Enterprise-grade AI ในราคาที่เข้าถึงได้ — ลดต้นทุนด้วย RCTDB compression (ยังไม่ได้วัด)" : "Governed AI you can run yourself, with delta storage that is 39–90% smaller than full snapshots, measured in bytes."}</p>
             <Link href={localHref("/pricing")} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-warm-amber text-white text-sm font-medium hover:bg-[#C49A48] transition-colors">
               {isTh ? "ดูราคา" : "View Pricing"} <ArrowRight className="w-4 h-4" />
             </Link>
@@ -419,7 +419,7 @@ const result = await client.execute({
               <span className="text-2xl font-mono text-green-500">$0.003/query</span>
             </div>
             <div className="pt-3 border-t border-border">
-              <p className="text-xs text-muted-foreground">3.74x cost reduction through RCTDB compression and intelligent caching.</p>
+              <p className="text-xs text-muted-foreground">Lower cost through RCTDB compression and caching (not measured).</p>
             </div>
           </div>
         </div>

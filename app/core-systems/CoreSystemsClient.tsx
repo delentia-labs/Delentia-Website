@@ -32,7 +32,7 @@ const systems = {
     },
     {
       name: "Delta Memory Engine",
-      stat: "74% compression†",
+      stat: "39–90% smaller†",
       description: "Stores state changes rather than full snapshots, giving enterprise memory continuity without runaway storage costs.",
       accent: "#C4745B",
       icon: Database,

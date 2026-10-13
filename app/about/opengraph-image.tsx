@@ -116,7 +116,7 @@ export default function AboutOgImage() {
           <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
             {[
               { value: SITE_PUBLIC_SDK_TESTS.toLocaleString(), label: SITE_PUBLIC_SDK_EVIDENCE_LABEL },
-              { value: "0.3%", label: "Hallucination Target" },
+              { value: "not claimed", label: "Hallucination Target" },
               { value: String(SITE_HEXACORE_COUNT), label: "HexaCore Models" },
               { value: SITE_TEST_COUNT.toLocaleString(), label: SITE_ENTERPRISE_EVIDENCE_LABEL },
             ].map((stat) => (

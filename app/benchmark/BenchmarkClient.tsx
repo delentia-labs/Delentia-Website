@@ -1,640 +1,306 @@
-﻿"use client"
+"use client"
 
-import { useState, useEffect, useRef } from "react"
-import { m, useInView } from "framer-motion"
 import Link from "next/link"
+import { m } from "framer-motion"
+import { ArrowRight } from "lucide-react"
 import { useTheme } from "@/components/theme-provider"
 import { useLanguage } from "@/components/language-provider"
 import { useMounted } from "@/hooks/use-mounted"
-import {
-  RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, Cell, Legend,
-} from "recharts"
-import {
-  ArrowRight, Shield, Clock, DollarSign, TrendingUp, Activity, Zap, CheckCircle, X,
-} from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
 
-/* ─── DATA ─── */
-// NOTE: all "rct"/"single" figures below are internal, self-reported benchmarks
-// (not independently audited) — see the disclaimer rendered above the Key
-// Metrics section and TESTING_CANONICAL.md in the delentia-mcp-ecosystem repo
-// for what is actually verified today.
-const benchmarks = [
-  { metricEn: "Accuracy (internal benchmark)", metricTh: "ความแม่นยำ (Benchmark ภายใน)", rct: "not measured", single: "not measured", rctVal: 0, singleVal: 0, color: "#7B9E87", icon: Shield },
-  { metricEn: "Hallucination Rate (target)", metricTh: "อัตรา Hallucination (เป้าหมาย)", rct: "not claimed", single: "not measured", rctVal: 0, singleVal: 0, color: "#C4745B", icon: TrendingUp, inverted: true },
-  { metricEn: "Warm Recall Latency (p95, target)", metricTh: "Warm Recall Latency (p95, เป้าหมาย)", rct: "<50ms", single: "not measured", rctVal: 50, singleVal: 0, color: "#D4A853", icon: Clock, inverted: true },
-  { metricEn: "Cost Efficiency (internal estimate)", metricTh: "ประสิทธิภาพต้นทุน (ประมาณการภายใน)", rct: "not measured", single: "not measured", rctVal: 0, singleVal: 0, color: "#89B4C8", icon: DollarSign },
-  { metricEn: "Audit Trail", metricTh: "Audit Trail", rct: "Full", single: "None", rctVal: 100, singleVal: 0, color: "#B8A9C9", icon: CheckCircle },
-  { metricEn: "Cryptographic Signing", metricTh: "Cryptographic Signing", rct: "Yes", single: "No", rctVal: 100, singleVal: 0, color: "#D4A853", icon: Shield },
-  { metricEn: "FDIA Protocol Score (internal benchmark)", metricTh: "FDIA Protocol Score (Benchmark ภายใน)", rct: "not measured", single: "not measured", rctVal: 0, singleVal: 0, color: "#C4745B", icon: TrendingUp },
-  { metricEn: "L4 Virtuoso Benchmark (internal)", metricTh: "L4 Virtuoso Benchmark (ภายใน)", rct: "not measured", single: "N/A", rctVal: 0, singleVal: 0, color: "#B8A9C9", icon: Shield },
-  { metricEn: "Uptime SLA (design target)", metricTh: "Uptime SLA (เป้าหมาย)", rct: "none published", single: "No SLA", rctVal: 100, singleVal: 80, color: "#7B9E87", icon: CheckCircle },
-]
+/* ─── DATA ───
+ * Every number on this page comes from a script or a CI run in the public repository (delentia-labs/Delentia-OS).
+ * Rule for editing: a number may be added only together with the file that produced it and the reason it is weaker than it looks.
+ * Nothing here compares Delentia with another product except the memory-store test, which ran both on the same workload.
+ */
+const REPO = "https://github.com/delentia-labs/Delentia-OS/blob/main/"
 
-const radarData = [
-  { subject: "Accuracy", rct: 99.7, single: 85, fullMark: 100 },
-  { subject: "Safety", rct: 99, single: 70, fullMark: 100 },
-  { subject: "Speed", rct: 92, single: 75, fullMark: 100 },
-  { subject: "Cost Eff.", rct: 88, single: 40, fullMark: 100 },
-  { subject: "Auditability", rct: 100, single: 10, fullMark: 100 },
-  { subject: "Memory", rct: 95, single: 20, fullMark: 100 },
-]
-
-const barData = [
-  { name: "Accuracy", rct: 99.7, single: 85 },
-  { name: "Safety", rct: 99, single: 70 },
-  { name: "Speed Score", rct: 92, single: 75 },
-  { name: "Cost Score", rct: 88, single: 40 },
-  { name: "Audit Score", rct: 100, single: 10 },
-  { name: "Memory", rct: 95, single: 20 },
-]
-
-const featureComparison = [
-  { featureEn: "Multi-LLM Orchestration", featureTh: "Multi-LLM Orchestration", rct: true, single: false },
-  { featureEn: "Cross-Verification", featureTh: "Cross-Verification", rct: true, single: false },
-  { featureEn: "Dynamic Model Routing", featureTh: "Dynamic Model Routing", rct: true, single: false },
-  { featureEn: "Persistent Memory (RCTDB)", featureTh: "Persistent Memory (RCTDB)", rct: true, single: false },
-  { featureEn: "Cryptographic Signatures", featureTh: "Cryptographic Signatures", rct: true, single: false },
-  { featureEn: "Complete Audit Trails", featureTh: "Complete Audit Trails", rct: true, single: false },
-  { featureEn: "Intent Understanding (FDIA)", featureTh: "Intent Understanding (FDIA)", rct: true, single: false },
-  { featureEn: "Self-Evolution (Genome)", featureTh: "Self-Evolution (Genome)", rct: true, single: false },
-  { featureEn: "Basic Text Generation", featureTh: "Basic Text Generation", rct: true, single: true },
-  { featureEn: "Single Model API", featureTh: "Single Model API", rct: true, single: true },
-]
-
-const counterStats = [
-  { value: 99.7, suffix: "%", labelEn: "Accuracy (benchmark)", labelTh: "ความแม่นยำ (Benchmark)", color: "#7B9E87", icon: Shield },
-  { value: 0.3, suffix: "%", labelEn: "Hallucination Rate (target)", labelTh: "อัตรา Hallucination (เป้าหมาย)", color: "#C4745B", icon: Activity },
-  { value: 73, suffix: "%", labelEn: "Cost Savings (estimate)", labelTh: "ประหยัดต้นทุน (ประมาณการ)", color: "#D4A853", icon: DollarSign },
-  { value: 50, suffix: "ms", labelEn: "Warm Recall (p95, target)", labelTh: "Warm Recall (p95, เป้าหมาย)", color: "#89B4C8", icon: Zap, prefix: "<" },
-]
-
-const platformRows = [
-  { cap: { en: "Hallucination Rate (target)", th: "อัตรา Hallucination (เป้าหมาย)" }, rct: { label: "not measured", type: "mid" }, lc: { label: "not measured", type: "mid" }, agpt: { label: "not measured", type: "mid" } },
-  { cap: { en: "Accuracy Rate (benchmark)", th: "ความแม่นยำ (Benchmark)" }, rct: { label: "not measured", type: "mid" }, lc: { label: "not measured", type: "mid" }, agpt: { label: "not measured", type: "mid" } },
-  { cap: { en: "Cryptographic Audit Trail", th: "Cryptographic Audit Trail" }, rct: { label: "✓ Full", type: "check" }, lc: { label: "✗ None", type: "cross" }, agpt: { label: "✗ None", type: "cross" } },
-  { cap: { en: "Multi-LLM Consensus", th: "Multi-LLM Consensus" }, rct: { label: "✓ 9 HexaCore LLMs", type: "check" }, lc: { label: "~ Manual wiring", type: "partial" }, agpt: { label: "✗ Single model", type: "cross" } },
-  { cap: { en: "Persistent Memory", th: "Persistent Memory" }, rct: { label: "✓ RCTDB v2.0", type: "check" }, lc: { label: "~ Plugin-based", type: "partial" }, agpt: { label: "~ Limited", type: "partial" } },
-  { cap: { en: "Warm Recall (p95, target)", th: "Warm Recall (p95, เป้าหมาย)" }, rct: { label: "<50ms", type: "good" }, lc: { label: "not measured", type: "mid" }, agpt: { label: "not measured", type: "mid" } },
-  { cap: { en: "Cost per Query (estimate)", th: "ต้นทุนต่อ Query (ประมาณการ)" }, rct: { label: "not measured", type: "mid" }, lc: { label: "not measured", type: "mid" }, agpt: { label: "not measured", type: "mid" } },
-  { cap: { en: "Enterprise Compliance", th: "Enterprise Compliance" }, rct: { label: "✓ Full audit+sign", type: "check" }, lc: { label: "✗ DIY only", type: "cross" }, agpt: { label: "✗ None", type: "cross" } },
-  { cap: { en: "Intent-Centric Processing", th: "Intent-Centric Processing" }, rct: { label: "✓ FDIA equation", type: "check" }, lc: { label: "✗ Prompt-centric", type: "cross" }, agpt: { label: "✗ Goal-decomp only", type: "cross" } },
-  { cap: { en: "Self-Evolution (Learning)", th: "Self-Evolution" }, rct: { label: "✓ 7-Genome system", type: "check" }, lc: { label: "✗ Static chains", type: "cross" }, agpt: { label: "~ Experimental", type: "partial" } },
-]
-
-/* ─── ANIMATED COUNTER HOOK ─── */
-function useAnimatedCounter(target: number, duration: number, isActive: boolean) {
-  const [count, setCount] = useState(0)
-  useEffect(() => {
-    if (!isActive) return
-    let animFrame: number
-    const startTime = performance.now()
-    const step = (timestamp: number) => {
-      const progress = Math.min((timestamp - startTime) / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-      setCount(target * eased)
-      if (progress < 1) animFrame = requestAnimationFrame(step)
-    }
-    animFrame = requestAnimationFrame(step)
-    return () => cancelAnimationFrame(animFrame)
-  }, [target, duration, isActive])
-  return count
+type Result = {
+  id: string
+  titleEn: string
+  titleTh: string
+  numberEn: string
+  numberTh: string
+  howEn: string
+  howTh: string
+  limitEn: string
+  limitTh: string
+  source: { label: string; href: string }
 }
 
-type StatItem = { value: number; suffix: string; labelEn: string; labelTh: string; color: string; icon: React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties }>; prefix?: string }
+const results: Result[] = [
+  {
+    id: "tests",
+    titleEn: "Public test suite",
+    titleTh: "ชุดทดสอบสาธารณะ",
+    numberEn: `${SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US")} passed, 32 skipped, 0 failed; 91.08% line coverage`,
+    numberTh: `ผ่าน ${SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US")} ข้าม 32 ล้มเหลว 0; ครอบคลุมบรรทัด 91.08%`,
+    howEn: "GitHub Actions on the main branch, 12 Oct 2026.",
+    howTh: "GitHub Actions บนสาขา main วันที่ 12 ต.ค. 2569",
+    limitEn: "Shows the code does what the tests say. It does not show that a model uses the tools well.",
+    limitTh: "แสดงว่าโค้ดทำงานตามที่ชุดทดสอบเขียนไว้ ไม่ได้แสดงว่าโมเดลใช้เครื่องมือได้ดี",
+    source: { label: "CI run 38231121128", href: "https://github.com/delentia-labs/Delentia-OS/actions/runs/38231121128" },
+  },
+  {
+    id: "injection-gate",
+    titleEn: "Hijacked-model test (prompt injection)",
+    titleTh: "ทดสอบโมเดลที่ถูกยึด (prompt injection)",
+    numberEn: "21 scenarios: 18 reached a harmful side effect without the structural gate, 0 with it; 6 of 6 legitimate workflows still ran",
+    numberTh: "21 สถานการณ์: 18 ไปถึงผลข้างเคียงที่เป็นอันตรายเมื่อไม่มีเกต, 0 เมื่อมีเกต; เวิร์กโฟลว์ปกติ 6 จาก 6 ยังรันได้",
+    howEn: "A scripted model that obeys every instruction it reads (the worst case) is shown pages with hidden instructions. The suite later grew to 23 scenarios, still 0.",
+    howTh: "โมเดลสคริปต์ที่ทำตามทุกคำสั่งที่อ่านเจอ (กรณีเลวร้ายที่สุด) ถูกให้อ่านหน้าที่ซ่อนคำสั่งไว้ ภายหลังขยายเป็น 23 สถานการณ์ ผลยังเป็น 0",
+    limitEn: "A scripted worst case, not a real model. With a real local 7B model the harmful tool ran 0 times, but it read the injected page in only 11 of 18 scenarios: a small sample, not proof. Wrong-but-harmless answers are not covered.",
+    limitTh: "เป็นกรณีเลวร้ายที่สคริปต์ ไม่ใช่โมเดลจริง กับโมเดลท้องถิ่น 7B จริง เครื่องมือที่เป็นอันตรายรัน 0 ครั้ง แต่โมเดลอ่านหน้าที่ฝังคำสั่งเพียง 11 จาก 18 สถานการณ์ จึงเป็นตัวอย่างเล็ก ไม่ใช่การพิสูจน์ คำตอบที่ผิดแต่ไม่เป็นอันตรายไม่ถูกครอบคลุม",
+    source: { label: "scripts/measure_injection_defence.py", href: `${REPO}scripts/measure_injection_defence.py` },
+  },
+  {
+    id: "policy",
+    titleEn: "Default owner policy on labelled requests",
+    titleTh: "นโยบายเจ้าของค่าเริ่มต้นกับคำขอที่ติดป้ายแล้ว",
+    numberEn: "169 requests: 3 of 110 unsafe ones still ran; 6 of 59 harmless ones were stopped",
+    numberTh: "169 คำขอ: คำขอไม่ปลอดภัย 3 จาก 110 ยังรันได้; คำขอไม่เป็นอันตราย 6 จาก 59 ถูกหยุด",
+    howEn: "Each request goes through the real gate and the real shell sandbox; the verdict is compared with the label.",
+    howTh: "ทุกคำขอผ่านเกตและแซนด์บอกซ์เชลล์จริง แล้วเทียบผลกับป้ายที่ติดไว้",
+    limitEn: "The labels were written by the developers, and part of the set was used while the rules were tuned, so this is not an independent test.",
+    limitTh: "ป้ายเขียนโดยผู้พัฒนา และบางส่วนของชุดถูกใช้ตอนปรับกฎ จึงไม่ใช่การทดสอบอิสระ",
+    source: { label: "research/fdia_calibration_policy_argaware.json", href: `${REPO}research/fdia_calibration_policy_argaware.json` },
+  },
+  {
+    id: "fdia-vs-d",
+    titleEn: "Does the FDIA equation add anything over data quality alone?",
+    titleTh: "สมการ FDIA เพิ่มอะไรเหนือคุณภาพข้อมูลอย่างเดียวหรือไม่",
+    numberEn: "No evidence yet: F = D^I × A and D alone gave the same held-out result (0% unsafe allowed, 89.5% of harmless requests also stopped)",
+    numberTh: "ยังไม่มีหลักฐาน: F = D^I × A กับ D อย่างเดียวให้ผลเหมือนกันบนชุดแยก (อนุญาตคำขอไม่ปลอดภัย 0%, คำขอไม่เป็นอันตรายถูกหยุดด้วย 89.5%)",
+    howEn: "120 labelled requests through the real gate, comparing the full equation with D alone.",
+    howTh: "120 คำขอที่ติดป้ายผ่านเกตจริง เทียบสมการเต็มกับ D อย่างเดียว",
+    limitEn: "A negative finding that we publish on purpose. The human-approval and policy layers do the protective work in these tests.",
+    limitTh: "เป็นผลลบที่เราเปิดเผยโดยตั้งใจ ในการทดสอบนี้ชั้นการอนุมัติโดยมนุษย์และนโยบายเป็นตัวที่ป้องกันจริง",
+    source: { label: "research/fdia_calibration.json", href: `${REPO}research/fdia_calibration.json` },
+  },
+  {
+    id: "cord",
+    titleEn: "Injection screen on text it has never seen",
+    titleTh: "ตัวคัดกรอง injection กับข้อความที่ไม่เคยเห็น",
+    numberEn: "External labelled set: 6.7% of attacks blocked on the first look, 10% after generic additions, 23% with a small model's second opinion; 0 false blocks in 532 harmless texts. Thai holdout: 15 of 31 (48.4%) at 0 of 32 false blocks",
+    numberTh: "ชุดติดป้ายภายนอก: บล็อกการโจมตีได้ 6.7% ในการดูครั้งแรก, 10% หลังเพิ่มวลีทั่วไป, 23% เมื่อใช้ความเห็นที่สองจากโมเดลเล็ก; ไม่บล็อกผิดเลยใน 532 ข้อความปกติ ชุดแยกภาษาไทย: 15 จาก 31 (48.4%) โดยบล็อกผิด 0 จาก 32",
+    howEn: "Public prompt-injection test split, not copied into the repository; Thai sets written by us, holdout measured once.",
+    howTh: "ชุดทดสอบ prompt-injection สาธารณะที่ไม่ได้คัดลอกเข้ารีโป ชุดภาษาไทยเขียนเอง ชุดแยกวัดครั้งเดียว",
+    limitEn: "Rules catch a minority of unseen attacks. That is why the structural gate above exists instead of relying on the screen.",
+    limitTh: "กฎจับการโจมตีที่ไม่เคยเห็นได้เพียงส่วนน้อย เราจึงใช้เกตเชิงโครงสร้างข้างบนแทนที่จะพึ่งตัวคัดกรอง",
+    source: { label: "research/ (CORD sets and results)", href: `${REPO}research/` },
+  },
+  {
+    id: "prompt-cost",
+    titleEn: "Where the prompt tokens go",
+    titleTh: "โทเค็นของพรอมต์ไปอยู่ที่ไหน",
+    numberEn: "The tool menu is 94% of a prompt (7,153 of 7,637 tokens, 48 tools). Delta v2 shrinks large tool output by 48–69%, and nothing below 6,000 characters",
+    numberTh: "เมนูเครื่องมือคิดเป็น 94% ของพรอมต์ (7,153 จาก 7,637 โทเค็น, 48 เครื่องมือ) Delta v2 ลดผลลัพธ์เครื่องมือขนาดใหญ่ได้ 48–69% และไม่ลดอะไรเลยถ้าต่ำกว่า 6,000 ตัวอักษร",
+    howEn: "Token counts with tiktoken on the runtime's real prompts and three real 30 KB documents.",
+    howTh: "นับโทเค็นด้วย tiktoken จากพรอมต์จริงของรันไทม์และเอกสารจริงขนาด 30 KB สามชุด",
+    limitEn: "Counts are approximate and model-specific. The real cache hit rate has never been measured.",
+    limitTh: "จำนวนโทเค็นเป็นค่าประมาณและขึ้นกับโมเดล อัตราการโดนแคชจริงยังไม่เคยวัด",
+    source: { label: "scripts/measure_prompt_cost.py", href: `${REPO}scripts/measure_prompt_cost.py` },
+  },
+  {
+    id: "delta",
+    titleEn: "Delta storage versus plain compression",
+    titleTh: "การเก็บแบบ Delta เทียบกับการบีบอัดธรรมดา",
+    numberEn: "Structural delta saves 70–94% against raw JSON, but a snapshot plus zstd saves 96.7–99.6%, within 3% of delta plus zstd. No evidence that Delta beats ordinary compression for a stream",
+    numberTh: "delta เชิงโครงสร้างประหยัด 70–94% เทียบกับ JSON ดิบ แต่ snapshot รวม zstd ประหยัด 96.7–99.6% ต่างจาก delta รวม zstd ไม่เกิน 3% ยังไม่มีหลักฐานว่า Delta ชนะการบีบอัดทั่วไปสำหรับสตรีม",
+    howEn: "Byte counts on the runtime's own payloads, including the real memory table.",
+    howTh: "นับไบต์บนข้อมูลจริงของรันไทม์ รวมตารางหน่วยความจำจริง",
+    limitEn: "Delta wins only for random access and appending; a damaged byte costs it up to 20 ticks.",
+    limitTh: "Delta ชนะเฉพาะการเข้าถึงแบบสุ่มและการต่อท้าย และไบต์ที่เสียหายทำให้เสียได้ถึง 20 ติ๊ก",
+    source: { label: "research/delta_storage.json", href: `${REPO}research/delta_storage.json` },
+  },
+  {
+    id: "memory-store",
+    titleEn: "Memory store compared with LangGraph and mem0",
+    titleTh: "ที่เก็บหน่วยความจำเทียบกับ LangGraph และ mem0",
+    numberEn: "At 2,000 operations: Delentia 1.5 MB (sealed log), mem0 7.1 MB, LangGraph 192 MB. After each system's own delete call the person's text was still in the file for LangGraph and mem0, and gone only after Delentia's erase",
+    numberTh: "ที่ 2,000 การดำเนินการ: Delentia 1.5 MB (ล็อกที่ปิดผนึก), mem0 7.1 MB, LangGraph 192 MB หลังเรียกคำสั่งลบของแต่ละระบบ ข้อความของบุคคลยังอยู่ในไฟล์ของ LangGraph และ mem0 และหายไปเฉพาะหลังใช้การลบของ Delentia",
+    howEn: "One synthetic workload, default settings of mem0ai 2.2.1 and LangGraph with SqliteSaver, raw database files scanned for the text.",
+    howTh: "ปริมาณงานสังเคราะห์หนึ่งชุด ค่าเริ่มต้นของ mem0ai 2.2.1 และ LangGraph กับ SqliteSaver สแกนไฟล์ฐานข้อมูลดิบหาข้อความ",
+    limitEn: "One workload and default configurations. Recall quality was not measured here.",
+    limitTh: "ปริมาณงานชุดเดียวและค่าเริ่มต้น ไม่ได้วัดคุณภาพการเรียกคืน",
+    source: { label: "research/m6_*.json", href: `${REPO}research/` },
+  },
+  {
+    id: "recall",
+    titleEn: "Recall by meaning",
+    titleTh: "การเรียกคืนตามความหมาย",
+    numberEn: "30 paraphrased questions among 120 texts: Delentia word matching 7, mem0 24, Delentia with local embeddings 22. Held-out Thai set of 40: 20 with word matching, 38 with the bge-m3 embedding",
+    numberTh: "คำถามเปลี่ยนถ้อยคำ 30 ข้อใน 120 ข้อความ: Delentia จับคำ 7, mem0 24, Delentia กับ embedding ภายในเครื่อง 22 ชุดแยกภาษาไทย 40 ข้อ: จับคำ 20, ใช้ embedding bge-m3 38",
+    howEn: "Fixed question sets written before the runs; top-3 hit counts.",
+    howTh: "ชุดคำถามที่เขียนก่อนรัน นับจำนวนที่ติดอันดับ 1–3",
+    limitEn: "Synthetic data, not real users' memories. Word matching alone is weaker than mem0 here; embeddings are optional and not the default.",
+    limitTh: "ข้อมูลสังเคราะห์ ไม่ใช่ความจำของผู้ใช้จริง การจับคำอย่างเดียวด้อยกว่า mem0 ในชุดนี้ embedding เป็นทางเลือกและไม่ใช่ค่าเริ่มต้น",
+    source: { label: "research/ (recall datasets and results)", href: `${REPO}research/` },
+  },
+  {
+    id: "startup",
+    titleEn: "Start-up and footprint",
+    titleTh: "เวลาเริ่มและทรัพยากรที่ใช้",
+    numberEn: "`delentia serve` answers /health in about 2.9 s; idle memory about 471 MB; about 0.3 s of runtime overhead per governed episode",
+    numberTh: "`delentia serve` ตอบ /health ภายในราว 2.9 วินาที; ใช้หน่วยความจำขณะว่างราว 471 MB; โอเวอร์เฮดของรันไทม์ราว 0.3 วินาทีต่อหนึ่งตอนที่ผ่านการกำกับดูแล",
+    howEn: "Measured on one Windows PC with a scripted model.",
+    howTh: "วัดบนพีซี Windows เครื่องเดียวด้วยโมเดลสคริปต์",
+    limitEn: "One machine. Not a load test and not a production figure.",
+    limitTh: "เครื่องเดียว ไม่ใช่การทดสอบโหลดและไม่ใช่ตัวเลขการใช้งานจริง",
+    source: { label: "scripts/host_sizing.py", href: `${REPO}scripts/host_sizing.py` },
+  },
+  {
+    id: "drill",
+    titleEn: "Unattended-operation drill",
+    titleTh: "ซ้อมการทำงานโดยไม่มีคนดู",
+    numberEn: "8 of 8 observations hold: a scheduled read job ran by itself, a scheduled write job stopped and waited for a signature and wrote nothing, an emergency pause stopped a new job, and the audit trail the server wrote (36 rows) verified",
+    numberTh: "8 จาก 8 ข้อสังเกตเป็นจริง: งานอ่านตามเวลารันเอง, งานเขียนตามเวลาหยุดรอลายเซ็นและไม่เขียนอะไร, การหยุดฉุกเฉินหยุดงานใหม่ได้ และบันทึกตรวจสอบที่เซิร์ฟเวอร์เขียน (36 แถว) ตรวจผ่าน",
+    howEn: "A real `delentia serve` with the daemon on, a real clock and a scripted model, left alone for about two minutes.",
+    howTh: "`delentia serve` จริงที่เปิดตัวทำงานเบื้องหลัง นาฬิกาจริง และโมเดลสคริปต์ ปล่อยไว้ราวสองนาที",
+    limitEn: "Shows the code side of autonomy. It does not show that a capable model can drive it, or that it runs for days.",
+    limitTh: "แสดงฝั่งโค้ดของการทำงานอัตโนมัติ ไม่ได้แสดงว่าโมเดลที่เก่งพอขับมันได้ หรือว่ามันรันได้หลายวัน",
+    source: { label: "scripts/autonomy_drill.py", href: `${REPO}scripts/autonomy_drill.py` },
+  },
+  {
+    id: "real-models",
+    titleEn: "Real small local models driving the tools",
+    titleTh: "โมเดลท้องถิ่นขนาดเล็กจริงที่ใช้เครื่องมือ",
+    numberEn: "Simple goals completed: qwen3:8b 4 of 5, qwen2.5:7b 3 of 5, llama3.2:3b 0 of 5 (CPU only, 70–190 s per goal)",
+    numberTh: "เป้าหมายง่ายที่ทำสำเร็จ: qwen3:8b 4 จาก 5, qwen2.5:7b 3 จาก 5, llama3.2:3b 0 จาก 5 (ใช้ CPU อย่างเดียว 70–190 วินาทีต่อเป้าหมาย)",
+    howEn: "Five simple tool tasks on the current runtime, one run each.",
+    howTh: "งานเครื่องมือแบบง่ายห้างาน บนรันไทม์ปัจจุบัน รันละครั้ง",
+    limitEn: "A tiny sample of weak models. No capable hosted model has been tested yet, so we make no claim about how well the agent works with one.",
+    limitTh: "ตัวอย่างเล็กมากของโมเดลที่ไม่เก่ง ยังไม่เคยทดสอบกับโมเดลที่เก่งพอบนคลาวด์ เราจึงไม่อ้างอะไรว่าเอเจนต์ทำงานได้ดีกับโมเดลเหล่านั้น",
+    source: { label: "scripts/real_model_tool_probe.py", href: `${REPO}scripts/real_model_tool_probe.py` },
+  },
+]
 
-function AnimatedStat({ stat, isDark }: { stat: StatItem; isDark: boolean }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-80px" })
-  const count = useAnimatedCounter(stat.value, 2000, isInView)
-  const Icon = stat.icon
-  return (
-    <m.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className={`relative overflow-hidden rounded-2xl p-6 border group hover:-translate-y-1 transition-all duration-300 ${
-        isDark ? "bg-[#1E1E1E] border-[#2A2A2A] hover:border-[#3A3A3A]" : "bg-white border-warm-light-gray hover:shadow-lg"
-      }`}
-    >
-      <div className="absolute top-0 right-0 w-24 h-24 rounded-full opacity-5 -translate-y-8 translate-x-8" style={{ backgroundColor: stat.color }} />
-      <Icon size={22} style={{ color: stat.color }} className="mb-3" />
-      <div className="text-3xl sm:text-4xl font-bold tracking-tight mb-1" style={{ color: stat.color }}>
-        {stat.prefix ?? ""}{stat.value < 1 ? count.toFixed(1) : Math.round(count)}{stat.suffix}
-      </div>
-      <div className={`text-sm font-medium ${isDark ? "text-[#999]" : "text-warm-gray"}`}>
-        {stat.labelEn}
-      </div>
-    </m.div>
-  )
-}
+const notMeasuredEn = [
+  "Accuracy or hallucination rate, against any other system or model.",
+  "Cost savings against a baseline in real use.",
+  "How the agent performs with a capable hosted model (the planned acceptance test has not been run).",
+  "Agreement between models from different vendors (the jury has only run against scripted servers).",
+  "Uptime or an SLA: no public host is running.",
+  "Any comparison with LangChain, AutoGPT or other agent frameworks on the same tasks. The only side-by-side test is the memory-store one above.",
+  "Any independent audit of these results.",
+]
 
-type ChartView = "radar" | "bar"
+const notMeasuredTh = [
+  "ความแม่นยำหรืออัตราหลอน เทียบกับระบบหรือโมเดลอื่นใด",
+  "การประหยัดต้นทุนเทียบกับค่าอ้างอิงในการใช้งานจริง",
+  "ผลของเอเจนต์เมื่อใช้โมเดลบนคลาวด์ที่เก่งพอ (ยังไม่ได้รันการทดสอบรับรองที่วางแผนไว้)",
+  "ความสอดคล้องระหว่างโมเดลจากผู้ให้บริการต่างราย (คณะลูกขุนรันกับเซิร์ฟเวอร์สคริปต์เท่านั้น)",
+  "เวลาทำงานต่อเนื่องหรือ SLA: ยังไม่มีโฮสต์สาธารณะที่ทำงานอยู่",
+  "การเปรียบเทียบกับ LangChain, AutoGPT หรือเฟรมเวิร์กเอเจนต์อื่นบนงานเดียวกัน การทดสอบเทียบกันเพียงอย่างเดียวคือเรื่องที่เก็บหน่วยความจำข้างบน",
+  "การตรวจสอบอิสระต่อผลเหล่านี้",
+]
 
+/* ─── PAGE ─── */
 export default function BenchmarkPage() {
   const { language } = useLanguage()
   const { resolvedTheme } = useTheme()
   const mounted = useMounted()
   const isDark = (mounted ? resolvedTheme : "light") === "dark"
   const isEn = language === "en"
-  const [chartView, setChartView] = useState<ChartView>("radar")
 
-  type LiveBenchmarkData = {
-    radarData?: typeof radarData
-    barData?: typeof barData
-    counterStats?: Array<{ value: number; suffix: string; labelEn: string; labelTh: string; prefix?: string }>
-    source?: "live" | "static"
-    updatedAt?: string
-  }
-  const [liveData, setLiveData] = useState<LiveBenchmarkData | null>(null)
-  useEffect(() => {
-    fetch("/api/benchmark")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((d: LiveBenchmarkData | null) => d && setLiveData(d))
-      .catch(() => {})
-  }, [])
-
-  type LiveStatsData = {
-    testCount?: number
-    microserviceCount?: number
-    algorithmCount?: number
-    hallucinationRate?: string
-    source?: "live" | "static"
-    updatedAt?: string
-  }
-  const [sysStats, setSysStats] = useState<LiveStatsData | null>(null)
-  useEffect(() => {
-    fetch("/api/stats")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((d: LiveStatsData | null) => d && setSysStats(d))
-      .catch(() => {})
-  }, [])
-
-  const activeRadarData = liveData?.radarData ?? radarData
-  const activeBarData = liveData?.barData ?? barData
-  const activeCounterStats = liveData?.counterStats
-    ? liveData.counterStats.map((live, i) => ({ ...counterStats[i], ...live }))
-    : counterStats
-
-  const chartBg = isDark ? "#1E1E1E" : "#FFFFFF"
-  const gridColor = isDark ? "#333" : "#E8E3DC"
-  const textColor = isDark ? "#999" : "#6B6B6B"
-
-  const cellCls = (t: string) => {
-    if (t === "good" || t === "check") return "text-warm-sage font-semibold"
-    if (t === "bad" || t === "cross") return isDark ? "text-[#666]" : "text-[#999]"
-    return isDark ? "text-[#AAA]" : "text-[#4A4A4A]"
-  }
+  const card = isDark ? "bg-[#1E1E1E] border-[#2A2A2A]" : "bg-white border-warm-light-gray"
+  const muted = isDark ? "text-[#999]" : "text-warm-gray"
+  const strong = isDark ? "text-warm-light-gray" : "text-warm-charcoal"
 
   return (
     <>
       <Navbar />
       <main id="main-content" className={`min-h-screen transition-colors duration-300 ${isDark ? "bg-[#111]" : "bg-warm-cream"}`}>
-
-        {/* Hero */}
-        <section className={`py-20 px-4 text-center transition-colors duration-300 ${isDark ? "bg-[#0D0D0D]" : "bg-warm-cream"}`}>
+        <section className={`py-20 px-4 text-center ${isDark ? "bg-[#0D0D0D]" : "bg-warm-cream"}`}>
           <div className="max-w-3xl mx-auto space-y-5">
-            <m.span
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-warm-sage/10 border border-warm-sage/30 text-warm-sage text-sm font-medium"
-            >
-              📊 {isEn ? "Benchmarks" : "เกณฑ์มาตรฐาน"}
-            </m.span>
             <m.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className={`text-4xl sm:text-5xl font-bold tracking-tight ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}
+              transition={{ duration: 0.5 }}
+              className={`text-4xl sm:text-5xl font-bold tracking-tight ${strong}`}
             >
-              {isEn ? "Performance " : "เปรียบเทียบ "}
-              <span className="font-display text-warm-sage">{isEn ? "Comparison" : "ประสิทธิภาพ"}</span>
+              {isEn ? "What we have " : "สิ่งที่เรา"}
+              <span className="font-display text-warm-sage">{isEn ? "measured" : "วัดจริงแล้ว"}</span>
             </m.h1>
-            <m.p
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className={`text-base sm:text-lg max-w-2xl mx-auto ${isDark ? "text-[#888]" : "text-warm-gray"}`}
-            >
+            <p className={`text-base sm:text-lg ${muted}`}>
               {isEn
-                ? "Internal benchmarks: RCT SignedAI targets 99.7% accuracy vs 85% for single LLM, with up to 60% estimated cost savings, full audit trails, and cryptographic signing. Figures below are self-reported and not yet independently audited."
-                : "Benchmark ภายใน: RCT SignedAI ตั้งเป้าความแม่นยำ 99.7% เทียบกับ 85% สำหรับ Single LLM พร้อมประมาณการประหยัดต้นทุนสูงสุด 60% Audit Trails ครบถ้วน และ Cryptographic Signing ตัวเลขด้านล่างเป็นข้อมูลที่รายงานเอง ยังไม่ผ่านการตรวจสอบอิสระ"}
-            </m.p>
-          </div>
-        </section>
-
-        {/* Animated Counter Stats */}
-        <section className={`py-10 lg:py-14 transition-colors duration-300 ${isDark ? "bg-[#111]" : "bg-warm-cream"}`} aria-label="Key Stats">
-          <div className="max-w-5xl mx-auto px-4">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-              {activeCounterStats.map((stat) => (
-                <AnimatedStat key={stat.labelEn} stat={stat} isDark={isDark} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Interactive Chart Dashboard */}
-        <section className={`py-16 lg:py-20 transition-colors duration-300 ${isDark ? "bg-[#141414]" : "bg-white"}`} aria-label="Interactive Charts">
-          <div className="max-w-5xl mx-auto px-4">
-            <m.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-8 lg:mb-12"
-            >
-              <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3 ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
-                <span className="font-display text-warm-sage">{isEn ? "Interactive" : "แผนภูมิ"}</span>{" "}
-                {isEn ? "Dashboard" : "เชิงโต้ตอบ"}
-              </h2>
-              {/* Live data badge */}
-              {liveData?.source === "live" && (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-warm-sage/15 text-warm-sage border border-warm-sage/25 mb-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-warm-sage animate-pulse" />
-                  {isEn ? "Live Data" : "ข้อมูล Live"}
-                </span>
-              )}
-              <p className={`text-sm max-w-xl mx-auto ${isDark ? "text-[#888]" : "text-warm-gray"}`}>
-                {isEn
-                  ? "Switch between Radar and Bar views to compare RCT SignedAI against Single LLM across key dimensions."
-                  : "สลับระหว่างมุมมอง Radar และ Bar เพื่อเปรียบเทียบ RCT SignedAI กับ Single LLM"}
-              </p>
-            </m.div>
-
-            {/* Chart Toggle */}
-            <div className="flex justify-center mb-8">
-              <div className={`inline-flex rounded-xl p-1 border ${isDark ? "bg-[#1E1E1E] border-[#2A2A2A]" : "bg-[#F5F0E8] border-warm-light-gray"}`}>
-                {(["radar", "bar"] as ChartView[]).map((view) => (
-                  <button
-                    key={view}
-                    onClick={() => setChartView(view)}
-                    className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
-                      chartView === view
-                        ? "bg-warm-sage text-white shadow-sm"
-                        : isDark ? "text-[#888] hover:text-[#CCC]" : "text-warm-gray hover:text-warm-charcoal"
-                    }`}
-                  >
-                    {view === "radar" ? (isEn ? "Radar View" : "มุมมอง Radar") : isEn ? "Bar View" : "มุมมอง Bar"}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Chart Container */}
-            <m.div
-              initial={{ opacity: 0, scale: 0.97 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className={`rounded-2xl border p-4 sm:p-6 lg:p-8 ${isDark ? "bg-[#1E1E1E] border-[#2A2A2A]" : "bg-white border-warm-light-gray"}`}
-            >
-              <div className="w-full" style={{ height: 420 }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  {chartView === "radar" ? (
-                    <RadarChart data={activeRadarData} cx="50%" cy="50%" outerRadius="75%">
-                      <PolarGrid stroke={gridColor} />
-                      <PolarAngleAxis dataKey="subject" tick={{ fill: textColor, fontSize: 12 }} />
-                      <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: textColor, fontSize: 10 }} />
-                      <Radar name="RCT SignedAI" dataKey="rct" stroke="#7B9E87" fill="#7B9E87" fillOpacity={0.35} strokeWidth={2} />
-                      <Radar name="Single LLM" dataKey="single" stroke={isDark ? "#555" : "#CCC"} fill={isDark ? "#555" : "#CCC"} fillOpacity={0.15} strokeWidth={2} />
-                      <Legend wrapperStyle={{ fontSize: 13 }} />
-                      <Tooltip contentStyle={{ backgroundColor: chartBg, border: `1px solid ${gridColor}`, borderRadius: 12, fontSize: 13 }} labelStyle={{ color: textColor }} />
-                    </RadarChart>
-                  ) : (
-                    <BarChart data={activeBarData} barGap={4} barCategoryGap="20%">
-                      <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
-                      <XAxis dataKey="name" tick={{ fill: textColor, fontSize: 11 }} axisLine={{ stroke: gridColor }} />
-                      <YAxis domain={[0, 100]} tick={{ fill: textColor, fontSize: 11 }} axisLine={{ stroke: gridColor }} />
-                      <Tooltip contentStyle={{ backgroundColor: chartBg, border: `1px solid ${gridColor}`, borderRadius: 12, fontSize: 13 }} labelStyle={{ color: textColor }} />
-                      <Legend wrapperStyle={{ fontSize: 13 }} />
-                      <Bar name="RCT SignedAI" dataKey="rct" radius={[6, 6, 0, 0]}>
-                        {activeBarData.map((_, i) => <Cell key={i} fill="#7B9E87" />)}
-                      </Bar>
-                      <Bar name="Single LLM" dataKey="single" radius={[6, 6, 0, 0]}>
-                        {activeBarData.map((_, i) => <Cell key={i} fill={isDark ? "#555" : "#CCC"} />)}
-                      </Bar>
-                    </BarChart>
-                  )}
-                </ResponsiveContainer>
-              </div>
-            </m.div>
-          </div>
-        </section>
-
-        {/* Key Metrics Cards */}
-        <section className={`py-16 lg:py-20 transition-colors duration-300 ${isDark ? "bg-warm-charcoal" : "bg-warm-cream"}`} aria-label="Key Metrics">
-          <div className="max-w-5xl mx-auto px-4">
-            <m.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-10 lg:mb-14"
-            >
-              <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-4 ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
-                <span className="font-display text-warm-sage">{isEn ? "Performance" : "ประสิทธิภาพ"}</span>{" "}
-                {isEn ? "Metrics" : "ตัวชี้วัด"}
-              </h2>
-            </m.div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-              {benchmarks.map((bm, i) => (
-                <m.div
-                  key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                  whileHover={{ y: -4 }}
-                  className={`p-5 sm:p-6 rounded-2xl border transition-shadow hover:shadow-lg ${isDark ? "bg-[#1E1E1E] border-[#2A2A2A]" : "bg-white border-warm-light-gray"}`}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <bm.icon size={20} style={{ color: bm.color }} />
-                    <span className={`text-sm font-semibold ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>{isEn ? bm.metricEn : bm.metricTh}</span>
-                  </div>
-                  <div className="space-y-3">
-                    <div>
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-xs font-medium" style={{ color: bm.color }}>RCT SignedAI</span>
-                        <span className="text-sm font-bold" style={{ color: bm.color }}>{bm.rct}</span>
-                      </div>
-                      <div className={`h-2.5 rounded-full overflow-hidden ${isDark ? "bg-[#2A2A2A]" : "bg-warm-light-gray"}`}>
-                        <m.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${bm.inverted ? Math.max(5, 100 - bm.rctVal * 3) : Math.min(100, bm.rctVal)}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-                          className="h-full rounded-full"
-                          style={{ backgroundColor: bm.color }}
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="flex items-center justify-between mb-1">
-                        <span className={`text-xs font-medium ${isDark ? "text-[#666]" : "text-[#999]"}`}>Single LLM</span>
-                        <span className={`text-sm font-bold ${isDark ? "text-[#666]" : "text-[#999]"}`}>{bm.single}</span>
-                      </div>
-                      <div className={`h-2.5 rounded-full overflow-hidden ${isDark ? "bg-[#2A2A2A]" : "bg-warm-light-gray"}`}>
-                        <m.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${bm.inverted ? Math.min(100, bm.singleVal * 3) : bm.singleVal}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
-                          className={`h-full rounded-full ${isDark ? "bg-[#444]" : "bg-[#CCC]"}`}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </m.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* System Stats — sourced from /api/stats */}
-        {sysStats && (
-          <section className={`py-12 transition-colors duration-300 ${isDark ? "bg-[#0D0D0D]" : "bg-[#F5F0E8]"}`} aria-label="System Statistics">
-            <div className="max-w-4xl mx-auto px-4">
-              <div className="flex items-center gap-3 mb-6">
-                <h2 className={`text-lg font-bold ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
-                  {isEn ? "System Statistics" : "สถิติระบบ"}
-                </h2>
-                <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide ${sysStats.source === "live" ? "bg-warm-sage/15 text-warm-sage border border-warm-sage/25" : "bg-muted text-muted-foreground border border-border"}`}>
-                  {sysStats.source === "live" && <span className="h-1.5 w-1.5 rounded-full bg-warm-sage animate-pulse" />}
-                  {sysStats.source === "live" ? (isEn ? "Live" : "Live") : (isEn ? "Static" : "Static")}
-                </span>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {[
-                  { value: sysStats.testCount?.toLocaleString() ?? "—", label: isEn ? "Test Cases" : "Test Cases" },
-                  { value: sysStats.microserviceCount ?? "—", label: isEn ? "Microservices" : "Microservices" },
-                  { value: sysStats.algorithmCount ?? "—", label: isEn ? "Algorithms" : "Algorithms" },
-                  { value: sysStats.hallucinationRate ?? "—", label: isEn ? "Hallucination Rate" : "อัตรา Hallucination" },
-                ].map((item) => (
-                  <div key={item.label} className={`rounded-xl border p-4 ${isDark ? "border-[#2A2A2A] bg-warm-charcoal" : "border-warm-light-gray bg-white"}`}>
-                    <div className="text-2xl font-bold text-warm-sage">{item.value}</div>
-                    <div className={`text-xs ${isDark ? "text-[#888]" : "text-warm-gray"}`}>{item.label}</div>
-                  </div>
-                ))}
-              </div>
-              {sysStats.updatedAt && (
-                <p className={`mt-3 text-[11px] ${isDark ? "text-[#666]" : "text-warm-gray"}`}>
-                  {isEn ? "Last verified:" : "ตรวจสอบล่าสุด:"} {sysStats.updatedAt}
-                </p>
-              )}
-            </div>
-          </section>
-        )}
-
-        {/* Feature Comparison Table */}
-        <section className={`py-16 lg:py-20 transition-colors duration-300 ${isDark ? "bg-[#141414]" : "bg-white"}`} aria-label="Feature Comparison">
-          <div className="max-w-2xl mx-auto px-4">
-            <m.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-10 lg:mb-14"
-            >
-              <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
-                <span className="font-display text-warm-amber">{isEn ? "Feature" : "ฟีเจอร์"}</span>{" "}
-                {isEn ? "Comparison" : "เปรียบเทียบ"}
-              </h2>
-            </m.div>
-            <p className={`text-xs text-center mb-2 sm:hidden ${isDark ? "text-[#555]" : "text-[#B0A898]"}`}>
-              {isEn ? "← scroll to see more →" : "← เลื่อนเพื่อดูเพิ่มเติม →"}
+                ? "Every number below comes from a script or a CI run in the public repository, next to the reason it is weaker than it looks. Nothing here is an independent audit."
+                : "ทุกตัวเลขด้านล่างมาจากสคริปต์หรือการรัน CI ในรีโปสาธารณะ พร้อมเหตุผลว่าทำไมจึงอ่อนกว่าที่เห็น ไม่มีข้อใดเป็นการตรวจสอบอิสระ"}
             </p>
-            <div className="overflow-x-auto">
-              <div className="min-w-100">
-                <div className={`rounded-2xl border overflow-hidden ${isDark ? "bg-[#1E1E1E] border-[#2A2A2A]" : "bg-white border-warm-light-gray"}`}>
-                  <div className={`grid grid-cols-3 px-5 py-3 border-b ${isDark ? "border-[#2A2A2A] bg-[#252525]" : "border-warm-light-gray bg-[#F5F0E8]"}`}>
-                    <span className={`text-xs font-semibold uppercase tracking-wider ${isDark ? "text-[#888]" : "text-warm-gray"}`}>{isEn ? "Feature" : "ฟีเจอร์"}</span>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-center text-warm-sage">RCT</span>
-                    <span className={`text-xs font-semibold uppercase tracking-wider text-center ${isDark ? "text-[#666]" : "text-[#999]"}`}>Single LLM</span>
-                  </div>
-                  {featureComparison.map((feat, i) => (
-                    <m.div
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.04 }}
-                      className={`grid grid-cols-3 px-5 py-3 border-b last:border-b-0 transition-colors ${
-                        isDark ? "border-[#2A2A2A] hover:bg-[#252525]" : "border-warm-sand hover:bg-warm-cream"
-                      }`}
-                    >
-                      <span className={`text-sm ${isDark ? "text-[#CCC]" : "text-[#333]"}`}>{isEn ? feat.featureEn : feat.featureTh}</span>
-                      <span className="text-center">
-                        {feat.rct ? <CheckCircle size={18} className="inline text-warm-sage" /> : <X size={18} className="inline text-[#999]" />}
-                      </span>
-                      <span className="text-center">
-                        {feat.single ? <CheckCircle size={18} className="inline text-warm-sage" /> : <X size={18} className={`inline ${isDark ? "text-[#444]" : "text-[#CCC]"}`} />}
-                      </span>
-                    </m.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Platform Comparison */}
-        <section className={`py-16 lg:py-20 transition-colors duration-300 ${isDark ? "bg-warm-charcoal" : "bg-warm-cream"}`} aria-label="Platform Comparison">
-          <div className="max-w-4xl mx-auto px-4">
-            <m.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-10 lg:mb-14"
-            >
-              <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3 ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
-                {isEn ? "Platform" : "เปรียบเทียบ"}{" "}
-                <span className="font-display text-warm-amber">{isEn ? "Comparison" : "Platform"}</span>
-              </h2>
-              <p className={`text-sm max-w-xl mx-auto ${isDark ? "text-[#888]" : "text-warm-gray"}`}>
-                {isEn
-                  ? "How RCT Ecosystem stacks up against LangChain and AutoGPT across enterprise-critical capabilities."
-                  : "วิธีที่ RCT Ecosystem เปรียบเทียบกับ LangChain และ AutoGPT ในความสามารถสำคัญระดับ Enterprise"}
-              </p>
-            </m.div>
-
-            <p className={`text-xs text-center mb-2 sm:hidden ${isDark ? "text-[#555]" : "text-[#B0A898]"}`}>
-              {isEn ? "← scroll to see all platforms →" : "← เลื่อนเพื่อดูทุก Platform →"}
-            </p>
-            <div className="overflow-x-auto">
-              <div className="min-w-140">
-                <div className={`rounded-2xl border overflow-hidden ${isDark ? "border-[#2A2A2A]" : "border-warm-light-gray"}`}>
-                  <div className={`grid grid-cols-4 items-center px-4 sm:px-6 py-4 border-b text-xs sm:text-sm font-bold uppercase tracking-wider ${isDark ? "bg-[#1E1E1E] border-[#2A2A2A] text-[#888]" : "bg-[#F5F0E8] border-warm-light-gray text-warm-gray"}`}>
-                    <div>{isEn ? "Capability" : "ความสามารถ"}</div>
-                    <div className="text-center text-warm-sage">RCT Ecosystem</div>
-                    <div className="text-center text-warm-sky">LangChain</div>
-                    <div className="text-center text-warm-lavender">AutoGPT</div>
-                  </div>
-                  {platformRows.map((row, i) => (
-                    <m.div
-                      key={i}
-                      initial={{ opacity: 0, x: -8 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.04 }}
-                      className={`grid grid-cols-4 items-center gap-2 px-4 sm:px-6 py-3 border-b last:border-b-0 text-xs sm:text-sm transition-colors ${
-                        isDark ? "border-[#2A2A2A] hover:bg-[#1E1E1E]" : "border-warm-sand hover:bg-white"
-                      } ${i % 2 === 0 ? (isDark ? "bg-[#161616]" : "bg-warm-cream/50") : isDark ? "bg-warm-charcoal" : "bg-white"}`}
-                    >
-                      <div className={`font-medium ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>{isEn ? row.cap.en : row.cap.th}</div>
-                      <div className={`text-center ${cellCls(row.rct.type)}`}>{row.rct.label}</div>
-                      <div className={`text-center ${cellCls(row.lc.type)}`}>{row.lc.label}</div>
-                      <div className={`text-center ${cellCls(row.agpt.type)}`}>{row.agpt.label}</div>
-                    </m.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <p className={`text-xs text-center mt-4 ${isDark ? "text-[#555]" : "text-[#B0A898]"}`}>
+            <p className={`text-sm ${muted}`}>
               {isEn
-                ? "* Data based on internal benchmarks (2025). LangChain and AutoGPT figures based on publicly available research."
-                : "* ข้อมูลอ้างอิงจาก Benchmark ภายใน (2025) ข้อมูล LangChain และ AutoGPT อ้างอิงจากงานวิจัยสาธารณะ"}
+                ? "This page replaces earlier charts (accuracy 99.7%, hallucination 0.3%, cost saving 73%, and a table against LangChain and AutoGPT) that were never backed by a measurement. Those figures are withdrawn; see "
+                : "หน้านี้แทนที่แผนภูมิเดิม (ความแม่นยำ 99.7%, อัตราหลอน 0.3%, ประหยัดต้นทุน 73% และตารางเทียบกับ LangChain และ AutoGPT) ซึ่งไม่เคยมีการวัดรองรับ ตัวเลขเหล่านั้นถูกถอนแล้ว ดู "}
+              <Link href="/corrections" className="underline text-warm-sage">{isEn ? "Corrections" : "การแก้ไขข้อมูล"}</Link>.
             </p>
           </div>
         </section>
 
-        {/* test infrastructure milestone */}
-        <section className={`py-16 px-4 transition-colors duration-300 ${isDark ? "bg-[#141414]" : "bg-warm-cream/50"}`} aria-label="test infrastructure milestone">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10">
-              <h2 className={`text-3xl font-bold mb-2 ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
-                {isEn ? "Test infrastructure (public CI)" : "Test infrastructure (public CI)"}
-              </h2>
-              <p className={`text-sm ${isDark ? "text-[#888]" : "text-warm-gray"}`}>
-                {isEn
-                  ? "First 0-failure milestone across the enterprise (private) test suite — March 21, 2026. The public open-source SDK maintains its own separate, smaller verified suite — see TESTING_CANONICAL.md in the delentia-os repo."
-                  : "Milestone 0 ความล้มเหลวครั้งแรก ในชุดทดสอบ enterprise (private) ทั้งหมด — 21 มีนาคม 2026 ส่วน public open-source SDK มีชุดทดสอบแยกของตัวเองที่เล็กกว่า — ดู TESTING_CANONICAL.md ใน repo delentia-os"}
-              </p>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-              {[
-                { value: "7,109", label: isEn ? "Passed (public repository, CI-verified)" : "ผ่าน (public repository, CI-verified)", color: "#7B9E87" },
-                { value: "0", label: isEn ? "Failed" : "ล้มเหลว", color: "#C4745B" },
-                { value: "6,738+", label: isEn ? "Total Tests (enterprise, private)" : "Tests ทั้งหมด (enterprise, private)", color: "#D4A853" },
-                { value: "not measured", label: isEn ? "FDIA Accuracy (internal benchmark)" : "FDIA Accuracy (Benchmark ภายใน)", color: "#89B4C8" },
-              ].map((s, i) => (
-                <m.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                  className={`p-5 rounded-2xl border text-center ${isDark ? "bg-[#1E1E1E] border-[#2A2A2A]" : "bg-white border-warm-light-gray"}`}>
-                  <div className="text-3xl font-bold" style={{ color: s.color }}>{s.value}</div>
-                  <div className={`text-xs uppercase tracking-wider mt-1 ${isDark ? "text-[#888]" : "text-warm-gray"}`}>{s.label}</div>
-                </m.div>
+        <section className="py-10 px-4" aria-label={isEn ? "Measured results" : "ผลที่วัดได้"}>
+          <div className="max-w-4xl mx-auto space-y-5">
+            {results.map((r) => (
+              <article key={r.id} id={r.id} className={`rounded-2xl border p-6 ${card}`}>
+                <h2 className={`text-lg font-semibold mb-2 ${strong}`}>{isEn ? r.titleEn : r.titleTh}</h2>
+                <p className="text-base font-medium text-warm-sage mb-3">{isEn ? r.numberEn : r.numberTh}</p>
+                <dl className={`text-sm space-y-2 ${muted}`}>
+                  <div>
+                    <dt className={`inline font-semibold ${strong}`}>{isEn ? "How measured: " : "วัดอย่างไร: "}</dt>
+                    <dd className="inline">{isEn ? r.howEn : r.howTh}</dd>
+                  </div>
+                  <div>
+                    <dt className={`inline font-semibold ${strong}`}>{isEn ? "Why it is weaker than it looks: " : "ทำไมจึงอ่อนกว่าที่เห็น: "}</dt>
+                    <dd className="inline">{isEn ? r.limitEn : r.limitTh}</dd>
+                  </div>
+                  <div>
+                    <dt className={`inline font-semibold ${strong}`}>{isEn ? "Evidence: " : "หลักฐาน: "}</dt>
+                    <dd className="inline">
+                      <a href={r.source.href} target="_blank" rel="noopener noreferrer" className="underline text-warm-sage break-all">{r.source.label}</a>
+                    </dd>
+                  </div>
+                </dl>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-10 px-4" aria-label={isEn ? "Not measured" : "ยังไม่ได้วัด"}>
+          <div className={`max-w-4xl mx-auto rounded-2xl border p-6 ${card}`}>
+            <h2 className={`text-xl font-semibold mb-3 ${strong}`}>{isEn ? "Not measured yet" : "ยังไม่ได้วัด"}</h2>
+            <ul className={`list-disc pl-5 space-y-2 text-sm ${muted}`}>
+              {(isEn ? notMeasuredEn : notMeasuredTh).map((line) => (
+                <li key={line}>{line}</li>
               ))}
-            </div>
-            <div className={`p-5 rounded-xl border text-sm leading-relaxed ${isDark ? "bg-[#1E1E1E] border-[#2A2A2A] text-[#999]" : "bg-white border-warm-light-gray text-[#4A4A4A]"}`}>
+            </ul>
+          </div>
+        </section>
+
+        <section className="py-10 px-4 pb-20" aria-label={isEn ? "Reproduce" : "ทำซ้ำเอง"}>
+          <div className={`max-w-4xl mx-auto rounded-2xl border p-6 ${card}`}>
+            <h2 className={`text-xl font-semibold mb-3 ${strong}`}>{isEn ? "Check it yourself" : "ตรวจสอบด้วยตัวเอง"}</h2>
+            <p className={`text-sm mb-3 ${muted}`}>
               {isEn
-                ? "The only FDIA accuracy measured in the public repository is 11 of 12 cases on a tiny hand-written rank test, which is a smoke test, not a benchmark. The public CI suite passes with 0 failures (7,109 passed, 2026-10-12)."
-                : "ค่า FDIA accuracy เดียวที่วัดได้ในรีโปสาธารณะคือ 11 จาก 12 เคสในชุดทดสอบเล็กที่เขียนด้วยมือ ซึ่งเป็น smoke test ไม่ใช่ benchmark ชุดทดสอบ CI สาธารณะผ่านโดยไม่มีความล้มเหลว (7,109 ผ่าน, 12 ต.ค. 2026)"}
-            </div>
-          </div>
-        </section>
-
-        {/* Related Research */}
-        <section className={`py-14 lg:py-18 transition-colors duration-300 ${isDark ? "bg-[#111]" : "bg-warm-cream/60"}`} aria-label="Related research articles">
-          <div className="max-w-4xl mx-auto px-4">
-            <h3 className={`text-lg font-semibold mb-6 ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
-              {isEn ? "Related Research" : "งานวิจัยที่เกี่ยวข้อง"}
-            </h3>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {[
-                { href: "/en/blog/signedai-multi-llm-consensus-explained", labelEn: "SignedAI: Multi-LLM Consensus to Prevent Hallucination at Scale", labelTh: "SignedAI: Multi-LLM Consensus ป้องกัน Hallucination" },
-                { href: "/en/blog/hexacore-7-model-ai-infrastructure", labelEn: "HexaCore 7-Model AI Infrastructure: Cost Reduction at Scale", labelTh: "HexaCore 7 โมเดล AI Infrastructure: ลดต้นทุนในระดับ Scale" },
-                { href: "/en/blog/delta-engine-74-percent-compression", labelEn: "Delta Engine: 74% Lossless Memory Compression", labelTh: "Delta Engine: บีบอัดหน่วยความจำ 74% แบบ Lossless" },
-                { href: "/en/blog/rct-ecosystem-4849-tests-methodology", labelEn: "7,109 Tests, 0 Failures: How RCT Verifies Everything", labelTh: "7,109 Tests, 0 Failures: วิธีที่ RCT ตรวจสอบทุกอย่าง" },
-              ].map((item) => (
-                <Link key={item.href} href={item.href} className={`flex items-start gap-3 rounded-xl border p-4 transition-colors hover:-translate-y-0.5 ${isDark ? "border-[#2a2a2a] hover:border-[#444] hover:bg-[#1a1a1a]" : "border-warm-light-gray/50 hover:border-warm-amber/40 hover:bg-white"}`}>
-                  <ArrowRight size={14} className="mt-1 shrink-0 text-warm-amber" />
-                  <span className={`text-sm leading-relaxed ${isDark ? "text-[#bbb]" : "text-warm-charcoal/80"}`}>{isEn ? item.labelEn : item.labelTh}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className={`py-16 lg:py-20 transition-colors duration-300 ${isDark ? "bg-[#0D0D0D]" : "bg-white"}`} aria-label="CTA">
-          <div className="max-w-2xl mx-auto px-4 text-center">
-            <m.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-5"
+                ? "Install the runtime and run a first session that needs no model. The report says which parts are real and which part (the model) is scripted."
+                : "ติดตั้งรันไทม์แล้วรันเซสชันแรกที่ไม่ต้องมีโมเดล รายงานจะบอกว่าส่วนไหนจริง และส่วนไหน (โมเดล) เป็นสคริปต์"}
+            </p>
+            <pre className={`rounded-lg p-4 text-sm overflow-x-auto ${isDark ? "bg-[#111] text-[#CCC]" : "bg-warm-cream text-warm-charcoal"}`}>
+{`pip install delentia-os
+delentia demo init
+delentia demo run compare --scripted`}
+            </pre>
+            <a
+              href="https://github.com/delentia-labs/Delentia-OS"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-4 text-sm font-medium text-warm-sage underline"
             >
-              <h3 className={`text-xl sm:text-2xl font-bold ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
-                {isEn ? "Ready to upgrade your AI infrastructure?" : "พร้อมอัปเกรดโครงสร้างพื้นฐาน AI ของคุณ?"}
-              </h3>
-              <p className={`text-sm max-w-lg mx-auto ${isDark ? "text-[#888]" : "text-warm-gray"}`}>
-                {isEn
-                  ? "See how RCT SignedAI can transform your enterprise AI with multi-LLM orchestration, cryptographic verification, and complete audit trails."
-                  : "ดูว่า RCT SignedAI สามารถเปลี่ยนแปลง Enterprise AI ด้วย Multi-LLM Orchestration, Cryptographic Verification และ Audit Trails ที่สมบูรณ์"}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/solutions" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-warm-sage text-white font-semibold text-sm hover:bg-[#6A8D76] transition-all hover:-translate-y-0.5">
-                  {isEn ? "Explore Solutions" : "สำรวจ Solutions"} <ArrowRight size={16} />
-                </Link>
-                <Link href="/products/signed-ai" className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl border font-semibold text-sm transition-all hover:-translate-y-0.5 ${isDark ? "border-[#333] text-warm-light-gray hover:bg-[#1E1E1E]" : "border-warm-light-gray text-warm-charcoal hover:bg-warm-cream"}`}>
-                  SignedAI Details
-                </Link>
-              </div>
-            </m.div>
+              {isEn ? "Source and measurement scripts" : "ซอร์สโค้ดและสคริปต์การวัด"} <ArrowRight size={16} />
+            </a>
           </div>
         </section>
-
       </main>
       <Footer />
     </>
   )
 }
-

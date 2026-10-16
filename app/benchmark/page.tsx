@@ -2,19 +2,19 @@
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getBreadcrumbSchema } from "@/lib/schema"
-import { SITE_ENTERPRISE_EVIDENCE_LABEL, SITE_PUBLIC_SDK_EVIDENCE_LABEL, SITE_PUBLIC_SDK_TESTS, SITE_RESEARCH_EVIDENCE_LABEL } from "@/lib/site-config"
+import { SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
 import BenchmarkClient from "./BenchmarkClient"
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale()
   return createBilingualMetadata(
     locale,
-    "AI Benchmark Results",
-    "ผลลัพธ์ Benchmark AI",
-    `Benchmark framing for Delentia Labs vs common orchestration patterns. This page should be read with methodology disclosures and separates ${SITE_RESEARCH_EVIDENCE_LABEL.toLowerCase()} from ${SITE_PUBLIC_SDK_EVIDENCE_LABEL.toLowerCase()} and ${SITE_ENTERPRISE_EVIDENCE_LABEL.toLowerCase()}.`,
-    `หน้าสรุป benchmark ของ Delentia Labs เทียบกับแนวทาง orchestration ทั่วไป โดยต้องอ่านคู่กับ methodology disclosures และแยก ${SITE_RESEARCH_EVIDENCE_LABEL.toLowerCase()} ออกจาก ${SITE_PUBLIC_SDK_EVIDENCE_LABEL.toLowerCase()} และ ${SITE_ENTERPRISE_EVIDENCE_LABEL.toLowerCase()}.`,
+    "Measured results",
+    "ผลที่วัดได้จริง",
+    "What Delentia Labs has actually measured, each result with the script or CI run that produced it, why it is weaker than it looks, and a list of what has not been measured. No independent audit.",
+    "ผลที่ Delentia Labs วัดได้จริง แต่ละผลมีสคริปต์หรือการรัน CI ที่สร้างมัน เหตุผลว่าทำไมจึงอ่อนกว่าที่เห็น และรายการสิ่งที่ยังไม่ได้วัด ไม่มีการตรวจสอบอิสระ",
     "/benchmark",
-    ["AI benchmark", "LangChain vs RCT", "LlamaIndex comparison", "hallucination benchmark", "AI accuracy benchmark", "enterprise AI performance"]
+    ["measured results", "agent runtime tests", "prompt injection test", "audit log verification", "AI agent governance"]
   )
 }
 
@@ -25,15 +25,13 @@ export default async function BenchmarkPage() {
   const benchmarkSchema = {
     "@context": "https://schema.org",
     "@type": "Dataset",
-    "name": "Delentia Labs AI Reliability Benchmark — 2025 Results",
-    "description": `Benchmark framing that explains how Delentia Labs evaluates hallucination, accuracy, latency, and routing quality. Public readers should distinguish ${SITE_RESEARCH_EVIDENCE_LABEL.toLowerCase()} from ${SITE_PUBLIC_SDK_EVIDENCE_LABEL.toLowerCase()} and larger ${SITE_ENTERPRISE_EVIDENCE_LABEL.toLowerCase()} statements.`,
+    "name": "Delentia Labs measured results",
+    "description": "Results measured by Delentia Labs on its public agent runtime, each with the script or CI run that produced it, its limits, and a list of what has not been measured. Not an independent audit.",
     "url": `https://delentia.com${localePrefix}/benchmark`,
     "creator": { "@type": "Organization", "name": "Delentia Labs", "url": "https://delentia.com" },
     "license": "https://www.apache.org/licenses/LICENSE-2.0",
     "variableMeasured": [
-      { "@type": "PropertyValue", "name": "Hallucination rate", "value": "not claimed" },
-      { "@type": "PropertyValue", "name": "Public SDK Verified Tests", "value": SITE_PUBLIC_SDK_TESTS, "unitText": "count" },
-      { "@type": "PropertyValue", "name": "Validation Tiers", "value": 9, "unitText": "count" }
+      { "@type": "PropertyValue", "name": "Public test suite passed", "value": SITE_PUBLIC_SDK_TESTS, "unitText": "count" }
     ]
   }
 

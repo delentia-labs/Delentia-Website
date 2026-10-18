@@ -98,7 +98,7 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="text-4xl font-bold text-foreground">{author.name}</h1>
             {author.isSoleDeveloper && (
-              <span className="rounded-full bg-warm-amber/15 px-3 py-1 text-xs font-semibold text-warm-amber">Solo Founder & Developer</span>
+              <span className="rounded-full bg-warm-amber/15 px-3 py-1 text-xs font-semibold text-warm-amber">Solo Founder & Architect</span>
             )}
           </div>
           {author.nameLocal && (

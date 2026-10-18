@@ -80,8 +80,8 @@ export const teamMembers: TeamMember[] = [
   {
     id: "1",
     name: "Ittirit Saengow",
-    title: "Founder, Sole Developer, and Primary Author",
-    bio: "Creator of Delentia OS, FDIA equation, JITNA protocol, and the 7 Genome System. Builds the platform from Bangkok, Thailand.",
+    title: "Founder, Architect, and Primary Author",
+    bio: "Creator of the FDIA equation, the JITNA protocol and the RCT-7 framework. Builds Delentia from Bangkok, Thailand by directing AI coding assistants.",
     socials: {
       github: "https://github.com/ittirit720",
       linkedin: "https://www.linkedin.com/in/ittirit-saengow/",

@@ -53,7 +53,7 @@ export default async function AboutPage() {
     "name": "Ittirit Saengow",
     "alternateName": "อิทธิฤทธิ์ แซ่โง้ว",
     "jobTitle": "Architect of Intent",
-    "description": "Solo architect from Khlong Toei, Bangkok. Creator of Delentia Labs, FDIA equation, and the 7 Genome System.",
+    "description": "Founder and architect from Khlong Toei, Bangkok. Does not write code; builds Delentia by directing AI coding assistants. Creator of the FDIA equation and the RCT-7 framework.",
     "url": "https://delentia.com/about",
     "sameAs": [
       "https://github.com/ittirit720",
@@ -474,7 +474,7 @@ export default async function AboutPage() {
                 : "Built on the FDIA equation and a 10-Layer Architecture, Delentia OS orchestrates models into a governed enterprise runtime. We engineer deterministic pathways where every output is verifiable, making AI safe for highly-regulated workflows."}
             </p>
             <p className="mt-8 text-sm font-medium uppercase tracking-[0.16em] text-warm-amber">
-              {isTh ? "สถาปนิกอิสระ • 41 Algorithms • Public SDK verified + Enterprise snapshot" : "Solo Architect • 41 Algorithms • Public SDK verified + Enterprise snapshot"}
+              {isTh ? "ผู้ก่อตั้งและสถาปนิก • 41 Algorithms • CI สาธารณะผ่าน 7,109 การทดสอบ" : "Founder & Architect • 41 Algorithms • Public CI passes 7,109 tests"}
             </p>
             <p className="text-xs text-muted-foreground">
               {isTh

@@ -259,7 +259,7 @@ export async function POST(request: NextRequest) {
 
               <p><strong>Founder's Note:</strong></p>
               <div style="background-color: #111; border: 1px solid #1a1a1a; padding: 20px; border-radius: 6px; color: #e0e0e0; margin: 15px 0; font-style: italic;">
-                "As a solo developer building this project from the ground up, your support and validation keep me going. I am putting my passion and experience into creating Delentia OS to solve real developer pain points. I am thrilled to have you on this journey."
+                "This is an early, one-person project, and I build it by directing AI coding assistants. Your interest and your honest feedback keep it going. Tell me where it fails; that is the most useful thing you can do."
               </div>
 
               <p><strong>Next Steps:</strong></p>

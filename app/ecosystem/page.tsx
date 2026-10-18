@@ -32,7 +32,7 @@ const ADAPTERS = [
 ]
 
 const SKILLS = [
-  { id: "thai-language-skill", name: "Thai Language", icon: "🇹🇭", desc: "PDPA compliance + Thai legal parsing", verified: false },
+  { id: "thai-language-skill", name: "Thai Language", icon: "🇹🇭", desc: "Planned: Thai legal parsing. Not built", verified: false },
   { id: "legal-pdpa-skill", name: "Legal PDPA", icon: "⚖️", desc: "Thai PDPA constitutional engine", verified: false },
   { id: "thai-nlp-skill", name: "Thai NLP Advanced", icon: "🧠", desc: "PyThaiNLP + Typhoon v2 ML", verified: true },
   { id: "web-search-skill", name: "Web Search", icon: "🔍", desc: "Real-time search via Tavily API", verified: true },

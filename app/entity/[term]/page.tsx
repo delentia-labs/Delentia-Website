@@ -123,8 +123,8 @@ const entities: Record<string, {
     name: "Governance Layer",
     type: "Constitutional AI Component",
     definition: "The set of constitutional constraints, authorization policies, and audit trail systems that collectively ensure every AI output in the Delentia OS Ecosystem is authorized, traceable, and compliant.",
-    description: "The Governance Layer of the Delentia OS Ecosystem encompasses: the FDIA Architect gate (A variable), SignedAI consensus tiers (S/4/6/8), RCTDB provenance tracking (dimension 8: provenance), JITNA jurisdiction zone enforcement, and the PDPA-compliant right-to-erasure mechanism (UUID tombstone pattern). Together, these components ensure that every AI action in the system has a documented lawful basis, a verifiable authorization chain, and a complete audit trail. The Governance Layer is what converts Delentia OS from a capable AI platform into a constitutionally compliant enterprise infrastructure.",
-    relatedTerms: ["FDIA Equation", "SignedAI", "RCTDB", "PDPA Compliance", "Architect Gate"],
+    description: "The Governance Layer of the Delentia OS Ecosystem encompasses: the FDIA Architect gate (A variable), SignedAI consensus tiers (S/4/6/8), RCTDB provenance tracking (dimension 8: provenance), JITNA jurisdiction zone enforcement, and per-person erasure of memory text. Together, these are meant to give every action a verifiable authorization chain and an audit trail. They do not make anyone compliant with a law; that remains the owner's job. Parts of this list (jurisdiction zone enforcement, the eight-field provenance schema) are design ideas, not features.",
+    relatedTerms: ["FDIA Equation", "SignedAI", "RCTDB", "Architect Gate"],
     relatedArticles: [
       { title: "PDPA AI Compliance Thailand", href: "/en/blog/pdpa-ai-compliance-thailand" },
       { title: "Benchmark Summary", href: "/en/benchmark-summary" },

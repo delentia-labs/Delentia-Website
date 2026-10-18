@@ -70,8 +70,8 @@ const genomes: Genome[] = [
     id: 6,
     name: "RCT Knowledge Vault",
     nameTh: "RCT Knowledge Vault",
-    description: "Secure memory storage with quantum-resistant encryption. Stores sensitive context and credentials.",
-    descriptionTh: "การจัดเก็บหน่วยความจำอย่างปลอดภัยด้วยการเข้ารหัสที่ทนต่อควอนตัม จัดเก็บบริบทที่ละเอียดอ่อนและข้อมูลประจำตัว",
+    description: "Memory sealed per person with AES-256-GCM, so erasure destroys the key. It is not quantum-resistant, and credentials are never stored in it.",
+    descriptionTh: "หน่วยความจำที่ผนึกต่อคนด้วย AES-256-GCM การลบคือการทำลายกุญแจ ไม่ทนควอนตัม และไม่เก็บข้อมูลประจำตัวไว้ในนั้น",
     color: "#6366f1",
     icon: "Lock",
     dna: "ATCG-VAULT-RKV"

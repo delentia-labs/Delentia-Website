@@ -52,8 +52,8 @@ const layers: Layer[] = [
     icon: "Globe",
     color: "from-yellow-500 to-green-500",
     badge: "8 Markets",
-    features: ["TH/EN/JP/KR/CN", "PDPA Compliance", "Local LLMs", "Cultural Adaptation"],
-    featuresTh: ["TH/EN/JP/KR/CN", "PDPA Compliance", "Local LLMs", "Cultural Adaptation"]
+    features: ["TH/EN/JP/KR/CN", "Residency policy", "Local LLMs", "Editable model table"],
+    featuresTh: ["TH/EN/JP/KR/CN", "นโยบายที่เก็บข้อมูล", "โมเดลในเครื่อง", "ตารางโมเดลที่แก้ได้"]
   },
   {
     id: 7,
@@ -95,7 +95,7 @@ const layers: Layer[] = [
     id: 4,
     name: "RCTDB",
     nameTh: "RCTDB",
-    description: "Memory as a hash-chained event log with per-person erasure and a delta state store. No quantum-resistant encryption is built.",
+    description: "Memory as a hash-chained event log with per-person erasure and a delta state store. Quantum-resistant encryption is not built.",
     descriptionTh: "หน่วยความจำเป็นบันทึกเหตุการณ์ที่เชื่อม hash พร้อมการลบรายบุคคลและที่เก็บสถานะแบบ delta ไม่มีการเข้ารหัสทนควอนตัม",
     icon: "Database",
     color: "from-blue-500 to-indigo-500",

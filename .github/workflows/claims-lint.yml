@@ -1,0 +1,21 @@
+name: Claims lint
+
+# Fails a pull request that puts a withdrawn claim back on the site (rules and allowances: lib/claims.json).
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  claims-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Withdrawn claims
+        run: node scripts/claims-lint.mjs

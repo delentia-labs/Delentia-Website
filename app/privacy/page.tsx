@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "Privacy Policy — Delentia Labs",
     "นโยบายความเป็นส่วนตัว — Delentia Labs",
-    "Privacy policy for Delentia Labs website and services. PDPA-compliant data handling for Thailand and international users.",
+    "Privacy policy for the Delentia Labs website: what data is collected, why, and the rights of users in Thailand and elsewhere.",
     "นโยบายความเป็นส่วนตัวของ Delentia Labs เว็บไซต์และบริการ สอดคล้องกับ PDPA สำหรับผู้ใช้ในประเทศไทยและต่างประเทศ",
     "/privacy",
     ["privacy policy", "PDPA", "data protection", "Delentia Labs privacy"]
@@ -32,7 +32,7 @@ export default async function PrivacyPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: locale === "th" ? "นโยบายความเป็นส่วนตัว — Delentia Labs" : "Privacy Policy — Delentia Labs",
-    description: "PDPA-compliant privacy policy for Delentia Labs website and services. Covers data collection, use, sharing, and Thailand users' rights.",
+    description: "Privacy policy for the Delentia Labs website. Covers data collection, use, sharing, and Thailand users' rights.",
     url: `https://delentia.com${localePrefix}/privacy`,
     genre: "LegalDocument",
   }
@@ -79,7 +79,7 @@ export default async function PrivacyPage() {
         "We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on our website and updating the effective date below.",
     },
     {
-      title: "9. PDPA Compliance (Thailand)",
+      title: "9. Thailand PDPA rights",
       content:
         `For users in Thailand, Delentia Labs complies with the Personal Data Protection Act (PDPA) B.E. 2562 (2019). We collect and process personal data only with your consent or when permitted by law. You have the right to access, rectify, erase, restrict processing, and port your data. To exercise these rights, contact our Data Protection Officer at ${GENERAL_CONTACT_EMAIL}.`,
     },

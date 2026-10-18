@@ -125,12 +125,12 @@ export default function HomePage({ locale, navSlot, heroSlot }: HomePageClientPr
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(247,241,235,0.2),transparent_32%,rgba(212,168,83,0.04)_100%)] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.035),transparent_32%,rgba(212,168,83,0.03)_100%)]" />
               <div className="relative z-10 mx-auto max-w-2xl space-y-6 text-center">
                 <h2 className={`text-foreground ${locale === "th" ? "font-thai" : ""}`}>
-                  {locale === "en" ? "Ready to Build Sovereign AI?" : "พร้อมเริ่มต้นสร้าง Sovereign AI หรือยัง?"}
+                  {locale === "en" ? "Run it in two minutes" : "ลองรันได้ใน 2 นาที"}
                 </h2>
                 <p className={`text-muted-foreground ${locale === "th" ? "subtitle-th" : ""}`}>
                   {locale === "en"
-                    ? "Explore the 10-layer architecture, experience the live MCP gateway, or evaluate sovereign deployment for your enterprise."
-                    : "สำรวจสถาปัตยกรรม 10 เลเยอร์ ทดลองเชื่อมต่อ MCP Gateway หรือประเมินการ Deploy แบบ Sovereign สำหรับองค์กรของคุณ"}
+                    ? "pip install delentia-os, then delentia demo run compare --scripted. No model and no key needed; the demo shows the safety gate, a human signature and a signed audit log working for real."
+                    : "pip install delentia-os แล้วรัน delentia demo run compare --scripted ไม่ต้องมีโมเดลและไม่ต้องมีคีย์ เดโมแสดงด่านความปลอดภัย การลงนามของมนุษย์ และบันทึกตรวจสอบที่ลงนาม ทำงานจริง"}
                 </p>
                 <div className="flex flex-col justify-center gap-4 sm:flex-row">
                   <Link
@@ -144,14 +144,14 @@ export default function HomePage({ locale, navSlot, heroSlot }: HomePageClientPr
                     href={`${localePrefix}/pricing`}
                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-border px-6 py-3 font-medium text-foreground transition-colors hover:bg-secondary"
                   >
-                    {locale === "en" ? "View Pricing Plans" : "ดูแพ็กเกจราคา"}
+                    {locale === "en" ? "How to use it today" : "วิธีใช้ตอนนี้"}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
                     href={`${localePrefix}/contact`}
                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-border px-6 py-3 font-medium text-foreground transition-colors hover:bg-secondary"
                   >
-                    {locale === "en" ? "Contact Enterprise" : "ติดต่อฝ่ายขาย"}
+                    {locale === "en" ? "Talk to the founder" : "คุยกับผู้ก่อตั้ง"}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>

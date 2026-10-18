@@ -1,12 +1,7 @@
 // Schema.org structured data for SEO
 import type { Locale } from './i18n'
 import {
-  SITE_ALGORITHM_COUNT,
-  SITE_HALLUCINATION_RATE,
-  SITE_LAYER_COUNT,
-  SITE_MICROSERVICE_COUNT,
   SITE_NAME,
-  SITE_UPTIME,
   SITE_URL,
   SITE_VERSION,
   SOCIAL_LINKS,
@@ -146,7 +141,7 @@ export function getSoftwareApplicationSchema(locale: Locale) {
     name: locale === 'th'
       ? 'Delentia OS - ระบบปฏิบัติการ AI แบบรัฐธรรมนูญ'
       : 'Delentia OS - Constitutional AI Operating System',
-    applicationCategory: 'BusinessApplication',
+    applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Any',
     offers: {
       '@type': 'Offer',
@@ -154,17 +149,15 @@ export function getSoftwareApplicationSchema(locale: Locale) {
       priceCurrency: 'USD',
     },
     description: locale === 'th'
-      ? `โปรแกรมสถาปัตยกรรม AI แบบรัฐธรรมนูญพร้อมสถาปัตยกรรม 10 ชั้น, footprint ระดับ ${SITE_MICROSERVICE_COUNT}+ runtime components, และหลักฐาน benchmark hallucination ${SITE_HALLUCINATION_RATE}`
-      : `Constitutional AI architecture program with a 10-layer model, a ${SITE_MICROSERVICE_COUNT}+ runtime-component footprint, and ${SITE_HALLUCINATION_RATE} hallucination evidence on benchmarked workloads.`,
+      ? 'รันไทม์ agent โอเพนซอร์ส (Apache-2.0) ที่มีด่านความปลอดภัยก่อนเรียกเครื่องมือ การอนุมัติด้วยลายเซ็นของมนุษย์ และบันทึกตรวจสอบที่ลงนาม พัฒนาโดยคนคนเดียว ยังไม่มีบริการโฮสต์'
+      : 'Open-source (Apache-2.0) agent runtime with a safety gate before tool calls, human-signed approvals and a signed audit log. Built by one person; no hosted service yet.',
     featureList: [
-      '10-Layer Architecture',
-      `${SITE_MICROSERVICE_COUNT}+ Runtime Components`,
-      'Multi-LLM Consensus',
-      'SignedAI Verification',
-      'RCTDB v2.0',
-      'JITNA Protocol',
-      `${SITE_UPTIME} Availability Target`,
-      'Bilingual Support (EN/TH)',
+      'Safety gate before each tool call',
+      'Human-signed approvals',
+      'Hash-chained signed audit log',
+      'Plain-sentence policy',
+      'Model-free demo',
+      'Bilingual documentation (EN/TH)',
     ].join(', '),
     softwareVersion: SITE_VERSION,
     releaseNotes: `${SITE_URL}/en/changelog`,
@@ -179,39 +172,29 @@ export function getSoftwareApplicationSchema(locale: Locale) {
   }
 }
 
-/** Structured data for Pricing page — Product + multi-tier Offers */
+/** Structured data for the Pricing page. Round 87: there is one real offer (the open-source runtime, free). No hosted plan, no enterprise plan, no availability promise. */
 export function getProductOfferSchema(locale: Locale) {
-  const name = locale === 'th' ? 'Delentia OS — แพลตฟอร์ม AI ระดับองค์กร' : 'Delentia OS — Constitutional AI Enterprise Platform'
+  const name = locale === 'th' ? 'Delentia OS - รันไทม์ agent โอเพนซอร์ส' : 'Delentia OS - open-source agent runtime'
   const description = locale === 'th'
-    ? `ระบบปฏิบัติการ AI สถาปัตยกรรม ${SITE_LAYER_COUNT} ชั้น พร้อม ${SITE_ALGORITHM_COUNT} อัลกอริทึม, Multi-LLM Consensus, FDIA equation และ hallucination ${SITE_HALLUCINATION_RATE}`
-    : `${SITE_LAYER_COUNT}-layer Constitutional AI Operating System with ${SITE_ALGORITHM_COUNT} algorithms, Multi-LLM Consensus, FDIA equation, and ${SITE_HALLUCINATION_RATE} hallucination`
+    ? 'รันไทม์ agent โอเพนซอร์ส (Apache-2.0) ติดตั้งด้วย pip install delentia-os ใช้ฟรีบนเครื่องของคุณเอง ยังไม่มีบริการโฮสต์และยังไม่มี SLA'
+    : 'Open-source (Apache-2.0) agent runtime, installed with pip install delentia-os and free to run on your own machine. There is no hosted service and no SLA yet.'
   return {
     '@context': 'https://schema.org',
-    '@type': 'Product',
+    '@type': 'SoftwareApplication',
     name,
     description,
-    brand: { '@type': 'Organization', name: 'Delentia Labs', url: SITE_URL },
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Any',
+    license: 'https://opensource.org/licenses/Apache-2.0',
+    codeRepository: SOCIAL_LINKS.platformGithub,
     url: `${SITE_URL}/${locale}/pricing`,
-    image: `${SITE_URL}/opengraph-image`,
-    offers: [
-      {
-        '@type': 'Offer',
-        name: locale === 'th' ? 'แผน Starter' : 'Starter',
-        description: locale === 'th' ? 'สำรวจสถาปัตยกรรม Delentia OS โดยไม่มีค่าใช้จ่าย' : 'Explore the Delentia OS architecture for free',
-        price: '0',
-        priceCurrency: 'USD',
-        availability: 'https://schema.org/InStock',
-        url: `${SITE_URL}/${locale}/pricing`,
-      },
-      {
-        '@type': 'Offer',
-        name: locale === 'th' ? 'แผน Enterprise' : 'Enterprise',
-        description: locale === 'th' ? 'แพลตฟอร์ม AI ระดับองค์กรพร้อมการติดตั้งแบบกำหนดเองและ SLA' : 'Full enterprise AI platform with custom deployment and SLA',
-        priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'USD', description: 'Custom — contact sales' },
-        availability: 'https://schema.org/InStock',
-        url: `${SITE_URL}/${locale}/pricing`,
-      },
-    ],
+    offers: {
+      '@type': 'Offer',
+      name: locale === 'th' ? 'โอเพนซอร์ส' : 'Open source',
+      price: '0',
+      priceCurrency: 'USD',
+      url: SOCIAL_LINKS.platformGithub,
+    },
   }
 }
 

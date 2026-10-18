@@ -109,13 +109,13 @@ export function UserProfileMenu({ user = null, isAuthenticated = false }: UserPr
   const copy = language === "th"
     ? {
         contact: "ติดต่อทีมงาน",
-        requestAccess: "ขอสิทธิ์เข้าถึง",
+        requestAccess: "คุยกับผู้ก่อตั้ง",
         settings: "ตั้งค่า",
         signOut: "ออกจากระบบ",
       }
     : {
         contact: "Contact",
-        requestAccess: "Request Access",
+        requestAccess: "Talk to the founder",
         settings: "Settings",
         signOut: "Sign out",
       }

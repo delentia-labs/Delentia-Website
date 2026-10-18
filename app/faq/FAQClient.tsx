@@ -195,15 +195,10 @@ const faqCategories = [
 ] as const
 
 const versions = [
-  { ver: "5.4.5", name: "Full Suite Green (test count withdrawn, see Corrections)", date: "2026-03-21", status: "LATEST" },
-  { ver: "2.7.0", name: "Enterprise Integration Suite", date: "2026-03-10", status: "PRODUCTION" },
-  { ver: "2.1.0", name: "Enterprise Refactor Edition", date: "2026-02-15", status: "PRODUCTION" },
-  { ver: "8.0", name: "Universal Integration & Open Standard", date: "2026-02-02", status: "PRODUCTION" },
-  { ver: "7.0", name: "Complete Ecosystem Edition", date: "2026-01-31", status: "PRODUCTION" },
-  { ver: "6.0", name: "Ultimate Testing & Integration", date: "2026-01-20", status: "PRODUCTION" },
-  { ver: "5.0", name: "Genome Edition", date: "2026-01-15", status: "STABLE" },
-  { ver: "3.0", name: "Cross-chat Integration", date: "2026-01-10", status: "STABLE" },
-  { ver: "1.0", name: "Foundation", date: "2025-12-01", status: "STABLE" },
+  { ver: "2.3.1", name: "Optional OpenCV and faiss extras", date: "2026-10-16", status: "LATEST" },
+  { ver: "2.3.0", name: "Agent runtime, model-free demo", date: "2026-10-13", status: "PUBLIC" },
+  { ver: "2.2.6", name: "Earlier SDK release", date: "2026-06-06", status: "PUBLIC" },
+  { ver: "2.0.0", name: "Earlier SDK release", date: "2026-05-28", status: "PUBLIC" },
 ] as const
 
 function AccordionItem({ q, a }: { q: string; a: string }) {
@@ -282,7 +277,7 @@ export function FAQClient({ locale }: FAQClientProps) {
             </div>
             <div className="rounded-2xl border border-border bg-card/70 p-6">
               <div className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-warm-amber">
-                {isTh ? "ประวัติเวอร์ชัน" : "Version History"}
+                {isTh ? "รุ่นสาธารณะบน PyPI" : "Public releases on PyPI"}
               </div>
               <div className="space-y-3">
                 {versions.map((version) => (

@@ -23,6 +23,39 @@ export default function ChangelogClient() {
 
   const releases: ReleaseEntry[] = [
     {
+      version: "delentia-os 2.3.1",
+      date: "2026-10-16",
+      title: language === "th" ? "OpenCV และ faiss เป็นส่วนเสริมที่เลือกติดตั้ง" : "OpenCV and faiss become optional extras",
+      description: language === "th"
+        ? "ติดตั้งแกนหลักได้เล็กลง ฟังก์ชันที่ต้องใช้ OpenCV หรือ faiss ติดตั้งผ่านส่วนเสริม (delentia-os[video], delentia-os[vector]) ดัชนีเวกเตอร์ตัวสำรองด้วย numpy ให้ผลเท่ากับ faiss ในการทดสอบ"
+        : "A smaller core install. Features that need OpenCV or faiss come through extras (delentia-os[video], delentia-os[vector]); a numpy fallback index returns the same neighbours as faiss in tests.",
+      icon: Rocket,
+      highlights: ["pip install delentia-os", "pip check clean in an empty environment"],
+      tone: "border-emerald-500/25 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+    },
+    {
+      version: "delentia-os 2.3.0",
+      date: "2026-10-13",
+      title: language === "th" ? "รันไทม์ agent และเดโมที่ไม่ต้องมีโมเดล" : "Agent runtime and the model-free demo",
+      description: language === "th"
+        ? "รุ่นแรกที่มีรันไทม์ agent ครบ: ด่านความปลอดภัย การอนุมัติด้วยลายเซ็น บันทึกตรวจสอบที่ลงนาม หน่วยความจำที่ตรวจสอบได้ และเดโม delentia demo run compare --scripted ที่ไม่ต้องมีโมเดล"
+        : "The first release with the whole agent runtime: safety gate, signed approvals, signed audit log, verifiable memory, and the model-free demo (delentia demo run compare --scripted).",
+      icon: Terminal,
+      highlights: ["Public CI: 7,109 passed, 0 failed, 91.08% coverage", "Demo: 5 of 5 checks"],
+      tone: "border-emerald-500/25 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+    },
+    {
+      version: "Note on the entries below",
+      date: "2026-10-18",
+      title: language === "th" ? "รายการเก่าเขียนก่อนการตรวจหลักฐานรอบล่าสุด" : "Older entries predate the latest evidence review",
+      description: language === "th"
+        ? "รายการด้านล่างบางรายการอ้างตัวเลข (เช่น 1,193 tests, 7 โมเดล HexaCore, 5.x) ที่ภายหลังถอนหรือตรวจสอบไม่ได้ ดูหน้า Corrections"
+        : "Some entries below quote figures (such as 1,193 tests, seven HexaCore models, 5.x versions) that were later withdrawn or could not be verified. See the Corrections page.",
+      icon: BookOpen,
+      highlights: [],
+      tone: "border-amber-500/25 bg-amber-500/10 text-amber-600 dark:text-amber-400",
+    },
+    {
       version: "SDK v1.0.4b2",
       date: "2026-05-23",
       title: language === "th" ? "Interactive Terminal Simulator & Complete Bilingual Synced Release" : "Interactive Terminal Simulator & Complete Bilingual Synced Release",

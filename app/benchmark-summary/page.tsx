@@ -3,7 +3,6 @@ import BenchmarkSummaryClient from "./BenchmarkSummaryClient"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getBreadcrumbSchema, getFAQSchema } from "@/lib/schema"
-import { SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale()
@@ -22,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const BENCHMARK_FAQS = [
   {
     question: "What is Delentia Labs' hallucination rate?",
-    answer: "Delentia Labs does not currently claim a hallucination rate (an earlier figure was withdrawn because it could not be reproduced). It works toward fewer hallucinations via SignedAI multi-model consensus verification and the FDIA constitutional gating system. Nothing in the public repository reproduces a hallucination rate, so none is quoted.",
+    answer: "Delentia Labs does not currently claim a hallucination rate (an earlier figure was withdrawn because it could not be reproduced). It offers a safety gate on actions, an answer check against gathered evidence and an optional jury of models, but none of these has been shown to reduce hallucination. Nothing in the public repository reproduces a hallucination rate, so none is quoted.",
   },
   {
     question: "What is the FDIA accuracy?",
@@ -42,7 +41,7 @@ const BENCHMARK_FAQS = [
   },
   {
     question: "How does cost-aware routing work?",
-    answer: "The RCT HexaCore router uses intelligent routing to select the most cost-efficient model appropriate for each task rather than always routing to a premium model like Claude Opus. No cost-reduction figure is claimed: none has been measured.",
+    answer: "The model is a setting you choose, and a per-episode cost limit refuses a call whose worst case would exceed your budget. No cost-reduction figure is claimed: none has been measured.",
   },
 ]
 

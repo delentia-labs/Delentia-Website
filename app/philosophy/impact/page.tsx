@@ -52,9 +52,9 @@ export default async function ImpactPage() {
       titleEn: "Solo-Developer Proof of Possibility",
       titleTh: "Solo-Developer Proof of Possibility",
       descEn:
-        "One engineer, zero-dollar infrastructure budget, 30-day bootstrap sprint. The result: a multi-LLM consensus platform with Constitutional AI enforcement, PDPA-native architecture, and the public repository CI covering 7,109 automated tests. This is the most important claim Delentia Labs has proven — that enterprise-grade AI systems do not require enterprise-sized teams or budgets.",
+        "One person who does not write code, directing AI coding assistants. The result so far: an open-source agent runtime whose public repository CI runs 7,109 automated tests. What it shows is narrow: one person can build and test a governed agent runtime this way. It does not show that the runtime works well with a capable model or for other people; that has not been measured yet.",
       descTh:
-        "วิศวกรหนึ่งคน งบประมาณ infrastructure เป็นศูนย์ sprint bootstrap 30 วัน ผลลัพธ์: platform multi-LLM consensus พร้อม Constitutional AI enforcement สถาปัตยกรรม PDPA-native และ public repository CI ที่ครอบคลุมการทดสอบอัตโนมัติ 7,109 รายการ นี่คือข้อพิสูจน์ที่สำคัญที่สุดของ Delentia Labs — ระบบ AI ระดับองค์กรไม่จำเป็นต้องมีทีมหรืองบประมาณขนาดองค์กร",
+        "คนคนเดียวที่เขียนโค้ดไม่เป็น สั่งงานผู้ช่วยเขียนโค้ด AI ผลลัพธ์จนถึงตอนนี้: รันไทม์ agent โอเพนซอร์สที่ CI ของรีโพสาธารณะรันการทดสอบอัตโนมัติ 7,109 รายการ สิ่งที่แสดงได้แคบ: คนคนเดียวสร้างและทดสอบรันไทม์ agent ที่มีธรรมาภิบาลด้วยวิธีนี้ได้ ไม่ได้แสดงว่ารันไทม์ทำงานดีกับโมเดลที่เก่งพอหรือสำหรับคนอื่น ซึ่งยังไม่ได้วัด",
     },
     {
       icon: FlaskConical,
@@ -74,9 +74,9 @@ export default async function ImpactPage() {
       titleEn: "GAIA Benchmark Performance",
       titleTh: "ประสิทธิภาพ GAIA Benchmark",
       descEn:
-        "Projected GAIA benchmark: 84–89% (pending formal leaderboard validation). The HexaCore 7-model consensus architecture is designed to exceed single-LLM performance on multi-step reasoning tasks. The qualifier 'pending formal leaderboard validation' is non-negotiable — we do not claim a score we have not yet formally submitted.",
+        "No GAIA or other leaderboard score is claimed. An earlier version of this page quoted a projected range, which had no measurement behind it and has been removed. A result will be published only after it has been measured and submitted.",
       descTh:
-        "Projected GAIA benchmark: 84-89% (pending formal leaderboard validation) สถาปัตยกรรม HexaCore 7-model consensus ได้รับการออกแบบเพื่อเกินประสิทธิภาพ single-LLM ในงาน multi-step reasoning qualifier 'pending formal leaderboard validation' ไม่อาจละเลยได้ — เราไม่อ้างคะแนนที่ยังไม่ได้ส่งอย่างเป็นทางการ",
+        "ไม่อ้างคะแนน GAIA หรือ leaderboard ใด ๆ หน้านี้เคยอ้างช่วงคะแนนที่คาดการณ์ ซึ่งไม่มีการวัดรองรับและถูกถอนแล้ว จะเผยแพร่ผลก็ต่อเมื่อวัดและส่งอย่างเป็นทางการแล้ว",
     },
     {
       icon: Globe,

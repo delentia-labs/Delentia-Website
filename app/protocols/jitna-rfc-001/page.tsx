@@ -11,10 +11,10 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "JITNA RFC-001 — Just-In-Time Network Architecture",
     "JITNA RFC-001 — สถาปัตยกรรมเครือข่ายแบบ Just-In-Time",
-    "Full specification of JITNA RFC-001: the Just-In-Time Network Architecture protocol governing dynamic AI agent routing, intent preservation, and multi-LLM consensus in the Delentia Labs constitutional AI stack.",
-    "ข้อกำหนดฉบับสมบูรณ์ของ JITNA RFC-001: โปรโตคอล Just-In-Time Network Architecture ที่กำกับ Dynamic AI Agent Routing การรักษา Intent และ Multi-LLM Consensus ใน constitutional AI stack ของ Delentia Labs",
+    "Full specification of JITNA RFC-001: the Just-In-Time Network Architecture protocol governing dynamic AI agent routing, intent preservation, and signed agent-to-agent messages in the Delentia agent runtime.",
+    "ข้อกำหนดฉบับสมบูรณ์ของ JITNA RFC-001: โปรโตคอล Just-In-Time Network Architecture ที่กำกับ Dynamic AI Agent Routing การรักษา Intent และข้อความที่ลงนามระหว่าง agent ในรันไทม์ agent ของ Delentia",
     "/protocols/jitna-rfc-001",
-    ["JITNA", "RFC-001", "just-in-time network architecture", "dynamic AI routing", "multi-LLM consensus", "constitutional AI protocol"]
+    ["JITNA", "RFC-001", "just-in-time network architecture", "dynamic AI routing", "signed agent messages", "constitutional AI protocol"]
   )
 }
 

@@ -44,11 +44,11 @@ const VAULTS = [
     name: "SignedAI Vault",
     count: 334,
     en: {
-      desc: "The verification knowledge vault. Contains 8D scoring calibration data, model comparison benchmarks, consensus algorithm configurations, attestation templates, and the full library of known hallucination patterns across 7 HexaCore models.",
+      desc: "The verification knowledge vault. In the design it holds scoring calibration data, model comparison benchmarks, jury configurations and attestation templates. Only the jury configuration file exists today; no hallucination-pattern library or calibration data has been built.",
       categories: ["8D Scoring Calibration", "Model Benchmark History", "Consensus Algorithm Configs", "Attestation Templates", "Hallucination Pattern Library"],
     },
     th: {
-      desc: "Vault ความรู้การตรวจสอบ มีข้อมูล Calibration การให้คะแนน 8D, Benchmarks การเปรียบเทียบโมเดล, การตั้งค่า Consensus Algorithm, เทมเพลต Attestation และห้องสมุด Hallucination Patterns ทั้งหมดใน 7 โมเดล HexaCore",
+      desc: "Vault ความรู้การตรวจสอบ ในการออกแบบมีข้อมูลสอบเทียบการให้คะแนน benchmark เปรียบเทียบโมเดล การตั้งค่าคณะลูกขุน และเทมเพลต attestation วันนี้มีเฉพาะไฟล์ตั้งค่าคณะลูกขุน ยังไม่มีคลัง hallucination pattern หรือข้อมูลสอบเทียบ",
       categories: ["8D Scoring Calibration", "Model Benchmark History", "Consensus Algorithm Configs", "Attestation Templates", "Hallucination Pattern Library"],
     },
     color: "border-sky-400/30 bg-sky-400/5",

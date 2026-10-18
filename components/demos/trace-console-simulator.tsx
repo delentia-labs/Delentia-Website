@@ -337,7 +337,7 @@ export default function TraceConsoleSimulator({ language = "en" }: { language?: 
 
             {visibleStep >= 3 && currentScenario.guardianStatus === "AUTHORIZED" && (
               <div className="pl-4 border-l border-neutral-800 space-y-0.5 mt-2">
-                <div className="text-yellow-500 font-semibold">├── Step 3: Cognitive Overlay (HexaCore Consensus - SIMULATION)</div>
+                <div className="text-yellow-500 font-semibold">├── Step 3: Cognitive Overlay (scripted vote - SIMULATION)</div>
                 <div className="pl-4 text-neutral-400">
                   └── Overall Consensus: <span className="text-cyan-400 font-semibold">{currentScenario.consensusPct.toFixed(1)}%</span> 
                   <span className="text-green-400 ml-1">[{currentScenario.consensusBar}]</span>

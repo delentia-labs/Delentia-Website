@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
     "Delentia Labs: Constitutional AI platform with a public SDK verification lane and a separate enterprise runtime snapshot — 41 algorithms, public SDK v1.0.4b0, and benchmark disclosures with explicit scope.",
     "Delentia Labs: แพลตฟอร์ม Constitutional AI ที่แยก public SDK verification ออกจาก enterprise runtime snapshot อย่างชัดเจน — 41 algorithms, public SDK v1.0.4b0 และ benchmark disclosures ที่มีการระบุ scope.",
     "/about",
-    ["Constitutional AI", "enterprise AI platform", "AI governance", "Thailand AI", "Delentia Labs", "Ittirit Saengow", "multi-LLM consensus"]
+    ["Constitutional AI", "enterprise AI platform", "AI governance", "Thailand AI", "Delentia Labs", "Ittirit Saengow", "model jury"]
   )
 }
 
@@ -236,7 +236,7 @@ export default async function AboutPage() {
     { id: 2, name: "RCT Codex Genome", role: "THE CONSTITUTION", desc: isTh ? "10 Codices พื้นฐาน — กรอบรัฐธรรมนูญของระบบ" : "10 foundational codices — the constitutional framework of the system.", color: "bg-warm-sage/20 text-warm-sage border-warm-sage/30" },
     { id: 3, name: "JITNA Genome", role: "THE LANGUAGE", desc: isTh ? "Just-In-Time Nodal Assembly — ภาษาสากลของ Intent" : "Just-In-Time Nodal Assembly — the universal language of intent.", color: "bg-warm-sky/20 text-warm-sky border-warm-sky/30" },
     { id: 4, name: "ARTENT Genome", role: "THE PROTOCOL", desc: isTh ? "โปรโตคอลสถาปัตยกรรมการดำเนินงาน 7 เฟส ขับเคลื่อนด้วย Intent" : "7-phase operational architecture protocol. Intent-driven, not process-driven.", color: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
-    { id: 5, name: "SignedAI Genome", role: "THE VERIFICATION", desc: isTh ? "Multi-LLM Consensus Engine พร้อม 8D Quality Scoring" : "Multi-LLM consensus engine with 8D quality scoring.", color: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
+    { id: 5, name: "SignedAI Genome", role: "THE VERIFICATION", desc: isTh ? "คณะลูกขุนของโมเดลอิสระพร้อมคำตัดสินที่ลงนาม (การให้คะแนน 8 มิติเป็นเพียงแนวคิด)" : "Jury of independent models with a signed verdict (eight-dimension scoring is an idea only).", color: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
     { id: 6, name: "Vault Genome", role: "THE MEMORY", desc: isTh ? "ชั้นหน่วยความจำถาวรพร้อม schema เชิงบริบทหลายมิติ" : "Persistent memory layer with multi-dimensional contextual schema.", color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30" },
     { id: 7, name: "RCT-7 Genome", role: "THE IMPROVEMENT", desc: isTh ? "วงจรปรับปรุงต่อเนื่องที่เชื่อมทุก Genome กลับสู่จุดเริ่มต้น" : "Continuous improvement cycle connecting all genomes back to the beginning.", color: "bg-green-500/20 text-green-400 border-green-500/30" },
   ]
@@ -409,7 +409,7 @@ export default async function AboutPage() {
             "name": "How does Delentia Labs prevent AI hallucination in enterprise deployments?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Delentia Labs uses a multi-layer verification architecture: the FDIA equation decomposes intent into auditable components, SignedAI runs multi-LLM consensus scoring, and the memory layer cross-checks outputs against governed knowledge. Public pages disclose benchmark claims only with explicit scope; no hallucination rate is currently claimed (an earlier figure was withdrawn because it could not be reproduced)."
+              "text": "Delentia Labs uses a multi-layer verification architecture: the FDIA equation decomposes intent into auditable components, SignedAI is an optional jury of independent models with a signed verdict, and the memory layer is a hash-chained event log. Public pages disclose benchmark claims only with explicit scope; no hallucination rate is currently claimed (an earlier figure was withdrawn because it could not be reproduced)."
             }
           },
           {
@@ -433,7 +433,7 @@ export default async function AboutPage() {
             "name": "What makes Signed AI different from standard AI output verification?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Signed AI is Delentia Labs' multi-model consensus engine that attaches a cryptographically-inspired quality signature to every AI output. It evaluates outputs across 8 quality dimensions — accuracy, relevance, coherence, safety, completeness, timeliness, originality, and enterprise-alignment — and only releases outputs that cross a configurable consensus threshold across multiple LLMs. This creates an auditable chain of verification, not a single-model assertion."
+              "text": "SignedAI is the jury runner in the Delentia repository. The models you name each vote agree, disagree or abstain independently; abstentions never help a proposal pass; the verdict is a record signed with Ed25519 that anyone can re-check. It has been tested with scripted voters only, has not been shown to reduce hallucination, and the eight-dimension scoring that older pages described is an idea, not a feature."
             }
           }
         ]

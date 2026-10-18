@@ -1,3 +1,4 @@
+// UNUSED since Round 87: these six scores (96.1, 92, 99.9, 87, 100, 85) were never measured. Do not render this chart anywhere.
 "use client"
 
 import { useState } from "react"

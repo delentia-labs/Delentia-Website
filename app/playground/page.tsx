@@ -122,8 +122,8 @@ export default async function PlaygroundHubPage() {
 
             <p className="text-sm text-gray-500 leading-relaxed">
               {isTH
-                ? "ชุดข้อมูลการประเมินความปลอดภัยและการประมวลผล Intent ในสถาปัตยกรรม 10 ชั้น เพื่อวิเคราะห์การทำงานของระบบประเมินความถูกต้อง (FDIA) และ SignedAI consensus"
-                : "High-fidelity dataset containing intent-response pairs evaluated across the 10-layer Delentia OS model to audit FDIA correctness scores and SignedAI multi-LLM consensus thresholds."}
+                ? "ชุดข้อมูลการประเมินความปลอดภัยและการประมวลผล Intent ในสถาปัตยกรรม 10 ชั้น เพื่อวิเคราะห์การทำงานของระบบประเมินความถูกต้อง (FDIA) และคณะลูกขุน SignedAI"
+                : "High-fidelity dataset containing intent-response pairs evaluated across the 10-layer Delentia OS model to audit FDIA correctness scores and the SignedAI jury rules."}
             </p>
 
             {/* Dataset details grid */}

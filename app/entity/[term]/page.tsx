@@ -62,7 +62,7 @@ const entities: Record<string, {
     name: "Delentia SLM",
     type: "Small Language Model",
     definition: "Fine-tuned reasoning model optimized for JITNA v3 intent execution, low-latency recall, and token compression under the Delentia OS runtime.",
-    description: "Delentia SLMs are specialized, locally deployable 8B parameter models based on Llama 3.1, optimized for high JITNA task compliance and minimal hallucination rates. These models are designed to operate under strict resource constraints (running efficiently on local edge devices, mobile setups, or local Ollama instances) without sacrificing safety compliance.",
+    description: "Delentia SLMs are 8B-parameter fine-tunes of Llama 3.1 published on Hugging Face (the v0.4 repository holds weights; the v0.2 repository holds only a model card). The figures in the model cards come from the author's own scripts and have not been independently reproduced. The agent runtime does not use them by default.",
     relatedTerms: ["JITNA Protocol", "Delentia OS", "TOON Compliance", "Ollama Integration"],
     relatedArticles: [
       { title: "Explore AI Models Hub", href: "/en/models" },
@@ -84,9 +84,9 @@ const entities: Record<string, {
   },
   "hexacore-consensus": {
     name: "HexaCore Consensus",
-    type: "Multi-LLM Validation Protocol",
-    definition: "A 6-node consensus protocol that routes and scores AI outputs across multiple models to prevent hallucinations and enforce strict safety standards.",
-    description: "HexaCore Consensus uses multiple independent LLM judges (including local SLMs and external APIs) to evaluate generated responses across 8 dimensions (accuracy, relevance, coherence, safety, completeness, timeliness, originality, and intent-alignment). An output is only cryptographically signed and released once it crosses a strict consensus score.",
+    type: "Older name (design idea)",
+    definition: "An older name for what the SignedAI jury does: independent models vote and the verdict is signed. Nothing runs under the HexaCore name.",
+    description: "HexaCore Consensus was the name of a planned panel of independent model judges scoring answers on eight dimensions. What was built is the SignedAI jury runner (agree, disagree or abstain votes; abstentions never help a proposal pass; Ed25519-signed verdict), tested with scripted voters only. The eight-dimension scoring and a fixed roster of models are ideas, not features, and no hallucination reduction has been measured.",
     relatedTerms: ["SignedAI", "Governance Layer", "FDIA Equation", "Delentia OS"],
     relatedArticles: [
       { title: "SignedAI Multi-LLM Consensus", href: "/en/blog/signedai-multi-llm-consensus-explained" },
@@ -97,7 +97,7 @@ const entities: Record<string, {
   "rct-kernel": {
     name: "RCT Kernel",
     type: "AI Operating System Core",
-    definition: "The central orchestration module of the Delentia OS Ecosystem — coordinates the FDIA gating, JITNA protocol, HexaCore routing, SignedAI consensus, and RCTDB memory across the broader runtime service graph.",
+    definition: "The central orchestration module of the Delentia OS Ecosystem — coordinates the FDIA gating, the JITNA protocol, model choice and failover, the optional SignedAI jury and the memory log inside the agent runtime.",
     description: "The RCT Kernel is the core runtime of the Delentia OS Ecosystem. It implements the 7-State Intent Loop Pipeline (RECEIVED → VALIDATED → MEMORY_CHECK → COMPUTING → VERIFYING → COMMITTING → COMPLETED) and coordinates all subsystems. Built on constitutional constraints — every component of the kernel has defined invariants that cannot be violated. Implemented in Python (`core/kernel/fdia.py`) with 41 algorithms across Tier 1–9 complexity levels.",
     relatedTerms: ["FDIA Equation", "Intent Loop Engine", "Delta Engine", "RCTDB", "HexaCore Consensus"],
     relatedArticles: [

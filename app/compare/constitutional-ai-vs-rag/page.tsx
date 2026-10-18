@@ -6,7 +6,6 @@ import { getRequestLocale } from "@/lib/request-locale"
 import { getBreadcrumbSchema, getFAQSchema } from "@/lib/schema"
 import Link from "next/link"
 import { ArrowRight, CheckCircle, XCircle, MinusCircle, Shield, Zap, Database } from "lucide-react"
-import { SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale()
@@ -33,7 +32,7 @@ const COMPARE_FAQS = [
   },
   {
     question: "Does RAG prevent hallucinations?",
-    answer: "RAG reduces hallucination by grounding responses in retrieved documents, but it does not deterministically prevent them. A model can still ignore retrieved context or confabulate. RAG-only systems typically achieve 3-5% hallucination rates. Constitutional AI adds mathematical safety constraints on top of retrieval to reduce this further.",
+    answer: "RAG reduces hallucination by grounding responses in retrieved documents, but it does not deterministically prevent them. A model can still ignore retrieved context or confabulate. Constitutional AI in Delentia is a gate on what an agent may do, not a fix for wrong words, and no measurement shows that it reduces wrong answers.",
   },
   {
     question: "What is a constitutional AI kill switch?",
@@ -41,7 +40,7 @@ const COMPARE_FAQS = [
   },
   {
     question: "How does Constitutional AI provide a PDPA audit trail?",
-    answer: "Every Delentia Ecosystem query writes its full provenance chain to RCTDB — an 8-dimensional memory schema that records the query hash, FDIA scores (D, I, A, F), model chain, consensus result, and provenance trail. This automatically generates the audit evidence required for PDPA Section 33 (right to explanation) and Section 34 (right to object).",
+    answer: "Every governed episode writes a row to a hash-chained audit log that records the gate decision (the FDIA scores), the tools called and a hash of the goal. Whether that satisfies a legal right to explanation is a question for your own counsel; Delentia does not certify compliance.",
   },
 ]
 
@@ -54,12 +53,12 @@ function CompareIcon({ value }: { value: "yes" | "no" | "partial" }) {
 const comparison = [
   { feature: "Factual grounding via documents", rag: "yes", constitutional: "partial", combined: "yes" },
   { feature: "Deterministic safety guarantee", rag: "no", constitutional: "yes", combined: "yes" },
-  { feature: "Multi-model consensus", rag: "no", constitutional: "yes", combined: "yes" },
+  { feature: "Jury of independent models (optional)", rag: "no", constitutional: "partial", combined: "partial" },
   { feature: "PDPA/GDPR audit trail", rag: "no", constitutional: "yes", combined: "yes" },
   { feature: "Warm recall (<50ms)", rag: "no", constitutional: "yes", combined: "yes" },
   { feature: "Constitutional kill switch", rag: "no", constitutional: "yes", combined: "yes" },
   { feature: "Knowledge base updates without retraining", rag: "yes", constitutional: "partial", combined: "yes" },
-  { feature: "Hallucination rate", rag: "partial", constitutional: "partial", combined: "yes" },
+  { feature: "Shown to reduce wrong answers", rag: "partial", constitutional: "no", combined: "no" },
   { feature: "Enterprise compliance evidence", rag: "no", constitutional: "yes", combined: "yes" },
   { feature: "Vendor-neutral (any LLM)", rag: "partial", constitutional: "yes", combined: "yes" },
 ]
@@ -115,7 +114,7 @@ export default async function CompareConstitutionalAIvsRAG() {
                   "Updates knowledge without retraining",
                   "Probabilistic safety — model may still ignore context",
                   "No audit trail for automated decisions",
-                  "Hallucination rate: ~3-5%",
+                  "Grounded in retrieved text, but a model can still ignore it",
                 ],
                 verdict: "Best for: knowledge-intensive retrieval tasks",
                 verdictColor: "text-blue-400",
@@ -127,9 +126,9 @@ export default async function CompareConstitutionalAIvsRAG() {
                 points: [
                   "Mathematical constraints on system output",
                   "Deterministic kill switch (A=0 -> F=0, always)",
-                  "Multi-model consensus (SignedAI Tiers S/4/6/8)",
+                  "Optional jury of independent models (scripted tests only)",
                   "Full audit trail -> PDPA/GDPR compliance",
-                  "Hallucination rate: ~1-2%",
+                  "No hallucination reduction has been measured",
                 ],
                 verdict: "Best for: regulated industries + compliance",
                 verdictColor: "text-warm-amber",
@@ -140,7 +139,7 @@ export default async function CompareConstitutionalAIvsRAG() {
                 color: "border-green-400/30 from-green-400/8",
                 points: [
                   "Factual grounding AND structural safety constraints",
-                  `${SITE_HALLUCINATION_RATE.split(" ")[0]} hallucination rate target (vs an estimated 12-15% industry average)`,
+                  "No hallucination rate is claimed",
                   "Warm recall <50ms for repeated patterns",
                   "Complete PDPA audit trail from RCTDB",
                   "Architect gate mandatory for critical decisions",

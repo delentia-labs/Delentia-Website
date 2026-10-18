@@ -40,8 +40,8 @@ const PHASES = [
   },
   {
     id: "WF-02",
-    en: { title: "Executor", body: "Runs the task across the selected model(s). For HexaCore consensus tasks, this phase fans out to all 7 LLMs simultaneously and collects independent outputs before any comparison or scoring." },
-    th: { title: "Executor — ผู้ดำเนินการ", body: "รัน Task บนโมเดลที่เลือก สำหรับ Task ฉันทามติ HexaCore เฟสนี้ Fan Out ไปยัง LLM ทั้ง 7 ตัพร้อมกันและรวบรวม Output อิสระก่อนการเปรียบเทียบหรือการให้คะแนนใดๆ" },
+    en: { title: "Executor", body: "Runs the task across the selected model(s). When a jury is used, this phase asks each member model independently and collects their votes before any comparison." },
+    th: { title: "Executor — ผู้ดำเนินการ", body: "รัน Task บนโมเดลที่เลือก เมื่อใช้คณะลูกขุน เฟสนี้ถามโมเดลสมาชิกแต่ละตัวโดยอิสระและรวบรวมคะแนนโหวตก่อนการเปรียบเทียบใดๆ" },
     color: "border-emerald-500/30 bg-emerald-500/5",
     accent: "text-emerald-500",
   },

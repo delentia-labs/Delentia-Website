@@ -13,7 +13,7 @@ import {
 import OptimizedImage from "@/components/ui/optimized-image"
 import { getLocaleFromPathname } from "@/lib/i18n"
 import { pixelIcons } from "@/lib/pixel-icons"
-import { SITE_ENTERPRISE_EVIDENCE_LABEL, SITE_HALLUCINATION_RATE } from "@/lib/site-config"
+import { SITE_ENTERPRISE_EVIDENCE_LABEL } from "@/lib/site-config"
 
 const PIXEL_SHIELD = pixelIcons.shield
 const PIXEL_BRAIN = pixelIcons.brain
@@ -27,17 +27,17 @@ const solutions = [
     color: "#C4745B",
     titleEn: "AI Hallucination Prevention",
     titleTh: "การป้องกัน AI Hallucination",
-    descEn: `Targeting a hallucination rate of ${SITE_HALLUCINATION_RATE} with Multi-LLM consensus verification via SignedAI through cryptographic audit trails.`,
-    descTh: `ไม่ได้อ้างอัตรา hallucination ด้วย Multi-LLM Consensus Verification ผ่าน SignedAI ด้วย Cryptographic Audit Trails`,
+    descEn: "What the runtime does about wrong answers: a safety gate on actions, a check of answers against gathered evidence, and a jury of independent models. No hallucination rate is claimed.",
+    descTh: "สิ่งที่รันไทม์ทำเกี่ยวกับคำตอบที่ผิด: ด่านความปลอดภัยของการกระทำ การตรวจคำตอบเทียบกับหลักฐานที่เก็บมา และคณะลูกขุนของโมเดลอิสระ ไม่อ้างอัตรา hallucination",
     stats: [
       { label: "Hallucination Rate (target)", value: "not claimed" },
-      { label: "LLMs Verified", value: "Up to 7" },
+      { label: "Jury members", value: "You choose" },
       { label: "Signing", value: "ED25519" },
     ],
     features: [
-      { en: "Multi-LLM Consensus Mechanism", th: "Multi-LLM Consensus Mechanism" },
+      { en: "Jury of independent models", th: "คณะลูกขุนของโมเดลอิสระ" },
       { en: "Cryptographic Audit Trails", th: "Cryptographic Audit Trails" },
-      { en: "Real-time Hallucination Detection", th: "Real-time Hallucination Detection" },
+      { en: "Answer check against gathered evidence", th: "ตรวจคำตอบเทียบกับหลักฐานที่เก็บมา" },
     ],
     accentSrc: PIXEL_SHIELD,
   },
@@ -57,7 +57,7 @@ const solutions = [
     ],
     features: [
       { en: "Vector + Graph + SQL Hybrid", th: "Vector + Graph + SQL Hybrid" },
-      { en: "8-Dimensional Schema", th: "8-Dimensional Schema" },
+      { en: "Hash-chained event log", th: "บันทึกเหตุการณ์ที่เชื่อม hash" },
       { en: "Persistent Cross-Session Memory", th: "Persistent Cross-Session Memory" },
     ],
     accentSrc: PIXEL_BRAIN,
@@ -102,7 +102,6 @@ export default function SolutionsPage() {
 
   const proofPoints = [
     { value: "not claimed", labelEn: "Hallucination (target)", labelTh: "Hallucination (เป้าหมาย)", color: "#C4745B" },
-    { value: "7", labelEn: "HexaCore Models", labelTh: "HexaCore Models", color: "#D4A853" },
     { value: "41", labelEn: "Algorithms", labelTh: "Algorithms", color: "#7B9E87" },
   ]
   const faqs = isTh
@@ -340,7 +339,7 @@ export default function SolutionsPage() {
             <p className="text-muted-foreground">{isTh ? "Deploy AI ด้วยความมั่นใจ — Audit Trails ครบถ้วน, Compliance Frameworks และ Enterprise Security" : "Deploy AI with confidence — full audit trails, compliance frameworks, and enterprise-grade security."}</p>
             <ul className="space-y-2">
               {[
-                { icon: Shield, t: "Multi-model consensus with SignedAI (no hallucination rate claimed)" },
+                { icon: Shield, t: "Jury of independent models with a signed verdict (no hallucination rate claimed)" },
                 { icon: Lock, t: "ED25519 + JWT RS256 + RBAC" },
                 { icon: Users, t: "Availability target for enterprise programs" },
                 { icon: Zap, t: `${SITE_ENTERPRISE_EVIDENCE_LABEL}: a private enterprise service layer` },

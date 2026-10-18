@@ -17,8 +17,8 @@ export function getOrganizationSchema(locale: Locale) {
     url: `https://delentia.com/${locale}`,
     logo: 'https://delentia.com/RCTLogo-horizontal.svg',
     description: locale === 'th'
-      ? 'ระบบปฏิบัติการ AI แบบรัฐธรรมนูญ — สถาปัตยกรรม 10 ชั้น, การตรวจสอบแบบหลาย LLM, และความเป็นเจ้าของข้อมูลอย่างสมบูรณ์'
-      : 'Constitutional AI Operating System — 10-Layer architecture, multi-LLM consensus, and absolute data sovereignty',
+      ? 'รันไทม์ agent โอเพนซอร์ส มีด่านความปลอดภัยก่อนเรียกเครื่องมือ การอนุมัติด้วยลายเซ็นของมนุษย์ และบันทึกตรวจสอบที่ลงนาม พัฒนาโดยคนคนเดียว'
+      : 'Open-source agent runtime with a safety gate before tool calls, human-signed approvals and a signed audit log. Built by one person.',
     foundingDate: '2024',
     founder: {
       '@type': 'Person',

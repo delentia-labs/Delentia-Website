@@ -60,8 +60,8 @@ const genomes: Genome[] = [
     id: 5,
     name: "SignedAI",
     nameTh: "SignedAI",
-    description: "Digital signature verification for AI outputs. Multi-LLM consensus with cryptographic proof.",
-    descriptionTh: "การตรวจสอบลายเซ็นดิจิตอลสำหรับผลลัพธ์ AI Multi-LLM consensus พร้อมหลักฐานทางการเข้ารหัส",
+    description: "Verification by independent votes with a signed verdict (jury runner built; scoring is an idea).",
+    descriptionTh: "การตรวจสอบด้วยการลงคะแนนอิสระพร้อมคำตัดสินที่ลงนาม (สร้างตัวรันคณะลูกขุนแล้ว ส่วนการให้คะแนนเป็นแนวคิด)",
     color: "#ef4444",
     icon: "Shield",
     dna: "ATCG-SIGN-AI"

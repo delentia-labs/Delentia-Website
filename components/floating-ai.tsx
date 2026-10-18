@@ -81,7 +81,7 @@ const SCENARIOS_TH = [
   { emoji: "🎯", label: "เข้าใจ RCT ใน 3 นาที", query: "RCT คืออะไร?" },
   { emoji: "🧪", label: "สูตร FDIA คืออะไร?", query: "FDIA คืออะไร?" },
   { emoji: "✅", label: "SignedAI ตรวจสอบอย่างไร?", query: "SignedAI ทำงานอย่างไร?" },
-  { emoji: "🧠", label: "HexaCore ทำงานอย่างไร?", query: "HexaCore ใช้โมเดล AI อะไรบ้าง?" },
+  { emoji: "🧠", label: "เลือกโมเดลอย่างไร?", query: "Delentia เลือกและสลับโมเดล AI อย่างไร?" },
   { emoji: "👤", label: "ใครสร้าง RCT?", query: "ใครสร้าง RCT?" },
   { emoji: "🏢", label: "RCT ต่างจาก ChatGPT อย่างไร?", query: "Delentia Labs แตกต่างจาก ChatGPT อย่างไร?" },
   { emoji: "💰", label: "ราคาและแพลน Tier", query: "RCT มี pricing plan อะไรบ้าง?" },

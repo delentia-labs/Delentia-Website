@@ -14,8 +14,8 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "Community Forums — Coming Soon | Delentia Labs",
     "ฟอรัมชุมชน — เร็วๆ นี้ | Delentia Labs",
-    "Delentia Labs community forums are under construction. A space for developers and researchers to discuss AI infrastructure, FDIA, and the HexaCore platform.",
-    "ฟอรัมชุมชนของ Delentia Labs อยู่ระหว่างการพัฒนา พื้นที่สำหรับนักพัฒนาและนักวิจัยสนทนาเรื่อง AI infrastructure, FDIA และ HexaCore platform",
+    "Delentia Labs community forums are under construction. A space for developers and researchers to discuss AI infrastructure, FDIA, and the Delentia agent runtime.",
+    "ฟอรัมชุมชนของ Delentia Labs อยู่ระหว่างการพัฒนา พื้นที่สำหรับนักพัฒนาและนักวิจัยสนทนาเรื่อง AI infrastructure, FDIA และรันไทม์ agent ของ Delentia",
     "/community/forums"
   )
 }
@@ -73,8 +73,8 @@ export default async function CommunityForumsPage() {
         </p>
         <p className="text-muted-foreground max-w-lg mx-auto mb-12">
           {isEn
-            ? "The forum now runs as a moderated pilot for developers, researchers, and engineers building with FDIA, JITNA, and HexaCore workflows."
-            : "ฟอรัมเปิดแบบนำร่องภายใต้การดูแลสำหรับนักพัฒนา นักวิจัย และวิศวกรที่ทำงานกับ FDIA, JITNA และ HexaCore"}
+            ? "The forum now runs as a moderated pilot for developers, researchers, and engineers building with FDIA, JITNA, and the Delentia runtime."
+            : "ฟอรัมเปิดแบบนำร่องภายใต้การดูแลสำหรับนักพัฒนา นักวิจัย และวิศวกรที่ทำงานกับ FDIA, JITNA และรันไทม์ของ Delentia"}
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">

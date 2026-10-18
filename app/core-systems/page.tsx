@@ -10,12 +10,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return createBilingualMetadata(
     locale,
-    "Core Systems — HexaCore, Intent Loop, Analysearch, Delta Memory",
-    "Core Systems — HexaCore, Intent Loop, Analysearch, Delta Memory",
-    "A public-safe overview of the four core systems behind RCT: model routing, intent continuity, multi-depth analysis, and enterprise memory.",
-    "ภาพรวมแบบ public-safe ของ 4 ระบบหลักเบื้องหลัง RCT: model routing, intent continuity, multi-depth analysis และ enterprise memory",
+    "Core Systems — model choice, Intent Loop, Analysearch, Delta Memory",
+    "Core Systems — การเลือกโมเดล, Intent Loop, Analysearch, Delta Memory",
+    "An overview of the four core systems behind RCT: model choice and failover, intent continuity, multi-depth analysis, and the delta state store.",
+    "ภาพรวมของ 4 ระบบหลักเบื้องหลัง RCT: การเลือกโมเดลและการสลับสำรอง, intent continuity, multi-depth analysis และที่เก็บสถานะแบบ delta",
     "/core-systems",
-    ["HexaCore", "Intent Loop", "Analysearch", "Delta Memory", "enterprise AI systems"]
+    ["model choice", "Intent Loop", "Analysearch", "Delta Memory", "agent runtime"]
   )
 }
 
@@ -28,7 +28,7 @@ export default async function Page() {
 
   const definedTermSchema = getDefinedTermSchema(
     "RCT Kernel",
-    "The RCT Kernel is the constitutional AI operating core of Delentia Labs, comprising four primary systems: HexaCore (multi-model routing), Intent Loop (intent continuity), Analysearch (multi-depth analysis), and Delta Memory (enterprise AI memory).",
+    "The RCT Kernel is the constitutional AI operating core of Delentia Labs, comprising four primary systems: model choice and failover, Intent Loop (intent continuity), Analysearch (multi-depth analysis), and Delta Memory (a delta state store).",
     `${SITE_URL}/${locale}/core-systems`
   )
 

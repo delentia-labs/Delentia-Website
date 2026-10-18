@@ -33,7 +33,7 @@ const rows = [
   { feature: "Works identically across all LLMs", prompt: "no", verify: "yes" },
   { feature: "Built-in audit trail", prompt: "no", verify: "yes" },
   { feature: "Scales with context window", prompt: "no", verify: "yes" },
-  { feature: "Enables multi-model consensus", prompt: "no", verify: "yes" },
+  { feature: "Enables a jury of independent models (optional)", prompt: "no", verify: "yes" },
   { feature: "Quick iteration for task style/format", prompt: "yes", verify: "partial" },
   { feature: "No code changes needed", prompt: "yes", verify: "no" },
   { feature: "Compliance documentation", prompt: "no", verify: "yes" },
@@ -60,7 +60,7 @@ export default async function VerificationVsPromptEngineering() {
     },
     {
       question: "Is constitutional AI verification compatible with any LLM?",
-      answer: "Yes. Delentia's verification layer is model-agnostic and works identically across GPT-4, Claude, Typhoon, and other models in the HexaCore ensemble. The same constitutional constraints apply regardless of which underlying model generates the response.",
+      answer: "Yes. The safety gate, the human signatures and the audit log are code outside the model, so they apply the same way whichever model is chosen. What changes with the model is how well it uses the tools, and rules such as the answer check were tuned on a few models only.",
     },
   ])
 
@@ -127,7 +127,7 @@ export default async function VerificationVsPromptEngineering() {
                 points: [
                   "Works at the system level (around the model)",
                   "Deterministic — mathematically guaranteed",
-                  "One constraint set, works across all 7 HexaCore models",
+                  "One constraint set, applied whichever model you choose",
                   "Full audit trail (RCTDB + JITNA packet log)",
                   "Per-packet validation — no context dilution",
                   "JITNA Normalizer strips injection attempts pre-LLM",

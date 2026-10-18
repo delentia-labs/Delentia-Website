@@ -2,402 +2,119 @@
 
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { useMounted } from "@/hooks/use-mounted"
-import { m } from "framer-motion"
 import { usePathname } from "next/navigation"
-import { useTheme } from "@/components/theme-provider"
 import { getLocaleFromPathname } from "@/lib/i18n"
 import Link from "next/link"
-import { Shield, AlertTriangle, Eye, Lock, Layers, BarChart3, ArrowRight } from "lucide-react"
-import { getBreadcrumbSchema } from "@/lib/schema"
-import AuthorBlock from "@/components/author-block"
-import RelatedContent from "@/components/related-content"
-import { SITE_HALLUCINATION_RATE } from "@/lib/site-config"
+import { Check, X, ArrowRight } from "lucide-react"
 
-const verificationSteps = [
+// Round 87 (claims review). This page used to show an "accuracy 85% to 99.7%" table, a "hallucination 15% to
+// not claimed (-98%)" row, a "7x" verification multiplier and three case studies with before/after numbers
+// (18.2% to 0.4%, 71% to 99.6%, 420 ms to 185 ms). None was measured; the case studies were labelled hypothetical
+// but still looked like results. It now says what the runtime does about wrong answers, what was measured, and
+// that no reduction of wrong answers has been shown.
+
+type Row = { en: string; th: string }
+
+const doing: Row[] = [
   {
-    step: 1, icon: Layers,
-    titleEn: "Multi-LLM Query Distribution", titleTh: "กระจาย Query ไปยัง Multi-LLM",
-    descEn: "The same query is sent to up to 7 different LLMs simultaneously, each processing independently without knowledge of other responses.",
-    descTh: "Query เดียวกันถูกส่งไปยัง LLMs สูงสุด 7 ตัวพร้อมกัน แต่ละตัวประมวลผลอิสระโดยไม่รู้คำตอบของตัวอื่น",
+    en: "Keeps wrong answers from causing damage: every tool call passes a safety gate, and risky ones wait for a human signature. This is about what the agent does, not about whether its words are true.",
+    th: "กันไม่ให้คำตอบที่ผิดสร้างความเสียหาย: ทุกการเรียกเครื่องมือผ่านด่านความปลอดภัย และการกระทำที่เสี่ยงต้องรอลายเซ็นของมนุษย์ เรื่องนี้เกี่ยวกับสิ่งที่ agent ทำ ไม่ใช่ว่าคำพูดของมันจริงหรือไม่",
   },
   {
-    step: 2, icon: Eye,
-    titleEn: "Cross-Verification Analysis", titleTh: "วิเคราะห์ Cross-Verification",
-    descEn: "Responses are compared using semantic similarity, factual consistency, and logical coherence algorithms from Tier-6 to Tier-8.",
-    descTh: "คำตอบถูกเปรียบเทียบด้วย Semantic Similarity, Factual Consistency และ Logical Coherence Algorithms จาก Tier-6 ถึง Tier-8",
+    en: "Checks the final answer against the evidence the episode gathered: a number or address that appears nowhere in the goal, the conversation or any tool result, or a claim of an action no tool performed, makes the episode not count as a success.",
+    th: "ตรวจคำตอบสุดท้ายเทียบกับหลักฐานที่เก็บมาในรอบนั้น ตัวเลขหรือที่อยู่ที่ไม่ปรากฏในเป้าหมาย บทสนทนา หรือผลของเครื่องมือใดเลย หรือการอ้างว่าทำสิ่งที่ไม่มีเครื่องมือใดทำ ทำให้รอบนั้นไม่นับว่าสำเร็จ",
   },
   {
-    step: 3, icon: Lock,
-    titleEn: "Cryptographic Signing", titleTh: "Cryptographic Signing",
-    descEn: "Verified consensus responses are cryptographically signed with a complete audit trail — every step is traceable and tamper-proof.",
-    descTh: "คำตอบที่ผ่าน Consensus ถูก Cryptographically Signed พร้อม Audit Trail ที่สมบูรณ์ — ทุกขั้นตอนตรวจสอบได้และป้องกันการแก้ไข",
-  },
-  {
-    step: 4, icon: BarChart3,
-    titleEn: "Confidence Scoring", titleTh: "การให้คะแนนความมั่นใจ",
-    descEn: "Each response receives a confidence score based on consensus level — responses below threshold are flagged for human review.",
-    descTh: "แต่ละคำตอบได้รับ Confidence Score ตาม Consensus Level — คำตอบที่ต่ำกว่า Threshold จะถูกส่งให้มนุษย์ตรวจสอบ",
+    en: "Offers a jury of independent models for questions where a second opinion is worth the cost (see the SignedAI page).",
+    th: "มีคณะลูกขุนของโมเดลอิสระสำหรับคำถามที่ความเห็นที่สองคุ้มค่า (ดูหน้า SignedAI)",
   },
 ]
 
-const comparisonData = [
-  { metric: "Accuracy Rate", single: "85%", signedAI: "99.7%*", improvement: "+17.3%" },
-  { metric: "Hallucination Rate", single: "15%", signedAI: "not claimed", improvement: "-98%" },
-  { metric: "Audit Trail", single: "None", signedAI: "Complete", improvement: "New" },
-  { metric: "Verification", single: "Self-check", signedAI: "Multi-LLM", improvement: "7x" },
-  { metric: "Tamper Proof", single: "No", signedAI: "Cryptographic", improvement: "New" },
+const measured: Row[] = [
+  {
+    en: "The answer check is weak. On real answers from a small local model it let 5 of 16 bad answers through (14 of 16 before tuning) and rejected 2 of 8 good ones. It only decides what the system learns from, never what you are shown.",
+    th: "การตรวจคำตอบยังอ่อน กับคำตอบจริงของโมเดลท้องถิ่นขนาดเล็ก มันปล่อยคำตอบที่ผิด 5 จาก 16 (ก่อนปรับ 14 จาก 16) และปฏิเสธคำตอบที่ถูก 2 จาก 8 มันกำหนดแค่ว่าระบบจะเรียนรู้จากรอบไหน ไม่เคยกำหนดสิ่งที่คุณเห็น",
+  },
+  {
+    en: "A later version was tried on a second set and was not adopted, because it did not beat the criteria written before the test.",
+    th: "เวอร์ชันถัดมาถูกลองกับชุดที่สองและไม่ถูกนำมาใช้ เพราะไม่ผ่านเกณฑ์ที่เขียนไว้ก่อนทดสอบ",
+  },
 ]
 
-const caseStudies = [
-  {
-    industry: { en: "Financial Services", th: "บริการทางการเงิน" }, icon: "🏦", color: "#D4A853",
-    metrics: [
-      { label: { en: "Hallucination rate reduced", th: "ลดอัตรา Hallucination" }, before: "18.2%", after: "0.4%", delta: "-97.8%" },
-      { label: { en: "Compliance audit pass rate", th: "ผ่าน Compliance Audit" }, before: "71%", after: "99.6%", delta: "+40%" },
-      { label: { en: "Response latency", th: "Response latency" }, before: "420ms", after: "185ms", delta: "-56%" },
-    ],
-    quote: {
-      en: "A hypothetical scenario, not a reported result: modeling multi-LLM consensus on a compliance-review workload where a single-model baseline's confident-but-wrong outputs would otherwise require manual re-checking before every approval.",
-      th: "สถานการณ์สมมติ ไม่ใช่ผลลัพธ์ที่รายงานจริง: จำลองการทำงานของ Multi-LLM Consensus บนงาน Compliance Review ที่ Single-model baseline มักให้ผลลัพธ์ที่มั่นใจแต่ผิด จนต้องตรวจซ้ำด้วยมือทุกครั้งก่อนอนุมัติ",
-    },
-  },
-  {
-    industry: { en: "Healthcare AI", th: "ระบบ AI สุขภาพ" }, icon: "🏥", color: "#C4745B",
-    metrics: [
-      { label: { en: "Clinical data accuracy", th: "ความแม่นยำข้อมูลคลินิก" }, before: "84%", after: "99.5%", delta: "+18.5%" },
-      { label: { en: "False positive diagnoses", th: "False Positive Diagnoses" }, before: "12%", after: "0.5%", delta: "-95.8%" },
-      { label: { en: "Audit trail completeness", th: "ความสมบูรณ์ Audit Trail" }, before: "0%", after: "100%", delta: "New" },
-    ],
-    quote: {
-      en: "A hypothetical scenario, not a reported result: modeling how cross-checking patient-data analysis across independent models could catch a false positive that a single model produced with high confidence, before it reaches a regulatory submission.",
-      th: "สถานการณ์สมมติ ไม่ใช่ผลลัพธ์ที่รายงานจริง: จำลองการ Cross-check การวิเคราะห์ข้อมูลผู้ป่วยข้ามหลายโมเดลอิสระ เพื่อดักจับ False Positive ที่โมเดลเดียวสร้างขึ้นด้วยความมั่นใจสูง ก่อนถึงขั้น Regulatory Submission",
-    },
-  },
-  {
-    industry: { en: "Legal Document AI", th: "AI เอกสารกฎหมาย" }, icon: "⚖️", color: "#7B9E87",
-    metrics: [
-      { label: { en: "Factual error rate", th: "อัตราข้อผิดพลาดข้อเท็จจริง" }, before: "14.7%", after: "0.2%", delta: "-98.6%" },
-      { label: { en: "Contract review time", th: "เวลา Review สัญญา" }, before: "4.2h", after: "22min", delta: "-91%" },
-      { label: { en: "Lawyer override rate", th: "อัตราที่ทนายต้องแก้ไข" }, before: "43%", after: "3%", delta: "-93%" },
-    ],
-    quote: {
-      en: "This scenario is illustrative, not a reported result — but the problem it models is real and independently documented: a 2024 Stanford RegLab/HAI study (Magesh, Surani, Dahl, Suzgun, Manning & Ho) found leading legal AI research tools — including products marketed as \"hallucination-free\" — hallucinated in 17-33% of real queries. That documented gap between marketing claims and measured reality is the specific failure mode cryptographically-verified multi-model consensus is designed to catch before an unverified answer reaches a lawyer's desk.",
-      th: "สถานการณ์นี้เป็นการจำลอง ไม่ใช่ผลลัพธ์ที่รายงานจริง — แต่ปัญหาที่จำลองอยู่นั้นเป็นเรื่องจริงและมีงานวิจัยรองรับ: งานวิจัยปี 2024 จาก Stanford RegLab/HAI (Magesh, Surani, Dahl, Suzgun, Manning & Ho) พบว่าเครื่องมือ AI ด้านกฎหมายชั้นนำ — รวมถึงผลิตภัณฑ์ที่โฆษณาว่า \"hallucination-free\" — เกิด Hallucination จริง 17-33% ของ query จริง ช่องว่างระหว่างคำโฆษณากับผลวัดจริงนี้เองคือปัญหาเฉพาะที่ Multi-model Consensus แบบ Cryptographically-verified ถูกออกแบบมาเพื่อดักจับ ก่อนที่คำตอบที่ยังไม่ผ่านการยืนยันจะไปถึงมือทนายความ",
-    },
-  },
+const notShown: Row[] = [
+  { en: "That Delentia reduces wrong answers compared with the same model alone. This has not been measured, so no rate is claimed.", th: "ว่า Delentia ลดคำตอบผิดได้เมื่อเทียบกับโมเดลเดียวกันที่ใช้ตัวเดียว ยังไม่เคยวัด จึงไม่อ้างอัตราใด ๆ" },
+  { en: "That a jury of models is more accurate than one model. No real multi-vendor vote has been run.", th: "ว่าคณะลูกขุนของโมเดลแม่นยำกว่าโมเดลเดียว ยังไม่เคยลงคะแนนจริงข้ามผู้ให้บริการ" },
+  { en: "Anything with a capable model. Only scripted models and small local models have been used.", th: "ผลใด ๆ กับโมเดลที่เก่งพอ ใช้แค่โมเดลสคริปต์และโมเดลท้องถิ่นขนาดเล็ก" },
 ]
+
+function List({ rows, isTh, icon }: { rows: Row[]; isTh: boolean; icon: "check" | "x" }) {
+  return (
+    <ul className="space-y-3">
+      {rows.map((row) => (
+        <li key={row.en} className="flex items-start gap-2 text-sm text-muted-foreground">
+          {icon === "check" ? <Check size={16} className="mt-0.5 shrink-0 text-warm-sage" /> : <X size={16} className="mt-0.5 shrink-0" />}
+          <span>{isTh ? row.th : row.en}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 export default function HallucinationPreventionPage() {
   const pathname = usePathname()
-  const { resolvedTheme } = useTheme()
-  const mounted = useMounted()
-  const isDark = (mounted ? resolvedTheme : "light") === "dark"
-  const locale = getLocaleFromPathname(pathname) ?? "en"
-  const isEn = locale === "en"
-  const localePrefix = locale === "th" ? "/th" : ""
-
-  const bg = isDark ? "#141414" : "#ffffff"
-  const bg2 = isDark ? "#1A1A1A" : "#FAF6F0"
-  const cardBg = isDark ? "#1E1E1E" : "#ffffff"
-  const cardBorder = isDark ? "#2A2A2A" : "#E8E3DC"
-  const textPrimary = isDark ? "#E8E3DC" : "#1A1A1A"
-  const textSecondary = isDark ? "#999" : "#4A4A4A"
-  const textMuted = isDark ? "#888" : "#6B6B6B"
+  const isTh = getLocaleFromPathname(pathname) === "th"
+  const localePrefix = isTh ? "/th" : "/en"
 
   return (
-    <>
-      <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema([
-        { name: isEn ? "Home" : "หน้าหลัก", url: `https://delentia.com${localePrefix}` },
-        { name: isEn ? "Solutions" : "โซลูชัน", url: `https://delentia.com${localePrefix}/solutions` },
-        { name: isEn ? "AI Hallucination Prevention" : "ป้องกัน AI Hallucination", url: `https://delentia.com${localePrefix}/solutions/ai-hallucination-prevention` },
-      ])) }} />
+    <main className="min-h-screen bg-background" id="main-content">
       <Navbar />
-      <main id="main-content" className="min-h-screen bg-background">
 
-        {/* Answer-first — screen-reader + crawler accessible; not shown visually */}
-        <section className="sr-only">
-          <p>
-            {isEn
-              ? `AI hallucination prevention applies multi-model consensus verification, with no hallucination rate claimed down from an estimated 15% single-model baseline — essential for enterprise deployments in financial services, healthcare, and legal domains where accuracy and auditability are non-negotiable.`
-              : `การป้องกัน AI Hallucination ใช้การตรวจสอบความถูกต้องด้วยหลายโมเดลพร้อมกัน โดยไม่ได้อ้างอัตรา hallucination ลดลงจากค่าเฝ้าประมาณ 15% ของโมเดลเดียว จำเป็นอย่างยิ่งสำหรับการใช้งานระดับองค์กรในแวดการเงิน สาธารณสุข และกฎหมาย ซึ่งความแม่นยำและการตรวจสอบได้เป็นสิ่งที่ต่อรองไม่ได้`}
+      <section className="pt-28 pb-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-250 mx-auto">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-foreground">
+            {isTh ? "คำตอบที่ผิดของ AI: Delentia ทำอะไรได้และทำอะไรไม่ได้" : "Wrong answers from AI: what Delentia does and does not do"}
+          </h1>
+          <p className="text-base text-muted-foreground max-w-3xl">
+            {isTh
+              ? "เราไม่อ้างว่าป้องกัน hallucination ได้ ตัวเลขที่เคยอยู่ในหน้านี้ไม่ได้มาจากการวัดและถูกถอนแล้ว หน้านี้บอกสิ่งที่ระบบทำจริง สิ่งที่วัดแล้ว และสิ่งที่ยังไม่เคยแสดง"
+              : "We do not claim to prevent hallucination. The figures that used to be on this page were not measured and have been withdrawn. This page says what the system does, what was measured, and what has not been shown."}
           </p>
-        </section>
+        </div>
+      </section>
 
-        {/* Hero */}
-        <section className="py-14 px-4 text-center" style={{ background: bg2 }}>
-          <div className="max-w-3xl mx-auto">
-            <m.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-6 border"
-              style={{ color: "#C4745B", borderColor: "rgba(196,116,91,0.3)", background: "rgba(196,116,91,0.07)" }}>
-              <Shield size={14} /> {isEn ? "AI Accuracy" : "ความแม่นยำ AI"}
-            </m.div>
-            <m.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-5xl font-bold mb-6" style={{ color: textPrimary }}>
-              {isEn ? "AI Hallucination " : "การป้องกัน "}
-              <span style={{ color: "#C4745B" }}>{isEn ? "Prevention" : "AI Hallucination"}</span>
-            </m.h1>
-            <m.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="text-lg mb-10" style={{ color: textSecondary }}>
-              {isEn
-                ? `Target a hallucination rate of ${SITE_HALLUCINATION_RATE} using SignedAI Multi-LLM consensus verification — benchmarked against standard single-LLM baselines.`
-                : `เป้าหมาย hallucination rate ${SITE_HALLUCINATION_RATE} ด้วย SignedAI Multi-LLM Consensus Verification — Benchmarked เทียบกับ Single-LLM มาตรฐาน`}
-            </m.p>
-            <m.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href={`${localePrefix}/products/signed-ai`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white"
-                style={{ background: "#C4745B" }}>
-                {isEn ? "SignedAI Product" : "SignedAI Product"} <ArrowRight size={16} />
-              </Link>
-              <Link href={`${localePrefix}/demo/fdia`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm border"
-                style={{ borderColor: cardBorder, color: textPrimary }}>
-                {isEn ? "Try FDIA Demo" : "ลอง FDIA Demo"}
-              </Link>
-            </m.div>
+      <section className="pb-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-250 mx-auto">
+          <h2 className="text-xl font-bold mb-4 text-foreground">{isTh ? "สิ่งที่ระบบทำ" : "What the system does"}</h2>
+          <List rows={doing} isTh={isTh} icon="check" />
+        </div>
+      </section>
+
+      <section className="pb-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-250 mx-auto grid gap-6 md:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <h2 className="text-lg font-bold mb-4 text-foreground">{isTh ? "สิ่งที่วัดแล้ว" : "What was measured"}</h2>
+            <List rows={measured} isTh={isTh} icon="check" />
           </div>
-        </section>
-
-        {/* Problem Statement */}
-        <section className="py-16 px-4" style={{ background: bg }}>
-          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <m.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border mb-5"
-                style={{ color: "#C4745B", borderColor: "rgba(196,116,91,0.25)", background: "rgba(196,116,91,0.06)" }}>
-                {isEn ? "The Problem" : "ปัญหา"}
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-5" style={{ color: textPrimary }}>
-                {isEn ? "15% of AI Outputs Are " : "15% ของผลลัพธ์ AI "}
-                <span style={{ color: "#C4745B" }}>{isEn ? "Fabricated" : "ถูกสร้างขึ้นผิดพลาด"}</span>
-              </h2>
-              <p className="text-base leading-relaxed mb-6" style={{ color: textSecondary }}>
-                {isEn
-                  ? "Single-LLM systems have no built-in mechanism to verify their own outputs. They confidently generate plausible-sounding but factually incorrect information — a critical risk in healthcare, finance, and legal domains."
-                  : "ระบบ Single-LLM ไม่มีกลไกตรวจสอบผลลัพธ์ของตัวเอง มันสร้างข้อมูลที่ฟังดูน่าเชื่อถือแต่ผิดข้อเท็จจริงอย่างมั่นใจ — ความเสี่ยงสำคัญในด้าน Healthcare, Finance และ Legal"}
-              </p>
-              <div className="space-y-3">
-                {[
-                  { en: "No self-verification capability", th: "ไม่มีความสามารถตรวจสอบตัวเอง" },
-                  { en: "Confident but incorrect outputs", th: "ผลลัพธ์ที่มั่นใจแต่ไม่ถูกต้อง" },
-                  { en: "No audit trail for accountability", th: "ไม่มี Audit Trail" },
-                  { en: "Enterprise compliance risk", th: "ความเสี่ยง Enterprise Compliance" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <AlertTriangle size={15} style={{ color: "#C4745B" }} className="shrink-0" />
-                    <span className="text-sm" style={{ color: isDark ? "#CCC" : "#333" }}>{isEn ? item.en : item.th}</span>
-                  </div>
-                ))}
-              </div>
-            </m.div>
-            <m.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="p-8 rounded-3xl border text-center" style={{ background: isDark ? "#1E1E1E" : "#FAF6F0", borderColor: cardBorder }}>
-              <div className="text-7xl font-bold mb-2" style={{ color: "#C4745B" }}>15%*</div>
-              <p className="text-xs font-semibold uppercase tracking-wider mb-6" style={{ color: textMuted }}>
-                {isEn ? "Average Hallucination Rate" : "อัตรา Hallucination เฉลี่ย"}
-              </p>
-              <div className="h-px w-full mb-6" style={{ background: cardBorder }} />
-              <div className="text-7xl font-bold mb-2" style={{ color: "#7B9E87" }}>not claimed</div>
-              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: textMuted }}>
-                {isEn ? "With SignedAI Verification" : "ด้วย SignedAI Verification"}
-              </p>
-              <p className="text-[11px] mt-3" style={{ color: textMuted }}>
-                {isEn ? "* Based on internal benchmark testing — not from live enterprise deployments." : "* อ้างอิงจากการทดสอบ Benchmark ภายใน ไม่ใช่จาก Enterprise ที่ Deploy จริง"}
-              </p>
-            </m.div>
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <h2 className="text-lg font-bold mb-4 text-foreground">{isTh ? "สิ่งที่ยังไม่เคยแสดง" : "What has not been shown"}</h2>
+            <List rows={notShown} isTh={isTh} icon="x" />
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* How SignedAI Works */}
-        <section className="py-16 px-4" style={{ background: bg2 }}>
-          <div className="max-w-5xl mx-auto">
-            <m.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: textPrimary }}>
-                {isEn ? "How SignedAI " : "SignedAI "}
-                <span style={{ color: "#D4A853" }}>{isEn ? "Works" : "ทำงานอย่างไร"}</span>
-              </h2>
-              <p className="text-base max-w-2xl mx-auto" style={{ color: textSecondary }}>
-                {isEn
-                  ? "A 4-step verification pipeline that transforms unreliable single-LLM outputs into cryptographically verified enterprise-grade responses."
-                  : "Pipeline 4 ขั้นตอนที่เปลี่ยนผลลัพธ์ Single-LLM ที่ไม่น่าเชื่อถือเป็นคำตอบระดับ Enterprise ที่ได้รับการยืนยัน Cryptographic"}
-              </p>
-            </m.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {verificationSteps.map((step, i) => {
-                const Icon = step.icon
-                return (
-                  <m.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                    className="p-6 sm:p-8 rounded-2xl border" style={{ background: cardBg, borderColor: cardBorder }}>
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
-                        style={{ background: isDark ? "#3A2E15" : "#FEF3C7" }}>
-                        <Icon size={22} style={{ color: "#D4A853" }} />
-                      </div>
-                      <div>
-                        <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "#D4A853" }}>
-                          {isEn ? `Step ${step.step}` : `ขั้นตอนที่ ${step.step}`}
-                        </span>
-                        <h3 className="text-base font-bold mt-1 mb-2" style={{ color: textPrimary }}>
-                          {isEn ? step.titleEn : step.titleTh}
-                        </h3>
-                        <p className="text-sm leading-relaxed" style={{ color: textSecondary }}>
-                          {isEn ? step.descEn : step.descTh}
-                        </p>
-                      </div>
-                    </div>
-                  </m.div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Comparison Table */}
-        <section className="py-16 px-4" style={{ background: bg }}>
-          <div className="max-w-3xl mx-auto">
-            <m.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-              <h2 className="text-3xl font-bold mb-3" style={{ color: textPrimary }}>
-                Single LLM vs <span style={{ color: "#7B9E87" }}>SignedAI</span>
-              </h2>
-            </m.div>
-            <m.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-              className="rounded-2xl border overflow-hidden" style={{ borderColor: cardBorder }}>
-              <div className="grid grid-cols-4 text-xs font-semibold uppercase tracking-wider p-4"
-                style={{ background: isDark ? "#1E1E1E" : "#FAF6F0", color: textMuted, borderBottom: `1px solid ${cardBorder}` }}>
-                <div>{isEn ? "Metric" : "ตัวชี้วัด"}</div>
-                <div className="text-center">Single LLM</div>
-                <div className="text-center" style={{ color: "#7B9E87" }}>SignedAI</div>
-                <div className="text-center">{isEn ? "Improvement" : "ปรับปรุง"}</div>
-              </div>
-              {comparisonData.map((row, i) => (
-                <div key={i} className="grid grid-cols-4 p-4 text-sm" style={{
-                  borderTop: `1px solid ${cardBorder}`,
-                  background: i % 2 === 0 ? "transparent" : (isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.01)")
-                }}>
-                  <div className="font-medium" style={{ color: textPrimary }}>{row.metric}</div>
-                  <div className="text-center" style={{ color: textMuted }}>{row.single}</div>
-                  <div className="text-center font-semibold" style={{ color: "#7B9E87" }}>{row.signedAI}</div>
-                  <div className="text-center font-semibold" style={{ color: "#D4A853" }}>{row.improvement}</div>
-                </div>
-              ))}
-              <p className="text-xs px-4 py-2.5" style={{ color: textMuted, borderTop: `1px solid ${cardBorder}` }}>
-                * {isEn ? "Based on internal benchmark testing — not from live enterprise deployments." : "อ้างอิงจากการทดสอบ Benchmark ภายใน ไม่ใช่จาก Enterprise ที่ Deploy จริง"}
-              </p>
-            </m.div>
-          </div>
-        </section>
-
-        {/* Case Studies */}
-        <section className="py-16 px-4" style={{ background: bg2 }}>
-          <div className="max-w-6xl mx-auto">
-            <m.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: textPrimary }}>
-                {isEn ? "Illustrative " : "สถานการณ์"}{" "}
-                <span style={{ color: "#7B9E87" }}>{isEn ? "Scenarios" : "จำลอง"}</span>
-              </h2>
-              <p className="text-sm max-w-xl mx-auto" style={{ color: textMuted }}>
-                {isEn ? "Projected outcomes based on internal benchmark modeling — not from live enterprise deployments." : "ผลลัพธ์ที่คาดการณ์จากการทดสอบ Benchmark ภายใน — ไม่ใช่จากการ Deploy ใน Enterprise จริง"}
-              </p>
-            </m.div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {caseStudies.map((cs, i) => (
-                <m.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="rounded-2xl border overflow-hidden" style={{ background: cardBg, borderColor: cardBorder }}>
-                  <div className="px-5 py-4 flex items-center gap-3" style={{ background: `${cs.color}12` }}>
-                    <span className="text-2xl">{cs.icon}</span>
-                    <h3 className="font-bold text-base" style={{ color: cs.color }}>{isEn ? cs.industry.en : cs.industry.th}</h3>
-                  </div>
-                  <div className="px-5 py-4 space-y-3">
-                    {cs.metrics.map((_item, j) => (
-                      <div key={j} className="text-xs rounded-lg px-3 py-2.5"
-                        style={{ background: isDark ? "#161616" : "#FAF6F0" }}>
-                        <div className="font-semibold mb-1.5" style={{ color: isDark ? "#CCC" : "#333" }}>
-                          {isEn ? _item.label.en : _item.label.th}
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="line-through" style={{ color: textMuted }}>{_item.before}</span>
-                          <span style={{ color: "#9CA3AF" }}>→</span>
-                          <span className="font-bold" style={{ color: cs.color }}>{_item.after}</span>
-                          <span className="ml-auto font-bold" style={{ color: "#7B9E87" }}>{_item.delta}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="px-5 pb-5">
-                    <blockquote className="text-xs leading-relaxed italic border-l-2 pl-3"
-                      style={{ color: textMuted, borderColor: `${cs.color}40` }}>
-                      "{isEn ? cs.quote.en : cs.quote.th}"
-                    </blockquote>
-                  </div>
-                </m.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-16 px-4" style={{ background: bg }}>
-          <div className="max-w-2xl mx-auto text-center">
-            <m.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="text-2xl font-bold mb-6" style={{ color: textPrimary }}>
-                {isEn ? "Explore Related Solutions" : "สำรวจโซลูชันที่เกี่ยวข้อง"}
-              </h2>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`${localePrefix}/solutions/enterprise-ai-memory`}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white"
-                  style={{ background: "#7B9E87" }}>
-                  {isEn ? "Enterprise AI Memory" : "Enterprise AI Memory"} <ArrowRight size={16} />
-                </Link>
-                <Link href={`${localePrefix}/products/signed-ai`}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border font-semibold text-sm"
-                  style={{ borderColor: cardBorder, color: textPrimary }}>
-                  SignedAI Product
-                </Link>
-              </div>
-            </m.div>
-          </div>
-        </section>
-
-      </main>
-
-      {/* E-E-A-T + Internal Links */}
-      <section className="py-14 px-4" style={{ background: bg2 }}>
-        <div className="max-w-3xl mx-auto space-y-10">
-          <RelatedContent
-            title={isEn ? "Related Resources" : "แหล่งข้อมูลที่เกี่ยวข้อง"}
-            items={[
-              {
-                title: isEn ? "JITNA RFC-001 Protocol" : "JITNA RFC-001 Protocol",
-                description: isEn
-                  ? "The universal AI intent communication protocol — the HTTP of agentic AI."
-                  : "โปรโตคอลสื่อสาร AI Intent สากล — HTTP ของ Agentic AI",
-                href: "/protocols/jitna-rfc-001",
-                category: isEn ? "Protocol" : "โปรโตคอล",
-              },
-              {
-                title: isEn ? "Enterprise AI Memory" : "Enterprise AI Memory",
-                description: isEn
-                  ? "RCTDB persistent memory layer for long-running enterprise AI workloads."
-                  : "ชั้น Memory ถาวร RCTDB สำหรับงาน AI ระดับองค์กรระยะยาว",
-                href: "/solutions/enterprise-ai-memory",
-                category: isEn ? "Solution" : "โซลูชัน",
-              },
-              {
-                title: isEn ? "SignedAI Product" : "SignedAI Product",
-                description: isEn
-                  ? "Cryptographically verified multi-LLM consensus — enterprise-grade AI verification."
-                  : "การยืนยัน AI ด้วย Cryptography ผ่าน Multi-LLM Consensus ระดับองค์กร",
-                href: "/products/signed-ai",
-                category: isEn ? "Product" : "ผลิตภัณฑ์",
-              },
-            ]}
-          />
-          <AuthorBlock authorSlug="ittirit-saengow" locale={locale} />
+      <section className="pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-250 mx-auto flex flex-col gap-3 sm:flex-row">
+          <Link href={`${localePrefix}/benchmark`} className="inline-flex items-center justify-center gap-2 rounded-xl bg-warm-amber px-6 py-3 text-sm font-semibold text-white hover:bg-[#C49A48] transition-colors">
+            {isTh ? "ดูสิ่งที่วัดแล้ว" : "See what is measured"}
+            <ArrowRight size={14} />
+          </Link>
+          <Link href={`${localePrefix}/products/signed-ai`} className="inline-flex items-center justify-center gap-2 rounded-xl border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-secondary transition-colors">
+            {isTh ? "คณะลูกขุน SignedAI" : "The SignedAI jury"}
+          </Link>
         </div>
       </section>
 
       <Footer />
-    </>
+    </main>
   )
 }
-

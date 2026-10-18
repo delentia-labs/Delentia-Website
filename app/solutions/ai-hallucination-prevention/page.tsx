@@ -3,18 +3,17 @@ import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getBreadcrumbSchema, getFAQSchema } from "@/lib/schema"
 import HallucinationPreventionPage from "./HallucinationPreventionClient"
-import { SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale()
   return createBilingualMetadata(
     locale,
-    "AI Hallucination Prevention — Multi-LLM Consensus Verification",
-    "ป้องกัน AI Hallucination — Multi-LLM Consensus Verification",
-    `Target a hallucination rate of ${SITE_HALLUCINATION_RATE} (vs an estimated 12-15% industry average) with SignedAI multi-LLM consensus verification. Cryptographic signing, complete audit trails, and enterprise-grade accuracy for regulated industries.`,
-    `ไม่ได้อ้างอัตรา hallucination (เทียบกับค่าเฉลี่ยอุตสาหกรรมประมาณ 12-15%) ด้วย SignedAI Multi-LLM Consensus Cryptographic Signing และ Audit Trails สำหรับอุตสาหกรรมที่มีการกำกับดูแล`,
+    "Wrong answers from AI — what Delentia does and does not do",
+    "คำตอบที่ผิดของ AI — Delentia ทำอะไรได้และทำอะไรไม่ได้",
+    "Delentia does not claim to prevent hallucination. It gates what an agent can do, checks answers against the evidence gathered, and offers a jury of independent models. What was measured, and what was not, is listed.",
+    "Delentia ไม่อ้างว่าป้องกัน hallucination ได้ ระบบคุมสิ่งที่ agent ทำได้ ตรวจคำตอบเทียบกับหลักฐานที่เก็บมา และมีคณะลูกขุนของโมเดลอิสระ แจกแจงสิ่งที่วัดแล้วและยังไม่ได้วัด",
     "/solutions/ai-hallucination-prevention",
-    ["reduce AI hallucination", "multi-LLM consensus", "SignedAI verification", "AI accuracy", "cryptographic AI signing"]
+    ["AI wrong answers", "answer checking", "SignedAI jury", "signed audit log"]
   )
 }
 
@@ -34,8 +33,8 @@ export default async function Page() {
       answer: "AI hallucination occurs when a language model generates plausible-sounding but factually incorrect content. It happens due to statistical pattern matching without ground-truth verification.",
     },
     {
-      question: `How does Delentia Labs target a ${SITE_HALLUCINATION_RATE} hallucination rate?`,
-      answer: "RCT's SignedAI uses multi-LLM consensus — multiple models independently process the same query, and results are cryptographically signed only when consensus exceeds threshold across 8 quality dimensions.",
+      question: "Does Delentia reduce hallucination?",
+      answer: "Not shown. Delentia gates what an agent can do and checks answers against the evidence gathered, but no measurement shows fewer wrong answers than the same model used alone, so no rate is claimed.",
     },
   ])
 

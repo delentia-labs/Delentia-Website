@@ -8,12 +8,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale()
   return createBilingualMetadata(
     locale,
-    "Enterprise AI Memory — Persistent Context with 74% Compression",
-    "Enterprise AI Memory — Persistent Context พร้อม Compression 74%",
-    "Extend enterprise AI beyond the context window with persistent memory, hybrid storage, governed recall, and 74% delta compression.",
-    "ขยาย AI องค์กรให้เกินข้อจำกัดของ context window ด้วย persistent memory, hybrid storage, governed recall และ delta compression 74%",
+    "Agent memory you can audit, replay and erase",
+    "หน่วยความจำของ agent: ตรวจสอบได้ ย้อนดูได้ และลบได้",
+    "Delentia memory is an append-only, hash-chained event log with revocation, time travel and per-person erasure that can be verified in the raw database file. Measured against LangGraph and mem0 on one workload; no accuracy, compression or compliance claim.",
+    "หน่วยความจำของ Delentia เป็นบันทึกเหตุการณ์ต่อท้ายที่เชื่อม hash มีการเพิกถอน การย้อนดู และการลบรายบุคคลที่ตรวจในไฟล์ฐานข้อมูลดิบได้ วัดเทียบกับ LangGraph และ mem0 บนภาระงานเดียว ไม่อ้างความแม่นยำ การบีบอัด หรือการปฏิบัติตามกฎหมาย",
     "/solutions/enterprise-ai-memory",
-    ["enterprise AI memory", "RCTDB", "vector database", "AI context window", "8-dimensional schema", "delta compression"]
+    ["agent memory", "event log", "memory erasure", "time travel", "audit"]
   )
 }
 
@@ -29,16 +29,16 @@ export default async function Page() {
 
   const faqSchema = getFAQSchema([
     {
-      question: "How much compression does Enterprise AI Memory achieve compared to storing full conversation context?",
-      answer: "Enterprise AI Memory stores only context changes (39–90% smaller than full snapshots, measured in bytes) — storing only context changes rather than full snapshots, enabling persistent memory across sessions without exponential storage costs.",
+      question: "Does Delentia memory compress better than other systems?",
+      answer: "Not shown. Measured in bytes, storing changes saves 39% to 90% against full snapshots, and ordinary compression of snapshots does about as well, so no compression advantage is claimed. On one 2,000-operation workload the log plus sealed store was 1.5 MB against 192 MB for LangGraph and 7.1 MB for mem0.",
     },
     {
-      question: "How does RCTDB differ from vector databases for enterprise AI?",
-      answer: "RCTDB uses an 8-dimensional schema with governed recall, audit trails, and constitutional constraints. Vector databases provide raw similarity search without governance, explainability, or right-to-erasure controls required for enterprise PDPA compliance.",
+      question: "What is different about Delentia memory?",
+      answer: "Every change is an event in a hash-chained log whose head is written into the audit chain; a memory can be revoked with a reason and the store viewed as it was earlier; and one person can be erased by destroying the key their text is sealed under. It is not more accurate at recall than mem0: on the same 30 questions mem0 found 24, Delentia with embeddings 22.",
     },
     {
-      question: "Does Enterprise AI Memory support PDPA and data sovereignty requirements?",
-      answer: "Yes. Enterprise AI Memory includes built-in PDPA Section 33 explainability, right-to-erasure for stored context, role-based access controls, and complete audit trails for all memory read and write operations.",
+      question: "Does Delentia make me compliant with the PDPA?",
+      answer: "No. Software cannot make an organisation compliant. Delentia gives you tools to erase one person's memory text and to show what happened, but erasure does not yet cover the separate skills database or audit rows written before sealing was added.",
     },
   ])
 

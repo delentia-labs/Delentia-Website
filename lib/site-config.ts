@@ -1,13 +1,13 @@
 export const SITE_URL = "https://delentia.com"
 export const SITE_NAME = "Delentia Labs"
-export const SITE_DESCRIPTION = "Enterprise AI architecture and verification platform built around FDIA, JITNA, SignedAI, and staged deployment evidence."
+export const SITE_DESCRIPTION = "Open-source agent runtime with a safety gate before tool calls, human-signed approvals and a signed audit log. Built by one person; no hosted service yet."
 export const SITE_OG_IMAGE = `${SITE_URL}/opengraph-image`
-export const SITE_VERSION = "2026.05 Snapshot"
+export const SITE_VERSION = "2.3.1"
 // Round 50: the private enterprise count (4,849) is not independently verifiable and was
 // withdrawn (see /corrections). Every page that shows "verified tests" now shows the
 // CI-verified public count below.
 export const SITE_TEST_COUNT = 7109 // same suite as SITE_PUBLIC_SDK_TESTS: the public repository CI (the private suite is not counted anywhere)
-export const SITE_PUBLIC_SDK_VERSION = "2.3.0" // matches pyproject.toml / `delentia version` in delentia-labs/delentia-os as of 2026-09-26
+export const SITE_PUBLIC_SDK_VERSION = "2.3.1" // matches pyproject.toml / `delentia version` in delentia-labs/delentia-os as of 2026-09-26
 export const SITE_PUBLIC_SDK_TESTS = 7109 // Delentia-OS CI run 38231121128 (commit e78c9c4, 2026-10-12): 7109 passed · 32 skipped · 1 xfailed · 0 failed on Python 3.12, coverage 91.08%. Update from a real green CI run only.
 // Compatibility evidence labels reused across public pages, metadata, and blog stat cards.
 export const SITE_PUBLIC_SDK_EVIDENCE_LABEL = "Public SDK verification lane"
@@ -18,8 +18,6 @@ export const SITE_EVIDENCE_LAST_UPDATED = "2026-10-12"
 export const SITE_MICROSERVICE_COUNT = 52 // measured 2026-10-12: 52 services of the private layer answered at the same time as containers on one machine (a 53rd cannot run yet); not a production figure. 62 was a count of folders and is withdrawn
 export const SITE_ALGORITHM_COUNT = 41
 export const SITE_LAYER_COUNT = 10 // Product layers L1-L10; L11 = CI/CD pipeline layer (internal only)
-export const SITE_HEXACORE_COUNT = 9
-export const SITE_CONSENSUS_MODELS = 9 // HexaCore roster: 3W (Claude/Gemini/Grok) + 3E (Kimi/MiniMax/DeepSeek) + 1TH (Typhoon) + 1Local (Ollama) + 1LPU (Groq LPU); mirrors SITE_HEXACORE_COUNT
 // The live MCP gateway (delentia-mcp-ecosystem, deployed on Cloudflare
 // Workers) — the one part of the ecosystem installable and runnable today
 // via `npx delentia-mcp`. Update these two only when the gateway's tool
@@ -30,7 +28,7 @@ export const SITE_MCP_TEST_COUNT = 286 // delentia-mcp ecosystem-ci run 36397567
 // published benchmark dataset/methodology yet — say so in the value itself so
 // the caveat travels with the data to every consumer, not just this file.
 export const SITE_UPTIME = "No SLA offered; uptime is not independently monitored"
-export const SITE_HALLUCINATION_RATE = "<0.3% target (pending published benchmark methodology)"
+export const SITE_HALLUCINATION_RATE = "not claimed"
 
 export const SOCIAL_LINKS = {
   github: "https://github.com/delentia-labs",                         // org

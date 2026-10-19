@@ -91,7 +91,7 @@ Self-Evolving orchestrator ทริกเกอร์รอบ MEE evolution �
 
 ## หลักฐานประสิทธิภาพ
 
-MEE v2 (ALGO-07) เสร็จสิ้นการ integrate เต็มรูปแบบใน the RCT Ecosystem (เปิดตัว 21 มีนาคม 2026) ผ่านการตรวจสอบใน test suite 7,109 รายการ ด้วย 0 ความล้มเหลว บรรลุ **96% accuracy** บน ALGO-07 evaluation set ซึ่งเทียบเท่ากับคะแนน **9.5/10** ทั้งสี่ test category ผ่านโดยไม่มีความล้มเหลว:
+MEE v2 (ALGO-07) เสร็จสิ้นการ integrate เต็มรูปแบบใน the RCT Ecosystem (เปิดตัว 21 มีนาคม 2026) ผ่านการตรวจสอบใน test suite 7,820 รายการ ด้วย 0 ความล้มเหลว บรรลุ **96% accuracy** บน ALGO-07 evaluation set ซึ่งเทียบเท่ากับคะแนน **9.5/10** ทั้งสี่ test category ผ่านโดยไม่มีความล้มเหลว:
 
 - `test_evolution_step` ✅
 - `test_alpha_adaptation` ✅
@@ -119,12 +119,12 @@ MEE v2 (ALGO-07) เสร็จสิ้นการ integrate เต็มร�
 โดยเฉพาะ: ค่าตัวเลขของ constitutional acceptance threshold, internal schema ของ Π metacognition model, failure-mode detection ruleset และ production governance policy ที่กำหนดว่าเมื่อใด MEE run ได้รับอนุญาต สิ่งเหล่านี้เป็นเรื่องของ implementation ที่ต้องการบริบทเพิ่มเติมเพื่อให้บุคคลภายนอกตีความได้อย่างปลอดภัย
 
 **claim ความแม่นยำ 96% สามารถตรวจสอบอิสระได้หรือไม่?**
-ได้บางส่วน หน้า [Benchmark Summary](/benchmark-summary) เผยแพร่ methodology เต็มรูปแบบ เงื่อนไขการทดสอบ และ caveat เบื้องหลังผล benchmark the RCT Ecosystem การรัน test suite 7,109 รายการมีเอกสารใน RCT platform repository ALGO-07 evaluation set นั้นเองเป็น internal holdout — ไม่เผยแพร่สาธารณะเพื่อป้องกันการ leakage เข้า training pipeline ในอนาคต
+ได้บางส่วน หน้า [Benchmark Summary](/benchmark-summary) เผยแพร่ methodology เต็มรูปแบบ เงื่อนไขการทดสอบ และ caveat เบื้องหลังผล benchmark the RCT Ecosystem การรัน test suite 7,820 รายการมีเอกสารใน RCT platform repository ALGO-07 evaluation set นั้นเองเป็น internal holdout — ไม่เผยแพร่สาธารณะเพื่อป้องกันการ leakage เข้า training pipeline ในอนาคต
 
 ## บทความที่เกี่ยวข้อง
 
 - ศึกษา [FDIA Equation](/protocols/fdia-equation) — constitutional layer ที่กำกับทุก MEE evolution gate
 - ทบทวน [SignedAI HexaCore](/products/signed-ai) เพื่อเข้าใจว่า Ed25519 signing ทำให้ algorithm ที่ MEE spawn ตรวจสอบย้อนกลับได้และป้องกันการแก้ไขอย่างไร
-- ดู [Evaluation Harnesses](/blog/evaluation-harnesses-enterprise-llm) สำหรับ framework ทดสอบ 7,109 รายการที่ใช้ตรวจสอบ MEE output — ใช้เป็นเส้นทาง independent verification สำหรับ claim ในบทความนี้
+- ดู [Evaluation Harnesses](/blog/evaluation-harnesses-enterprise-llm) สำหรับ framework ทดสอบ 7,820 รายการที่ใช้ตรวจสอบ MEE output — ใช้เป็นเส้นทาง independent verification สำหรับ claim ในบทความนี้
 - เรียกดู [41 Algorithms ทั้งหมด](/algorithms) เพื่อดูพื้นที่ algorithm ที่ MEE ขยาย
 - ทบทวน [Benchmark Summary](/benchmark-summary) สำหรับหลักฐานการใช้งานจริงและข้อจำกัดที่ตรงไปตรงมาเบื้องหลัง RCT quality target

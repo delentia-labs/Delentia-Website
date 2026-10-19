@@ -38,8 +38,8 @@ const CODICES = [
   },
   {
     num: "03",
-    en: { title: "Codex of Evidence", tagline: "Claim nothing unproven", body: "Every system claim must have a reproducible test. Benchmark numbers appear in CI pipelines before they appear in marketing copy. The 7,109-test suite is the enforcement mechanism for this codex." },
-    th: { title: "Codex แห่งหลักฐาน", tagline: "อย่าอ้างสิ่งที่ยังไม่พิสูจน์", body: "ทุก System Claim ต้องมีการทดสอบที่ทำซ้ำได้ ตัวเลข Benchmark ปรากฏใน CI Pipelines ก่อนปรากฏใน Marketing Copy ชุดทดสอบ 7,109 รายการคือกลไกการบังคับใช้สำหรับ Codex นี้" },
+    en: { title: "Codex of Evidence", tagline: "Claim nothing unproven", body: "Every system claim must have a reproducible test. Benchmark numbers appear in CI pipelines before they appear in marketing copy. The 7,820-test suite is the enforcement mechanism for this codex." },
+    th: { title: "Codex แห่งหลักฐาน", tagline: "อย่าอ้างสิ่งที่ยังไม่พิสูจน์", body: "ทุก System Claim ต้องมีการทดสอบที่ทำซ้ำได้ ตัวเลข Benchmark ปรากฏใน CI Pipelines ก่อนปรากฏใน Marketing Copy ชุดทดสอบ 7,820 รายการคือกลไกการบังคับใช้สำหรับ Codex นี้" },
     featured: false,
   },
   {
@@ -101,8 +101,8 @@ export default async function GenomeCodexPage() {
     {
       question: isTh ? "RCT Codex รัฐธรรมนูญ AI แตกต่างจาก Guidelines ทั่วไปอย่างไร?" : "How does the RCT Codex differ from typical AI guidelines?",
       answer: isTh
-        ? "Guidelines แนะนำพฤติกรรม Codex บังคับใช้มัน ทุก Codex ถูก Implement ในโค้ด (เช่น A=0 ใน FDIA) หรือในกระบวนการ CI (เช่น ชุดทดสอบ 7,109 รายการ) ไม่มีอยู่เพียงในนโยบาย"
-        : "Guidelines recommend behavior. Codices enforce it. Every codex is implemented in code (e.g., A=0 in FDIA) or in CI process (e.g., 7,109 test suite), not merely in policy documents.",
+        ? "Guidelines แนะนำพฤติกรรม Codex บังคับใช้มัน ทุก Codex ถูก Implement ในโค้ด (เช่น A=0 ใน FDIA) หรือในกระบวนการ CI (เช่น ชุดทดสอบ 7,820 รายการ) ไม่มีอยู่เพียงในนโยบาย"
+        : "Guidelines recommend behavior. Codices enforce it. Every codex is implemented in code (e.g., A=0 in FDIA) or in CI process (e.g., 7,820 test suite), not merely in policy documents.",
     },
     {
       question: isTh ? "Janus Protocol คืออะไร?" : "What is the Janus Protocol?",

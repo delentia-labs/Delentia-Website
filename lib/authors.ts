@@ -1,4 +1,4 @@
-import { SITE_ENTERPRISE_EVIDENCE_LABEL, SITE_PUBLIC_SDK_EVIDENCE_LABEL, SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
+import { SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
 
 export type AuthorProfile = {
   id: string
@@ -29,18 +29,16 @@ export const authorProfiles: AuthorProfile[] = [
       th: "ผู้ก่อตั้งและสถาปนิกระบบ, Delentia Labs",
     },
     bio: {
-      en: `Ittirit Saengow (อิทธิฤทธิ์ แซ่โง้ว) is the founder, sole developer, and primary author of Delentia Labs — a constitutional AI operating system platform built independently from architecture through publication. He conceived and developed the FDIA equation (F = (D^I) × A), the JITNA protocol specification (RFC-001), the 10-layer architecture, the 7-Genome system, and the RCT-7 process framework. Public-facing proof uses ${SITE_PUBLIC_SDK_EVIDENCE_LABEL.toLowerCase()} at ${SITE_PUBLIC_SDK_TESTS.toLocaleString()} tests, while the broader runtime footprint is disclosed separately as an ${SITE_ENTERPRISE_EVIDENCE_LABEL.toLowerCase()}.`,
-      th: `อิทธิฤทธิ์ แซ่โง้ว คือผู้ก่อตั้ง นักพัฒนาเพียงคนเดียว และผู้เขียนหลักของ Delentia Labs — แพลตฟอร์มระบบปฏิบัติการ AI แบบ constitutional ที่สร้างขึ้นอย่างอิสระตั้งแต่สถาปัตยกรรมจนถึงการเผยแพร่ เขาคิดค้นสมการ FDIA (F = (D^I) × A) ข้อกำหนดโปรโตคอล JITNA (RFC-001) สถาปัตยกรรม 10 ชั้น ระบบ 7-Genome และกระบวนการ RCT-7 โดยหลักฐานสาธารณะใช้ ${SITE_PUBLIC_SDK_EVIDENCE_LABEL.toLowerCase()} ที่ ${SITE_PUBLIC_SDK_TESTS.toLocaleString()} tests ส่วน footprint ของ runtime ที่กว้างกว่าถูกเปิดเผยแยกเป็น ${SITE_ENTERPRISE_EVIDENCE_LABEL.toLowerCase()}`,
+      en: `Ittirit Saengow (อิทธิฤทธิ์ แซ่โง้ว) is the founder and architect of Delentia, an open-source agent runtime. He grew up in a Khlong Toei flat community, studied architecture and does not write code: he conceived the FDIA equation (F = (D^I) × A), the JITNA protocol (RFC-001) and the RCT-7 framework, and builds the system by directing AI coding assistants and checking their work with tests. It is an early, one-person project with no customers yet. The public repository CI runs ${SITE_PUBLIC_SDK_TESTS.toLocaleString()} tests; what is and is not measured is on the Benchmark page.`,
+      th: `อิทธิฤทธิ์ แซ่โง้ว คือผู้ก่อตั้งและสถาปนิกของ Delentia รันไทม์ agent โอเพนซอร์ส เขาเติบโตในชุมชนแฟลตคลองเตย เรียนสถาปัตยกรรมศาสตร์ และเขียนโค้ดไม่เป็น เขาคิดสมการ FDIA (F = (D^I) × A) โปรโตคอล JITNA (RFC-001) และกรอบ RCT-7 และสร้างระบบด้วยการสั่งงานผู้ช่วยเขียนโค้ด AI พร้อมตรวจงานด้วยชุดทดสอบ เป็นโปรเจกต์ระยะเริ่มต้นของคนคนเดียวและยังไม่มีลูกค้า CI ของรีโพสาธารณะรันการทดสอบ ${SITE_PUBLIC_SDK_TESTS.toLocaleString()} รายการ สิ่งที่วัดแล้วและยังไม่ได้วัดอยู่ในหน้า Benchmark`,
     },
     expertise: [
       "constitutional AI system design",
       "FDIA equation and framework",
       "JITNA protocol specification",
-      "enterprise AI governance",
-      "full-stack Next.js development",
-      "bilingual AI platform architecture",
-      "AI operating systems",
-      "Thailand enterprise AI deployment",
+      "agent runtime governance",
+      "bilingual documentation",
+      "directing AI coding assistants",
     ],
     sameAs: [
       "https://www.linkedin.com/in/ittirit-saengow/",

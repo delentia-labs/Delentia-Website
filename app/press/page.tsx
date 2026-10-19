@@ -13,10 +13,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return createBilingualMetadata(
     locale,
-    "Press & Media — Constitutional AI from Thailand",
-    "สื่อมวลชนและข่าวประชาสัมพันธ์ — Constitutional AI จากประเทศไทย",
-    "Press kit, fact sheet, story angles, and media contact for Delentia Labs — a constitutional AI operating system built by a solo developer in Bangkok, Thailand. A private enterprise service layer and 7,109 passing tests (public repository, CI-verified); no hallucination rate is claimed.",
-    "Press kit, fact sheet, มุมข่าว และข้อมูลติดต่อสื่อสำหรับ Delentia Labs — constitutional AI operating system ที่สร้างโดยผู้พัฒนาคนเดียวจากกรุงเทพฯ ประเทศไทย พร้อมเลเยอร์บริการระดับองค์กร (private), 7,109 passing tests (public repository, CI-verified) (ไม่ได้อ้างอัตรา hallucination)",
+    "Press & Media — Delentia, an open-source agent runtime from Thailand",
+    "สื่อมวลชนและข่าวประชาสัมพันธ์ — Delentia รันไทม์ agent โอเพนซอร์สจากประเทศไทย",
+    "Press kit for Delentia: an early, one-person, open-source agent runtime from Bangkok, built by a founder who does not write code and directs AI coding assistants. Facts, three story angles, and what is and is not measured. No customers, no hosted service, no hallucination rate claimed.",
+    "ชุดข้อมูลสื่อของ Delentia: รันไทม์ agent โอเพนซอร์สระยะเริ่มต้นจากกรุงเทพฯ โดยคนคนเดียวที่เขียนโค้ดไม่เป็นและสั่งงานผู้ช่วยเขียนโค้ด AI ข้อเท็จจริง มุมข่าวสามแบบ และสิ่งที่วัดแล้วและยังไม่ได้วัด ยังไม่มีลูกค้า ไม่มีบริการโฮสต์ ไม่อ้างอัตรา hallucination",
     "/press",
     ["press kit", "media contact", "constitutional AI Thailand", "Delentia Labs press"]
   )
@@ -24,74 +24,50 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const facts = [
   { label: "Founded", labelTh: "ก่อตั้ง", value: "June 25, 2025" },
-  { label: "First Public Release", labelTh: "เวอร์ชันสาธารณะแรก", value: "August 11, 2025 (30 days)" },
-  { label: "Enterprise Version", labelTh: "เวอร์ชัน Enterprise", value: "not versioned publicly" },
-  { label: "Public SDK", labelTh: "Public SDK (GitHub)", value: "v1.0.2a0 (Apache 2.0)" },
-  { label: "Microservices", labelTh: "Microservices", value: "62 (enterprise, private snapshot)" },
-  { label: "Algorithms", labelTh: "Algorithms", value: "41 designed (Tier 1–9; public SDK ships a subset)" },
-  { label: "AI Models (HexaCore)", labelTh: "โมเดล AI (HexaCore)", value: "9 (3 Western + 3 Eastern + 1 Thai + 1 Local + 1 LPU)" },
-  { label: "Test Suite", labelTh: "ชุดทดสอบ", value: "7,109 passed / 0 failed (public repository, CI-verified) — public CI" },
-  { label: "Benchmark Hallucination Target", labelTh: "เป้าหมาย Benchmark Hallucination", value: "not claimed (an earlier figure was withdrawn)" },
-  { label: "FDIA Benchmark Accuracy", labelTh: "ความแม่นยำ FDIA (Benchmark)", value: "11 of 12 hand-written cases (a smoke test, not a benchmark)" },
-  { label: "Memory Compression", labelTh: "การบีบอัดหน่วยความจำ", value: "39–90% smaller than snapshots (measured in bytes)" },
-  { label: "Uptime Design SLA Target", labelTh: "เป้าหมาย Design SLA", value: "none published (no SLA is offered)" },
-  { label: "Warm Recall", labelTh: "Warm Recall", value: "<50ms (internal benchmark target)" },
-  { label: "Budget", labelTh: "งบประมาณ", value: "$0 (bootstrapped)" },
-  { label: "Team Size", labelTh: "ขนาดทีม", value: "1 (sole developer)" },
+  { label: "What it is", labelTh: "คืออะไร", value: "An open-source agent runtime (Apache 2.0) with a safety gate, human-signed approvals and a signed audit log" },
+  { label: "Install", labelTh: "ติดตั้ง", value: "pip install delentia-os (PyPI, 2.3.1)" },
+  { label: "Algorithms", labelTh: "Algorithms", value: "41 in the public repository (a count of modules, not a performance claim)" },
+  { label: "Test Suite", labelTh: "ชุดทดสอบ", value: "7,109 passed / 0 failed (public repository CI; coverage 91.08%)" },
+  { label: "Measured results", labelTh: "ผลที่วัดแล้ว", value: "Each with its method and limits on the Benchmark page" },
+  { label: "With a capable model", labelTh: "กับโมเดลที่เก่งพอ", value: "Not measured yet" },
+  { label: "Hallucination rate", labelTh: "อัตรา Hallucination", value: "not claimed (an earlier figure was withdrawn)" },
+  { label: "Customers / hosted service / SLA", labelTh: "ลูกค้า / บริการโฮสต์ / SLA", value: "none yet" },
+  { label: "Funding", labelTh: "ทุน", value: "none outside" },
+  { label: "Team", labelTh: "ทีม", value: "1: the founder, who does not write code and builds by directing AI coding assistants" },
   { label: "Location", labelTh: "ที่ตั้ง", value: "Bangkok, Thailand" },
   { label: "License", labelTh: "ใบอนุญาต", value: "Apache 2.0" },
 ]
 
 const storyAngles = [
   {
-    headline: "Thai Solo Developer Builds Enterprise Constitutional AI OS in 30 Days at Zero Cost",
-    headlineTh: "นักพัฒนาคนเดียวจากไทยสร้าง Constitutional AI OS ระดับ Enterprise ในเวลา 30 วัน ด้วยต้นทุนศูนย์บาท",
-    angle: "Human interest / entrepreneurship",
-    angleTh: "ความสนใจมนุษย์ / ผู้ประกอบการ",
-    hook: "While Silicon Valley needs $100M and 50 engineers, Ittirit Saengow built an AI operating system with a private enterprise service layer from a single Android phone in Bangkok.",
-    hookTh: "ขณะที่ Silicon Valley ต้องใช้เงิน 100 ล้านดอลลาร์และวิศวกร 50 คน อิทธิฤทธิ์ แซ่โง้ว สร้าง AI OS ที่มี a private enterprise service layer จากโทรศัพท์ Android เครื่องเดียวในกรุงเทพฯ",
+    headline: "A non-coder from a Khlong Toei flat builds an open-source agent runtime with AI assistants",
+    headlineTh: "คนเขียนโค้ดไม่เป็นจากแฟลตคลองเตยสร้างรันไทม์ agent โอเพนซอร์สด้วยผู้ช่วย AI",
+    angle: "Human interest",
+    angleTh: "ความสนใจมนุษย์",
+    hook: "Ittirit Saengow studied architecture and cannot write code. He directs AI coding assistants and checks their work with tests, which is why the project publishes its measurements, its limits and the claims it withdrew.",
+    hookTh: "อิทธิฤทธิ์ แซ่โง้ว เรียนสถาปัตยกรรมและเขียนโค้ดไม่เป็น เขาสั่งงานผู้ช่วยเขียนโค้ด AI และตรวจงานด้วยชุดทดสอบ นั่นคือเหตุผลที่โปรเจกต์เผยแพร่ผลที่วัด ข้อจำกัด และข้ออ้างที่ถอนแล้ว",
     badgeClass: "border-warm-amber/30 bg-warm-amber/10 text-warm-amber",
     cardClass: "border-warm-amber/20",
   },
   {
-    headline: "Constitutional AI: The Architecture That Provably Prevents Hallucination",
-    headlineTh: "Constitutional AI: สถาปัตยกรรมที่พิสูจน์ได้ว่าป้องกัน Hallucination",
+    headline: "An AI agent whose risky actions wait for a human signature, with a log anyone can check",
+    headlineTh: "AI agent ที่การกระทำเสี่ยงต้องรอลายเซ็นมนุษย์ พร้อมบันทึกที่ใครก็ตรวจได้",
     angle: "Technology / AI safety",
     angleTh: "เทคโนโลยี / ความปลอดภัย AI",
-    hook: "FDIA equation F = (D^I) × A introduces a mathematical kill switch: when A=0, no AI output is produced — regardless of model, prompt, or context. No hallucination rate is claimed.",
-    hookTh: "สมการ FDIA F = (D^I) × A สร้างสวิตช์ตัดทางคณิตศาสตร์: เมื่อ A=0 จะไม่มี AI output เกิดขึ้นเลย ไม่ว่าโมเดล prompt หรือบริบทจะเป็นอะไร ไม่ได้อ้างอัตรา hallucination",
+    hook: "Every action passes a gate outside the model; risky ones wait for an Ed25519 signature from a person; every episode leaves a hash-chained, signed record. A model-free demo runs in about five seconds. It has not yet been shown with a capable model.",
+    hookTh: "ทุกการกระทำผ่านด่านที่อยู่นอกโมเดล การกระทำที่เสี่ยงรอลายเซ็น Ed25519 จากคน และทุกรอบทิ้งบันทึกที่เชื่อม hash และลงนาม เดโมที่ไม่ต้องมีโมเดลรันได้ราว 5 วินาที ยังไม่เคยแสดงผลกับโมเดลที่เก่งพอ",
     badgeClass: "border-sky-400/30 bg-sky-400/10 text-sky-400",
     cardClass: "border-sky-400/20",
   },
   {
-    headline: "JITNA: The Open Protocol That Could Become the 'HTTP of Agentic AI'",
-    headlineTh: "JITNA: โปรโตคอลเปิดที่อาจกลายเป็น 'HTTP ของ Agentic AI'",
-    angle: "Technology / standards",
-    angleTh: "เทคโนโลยี / มาตรฐาน",
-    hook: "Just In Time Nodal Assembly (JITNA RFC-001 v2.0) is the first open-standard communication protocol for AI agents. It defines how agents negotiate, execute, and verify tasks — PROPOSE → COUNTER → ACCEPT.",
-    hookTh: "Just In Time Nodal Assembly (JITNA RFC-001 v2.0) คือโปรโตคอลการสื่อสารแบบ open standard ตัวแรกสำหรับ AI Agents กำหนดวิธีที่ agents เจรจา ดำเนินการ และตรวจสอบงาน — PROPOSE → COUNTER → ACCEPT",
-    badgeClass: "border-sky-400/30 bg-sky-400/10 text-sky-400",
-    cardClass: "border-sky-400/20",
-  },
-  {
-    headline: "50–100 Billion THB: Thailand's Path to AI Infrastructure Independence",
-    headlineTh: "5 หมื่น – 1 แสนล้านบาท: เส้นทางของไทยสู่ความเป็นอิสระทางโครงสร้างพื้นฐาน AI",
-    angle: "Business / national development",
-    angleTh: "ธุรกิจ / การพัฒนาชาติ",
-    hook: "Thailand currently sends billions THB/year in AI API fees to foreign cloud vendors. Delentia Labs proposes a constitutional AI infrastructure that generates 50–100B THB in national value by 2030.",
-    hookTh: "ปัจจุบันไทยส่งเงินหลายพันล้านบาทต่อปีเป็นค่า AI API ให้ cloud vendors ต่างประเทศ Delentia Labs เสนอโครงสร้างพื้นฐาน AI แบบ constitutional ที่จะสร้างมูลค่าแห่งชาติ 5 หมื่น – 1 แสนล้านบาทภายในปี 2030",
+    headline: "A project that publishes its own corrections",
+    headlineTh: "โปรเจกต์ที่เผยแพร่คำแก้ไขของตัวเอง",
+    angle: "Transparency",
+    angleTh: "ความโปร่งใส",
+    hook: "Delentia withdrew a hallucination figure, a test count and a service count it could not reproduce, and lists each correction on its own page. It states what each measurement does not show.",
+    hookTh: "Delentia ถอนตัวเลข hallucination จำนวนการทดสอบ และจำนวนบริการที่ทำซ้ำไม่ได้ และแจกแจงทุกการแก้ไขในหน้าของตัวเอง พร้อมบอกว่าแต่ละการวัดไม่ได้แสดงอะไร",
     badgeClass: "border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
     cardClass: "border-emerald-500/20",
-  },
-  {
-    headline: "The PDPA Compliance Crisis Hidden in Every Enterprise AI Deployment",
-    headlineTh: "วิกฤต PDPA ที่ซ่อนอยู่ในทุกการติดตั้ง Enterprise AI",
-    angle: "Compliance / risk",
-    angleTh: "Compliance / ความเสี่ยง",
-    hook: "Most Thai enterprise AI deployments have undocumented cross-border transfers, no right-to-erasure mechanism, and no Section 33 explanation capability. Constitutional AI solves this architecturally.",
-    hookTh: "การติดตั้ง Enterprise AI ของไทยส่วนใหญ่มีการโอนข้อมูลข้ามประเทศที่ไม่ได้บันทึก ไม่มีกลไก right-to-erasure และไม่มีความสามารถอธิบายตามมาตรา 33 Constitutional AI แก้ปัญหานี้ในเชิงสถาปัตยกรรม",
-    badgeClass: "border-orange-400/30 bg-orange-400/10 text-orange-500 dark:text-orange-400",
-    cardClass: "border-orange-400/20",
   },
 ]
 
@@ -111,7 +87,7 @@ export default async function PressPage() {
     alternateName: "Reverse Component Thinking Labs",
     url: "https://delentia.com",
     logo: "https://delentia.com/RCTLogo-horizontal.svg",
-    description: "Constitutional AI Operating System built by a solo developer in Bangkok, Thailand — a private enterprise service layer and 7,109 passing tests (public repository, CI-verified); no hallucination rate is claimed.",
+    description: "Open-source agent runtime from Bangkok, Thailand, built by a founder who directs AI coding assistants; 7,109 passing tests in the public repository CI; no hallucination rate is claimed.",
     foundingDate: "2024",
     founder: { "@type": "Person", name: "Ittirit Saengow", jobTitle: "The Architect" },
     location: { "@type": "Place", addressLocality: "Bangkok", addressCountry: "TH" },
@@ -139,13 +115,13 @@ export default async function PressPage() {
             <p className="text-xl text-muted-foreground max-w-2xl mb-6">
               {isTh
                 ? "Fact sheet, มุมข่าว และข้อมูลติดต่อสำหรับนักข่าวที่รายงานข่าว AI, เทคโนโลยีระดับองค์กร และระบบนิเวศเทคโนโลยีของไทย"
-                : "Fact sheet, story angles, and media contact for journalists covering AI, enterprise technology, and Thailand's technology ecosystem."}
+                : "Fact sheet, story angles, and media contact for journalists covering AI agents, open source, and Thailand's technology ecosystem."}
             </p>
 
             {/* Hero stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
               {[
-                { value: "62", label: isTh ? "Microservices (enterprise, private)" : "Microservices (enterprise, private)" },
+                { value: "41", label: isTh ? "Algorithms ในรีโพสาธารณะ" : "Algorithms in the public repository" },
                 { value: "7,109", label: isTh ? "Tests ผ่าน (public repository, CI-verified)" : "Tests Passing (public repository, CI-verified)" },
                 { value: "not claimed", label: isTh ? "เป้าหมาย Benchmark Hallucination" : "Benchmark Hallucination Target" },
                 { value: "no SLA", label: isTh ? "เป้าหมาย Design SLA" : "Uptime Design SLA Target" },
@@ -188,12 +164,12 @@ export default async function PressPage() {
               <div>
                 <h3 className="text-xl font-bold text-foreground mb-1">Ittirit Saengow (อิทธิฤทธิ์ แซ่โง้ว)</h3>
                 <p className="text-warm-amber text-sm font-medium mb-4">
-                  {isTh ? "ผู้ก่อตั้งและนักพัฒนาเพียงคนเดียว, Delentia Labs · กรุงเทพฯ, ประเทศไทย" : "Founder & Sole Developer, Delentia Labs · Bangkok, Thailand"}
+                  {isTh ? "ผู้ก่อตั้งและสถาปนิกระบบ, Delentia Labs · กรุงเทพฯ, ประเทศไทย" : "Founder & Architect, Delentia Labs · Bangkok, Thailand"}
                 </p>
                 <p className="text-muted-foreground leading-relaxed max-w-3xl mb-4">
                   {isTh
-                    ? "อิทธิฤทธิ์ แซ่โง้ว คือผู้สร้างเพียงคนเดียวของ RCT (Reverse Component Thinking) Ecosystem — Constitutional AI Operating System ที่ประกอบด้วย เลเยอร์บริการระดับองค์กร (private) และ automated tests กว่า 7,109 รายการ (public repository, CI-verified) 41 algorithms ที่ออกแบบไว้ (public SDK เปิดให้ใช้บางส่วน) และ AI models 9 ตัวในระบบ HexaCore สร้างขึ้นภายใน 30 วัน ในช่วงมิถุนายน–สิงหาคม 2025 โดยไม่มีเงินลงทุนภายนอก จากกรุงเทพฯ ประเทศไทย"
-                    : "Ittirit Saengow is the sole creator of the RCT (Reverse Component Thinking) Ecosystem — a constitutional AI operating system comprising a private enterprise service layer and 7,109 automated tests (public repository, CI-verified), 41 designed algorithms (the public SDK ships a subset), and 9 HexaCore AI models. Built over 30 days in June–August 2025 with zero investment capital, from Bangkok, Thailand. Before Delentia Labs, Ittirit ran four businesses, studied facility management at the Faculty of Architecture (completing a 4-year program in 6.5 years), and developed the FDIA equation, JITNA protocol, and 7-Genome system as conceptual frameworks before implementing them in code."}
+                    ? "อิทธิฤทธิ์ แซ่โง้ว เติบโตในชุมชนแฟลตคลองเตย กรุงเทพฯ เรียนสถาปัตยกรรมศาสตร์ และเขียนโค้ดไม่เป็น เขาคิดแนวคิด FDIA, JITNA และ RCT-7 และสร้าง Delentia ด้วยการสั่งงานผู้ช่วยเขียนโค้ด AI โดยตรวจงานด้วยชุดทดสอบ จุดเริ่มต้นของโปรเจกต์คือวันที่ 25 มิถุนายน 2025 เป็นโปรเจกต์ระยะเริ่มต้นของคนคนเดียว ไม่มีทุนภายนอกและยังไม่มีลูกค้า"
+                    : "Ittirit Saengow grew up in a flat community in Khlong Toei, Bangkok, studied architecture, and does not write code. He conceived the FDIA, JITNA and RCT-7 ideas and builds Delentia by directing AI coding assistants and checking their work with tests. The project began on 25 June 2025. It is an early, one-person project with no outside funding and no customers yet."}
                 </p>
                 <div className="flex gap-3">
                   <a href="https://github.com/ittirit720" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-warm-dim hover:text-warm-amber transition">

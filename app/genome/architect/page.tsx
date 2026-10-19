@@ -10,54 +10,59 @@ import AuthorBlock from "@/components/author-block"
 import RelatedContent from "@/components/related-content"
 import { Button } from "@/components/ui/button"
 
+// Round 87 (claims review). This page used to tell a five-phase origin story with dates (2019-2021 on one Android
+// phone), "Fortune 500 procurement", "enterprise pilots that failed publicly", "73% of enterprise AI failures" and
+// "the 7 Genome System is live". None of that could be checked, and it contradicted the founder's own account on
+// the About page. It now tells the story the founder gave: a non-coder from a Khlong Toei flat who studied
+// architecture and builds with AI assistants. DRAFT WORDING FOR THE FOUNDER TO EDIT: it is his story, not ours.
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale()
   return createBilingualMetadata(
     locale,
-    "G1 — Architect's Genome: Narrative & Consciousness",
-    "G1 — Architect's Genome: เรื่องราวและจิตสำนึก",
-    "The foundational 'WHY' genome of the RCT Ecosystem. The Architect's Genome encodes the narrative, consciousness, and 5-phase origin story behind Delentia Labs — from Khlong Toei to constitutional AI.",
-    "Genome รากฐาน 'WHY' ของ RCT Ecosystem เข้ารหัสเรื่องราว จิตสำนึก และประวัติ 5 เฟสของผู้สร้าง Delentia Labs",
+    "G1 — Architect's Genome: the founder's story",
+    "G1 — Architect's Genome: เรื่องราวของผู้ก่อตั้ง",
+    "Who is behind Delentia: a person from a Khlong Toei flat who studied architecture, cannot write code, and builds a governed agent runtime by directing AI assistants.",
+    "ใครอยู่เบื้องหลัง Delentia: คนจากแฟลตคลองเตยที่เรียนสถาปัตยกรรม เขียนโค้ดไม่เป็น และสร้างรันไทม์ agent ที่มีธรรมาภิบาลด้วยการสั่งงานผู้ช่วย AI",
     "/genome/architect",
-    ["Architect's Genome", "Delentia Labs origin story", "constitutional AI WHY", "AI founder story Thailand"]
+    ["Delentia founder", "Architect's Genome", "Khlong Toei", "built with AI assistants"]
   )
 }
 
-const PHASES = [
+type Row = { en: string; th: string }
+
+const STORY: { id: string; title: Row; body: Row }[] = [
   {
-    id: "Phase I",
-    en: { title: "The Forge", subtitle: "2019–2021", body: "Built on a single Android phone with zero external capital. Every constraint became a design principle: if it cannot run under resource pressure, it will fail those who need it most. The Khlong Toei context was not background — it was the specification." },
-    th: { title: "The Forge — การหลอมหลอม", subtitle: "2019–2021", body: "สร้างบนโทรศัพท์ Android เครื่องเดียวด้วยทุนภายนอกเป็นศูนย์ ทุกข้อจำกัดกลายเป็นหลักการออกแบบ: หากมันทำงานไม่ได้ภายใต้แรงกดดันด้านทรัพยากร มันจะล้มเหลวต่อผู้ที่ต้องการมากที่สุด บริบท Khlong Toei ไม่ใช่ฉากหลัง แต่คือข้อกำหนด" },
-    color: "border-warm-amber/30 bg-warm-amber/5",
-    tag: "Origin",
+    id: "1",
+    title: { en: "Where it starts", th: "จุดเริ่มต้น" },
+    body: {
+      en: "I grew up in a flat community in Khlong Toei, Bangkok. Living close together, you learn to read a place by its patterns: who depends on whom, what breaks first, and what holds when pressure comes. I later studied at a Faculty of Architecture, where the lesson was similar: a structure has to carry its load before it can be anything else.",
+      th: "ผมเติบโตในชุมชนแฟลตคลองเตย กรุงเทพฯ การอยู่ใกล้กันทำให้ได้เรียนรู้การอ่านสถานที่จากรูปแบบ ใครพึ่งใคร อะไรพังก่อน และอะไรยังอยู่เมื่อถูกกดดัน ต่อมาผมเรียนที่คณะสถาปัตยกรรมศาสตร์ ซึ่งสอนบทเรียนคล้ายกัน คือโครงสร้างต้องรับน้ำหนักของมันได้ก่อนจะเป็นอย่างอื่น",
+    },
   },
   {
-    id: "Phase II",
-    en: { title: "The Duality", subtitle: "2021–2022", body: "The paradox: systems designed for constraint must also scale to enterprise. The Duality phase forced architectural decisions that hold at both extremes — a solo Android developer and a Fortune 500 procurement team. This is where FDIA's A-parameter (Action=0 kill switch) was conceived." },
-    th: { title: "The Duality — ความขัดแย้ง", subtitle: "2021–2022", body: "ความขัดแย้ง: ระบบที่ออกแบบมาสำหรับข้อจำกัดต้องสามารถขยายไปสู่ระดับองค์กรได้ เฟส Duality บังคับให้มีการตัดสินใจด้านสถาปัตยกรรมที่ใช้ได้ในทั้งสองสุดขั้ว — นักพัฒนา Android คนเดียวและทีมจัดซื้อ Fortune 500 นี่คือที่ที่ A-parameter (Action=0 kill switch) ของ FDIA ถูกคิดค้น" },
-    color: "border-sky-400/30 bg-sky-400/5",
-    tag: "Architecture",
+    id: "2",
+    title: { en: "From a life equation to a safety gate", th: "จากสมการชีวิตสู่ด่านความปลอดภัย" },
+    body: {
+      en: "FDIA began as a way of thinking about my own life, not about software: a future exists only when someone takes responsibility for it. When I started working with AI, the same idea became a rule for machines: if no accountable human has approved an action, the action does not run.",
+      th: "FDIA เริ่มจากวิธีคิดเรื่องชีวิตของผมเอง ไม่ใช่เรื่องซอฟต์แวร์ อนาคตจะเกิดขึ้นได้ก็ต่อเมื่อมีใครสักคนรับผิดชอบ เมื่อผมเริ่มทำงานกับ AI แนวคิดเดียวกันกลายเป็นกฎสำหรับเครื่องจักร หากไม่มีมนุษย์ที่รับผิดชอบอนุมัติ การกระทำนั้นก็ไม่รัน",
+    },
   },
   {
-    id: "Phase III",
-    en: { title: "The Crucible", subtitle: "2022–2023", body: "Enterprise pilots that failed publicly. Each failure was documented, published, and fed back into the system design. The Crucible phase produced the Hallucination Reduction Pipeline that would become SignedAI's 8D scoring methodology." },
-    th: { title: "The Crucible — เบ้าหลอม", subtitle: "2022–2023", body: "Pilot ระดับองค์กรที่ล้มเหลวต่อสาธารณะ ความล้มเหลวแต่ละครั้งถูกบันทึก เผยแพร่ และป้อนกลับเข้าสู่การออกแบบระบบ เฟส Crucible ผลิต Hallucination Reduction Pipeline ที่จะกลายเป็นวิธีการให้คะแนน 8D ของ SignedAI" },
-    color: "border-rose-400/30 bg-rose-400/5",
-    tag: "Failure → Learning",
+    id: "3",
+    title: { en: "I do not write code", th: "ผมเขียนโค้ดไม่เป็น" },
+    body: {
+      en: "I cannot write code. Delentia is built by directing AI coding assistants and checking what they produce. That is the reason tests, measurements and a public list of withdrawn claims matter so much here: the person directing the work cannot read every line, so the system has to be checkable by other people. If you can read code, please check it.",
+      th: "ผมเขียนโค้ดไม่เป็น Delentia ถูกสร้างด้วยการสั่งงานผู้ช่วยเขียนโค้ด AI และตรวจสิ่งที่พวกมันทำ นี่คือเหตุผลที่การทดสอบ การวัดผล และรายการข้ออ้างที่ถอนแล้วสำคัญมากที่นี่ คนที่สั่งงานอ่านโค้ดได้ไม่ครบทุกบรรทัด ระบบจึงต้องให้คนอื่นตรวจสอบได้ หากคุณอ่านโค้ดเป็น ขอให้ช่วยตรวจ",
+    },
   },
   {
-    id: "Phase IV",
-    en: { title: "The Reconstruction", subtitle: "2023–2024", body: "Rebuilding from first principles. Every prior assumption was tested against evidence. 'Data is the King' became the operating maxim after observing that 73% of enterprise AI failures trace back to data provenance, not model capability. The RCT Codex was formalized here." },
-    th: { title: "The Reconstruction — การสร้างใหม่", subtitle: "2023–2024", body: "การสร้างใหม่จากหลักการแรก ทุกสมมติฐานก่อนหน้าถูกทดสอบกับหลักฐาน 'Data is the King' กลายเป็น Maxim การดำเนินงานหลังจากสังเกตว่า 73% ของความล้มเหลว AI ระดับองค์กรสืบเนื่องมาจาก Data Provenance ไม่ใช่ความสามารถของโมเดล RCT Codex ถูก Formalize ที่นี่" },
-    color: "border-emerald-500/30 bg-emerald-500/5",
-    tag: "Reconstruction",
-  },
-  {
-    id: "Phase V",
-    en: { title: "The Genesis", subtitle: "2024–Present", body: "Constitutional AI operationalized. The 7 Genome System is live. The JITNA language specification is published as an open RFC. The SignedAI consensus pipeline is built; no hallucination rate is claimed. The Architect's Genome becomes the permanent WHY — the north star all other genomes navigate toward." },
-    th: { title: "The Genesis — การก่อกำเนิด", subtitle: "2024–ปัจจุบัน", body: "Constitutional AI ถูกปฏิบัติงานจริง ระบบ 7 Genome พร้อมใช้งาน JITNA Language Specification เผยแพร่เป็น open RFC SignedAI Consensus Pipeline พร้อมใช้งาน (ไม่ได้อ้างอัตรา hallucination) Architect's Genome กลายเป็น WHY ถาวร — ดาวเหนือที่ Genomes อื่นทุกตัวนำทางไปหา" },
-    color: "border-violet-400/30 bg-violet-400/5",
-    tag: "Genesis",
+    id: "4",
+    title: { en: "Where it stands", th: "ตอนนี้อยู่ตรงไหน" },
+    body: {
+      en: "It is early. One person, no outside funding, no customers yet. There is an open-source agent runtime and a public test suite. What has been measured is on the Benchmark page, and so is what has not: nothing has been shown with a capable model yet. I am looking for design partners who will try it on one real workflow and tell me where it fails.",
+      th: "ยังอยู่ในระยะเริ่มต้น คนคนเดียว ไม่มีทุนภายนอก ยังไม่มีลูกค้า มีรันไทม์ agent โอเพนซอร์สและชุดทดสอบสาธารณะ สิ่งที่วัดแล้วอยู่ในหน้า Benchmark และสิ่งที่ยังไม่ได้วัดก็อยู่ที่นั่นด้วย ยังไม่มีผลใดกับโมเดลที่เก่งพอ ผมกำลังมองหา design partner ที่จะลองกับงานจริงหนึ่งงานและบอกว่ามันพังตรงไหน",
+    },
   },
 ]
 
@@ -74,16 +79,16 @@ export default async function GenomeArchitectPage() {
 
   const faq = getFAQSchema([
     {
-      question: isTh ? "Architect's Genome คืออะไร?" : "What is the Architect's Genome?",
+      question: isTh ? "ใครสร้าง Delentia" : "Who builds Delentia?",
       answer: isTh
-        ? "Architect's Genome (G1) คือ 'WHY' ของ RCT Ecosystem มันเข้ารหัสเรื่องราวต้นกำเนิด ปรัชญา และจิตสำนึกที่ขับเคลื่อนระบบทั้งหมด ทำให้ AI มีเป้าหมายที่แท้จริงแทนที่จะเป็นเพียงฟังก์ชัน"
-        : "The Architect's Genome (G1) is the 'WHY' of the RCT Ecosystem. It encodes the origin narrative, philosophy, and consciousness that drives the entire system — giving AI genuine purpose rather than mere function.",
+        ? "อิทธิฤทธิ์ แซ่โง้ว คนจากแฟลตคลองเตยที่เรียนสถาปัตยกรรม เขียนโค้ดไม่เป็น และสร้าง Delentia ด้วยการสั่งงานผู้ช่วยเขียนโค้ด AI เป็นโปรเจกต์ของคนคนเดียวในระยะเริ่มต้น ยังไม่มีลูกค้าและไม่มีทุนภายนอก"
+        : "Ittirit Saengow, a person from a Khlong Toei flat who studied architecture, cannot write code, and builds Delentia by directing AI coding assistants. It is an early, one-person project with no customers and no outside funding.",
     },
     {
-      question: isTh ? "ทำไมต้น origin story ถึงสำคัญสำหรับ AI System?" : "Why does origin story matter for an AI system?",
+      question: isTh ? "ทำไมผู้สร้างที่เขียนโค้ดไม่เป็นจึงสำคัญกับระบบนี้" : "Why does it matter that the builder does not write code?",
       answer: isTh
-        ? "ระบบที่รู้ว่าทำไมถึงสร้างมันขึ้นมาสามารถตัดสินใจได้ดีกว่าในกรณีขอบ Constitutional AI ต้องการ 'WHY' เพื่อกำหนดว่าข้อจำกัดใดไม่สามารถถูก override ได้ The Architect's Genome คือที่มาของ A=0 kill switch ใน FDIA Equation"
-        : "A system that knows why it was built makes better decisions at edge cases. Constitutional AI requires a 'WHY' to define which constraints cannot be overridden. The Architect's Genome is the source of the A=0 kill switch in the FDIA Equation.",
+        ? "เพราะผู้สั่งงานอ่านโค้ดได้ไม่ครบ ระบบจึงถูกออกแบบให้คนอื่นตรวจสอบได้: มีชุดทดสอบสาธารณะ หน้า Benchmark ที่ระบุข้อจำกัดของทุกผล และรายการข้ออ้างที่ถอนแล้ว"
+        : "Because the person directing the work cannot read every line, the system is designed to be checkable by others: a public test suite, a Benchmark page that states the limits of every result, and a list of withdrawn claims.",
     },
   ])
 
@@ -103,110 +108,41 @@ export default async function GenomeArchitectPage() {
           </Button>
 
           <article className="space-y-14">
-            {/* Header */}
             <div className="space-y-5">
               <div className="flex items-center gap-3">
                 <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-warm-amber/10 border border-warm-amber/30 text-warm-amber text-xs font-medium">
-                  <Dna className="w-3 h-3" /> G1 — {isTh ? "WHY" : "WHY"}
+                  <Dna className="w-3 h-3" /> G1 — WHY
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-                {isTh ? "Architect's Genome" : "Architect's Genome"}
-              </h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground">{isTh ? "เรื่องราวของผู้ก่อตั้ง" : "The founder's story"}</h1>
               <p className="text-xl text-foreground/70 max-w-2xl">
-                {isTh
-                  ? "เรื่องราวและจิตสำนึกของผู้สร้าง — รากฐาน 'WHY' ที่ระบบทั้งหมดยึดถือ"
-                  : "Narrative & Consciousness of the Builder — the foundational 'WHY' that the entire system adheres to."}
+                {isTh ? "ใครอยู่เบื้องหลัง Delentia และทำไมระบบนี้จึงต้องตรวจสอบได้โดยคนอื่น" : "Who is behind Delentia, and why the system has to be checkable by other people."}
               </p>
             </div>
 
-            {/* Principle Box */}
             <div className="border border-warm-amber/30 bg-warm-amber/5 rounded-xl p-8 space-y-3">
               <div className="flex items-center gap-2 mb-4">
                 <BookOpen className="w-5 h-5 text-warm-amber" />
-                <span className="text-sm font-semibold text-warm-amber uppercase tracking-widest">
-                  {isTh ? "หลักการหลัก" : "Core Principle"}
-                </span>
+                <span className="text-sm font-semibold text-warm-amber uppercase tracking-widest">{isTh ? "หลักการ" : "Principle"}</span>
               </div>
               <blockquote className="text-lg leading-relaxed text-foreground/85 italic">
                 {isTh
-                  ? '"ระบบนี้สามารถถ่ายทำหรือลอกแบบไปยังคนอื่นได้ แต่สาระสำคัญจะหายไป เพราะสาระสำคัญนั้นเกิดจากการอยู่รอดจากการทำลาย"'
-                  : '"This system can be copied or transferred to others, but the essence will be lost — because that essence was forged through surviving destruction."'}
+                  ? "\"ถ้าไม่มีมนุษย์ที่รับผิดชอบอนุมัติ การกระทำนั้นก็ไม่รัน\""
+                  : "\"If no accountable human has approved an action, the action does not run.\""}
               </blockquote>
-              <p className="text-sm text-foreground/50 mt-2">— The Architect</p>
             </div>
 
-            {/* 5 Phases */}
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-foreground">
-                {isTh ? "5 เฟสของต้นกำเนิด" : "5 Phases of Origin"}
-              </h2>
-              <div className="space-y-5">
-                {PHASES.map((phase) => {
-                  const t = isTh ? phase.th : phase.en
-                  return (
-                    <div key={phase.id} className={`p-6 rounded-xl border ${phase.color} space-y-3`}>
-                      <div className="flex items-center gap-3 flex-wrap">
-                        <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-foreground/10 text-foreground/70">{phase.id}</span>
-                        <h3 className="text-lg font-bold text-foreground">{t.title}</h3>
-                        <span className="text-xs text-foreground/50">{t.subtitle}</span>
-                        <span className="ml-auto text-xs font-medium px-2 py-0.5 rounded-full border border-current opacity-60">{isTh ? phase.tag : phase.tag}</span>
-                      </div>
-                      <p className="text-foreground/75 leading-relaxed">{t.body}</p>
-                    </div>
-                  )
-                })}
-              </div>
+            <div className="space-y-5">
+              {STORY.map((item) => (
+                <div key={item.id} className="p-6 rounded-xl border border-border bg-card space-y-3">
+                  <h2 className="text-lg font-bold text-foreground">{isTh ? item.title.th : item.title.en}</h2>
+                  <p className="text-foreground/75 leading-relaxed">{isTh ? item.body.th : item.body.en}</p>
+                </div>
+              ))}
             </div>
 
-            {/* Shock Profile */}
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-foreground">
-                {isTh ? "Shock Profile — 3 ความขัดแย้ง" : "Shock Profile — 3 Paradoxes"}
-              </h2>
-              <div className="grid sm:grid-cols-3 gap-4">
-                {[
-                  {
-                    en: { label: "Resource Paradox", body: "Built under maximum constraint → produces minimum-viable-maximum-quality systems" },
-                    th: { label: "ความขัดแย้งทรัพยากร", body: "สร้างภายใต้ข้อจำกัดสูงสุด → ผลิตระบบ Minimum-Viable-Maximum-Quality" },
-                  },
-                  {
-                    en: { label: "Scale Paradox", body: "Designed for one Android phone → architecture that scales to Fortune 500 without refactoring core logic" },
-                    th: { label: "ความขัดแย้งการขยาย", body: "ออกแบบสำหรับโทรศัพท์ Android เครื่องเดียว → สถาปัตยกรรมที่ขยายไปสู่ Fortune 500 โดยไม่ต้อง Refactor Logic หลัก" },
-                  },
-                  {
-                    en: { label: "Failure Paradox", body: "Public failures → stronger systems. Every documented failure becomes a genome-level rule" },
-                    th: { label: "ความขัดแย้งความล้มเหลว", body: "ความล้มเหลวต่อสาธารณะ → ระบบที่แข็งแกร่งขึ้น ทุกความล้มเหลวที่บันทึกกลายเป็นกฎระดับ Genome" },
-                  },
-                ].map((item, i) => {
-                  const t = isTh ? item.th : item.en
-                  return (
-                    <div key={i} className="p-5 rounded-xl border border-border bg-card space-y-2">
-                      <p className="text-sm font-bold text-warm-amber">{t.label}</p>
-                      <p className="text-sm text-foreground/70 leading-relaxed">{t.body}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-
-            {/* Historical Parallels */}
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-foreground">
-                {isTh ? "การเปรียบเทียบทางประวัติศาสตร์" : "Historical Parallels"}
-              </h2>
-              <p className="text-foreground/70 leading-relaxed">
-                {isTh
-                  ? "The Architect's Genome ถูกจัดหมวดหมู่พร้อมกับผู้สร้างที่ทำงานนอกบริบทของสถาบัน: Leonardo da Vinci (หลายสาขาวิชาภายใต้การอุปถัมภ์ที่จำกัด), Marcus Aurelius (ปรัชญาภายใต้ความรับผิดชอบจักรพรรดิ), Nikola Tesla (นวัตกรรมพื้นฐานที่ปฏิเสธโดยสถาบัน) แต่ละคนทิ้งงานที่ทำซ้ำได้ ไม่ใช่แค่แรงบันดาลใจ"
-                  : "The Architect's Genome is catalogued alongside builders who worked outside institutional context: Leonardo da Vinci (multidisciplinary under limited patronage), Marcus Aurelius (philosophy under imperial responsibility), Nikola Tesla (foundational innovation rejected by institutions). Each left reproducible work, not merely inspiration."}
-              </p>
-            </div>
-
-            {/* Navigation to other genomes */}
             <div className="border-t border-border pt-10">
-              <h2 className="text-sm font-semibold text-foreground/50 uppercase tracking-widest mb-5">
-                {isTh ? "Genome ถัดไป" : "Next Genome"}
-              </h2>
+              <h2 className="text-sm font-semibold text-foreground/50 uppercase tracking-widest mb-5">{isTh ? "Genome ถัดไป" : "Next Genome"}</h2>
               <Link
                 href={`${localePrefix}/genome/artent`}
                 className="flex items-center justify-between p-5 rounded-xl border border-border bg-card hover:border-warm-amber/40 hover:shadow-[0_8px_20px_rgba(212,168,83,0.09)] transition-all group"
@@ -223,9 +159,9 @@ export default async function GenomeArchitectPage() {
             <RelatedContent
               title={isTh ? "เนื้อหาที่เกี่ยวข้อง" : "Related Content"}
               items={[
-                { href: `${localePrefix}/protocols`, title: isTh ? "ข้อกำหนด Protocol" : "Protocol Specifications", description: isTh ? "โปรโตคอลทางเทคนิคที่ขับเคลื่อน RCT Ecosystem" : "The technical protocols powering the RCT Ecosystem.", category: "Protocols" },
-                { href: `${localePrefix}/genome`, title: isTh ? "7 Genome System" : "7 Genome System", description: isTh ? "สำรวจ Genome ทั้ง 7 ตัวของ RCT Ecosystem" : "Explore all 7 Genomes of the RCT Ecosystem.", category: "Genome" },
-                { href: `${localePrefix}/blog`, title: isTh ? "บทความวิจัย" : "Research & Blog", description: isTh ? "งานวิจัยและบทความเกี่ยวกับ AI จาก Delentia Labs" : "Research papers and AI articles from Delentia Labs.", category: "Research" },
+                { href: `${localePrefix}/about`, title: isTh ? "เกี่ยวกับเรา" : "About", description: isTh ? "เส้นทางของผู้ก่อตั้งและโปรเจกต์" : "The founder's path and the project.", category: "About" },
+                { href: `${localePrefix}/benchmark`, title: isTh ? "สิ่งที่วัดแล้ว" : "What is measured", description: isTh ? "ทุกผลพร้อมวิธีวัดและข้อจำกัด" : "Every result with its method and limits.", category: "Evidence" },
+                { href: `${localePrefix}/genome`, title: isTh ? "7 Genome System" : "7 Genome System", description: isTh ? "สำรวจ Genome ทั้ง 7 ตัว" : "Explore all 7 Genomes.", category: "Genome" },
               ]}
             />
             <AuthorBlock authorSlug="ittirit-saengow" locale={locale} />
@@ -237,4 +173,3 @@ export default async function GenomeArchitectPage() {
     </>
   )
 }
-

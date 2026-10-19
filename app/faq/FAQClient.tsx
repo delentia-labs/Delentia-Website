@@ -25,8 +25,8 @@ const faqCategories = [
       {
         qEn: "Who created the RCT Ecosystem?",
         qTh: "ใครเป็นผู้สร้าง RCT Ecosystem?",
-        aEn: "RCT was created by 'The Architect' — Ittirit Saengow (อิทธิฤทธิ์ แซ่โง้ว), a systems thinker who grew up in a Khlong Toei flat community in Bangkok. As a solo developer with no external funding, working from a small apartment with mobile devices and later a ROG Ally X setup, the system evolved from personal problem-solving into a comprehensive enterprise platform through AI-assisted development and intensive iteration.",
-        aTh: "RCT ถูกสร้างโดย 'The Architect' — อิทธิฤทธิ์ แซ่โง้ว นักคิดเชิงระบบที่เติบโตในชุมชนแฟลตคลองเตย กรุงเทพฯ ในฐานะ Solo Developer ที่ไม่มีเงินทุนภายนอก ระบบพัฒนาจากการแก้ปัญหาส่วนตัวจนกลายเป็นแพลตฟอร์ม Enterprise ที่ครบวงจร",
+        aEn: "RCT was created by 'The Architect' — Ittirit Saengow (อิทธิฤทธิ์ แซ่โง้ว), a systems thinker who grew up in a Khlong Toei flat community in Bangkok. He studied architecture and does not write code. With no external funding, working from a small apartment with mobile devices and later a ROG Ally X setup, he builds the system by directing AI coding assistants and checking their work with tests. It is an early, one-person project with no customers yet.",
+        aTh: "RCT ถูกสร้างโดย 'The Architect' — อิทธิฤทธิ์ แซ่โง้ว นักคิดเชิงระบบที่เติบโตในชุมชนแฟลตคลองเตย กรุงเทพฯ เขาเรียนสถาปัตยกรรมและเขียนโค้ดไม่เป็น ไม่มีเงินทุนภายนอก และสร้างระบบด้วยการสั่งงานผู้ช่วยเขียนโค้ด AI พร้อมตรวจงานด้วยชุดทดสอบ เป็นโปรเจกต์ระยะเริ่มต้นของคนคนเดียวและยังไม่มีลูกค้า",
       },
       {
         qEn: "What makes RCT different from LangChain or AutoGPT?",

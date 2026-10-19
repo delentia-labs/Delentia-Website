@@ -9,7 +9,7 @@ import { SITE_UPTIME } from "@/lib/site-config"
 const faqSchemaData = [
   {
     question: "What is the RCT Ecosystem?",
-    answer: "RCT is a constitutional AI operating system built by a solo developer in Bangkok, Thailand — 41 algorithms, an open-source agent runtime, and 7,109 automated tests passing at 0 failures in the public repository's CI. It combines the FDIA equation (F=D^I×A), JITNA Protocol (RFC-001), 10-layer architecture, and 7 genome subsystems.",
+    answer: "Delentia (RCT) is an agent runtime built by one person in Bangkok, Thailand, who does not write code and directs AI coding assistants — 41 algorithms, an open-source agent runtime, and 7,109 automated tests passing at 0 failures in the public repository's CI. It combines the FDIA equation (F=D^I×A), JITNA Protocol (RFC-001), 10-layer architecture, and 7 genome subsystems.",
   },
   {
     question: "How does the JITNA Protocol work?",

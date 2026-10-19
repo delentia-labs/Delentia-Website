@@ -9,12 +9,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return createBilingualMetadata(
     locale,
-    "Pricing",
-    "ราคา",
-    "Transparent enterprise pricing for Delentia Labs. Delentia Platform testing platform, Delentia AI, and Signed AI — custom enterprise plans with no hidden fees. Contact sales for quotes.",
-    "ราคาสำหรับองค์กรที่โปร่งใส Delentia Platform, Delentia AI และ Signed AI — แผนสำหรับองค์กรแบบกำหนดเอง ไม่มีค่าใช้จ่ายซ่อนเร้น",
+    "How to use Delentia",
+    "วิธีใช้ Delentia",
+    "Delentia is a free, open-source agent runtime. There are no paid plans and no hosted service yet; design-partner pilots are by invitation.",
+    "Delentia เป็นรันไทม์ agent โอเพนซอร์สที่ใช้ได้ฟรี ยังไม่มีแพ็กเกจแบบชำระเงินและยังไม่มีบริการโฮสต์ ส่วน pilot กับ design partner เป็นการเชิญ",
     "/pricing",
-    ["enterprise pricing", "AI platform pricing", "Delentia Platform pricing", "contact sales", "AI subscription"]
+    ["open source agent runtime", "Delentia pricing", "design partner pilot", "pip install delentia-os"]
   )
 }
 
@@ -23,25 +23,25 @@ export default async function PricingPage() {
   const localePrefix = locale === "th" ? "/th" : "/en"
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: "Home", url: `https://delentia.com${localePrefix}` },
-    { name: "Pricing", url: `https://delentia.com${localePrefix}/pricing` },
+    { name: "How to use Delentia", url: `https://delentia.com${localePrefix}/pricing` },
   ])
   const productSchema = getProductOfferSchema(locale)
 
   const faqSchema = getFAQSchema([
     {
-      question: "How does pricing work for Delentia Labs?",
+      question: "Is Delentia free?",
       answer:
-        "Delentia Labs offers custom enterprise pricing based on the selected product, deployment model, support needs, and expected usage volume.",
+        "The runtime is open source (Apache-2.0) and free to install and run. You pay your own model provider if you use one; with a local model you pay nothing.",
     },
     {
-      question: "Which product should enterprise teams evaluate first?",
+      question: "What is a design-partner pilot?",
       answer:
-        "Teams focused on verification should begin with SignedAI, teams needing long-term memory should begin with Enterprise AI Memory, and teams coordinating multiple models should begin with Delentia Platform or Dynamic AI Routing.",
+        "We set Delentia up with you on one real workflow, write the pass rule before the first run, measure it against a plain agent, and report the result per workflow, failures included. We publish it only with your permission. There is no fee for the first partners.",
     },
     {
-      question: "Can Delentia Labs support private or on-premise deployment?",
+      question: "Can I run it on-premise or sign a custom SLA?",
       answer:
-        "Yes. Enterprise engagements can include on-premise deployment, custom SLAs, and dedicated support depending on requirements.",
+        "You can run the open-source runtime on your own machines today. There is no managed deployment and no SLA offered. Talk to the founder if you need either.",
     },
   ])
 
@@ -54,4 +54,3 @@ export default async function PricingPage() {
     </>
   )
 }
-

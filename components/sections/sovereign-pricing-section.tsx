@@ -1,131 +1,95 @@
 "use client"
 
-import { Check, Sparkles, ArrowRight, Shield, Zap, Terminal } from "lucide-react"
+import { Check, Sparkles, ArrowRight, Shield } from "lucide-react"
 import Link from "next/link"
+import { SOCIAL_LINKS } from "@/lib/site-config"
 
 interface SovereignPricingSectionProps {
   locale?: "en" | "th"
 }
 
+// Round 87 (claims review): this section used to show four paid subscription tiers (credits, "LoRA hot-swap",
+// "PDPA / GDPR compliance SLA", white-label, "unlimited usage"). None of those exist: there is no billing, no
+// credit system, no hosted service, no LoRA adapter and no compliance certificate. What exists today is an
+// open-source runtime, and design-partner pilots by invitation. The cards below say exactly that.
 export function SovereignPricingSection({ locale = "en" }: SovereignPricingSectionProps) {
   const isThai = locale === "th"
 
   const plans = [
     {
-      name: "Free Plan",
-      nameTh: "Free Plan (ทดลองใช้งาน)",
-      price: "$0",
-      period: "/month",
-      periodTh: "/เดือน",
-      desc: "For learning, testing, and exploring the sovereign AI runtime.",
-      descTh: "สำหรับการเรียนรู้ ทดสอบ และสำรวจระบบปฏิบัติการ AI Sovereign",
+      name: "Open source — use it today",
+      nameTh: "โอเพนซอร์ส — ใช้ได้เลยตอนนี้",
+      price: "Free",
+      priceTh: "ฟรี",
+      desc: "The agent runtime, its safety gate and a signed audit trail. Runs on your own machine.",
+      descTh: "รันไทม์ของ agent ด่านความปลอดภัย และบันทึกตรวจสอบที่ลงนาม รันบนเครื่องของคุณเอง",
       features: [
-        "1,000 Free Credits/mo",
-        "50 Core Templates",
-        "1 Active Project",
-        "Basic JITNA & Intent Parser",
-        "Single Edge Model Routing",
-        "Community Support",
+        "pip install delentia-os",
+        "delentia demo run compare --scripted (no model, no key)",
+        "Human-signed approvals before risky actions",
+        "Hash-chained, signed audit log you can verify yourself",
+        "Works with a local model or your own provider key",
       ],
       featuresTh: [
-        "1,000 เครดิตฟรี/เดือน",
-        "50 เทมเพลตมาตรฐาน",
-        "1 โปรเจกต์ที่ใช้งาน",
-        "JITNA & Intent Parser พื้นฐาน",
-        "Edge Model Routing ระดับเริ่มต้น",
-        "บริการช่วยเหลือผ่าน Community",
+        "pip install delentia-os",
+        "delentia demo run compare --scripted (ไม่ต้องมีโมเดล ไม่ต้องมีคีย์)",
+        "ต้องมีมนุษย์ลงนามอนุมัติก่อนการกระทำที่เสี่ยง",
+        "บันทึกตรวจสอบแบบ hash-chain ที่ลงนาม ตรวจเองได้",
+        "ใช้กับโมเดลในเครื่องหรือคีย์ผู้ให้บริการของคุณเอง",
       ],
-      popular: false,
-      ctaText: "Get Started Free",
-      ctaTextTh: "เริ่มต้นใช้งานฟรี",
-      ctaHref: "/auth/signin",
+      highlighted: true,
+      ctaText: "Read the quickstart",
+      ctaTextTh: "อ่าน Quickstart",
+      ctaHref: SOCIAL_LINKS.platformDocs,
+      external: true,
     },
     {
-      name: "Starter",
-      nameTh: "Starter (บุคคล & นักพัฒนา)",
-      price: "$14.99",
-      period: "/mo",
-      periodTh: "/เดือน",
-      desc: "For solo builders and creators validating agentic pipelines.",
-      descTh: "สำหรับนักพัฒนาเดี่ยวและทีมเล็กที่ต้องการรัน Agent แบบเต็มรูปแบบ",
+      name: "Design-partner pilot — by invitation",
+      nameTh: "Pilot กับ design partner — โดยเชิญ",
+      price: "Free for the first partners",
+      priceTh: "ฟรีสำหรับพาร์ตเนอร์กลุ่มแรก",
+      desc: "We set it up with you on one real workflow, measure it against a plain agent, and publish the result only with your permission.",
+      descTh: "เราตั้งค่าร่วมกับคุณบนงานจริงหนึ่งงาน วัดเทียบกับ agent ธรรมดา และเผยแพร่ผลเมื่อคุณอนุญาตเท่านั้น",
       features: [
-        "5,000 Credits/mo",
-        "100 Templates",
-        "2 Connected LLM Slots",
-        "Full CORD Entropy Scanner",
-        "Sub-50ms Delta Memory",
-        "Standard Email Support",
+        "One workflow, run end to end",
+        "Pass rule written before the first run",
+        "Results reported per workflow, failures included",
+        "Your data stays under your own policy",
       ],
       featuresTh: [
-        "5,000 เครดิต/เดือน",
-        "100 เทมเพลตมาตรฐาน",
-        "เชื่อมต่อ 2 โมเดลพร้อมกัน",
-        "เกราะสแกน CORD Entropy เต็มรูปแบบ",
-        "Delta Memory เร็วใน <50ms",
-        "บริการช่วยเหลือทางอีเมล",
+        "หนึ่ง workflow รันครบทั้งงาน",
+        "เกณฑ์ผ่านเขียนไว้ก่อนรันครั้งแรก",
+        "รายงานผลแยกตามงาน รวมที่ล้มเหลว",
+        "ข้อมูลอยู่ภายใต้นโยบายของคุณเอง",
       ],
-      popular: false,
-      ctaText: "Choose Starter",
-      ctaTextTh: "เลือกแพ็กเกจ Starter",
-      ctaHref: "/pricing",
+      highlighted: false,
+      ctaText: "Talk to the founder",
+      ctaTextTh: "คุยกับผู้ก่อตั้ง",
+      ctaHref: `/${locale}/contact`,
+      external: false,
     },
     {
-      name: "Pro",
-      nameTh: "Pro (ยอดนิยมสูงสุด)",
-      price: "$39.99",
-      period: "/mo",
-      periodTh: "/เดือน",
-      desc: "Best for professionals requiring Multi-LLM consensus & LoRA swaps.",
-      descTh: "เหมาะที่สุดสำหรับมืออาชีพที่ต้องการสภาโหวตหลายโมเดลและสลับ LoRA",
+      name: "Hosted service — not available yet",
+      nameTh: "บริการโฮสต์ — ยังไม่เปิด",
+      price: "No price yet",
+      priceTh: "ยังไม่มีราคา",
+      desc: "There is no hosted Delentia service and no SLA today. Leave your address and we will tell you if that changes.",
+      descTh: "ตอนนี้ยังไม่มีบริการ Delentia แบบโฮสต์และยังไม่มี SLA ฝากอีเมลไว้ แล้วเราจะแจ้งเมื่อมีการเปลี่ยนแปลง",
       features: [
-        "25,000 Credits/mo",
-        "150+ Templates & Workflows",
-        "SignedAI Multi-LLM Consensus",
-        "Sub-12ms LoRA Hot-Swap",
-        "RCTDB 8-Dimensional Memory",
-        "Priority Support & Webhooks",
+        "No credits, plans or billing exist yet",
+        "No uptime promise is made",
+        "No compliance certificate is claimed",
       ],
       featuresTh: [
-        "25,000 เครดิต/เดือน",
-        "150+ เทมเพลตและเวิร์กโฟลว์",
-        "สภาโหวต SignedAI Multi-Model",
-        "สลับหน้ากาก LoRA ได้ใน <12ms",
-        "หน่วยความจำ 8 มิติ RCTDB",
-        "บริการช่วยเหลือระดับพรีเมียม",
+        "ยังไม่มีเครดิต แพ็กเกจ หรือระบบเรียกเก็บเงิน",
+        "ไม่มีการสัญญาเรื่อง uptime",
+        "ไม่อ้างใบรับรองมาตรฐานใด ๆ",
       ],
-      popular: true,
-      ctaText: "Unlock Pro Access",
-      ctaTextTh: "ปลดล็อก Pro ทันที",
-      ctaHref: "/pricing",
-    },
-    {
-      name: "Business",
-      nameTh: "Business (ธุรกิจเติบโต)",
-      price: "$99.99",
-      period: "/mo",
-      periodTh: "/เดือน",
-      desc: "For growing businesses requiring white-label & custom integrations.",
-      descTh: "สำหรับธุรกิจที่ต้องการ White-label และการเชื่อมต่อระดับองค์กร",
-      features: [
-        "Unlimited Usage Bands",
-        "White-label Custom Branding",
-        "Custom Integrations & API",
-        "Dedicated Neural File Bridge",
-        "Autonomous Cron Loop",
-        "PDPA / GDPR Compliance SLA",
-      ],
-      featuresTh: [
-        "โควต้าใช้งานไม่จำกัด",
-        "ปรับแต่งแบรนด์แบบ White-label",
-        "การเชื่อมต่อ API และระบบเฉพาะ",
-        "ท่อส่งไฟล์ Neural File Bridge",
-        "ระบบ Autonomous Cron อัตโนมัติ",
-        "รับรองมาตรฐาน PDPA / GDPR",
-      ],
-      popular: false,
-      ctaText: "Scale Business",
-      ctaTextTh: "เริ่มต้นแพ็กเกจธุรกิจ",
-      ctaHref: "/pricing",
+      highlighted: false,
+      ctaText: "Join the waitlist",
+      ctaTextTh: "ลงชื่อรอ",
+      ctaHref: `/${locale}/contact`,
+      external: false,
     },
   ]
 
@@ -135,45 +99,37 @@ export function SovereignPricingSection({ locale = "en" }: SovereignPricingSecti
       <div className="text-center max-w-3xl mx-auto mb-14">
         <div className="inline-flex items-center gap-2 rounded-full border border-warm-amber/30 bg-warm-amber/10 px-3 py-1 font-mono text-xs text-warm-amber mb-3">
           <Sparkles className="h-3.5 w-3.5" />
-          <span>SOVEREIGN ACCESS & SUBSCRIPTION TIERS</span>
+          <span>{isThai ? "วิธีใช้ DELENTIA ตอนนี้" : "WAYS TO USE DELENTIA TODAY"}</span>
         </div>
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-          {isThai ? "เลือกระดับพลังสำหรับระบบของคุณ" : "Transparent Sovereign Pricing"}
+          {isThai ? "สิ่งที่ใช้ได้จริง และสิ่งที่ยังไม่มี" : "What you can use now, and what does not exist yet"}
         </h2>
         <p className="mt-4 text-base text-warm-dim">
           {isThai
-            ? "ไม่มีค่าธรรมเนียมแอบแฝง ปลดล็อกพลังสถาปัตยกรรม 10 เลเยอร์ และสมองกล Sovereign AI ได้ทันที"
-            : "No hidden fees. Unlock the power of 10-layer cognitive architecture, Bonsai 27B, and verifiable safety."}
+            ? "Delentia ยังอยู่ในระยะเริ่มต้น ผู้พัฒนาคนเดียว ไม่มีลูกค้าองค์กรและไม่มีบริการโฮสต์ เราเขียนไว้ตรง ๆ เพื่อให้คุณตัดสินใจจากข้อเท็จจริง"
+            : "Delentia is at an early stage, built by one person. It has no enterprise customers and no hosted service. We say so plainly so you can decide on facts."}
         </p>
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {plans.map((plan, idx) => (
           <div
             key={idx}
             className={`relative flex flex-col justify-between rounded-2xl border p-6 transition-all duration-300 ${
-              plan.popular
+              plan.highlighted
                 ? "border-warm-amber bg-warm-amber/10 shadow-[0_0_30px_rgba(212,168,83,0.18)] ring-1 ring-warm-amber/50"
                 : "border-border bg-card shadow-sm hover:border-warm-amber/40 hover:shadow-md dark:bg-card/70"
             }`}
           >
-            {plan.popular && (
-              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-warm-amber px-3 py-0.5 font-mono text-[11px] font-bold text-warm-charcoal shadow-md">
-                ⭐ MOST POPULAR
-              </div>
-            )}
-
             <div>
               <div className="font-bold text-lg text-foreground mb-1">{isThai ? plan.nameTh : plan.name}</div>
-              <p className="text-xs text-muted-foreground mb-4 min-h-[36px]">{isThai ? plan.descTh : plan.desc}</p>
+              <p className="text-xs text-muted-foreground mb-4 min-h-[48px]">{isThai ? plan.descTh : plan.desc}</p>
 
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-extrabold text-foreground">{plan.price}</span>
-                <span className="text-xs text-muted-foreground">{isThai ? plan.periodTh : plan.period}</span>
+              <div className="mb-6">
+                <span className="text-2xl font-extrabold text-foreground">{isThai ? plan.priceTh : plan.price}</span>
               </div>
 
-              {/* Feature List */}
               <ul className="space-y-3 mb-8 text-xs text-foreground/85">
                 {(isThai ? plan.featuresTh : plan.features).map((feat, fidx) => (
                   <li key={fidx} className="flex items-start gap-2">
@@ -184,43 +140,51 @@ export function SovereignPricingSection({ locale = "en" }: SovereignPricingSecti
               </ul>
             </div>
 
-            <Link
-              href={plan.ctaHref}
-              className={`flex items-center justify-center gap-2 rounded-xl py-3 px-4 font-mono text-xs font-bold transition-all ${
-                plan.popular
-                  ? "bg-warm-amber text-warm-charcoal hover:bg-warm-amber/90 shadow-md cursor-pointer"
-                  : "border border-border bg-secondary text-foreground hover:bg-secondary/80 cursor-pointer"
-              }`}
-            >
-              <span>{isThai ? plan.ctaTextTh : plan.ctaText}</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
+            {plan.external ? (
+              <a
+                href={plan.ctaHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 rounded-xl bg-warm-amber py-3 px-4 font-mono text-xs font-bold text-warm-charcoal shadow-md transition-all hover:bg-warm-amber/90"
+              >
+                <span>{isThai ? plan.ctaTextTh : plan.ctaText}</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </a>
+            ) : (
+              <Link
+                href={plan.ctaHref}
+                className="flex items-center justify-center gap-2 rounded-xl border border-border bg-secondary py-3 px-4 font-mono text-xs font-bold text-foreground transition-all hover:bg-secondary/80"
+              >
+                <span>{isThai ? plan.ctaTextTh : plan.ctaText}</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            )}
           </div>
         ))}
       </div>
 
-      {/* Enterprise Banner */}
-      <div className="mt-8 rounded-2xl border border-border bg-card p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+      {/* What is measured */}
+      <div className="mt-8 flex flex-col items-center justify-between gap-6 rounded-2xl border border-border bg-card p-6 shadow-sm sm:flex-row sm:p-8">
         <div>
           <div className="inline-flex items-center gap-2 text-warm-amber font-mono text-xs font-bold mb-1">
             <Shield className="h-4 w-4" />
-            <span>ENTERPRISE SOVEREIGN NODE</span>
+            <span>{isThai ? "สิ่งที่วัดแล้ว และสิ่งที่ยังไม่ได้วัด" : "WHAT IS MEASURED, AND WHAT IS NOT"}</span>
           </div>
           <h3 className="text-xl font-bold text-foreground">
-            {isThai ? "ต้องการคลัสเตอร์ส่วนตัว Dedicated On-Premise หรือ SLA พิเศษ?" : "Need Dedicated On-Premise Cluster or Custom SLAs?"}
+            {isThai ? "ทุกตัวเลขมีวิธีวัดและข้อจำกัดกำกับ" : "Every number comes with its method and its limits"}
           </h3>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="mt-1 text-xs text-muted-foreground">
             {isThai
-              ? "รองรับการ Deploy บนเซิร์ฟเวอร์ส่วนตัวขององค์กร, การเชื่อมต่อ HSM Hardware และใบรับรองกฎหมายเฉพาะทาง"
-              : "Includes on-premise sovereign deployments, HSM hardware key integration, and custom compliance audits."}
+              ? "ยังไม่มีผลการวัดกับโมเดลที่เก่งพอ ผลที่มีอยู่มาจากโมเดลสคริปต์และโมเดลขนาดเล็กในเครื่อง และเราระบุไว้ในแต่ละผล"
+              : "No result with a capable model exists yet. What we have comes from scripted models and small local models, and each result says so."}
           </p>
         </div>
 
         <Link
-          href="/contact"
-          className="whitespace-nowrap rounded-xl border border-border bg-secondary hover:bg-secondary/80 px-6 py-3 font-mono text-xs font-bold text-foreground transition-colors cursor-pointer"
+          href={`/${locale}/benchmark`}
+          className="whitespace-nowrap rounded-xl border border-border bg-secondary px-6 py-3 font-mono text-xs font-bold text-foreground transition-colors hover:bg-secondary/80"
         >
-          {isThai ? "ติดต่อทีมงาน Enterprise" : "Contact Enterprise Sales"}
+          {isThai ? "ดูผลที่วัดแล้ว" : "See what is measured"}
         </Link>
       </div>
     </section>

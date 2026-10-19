@@ -68,8 +68,8 @@ const PIPELINE_STEPS = [
     step: "signedai_consensus",
     label: "SignedAI Consensus",
     labelTh: "SignedAI Consensus",
-    desc: "Multi-model consensus across 4–7 heterogeneous LLMs. Byzantine-fault tolerant voting.",
-    descTh: "Consensus หลาย model จาก 4–7 LLMs ต่างชนิด — Byzantine-fault tolerant voting",
+    desc: "Optional jury of independent models you name. Abstentions never help a proposal pass; the verdict is signed. Scripted-voter tests only.",
+    descTh: "คณะลูกขุนของโมเดลอิสระที่คุณระบุ การงดออกเสียงไม่ช่วยให้ข้อเสนอผ่าน คำตัดสินลงนาม ทดสอบกับผู้ลงคะแนนแบบสคริปต์เท่านั้น",
     latency: "40–60 ms",
   },
   {

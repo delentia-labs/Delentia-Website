@@ -61,7 +61,7 @@ export default async function FDIAEquationV2Page() {
     },
     {
       title: "Version 2 Changes",
-      body: "Version 2 formalizes the 8-Dimension scoring model for D and I variables, introduces the geopolitical balance constraint used by SignedAI (3W/3E/1R), and adds the PDPA-compliant provenance dimension (dimension 8) to the Data variable. The kill-switch invariant remains unchanged from v1.",
+      body: "Version 2 formalizes the 8-Dimension scoring model for D and I variables, proposes a geopolitical balance constraint for model juries (a design idea; not implemented), and adds the PDPA-compliant provenance dimension (dimension 8) to the Data variable. The kill-switch invariant remains unchanged from v1.",
     },
   ] : [
     {
@@ -82,7 +82,7 @@ export default async function FDIAEquationV2Page() {
     },
     {
       title: "การเปลี่ยนแปลงใน Version 2",
-      body: "Version 2 กำหนด 8-Dimension scoring model สำหรับตัวแปร D และ I อย่างเป็นทางการ เพิ่ม geopolitical balance constraint ที่ใช้ใน SignedAI (3W/3E/1R) และเพิ่ม PDPA-compliant provenance dimension (dimension 8) ใน Data variable — kill-switch invariant ยังคงเหมือนเดิมจาก v1",
+      body: "Version 2 กำหนด 8-Dimension scoring model สำหรับตัวแปร D และ I อย่างเป็นทางการ เสนอข้อจำกัดความสมดุลทางภูมิรัฐศาสตร์สำหรับคณะลูกขุนของโมเดล (แนวคิด ยังไม่ได้สร้าง) และเพิ่ม PDPA-compliant provenance dimension (dimension 8) ใน Data variable — kill-switch invariant ยังคงเหมือนเดิมจาก v1",
     },
   ]
 

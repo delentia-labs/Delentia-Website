@@ -166,7 +166,7 @@ export default async function VisionPage() {
             <p className="text-foreground/70 leading-relaxed">
               {isTh
                 ? "สแนปช็อต enterprise private snapshot ล่าสุดคือการพิสูจน์แนวคิดที่ทำงานได้จริง และ public SDK verified lane ยังคงเป็นจุดอ้างอิงสาธารณะหลัก"
-                : "The latest enterprise private snapshot is the working proof of concept, while the public SDK verified lane remains the primary public checkpoint. Next: formal GAIA leaderboard submission, HexaCore expansion to regional AI providers, and Thai infrastructure partnerships."}
+                : "The latest enterprise private snapshot is the working proof of concept, while the public SDK verified lane remains the primary public checkpoint. Next: running the agent runtime with a capable model on a real host, design-partner pilots, and the controlled study described on the Benchmark page."}
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <Link href={`${localePrefix}/roadmap`} className="text-sm text-emerald-500 hover:underline">

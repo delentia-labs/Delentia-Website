@@ -21,10 +21,10 @@ const roadmapData = {
       tasks: ["FDIA equation defined", "10-layer architecture + 7 Genome references published"],
     },
     {
-      phase: "Phase 2", title: "HexaCore Infrastructure", status: "done" as const,
+      phase: "Phase 2", title: "Model infrastructure", status: "done" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
       summary: "Core infrastructure moved from concept into verifiable runtime foundations.",
-      tasks: ["Key manager, registry, routing, and consensus shipped", "53 targeted tests passed at 100%"],
+      tasks: ["Key handling, model registry, routing and vote arithmetic shipped", "53 targeted tests passed at 100%"],
     },
     {
       phase: "Phase 3", title: "Content, Schema & SEO Hardening", status: "done" as const,
@@ -48,7 +48,7 @@ const roadmapData = {
       phase: "Phase 6", title: "Backend Phase 1 — Full Delentia OS", status: "planned" as const,
       color: "#C4745B", bg: "#FEE2E2", darkBg: "#3A1E15",
       summary: "This phase converts the public narrative into a real backend operating state.",
-      tasks: ["DelentiaAI connects to live HexaCore backend", "Typhoon integration and GitHub public documentation wave launch"],
+      tasks: ["The agent runtime runs against a capable model on a real host", "Public documentation and design-partner pilots"],
     },
     {
       phase: "Phase 7", title: "Product Launches & Adoption", status: "planned" as const,
@@ -77,10 +77,10 @@ const roadmapData = {
       tasks: ["กำหนด FDIA และโครงสร้าง 10 ชั้น", "เผยแพร่เอกสาร 7 Genome และ JITNA แกนหลัก"],
     },
     {
-      phase: "Phase 2", title: "HexaCore Infrastructure", status: "done" as const,
+      phase: "Phase 2", title: "โครงสร้างพื้นฐานของโมเดล", status: "done" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
       summary: "โครงสร้างพื้นฐานหลักขยับจากแนวคิดไปสู่ runtime ที่ตรวจสอบได้จริง",
-      tasks: ["ส่งมอบ key manager, registry, routing และ consensus", "targeted tests 53 รายการผ่าน 100%"],
+      tasks: ["ส่งมอบการจัดการคีย์ ทะเบียนโมเดล การเลือกเส้นทาง และการนับคะแนนโหวต", "targeted tests 53 รายการผ่าน 100%"],
     },
     {
       phase: "Phase 3", title: "Content, Schema และการเสริมความแข็งแกร่ง SEO", status: "done" as const,
@@ -104,7 +104,7 @@ const roadmapData = {
       phase: "Phase 6", title: "Backend Phase 1 — Full Delentia OS", status: "planned" as const,
       color: "#C4745B", bg: "#FEE2E2", darkBg: "#3A1E15",
       summary: "เฟสนี้คือการย้ายระบบจาก narrative สาธารณะไปสู่ backend operating state ที่ทำงานจริง",
-      tasks: ["DelentiaAI เชื่อมต่อ HexaCore backend จริง", "Typhoon integration และคลื่นเอกสาร GitHub Public เปิดตัว"],
+      tasks: ["รันไทม์ agent ทำงานกับโมเดลที่เก่งพอบน host จริง", "เอกสารสาธารณะและ pilot กับ design partner"],
     },
     {
       phase: "Phase 7", title: "Product Launches & Adoption", status: "planned" as const,

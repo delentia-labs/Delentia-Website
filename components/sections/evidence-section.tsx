@@ -11,8 +11,8 @@ import { useCardSpotlight } from "@/hooks/use-card-spotlight"
 const evidenceCards = [
   {
     icon: FlaskConical,
-    tagEn: "Peer-Reviewed Research",
-    tagTh: "งานวิจัยที่ผ่านการ peer-review",
+    tagEn: "Published preprint (arXiv)",
+    tagTh: "พรีปรินต์ที่เผยแพร่ (arXiv)",
     titleEn: "Multi-LLM Consensus Improves Precision from 73% to 94%",
     titleTh: "Multi-LLM Consensus เพิ่มความแม่นยำจาก 73% เป็น 94%",
     quoteEn:
@@ -25,17 +25,17 @@ const evidenceCards = [
       'Naik, N. (2024). "Probabilistic Consensus through Ensemble Validation" — arXiv:2411.06535',
     url: "https://arxiv.org/abs/2411.06535",
     relevanceEn:
-      "Delentia OS's multi-LLM orchestration applies this same ensemble consensus principle — cross-validating outputs across multiple models to dramatically reduce hallucination.",
+      "Delentia includes a jury that asks several independent models and lets any of them abstain. It has been tested with scripted voters only; no real multi-vendor vote has been run. The numbers in this paper are not a Delentia result.",
     relevanceTh:
-      "Delentia OS ใช้หลักการ ensemble consensus เดียวกันนี้ — ตรวจสอบผลลัพธ์ข้ามหลาย LLM เพื่อลด hallucination อย่างมีนัยสำคัญ",
+      "Delentia มีคณะลูกขุนที่ถามหลายโมเดลอิสระและเปิดให้งดออกเสียงได้ ทดสอบกับผู้ลงคะแนนแบบสคริปต์เท่านั้น ยังไม่เคยลงคะแนนข้ามผู้ให้บริการจริง ตัวเลขในงานวิจัยนี้ไม่ใช่ผลของ Delentia",
     color: "#7B9E87",
     stat: "+28.5%",
-    statLabelEn: "Precision Gain",
-    statLabelTh: "ความแม่นยำที่เพิ่มขึ้น",
+    statLabelEn: "Reported in the paper",
+    statLabelTh: "ผลที่รายงานในงานวิจัย",
   },
   {
     icon: BarChart3,
-    tagEn: "Industry Report",
+    tagEn: "Industry survey",
     tagTh: "รายงานอุตสาหกรรม",
     titleEn: "88% of Organizations Now Use AI — 62% Testing AI Agents",
     titleTh: "88% ขององค์กรใช้ AI แล้ว — 62% ทดสอบ AI Agents",
@@ -48,18 +48,18 @@ const evidenceCards = [
     sourceTh: 'McKinsey & Company (2025). "The State of AI: Global Survey 2025"',
     url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
     relevanceEn:
-      "Delentia OS is built for this agentic AI era — providing the orchestration infrastructure that 62% of enterprises are actively seeking.",
+      "Context only. This survey says nothing about Delentia, which is an early, one-person open-source project with no customers yet.",
     relevanceTh:
-      "Delentia OS ถูกสร้างมาเพื่อยุค agentic AI นี้ — ให้โครงสร้างพื้นฐาน orchestration ที่ 62% ขององค์กรกำลังค้นหา",
+      "เป็นบริบทเท่านั้น แบบสำรวจนี้ไม่ได้พูดถึง Delentia ซึ่งเป็นโปรเจกต์โอเพนซอร์สระยะเริ่มต้นที่พัฒนาโดยคนเดียวและยังไม่มีลูกค้า",
     color: "#D4A853",
     stat: "$1.5T",
-    statLabelEn: "AI Spending 2025",
-    statLabelTh: "การใช้จ่าย AI ปี 2025",
+    statLabelEn: "Survey figure",
+    statLabelTh: "ตัวเลขจากแบบสำรวจ",
   },
   {
     icon: Shield,
-    tagEn: "IEEE Transactions",
-    tagTh: "IEEE Transactions",
+    tagEn: "IEEE article",
+    tagTh: "บทความ IEEE",
     titleEn: "Multi-LLM Communication Reduces Bias & Hallucination",
     titleTh: "Multi-LLM Communication ลด Bias และ Hallucination",
     quoteEn:
@@ -72,13 +72,13 @@ const evidenceCards = [
       'Luo, H. et al. (2025). "Toward Edge General Intelligence with Multi-LLM" — IEEE Transactions. อ้างอิง 34 ครั้ง',
     url: "https://ieeexplore.ieee.org/abstract/document/11175216/",
     relevanceEn:
-      "Delentia OS's JITNA Protocol implements exactly this multi-LLM trust architecture — with cryptographic verification at every negotiation step.",
+      "Delentia's signed-message format (JITNA) is related in spirit. It has not been evaluated against this paper's claims.",
     relevanceTh:
-      "JITNA Protocol ของ Delentia OS ใช้สถาปัตยกรรม multi-LLM trust นี้ — พร้อมการยืนยันด้วย cryptography ในทุกขั้นตอนการเจรจา",
+      "รูปแบบข้อความที่ลงนามของ Delentia (JITNA) เกี่ยวข้องในเชิงแนวคิด ยังไม่เคยประเมินเทียบกับข้อกล่าวอ้างในงานวิจัยนี้",
     color: "#89B4C8",
     stat: "34",
-    statLabelEn: "Citations",
-    statLabelTh: "การอ้างอิง",
+    statLabelEn: "Citations (per publisher)",
+    statLabelTh: "การอ้างอิง (ตามผู้เผยแพร่)",
   },
 ]
 
@@ -131,38 +131,6 @@ const partners: { name: string; svg: ReactNode }[] = [
       </svg>
     ),
   },
-  {
-    name: "LangChain",
-    svg: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-        <path d="M3.75 6a2.25 2.25 0 1 0 0 4.5A2.25 2.25 0 0 0 3.75 6zm10.5 0a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5zm-5.25 1.5h1.5v9h-1.5V7.5zm-6-1.25H1.5V4.5h1.5v1.75zm6 .75h1.5V4.5h-1.5V7zm6.75-.25H14.25V4.5h1.5v2.25zm-12 4H1.5v1.5h1.5v-1.5zm12 0h-1.5v1.5h1.5v-1.5zm-6 2.25H7.5V18H9v-4.5zm1.5 0H12V18h-1.5v-4.5z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Vercel",
-    svg: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-        <path d="M24 22.525H0L12 1.475z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Notion",
-    svg: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-        <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" />
-      </svg>
-    ),
-  },
-  {
-    name: "GitHub",
-    svg: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-      </svg>
-    ),
-  },
 ]
 
 const PIXEL_EVIDENCE = pixelIcons.evidence
@@ -201,7 +169,7 @@ export default function EvidenceSection() {
         >
           <span className="inline-flex items-center gap-1.5 mb-4 rounded-full border border-[#eadfd2] bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground shadow-[0_8px_18px_rgba(84,61,31,0.04)] dark:border-border/70 dark:bg-card/75">
             <BookOpen size={12} />
-            {isTh ? "หลักฐานเชิงวิจัย" : "Research-Backed Evidence"}
+            {isTh ? "งานวิจัยที่เกี่ยวข้อง" : "Related Research"}
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3 flex items-center justify-center gap-3 text-foreground">
             <Image
@@ -214,15 +182,15 @@ export default function EvidenceSection() {
             />
             <span className="inline-flex items-baseline gap-2">
               <span className="font-semibold" style={{ color: "#7B9E87" }}>
-                {isTh ? "พิสูจน์แล้ว" : "Proven"}
+                {isTh ? "งานวิจัย" : "Related"}
               </span>
-              <span>{isTh ? "ด้วยงานวิจัย" : "by Research"}</span>
+              <span>{isTh ? "ที่เราอ้างอิง" : "work we read"}</span>
             </span>
           </h2>
           <p className="text-sm max-w-2xl mx-auto text-muted-foreground">
             {isTh
-              ? "หลักการของ Delentia OS ได้รับการสนับสนุนจากงานวิจัยระดับสากลที่ผ่านการ peer-review และรายงานอุตสาหกรรมชั้นนำ"
-              : "Delentia OS's principles are supported by peer-reviewed research and leading industry reports from trusted institutions."}
+              ? "งานที่เผยแพร่แล้วซึ่งการออกแบบของเราอ้างอิง งานเหล่านี้ไม่ได้ทดสอบ Delentia และไม่มีผลใดในนั้นเป็นผลของ Delentia ผลที่เราวัดเองอยู่ในหน้า Benchmark"
+              : "Published work our design draws on. These papers did not test Delentia, and none of their results is a Delentia result. What we measured ourselves is on the Benchmark page."}
           </p>
         </m.div>
 
@@ -278,7 +246,7 @@ export default function EvidenceSection() {
                 </blockquote>
 
                 <div className="relative z-10 mb-5 rounded-xl border border-[#eee2d6] bg-[#fffaf6] px-3.5 py-3 text-[11px] leading-relaxed text-muted-foreground dark:border-border dark:bg-secondary/55">
-                  <span className="font-semibold">Delentia OS:</span>{" "}
+                  <span className="font-semibold">{isTh ? "ความเกี่ยวข้องกับ Delentia:" : "How it relates to Delentia:"}</span>{" "}
                   {isTh ? card.relevanceTh : card.relevanceEn}
                 </div>
 
@@ -317,7 +285,7 @@ export default function EvidenceSection() {
           transition={{ duration: 0.50, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="text-center text-xs font-semibold uppercase tracking-widest mb-6 text-muted-foreground">
-            {isTh ? "เทคโนโลยีที่รองรับ" : "Compatible Technologies"}
+            {isTh ? "แหล่งโมเดลที่ใช้ต่อได้" : "Model sources it can connect to"}
           </p>
 
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
@@ -336,6 +304,11 @@ export default function EvidenceSection() {
               </m.div>
             ))}
           </div>
+          <p className="mt-4 text-center text-[11px] text-muted-foreground">
+            {isTh
+              ? "ผ่าน OpenRouter, Ollama หรือ endpoint ที่เข้ากันได้กับ OpenAI โลโก้เป็นเครื่องหมายการค้าของเจ้าของ ไม่ใช่พาร์ตเนอร์และไม่ได้รับรอง Delentia"
+              : "Through OpenRouter, Ollama or an OpenAI-compatible endpoint. Logos are trademarks of their owners; these companies are not partners and do not endorse Delentia."}
+          </p>
         </m.div>
       </div>
     </section>

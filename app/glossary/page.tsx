@@ -5,7 +5,7 @@ import { Navbar } from "@/components/navbar"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getBreadcrumbSchema, getDefinedTermSchema } from "@/lib/schema"
-import { SITE_UPTIME, SITE_HALLUCINATION_RATE } from "@/lib/site-config"
+import { SITE_UPTIME } from "@/lib/site-config"
 
 const glossaryTerms = [
   // ─── Core RCT Concepts ───────────────────────────────────────────
@@ -26,8 +26,8 @@ const glossaryTerms = [
   {
     term: "SignedAI",
     termTh: "SignedAI",
-    definition: `The multi-LLM consensus verification system of the RCT Ecosystem. Routes critical queries through 4–8 models simultaneously and requires agreement before releasing results. No hallucination rate is claimed.`,
-    definitionTh: `ระบบตรวจสอบ consensus หลาย LLM ของ RCT Ecosystem ส่งคำถามสำคัญผ่าน 4–8 โมเดลพร้อมกัน และต้องการ agreement ก่อนส่งผลลัพธ์ ไม่ได้อ้างอัตรา hallucination`,
+    definition: "The open-source jury runner in the Delentia repository: independent models vote agree, disagree or abstain, abstentions never help a proposal pass, and the verdict is signed with Ed25519. Tested with scripted voters only; no real multi-vendor vote has been run. No hallucination rate is claimed.",
+    definitionTh: "ตัวรันคณะลูกขุนโอเพนซอร์สในรีโพ Delentia: โมเดลอิสระลงคะแนนเห็นด้วย ไม่เห็นด้วย หรืองดออกเสียง การงดออกเสียงไม่ช่วยให้ข้อเสนอผ่าน และคำตัดสินลงนามด้วย Ed25519 ทดสอบกับผู้ลงคะแนนแบบสคริปต์เท่านั้น ยังไม่เคยลงคะแนนจริงข้ามผู้ให้บริการ ไม่อ้างอัตรา hallucination",
     entityHref: "/en/entity/governance-layer",
   },
   {
@@ -46,16 +46,16 @@ const glossaryTerms = [
   },
   {
     term: "HexaCore",
-    termTh: "HexaCore (โครงสร้าง 7 โมเดล AI)",
-    definition: "The 7-model AI infrastructure of the RCT Ecosystem: 3 Western models + 3 Eastern models + 1 Thai regional model (Typhoon v2). Routes tasks to cheaper models where it can; no saving is claimed.",
-    definitionTh: "โครงสร้าง AI 7 โมเดลของ RCT Ecosystem: โมเดลตะวันตก 3 ตัว + ตะวันออก 3 ตัว + ไทย 1 ตัว (Typhoon v2) ส่งงานง่ายไปโมเดลที่ถูกกว่า (ไม่ได้อ้างตัวเลขการประหยัด)",
+    termTh: "HexaCore (ชื่อเดิม)",
+    definition: "An older name for a planned roster of seven models. No such roster runs: the model is a setting you choose (a local model, OpenRouter or any OpenAI-compatible endpoint). Kept here because older pages and posts use the word.",
+    definitionTh: "ชื่อเดิมของรายชื่อโมเดล 7 ตัวที่เคยวางแผนไว้ ไม่มีรายชื่อดังกล่าวทำงานอยู่ โมเดลเป็นการตั้งค่าที่คุณเลือก (โมเดลในเครื่อง OpenRouter หรือ endpoint ที่เข้ากันได้กับ OpenAI) เก็บคำนี้ไว้เพราะหน้าและบทความเก่ายังใช้อยู่",
     entityHref: "/en/entity/governance-layer",
   },
   {
     term: "HexaCore Consensus",
-    termTh: "HexaCore Consensus (กลไกฉันทามติ HexaCore)",
-    definition: "The agreement mechanism within the HexaCore 7-model system where multiple AI models evaluate the same query simultaneously and a constitutional threshold (Tier 4: 50%, Tier 6: 67%, Tier 8: 75%, Tier S: 100%) must be met before any output is released. Prevents model-specific bias from reaching enterprise systems.",
-    definitionTh: "กลไก agreement ภายในระบบ 7 โมเดล HexaCore ที่โมเดลหลายตัวประเมิน query พร้อมกัน และต้องผ่าน threshold รัฐธรรมนูญ (Tier 4: 50%, Tier 6: 67%, Tier 8: 75%, Tier S: 100%) ก่อนปล่อยผลลัพธ์ ป้องกัน model-specific bias เข้าสู่ระบบองค์กร",
+    termTh: "HexaCore Consensus (ชื่อเดิม)",
+    definition: "An older name for what the SignedAI jury does. Nothing runs under the HexaCore name and no fixed thresholds or model roster are offered. See SignedAI.",
+    definitionTh: "ชื่อเดิมของสิ่งที่คณะลูกขุน SignedAI ทำ ไม่มีสิ่งใดทำงานภายใต้ชื่อ HexaCore และไม่มีเกณฑ์หรือรายชื่อโมเดลตายตัว ดู SignedAI",
     entityHref: "/en/entity/governance-layer",
   },
   {
@@ -117,8 +117,8 @@ const glossaryTerms = [
   {
     term: "Multi-LLM Consensus",
     termTh: "Multi-LLM Consensus (ฉันทามติหลาย LLM)",
-    definition: "The practice of routing a query to multiple LLM providers simultaneously and requiring agreement between outputs before accepting results. Reduces hallucination by catching model-specific biases. Used in SignedAI (Tier 4/6/8).",
-    definitionTh: "การส่ง query ไปยัง LLM หลายตัวพร้อมกัน และต้องการ agreement ระหว่างผลลัพธ์ก่อนยอมรับ ลด hallucination โดยตรวจจับ model-specific bias ใช้ใน SignedAI",
+    definition: "Asking several models the same question and requiring agreement before accepting an answer. Delentia has this as the SignedAI jury (scripted-voter tests only). There is no measurement showing that it reduces hallucination.",
+    definitionTh: "การถามหลายโมเดลด้วยคำถามเดียวกันและต้องการความเห็นตรงกันก่อนยอมรับคำตอบ Delentia มีสิ่งนี้เป็นคณะลูกขุน SignedAI (ทดสอบกับผู้ลงคะแนนแบบสคริปต์เท่านั้น) ไม่มีการวัดที่แสดงว่าลด hallucination ได้",
     entityHref: "/en/entity/governance-layer",
   },
   {
@@ -369,8 +369,8 @@ const glossaryTerms = [
   {
     term: "SignedAI Genome",
     termTh: "SignedAI Genome (จีโนมชั้นการตรวจสอบ)",
-    definition: "Verification layer — the trust and consensus genome of the RCT 7-Genome System. Implements multi-model consensus and cryptographic verification of all system outputs.",
-    definitionTh: "ชั้นการตรวจสอบ — genome ความไว้วางใจและ consensus ของระบบ 7 Genome ของ RCT ใช้งาน multi-model consensus และการตรวจสอบแบบ cryptographic",
+    definition: "Verification layer in the design of the RCT 7-Genome System: verification by independent votes with a signed verdict. Built so far: the jury runner and the Ed25519-signed verdict; the eight-dimension scoring is an idea only.",
+    definitionTh: "ชั้นการตรวจสอบในการออกแบบระบบ 7 Genome ของ RCT: การตรวจสอบด้วยการลงคะแนนอิสระพร้อมคำตัดสินที่ลงนาม สร้างแล้ว: ตัวรันคณะลูกขุนและคำตัดสินที่ลงนาม Ed25519 ส่วนการให้คะแนน 8 มิติเป็นเพียงแนวคิด",
     entityHref: "/en/entity/governance-layer",
   },
   {

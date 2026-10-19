@@ -10,9 +10,9 @@ import { getLocaleFromPathname } from "@/lib/i18n"
 const systems = {
   en: [
     {
-      name: "HexaCore AI Engine",
-      stat: "7 model families",
-      description: "Routes work across global, regional, and Thai-capable model surfaces so each task can use the right reasoning profile.",
+      name: "Model choice and failover",
+      stat: "a setting, not a roster",
+      description: "You choose the model (local, OpenRouter or any OpenAI-compatible endpoint). A fast or slow path is picked per task, and a backup model can take over under data-exposure and budget guards. The planned seven-model HexaCore roster does not run.",
       accent: "#D4A853",
       icon: Network,
     },
@@ -40,9 +40,9 @@ const systems = {
   ],
   th: [
     {
-      name: "HexaCore AI Engine",
-      stat: "7 ตระกูลโมเดล",
-      description: "กำหนดเส้นทางงานข้าม model surfaces ระดับโลก ระดับภูมิภาค และที่รองรับภาษาไทย เพื่อให้แต่ละงานได้ reasoning profile ที่เหมาะสม",
+      name: "การเลือกโมเดลและการสลับสำรอง",
+      stat: "เป็นการตั้งค่า ไม่ใช่รายชื่อตายตัว",
+      description: "คุณเลือกโมเดลเอง (ในเครื่อง OpenRouter หรือ endpoint ที่เข้ากันได้กับ OpenAI) ระบบเลือกเส้นทางเร็วหรือช้าต่องาน และโมเดลสำรองรับช่วงได้ภายใต้เงื่อนไขการเปิดเผยข้อมูลและงบ รายชื่อ HexaCore 7 โมเดลที่วางแผนไว้ไม่ได้ทำงานอยู่",
       accent: "#D4A853",
       icon: Network,
     },
@@ -62,7 +62,7 @@ const systems = {
     },
     {
       name: "Delta Memory Engine",
-      stat: "compression 74%†",
+      stat: "เล็กลง 39–90%†",
       description: "จัดเก็บเฉพาะ state changes แทน full snapshots ทำให้ memory continuity ระดับองค์กรไม่สร้างต้นทุน storage เกินจำเป็น",
       accent: "#C4745B",
       icon: Database,

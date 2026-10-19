@@ -12,9 +12,9 @@ const faqItems = [
       "The Delentia Labs 10-Layer Architecture is a constitutional AI stack spanning from hardware abstraction at layer 1 to self-evolving orchestration at layer 10. Each layer serves a distinct role in ensuring verifiable, auditable, and governed AI execution across enterprise deployments.",
   },
   {
-    question: "How does multi-LLM consensus work in the architecture?",
+    question: "How does the optional jury work in the architecture?",
     answer:
-      "Multi-LLM consensus operates at the orchestration layer, where multiple AI models independently evaluate a request and a consensus mechanism — governed by constitutional rules — determines the final response. This eliminates single-model bias and reduces hallucination rates.",
+      "The jury is optional. Several models you name each vote agree, disagree or abstain independently, and the verdict is signed. It has been tested with scripted voters only; it has not been shown to remove single-model bias or to reduce hallucination.",
   },
   {
     question: "What is the role of constitutional AI in RCT's architecture?",

@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     "Roadmap — Delentia Labs 2026 Phases, DelentiaAI & SignedAI Launch Timeline",
     "Roadmap — แผนงาน 9 Phase ของ Delentia Labs ปี 2026 รวม DelentiaAI และ SignedAI",
     "Track Delentia Labs' 9-phase public roadmap: foundations, infrastructure, content hardening, production launch, Full RCT OS, open source, DelentiaAI + SignedAI platform, and TUI/CLI developer mode. Target: end of 2026.",
-    "ติดตาม roadmap สาธารณะ 9 Phase ของ Delentia Labs: ตั้งแต่ Foundations, HexaCore, SEO, Production Launch (เม.ย. 2026), Full RCT OS, Open Source, DelentiaAI + SignedAI Platform และ TUI/CLI Developer Mode เป้าหมาย: สิ้นปี 2026",
+    "ติดตาม roadmap สาธารณะ 9 Phase ของ Delentia Labs: ตั้งแต่ Foundations โครงสร้างพื้นฐานของโมเดล และรันไทม์โอเพนซอร์ส ไปจนถึงการรันกับโมเดลที่เก่งพอบน host จริงและ pilot กับ design partner เป้าหมายเป็นแผน ไม่ใช่คำสัญญา",
     "/roadmap",
     [
       "Delentia Labs roadmap", "DelentiaAI roadmap", "SignedAI launch", "RCT OS timeline",
@@ -33,11 +33,11 @@ const phasesItemList = {
   "numberOfItems": 9,
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Phase 1 — Foundations, FDIA, and Core Documentation", "description": "Define FDIA Equation, design 10-layer architecture model, document the 7 Genome system, publish core JITNA references.", "url": `${ROADMAP_BASE}/roadmap#phase-1` },
-    { "@type": "ListItem", "position": 2, "name": "Phase 2 — HexaCore Infrastructure", "description": "Complete HexaCore Phase 1 infrastructure, ship key manager, registry, routing, and consensus foundation.", "url": `${ROADMAP_BASE}/roadmap#phase-2` },
+    { "@type": "ListItem", "position": 2, "name": "Phase 2 — Model infrastructure", "description": "Key handling, model registry, routing and vote arithmetic.", "url": `${ROADMAP_BASE}/roadmap#phase-2` },
     { "@type": "ListItem", "position": 3, "name": "Phase 3 — Content, Schema & SEO Hardening", "description": "Publish 22 long-form research articles, enrich BlogPosting schema, launch verified author system, publish Glossary.", "url": `${ROADMAP_BASE}/roadmap#phase-3` },
     { "@type": "ListItem", "position": 4, "name": "Phase 4 — Website Content-Complete & Pre-Launch Hardening", "description": "Enterprise blog design, schema standardization, compare landing pages, domain cutover to delentia.com.", "url": `${ROADMAP_BASE}/roadmap#phase-4` },
     { "@type": "ListItem", "position": 5, "name": "Phase 5 — Production Launch & SEO Warmup", "description": "delentia.com DNS live April 2026, Google Search Console, Early Access program, Lifetime Plan launch, DelentiaAI soft launch.", "url": `${ROADMAP_BASE}/roadmap#phase-5` },
-    { "@type": "ListItem", "position": 6, "name": "Phase 6 — Backend Phase 1 — Full RCT OS", "description": "DelentiaAI connected to real HexaCore backend, Regional LLM Typhoon integration, Full RCT OS operational in production.", "url": `${ROADMAP_BASE}/roadmap#phase-6` },
+    { "@type": "ListItem", "position": 6, "name": "Phase 6 — Real host", "description": "The agent runtime runs with a capable model on a real host. Planned, not done.", "url": `${ROADMAP_BASE}/roadmap#phase-6` },
     { "@type": "ListItem", "position": 7, "name": "Phase 7 — Open Source & Community", "description": "GitHub Public launch for RCT Ecosystem, full documentation, GitHub Coffee sponsors plan, community feedback loop.", "url": `${ROADMAP_BASE}/roadmap#phase-7` },
     { "@type": "ListItem", "position": 8, "name": "Phase 8 — DelentiaAI + SignedAI Platform Launch", "description": "Full product launch for DelentiaAI Platform and SignedAI Platform, enterprise onboarding pipeline open.", "url": `${ROADMAP_BASE}/roadmap#phase-8` },
     { "@type": "ListItem", "position": 9, "name": "Phase 9 — TUI/CLI Developer Mode", "description": "TUI/CLI Beta Backend Mode, full developer access, power-user workflow toolset, solo developer toolchain complete.", "url": `${ROADMAP_BASE}/roadmap#phase-9` },

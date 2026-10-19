@@ -9,12 +9,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return createBilingualMetadata(
     locale,
-    "Products",
-    "ผลิตภัณฑ์",
-    "Delentia Labs products: Delentia Platform testing platform, Delentia AI creative engine, and Signed AI verification system. Enterprise AI solutions built on constitutional AI principles.",
-    "ผลิตภัณฑ์ Delentia Labs: แพลตฟอร์มทดสอบ Delentia Platform, Delentia AI และระบบตรวจสอบ Signed AI สำหรับองค์กร",
+    "What you can install today",
+    "สิ่งที่ติดตั้งและใช้ได้ตอนนี้",
+    "Three open-source pieces: the Delentia OS agent runtime (pip install delentia-os), Delentia Guard (an MCP proxy with a signed audit log) and the Delentia MCP connector. No hosted service, no price, no enterprise customers yet.",
+    "สามชิ้นโอเพนซอร์ส: รันไทม์ agent Delentia OS (pip install delentia-os), Delentia Guard (MCP proxy พร้อมบันทึกตรวจสอบที่ลงนาม) และตัวเชื่อม Delentia MCP ไม่มีบริการโฮสต์ ไม่มีราคา และยังไม่มีลูกค้าองค์กร",
     "/products",
-    ["Delentia Platform platform", "Delentia AI", "Signed AI", "AI verification", "AI testing platform"]
+    ["agent runtime", "MCP proxy", "delentia-os", "delentia-guard", "open source"]
   )
 }
 
@@ -28,25 +28,25 @@ export default async function ProductsPage() {
 
   const faqSchema = getFAQSchema([
     {
-      question: "What products does Delentia Labs currently offer?",
+      question: "What can I install today?",
       answer:
-        "Delentia Labs currently presents three core products: Delentia Platform for AI testing and benchmarking, Delentia AI for intent-aligned creative generation, and SignedAI for verification, traceability, and hallucination reduction.",
+        "Three open-source pieces: the Delentia OS agent runtime (pip install delentia-os), Delentia Guard (an MCP proxy that gates tool calls and signs an audit log) and the Delentia MCP connector (npx delentia-mcp). There is no hosted service, no price and no SLA.",
     },
     {
-      question: "How are the products related to the RCT platform?",
+      question: "What happened to Delentia Platform and Delentia AI?",
       answer:
-        "All products are built on the same RCT operating system foundation, including the 10-layer architecture, FDIA Equation, JITNA Protocol, and shared verification and memory infrastructure.",
+        "Those two product pages described offerings that were not available as written and have been withdrawn. Their ideas live on inside the open-source runtime.",
     },
   ])
 
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Delentia Labs Products",
+    name: "What you can install today",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Delentia Platform", url: `https://delentia.com${localePrefix}/products/delentia-platform` },
-      { "@type": "ListItem", position: 2, name: "Delentia AI", url: `https://delentia.com${localePrefix}/products/delentia-ai` },
-      { "@type": "ListItem", position: 3, name: "SignedAI", url: `https://delentia.com${localePrefix}/products/signed-ai` },
+      { "@type": "ListItem", position: 1, name: "Delentia OS", url: "https://github.com/delentia-labs/delentia-os" },
+      { "@type": "ListItem", position: 2, name: "Delentia Guard", url: "https://www.npmjs.com/package/delentia-guard" },
+      { "@type": "ListItem", position: 3, name: "Delentia MCP", url: "https://www.npmjs.com/package/delentia-mcp" },
     ],
   }
 

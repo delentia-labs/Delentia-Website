@@ -171,8 +171,8 @@ export function FloatingAIComingSoon() {
               <div className="px-6 py-3 bg-card/50 border-t border-border">
                 <p className="text-xs text-muted-foreground text-center">
                   {language === 'th' 
-                    ? 'กำลังพัฒนาด้วย 10-Layer Architecture และ Multi-LLM Consensus'
-                    : 'Powered by 10-Layer Architecture & Multi-LLM Consensus'}
+                    ? 'กำลังพัฒนา ยังไม่เปิดให้ใช้'
+                    : 'Under development, not available yet'}
                 </p>
               </div>
             </div>

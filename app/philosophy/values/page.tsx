@@ -86,13 +86,13 @@ const VALUES: ValueItem[] = [
     en: {
       title: "Human-Centric Power",
       subtitle: "AI is the tool. The human is the director.",
-      body: "Constitutional AI means AI that cannot override human intent. The FDIA Action parameter (A) gives humans a mathematical kill switch: A=0 produces zero output regardless of model confidence. We build systems where AI amplifies human judgment, never replaces it. The HexaCore 7-model consensus exists to prevent single-model dominance, not to automate away human decision points.",
+      body: "Constitutional AI means AI that cannot override human intent. The FDIA Action parameter (A) gives humans a mathematical kill switch: A=0 produces zero output regardless of model confidence. We build systems where AI amplifies human judgment, never replaces it. The optional SignedAI jury exists so that a single model need not decide alone, not to automate away human decision points.",
       pill: "Governance",
     },
     th: {
       title: "พลังยึดมนุษย์เป็นศูนย์กลาง",
       subtitle: "AI คือเครื่องมือ มนุษย์คือผู้กำกับ",
-      body: "Constitutional AI หมายถึง AI ที่ไม่สามารถล้มล้างเจตนาของมนุษย์ได้ พารามิเตอร์ Action (A) มอบสวิตช์ตัดทางคณิตศาสตร์แก่มนุษย์: A=0 ผลิตผลลัพธ์เป็นศูนย์โดยไม่คำนึงถึงความเชื่อมั่นของโมเดล เราสร้างระบบที่ AI ขยายการตัดสินใจของมนุษย์ ไม่ใช่แทนที่ ฉันทามติ 7 โมเดลของ HexaCore มีไว้เพื่อป้องกันการครอบงำของโมเดลเดียว ไม่ใช่เพื่อลบจุดตัดสินใจของมนุษย์",
+      body: "Constitutional AI หมายถึง AI ที่ไม่สามารถล้มล้างเจตนาของมนุษย์ได้ พารามิเตอร์ Action (A) มอบสวิตช์ตัดทางคณิตศาสตร์แก่มนุษย์: A=0 ผลิตผลลัพธ์เป็นศูนย์โดยไม่คำนึงถึงความเชื่อมั่นของโมเดล เราสร้างระบบที่ AI ขยายการตัดสินใจของมนุษย์ ไม่ใช่แทนที่ คณะลูกขุน SignedAI แบบเลือกใช้มีไว้เพื่อไม่ให้โมเดลเดียวตัดสินลำพัง ไม่ใช่เพื่อลบจุดตัดสินใจของมนุษย์",
       pill: "กำกับดูแล",
     },
     color: "border-violet-400/30 bg-violet-400/5",

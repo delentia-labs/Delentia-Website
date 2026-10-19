@@ -46,8 +46,8 @@ const deepDiveCards = [
     iconSrc: pixelIconPaths.algorithms,
     title: "Core Systems & Engines",
     titleTh: "ระบบหลักและเอ็นจิน",
-    description: "A public-safe overview of HexaCore, Intent Loop, Analysearch, and Delta Memory.",
-    descriptionTh: "ภาพรวมแบบ public-safe ของ HexaCore, Intent Loop, Analysearch และ Delta Memory",
+    description: "An overview of model choice, Intent Loop, Analysearch, and Delta Memory.",
+    descriptionTh: "ภาพรวมของการเลือกโมเดล, Intent Loop, Analysearch และ Delta Memory",
     href: "/core-systems",
     color: "#D4A853",
     bg: "#FEF3C7",
@@ -103,11 +103,11 @@ const PIPELINE = [
   {
     Icon: Cpu,
     color: "#89B4C8",
-    badge: "HexaCore",
-    titleEn: "7-LLM Consensus",
-    titleTh: "Consensus หลาย AI",
-    descEn: "7 models (Claude · Gemini · Grok · Kimi · DeepSeek · Typhoon…) vote.",
-    descTh: "7 โมเดล AI ร่วมกันลงคะแนนเสียงหาคำตอบที่ดีที่สุด",
+    badge: "SignedAI",
+    titleEn: "Jury of models",
+    titleTh: "คณะลูกขุนของโมเดล",
+    descEn: "Optional: models you name vote independently and the verdict is signed.",
+    descTh: "แบบเลือกใช้: โมเดลที่คุณระบุลงคะแนนโดยอิสระ และคำตัดสินถูกลงนาม",
     href: "/core-systems",
   },
   {
@@ -164,8 +164,8 @@ export default function OverviewSection({ locale }: OverviewSectionProps) {
           title={isTh ? "จากเจตนาสู่ Output ที่เชื่อถือได้" : "From Intent to Trusted Output"}
           italicWord={isTh ? "Output" : "Trusted"}
           description={isTh
-            ? "ทุกคำขอผ่าน 5 ขั้นตอน — กรอง เส้นทาง ฉันทามติ ลงนาม และส่งมอบคำตอบที่ตรวจสอบได้"
-            : "Every request flows through 5 stages — gate, route, consensus, sign, and deliver a verifiable answer."}
+            ? "ทุกรอบผ่านด่านก่อนเรียกเครื่องมือทุกครั้ง การกระทำที่เสี่ยงรอลายเซ็นของมนุษย์ และทิ้งบันทึกตรวจสอบที่ลงนามไว้"
+            : "Every episode passes a gate before each tool call, waits for a human signature on risky actions, and leaves a signed audit record."}
           pixelIcon={PIXEL_ARCH}
         />
 

@@ -18,9 +18,9 @@ const layers = {
     { num: "L3", name: "Knowledge Engine", desc: "Semantic indexing, vector search, and knowledge graph construction for intelligent information retrieval.", icon: Brain, color: "#D4A853" },
     { num: "L4", name: "Memory & Context", desc: "RCTDB v2.0 with the 8-dimensional universal memory schema — Identity, Sovereignty, Context, Payload, Value, Social, Delta, Verification — for persistent context across sessions and agents.", icon: Database, color: "#C4745B" },
     { num: "L5", name: "Reasoning Core", desc: "Multi-strategy reasoning including chain-of-thought, tree-of-thought, and hybrid approaches powered by the FDIA Equation.", icon: Brain, color: "#B8A9C9" },
-    { num: "L6", name: "Multi-LLM Orchestration", desc: "HexaCore 7-model roster (3 Western: Claude/Gemini/Grok · 3 Eastern: Kimi/MiniMax/DeepSeek · 1 Regional: Typhoon G38 for Thai) with JITNA dynamic routing across all task types.", icon: Network, color: "#D4A853" },
+    { num: "L6", name: "Multi-LLM Orchestration", desc: "The model is a setting: a local model, any model on OpenRouter, or any OpenAI-compatible endpoint, with a fast or slow path per task and backup models. The planned seven-model roster does not run.", icon: Network, color: "#D4A853" },
     { num: "L7", name: "Agent Framework", desc: "Autonomous agent lifecycle management with JITNA Protocol for inter-agent communication and consensus.", icon: Bot, color: "#89B4C8" },
-    { num: "L8", name: "Safety & Verification", desc: `Consensus-based verification, traceability, and policy controls designed to reduce hallucinations (no hallucination rate is claimed).`, icon: Shield, color: "#7B9E87" },
+    { num: "L8", name: "Safety & Verification", desc: `A safety gate before tool calls, human-signed approvals, a signed audit log and an optional jury of independent models. No hallucination reduction has been measured.`, icon: Shield, color: "#7B9E87" },
     { num: "L9", name: "Application Layer", desc: "Domain-specific assistants, enterprise workflows, and solution packages built on the shared platform core.", icon: AppWindow, color: "#C4745B" },
     { num: "L10", name: "Self-Evolving Orchestrator", desc: "Continuous self-improvement through performance monitoring, A/B testing, and adaptive algorithm selection.", icon: RefreshCw, color: "#B8A9C9" },
   ],
@@ -30,9 +30,9 @@ const layers = {
     { num: "L3", name: "Knowledge Engine", desc: "Semantic Indexing, Vector Search และ Knowledge Graph สำหรับการดึงข้อมูลอัจฉริยะ", icon: Brain, color: "#D4A853" },
     { num: "L4", name: "Memory & Context", desc: "RCTDB v2.0 พร้อม Schema หน่วยความจำ 8 มิติ — Identity, Sovereignty, Context, Payload, Value, Social, Delta, Verification — สำหรับการเก็บ Context ถาวรข้าม Sessions และ Agents", icon: Database, color: "#C4745B" },
     { num: "L5", name: "Reasoning Core", desc: "การให้เหตุผลหลายกลยุทธ์รวม Chain-of-Thought, Tree-of-Thought กับเคลื่อนด้วยสมการ FDIA", icon: Brain, color: "#B8A9C9" },
-    { num: "L6", name: "Multi-LLM Orchestration", desc: "HexaCore 7-Model Roster (3 Western: Claude/Gemini/Grok · 3 Eastern: Kimi/MiniMax/DeepSeek · 1 Regional: Typhoon G38 สำหรับภาษาไทย) คู่กับ JITNA Dynamic Routing", icon: Network, color: "#D4A853" },
+    { num: "L6", name: "Multi-LLM Orchestration", desc: "โมเดลเป็นการตั้งค่า: โมเดลในเครื่อง โมเดลใดก็ได้บน OpenRouter หรือ endpoint ที่เข้ากันได้กับ OpenAI มีเส้นทางเร็ว/ช้าต่องานและโมเดลสำรอง รายชื่อโมเดล 7 ตัวที่วางแผนไว้ไม่ได้ทำงานอยู่", icon: Network, color: "#D4A853" },
     { num: "L7", name: "Agent Framework", desc: "การจัดการ Lifecycle ของ Agent อัตโนมัติพร้อม JITNA Protocol สำหรับการสื่อสารระหว่าง Agent", icon: Bot, color: "#89B4C8" },
-    { num: "L8", name: "Safety & Verification", desc: `ชั้น consensus-based verification, traceability และ policy controls ที่ไม่ได้อ้างอัตรา hallucination ใน benchmark workloads`, icon: Shield, color: "#7B9E87" },
+    { num: "L8", name: "Safety & Verification", desc: `ด่านความปลอดภัยก่อนเรียกเครื่องมือ การอนุมัติด้วยลายเซ็นของมนุษย์ บันทึกตรวจสอบที่ลงนาม และคณะลูกขุนของโมเดลอิสระแบบเลือกใช้ ยังไม่ได้วัดว่าลด hallucination ได้`, icon: Shield, color: "#7B9E87" },
     { num: "L9", name: "Application Layer", desc: "ชั้นสำหรับ assistants, enterprise workflows และ solution packages ที่สร้างบน platform core เดียวกัน", icon: AppWindow, color: "#C4745B" },
     { num: "L10", name: "Self-Evolving Orchestrator", desc: "การปรับปรุงตัวเองต่อเนื่องผ่าน Performance Monitoring, A/B Testing และ Adaptive Algorithm Selection", icon: RefreshCw, color: "#B8A9C9" },
   ],
@@ -42,17 +42,17 @@ const comparisons = {
   en: [
     { feature: "Architecture", rct: "10-Layer Cognitive Stack", others: "Monolithic / 2-3 layers" },
     { feature: "Memory", rct: "RCTDB v2.0 — 8D Schema", others: "No persistent memory" },
-    { feature: "Hallucination", rct: `${SITE_HALLUCINATION_RATE} (SignedAI)`, others: "12-15% typical" },
-    { feature: "Multi-LLM", rct: "7-model HexaCore, dynamic routing", others: "Single provider lock-in" },
-    { feature: "Self-Improvement", rct: "L10 autonomous evolution", others: "Manual updates only" },
+    { feature: "Hallucination", rct: "Not claimed (no measurement)", others: "Not compared" },
+    { feature: "Model choice", rct: "A setting: local, OpenRouter or any OpenAI-compatible endpoint", others: "Often one provider" },
+    { feature: "Self-Improvement", rct: "Skills learned from verified episodes; new tools only with a human signature", others: "Manual updates only" },
     { feature: "Protocol", rct: "JITNA open standard", others: "Proprietary APIs" },
   ],
   th: [
     { feature: "Architecture", rct: "10-Layer Cognitive Stack", others: "Monolithic / 2-3 ชั้น" },
     { feature: "Memory", rct: "RCTDB v2.0 — 8D Schema", others: "ไม่มี Persistent Memory" },
-    { feature: "Hallucination", rct: `${SITE_HALLUCINATION_RATE} (SignedAI)`, others: "12-15% ทั่วไป" },
-    { feature: "Multi-LLM", rct: "7-model HexaCore, Dynamic Routing", others: "ผูกกับ Provider เดียว" },
-    { feature: "Self-Improvement", rct: "L10 Autonomous Evolution", others: "อัปเดตด้วยมือเท่านั้น" },
+    { feature: "Hallucination", rct: "ไม่อ้าง (ยังไม่ได้วัด)", others: "ไม่ได้เปรียบเทียบ" },
+    { feature: "การเลือกโมเดล", rct: "เป็นการตั้งค่า: ในเครื่อง OpenRouter หรือ endpoint ที่เข้ากันได้กับ OpenAI", others: "มักผูกกับผู้ให้บริการเดียว" },
+    { feature: "Self-Improvement", rct: "เรียนรู้ทักษะจากรอบที่ตรวจผ่าน เครื่องมือใหม่ต้องมีลายเซ็นมนุษย์", others: "อัปเดตด้วยมือเท่านั้น" },
     { feature: "Protocol", rct: "JITNA Open Standard", others: "Proprietary APIs" },
   ],
 }
@@ -324,10 +324,10 @@ export default function ArchitecturePage() {
               : "The Delentia Labs 10-Layer Architecture is a constitutional AI stack spanning from hardware abstraction at layer 1 to self-evolving orchestration at layer 10. Each layer serves a distinct role in ensuring verifiable, auditable, and governed AI execution across enterprise deployments.",
           },
           {
-            question: isTh ? "Multi-LLM consensus ทำงานอย่างไรในสถาปัตยกรรมนี้?" : "How does multi-LLM consensus work in the architecture?",
+            question: isTh ? "คณะลูกขุนแบบเลือกใช้ทำงานอย่างไรในสถาปัตยกรรมนี้?" : "How does the optional jury work in the architecture?",
             answer: isTh
-              ? "Multi-LLM consensus ทำงานที่ orchestration layer โดยโมเดล AI หลายตัวประเมิน request อย่างอิสระ และ consensus mechanism ที่ถูกควบคุมโดย constitutional rules จะกำหนดผลลัพธ์สุดท้าย ซึ่งช่วยลด bias และลดอัตราการ hallucination"
-              : "Multi-LLM consensus operates at the orchestration layer, where multiple AI models independently evaluate a request and a consensus mechanism — governed by constitutional rules — determines the final response. This eliminates single-model bias and reduces hallucination rates.",
+              ? "คณะลูกขุนเป็นแบบเลือกใช้ โมเดลหลายตัวที่คุณระบุแต่ละตัวลงคะแนนเห็นด้วย ไม่เห็นด้วย หรืองดออกเสียงโดยอิสระ และคำตัดสินถูกลงนาม ทดสอบกับผู้ลงคะแนนแบบสคริปต์เท่านั้น ยังไม่แสดงว่าขจัดอคติของโมเดลเดียวหรือลด hallucination ได้"
+              : "The jury is optional. Several models you name each vote agree, disagree or abstain independently, and the verdict is signed. It has been tested with scripted voters only; it has not been shown to remove single-model bias or to reduce hallucination.",
           },
           {
             question: isTh ? "Constitutional AI มีบทบาทอย่างไรในสถาปัตยกรรมของ RCT?" : "What is the role of constitutional AI in RCT's architecture?",

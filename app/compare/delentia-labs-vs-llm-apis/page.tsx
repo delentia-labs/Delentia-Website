@@ -14,8 +14,8 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "Delentia Labs vs LLM APIs — Constitutional AI vs Bare API Access",
     "Delentia Labs vs LLM APIs — Constitutional AI เทียบกับ Bare API",
-    "Bare LLM API access gives you raw model power with no governance, no compliance, and no memory. Delentia Labs adds constitutional AI constraints, multi-model consensus, PDPA-compliant memory, and deterministic safety guarantees.",
-    "การใช้ LLM API ตรงให้พลังของโมเดลดิบโดยไม่มี governance, compliance และ memory ส่วน Delentia Labs เพิ่ม constitutional AI, multi-model consensus, memory ที่รองรับ PDPA และ deterministic safety guarantee",
+    "A bare LLM API gives you the model and nothing around it. Delentia is an open-source runtime that adds a safety gate before tool calls, human-signed approvals, a signed audit log and verifiable memory. It is early, built by one person, and has no hosted service.",
+    "LLM API ตรง ๆ ให้โมเดลโดยไม่มีอะไรรอบ ๆ Delentia เป็นรันไทม์โอเพนซอร์สที่เพิ่มด่านความปลอดภัยก่อนเรียกเครื่องมือ การอนุมัติด้วยลายเซ็นของมนุษย์ บันทึกตรวจสอบที่ลงนาม และหน่วยความจำที่ตรวจสอบได้ ยังอยู่ระยะเริ่มต้น พัฒนาโดยคนคนเดียว และไม่มีบริการโฮสต์",
     "/compare/delentia-labs-vs-llm-apis",
     ["Delentia Labs vs LLM APIs", "constitutional AI platform", "enterprise AI governance"]
   )
@@ -24,23 +24,23 @@ export async function generateMetadata(): Promise<Metadata> {
 const LLM_API_FAQS = [
   {
     question: "What is the difference between Delentia Labs and a bare LLM API?",
-    answer: "A bare LLM API (OpenAI, Claude, Gemini) gives you raw model access with no governance, no persistent memory, and no compliance guarantees. You are responsible for all safety, audit, and PDPA compliance yourself. Delentia Labs is a constitutional AI operating system that adds the FDIA framework (deterministic safety), RCTDB (PDPA-compliant persistent memory), JITNA Protocol (agent orchestration), and HexaCore routing (cost optimization) on top of any LLM.",
+    answer: "A bare LLM API (OpenAI, Claude, Gemini) gives you raw model access with no governance and no persistent memory. You are responsible for all safety, audit and compliance yourself. Delentia is an open-source runtime that sits on top of a model and adds a safety gate before tool calls (the FDIA equation, enforced in code), human-signed approvals, a signed hash-chained audit log, and memory you can replay and erase. It does not make you compliant with any law, and it has not been shown to make answers more accurate.",
   },
   {
     question: "Does Delentia Labs replace the LLM API or sit on top of it?",
-    answer: "Delentia Labs sits on top of multiple LLM APIs. The HexaCore router includes 7 models (Claude Opus, Kimi K2.5, MiniMax, Gemini Flash, Grok, DeepSeek, and Typhoon v2 for Thai). Delentia Labs intelligently routes each query to the appropriate model — you do not need to manage individual API calls. Routing simple queries to cheaper models is designed to lower cost; no measured saving is claimed.",
+    answer: "Delentia sits on top of a model you choose: one on your own machine (Ollama), any model on OpenRouter, or any OpenAI-compatible endpoint. You set the model; there is no fixed roster. A fast or slow path is chosen per task, and a backup model can take over if the main one fails. No measured cost saving is claimed.",
   },
   {
-    question: "How does Delentia Labs achieve PDPA compliance that bare LLM APIs cannot?",
-    answer: "Bare LLM APIs are stateless — they process a request and forget it. PDPA compliance requires persistence: the ability to prove what data was used, when, and why (Section 33), and the ability to permanently delete a person's data on request (Section 34). RCTDB stores every query as an 8-dimensional record with full provenance. When a data subject requests erasure, their subject_uuid is tombstoned — ensuring no retrievable data remains.",
+    question: "Does Delentia make me compliant with the PDPA?",
+    answer: "It does not. Software cannot make an organisation compliant. What Delentia offers is tooling: every change to memory is an event in a hash-chained log, and one person's memory text can be erased by destroying the key it is sealed under, after which no trace of the text was found in the raw database file. Erasure does not yet cover the separate skills database or audit rows written before sealing was added.",
   },
   {
-    question: "How does HexaCore routing affect cost?",
-    answer: "Instead of routing every query to Claude Opus (the most expensive model), HexaCore analyzes each task and selects the optimal model. Simple retrieval tasks go to faster, cheaper models. Complex synthesis tasks go to premium models only when required. No measured cost saving is claimed.",
+    question: "Does model routing affect cost?",
+    answer: "Delentia can choose a fast path for short tasks, and a per-episode cost limit refuses a model call whose worst case would exceed your budget. Whether routing saves money has not been measured, so no saving is claimed.",
   },
   {
     question: "Is vendor lock-in a concern with Delentia Labs?",
-    answer: "No. Delentia Labs is vendor-neutral by design. The HexaCore router abstracts all 7 models behind a unified interface. If you want to swap Claude Opus for a new model, you update the router configuration — no application code changes required. This is in contrast to building directly on a single LLM API, where switching providers requires significant refactoring.",
+    answer: "The runtime has no vendor logic: the model is a setting you change with one command. Be aware that the built-in OpenRouter default is a Claude model, and that rules such as the answer check were tuned on a few models, mostly small local ones, so results should be reported per model.",
   },
 ]
 
@@ -51,16 +51,16 @@ function CompareIcon({ value }: { value: "yes" | "no" | "partial" }) {
 }
 
 const rows = [
-  { feature: "Hallucination prevention (deterministic)", llm: "no", rct: "yes" },
-  { feature: "PDPA/GDPR audit trail (auto-generated)", llm: "no", rct: "yes" },
-  { feature: "Multi-model consensus verification", llm: "no", rct: "yes" },
+  { feature: "Safety gate before tool calls (in code)", llm: "no", rct: "yes" },
+  { feature: "Signed, hash-chained audit log", llm: "no", rct: "yes" },
+  { feature: "Jury of independent models (optional; scripted tests only)", llm: "no", rct: "partial" },
   { feature: "Persistent memory across sessions", llm: "no", rct: "yes" },
-  { feature: "Warm recall (<50ms)", llm: "no", rct: "yes" },
+  { feature: "Memory erasure for one person that can be verified", llm: "no", rct: "yes" },
   { feature: "Constitutional kill switch (A=0 -> F=0)", llm: "no", rct: "yes" },
-  { feature: "Thai-language model support (Typhoon v2)", llm: "partial", rct: "yes" },
+  { feature: "Thai-language model support (a default table entry, not compared for quality)", llm: "partial", rct: "partial" },
   { feature: "Vendor-neutral (swap models freely)", llm: "no", rct: "yes" },
-  { feature: "Cost-aware model routing", llm: "no", rct: "yes" },
-  { feature: "ISO/PDPA compliance documentation", llm: "no", rct: "yes" },
+  { feature: "Per-episode cost limit", llm: "no", rct: "yes" },
+  { feature: "Hosted, managed service", llm: "yes", rct: "no" },
   { feature: "Direct API access (no middleware)", llm: "yes", rct: "partial" },
   { feature: "Open source components (Apache 2.0)", llm: "no", rct: "yes" },
   { feature: "Custom fine-tuning support", llm: "yes", rct: "partial" },
@@ -89,7 +89,7 @@ const useCases = [
     scenario: "Thai enterprise AI deployment",
     llm: "⚠️",
     rct: "✅",
-    reason: "HexaCore includes Typhoon v2 (Thai model). PDPA compliance is built-in. Delentia Labs is Thailand-native.",
+    reason: "You can choose a Thai model or one on your own machine, and a data-residency policy is checked before every model call. Delentia does not certify PDPA compliance. It is built in Thailand by one person.",
   },
   {
     scenario: "Research / academic use",
@@ -165,14 +165,14 @@ export default async function RCTvsLLMAPIs() {
                 color: "border-warm-amber/30 from-warm-amber/8",
                 titleColor: "text-warm-amber",
                 points: [
-                  "10-layer cognitive OS over 7+ models (HexaCore)",
-                  "RCTDB 8-dimensional persistent memory",
+                  "Open-source runtime over a model you choose",
+                  "Persistent memory as a hash-chained event log",
                   "Deterministic safety (FDIA kill switch: A=0 -> F=0)",
-                  "Automatic PDPA/GDPR compliance audit trail",
-                  "UUID tombstone right-to-erasure built-in",
+                  "Signed, hash-chained audit log",
+                  "Erasure of one person's memory text by destroying its key",
                   "JITNA Protocol for agent-to-agent orchestration",
                   "Vendor-neutral — swap models without code changes",
-                  "Cost: routes simple tasks to cheaper models (saving not measured)",
+                  "Per-episode cost limit (no saving claimed)",
                 ],
                 verdict: "Best for: enterprise production, regulated industries",
                 verdictColor: "text-warm-amber",
@@ -253,8 +253,8 @@ export default async function RCTvsLLMAPIs() {
         <section className="mx-auto max-w-7xl px-4 py-12">
           <div className="rounded-2xl border border-warm-amber/20 bg-warm-amber/5 p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h2 className="text-xl font-bold text-foreground mb-2">Explore the HexaCore Routing Engine</h2>
-              <p className="text-warm-dim">See how 7 models collaborate with deterministic safety constraints</p>
+              <h2 className="text-xl font-bold text-foreground mb-2">How Delentia chooses and switches models</h2>
+              <p className="text-warm-dim">The model is a setting; the safety gate sits outside it</p>
             </div>
             <Link
               href={`${localePrefix}/solutions/dynamic-ai-routing`}

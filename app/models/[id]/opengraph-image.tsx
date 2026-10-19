@@ -4,33 +4,14 @@ export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
 const MODELS_DATA = {
-  "delentia-slm-v0.2.8-toon": {
-    name: "Delentia SLM (v0.2.8-toon)",
-    base: "Llama 3.1 8B",
-    scores: {
-      jitna: "94.2%",
-      fdia: "88.0%",
-      halu: "2.1%",
-      toon: "92.0%",
-      savings: "46.5%"
-    }
-  },
-  "delentia-slm-v0.2.9-toon": {
-    name: "Delentia SLM (v0.2.9-toon)",
-    base: "Llama 3.1 8B",
-    scores: {
-      jitna: "94.8%",
-      fdia: "89.0%",
-      halu: "1.9%",
-      toon: "93.0%",
-      savings: "47.1%"
-    }
-  }
+  "delentia-slm-jitna-v0.4": { name: "Delentia SLM (v0.4)", base: "Llama 3.1 8B", note: "Weights published on Hugging Face" },
+  "delentia-slm-v0.2.8-toon": { name: "Delentia SLM (v0.2.8-toon)", base: "Llama 3.1 8B", note: "Model card only: no weights in that repository" },
+  "delentia-slm-v0.2.9-toon": { name: "Delentia SLM (v0.2.9-toon)", base: "Llama 3.1 8B", note: "Model card only: no weights in that repository" },
 }
 
 export default async function Image({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const model = MODELS_DATA[id as keyof typeof MODELS_DATA] || MODELS_DATA["delentia-slm-v0.2.9-toon"]
+  const model = MODELS_DATA[id as keyof typeof MODELS_DATA] || MODELS_DATA["delentia-slm-jitna-v0.4"]
 
   return new ImageResponse(
     (
@@ -86,7 +67,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
 
           {/* Center */}
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <span style={{ fontSize: 20, color: "#f59e0b", fontWeight: 600 }}>MODEL SPECIFICATIONS</span>
+            <span style={{ fontSize: 20, color: "#f59e0b", fontWeight: 600 }}>PUBLISHED MODEL</span>
             <h1
               style={{
                 fontSize: 56,
@@ -105,14 +86,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
 
           {/* Bottom */}
           <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            {Object.entries(model.scores).map(([label, val]) => (
-              <div key={label} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                <span style={{ fontSize: 32, fontWeight: 700, color: "#f9fafb", lineHeight: 1 }}>
-                  {val}
-                </span>
-                <span style={{ fontSize: 14, color: "#6b7280", textTransform: "uppercase" }}>{label}</span>
-              </div>
-            ))}
+            <span style={{ fontSize: 20, color: "#d1d5db" }}>{model.note}. Scores not independently reproduced.</span>
             <div style={{ flex: 1 }} />
             <span style={{ fontSize: 16, color: "#f59e0b" }}>huggingface.co/delentia</span>
           </div>

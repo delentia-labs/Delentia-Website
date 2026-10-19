@@ -125,12 +125,12 @@ export default function CorePillarsSection({ locale }: CorePillarsSectionProps) 
 
   const pillars = [
     {
-      stat: locale === "en" ? "7 Models" : "7 โมเดล",
-      title: "HexaCore AI Engine",
+      stat: locale === "en" ? "You choose" : "คุณเลือกเอง",
+      title: locale === "en" ? "Model choice" : "การเลือกโมเดล",
       desc:
         locale === "en"
-          ? "Western, Eastern, and Typhoon (Thai) LLMs — each task routed to the optimal model automatically."
-          : "LLM Western, Eastern และ Typhoon ภาษาไทย — เลือกโมเดลที่เหมาะกับแต่ละงานอัตโนมัติ",
+          ? "A local model, any model on OpenRouter, or any OpenAI-compatible endpoint. The model is a setting, and the safety gate sits outside it."
+          : "โมเดลในเครื่อง โมเดลใดก็ได้บน OpenRouter หรือ endpoint ที่เข้ากันได้กับ OpenAI โมเดลเป็นการตั้งค่า และด่านความปลอดภัยอยู่นอกโมเดล",
       color: "#D4A853",
       statClass: "text-[#8A6914] dark:text-warm-amber",
       bg: "#FEF3C7",

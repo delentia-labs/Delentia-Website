@@ -83,9 +83,9 @@ export default async function PlatformPage() {
   ]
 
   const performanceMetrics = [
-    { metric: p("metric_hallucination"), rct: SITE_HALLUCINATION_RATE, industry: "12-15%", improvement: locale === "th" ? "หลักฐาน benchmark" : "Benchmark evidence" },
+    { metric: p("metric_hallucination"), rct: SITE_HALLUCINATION_RATE, industry: "n/a", improvement: locale === "th" ? "ไม่เคยวัด" : "Never measured" },
     { metric: p("metric_compression"), rct: "39–90% smaller than full snapshots, measured in bytes", industry: "n/a", improvement: locale === "th" ? "วัดเป็นไบต์" : "Measured in bytes" },
-    { metric: p("metric_latency"), rct: "0.07-1.5s (internal benchmark)", industry: "2-5s", improvement: locale === "th" ? "วัดเป็นไบต์" : "Measured in bytes" },
+    { metric: p("metric_latency"), rct: locale === "th" ? "ขึ้นกับโมเดล (CPU: หลายสิบวินาทีต่อเป้าหมาย)" : "Depends on the model (CPU: tens of seconds per goal)", industry: "n/a", improvement: locale === "th" ? "ไม่ได้เปรียบเทียบ" : "Not compared" },
     { metric: locale === "th" ? "เป้าหมายความพร้อมใช้งาน" : "Availability Target", rct: SITE_UPTIME, industry: "99.5%", improvement: locale === "th" ? "เป้าหมายปฏิบัติการ" : "Operational target" },
     { metric: p("metric_coverage"), rct: `${SITE_PUBLIC_SDK_TESTS} verified / ${SITE_PUBLIC_SDK_COVERAGE}`, industry: "70-80%", improvement: locale === "th" ? "public SDK proof lane" : "Public SDK proof lane" },
     { metric: p("metric_cost"), rct: "not measured", industry: "1x baseline", improvement: locale === "th" ? "ประมาณการภายใน" : "Internal estimate" },
@@ -93,10 +93,10 @@ export default async function PlatformPage() {
 
   const regionalMarkets = [
     { lang: locale === 'th' ? "อังกฤษ" : "English", region: "US", model: "Claude Opus 4.6", compliance: "—" },
-    { lang: "ไทย", region: "TH", model: "DeepSeek V3.2", compliance: "PDPA" },
-    { lang: "ญี่ปุ่น", region: "JP", model: "Claude 3.5 Sonnet", compliance: "APPI" },
-    { lang: "เกาหลี", region: "KR", model: "GPT-4 Turbo", compliance: "PIPA" },
-    { lang: locale === 'th' ? "จีน (ตัวย่อ)" : "Chinese (Simplified)", region: "CN", model: "Qwen 2.5 72B", compliance: "PIPL" },
+    { lang: "ไทย", region: "TH", model: "Typhoon v2 70B", compliance: "—" },
+    { lang: "ญี่ปุ่น", region: "JP", model: "Claude Sonnet 5", compliance: "—" },
+    { lang: "เกาหลี", region: "KR", model: "GPT-4 Turbo", compliance: "—" },
+    { lang: locale === 'th' ? "จีน (ตัวย่อ)" : "Chinese (Simplified)", region: "CN", model: "Qwen 2.5 72B", compliance: "—" },
     { lang: locale === 'th' ? "จีน (ตัวเต็ม)" : "Chinese (Traditional)", region: "TW", model: "Qwen 2.5 72B", compliance: "—" },
     { lang: "เวียดนาม", region: "VN", model: "Qwen 2.5 7B", compliance: "—" },
     { lang: "อินโดนีเซีย", region: "ID", model: "Qwen 2.5 7B", compliance: "—" },
@@ -108,7 +108,7 @@ export default async function PlatformPage() {
         {
           question: "แพลตฟอร์ม Delentia Labs คืออะไร",
           answer:
-            "RCT Ecosystem คือ Constitutional AI Operating System สำหรับงานระดับองค์กรที่รวม 10-layer architecture, multi-LLM verification, memory infrastructure, routing, governance และ compliance-aware deployment ไว้ในระบบเดียว",
+            "Delentia คือรันไทม์ agent โอเพนซอร์สที่มีด่านความปลอดภัย การอนุมัติด้วยลายเซ็นของมนุษย์ บันทึกตรวจสอบที่ลงนาม และหน่วยความจำที่ตรวจสอบได้ สถาปัตยกรรม 10 ชั้นเป็นแบบที่กำลังสร้างไปให้ถึง ยังไม่มีบริการโฮสต์",
         },
         {
           question: "แพลตฟอร์มนี้เหมาะกับองค์กรแบบใด",
@@ -125,7 +125,7 @@ export default async function PlatformPage() {
         {
           question: "What is the Delentia Labs platform?",
           answer:
-            "RCT Ecosystem is a constitutional AI operating system that combines a 10-layer architecture, multi-LLM verification, persistent memory, intelligent routing, governance, and compliance-aware deployment into one platform.",
+            "Delentia is an open-source agent runtime with a safety gate, human-signed approvals, a signed audit log and verifiable memory. The 10-layer architecture is the design being built toward. There is no hosted service yet.",
         },
         {
           question: "Who is the platform designed for?",
@@ -288,12 +288,11 @@ export default async function PlatformPage() {
 {`{
   "output": "Analysis complete",
   "signature": {
-    "tier": "S-8",
-    "confidence": 0.961,
-    "consensus": [4, 6, 8],
-    "hash": "0x7f3a...b2c1"
+    "note": "illustrative shape only, not a real output",
+    "algorithm": "Ed25519",
+    "digest": "sha256:..."
   },
-  "verified": true,
+  "verified": "re-check with delentia jury verify",
   "timestamp": "2026-03-04T12:00:00Z"
 }`}
               </pre>

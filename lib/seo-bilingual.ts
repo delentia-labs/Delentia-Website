@@ -31,7 +31,7 @@ function normalizeLocalePath(locale: Locale, path: string) {
 export const baseKeywords: Record<Locale, string[]> = {
   en: [
     "constitutional AI",
-    "multi-LLM consensus",
+    "model jury",
     "AI verification",
     "SignedAI",
     "intent-driven AI",

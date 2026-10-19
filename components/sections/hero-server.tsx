@@ -3,7 +3,7 @@ import Link from "next/link"
 import { ArrowDown } from "lucide-react"
 import { getLocalePrefix } from "@/lib/i18n"
 import { pixelIcons } from "@/lib/pixel-icons"
-import { SITE_MCP_LIVE_TOOL_COUNT, SITE_MCP_TEST_COUNT, SITE_HEXACORE_COUNT } from "@/lib/site-config"
+import { SITE_MCP_LIVE_TOOL_COUNT, SITE_MCP_TEST_COUNT, SITE_ALGORITHM_COUNT } from "@/lib/site-config"
 import { AsciinemaTerminalPlayer } from "@/components/ui/asciinema-terminal-player"
 import { HeroOrbActivator } from "@/components/sections/hero-orb-activator"
 import { WaitlistCtaButton } from "@/components/sections/waitlist-cta-button"
@@ -28,7 +28,7 @@ export function HeroServer({ locale }: HeroServerProps) {
         ctaDemo: "ดู Live MCP Terminal",
         statAlgorithms: "Live Tools",
         statLayers: "Tests Passing",
-        statGenomes: "HexaCore Models",
+        statGenomes: "Algorithms (open source)",
         statUptime: "Deployed",
         scroll: "เลื่อนเพื่อสำรวจ",
       }
@@ -44,7 +44,7 @@ export function HeroServer({ locale }: HeroServerProps) {
         ctaDemo: "View Live MCP Terminal",
         statAlgorithms: "Live Tools",
         statLayers: "Tests Passing",
-        statGenomes: "HexaCore Models",
+        statGenomes: "Algorithms (open source)",
         statUptime: "Deployed",
         scroll: "Scroll to explore",
       }
@@ -52,7 +52,7 @@ export function HeroServer({ locale }: HeroServerProps) {
   const stats = [
     { value: String(SITE_MCP_LIVE_TOOL_COUNT), label: copy.statAlgorithms, iconSrc: pixelIcons.brain },
     { value: String(SITE_MCP_TEST_COUNT), sublabel: "CI", label: copy.statLayers, iconSrc: pixelIcons.layers },
-    { value: String(SITE_HEXACORE_COUNT), label: copy.statGenomes, iconSrc: pixelIcons.genome },
+    { value: String(SITE_ALGORITHM_COUNT), label: copy.statGenomes, iconSrc: pixelIcons.genome },
     { value: "Cloudflare", sublabel: "Workers", label: copy.statUptime, iconSrc: pixelIcons.cpu },
   ]
 

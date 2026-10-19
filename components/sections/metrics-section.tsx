@@ -1,86 +1,63 @@
 "use client"
 
 import Link from "next/link"
-import { m, useInView, useReducedMotion } from "framer-motion"
-import { useEffect, useRef, useState } from "react"
 import { useTheme } from "@/components/theme-provider"
 import { usePathname } from "next/navigation"
 import { useLanguage } from "@/components/language-provider"
-import { LazyPerformanceRadarChart } from "@/components/diagrams/lazy-diagram-wrapper"
 import SectionHeading from "@/components/section-heading"
-import OptimizedImage from "@/components/ui/optimized-image"
 import { useMounted } from "@/hooks/use-mounted"
 import { pixelIcons } from "@/lib/pixel-icons"
 import { getLocalePrefix, resolveLocale } from "@/lib/i18n"
-import { SITE_HALLUCINATION_RATE, SITE_MICROSERVICE_COUNT, SITE_UPTIME } from "@/lib/site-config"
+import { SITE_ALGORITHM_COUNT, SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
 
 const PIXEL_METRICS = pixelIcons.network
 
-const PIXEL_ICONS = [
-  pixelIcons.network,
-  pixelIcons.algorithms,
-  pixelIcons.architecture,
-  pixelIcons.genome,
-]
-
-const metrics = [
-  { label: { en: "Overall Accuracy", th: "ความแม่นยำโดยรวม" }, value: "not measured", bar: 96.1, color: "#7B9E87" },
-  { label: { en: "Hallucination Benchmark", th: "Benchmark Hallucination" }, value: SITE_HALLUCINATION_RATE, bar: 99.7, color: "#7B9E87" },
-  { label: { en: "Response Latency", th: "Response Latency" }, value: "< 200ms", bar: 80, color: "#D4A853" },
-  { label: { en: "Availability Target", th: "Availability Target" }, value: SITE_UPTIME, bar: 99.9, color: "#7B9E87" },
-  { label: { en: "Data Quality Score", th: "คะแนน Data Quality" }, value: "85/100", bar: 85, color: "#89B4C8" },
-  { label: { en: "Constitutional Compliance", th: "Constitutional Compliance" }, value: "100%", bar: 100, color: "#7B9E87" },
-]
-
-const highlightsData = {
-  en: [
-    { value: SITE_MICROSERVICE_COUNT, suffix: "+", label: "Runtime Components", desc: "Current public snapshot", href: "/integration" },
-    { value: 41, suffix: "", label: "Algorithms", desc: "Across 9 tiers", href: "/algorithms" },
-    { value: 10, suffix: "", label: "Layers", desc: "Architecture stack", href: "/architecture" },
-    { value: 7, suffix: "", label: "Genomes", desc: "Core DNA components", href: "/genome" },
-  ],
-  th: [
-    { value: SITE_MICROSERVICE_COUNT, suffix: "+", label: "Runtime Components", desc: "สแนปช็อตสาธารณะปัจจุบัน", href: "/integration" },
-    { value: 41, suffix: "", label: "Algorithms", desc: "ใน 9 Tiers", href: "/algorithms" },
-    { value: 10, suffix: "", label: "Layers", desc: "Architecture Stack", href: "/architecture" },
-    { value: 7, suffix: "", label: "Genomes", desc: "องค์ประกอบ DNA หลัก", href: "/genome" },
-  ],
+// Round 87 (claims review): this section used to draw progress bars for "Overall Accuracy 96.1%", "Hallucination
+// 99.7%", "Latency < 200 ms", "Availability 99.9%", "Data Quality 85/100", "Constitutional Compliance 100%" and a radar
+// chart of six scores. None of those was measured. It now lists only results that were measured, each with what it
+// does NOT show; the full method and source of every result is on the Benchmark page.
+type Measured = {
+  label: { en: string; th: string }
+  value: { en: string; th: string }
+  limit: { en: string; th: string }
 }
 
-function AnimatedCounter({ target, suffix = "", reducedMotion = false }: { target: number; suffix?: string; reducedMotion?: boolean }) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(ref, { once: true })
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    if (!isInView) return
-    if (reducedMotion) {
-      const frame = requestAnimationFrame(() => {
-        setCount(target)
-      })
-      return () => cancelAnimationFrame(frame)
-    }
-
-    const duration = 1500
-    const startTime = Date.now()
-    let frame = 0
-
-    const tick = () => {
-      const elapsed = Date.now() - startTime
-      const progress = Math.min(elapsed / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-      setCount(Math.round(eased * target))
-      if (progress < 1) {
-        frame = requestAnimationFrame(tick)
-      }
-    }
-
-    frame = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(frame)
-  }, [isInView, reducedMotion, target])
-
-  return <span ref={ref}>{count}{suffix}</span>
-}
+const measured: Measured[] = [
+  {
+    label: { en: "Public test suite", th: "ชุดทดสอบสาธารณะ" },
+    value: {
+      en: `${SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US")} passed, 0 failed, 91.08% line coverage`,
+      th: `ผ่าน ${SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US")} ล้มเหลว 0 ครอบคลุมบรรทัด 91.08%`,
+    },
+    limit: { en: "Shows the code does what the tests say, not that a model uses the tools well.", th: "แสดงว่าโค้ดทำตามที่ชุดทดสอบเขียน ไม่ได้แสดงว่าโมเดลใช้เครื่องมือได้ดี" },
+  },
+  {
+    label: { en: "Hijacked-model test", th: "ทดสอบโมเดลที่ถูกยึด" },
+    value: {
+      en: "18 of 21 scenarios reached a harmful side effect without the gate, 0 with it",
+      th: "18 จาก 21 สถานการณ์ไปถึงผลข้างเคียงที่เป็นอันตรายเมื่อไม่มีเกต, 0 เมื่อมีเกต",
+    },
+    limit: { en: "A scripted worst-case model, not a real one.", th: "เป็นโมเดลสคริปต์กรณีเลวร้ายที่สุด ไม่ใช่โมเดลจริง" },
+  },
+  {
+    label: { en: "Default policy on labelled requests", th: "นโยบายค่าเริ่มต้นกับคำขอที่ติดป้าย" },
+    value: {
+      en: "169 requests: 3 of 110 unsafe ones ran, 6 of 59 harmless ones were stopped",
+      th: "169 คำขอ: คำขอไม่ปลอดภัยที่ยังรันได้ 3 จาก 110, คำขอไม่เป็นอันตรายที่ถูกหยุด 6 จาก 59",
+    },
+    limit: { en: "Labels written by the developers; not an independent test.", th: "ป้ายเขียนโดยผู้พัฒนา ไม่ใช่การทดสอบอิสระ" },
+  },
+  {
+    label: { en: "Model-free demo", th: "เดโมที่ไม่ต้องมีโมเดล" },
+    value: { en: "5 of 5 checks, about 5 seconds, signed audit log verifies", th: "ผ่าน 5 จาก 5 การตรวจ ราว 5 วินาที บันทึกตรวจสอบที่ลงนามตรวจผ่าน" },
+    limit: { en: "A fixed program stands in for the model; the gate, signature and log are real.", th: "โปรแกรมคงที่แทนโมเดล แต่เกต ลายเซ็น และบันทึกเป็นของจริง" },
+  },
+  {
+    label: { en: "With a capable model", th: "กับโมเดลที่เก่งพอ" },
+    value: { en: "Not measured yet", th: "ยังไม่ได้วัด" },
+    limit: { en: "Only scripted models and small local models have been used so far.", th: "จนถึงตอนนี้ใช้เพียงโมเดลสคริปต์และโมเดลท้องถิ่นขนาดเล็ก" },
+  },
+]
 
 export default function MetricsSection() {
   const { resolvedTheme } = useTheme()
@@ -88,61 +65,47 @@ export default function MetricsSection() {
   const pathname = usePathname()
   const mounted = useMounted()
   const isDark = mounted && resolvedTheme === "dark"
-  const prefersReducedMotion = useReducedMotion()
-  const highlights = highlightsData[language as keyof typeof highlightsData] || highlightsData.en
+  const isEn = language === "en"
   const localePrefix = getLocalePrefix(resolveLocale(pathname, language))
 
   return (
-    <section id="metrics" aria-label="Performance Metrics" className={`py-16 md:py-24 transition-colors duration-300 ${isDark ? "bg-dark-900" : "bg-warm-cream"}`}>
+    <section id="metrics" aria-label="Measured results" className={`py-16 md:py-24 transition-colors duration-300 ${isDark ? "bg-dark-900" : "bg-warm-cream"}`}>
       <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          tag={language === "en" ? "Performance" : "ประสิทธิภาพ"}
+          tag={isEn ? "Measured" : "ผลที่วัดแล้ว"}
           tagColor="sage"
-          title="System Metrics"
-          italicWord="Metrics"
-          description={language === "en" ? "Public-safe indicators showing benchmark context, current footprint, and operational targets for the platform." : "ตัวชี้วัดแบบ public-safe ที่แสดงบริบท benchmark footprint ปัจจุบัน และเป้าหมายเชิงปฏิบัติการของแพลตฟอร์ม"}
+          title="Measured results"
+          italicWord="results"
+          description={
+            isEn
+              ? `Only results that were actually measured, each with what it does not show. ${SITE_ALGORITHM_COUNT} algorithms are implemented in the open-source repository; that is a count of modules, not a performance claim.`
+              : `เฉพาะผลที่วัดจริง พร้อมสิ่งที่ผลนั้นไม่ได้แสดง อัลกอริทึม ${SITE_ALGORITHM_COUNT} ตัวถูกเขียนไว้ในรีโพโอเพนซอร์ส นั่นคือจำนวนโมดูล ไม่ใช่การอ้างประสิทธิภาพ`
+          }
           pixelIcon={PIXEL_METRICS}
         />
 
-        <m.div
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={prefersReducedMotion ? undefined : { duration: 0.35 }}
-          className="mb-8 grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-4"
-        >
-          {highlights.map((highlight, index) => (
-            <Link key={highlight.label} href={`${localePrefix}${highlight.href}`} className="block">
-              <m.div whileHover={prefersReducedMotion ? undefined : { y: -2 }} className={`group relative overflow-hidden rounded-2xl border p-5 text-center transition-[border-color,box-shadow,transform] duration-200 ${isDark ? "bg-warm-charcoal border-border hover:shadow-[0_8px_30px_rgba(0,0,0,0.22)]" : "bg-white border-warm-light-gray hover:shadow-[0_8px_30px_rgba(0,0,0,0.05)]"}`}>
-                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(123,158,135,0.12),transparent_46%)]" />
-                </div>
-                <OptimizedImage src={PIXEL_ICONS[index]} alt="" pixelated showErrorFallback={false} containerClassName="mx-auto mb-2 h-8 w-8" objectFit="contain" width={32} height={32} className="transition duration-200 group-hover:scale-110 group-hover:brightness-95 group-hover:contrast-125" />
-                <div className={`text-3xl font-bold ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}><AnimatedCounter target={highlight.value} suffix={highlight.suffix} reducedMotion={prefersReducedMotion ?? undefined} /></div>
-                <div className="mt-1 text-sm font-semibold text-warm-amber">{highlight.label}</div>
-                <div className={`mt-0.5 text-xs sm:text-sm ${language === "th" ? "subtitle-th" : ""} ${isDark ? "text-warm-dim" : "text-warm-secondary"}`}>{highlight.desc}</div>
-              </m.div>
-            </Link>
+        <div className="space-y-3">
+          {measured.map((item) => (
+            <div
+              key={item.label.en}
+              className={`rounded-2xl border p-5 ${isDark ? "bg-warm-charcoal border-border" : "bg-white border-warm-light-gray"}`}
+            >
+              <div className={`text-sm sm:text-base font-semibold ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
+                {isEn ? item.label.en : item.label.th}
+              </div>
+              <div className="mt-1 font-mono text-sm font-bold text-warm-amber">{isEn ? item.value.en : item.value.th}</div>
+              <div className={`mt-1 text-xs sm:text-sm ${isDark ? "text-warm-dim" : "text-warm-secondary"}`}>
+                {isEn ? "Does not show: " : "ไม่ได้แสดง: "}
+                {isEn ? item.limit.en : item.limit.th}
+              </div>
+            </div>
           ))}
-        </m.div>
+        </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
-          <m.div initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.98 }} whileInView={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }} viewport={{ once: true }} transition={prefersReducedMotion ? undefined : { duration: 0.4 }} className="md:col-span-2 lg:col-span-1">
-            <LazyPerformanceRadarChart />
-          </m.div>
-          <div className="space-y-3">
-            {metrics.map((metric, index) => (
-              <m.div key={metric.label.en} initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }} whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, margin: "-20px" }} transition={prefersReducedMotion ? undefined : { duration: 0.3, delay: index * 0.03 }} className={`rounded-2xl border p-5 transition-[border-color,box-shadow] duration-200 ${isDark ? "bg-warm-charcoal border-border hover:shadow-[0_4px_20px_rgba(0,0,0,0.18)]" : "bg-white border-warm-light-gray hover:shadow-[0_4px_20px_rgba(0,0,0,0.04)]"}`}>
-                <div className="mb-3 flex items-center justify-between">
-                  <span className={`text-sm sm:text-base font-semibold ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>{metric.label[language as keyof typeof metric.label] || metric.label.en}</span>
-                  <span className="font-mono text-sm font-bold" style={{ color: metric.color }}>{metric.value}</span>
-                </div>
-                <div className={`h-2 overflow-hidden rounded-full ${isDark ? "bg-[#2A2A2A]" : "bg-warm-sand"}`}>
-                  <m.div initial={prefersReducedMotion ? false : { width: 0 }} whileInView={prefersReducedMotion ? undefined : { width: `${metric.bar}%` }} viewport={{ once: true }} transition={prefersReducedMotion ? undefined : { duration: 0.6, delay: 0.12 + index * 0.04 }} className="h-full rounded-full" style={{ width: prefersReducedMotion ? `${metric.bar}%` : undefined, backgroundColor: metric.color }} />
-                </div>
-              </m.div>
-            ))}
-          </div>
+        <div className="mt-6 text-center">
+          <Link href={`${localePrefix}/benchmark`} className="text-sm font-medium text-warm-amber hover:underline">
+            {isEn ? "Method, limits and source of every result" : "วิธีวัด ข้อจำกัด และที่มาของทุกผล"}
+          </Link>
         </div>
       </div>
     </section>

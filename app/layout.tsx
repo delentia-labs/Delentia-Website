@@ -97,7 +97,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // NOTE: No headers() call here — keeps root layout ISR-compatible.
   // Locale-specific metadata is provided by each page's generateMetadata.
   const title = "Delentia Labs - Intent-Driven AI Operating System"
-  const description = "Constitutional AI infrastructure with 10-layer architecture, multi-LLM consensus, and data sovereignty for enterprise deployment."
+  const description = "Open-source agent runtime with a safety gate before tool calls, human-signed approvals and a signed audit log you can verify yourself."
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -113,7 +113,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "intent operating system",
       "FDIA formula",
       "JITNA protocol",
-      "multi-LLM consensus",
+      "model jury",
       "AI verification",
       "SignedAI",
       "RCT-7 process",

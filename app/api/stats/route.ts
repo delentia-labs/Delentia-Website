@@ -5,10 +5,7 @@ import {
   SITE_MICROSERVICE_COUNT,
   SITE_ALGORITHM_COUNT,
   SITE_LAYER_COUNT,
-  SITE_HEXACORE_COUNT,
-  SITE_CONSENSUS_MODELS,
   SITE_UPTIME,
-  SITE_HALLUCINATION_RATE,
 } from "@/lib/site-config"
 
 export const revalidate = 3600 // ISR: cache for 1 hour
@@ -19,10 +16,7 @@ const FALLBACK = {
   microserviceCount: SITE_MICROSERVICE_COUNT,
   algorithmCount: SITE_ALGORITHM_COUNT,
   layerCount: SITE_LAYER_COUNT,
-  hexaCoreCount: SITE_HEXACORE_COUNT,
-  consensusModels: SITE_CONSENSUS_MODELS,
   uptime: SITE_UPTIME,
-  hallucinationRate: SITE_HALLUCINATION_RATE,
   source: "static",
 }
 

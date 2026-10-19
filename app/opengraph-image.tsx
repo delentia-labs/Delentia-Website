@@ -11,8 +11,8 @@ export default async function OgImage() {
   const title = locale === "th" ? "Delentia Labs" : "Delentia Labs"
   const subtitle = locale === "th" ? "ระบบปฏิบัติการ AI ที่เน้น Intent" : "Intent Operating System"
   const tagline = locale === "th"
-    ? "Constitutional AI · Multi-LLM Consensus · Data Sovereignty"
-    : "Constitutional AI · Multi-LLM Consensus · Data Sovereignty"
+    ? "โอเพนซอร์ส · ด่านความปลอดภัย · บันทึกตรวจสอบที่ลงนาม"
+    : "Open source · Safety gate · Signed audit log"
 
   return new ImageResponse(
     (

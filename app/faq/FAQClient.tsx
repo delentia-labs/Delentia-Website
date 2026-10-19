@@ -4,7 +4,6 @@ import { useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ChevronDown, BookOpen, Zap, Tag, History, HelpCircle } from "lucide-react"
-import { SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 type FAQClientProps = {
   locale: "en" | "th"
@@ -32,7 +31,7 @@ const faqCategories = [
       {
         qEn: "What makes RCT different from LangChain or AutoGPT?",
         qTh: "RCT แตกต่างจาก LangChain หรือ AutoGPT อย่างไร?",
-        aEn: `RCT is a complete ecosystem, not just a framework. It includes its own equation (FDIA), protocol (JITNA), database (RCTDB), 41 algorithms, and 7 genome subsystems. While LangChain focuses on chaining LLM calls and AutoGPT on autonomous agents, RCT provides end-to-end AI governance with built-in quality control (no hallucination rate is claimed), cost optimization, and evolutionary improvement.`,
+        aEn: `RCT is a complete ecosystem, not just a framework. It includes its own equation (FDIA), protocol (JITNA), database (RCTDB), 41 algorithms, and 7 genome subsystems. While LangChain focuses on chaining LLM calls and AutoGPT on autonomous agents, RCT provides a governance layer around the model: a safety gate, signed approvals and a signed audit log. No hallucination rate or cost saving is claimed.`,
         aTh: `RCT เป็น Ecosystem ที่สมบูรณ์ ไม่ใช่แค่ Framework มี Equation (FDIA), Protocol (JITNA), Database (RCTDB), 41 Algorithms และ 7 Genome Subsystems พร้อมไม่ได้อ้างอัตรา Hallucination`,
       },
       {
@@ -74,16 +73,16 @@ const faqCategories = [
         aTh: "RCT เป็น LLM-agnostic รองรับ OpenAI, Anthropic Claude, Google Gemini, Ollama models ในเครื่อง และ API ที่เข้ากันได้กับ OpenAI ทุกตัว Intent Loop Engine จะเลือก Model ที่เหมาะสมที่สุดอัตโนมัติ",
       },
       {
-        qEn: "What is the RCT HexaCore 7-model architecture?",
-        qTh: "สถาปัตยกรรม HexaCore 7 โมเดลของ RCT คืออะไร?",
-        aEn: `HexaCore is the 7-model AI infrastructure: 3 Western LLMs + 3 Eastern LLMs + 1 Thai regional model (Typhoon v2). For critical queries, all 7 models process in parallel through the HexaCore Consensus mechanism, which enforces constitutional agreement thresholds (50–100% by tier) before any output is released. Routing simple queries to cheaper models is designed to lower cost with no cost or hallucination figure claimed.`,
-        aTh: `HexaCore คือโครงสร้าง AI 7 โมเดล: LLM ตะวันตก 3 ตัว + ตะวันออก 3 ตัว + โมเดลไทย 1 ตัว (Typhoon v2) สำหรับ query สำคัญ ทั้ง 7 โมเดลประมวลผลพร้อมกันผ่านกลไก HexaCore Consensus ที่บังคับ threshold รัฐธรรมนูญ (50–100% ตาม Tier) ก่อนปล่อยผลลัพธ์ ซึ่งออกแบบมาเพื่อลดต้นทุนและลด hallucination (ไม่ได้อ้างตัวเลข)`,
+        qEn: "What was HexaCore?",
+        qTh: "HexaCore คืออะไร?",
+        aEn: `HexaCore was the name of a planned roster of seven models. No such roster runs. The model is a setting you choose: a local model, any model on OpenRouter, or any OpenAI-compatible endpoint. The independent-vote idea lives on as the SignedAI jury (scripted-voter tests only). No cost or hallucination figure is claimed.`,
+        aTh: `HexaCore คือชื่อของรายชื่อโมเดล 7 ตัวที่เคยวางแผนไว้ ไม่มีรายชื่อดังกล่าวทำงานอยู่ โมเดลเป็นการตั้งค่าที่คุณเลือก: โมเดลในเครื่อง โมเดลใดก็ได้บน OpenRouter หรือ endpoint ที่เข้ากันได้กับ OpenAI แนวคิดการลงคะแนนอิสระยังอยู่ในรูปคณะลูกขุน SignedAI (ทดสอบกับผู้ลงคะแนนแบบสคริปต์เท่านั้น) ไม่อ้างตัวเลขต้นทุนหรือ hallucination`,
       },
       {
-        qEn: `How does SignedAI reduce hallucinations?`,
-        qTh: `SignedAI ลด hallucination ได้อย่างไร?`,
-        aEn: `SignedAI routes critical queries through 4–8 models simultaneously and requires constitutional consensus: Tier 4 = 50% agreement, Tier 6 = 67%, Tier 8 = 75%, Tier S = 100%. If consensus is not reached, the system escalates rather than releasing an unverified output. The industry average hallucination rate is estimated at 12–15% in published research; RCT does not claim a hallucination rate; it works toward fewer hallucinations through this multi-model verification layer combined with Ed25519 cryptographic signatures on all consensus decisions.`,
-        aTh: `SignedAI ส่ง query สำคัญผ่าน 4–8 โมเดลพร้อมกันและต้องการ consensus รัฐธรรมนูญ: Tier 4 = 50%, Tier 6 = 67%, Tier 8 = 75%, Tier S = 100% ถ้าไม่ถึง threshold ระบบจะ escalate ไม่ใช่ปล่อยผลลัพธ์ที่ยังไม่ verified อุตสาหกรรม hallucinate ที่ 12–15% (ประมาณการจากงานวิจัยที่เผยแพร่) แต่ RCT ไม่ได้อ้างอัตรา hallucination ผ่าน multi-model verification layer พร้อมลายเซ็น Ed25519`,
+        qEn: `What does SignedAI do?`,
+        qTh: `SignedAI ทำอะไร?`,
+        aEn: `SignedAI is a jury runner: you name the member models, each votes agree, disagree or abstain independently, abstentions never help a proposal pass, a jury of one model is not a jury, and the verdict is signed with Ed25519 so anyone can re-check it. It has been tested with scripted voters only. It has not been shown to reduce hallucination, and no rate is claimed.`,
+        aTh: `SignedAI คือตัวรันคณะลูกขุน: คุณระบุโมเดลสมาชิก แต่ละตัวลงคะแนนเห็นด้วย ไม่เห็นด้วย หรืองดออกเสียงโดยอิสระ การงดออกเสียงไม่ช่วยให้ข้อเสนอผ่าน โมเดลเดียวไม่ใช่คณะลูกขุน และคำตัดสินลงนามด้วย Ed25519 ใครก็ตรวจซ้ำได้ ทดสอบกับผู้ลงคะแนนแบบสคริปต์เท่านั้น ยังไม่แสดงว่าลด hallucination ได้ และไม่อ้างอัตราใด ๆ`,
       },
       {
         qEn: "How much does the Delta Engine save?",

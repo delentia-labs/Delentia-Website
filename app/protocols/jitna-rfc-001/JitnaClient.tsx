@@ -15,7 +15,6 @@ import OptimizedImage from "@/components/ui/optimized-image"
 import { pixelIcons } from "@/lib/pixel-icons"
 import AuthorBlock from "@/components/author-block"
 import RelatedContent from "@/components/related-content"
-import { SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 const PIXEL_JITNA = pixelIcons.jitna
 
@@ -84,16 +83,16 @@ const useCases = [
     titleTh: "การป้องกัน Hallucination",
     descEn: `JITNA's Reflection primitive enables self-verification. Agents check their own outputs against intent before delivery, with no cost or hallucination figure claimed.`,
     descTh: `Reflection Primitive ของ JITNA ทำให้เกิด Self-Verification Agents ตรวจสอบผลลัพธ์ของตนเองกับ Intent ก่อนส่งมอบ ไม่ได้อ้างอัตรา hallucination`,
-    metricEn: `${SITE_HALLUCINATION_RATE} hallucination rate`,
-    metricTh: `อัตรา Hallucination ${SITE_HALLUCINATION_RATE}`,
+    metricEn: "hallucination reduction: not measured",
+    metricTh: "การลด Hallucination: ยังไม่ได้วัด",
   },
   {
     titleEn: "Context Preservation",
     titleTh: "การรักษา Context",
     descEn: "The Memory primitive stores conversation context across sessions. Users don't need to repeat themselves — the system remembers preferences and history.",
     descTh: "Memory Primitive เก็บ Context การสนทนาข้ามเซสชัน ผู้ใช้ไม่ต้องพูดซ้ำ — ระบบจดจำความชอบและประวัติ",
-    metricEn: "< 200ms latency",
-    metricTh: "Latency < 200ms",
+    metricEn: "latency: not measured",
+    metricTh: "Latency: ยังไม่ได้วัด",
   },
   {
     titleEn: "Cross-Platform Integration",
@@ -430,16 +429,16 @@ export default function JitnaClient() {
               {
                 title: isEn ? "AI Hallucination Prevention" : "การป้องกัน AI Hallucination",
                 description: isEn
-                  ? "How SignedAI consensus works toward fewer hallucinations (no rate is claimed)."
-                  : "SignedAI Consensus ลด Hallucination ได้อย่างไร",
+                  ? "What Delentia does about wrong answers, and what was measured (no rate is claimed)."
+                  : "Delentia ทำอะไรกับคำตอบที่ผิด และสิ่งที่วัดแล้ว (ไม่อ้างอัตรา)",
                 href: "/solutions/ai-hallucination-prevention",
                 category: isEn ? "Solution" : "โซลูชัน",
               },
               {
                 title: isEn ? "RCT-7 Mental Model" : "RCT-7 Mental Model",
                 description: isEn
-                  ? "The 7-genome subsystem model and HexaCore decision architecture."
-                  : "โมเดล 7-Genome Subsystem และ HexaCore Decision Architecture",
+                  ? "The seven-step reasoning model behind the RCT-7 plan."
+                  : "โมเดลการให้เหตุผลเจ็ดขั้นเบื้องหลังแผน RCT-7",
                 href: "/protocols/rct-7-mental-model",
                 category: isEn ? "Protocol" : "โปรโตคอล",
               },

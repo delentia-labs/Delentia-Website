@@ -3,7 +3,6 @@ import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getBreadcrumbSchema, getFAQSchema } from "@/lib/schema"
 import SolutionsClient from "./SolutionsClient"
-import { SITE_HALLUCINATION_RATE } from "@/lib/site-config"
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale()
@@ -11,8 +10,8 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     "AI Solutions",
     "โซลูชัน AI",
-    `Enterprise AI solutions by Delentia Labs: AI Hallucination Prevention (targeting ${SITE_HALLUCINATION_RATE}), Enterprise AI Memory, and Dynamic AI Routing. Constitutional AI pathways for regulated industries with public-safe evaluation framing.`,
-    `โซลูชัน AI สำหรับองค์กรจาก Delentia Labs: การป้องกัน AI Hallucination (เป้าหมาย ${SITE_HALLUCINATION_RATE}), AI Memory ระดับองค์กร และ Dynamic AI Routing`,
+    `What Delentia does about wrong answers, long-term memory and model routing, with what was measured and what was not. Open source; no hosted service yet.`,
+    `สิ่งที่ Delentia ทำเกี่ยวกับคำตอบที่ผิด หน่วยความจำระยะยาว และการเลือกโมเดล พร้อมสิ่งที่วัดแล้วและยังไม่ได้วัด โอเพนซอร์ส ยังไม่มีบริการโฮสต์`,
     "/solutions",
     ["AI hallucination prevention", "enterprise AI memory", "dynamic AI routing", "constitutional AI", "regulated industries AI"]
   )

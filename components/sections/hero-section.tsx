@@ -12,7 +12,7 @@ import { useMounted } from "@/hooks/use-mounted"
 import { useIdleActivation } from "@/hooks/use-idle-activation"
 import { pixelIcons } from "@/lib/pixel-icons"
 import { useCardSpotlight } from "@/hooks/use-card-spotlight"
-import { SITE_MCP_LIVE_TOOL_COUNT, SITE_MCP_TEST_COUNT, SITE_HEXACORE_COUNT } from "@/lib/site-config"
+import { SITE_MCP_LIVE_TOOL_COUNT, SITE_MCP_TEST_COUNT, SITE_ALGORITHM_COUNT } from "@/lib/site-config"
 
 const HeroArchitectureVisual = dynamic(() => import("@/components/sections/hero-architecture-visual"), {
   loading: () => (
@@ -57,7 +57,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
         ctaEarlyAccess: "เข้าร่วม Early Access",
         statAlgorithms: "Live Tools",
         statLayers: "Tests Passing",
-        statGenomes: "HexaCore Models",
+        statGenomes: "Algorithms (open source)",
         statUptime: "Deployed",
         scroll: "เลื่อนเพื่อสำรวจ",
       }
@@ -74,7 +74,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
         ctaEarlyAccess: "Join Early Access",
         statAlgorithms: "Live Tools",
         statLayers: "Tests Passing",
-        statGenomes: "HexaCore Models",
+        statGenomes: "Algorithms (open source)",
         statUptime: "Deployed",
         scroll: "Scroll to explore",
       }
@@ -88,7 +88,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   const stats = [
     { value: String(SITE_MCP_LIVE_TOOL_COUNT), label: copy.statAlgorithms, iconSrc: pixelIcons.brain },
     { value: String(SITE_MCP_TEST_COUNT), sublabel: "CI", label: copy.statLayers, iconSrc: pixelIcons.layers },
-    { value: String(SITE_HEXACORE_COUNT), label: copy.statGenomes, iconSrc: pixelIcons.genome },
+    { value: String(SITE_ALGORITHM_COUNT), label: copy.statGenomes, iconSrc: pixelIcons.genome },
     { value: "Cloudflare", sublabel: "Workers", label: copy.statUptime, iconSrc: pixelIcons.cpu },
   ]
 

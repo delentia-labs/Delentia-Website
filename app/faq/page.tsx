@@ -4,12 +4,12 @@ import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getFAQSchema, getBreadcrumbSchema } from "@/lib/schema"
 import { FAQClient } from "./FAQClient"
-import { SITE_UPTIME, SITE_HALLUCINATION_RATE } from "@/lib/site-config"
+import { SITE_UPTIME } from "@/lib/site-config"
 
 const faqSchemaData = [
   {
     question: "What is the RCT Ecosystem?",
-    answer: "RCT is a constitutional AI operating system built by a solo developer in Bangkok, Thailand — 41 algorithms, a private enterprise service layer, 7 HexaCore AI models, and 7,109 automated tests passing at 0 failures. It combines the FDIA equation (F=D^I×A), JITNA Protocol (RFC-001), 10-layer architecture, and 7 genome subsystems.",
+    answer: "RCT is a constitutional AI operating system built by a solo developer in Bangkok, Thailand — 41 algorithms, an open-source agent runtime, and 7,109 automated tests passing at 0 failures in the public repository's CI. It combines the FDIA equation (F=D^I×A), JITNA Protocol (RFC-001), 10-layer architecture, and 7 genome subsystems.",
   },
   {
     question: "How does the JITNA Protocol work?",
@@ -20,12 +20,12 @@ const faqSchemaData = [
     answer: "RCT runs on a service-based architecture with PostgreSQL, Redis, and optional Ollama for local LLM inference, validated by 7,109 passing tests in the public repository's CI. It scales from Docker Compose (33 containers) to Kubernetes (57 resources with HPA, PDB, NetworkPolicy, ArgoCD).",
   },
   {
-    question: "What is the RCT HexaCore 7-model architecture?",
-    answer: `HexaCore is the 7-model AI infrastructure of the RCT Ecosystem: 3 Western LLMs + 3 Eastern LLMs + 1 Thai regional model (Typhoon v2). All 7 models run in parallel for critical queries through the HexaCore Consensus mechanism, which requires constitutional agreement thresholds (50–100% depending on tier) before releasing output. Routing simple queries to cheaper models is designed to lower cost with no cost or hallucination figure claimed.`,
+    question: "What was HexaCore?",
+    answer: `HexaCore was the name of a planned roster of seven models. No such roster runs. The model is a setting you choose: a local model, any model on OpenRouter, or any OpenAI-compatible endpoint. No cost or hallucination figure is claimed.`,
   },
   {
-    question: `How does SignedAI reduce hallucinations?`,
-    answer: `SignedAI routes each critical query through 4–8 models simultaneously and applies a constitutional consensus threshold: Tier 4 requires 50% agreement, Tier 6 requires 67%, Tier 8 requires 75%, and Tier S (sovereign) requires 100%. If consensus is not reached, the query is escalated rather than releasing an unverified output. The industry average hallucination rate is estimated at 12–15% in published research; RCT does not claim a hallucination rate; it works toward fewer hallucinations through this multi-LLM verification layer.`,
+    question: `What does SignedAI do?`,
+    answer: `SignedAI is a jury runner: you name the member models, each votes agree, disagree or abstain independently, abstentions never help a proposal pass, and the verdict is signed with Ed25519 so anyone can re-check it. It has been tested with scripted voters only and has not been shown to reduce hallucination.`,
   },
   {
     question: "How much does the Delta Engine save?",

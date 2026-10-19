@@ -128,7 +128,7 @@ export function InteractiveMcpWidget({ locale = "en" }: InteractiveMcpWidgetProp
       "[Step 1: Input Control] TOON Serialized Intent: length=48 chars | Entropy: H(X)=2.14",
       "[Step 2: CORD Scanner] Status: CLEAN (No hostile vectors detected | Shannon delta < 0.4)",
       "[Step 3: FDIA Veto Gate] Formula: F = D^I * A -> (0.95^1.00) * 1.00 = 0.95",
-      "[Step 4: Cryptogram Seal] ED25519 Signature Verified: HexaCore Consensus APPROVED",
+      "[Step 4: Seal] (simulation) no signature is created here",
     ],
   })
 
@@ -154,8 +154,8 @@ export function InteractiveMcpWidget({ locale = "en" }: InteractiveMcpWidgetProp
       isDangerous: false,
     },
     {
-      label: isThai ? "🟢 วิเคราะห์งบการเงิน" : "🟢 Financial Consensus",
-      text: isThai ? "รันการตรวจสอบงบการเงินและคำนวณภาษีด้วย Multi-LLM Consensus" : "Run financial report verification and tax calculation via Multi-LLM Consensus",
+      label: isThai ? "🟢 วิเคราะห์งบการเงิน" : "🟢 Financial check",
+      text: isThai ? "รันการตรวจสอบงบการเงินและคำนวณภาษี" : "Run a financial report check and tax calculation",
       isDangerous: false,
     },
   ]
@@ -216,7 +216,7 @@ export function InteractiveMcpWidget({ locale = "en" }: InteractiveMcpWidgetProp
             `[Step 1: Input Control] TOON Serialized Intent: "${intentInput.slice(0, 35)}..." (${intentInput.length} chars)`,
             `[Step 2: CORD Scanner] Status: CLEAN (No hostile vectors detected | Entropy: H(X)=${entropy > 0 ? entropy : 2.14})`,
             `[Step 3: FDIA Veto Gate] Formula: F = D^I * A -> (${d}^${i}) * ${a} = ${f.toFixed(2)}`,
-            `[Step 4: Cryptogram Seal] ED25519 SignedAI Cryptogram Generated: Consensus Validated`,
+            `[Step 4: Seal] (simulation) no signature is created here`,
           ],
         })
       }
@@ -240,8 +240,8 @@ export function InteractiveMcpWidget({ locale = "en" }: InteractiveMcpWidgetProp
         </h2>
         <p className="mt-2 text-base text-muted-foreground max-w-2xl mx-auto">
           {isThai
-            ? "ทดสอบส่ง Intent จำลองเพื่อดูการคำนวณสมการ F = D^I * A และการสแกนความปลอดภัย CORD Shannon Entropy ใน <0.6ms"
-            : "Simulate an Intent to inspect real-time CORD Shannon Entropy scanning and deterministic FDIA Veto Gate enforcement."}
+            ? "จำลองในเบราว์เซอร์เท่านั้น: ใช้กฎคีย์เวิร์ดไม่กี่ข้อและคะแนนข้อมูลคงที่ ไม่มีการส่งไปเซิร์ฟเวอร์ ไม่มีการลงนาม ใช้ดูเพียงว่าสมการ F = D^I * A ทำงานอย่างไร"
+            : "A browser-only simulation: a few keyword rules and a fixed data score. Nothing is sent to a server and nothing is signed. It only shows how the equation F = D^I * A behaves."}
         </p>
       </div>
 
@@ -266,7 +266,7 @@ export function InteractiveMcpWidget({ locale = "en" }: InteractiveMcpWidgetProp
           {/* Quick Test Presets */}
           <div>
             <div className="font-mono text-[11px] text-neutral-400 mb-2 font-semibold">
-              {isThai ? "⚡ คลิกเพื่อทดสอบคำสั่งจริง (Quick Presets):" : "⚡ Click to test live payloads (Quick Presets):"}
+              {isThai ? "⚡ คลิกเพื่อลองตัวอย่าง (จำลอง):" : "⚡ Click to try an example (simulation):"}
             </div>
             <div className="flex flex-wrap gap-2">
               {presetExamples.map((preset, idx) => (

@@ -59,7 +59,7 @@ const SDK_PACKAGES = [
   },
   {
     name: "delentia-os",
-    description: "Python SDK — JITNA v3, Delta Engine compression, SignedAI HexaCore client",
+    description: "Python SDK and agent runtime — JITNA v3, Delta Engine, SignedAI jury runner",
     install: "pip install delentia-os",
     docs: "https://docs.delentia.com/sdk/python",
     badge: "pypi",

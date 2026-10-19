@@ -27,7 +27,7 @@ const facts = [
   { label: "What it is", labelTh: "คืออะไร", value: "An open-source agent runtime (Apache 2.0) with a safety gate, human-signed approvals and a signed audit log" },
   { label: "Install", labelTh: "ติดตั้ง", value: "pip install delentia-os (PyPI, 2.3.1)" },
   { label: "Algorithms", labelTh: "Algorithms", value: "41 in the public repository (a count of modules, not a performance claim)" },
-  { label: "Test Suite", labelTh: "ชุดทดสอบ", value: "7,109 passed / 0 failed (public repository CI; coverage 91.08%)" },
+  { label: "Test Suite", labelTh: "ชุดทดสอบ", value: "7,820 passed / 0 failed (public repository CI; coverage 91.37%)" },
   { label: "Measured results", labelTh: "ผลที่วัดแล้ว", value: "Each with its method and limits on the Benchmark page" },
   { label: "With a capable model", labelTh: "กับโมเดลที่เก่งพอ", value: "Not measured yet" },
   { label: "Hallucination rate", labelTh: "อัตรา Hallucination", value: "not claimed (an earlier figure was withdrawn)" },
@@ -87,7 +87,7 @@ export default async function PressPage() {
     alternateName: "Reverse Component Thinking Labs",
     url: "https://delentia.com",
     logo: "https://delentia.com/RCTLogo-horizontal.svg",
-    description: "Open-source agent runtime from Bangkok, Thailand, built by a founder who directs AI coding assistants; 7,109 passing tests in the public repository CI; no hallucination rate is claimed.",
+    description: "Open-source agent runtime from Bangkok, Thailand, built by a founder who directs AI coding assistants; 7,820 passing tests in the public repository CI; no hallucination rate is claimed.",
     foundingDate: "2024",
     founder: { "@type": "Person", name: "Ittirit Saengow", jobTitle: "The Architect" },
     location: { "@type": "Place", addressLocality: "Bangkok", addressCountry: "TH" },
@@ -122,7 +122,7 @@ export default async function PressPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
               {[
                 { value: "41", label: isTh ? "Algorithms ในรีโพสาธารณะ" : "Algorithms in the public repository" },
-                { value: "7,109", label: isTh ? "Tests ผ่าน (public repository, CI-verified)" : "Tests Passing (public repository, CI-verified)" },
+                { value: "7,820", label: isTh ? "Tests ผ่าน (public repository, CI-verified)" : "Tests Passing (public repository, CI-verified)" },
                 { value: "not claimed", label: isTh ? "เป้าหมาย Benchmark Hallucination" : "Benchmark Hallucination Target" },
                 { value: "no SLA", label: isTh ? "เป้าหมาย Design SLA" : "Uptime Design SLA Target" },
               ].map((s) => (
@@ -226,7 +226,7 @@ export default async function PressPage() {
             {[
               { label: "FDIA Equation Explained", labelTh: "อธิบายสมการ FDIA", href: `${localePrefix}/blog/fdia-equation-explained` },
               { label: "JITNA Protocol Specification", labelTh: "ข้อกำหนด JITNA Protocol", href: `${localePrefix}/blog/jitna-language-release` },
-              { label: "7,109 Tests Methodology", labelTh: "วิธีการทดสอบ 7,109 รายการ", href: `${localePrefix}/blog/rct-ecosystem-4849-tests-methodology` },
+              { label: "7,820 Tests Methodology", labelTh: "วิธีการทดสอบ 7,820 รายการ", href: `${localePrefix}/blog/rct-ecosystem-4849-tests-methodology` },
               { label: "Thai AI Vision 2030", labelTh: "วิสัยทัศน์ AI ไทย 2030", href: `${localePrefix}/blog/thai-ai-platform-vision-2030` },
               { label: "PDPA AI Compliance Guide", labelTh: "คู่มือ PDPA สำหรับ AI", href: `${localePrefix}/blog/pdpa-ai-compliance-thailand` },
               { label: "Author Profile — Ittirit Saengow", labelTh: "ข้อมูลผู้เขียน — อิทธิฤทธิ์ แซ่โง้ว", href: `${localePrefix}/authors/ittirit-saengow` },

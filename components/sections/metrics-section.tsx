@@ -26,8 +26,8 @@ const measured: Measured[] = [
   {
     label: { en: "Public test suite", th: "ชุดทดสอบสาธารณะ" },
     value: {
-      en: `${SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US")} passed, 0 failed, 91.08% line coverage`,
-      th: `ผ่าน ${SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US")} ล้มเหลว 0 ครอบคลุมบรรทัด 91.08%`,
+      en: `${SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US")} passed, 0 failed, 91.37% line coverage`,
+      th: `ผ่าน ${SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US")} ล้มเหลว 0 ครอบคลุมบรรทัด 91.37%`,
     },
     limit: { en: "Shows the code does what the tests say, not that a model uses the tools well.", th: "แสดงว่าโค้ดทำตามที่ชุดทดสอบเขียน ไม่ได้แสดงว่าโมเดลใช้เครื่องมือได้ดี" },
   },

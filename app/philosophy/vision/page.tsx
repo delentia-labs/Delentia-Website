@@ -59,12 +59,12 @@ const pillars = [
     en: {
       title: "Solo-Developer Proof of Possibility",
       subtitle: "Enterprise AI without enterprise capital",
-      body: "Delentia Labs is proof that a single developer without external funding can build a production-grade constitutional AI operating system. That proof matters because it changes what emerging-market teams believe is possible. Our 30-day bootstrap — 41 algorithms, and the public repository CI with 7,109 passing tests — is not a tech demo. It is a reproducible blueprint for AI sovereignty at any resource level.",
+      body: "Delentia Labs is proof that a single developer without external funding can build a production-grade constitutional AI operating system. That proof matters because it changes what emerging-market teams believe is possible. Our 30-day bootstrap — 41 algorithms, and the public repository CI with 7,820 passing tests — is not a tech demo. It is a reproducible blueprint for AI sovereignty at any resource level.",
     },
     th: {
       title: "การพิสูจน์ความเป็นไปได้ของนักพัฒนาคนเดียว",
       subtitle: "Enterprise AI โดยไม่ต้องมีทุน Enterprise",
-      body: "Delentia Labs คือหลักฐานว่านักพัฒนาคนเดียวโดยไม่มีเงินทุนภายนอกสามารถสร้าง Constitutional AI OS ระดับ production ได้ การ bootstrap 30 วันของเรา — 41 algorithms และ public repository CI ที่มี 7,109 passing tests — ไม่ใช่การสาธิตเทคโนโลยี แต่เป็นแบบพิมพ์เขียวที่ทำซ้ำได้สำหรับ AI sovereignty ในทุกระดับทรัพยากร",
+      body: "Delentia Labs คือหลักฐานว่านักพัฒนาคนเดียวโดยไม่มีเงินทุนภายนอกสามารถสร้าง Constitutional AI OS ระดับ production ได้ การ bootstrap 30 วันของเรา — 41 algorithms และ public repository CI ที่มี 7,820 passing tests — ไม่ใช่การสาธิตเทคโนโลยี แต่เป็นแบบพิมพ์เขียวที่ทำซ้ำได้สำหรับ AI sovereignty ในทุกระดับทรัพยากร",
     },
   },
   {

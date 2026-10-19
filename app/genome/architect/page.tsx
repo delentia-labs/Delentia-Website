@@ -36,8 +36,8 @@ const STORY: { id: string; title: Row; body: Row }[] = [
     id: "1",
     title: { en: "Where it starts", th: "จุดเริ่มต้น" },
     body: {
-      en: "I grew up in a flat community in Khlong Toei, Bangkok. Living close together, you learn to read a place by its patterns: who depends on whom, what breaks first, and what holds when pressure comes. I later studied at a Faculty of Architecture, where the lesson was similar: a structure has to carry its load before it can be anything else.",
-      th: "ผมเติบโตในชุมชนแฟลตคลองเตย กรุงเทพฯ การอยู่ใกล้กันทำให้ได้เรียนรู้การอ่านสถานที่จากรูปแบบ ใครพึ่งใคร อะไรพังก่อน และอะไรยังอยู่เมื่อถูกกดดัน ต่อมาผมเรียนที่คณะสถาปัตยกรรมศาสตร์ ซึ่งสอนบทเรียนคล้ายกัน คือโครงสร้างต้องรับน้ำหนักของมันได้ก่อนจะเป็นอย่างอื่น",
+      en: "I grew up in a flat community in Khlong Toei, Bangkok. Living close together, you learn to read a place by its patterns: who depends on whom, what breaks first, and what holds when pressure comes. I later studied at a Faculty of Architecture. The four-year programme took me six and a half years, and the lesson was similar: a structure has to carry its load before it can be anything else. Before this project I ran four businesses of my own.",
+      th: "ผมเติบโตในชุมชนแฟลตคลองเตย กรุงเทพฯ การอยู่ใกล้กันทำให้ได้เรียนรู้การอ่านสถานที่จากรูปแบบ ใครพึ่งใคร อะไรพังก่อน และอะไรยังอยู่เมื่อถูกกดดัน ต่อมาผมเรียนที่คณะสถาปัตยกรรมศาสตร์ หลักสูตร 4 ปีที่ผมใช้เวลา 6 ปีครึ่ง และบทเรียนก็คล้ายกัน คือโครงสร้างต้องรับน้ำหนักของมันได้ก่อนจะเป็นอย่างอื่น ก่อนโปรเจกต์นี้ผมทำธุรกิจของตัวเอง 4 อย่าง",
     },
   },
   {
@@ -63,6 +63,34 @@ const STORY: { id: string; title: Row; body: Row }[] = [
       en: "It is early. One person, no outside funding, no customers yet. There is an open-source agent runtime and a public test suite. What has been measured is on the Benchmark page, and so is what has not: nothing has been shown with a capable model yet. I am looking for design partners who will try it on one real workflow and tell me where it fails.",
       th: "ยังอยู่ในระยะเริ่มต้น คนคนเดียว ไม่มีทุนภายนอก ยังไม่มีลูกค้า มีรันไทม์ agent โอเพนซอร์สและชุดทดสอบสาธารณะ สิ่งที่วัดแล้วอยู่ในหน้า Benchmark และสิ่งที่ยังไม่ได้วัดก็อยู่ที่นั่นด้วย ยังไม่มีผลใดกับโมเดลที่เก่งพอ ผมกำลังมองหา design partner ที่จะลองกับงานจริงหนึ่งงานและบอกว่ามันพังตรงไหน",
     },
+  },
+]
+
+
+const CHECKS: { what: Row; how: Row }[] = [
+  {
+    what: { en: "The code exists, and how much", th: "โค้ดมีอยู่จริงและมากแค่ไหน" },
+    how: { en: "github.com/delentia-labs/Delentia-OS: 1,141 commits across 80 days, 11 April to 18 October 2026 (the public history; earlier work lived in a private repository).", th: "github.com/delentia-labs/Delentia-OS: 1,141 คอมมิตใน 80 วัน ตั้งแต่ 11 เม.ย. ถึง 18 ต.ค. 2026 (ประวัติของรีโปสาธารณะ งานก่อนหน้าอยู่ในรีโปส่วนตัว)" },
+  },
+  {
+    what: { en: "That AI assistants wrote much of it", th: "ว่าผู้ช่วย AI เขียนโค้ดจำนวนมาก" },
+    how: { en: "At least 423 of those 1,141 commits (37%) carry a Co-Authored-By: Claude line. The line was added late, so the real share is higher.", th: "อย่างน้อย 423 จาก 1,141 คอมมิต (37%) มีบรรทัด Co-Authored-By: Claude บรรทัดนี้เพิ่มมาทีหลัง สัดส่วนจริงจึงสูงกว่านี้" },
+  },
+  {
+    what: { en: "Releases", th: "การเผยแพร่รุ่น" },
+    how: { en: "pypi.org/project/delentia-os: 2.0.0 on 28 May 2026 to 2.3.1 on 16 October 2026.", th: "pypi.org/project/delentia-os: 2.0.0 วันที่ 28 พ.ค. 2026 ถึง 2.3.1 วันที่ 16 ต.ค. 2026" },
+  },
+  {
+    what: { en: "That the tests pass", th: "ว่าการทดสอบผ่าน" },
+    how: { en: "The CI runs on every pull request in the public repository. The Benchmark page lists each result with its method and limits.", th: "CI รันทุก pull request ในรีโปสาธารณะ หน้า Benchmark แจกแจงแต่ละผลพร้อมวิธีวัดและข้อจำกัด" },
+  },
+  {
+    what: { en: "Models I published", th: "โมเดลที่ผมเผยแพร่" },
+    how: { en: "huggingface.co/Delentia: the v0.4 repository holds weights; the model cards are my own scripts' results and were not independently reproduced.", th: "huggingface.co/Delentia: รีโป v0.4 มีน้ำหนักโมเดล ส่วนการ์ดโมเดลเป็นผลจากสคริปต์ของผมเองและยังไม่มีผู้ใดทำซ้ำอย่างอิสระ" },
+  },
+  {
+    what: { en: "Where I grew up, my education, the four businesses", th: "ที่ที่ผมโต การศึกษา ธุรกิจทั้งสี่" },
+    how: { en: "Only my word. I have not published documents for them and you cannot check them here.", th: "เป็นคำของผมเท่านั้น ผมยังไม่ได้เผยแพร่เอกสารยืนยัน และคุณตรวจจากที่นี่ไม่ได้" },
   },
 ]
 
@@ -139,6 +167,31 @@ export default async function GenomeArchitectPage() {
                   <p className="text-foreground/75 leading-relaxed">{isTh ? item.body.th : item.body.en}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-foreground">{isTh ? "สิ่งที่คุณตรวจเองได้ และสิ่งที่เป็นแค่คำของผม" : "What you can check yourself, and what is only my word"}</h2>
+              <div className="overflow-x-auto rounded-xl border border-border">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-card text-left">
+                      <th className="p-3 font-semibold text-foreground">{isTh ? "เรื่อง" : "Claim"}</th>
+                      <th className="p-3 font-semibold text-foreground">{isTh ? "ตรวจได้อย่างไร" : "How to check it"}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {CHECKS.map((row) => (
+                      <tr key={row.what.en} className="border-t border-border align-top">
+                        <td className="p-3 text-foreground/80">{isTh ? row.what.th : row.what.en}</td>
+                        <td className="p-3 text-muted-foreground">{isTh ? row.how.th : row.how.en}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                {isTh ? "ตัวเลขนับ ณ วันที่ 18 ต.ค. 2026 จากประวัติ git ของรีโปสาธารณะ ประวัติ git ไม่ได้แยกงานคนกับงาน AI ทีละบรรทัด" : "Counted on 18 October 2026 from the public repositories' git history. Git history does not separate human work from AI work line by line."}
+              </p>
             </div>
 
             <div className="border-t border-border pt-10">

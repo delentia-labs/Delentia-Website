@@ -21,8 +21,8 @@ export function LiveStreamTicker({ locale = "en" }: LiveStreamTickerProps) {
     isLive: false,
     platform: null,
     title: locale === "th" 
-      ? "🔴 [DAY 01] ปลุกชีพ Delentia OS 700k บรรทัด! แฮกระบบความปลอดภัย 10 เลเยอร์"
-      : "🔴 [DAY 01] Building Delentia OS Live: 10-Layer Stack & 1+4 Pillars Bonsai 27B",
+      ? "ตอนนี้ไม่ได้ถ่ายทอดสด ดูสตรีมที่ผ่านมาได้ที่ช่องของเรา"
+      : "Not live right now. Past streams are on our channels.",
   })
   const [isLoading, setIsLoading] = useState(true)
   const isThai = locale === "th"

@@ -4,7 +4,6 @@ import { m } from "framer-motion"
 import { ArrowRight, CheckCircle2, Circle, Clock, Heart, Users, Scale, Target, Trophy, CalendarClock } from "lucide-react"
 import { useTheme } from "@/components/theme-provider"
 import { useLanguage } from "@/components/language-provider"
-import VersionTimelineGraph from "@/components/diagrams/version-timeline-graph"
 import RoadmapMilestoneCalendar from "@/components/diagrams/roadmap-milestone-calendar"
 import SectionHeading from "@/components/section-heading"
 import { useMounted } from "@/hooks/use-mounted"
@@ -236,7 +235,16 @@ export default function RoadmapSection() {
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
           className="mb-6"
         >
-          <VersionTimelineGraph />
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <h3 className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-warm-amber">Public releases (PyPI: delentia-os)</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>2.3.1 — 2026-10-16</li>
+              <li>2.3.0 — 2026-10-13 (agent runtime, model-free demo)</li>
+              <li>2.2.x — 2026-06-06</li>
+              <li>2.0.0 — 2026-05-28</li>
+            </ul>
+            <p className="mt-3 text-xs text-muted-foreground">Earlier timelines that showed internal versions 4.x to 8.x and test counts were withdrawn: they could not be verified.</p>
+          </div>
         </m.div>
 
         {/* Monthly Milestone Calendar */}

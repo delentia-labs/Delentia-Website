@@ -344,13 +344,11 @@ export function Footer({ locale: forcedLocale }: FooterProps) {
               ))}
               </div>
               <a
-                href="https://status.delentia.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/${isTh ? "th" : "en"}/status`}
                 className="hidden sm:flex items-center gap-1.5 text-[11px] transition-colors text-warm-secondary hover:text-warm-charcoal dark:text-[#555] dark:hover:text-[#888]"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-warm-sage" aria-hidden="true" />
-                {isTh ? "ระบบปกติ" : "All systems nominal"}
+                {isTh ? "สถานะบริการ" : "Service status"}
               </a>
             </div>
 

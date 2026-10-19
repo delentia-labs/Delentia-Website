@@ -455,10 +455,10 @@ const resourceItems = {
   mcpPortal: {
     id: "mcpPortal",
     href: "https://delentia-gateway-main-c7624a5.zuplo.site",
-    label: { en: "MCP Portal & Pricing", th: "พอร์ทัล MCP & ราคา" },
+    label: { en: "MCP gateway docs", th: "เอกสารเกตเวย์ MCP" },
     description: {
-      en: "Enterprise Sovereign AI MCP gateway, API key management, and subscription plans.",
-      th: "เกตเวย์ Sovereign AI MCPs จัดการคีย์ API และสมัครแพ็กเกจการใช้งานจริง",
+      en: "Documentation for the small live MCP gateway (six tools). No plans or prices: it is free and has no SLA.",
+      th: "เอกสารของ MCP gateway ขนาดเล็กที่ใช้งานอยู่ (เครื่องมือ 6 ตัว) ไม่มีแพ็กเกจหรือราคา ใช้ฟรีและไม่มี SLA",
     },
     badge: "LIVE",
   },

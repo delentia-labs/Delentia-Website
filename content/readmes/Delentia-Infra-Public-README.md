@@ -82,7 +82,7 @@ kubectl get storageclass
 
 **Gateway-api returns 503 on first start:**
 ```bash
-# Normal — wait 60s for intent-loop to initialize HexaCore models
+# Normal — wait 60s for intent-loop to initialize its models
 kubectl rollout status deployment/gateway-api -n delentia
 ```
 

@@ -131,7 +131,7 @@ export default async function RCTvsLLMAPIs() {
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <span className="px-4 py-2 rounded-lg border border-white/10 bg-white/5 text-warm-dim">Enterprise Governance</span>
-              <span className="px-4 py-2 rounded-lg border border-white/10 bg-white/5 text-warm-dim">PDPA Compliance</span>
+              <span className="px-4 py-2 rounded-lg border border-white/10 bg-white/5 text-warm-dim">Signed audit log</span>
               <span className="px-4 py-2 rounded-lg border border-white/10 bg-white/5 text-warm-dim">Constitutional AI</span>
             </div>
           </div>
@@ -151,7 +151,7 @@ export default async function RCTvsLLMAPIs() {
                   "No persistent memory — context window only",
                   "Probabilistic output — model may hallucinate",
                   "No audit trail, no right-to-erasure mechanism",
-                  "PDPA compliance left entirely to you",
+                  "Compliance is entirely your job (it is, with Delentia too)",
                   "No agent-to-agent communication standard",
                   "Vendor lock-in — switch provider = rewrite code",
                   "Cost: always paying premium model rates",

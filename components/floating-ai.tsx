@@ -114,7 +114,7 @@ function classifyIntent(text: string): AnalysisMode {
     "architecture", "layer", "algorithm", "fdia", "jitna", "signedai",
     "consensus", "rctdb", "genome", "benchmark", "hallucination", "แสดง", "วิเคราะห์",
     "อธิบาย", "explain", "compare", "breakdown", "how does", "what is",
-    "สถาปัตยกรรม", "โปรโตคอล", "hexacore", "hexa core",
+    "สถาปัตยกรรม", "โปรโตคอล",
     "คืออะไร", "คือ", "ทำงานอย่างไร", "บอกเกี่ยวกับ",
     "แสดงรายละเอียด", "อธิบายระบบ", "ระบบทำงาน", "อธิบายเกี่ยวกับ",
     "อัลกอริทึม", "ผู้สร้าง", "เปรียบเทียบ", "ดีกว่า", "แผน", "โรดแมป", "วิธีใช้",

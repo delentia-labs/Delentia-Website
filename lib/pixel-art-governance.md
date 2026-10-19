@@ -17,6 +17,6 @@ Pixel art assets within the RCT Ecosystem serve as symbolic representations of o
 
 ## 3. Required Asset Pipeline
 To complete the thematic consistency across all system modules, the following pixel assets are required to be created and integrated into `lib/pixel-icons.ts`:
-1. **Gear/Mechanism Matrix** — to represent dynamic routing, algorithms, and HexaCore infrastructure.
+1. **Gear/Mechanism Matrix** — to represent dynamic routing, algorithms, and model infrastructure.
 2. **Scroll / Constitution** — to represent Signed AI, governance, constraint modeling, and FDIA principles.
 3. **Chart / Vector Node** — to represent the delta memory engine and retrieval pathways.

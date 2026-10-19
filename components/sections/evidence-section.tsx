@@ -13,8 +13,8 @@ const evidenceCards = [
     icon: FlaskConical,
     tagEn: "Published preprint (arXiv)",
     tagTh: "พรีปรินต์ที่เผยแพร่ (arXiv)",
-    titleEn: "Multi-LLM Consensus Improves Precision from 73% to 94%",
-    titleTh: "Multi-LLM Consensus เพิ่มความแม่นยำจาก 73% เป็น 94%",
+    titleEn: "A paper reports that ensemble voting raised precision from 73% to 94%",
+    titleTh: "งานวิจัยรายงานว่าการโหวตแบบ ensemble เพิ่มความแม่นยำจาก 73% เป็น 94%",
     quoteEn:
       "In tests across 78 complex cases requiring factual accuracy and causal consistency, our ensemble validation framework improved precision from 73.1% to 93.9%.",
     quoteTh:

@@ -300,7 +300,7 @@
     "metric_hallucination": "อัตราความผิดพลาด",
     "metric_compression": "การบีบอัด Context",
     "metric_latency": "Response Latency",
-    "metric_uptime": "Uptime SLA",
+    "metric_uptime": "Uptime (ไม่มี SLA)",
     "metric_coverage": "Test Coverage",
     "metric_cost": "ประสิทธิภาพต้นทุน",
     "cta_final_title": "พร้อมสร้างหรือยัง?",

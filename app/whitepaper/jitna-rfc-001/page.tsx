@@ -61,7 +61,7 @@ export default async function JitnaRFC001Page() {
     },
     {
       title: "Version 2 Additions",
-      body: "RFC-001 v2.0 introduces the JITNA Normalizer preprocessing layer that strips known prompt-injection patterns before LLM processing, adds the 4-zone geopolitical routing extension (3 Western / 3 Eastern / 1 Regional) used by SignedAI, and formalizes the Memory primitive TTL (time-to-live) semantics for PDPA-compliant context expiry.",
+      body: "RFC-001 v2.0 introduces the JITNA Normalizer preprocessing layer that strips known prompt-injection patterns before LLM processing, proposes a geopolitical routing extension for model juries (a design idea; not implemented), and formalizes the Memory primitive TTL (time-to-live) semantics for context expiry. No legal compliance is claimed.",
     },
     {
       title: "Performance Targets",
@@ -86,7 +86,7 @@ export default async function JitnaRFC001Page() {
     },
     {
       title: "การเพิ่มเติมใน Version 2",
-      body: "RFC-001 v2.0 เพิ่ม JITNA Normalizer preprocessing layer ที่ strip prompt-injection patterns ก่อนประมวลผล LLM เพิ่ม 4-zone geopolitical routing extension (3 Western / 3 Eastern / 1 Regional) ที่ใช้ใน SignedAI และกำหนด Memory primitive TTL semantics สำหรับ PDPA-compliant context expiry",
+      body: "RFC-001 v2.0 เพิ่ม JITNA Normalizer preprocessing layer ที่ strip prompt-injection patterns ก่อนประมวลผล LLM เสนอ geopolitical routing extension สำหรับคณะลูกขุนของโมเดล (แนวคิด ยังไม่ได้สร้าง) และกำหนด Memory primitive TTL semantics สำหรับการหมดอายุของบริบท ไม่อ้างว่าปฏิบัติตามกฎหมาย",
     },
     {
       title: "Performance Targets",

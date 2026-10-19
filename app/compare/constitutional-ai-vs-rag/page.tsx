@@ -127,7 +127,7 @@ export default async function CompareConstitutionalAIvsRAG() {
                   "Mathematical constraints on system output",
                   "Deterministic kill switch (A=0 -> F=0, always)",
                   "Optional jury of independent models (scripted tests only)",
-                  "Full audit trail -> PDPA/GDPR compliance",
+                  "Signed audit log you can hand to your own counsel",
                   "No hallucination reduction has been measured",
                 ],
                 verdict: "Best for: regulated industries + compliance",

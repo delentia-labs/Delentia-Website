@@ -21,7 +21,8 @@
     "perf:lcp:guard": "node ./scripts/lcp-trace.mjs",
     "start": "next start",
     "start:host": "next start -H 0.0.0.0 -p 3010",
-    "verify:public": "bash ./scripts/verify-public-truth.sh"
+    "verify:public": "bash ./scripts/verify-public-truth.sh",
+    "claims:lint": "node ./scripts/claims-lint.mjs"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.2",

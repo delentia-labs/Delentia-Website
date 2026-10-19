@@ -111,7 +111,7 @@ Process Terminated: 0.18ms`
     bufferSize: "390 bytes -> 101 bytes",
     finalOutputTitle: "Scribe Compressed Context",
     outputLanguage: "yaml",
-    finalOutputContent: `topic: PDPA Compliance
+    finalOutputContent: `topic: personal data handling
 key_points:
   - Consent required before data collection
   - Applies to Thai personal data

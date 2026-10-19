@@ -85,9 +85,9 @@ export default async function ImpactPage() {
       titleEn: "Thailand → Global Constitutional AI Standard",
       titleTh: "จากไทย → มาตรฐาน Constitutional AI ระดับโลก",
       descEn:
-        "Delentia Labs began in Bangkok with a PDPA-compliance-first architecture. The same Constitutional AI enforcement layer that satisfies Thai regulatory requirements is portable to GDPR (EU), CCPA (California), and APAC privacy frameworks. The vision is a single verifiable AI governance specification that works across jurisdictions — building it first in Thailand is the strategic starting point.",
+        "Delentia began in Bangkok. The aim is a governance layer whose rules the owner writes (a data-residency policy, who signs what), so that the same runtime can be used under different national rules. It does not know any country's law and certifies no compliance; that remains the owner's and their counsel's job.",
       descTh:
-        "Delentia Labs เริ่มต้นในกรุงเทพฯ ด้วยสถาปัตยกรรมที่ PDPA-compliance-first ชั้น Constitutional AI enforcement เดียวกันที่ตอบสนองข้อกำหนดของกฎระเบียบไทยสามารถย้ายไปใช้กับ GDPR (EU), CCPA (California) และกรอบความเป็นส่วนตัวของ APAC วิสัยทัศน์คือ specification การกำกับดูแล AI ที่ตรวจสอบได้ชุดเดียวที่ทำงานได้ทั่วทุกเขตอำนาจศาล",
+        "Delentia เริ่มต้นในกรุงเทพฯ เป้าหมายคือชั้นธรรมาภิบาลที่เจ้าของเขียนกฎเอง (นโยบายที่เก็บข้อมูล ใครลงนามอะไร) เพื่อให้รันไทม์เดียวกันใช้ภายใต้กฎของแต่ละประเทศได้ ระบบไม่รู้กฎหมายของประเทศใดและไม่รับรองการปฏิบัติตามกฎหมาย นั่นยังเป็นหน้าที่ของเจ้าของและที่ปรึกษากฎหมายของเขา",
     },
   ]
 

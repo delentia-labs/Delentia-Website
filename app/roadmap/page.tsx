@@ -40,7 +40,7 @@ const phasesItemList = {
     { "@type": "ListItem", "position": 6, "name": "Phase 6 — Real host", "description": "The agent runtime runs with a capable model on a real host. Planned, not done.", "url": `${ROADMAP_BASE}/roadmap#phase-6` },
     { "@type": "ListItem", "position": 7, "name": "Phase 7 — Open Source & Community", "description": "GitHub Public launch for RCT Ecosystem, full documentation, GitHub Coffee sponsors plan, community feedback loop.", "url": `${ROADMAP_BASE}/roadmap#phase-7` },
     { "@type": "ListItem", "position": 8, "name": "Phase 8 — DelentiaAI + SignedAI Platform Launch", "description": "Full product launch for DelentiaAI Platform and SignedAI Platform, enterprise onboarding pipeline open.", "url": `${ROADMAP_BASE}/roadmap#phase-8` },
-    { "@type": "ListItem", "position": 9, "name": "Phase 9 — TUI/CLI Developer Mode", "description": "TUI/CLI Beta Backend Mode, full developer access, power-user workflow toolset, solo developer toolchain complete.", "url": `${ROADMAP_BASE}/roadmap#phase-9` },
+    { "@type": "ListItem", "position": 9, "name": "Phase 9 — TUI/CLI Developer Mode", "description": "TUI/CLI Beta Backend Mode, full developer access, power-user workflow toolset. Planned, not done.", "url": `${ROADMAP_BASE}/roadmap#phase-9` },
   ],
 }
 

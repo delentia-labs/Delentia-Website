@@ -1,0 +1,208 @@
+{
+  "description": "Claims this site has withdrawn or must not make (Round 87). scripts/claims-lint.mjs fails the build when a pattern appears on a line that carries none of the qualifiers. Add a pattern when a claim is withdrawn; add a qualifier word only when a sentence honestly says the thing does not exist. Each rule points at the evidence.",
+  "qualifiers": [
+    "withdrawn",
+    "not claimed",
+    "no claim",
+    "older name",
+    "planned",
+    "no such",
+    "did not",
+    "does not",
+    "do not",
+    "not offered",
+    "was the name",
+    "no longer",
+    "never measured",
+    "not measured",
+    "not built",
+    "design idea",
+    "idea only",
+    "an idea",
+    "scripted",
+    "not available",
+    "none yet",
+    "no hosted",
+    "not a ",
+    "not shown",
+    "could not be",
+    "cannot",
+    "no price",
+    "is not",
+    "are not",
+    "were not",
+    "was not",
+    "not independently",
+    "not verified",
+    "unverified",
+    "illustrative",
+    "simulation",
+    "ไม่อ้าง",
+    "ไม่ได้",
+    "ยังไม่",
+    "ถอน",
+    "ชื่อเดิม",
+    "แนวคิด",
+    "ไม่มี",
+    "ไม่เคย",
+    "จำลอง",
+    "no enterprise",
+    "n/a",
+    "example roles",
+    "table of example",
+    "what was hexacore",
+    "hexacore คืออะไร",
+    "a soc 2 report or any",
+    "a per-review verification api"
+  ],
+  "rules": [
+    {
+      "id": "hexacore-roster",
+      "pattern": "hexacore",
+      "flags": "i",
+      "reason": "No seven- or nine-model roster runs; the model is a setting.",
+      "evidence": "rct_control_plane/model_config.py; /en/solutions/dynamic-ai-routing"
+    },
+    {
+      "id": "hallucination-rate",
+      "pattern": "(?<![-/\\w])0\\.3\\s?%",
+      "flags": "",
+      "reason": "A 0.3% hallucination rate was never reproduced and is withdrawn.",
+      "evidence": "/en/corrections"
+    },
+    {
+      "id": "private-test-count",
+      "pattern": "(?<![-/\\w])4,?849",
+      "flags": "",
+      "reason": "The private test count cannot be verified; the public CI count is on the Benchmark page.",
+      "evidence": "/en/corrections"
+    },
+    {
+      "id": "sla-number",
+      "pattern": "99\\.98",
+      "flags": "",
+      "reason": "No uptime figure or SLA is offered.",
+      "evidence": "/en/status"
+    },
+    {
+      "id": "microservice-count",
+      "pattern": "62\\s+(micro)?services|62\\s+runtime components",
+      "flags": "i",
+      "reason": "The 62-services count was a count of folders; the private layer is not offered.",
+      "evidence": "/en/corrections"
+    },
+    {
+      "id": "model-roster-count",
+      "pattern": "(?<!RCT-)\\b(7|9|seven|nine)[- ](model|llm)s?\\b",
+      "flags": "i",
+      "reason": "No fixed roster of models exists.",
+      "evidence": "/en/solutions/regional-ai"
+    },
+    {
+      "id": "consensus-engine",
+      "pattern": "multi-?(llm|model)\\s+consensus",
+      "flags": "i",
+      "reason": "What exists is the optional SignedAI jury runner, tested with scripted voters only.",
+      "evidence": "/en/products/signed-ai"
+    },
+    {
+      "id": "compliance-certificate",
+      "pattern": "soc\\s?2|iso\\s?27001|hipaa",
+      "flags": "i",
+      "reason": "No compliance certificate or report exists.",
+      "evidence": "/en/pricing"
+    },
+    {
+      "id": "compliant-by-software",
+      "pattern": "(pdpa|gdpr|appi|pipl|pipa)[- ](compliant|compliance)",
+      "flags": "i",
+      "reason": "Software cannot make an organisation compliant; the data-residency policy is the owner's own rule.",
+      "evidence": "/en/solutions/regional-ai"
+    },
+    {
+      "id": "tamper-proof",
+      "pattern": "tamper[- ]proof|zero[- ]knowledge proof|immutable (audit|log|ledger)",
+      "flags": "i",
+      "reason": "The audit log is hash-chained and signed (tamper-evident), not tamper-proof; there is no zero-knowledge proof.",
+      "evidence": "Delentia-OS/rct_control_plane/audit_chain.py"
+    },
+    {
+      "id": "quantum",
+      "pattern": "quantum[- ](resistant|safe|proof)",
+      "flags": "i",
+      "reason": "No quantum-resistant encryption is built.",
+      "evidence": "n/a"
+    },
+    {
+      "id": "uptime-sla",
+      "pattern": "uptime sla|99\\.9\\d?\\s?%",
+      "flags": "i",
+      "reason": "No uptime figure or SLA is offered.",
+      "evidence": "/en/status"
+    },
+    {
+      "id": "sole-developer",
+      "pattern": "sole developer|solo developer",
+      "flags": "i",
+      "reason": "The founder does not write code; he directs AI coding assistants.",
+      "evidence": "/en/genome/architect"
+    },
+    {
+      "id": "enterprise-customers",
+      "pattern": "trusted by|our (enterprise )?customers|production customers",
+      "flags": "i",
+      "reason": "There are no customers yet.",
+      "evidence": "/en/pricing"
+    }
+  ],
+  "allowFiles": [
+    {
+      "path": "app/corrections/",
+      "why": "lists the withdrawn claims by name"
+    },
+    {
+      "path": "app/benchmark/",
+      "why": "names the withdrawn figures and what they were"
+    },
+    {
+      "path": "components/claims-correction-notice.tsx",
+      "why": "the notice that names withdrawn figures on old posts"
+    },
+    {
+      "path": "content/blog/",
+      "why": "posts predate the review and carry an automatic correction notice"
+    },
+    {
+      "path": "lib/blog.ts",
+      "why": "blog metadata for those posts"
+    },
+    {
+      "path": "app/blog/",
+      "why": "blog listing for those posts"
+    },
+    {
+      "path": "app/changelog/",
+      "why": "history; carries a note that older entries predate the review"
+    },
+    {
+      "path": "lib/claims.json",
+      "why": "this file"
+    },
+    {
+      "path": "scripts/",
+      "why": "tooling"
+    },
+    {
+      "path": "content/readmes/",
+      "why": "mirror of the repository READMEs, which name real code identifiers such as HexaCoreRegistry"
+    },
+    {
+      "path": "lib/content.ts",
+      "why": "titles of existing blog posts that carry the correction notice"
+    },
+    {
+      "path": "app/entity/",
+      "why": "the entity pages keep the old term HexaCore Consensus as a page that says it is an older name"
+    }
+  ]
+}

@@ -33,7 +33,7 @@ const glossaryTerms = [
   {
     term: "RCTDB",
     termTh: "RCTDB (ฐานข้อมูลหน่วยความจำ AI)",
-    definition: "Universal memory schema with 8 dimensions: query_hash, fdia_scores, subject_uuid, model_chain, consensus_result, delta_chain, timestamp, provenance. Enables PDPA-compliant right to erasure via UUID tombstone pattern.",
+    definition: "A design name for a memory schema with eight fields (query_hash, fdia_scores, subject_uuid, model_chain, consensus_result, delta_chain, timestamp, provenance). The memory that runs today is a hash-chained event log with per-person erasure; the eight-field schema is an idea, not what runs.",
     definitionTh: "Schema หน่วยความจำ AI ที่ครอบคลุม 8 มิติ: query_hash, fdia_scores, subject_uuid, model_chain, consensus_result, delta_chain, timestamp, provenance รองรับ right to erasure ตาม PDPA",
     entityHref: "/en/entity/memory-architecture",
   },
@@ -45,14 +45,14 @@ const glossaryTerms = [
     entityHref: "/en/entity/memory-architecture",
   },
   {
-    term: "HexaCore",
+    term: "HexaCore (older name)",
     termTh: "HexaCore (ชื่อเดิม)",
     definition: "An older name for a planned roster of seven models. No such roster runs: the model is a setting you choose (a local model, OpenRouter or any OpenAI-compatible endpoint). Kept here because older pages and posts use the word.",
     definitionTh: "ชื่อเดิมของรายชื่อโมเดล 7 ตัวที่เคยวางแผนไว้ ไม่มีรายชื่อดังกล่าวทำงานอยู่ โมเดลเป็นการตั้งค่าที่คุณเลือก (โมเดลในเครื่อง OpenRouter หรือ endpoint ที่เข้ากันได้กับ OpenAI) เก็บคำนี้ไว้เพราะหน้าและบทความเก่ายังใช้อยู่",
     entityHref: "/en/entity/governance-layer",
   },
   {
-    term: "HexaCore Consensus",
+    term: "HexaCore Consensus (older name)",
     termTh: "HexaCore Consensus (ชื่อเดิม)",
     definition: "An older name for what the SignedAI jury does. Nothing runs under the HexaCore name and no fixed thresholds or model roster are offered. See SignedAI.",
     definitionTh: "ชื่อเดิมของสิ่งที่คณะลูกขุน SignedAI ทำ ไม่มีสิ่งใดทำงานภายใต้ชื่อ HexaCore และไม่มีเกณฑ์หรือรายชื่อโมเดลตายตัว ดู SignedAI",
@@ -115,8 +115,8 @@ const glossaryTerms = [
     entityHref: "/en/entity/jitna-protocol",
   },
   {
-    term: "Multi-LLM Consensus",
-    termTh: "Multi-LLM Consensus (ฉันทามติหลาย LLM)",
+    term: "Multi-LLM Consensus (an idea, not a product)",
+    termTh: "Multi-LLM Consensus (แนวคิด ไม่ใช่ผลิตภัณฑ์)",
     definition: "Asking several models the same question and requiring agreement before accepting an answer. Delentia has this as the SignedAI jury (scripted-voter tests only). There is no measurement showing that it reduces hallucination.",
     definitionTh: "การถามหลายโมเดลด้วยคำถามเดียวกันและต้องการความเห็นตรงกันก่อนยอมรับคำตอบ Delentia มีสิ่งนี้เป็นคณะลูกขุน SignedAI (ทดสอบกับผู้ลงคะแนนแบบสคริปต์เท่านั้น) ไม่มีการวัดที่แสดงว่าลด hallucination ได้",
     entityHref: "/en/entity/governance-layer",
@@ -156,8 +156,8 @@ const glossaryTerms = [
   {
     term: "Intent Signal",
     termTh: "Intent Signal (สัญญาณเจตนา)",
-    definition: "Any observable indicator of a user's underlying goal, preference, or constraint that can be captured and stored to improve future AI interactions. Intent Signals include explicit statements ('I need a PDPA-compliant response'), implicit patterns (frequently queried topics), and behavioral cues (which answers the user expands or dismisses). These signals are the raw material of Intent Farming and the fuel for RCTDB's 8-dimensional memory schema.",
-    definitionTh: "ตัวบ่งชี้ที่สังเกตได้ของเป้าหมาย preferences หรือข้อจำกัดพื้นฐานของผู้ใช้ที่สามารถจับและเก็บไว้เพื่อปรับปรุง AI interactions ในอนาคต ได้แก่ คำชัดเจน ('ต้องการคำตอบที่ PDPA compliant'), รูปแบบ implicit (หัวข้อที่ query บ่อย) และ behavioral cues เหล่านี้คือวัตถุดิบของ Intent Farming",
+    definition: "Any observable indicator of a user's underlying goal, preference, or constraint that can be captured and stored to improve future AI interactions. Intent Signals include explicit statements ('please answer in Thai'), implicit patterns (frequently queried topics), and behavioral cues (which answers the user expands or dismisses). These signals are the raw material of Intent Farming and the fuel for RCTDB's 8-dimensional memory schema.",
+    definitionTh: "ตัวบ่งชี้ที่สังเกตได้ของเป้าหมาย preferences หรือข้อจำกัดพื้นฐานของผู้ใช้ที่สามารถจับและเก็บไว้เพื่อปรับปรุง AI interactions ในอนาคต ได้แก่ คำชัดเจน ('ต้องการคำตอบที่ ตอบเป็นภาษาไทย'), รูปแบบ implicit (หัวข้อที่ query บ่อย) และ behavioral cues เหล่านี้คือวัตถุดิบของ Intent Farming",
     entityHref: "/en/blog/intent-farming-grow-ai-context",
   },
   {
@@ -233,8 +233,8 @@ const glossaryTerms = [
   {
     term: "UUID Tombstone Pattern",
     termTh: "UUID Tombstone Pattern (รูปแบบ tombstone สำหรับ UUID)",
-    definition: "A PDPA-compliant data erasure method where a subject's uuid is marked as 'tombstoned' rather than physically deleted, ensuring no data is retrievable while maintaining referential integrity. Used in RCTDB for right-to-erasure requests.",
-    definitionTh: "วิธีลบข้อมูลแบบ PDPA compliant ที่ mark UUID ว่า tombstoned แทนการลบจริง ทำให้ไม่สามารถ retrieve ข้อมูลได้ แต่ยังคง referential integrity ใช้ใน RCTDB",
+    definition: "An erasure method where a subject's uuid is marked as 'tombstoned' rather than physically deleted. This is the older design idea. What is built today is different: a person's memory text is sealed under a key that is destroyed on erasure, which was checked in the raw database file. No claim of legal compliance is made.",
+    definitionTh: "วิธีลบข้อมูลที่ mark UUID ว่า tombstoned แทนการลบจริง เป็นแนวคิดการออกแบบเดิม สิ่งที่สร้างแล้วต่างออกไป: ข้อความหน่วยความจำของคนถูกผนึกด้วยกุญแจที่ถูกทำลายเมื่อลบ ซึ่งตรวจในไฟล์ฐานข้อมูลดิบแล้ว ไม่อ้างว่าปฏิบัติตามกฎหมาย",
     entityHref: "/en/entity/memory-architecture",
   },
   {

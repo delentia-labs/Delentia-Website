@@ -238,6 +238,7 @@ export default function RoadmapSection() {
           <div className="rounded-2xl border border-border bg-card p-6">
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-warm-amber">Public releases (PyPI: delentia-os)</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>2.4.0 — 2026-10-26 (Desk pages in the package, Windows installer)</li>
               <li>2.3.1 — 2026-10-16</li>
               <li>2.3.0 — 2026-10-13 (agent runtime, model-free demo)</li>
               <li>2.2.x — 2026-06-06</li>

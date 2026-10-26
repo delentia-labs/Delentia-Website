@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import Link from "next/link"
+import { SITE_VERSION } from "@/lib/site-config"
 import { fetchGithubReadme } from "@/lib/github-api"
 import { MDXContent } from "@/components/mdx-content"
 
@@ -81,7 +82,7 @@ export default async function DelentiaOSGithubPage({ params }: LocalePageProps) 
           </div>
           <div className="space-y-1">
             <span className="text-xs text-gray-400 uppercase tracking-wider">{isTH ? "เวอร์ชันล่าสุด" : "Latest Tag"}</span>
-            <p className="font-bold text-sm">v2.2.6</p>
+            <p className="font-bold text-sm">v{SITE_VERSION}</p>
           </div>
           <div className="space-y-1">
             <span className="text-xs text-gray-400 uppercase tracking-wider">{isTH ? "ภาษาหลัก" : "Language"}</span>

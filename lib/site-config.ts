@@ -2,12 +2,12 @@ export const SITE_URL = "https://delentia.com"
 export const SITE_NAME = "Delentia Labs"
 export const SITE_DESCRIPTION = "Open-source agent runtime with a safety gate before tool calls, human-signed approvals and a signed audit log. Built by one person; no hosted service yet."
 export const SITE_OG_IMAGE = `${SITE_URL}/opengraph-image`
-export const SITE_VERSION = "2.3.1"
+export const SITE_VERSION = "2.4.0" // the newest delentia-os on PyPI (2026-10-26). scripts/version-lint.mjs fails the build if this is a version PyPI does not have
 // Round 50: the private enterprise count (4,849) is not independently verifiable and was
 // withdrawn (see /corrections). Every page that shows "verified tests" now shows the
 // CI-verified public count below.
 export const SITE_TEST_COUNT = 7820 // same suite as SITE_PUBLIC_SDK_TESTS: the public repository CI (the private suite is not counted anywhere)
-export const SITE_PUBLIC_SDK_VERSION = "2.3.1" // matches pyproject.toml / `delentia version` in delentia-labs/delentia-os as of 2026-09-26
+export const SITE_PUBLIC_SDK_VERSION = "2.4.0" // matches pyproject.toml / `delentia --version` in delentia-labs/delentia-os as of 2026-10-26 (release v2.4.0)
 export const SITE_PUBLIC_SDK_TESTS = 7820 // Delentia-OS CI run 39122730330 (commit 3dbed0d, 2026-10-18): 7820 passed · 43 skipped · 1 xfailed · 0 failed on Python 3.12, coverage 91.37%. Update from a real green CI run only.
 // Compatibility evidence labels reused across public pages, metadata, and blog stat cards.
 export const SITE_PUBLIC_SDK_EVIDENCE_LABEL = "Public SDK verification lane"

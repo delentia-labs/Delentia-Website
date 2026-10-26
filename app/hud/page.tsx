@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { SITE_VERSION } from "@/lib/site-config"
 import { Activity, ShieldAlert, CheckCircle, XCircle, Cpu, Zap, Radio, Lock, Terminal } from "lucide-react"
 
 export default function LiveStreamHudPage() {
@@ -125,7 +126,7 @@ export default function LiveStreamHudPage() {
       <div className="absolute top-6 left-6 w-[460px] bg-[#0a0f18]/95 border border-cyan-500/40 border-l-4 border-l-orange-500 rounded-lg p-4 shadow-2xl backdrop-blur-md">
         <div className="flex items-center justify-between text-xs text-gray-400 tracking-wider mb-2">
           <span className="font-bold text-orange-500 flex items-center gap-1.5">
-            <Radio className="w-3.5 h-3.5 animate-pulse" /> DELENTIA OS v2.2.6
+            <Radio className="w-3.5 h-3.5 animate-pulse" /> DELENTIA OS v{SITE_VERSION}
           </span>
           <span className="flex items-center gap-1.5 font-bold">
             <span className={`w-2 h-2 rounded-full ${isConnected ? "bg-green-500 shadow-[0_0_8px_#22c55e]" : "bg-red-500 shadow-[0_0_8px_#ef4444]"}`} />

@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import { getRequestLocale } from "@/lib/request-locale"
 import { getBreadcrumbSchema } from "@/lib/schema"
+import { SITE_VERSION } from "@/lib/site-config"
 import Link from "next/link"
 import { Mail, Linkedin, Github, ExternalLink, Building2, User, Newspaper } from "lucide-react"
 
@@ -25,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const facts = [
   { label: "Founded", labelTh: "ก่อตั้ง", value: "June 25, 2025" },
   { label: "What it is", labelTh: "คืออะไร", value: "An open-source agent runtime (Apache 2.0) with a safety gate, human-signed approvals and a signed audit log" },
-  { label: "Install", labelTh: "ติดตั้ง", value: "pip install delentia-os (PyPI, 2.3.1)" },
+  { label: "Install", labelTh: "ติดตั้ง", value: `pip install delentia-os (PyPI, ${SITE_VERSION})` },
   { label: "Algorithms", labelTh: "Algorithms", value: "41 in the public repository (a count of modules, not a performance claim)" },
   { label: "Test Suite", labelTh: "ชุดทดสอบ", value: "7,820 passed / 0 failed (public repository CI; coverage 91.37%)" },
   { label: "Measured results", labelTh: "ผลที่วัดแล้ว", value: "Each with its method and limits on the Benchmark page" },

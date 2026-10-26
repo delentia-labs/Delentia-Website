@@ -61,8 +61,8 @@ export default async function PlatformPage() {
   }
 
   const layers = [
-    { layer: "Layer 10", name: p("layer_10_name"), desc: p("layer_10_desc"), icon: Shield, badge: "NEW v2.3.1" },
-    { layer: "Layer 9", name: p("layer_9_name"), desc: p("layer_9_desc"), icon: Key, badge: "v2.3.0" },
+    { layer: "Layer 10", name: p("layer_10_name"), desc: p("layer_10_desc"), icon: Shield, badge: "Hardening" },
+    { layer: "Layer 9", name: p("layer_9_name"), desc: p("layer_9_desc"), icon: Key, badge: "Control plane" },
     { layer: "Layer 8", name: p("layer_8_name"), desc: p("layer_8_desc"), icon: Globe, badge: "8 Markets" },
     { layer: "Layer 7", name: p("layer_7_name"), desc: p("layer_7_desc"), icon: Network, badge: SITE_VERSION },
     { layer: "Layer 6", name: p("layer_6_name"), desc: p("layer_6_desc"), icon: Workflow, badge: "RFC-001" },

@@ -23,6 +23,17 @@ export default function ChangelogClient() {
 
   const releases: ReleaseEntry[] = [
     {
+      version: "delentia-os 2.4.0",
+      date: "2026-10-26",
+      title: language === "th" ? "ติดตั้งด้วยการดับเบิลคลิกบน Windows และใช้ผ่านหน้าเว็บ Desk" : "Install by double-click on Windows, and use it from a web page",
+      description: language === "th"
+        ? "รุ่นแรกที่มีหน้าเว็บ Desk อยู่ในแพ็กเกจ คำสั่ง delentia launch และ delentia update การอนุมัติด้วยอุปกรณ์ของคุณ (Windows Hello) การอนุมัติแบบดูแผนก่อน และตัวติดตั้ง Windows พร้อมไฟล์ checksum รุ่น 2.3.1 และก่อนหน้าไม่มีสิ่งเหล่านี้ ตัวติดตั้งยังไม่ได้ลงนามรหัสโปรแกรม Windows จึงจะเตือน"
+        : "The first release with the Desk web pages inside the package, delentia launch and delentia update, approving with your own device (Windows Hello), plan-first approval, and a Windows installer with a checksum file. Releases 2.3.1 and earlier have none of these. The installer is not code-signed yet, so Windows will warn.",
+      icon: Rocket,
+      highlights: ["pip install delentia-os", "Delentia-Setup.exe + SHA256SUMS.txt on the release page", "Not code-signed yet"],
+      tone: "border-emerald-500/25 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+    },
+    {
       version: "delentia-os 2.3.1",
       date: "2026-10-16",
       title: language === "th" ? "OpenCV และ faiss เป็นส่วนเสริมที่เลือกติดตั้ง" : "OpenCV and faiss become optional extras",
@@ -70,7 +81,7 @@ export default function ChangelogClient() {
       title: language === "th" ? "Beta Release — 3D Drop Shadow · Rounded Version Badge · --no-animation flag · rct.config.json support · PyPI Description Refreshed" : "Beta Release — 3D Drop Shadow · Rounded Version Badge · --no-animation flag · rct.config.json support · PyPI Description Refreshed",
       description: language === "th" ? "เปิดตัวเวอร์ชัน v1.0.4b1 บน PyPI ยกระดับความพรีเมียมของ CLI ในทุกมิติ: เพิ่ม 3D Drop Shadow offset เยื้อง 1 คอลัมน์สร้างความลึก, ระบบกรอบแสดงผลเวอร์ชันแบบขอบโค้งมน (Pill Box) พร้อม Glowing Active Indicator, เพิ่มสวิตช์ --no-animation และไฟล์คอนฟิก rct.config.json เพื่อปรับเปลี่ยน thresholds/ความเร็วตามต้องการ และอัปเดตหน้าแสดงผลบน PyPI ให้ถูกต้อง 100%" : "Released version v1.0.4b1 on PyPI, bringing next-gen CLI enhancements: 3D offset drop shadows for immersive depth, rounded pill-box version badges with active glowing status indicators, `--no-animation` performance flags, `rct.config.json` threshold overrides, and a fully refreshed PyPI project description.",
       icon: Rocket,
-      highlights: language === "th" ? ["pypi.org/project/delentia-os v1.0.4b1 ✅", "3D Drop Shadow column-shifted offset ✅", "Rounded modern Pill-Box version badge ✅", "--no-animation switch (zero latency) ✅", "rct.config.json local configuration overrides ✅", "PyPI Description render fix (CSP-compliant) ✅", "1,297 tests verified passed (100% green) ✅"] : ["pypi.org/project/delentia-os v1.0.4b1 ✅", "3D Drop Shadow column-shifted offset ✅", "Rounded modern Pill-Box version badge ✅", "--no-animation switch (zero latency) ✅", "rct.config.json local configuration overrides ✅", "PyPI Description render fix (CSP-compliant) ✅", "1,297 tests verified passed (100% green) ✅"],
+      highlights: language === "th" ? ["CLI v1.0.4b1 (repository changelog entry; not a PyPI release) ✅", "3D Drop Shadow column-shifted offset ✅", "Rounded modern Pill-Box version badge ✅", "--no-animation switch (zero latency) ✅", "rct.config.json local configuration overrides ✅", "PyPI Description render fix (CSP-compliant) ✅", "1,297 tests verified passed (100% green) ✅"] : ["CLI v1.0.4b1 (repository changelog entry; not a PyPI release) ✅", "3D Drop Shadow column-shifted offset ✅", "Rounded modern Pill-Box version badge ✅", "--no-animation switch (zero latency) ✅", "rct.config.json local configuration overrides ✅", "PyPI Description render fix (CSP-compliant) ✅", "1,297 tests verified passed (100% green) ✅"],
       tone: "border-violet-500/25 bg-violet-500/10 text-violet-600 dark:text-violet-400",
     },
     {
@@ -79,7 +90,7 @@ export default function ChangelogClient() {
       title: language === "th" ? "Beta Preview Release — Enterprise CLI Design System · FDIA Formula Card · Boot Sound · 1297 tests · PyPI Live" : "Beta Preview Release — Enterprise CLI Design System · FDIA Formula Card · Boot Sound · 1297 tests · PyPI Live",
       description: language === "th" ? "เปิดตัวเวอร์ชัน v1.0.4b0 บน PyPI พร้อมระบบ CLI ดีไซน์ใหม่ล่าสุด (Enterprise Wordmark, Per-row Gradient, 3D Shadow Row, Tier-aware Colors, Boot Sequence Animation, completion sound) ผ่านการรันทดสอบ 1,297 automated tests ครบ 100% เต็ม บน CI/CD pipeline และใช้ Trusted Publishing OIDC อัปโหลดตรงไปยัง PyPI" : "Released version v1.0.4b0 on PyPI featuring our brand new CLI Design System (Enterprise Wordmark, Per-row Gradient, 3D Shadow Row, Tier-aware Colors, Boot Sequence Animation, and boot completion audio). Verified via 1,297 passing automated tests on the CI/CD pipeline. Published securely using PyPI OIDC Trusted Publishing.",
       icon: Rocket,
-      highlights: language === "th" ? ["pypi.org/project/delentia-os v1.0.4b0 ✅", "1,297 tests passed (pytest + Hypothesis) ✅", "Enterprise Unicode block wordmark (49x6) ✅", "3D Drop Shadow character grid ✅", "Tier-aware gradient (Cyan/Gold) ✅", "Constitutional Formula FDIA card ✅", "Boot sequence audio bell \\a ✅", "Ruff formatting & lint clean ✅"] : ["pypi.org/project/delentia-os v1.0.4b0 ✅", "1,297 tests passed (pytest + Hypothesis) ✅", "Enterprise Unicode block wordmark (49x6) ✅", "3D Drop Shadow character grid ✅", "Tier-aware gradient (Cyan/Gold) ✅", "Constitutional Formula FDIA card ✅", "Boot sequence audio bell \\a ✅", "Ruff formatting & lint clean ✅"],
+      highlights: language === "th" ? ["CLI v1.0.4b0 (repository changelog entry; not a PyPI release) ✅", "1,297 tests passed (pytest + Hypothesis) ✅", "Enterprise Unicode block wordmark (49x6) ✅", "3D Drop Shadow character grid ✅", "Tier-aware gradient (Cyan/Gold) ✅", "Constitutional Formula FDIA card ✅", "Boot sequence audio bell \\a ✅", "Ruff formatting & lint clean ✅"] : ["CLI v1.0.4b0 (repository changelog entry; not a PyPI release) ✅", "1,297 tests passed (pytest + Hypothesis) ✅", "Enterprise Unicode block wordmark (49x6) ✅", "3D Drop Shadow character grid ✅", "Tier-aware gradient (Cyan/Gold) ✅", "Constitutional Formula FDIA card ✅", "Boot sequence audio bell \\a ✅", "Ruff formatting & lint clean ✅"],
       tone: "border-amber-500/25 bg-amber-500/10 text-amber-600 dark:text-amber-400",
     },
     {

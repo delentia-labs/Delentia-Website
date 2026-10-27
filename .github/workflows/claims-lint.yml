@@ -19,3 +19,7 @@ jobs:
           node-version: 22
       - name: Withdrawn claims
         run: node scripts/claims-lint.mjs
+      - name: Version lint, tests (no network)
+        run: node --test scripts/version-lint.test.mjs
+      - name: Version lint (the site names only delentia-os versions that PyPI has; falls back to lib/pypi-releases.json if PyPI cannot be reached)
+        run: node scripts/version-lint.mjs

@@ -2,8 +2,8 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { getWhitepaperSchema } from "@/lib/form-schemas"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { ArrowRight, CheckCircle, Mail } from "lucide-react"
@@ -67,19 +67,13 @@ const copy = {
   },
 } as const
 
-function getSchema(language: Language) {
-  return z.object({
-    email: z.string().trim().email(language === "th" ? "กรุณากรอกอีเมลที่ถูกต้อง" : "Please provide a valid email address"),
-  })
-}
-
 export default function WhitepaperAccessForm({ language }: WhitepaperAccessFormProps) {
   const [submitted, setSubmitted] = useState(false)
   const localePrefix = getLocalePrefix(language)
   const t = copy[language]
 
   const form = useForm<WhitepaperLeadValues>({
-    resolver: zodResolver(getSchema(language)),
+    resolver: zodResolver(getWhitepaperSchema(language)),
     defaultValues: { email: "" },
   })
 

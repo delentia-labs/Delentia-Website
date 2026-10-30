@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.2",
-    "@hookform/resolvers": "^3.10.0",
+    "@hookform/resolvers": "^5.9.2",
     "@mdx-js/mdx": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@radix-ui/react-accordion": "1.2.2",
@@ -86,7 +86,7 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",
     "web-vitals": "5.1.0",
-    "zod": "3.25.76"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",

@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
-import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { getContactSchema } from "@/lib/form-schemas"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { AlertCircle, CheckCircle } from "lucide-react"
@@ -105,15 +105,6 @@ const contactCopy: Record<Language, {
       connection: "ไม่สามารถส่งข้อความได้ กรุณาลองใหม่อีกครั้ง",
     },
   },
-}
-
-function getContactSchema(language: Language) {
-  return z.object({
-    name: z.string().trim().min(2, language === "th" ? "ชื่อต้องมีอย่างน้อย 2 ตัวอักษร" : "Name must be at least 2 characters"),
-    email: z.string().trim().email(language === "th" ? "กรุณากรอกอีเมลที่ถูกต้อง" : "Please provide a valid email address"),
-    subject: z.string().trim().min(5, language === "th" ? "หัวข้อต้องมีอย่างน้อย 5 ตัวอักษร" : "Subject must be at least 5 characters"),
-    message: z.string().trim().min(10, language === "th" ? "ข้อความต้องมีอย่างน้อย 10 ตัวอักษร" : "Message must be at least 10 characters"),
-  })
 }
 
 type ContactFormValues = {

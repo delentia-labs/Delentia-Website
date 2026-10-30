@@ -52,9 +52,9 @@ export default async function ImpactPage() {
       titleEn: "Solo-Developer Proof of Possibility",
       titleTh: "Solo-Developer Proof of Possibility",
       descEn:
-        "One person who does not write code, directing AI coding assistants. The result so far: an open-source agent runtime whose public repository CI runs 7,820 automated tests. What it shows is narrow: one person can build and test a governed agent runtime this way. It does not show that the runtime works well with a capable model or for other people; that has not been measured yet.",
+        "One person who does not write code, directing AI coding assistants. The result so far: an open-source agent runtime whose public repository CI runs 8,585 automated tests. What it shows is narrow: one person can build and test a governed agent runtime this way. It does not show that the runtime works well with a capable model or for other people; that has not been measured yet.",
       descTh:
-        "คนคนเดียวที่เขียนโค้ดไม่เป็น สั่งงานผู้ช่วยเขียนโค้ด AI ผลลัพธ์จนถึงตอนนี้: รันไทม์ agent โอเพนซอร์สที่ CI ของรีโพสาธารณะรันการทดสอบอัตโนมัติ 7,820 รายการ สิ่งที่แสดงได้แคบ: คนคนเดียวสร้างและทดสอบรันไทม์ agent ที่มีธรรมาภิบาลด้วยวิธีนี้ได้ ไม่ได้แสดงว่ารันไทม์ทำงานดีกับโมเดลที่เก่งพอหรือสำหรับคนอื่น ซึ่งยังไม่ได้วัด",
+        "คนคนเดียวที่เขียนโค้ดไม่เป็น สั่งงานผู้ช่วยเขียนโค้ด AI ผลลัพธ์จนถึงตอนนี้: รันไทม์ agent โอเพนซอร์สที่ CI ของรีโพสาธารณะรันการทดสอบอัตโนมัติ 8,585 รายการ สิ่งที่แสดงได้แคบ: คนคนเดียวสร้างและทดสอบรันไทม์ agent ที่มีธรรมาภิบาลด้วยวิธีนี้ได้ ไม่ได้แสดงว่ารันไทม์ทำงานดีกับโมเดลที่เก่งพอหรือสำหรับคนอื่น ซึ่งยังไม่ได้วัด",
     },
     {
       icon: FlaskConical,
@@ -63,9 +63,9 @@ export default async function ImpactPage() {
       titleEn: "Evidence-Culture Discipline",
       titleTh: "วัฒนธรรม Evidence-Culture",
       descEn:
-        "The public repository CI covers 7,820 automated tests across unit, integration, and end-to-end layers. Backend-validated coverage sits at 66.7% with a public 100% target. The test count is not a vanity metric — it is the organization's commitment to evidence culture, visible and trackable from day one.",
+        "The public repository CI covers 8,585 automated tests across unit, integration, and end-to-end layers. Backend-validated coverage sits at 66.7% with a public 100% target. The test count is not a vanity metric — it is the organization's commitment to evidence culture, visible and trackable from day one.",
       descTh:
-        "public repository CI ครอบคลุมการทดสอบอัตโนมัติ 7,820 รายการในชั้น unit, integration และ end-to-end โดยมี backend-validated coverage 66.7% และเป้าหมายสาธารณะ 100% จำนวนการทดสอบไม่ใช่ตัวชี้วัดความภาคภูมิใจ — มันคือความมุ่งมั่นขององค์กรต่อ evidence culture ที่มองเห็นและติดตามได้ตั้งแต่วันแรก",
+        "public repository CI ครอบคลุมการทดสอบอัตโนมัติ 8,585 รายการในชั้น unit, integration และ end-to-end โดยมี backend-validated coverage 66.7% และเป้าหมายสาธารณะ 100% จำนวนการทดสอบไม่ใช่ตัวชี้วัดความภาคภูมิใจ — มันคือความมุ่งมั่นขององค์กรต่อ evidence culture ที่มองเห็นและติดตามได้ตั้งแต่วันแรก",
     },
     {
       icon: Award,

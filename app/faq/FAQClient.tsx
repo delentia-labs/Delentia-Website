@@ -63,8 +63,8 @@ const faqCategories = [
       {
         qEn: "What are the 41 Algorithms?",
         qTh: "41 Algorithms คืออะไร?",
-        aEn: "The 41 algorithms span across the 10-layer architecture, covering everything from data ingestion (Layer 1) to autonomous improvement (Layer 10). They include algorithms for intent classification, context compression, hallucination detection, and cost-aware routing. The public repository's CI (Python 3.12, 2026-10-18) reports 7,820 passing tests.",
-        aTh: "41 Algorithms กระจายอยู่ใน 10 ชั้นของสถาปัตยกรรม ครอบคลุมตั้งแต่ Data Ingestion ถึง Autonomous Improvement รวมถึง Intent Classification, Context Compression, Hallucination Detection และ Cost-aware routing โดย public engineering snapshot ปัจจุบันรายงานผลการทดสอบที่ผ่านทั้งหมด 7,820 รายการในรีโป public (CI)",
+        aEn: "The 41 algorithms span across the 10-layer architecture, covering everything from data ingestion (Layer 1) to autonomous improvement (Layer 10). They include algorithms for intent classification, context compression, hallucination detection, and cost-aware routing. The public repository's CI (Python 3.12, 2026-10-25) reports 8,585 passing tests.",
+        aTh: "41 Algorithms กระจายอยู่ใน 10 ชั้นของสถาปัตยกรรม ครอบคลุมตั้งแต่ Data Ingestion ถึง Autonomous Improvement รวมถึง Intent Classification, Context Compression, Hallucination Detection และ Cost-aware routing โดย public engineering snapshot ปัจจุบันรายงานผลการทดสอบที่ผ่านทั้งหมด 8,585 รายการในรีโป public (CI)",
       },
       {
         qEn: "What LLM providers are supported?",

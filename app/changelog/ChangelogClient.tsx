@@ -52,7 +52,7 @@ export default function ChangelogClient() {
         ? "รุ่นแรกที่มีรันไทม์ agent ครบ: ด่านความปลอดภัย การอนุมัติด้วยลายเซ็น บันทึกตรวจสอบที่ลงนาม หน่วยความจำที่ตรวจสอบได้ และเดโม delentia demo run compare --scripted ที่ไม่ต้องมีโมเดล"
         : "The first release with the whole agent runtime: safety gate, signed approvals, signed audit log, verifiable memory, and the model-free demo (delentia demo run compare --scripted).",
       icon: Terminal,
-      highlights: ["Public CI: 7,820 passed, 0 failed, 91.37% coverage", "Demo: 5 of 5 checks"],
+      highlights: ["Public CI: 8,585 passed, 0 failed, 91.79% coverage", "Demo: 5 of 5 checks"],
       tone: "border-emerald-500/25 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
     },
     {

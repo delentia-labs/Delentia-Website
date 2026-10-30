@@ -6,15 +6,15 @@ export const SITE_VERSION = "2.4.0" // the newest delentia-os on PyPI (2026-10-2
 // Round 50: the private enterprise count (4,849) is not independently verifiable and was
 // withdrawn (see /corrections). Every page that shows "verified tests" now shows the
 // CI-verified public count below.
-export const SITE_TEST_COUNT = 7820 // same suite as SITE_PUBLIC_SDK_TESTS: the public repository CI (the private suite is not counted anywhere)
+export const SITE_TEST_COUNT = 8585 // same suite as SITE_PUBLIC_SDK_TESTS: the public repository CI (the private suite is not counted anywhere)
 export const SITE_PUBLIC_SDK_VERSION = "2.4.0" // matches pyproject.toml / `delentia --version` in delentia-labs/delentia-os as of 2026-10-26 (release v2.4.0)
-export const SITE_PUBLIC_SDK_TESTS = 7820 // Delentia-OS CI run 39122730330 (commit 3dbed0d, 2026-10-18): 7820 passed · 43 skipped · 1 xfailed · 0 failed on Python 3.12, coverage 91.37%. Update from a real green CI run only.
+export const SITE_PUBLIC_SDK_TESTS = 8585 // Delentia-OS CI run 40166394493 (commit eb96355, 2026-10-25): 8585 passed · 46 skipped · 1 xfailed · 0 failed on Python 3.12, coverage 91.79%. Update from a real green CI run only.
 // Compatibility evidence labels reused across public pages, metadata, and blog stat cards.
 export const SITE_PUBLIC_SDK_EVIDENCE_LABEL = "Public SDK verification lane"
 export const SITE_ENTERPRISE_EVIDENCE_LABEL = "CI-verified full suite" // was "Enterprise runtime snapshot" (withdrawn: not verifiable)
 export const SITE_RESEARCH_EVIDENCE_LABEL = "Research evaluation lane"
-export const SITE_PUBLIC_SDK_COVERAGE = "91.37%"
-export const SITE_EVIDENCE_LAST_UPDATED = "2026-10-12"
+export const SITE_PUBLIC_SDK_COVERAGE = "91.79%"
+export const SITE_EVIDENCE_LAST_UPDATED = "2026-10-25"
 export const SITE_MICROSERVICE_COUNT = 52 // measured 2026-10-12: 52 services of the private layer answered at the same time as containers on one machine (a 53rd cannot run yet); not a production figure. 62 was a count of folders and is withdrawn
 export const SITE_ALGORITHM_COUNT = 41
 export const SITE_LAYER_COUNT = 10 // Product layers L1-L10; L11 = CI/CD pipeline layer (internal only)

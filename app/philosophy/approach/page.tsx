@@ -85,9 +85,9 @@ export default async function ApproachPage() {
       titleEn: "Benchmark-Gated Delivery",
       titleTh: "Delivery ผ่าน Benchmark Gate",
       descEn:
-        "No capability claim ships without a passing CI benchmark attached. The public repository CI 7,820-test suite is not a coverage target — it is a deployment gate, while the public SDK verified lane remains separate. 'Projected GAIA benchmark: 84–89%' carries the qualifier 'pending formal leaderboard validation' because evidence-quality standards apply to our own work as much as to our competitors.",
+        "No capability claim ships without a passing CI benchmark attached. The public repository CI 8,585-test suite is not a coverage target — it is a deployment gate, while the public SDK verified lane remains separate. 'Projected GAIA benchmark: 84–89%' carries the qualifier 'pending formal leaderboard validation' because evidence-quality standards apply to our own work as much as to our competitors.",
       descTh:
-        "ไม่มีการอ้างความสามารถใดที่ปล่อยออกไปโดยไม่มี CI benchmark ที่ผ่านแนบมา โดยชุดทดสอบ 7,820 รายการใน public repository CI ไม่ใช่เป้าหมาย coverage แต่เป็น deployment gate และยังแยกจาก public SDK verified lane อย่างชัดเจน 'Projected GAIA benchmark: 84-89%' มี qualifier 'pending formal leaderboard validation' เพราะมาตรฐานคุณภาพหลักฐานใช้กับงานของเราเองเช่นเดียวกับคู่แข่ง",
+        "ไม่มีการอ้างความสามารถใดที่ปล่อยออกไปโดยไม่มี CI benchmark ที่ผ่านแนบมา โดยชุดทดสอบ 8,585 รายการใน public repository CI ไม่ใช่เป้าหมาย coverage แต่เป็น deployment gate และยังแยกจาก public SDK verified lane อย่างชัดเจน 'Projected GAIA benchmark: 84-89%' มี qualifier 'pending formal leaderboard validation' เพราะมาตรฐานคุณภาพหลักฐานใช้กับงานของเราเองเช่นเดียวกับคู่แข่ง",
     },
     {
       icon: Globe,

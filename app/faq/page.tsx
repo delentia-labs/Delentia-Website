@@ -9,7 +9,7 @@ import { SITE_UPTIME } from "@/lib/site-config"
 const faqSchemaData = [
   {
     question: "What is the RCT Ecosystem?",
-    answer: "Delentia (RCT) is an agent runtime built by one person in Bangkok, Thailand, who does not write code and directs AI coding assistants — 41 algorithms, an open-source agent runtime, and 8,585 automated tests passing at 0 failures in the public repository's CI. It combines the FDIA equation (F=D^I×A), JITNA Protocol (RFC-001), 10-layer architecture, and 7 genome subsystems.",
+    answer: "Delentia (RCT) is an agent runtime built by one person in Bangkok, Thailand, who does not write code and directs AI coding assistants — 41 algorithms, an open-source agent runtime, and 9,069 automated tests passing at 0 failures in the public repository's CI. It combines the FDIA equation (F=D^I×A), JITNA Protocol (RFC-001), 10-layer architecture, and 7 genome subsystems.",
   },
   {
     question: "How does the JITNA Protocol work?",
@@ -17,7 +17,7 @@ const faqSchemaData = [
   },
   {
     question: "What infrastructure does RCT require?",
-    answer: "RCT runs on a service-based architecture with PostgreSQL, Redis, and optional Ollama for local LLM inference, validated by 8,585 passing tests in the public repository's CI. It scales from Docker Compose (33 containers) to Kubernetes (57 resources with HPA, PDB, NetworkPolicy, ArgoCD).",
+    answer: "RCT runs on a service-based architecture with PostgreSQL, Redis, and optional Ollama for local LLM inference, validated by 9,069 passing tests in the public repository's CI. It scales from Docker Compose (33 containers) to Kubernetes (57 resources with HPA, PDB, NetworkPolicy, ArgoCD).",
   },
   {
     question: "What was HexaCore?",

@@ -77,7 +77,7 @@ const useCases = [
     scenario: "Quick prototyping / developer experiments",
     llm: "✅",
     rct: "⚠️",
-    reason: "Raw LLM API is simpler for one-off experiments. Delentia OS is designed for production-grade deployments.",
+    reason: "Raw LLM API is simpler for one-off experiments. Delentia OS is built for work where a person must approve risky actions and check afterwards what happened; it is experimental and not yet proven in production.",
   },
   {
     scenario: "Agentic workflows with multiple AI agents",

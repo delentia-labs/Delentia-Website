@@ -11,8 +11,8 @@ const researchLinks = [
   {
     hrefEn: "/en/blog/rct-ecosystem-4849-tests-methodology",
     hrefTh: "/th/blog/rct-ecosystem-4849-tests-methodology",
-    labelEn: "8,585 Tests, 0 Failures: How RCT Verifies Everything",
-    labelTh: "8,585 Tests, 0 Failures: วิธีที่ RCT ตรวจสอบทุกอย่าง",
+    labelEn: "9,069 Tests, 0 Failures: How RCT Verifies Everything",
+    labelTh: "9,069 Tests, 0 Failures: วิธีที่ RCT ตรวจสอบทุกอย่าง",
     pillarEn: "Testing baseline pillar",
     pillarTh: "Testing baseline",
   },

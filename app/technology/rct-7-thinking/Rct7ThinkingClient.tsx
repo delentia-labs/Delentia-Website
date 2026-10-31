@@ -7,6 +7,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { getLocaleFromPathname } from "@/lib/i18n"
 import { Brain, ChevronRight, Layers } from "lucide-react"
+import { SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
 
 const thinkingSteps = [
   {
@@ -275,14 +276,14 @@ export default function Rct7ThinkingClient({ locale: propLocale }: { locale?: st
       <section className="bg-muted/30 py-16">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-foreground text-center mb-8">
-            {isTh ? "RCT-7 Thinking ใน Production" : "RCT-7 Thinking in Production"}
+            {isTh ? "RCT-7 Thinking ในรันไทม์ ณ ตอนนี้" : "RCT-7 Thinking in the runtime today"}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { value: "96.0%", label: isTh ? "End-to-end Accuracy" : "End-to-end Accuracy", color: "#D4A853" },
-              { value: "7", label: isTh ? "Thinking Steps" : "Thinking Steps", color: "#7B9E87" },
-              { value: "3", label: isTh ? "Variants (O/S/I)" : "Variants (O/S/I)", color: "#89B4C8" },
-              { value: "T1–T9", label: isTh ? "Kernel Coverage" : "Kernel Coverage", color: "#C4745B" },
+              { value: "7", label: isTh ? "ขั้นตอนการคิด" : "Thinking steps", color: "#D4A853" },
+              { value: isTh ? "บางส่วน" : "Partial", label: isTh ? "สถานะของทุกขั้นตอนตอนนี้" : "Status of every step today", color: "#7B9E87" },
+              { value: SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US"), label: isTh ? "เทสต์ที่ผ่านใน CI สาธารณะ" : "Tests passing in public CI", color: "#89B4C8" },
+              { value: isTh ? "ยังไม่มี" : "None yet", label: isTh ? "ผลกับโมเดลโฮสต์ที่เก่ง" : "Results with a strong hosted model", color: "#C4745B" },
             ].map((s, i) => (
               <m.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="p-5 rounded-2xl border border-border bg-card text-center">

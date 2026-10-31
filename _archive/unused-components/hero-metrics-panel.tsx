@@ -1,3 +1,5 @@
+// ARCHIVED 2026-10-31 (Round 107): this component is not imported anywhere. Its progress bars ("Intent Pipeline 94%", "Verification Score 87%", "Memory Compression 93%",
+// "41 Algorithms 82%") were never measured and must not be shown as results. Kept here, not deleted, per the project's zero-delete rule; do not move it back without real numbers.
 "use client"
 
 import { m, useInView, useReducedMotion } from "framer-motion"

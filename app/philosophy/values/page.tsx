@@ -69,13 +69,13 @@ const VALUES: ValueItem[] = [
     en: {
       title: "Verifiable Truth",
       subtitle: "Evidence first, claim second — always",
-      body: "Our public repository CI 8,585-test suite is not a marketing number. It is the gate through which every feature must pass before it is claimed publicly, while the public SDK verified lane remains separate. The FDIA equation F=(D^I)×A is not a metaphor; it is implemented code with measurable outputs. We state only what the public CI measures, and we claim no hallucination rate.",
+      body: "Our public repository CI 9,069-test suite is not a marketing number. It is the gate through which every feature must pass before it is claimed publicly, while the public SDK verified lane remains separate. The FDIA equation F=(D^I)×A is not a metaphor; it is implemented code with measurable outputs. We state only what the public CI measures, and we claim no hallucination rate.",
       pill: "Evidence Culture",
     },
     th: {
       title: "ความจริงที่พิสูจน์ได้",
       subtitle: "หลักฐานก่อน การอ้างสิทธิ์ภายหลัง — เสมอ",
-      body: "ชุดทดสอบ 8,585 รายการใน public repository CI ของเราไม่ใช่ตัวเลขการตลาด แต่เป็นประตูที่ทุกฟีเจอร์ต้องผ่านก่อนจะประกาศต่อสาธารณะ และยังแยกจาก public SDK verified lane อย่างชัดเจน สมการ FDIA F=(D^I)×A ไม่ใช่คำอุปมา แต่เป็นโค้ดที่ implement จริงพร้อมผลลัพธ์ที่วัดได้ เราระบุเฉพาะสิ่งที่ CI สาธารณะวัดได้ และไม่ได้อ้างอัตรา hallucination",
+      body: "ชุดทดสอบ 9,069 รายการใน public repository CI ของเราไม่ใช่ตัวเลขการตลาด แต่เป็นประตูที่ทุกฟีเจอร์ต้องผ่านก่อนจะประกาศต่อสาธารณะ และยังแยกจาก public SDK verified lane อย่างชัดเจน สมการ FDIA F=(D^I)×A ไม่ใช่คำอุปมา แต่เป็นโค้ดที่ implement จริงพร้อมผลลัพธ์ที่วัดได้ เราระบุเฉพาะสิ่งที่ CI สาธารณะวัดได้ และไม่ได้อ้างอัตรา hallucination",
       pill: "วัฒนธรรมหลักฐาน",
     },
     color: "border-emerald-500/30 bg-emerald-500/5",

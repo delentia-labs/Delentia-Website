@@ -69,8 +69,8 @@ export function AsciinemaTerminalPlayer({ className }: AsciinemaTerminalPlayerPr
           <Terminal size={11} className="text-zinc-600" />
           dcpm_trace_simulation.cast
         </div>
-        <div className="text-[9px] text-[#33ff33] bg-[#33ff33]/10 px-1.5 py-0.5 rounded uppercase tracking-wider font-bold animate-pulse">
-          Live Run
+        <div className="text-[9px] text-zinc-300 bg-zinc-100/10 px-1.5 py-0.5 rounded uppercase tracking-wider font-bold">
+          Recording
         </div>
       </div>
 
@@ -94,8 +94,8 @@ export function AsciinemaTerminalPlayer({ className }: AsciinemaTerminalPlayerPr
       <div className="border-t border-zinc-900 bg-zinc-950/60 px-4 py-2 text-[10px] text-zinc-600 flex items-center justify-between select-none">
         <div>COLS: 110 | ROWS: 35</div>
         <div className="text-emerald-500 flex items-center gap-1">
-          <span className="h-1.5 w-1.5 bg-emerald-500 rounded-full animate-ping" />
-          AUTHENTIC RUNTIME SNAPSHOT
+          <span className="h-1.5 w-1.5 bg-zinc-500 rounded-full" />
+          RECORDED TERMINAL SESSION (NOT A LIVE RUN)
         </div>
       </div>
     </div>

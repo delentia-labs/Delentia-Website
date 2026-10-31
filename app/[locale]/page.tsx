@@ -23,14 +23,14 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
   return createBilingualMetadata(
     locale,
-    "Delentia OS — Deterministic AI Guardrails for Agentic Systems",
-    "Delentia OS — Deterministic AI Guardrails สำหรับ Agentic Systems",
-    `Delentia OS is a live MCP gateway — deployed on Cloudflare Workers, installable via npx — enforcing FDIA mathematical authorization, RCT-7 structured reasoning, and policy control for AI agents. Part of a broader constitutional AI architecture still in active development.`,
-    `Delentia OS คือ MCP gateway ที่ deploy จริงบน Cloudflare Workers ติดตั้งผ่าน npx ได้ บังคับ authorization ด้วยสมการ FDIA, RCT-7 structured reasoning และ policy control สำหรับ AI agent เป็นส่วนหนึ่งของ constitutional AI architecture ที่กำลังพัฒนาต่อเนื่อง`,
+    "Delentia OS — a governed AI agent runtime you install yourself",
+    "Delentia OS — ระบบรัน AI Agent ที่คุมสิทธิ์และตรวจสอบย้อนหลังได้ ติดตั้งเอง",
+    `Delentia OS is an open-source, experimental AI agent runtime you run on your own machine. Every tool call is judged before it runs, risky actions wait for a human signature, text from outside cannot move anything on its own, and the audit log can be verified offline. Windows installer and pip; no hosted service; no results with a strong model yet.`,
+    `Delentia OS เป็นรันไทม์ AI agent โอเพนซอร์สแบบทดลองที่รันบนเครื่องของคุณเอง ทุกการเรียกเครื่องมือถูกตัดสินก่อนทำงาน งานเสี่ยงต้องรอลายเซ็นของมนุษย์ ข้อความจากภายนอกสั่งงานเองไม่ได้ และตรวจ audit log ย้อนหลังแบบออฟไลน์ได้ มีตัวติดตั้ง Windows และ pip ไม่มีบริการโฮสต์ และยังไม่มีผลกับโมเดลที่เก่ง`,
     "/",
     locale === "th"
-      ? ["MCP Gateway", "AI Guardrails", "FDIA Equation", "ป้องกัน AI hallucination", "RCT-7 Thinking", "Agentic AI Security"]
-      : ["MCP Gateway", "AI Guardrails", "FDIA equation", "Agentic AI security", "RCT-7 Thinking", "AI governance platform"]
+      ? ["AI agent runtime", "ติดตั้งเอง", "ลายเซ็นอนุมัติ", "audit log", "FDIA Equation", "Agentic AI Security"]
+      : ["AI agent runtime", "self-hosted AI agent", "human approval for AI actions", "audit log", "FDIA equation", "agentic AI security"]
   )
 }
 
@@ -46,36 +46,36 @@ export default async function LocaleHomePage({ params }: LocalePageProps) {
     locale === "th"
       ? [
           {
-            question: "Delentia Labs ช่วยองค์กรเรื่องใดได้บ้าง?",
+            question: "Delentia OS คืออะไร และแก้ปัญหาอะไร?",
             answer:
-              "Delentia Labs ช่วยองค์กรลดความเสี่ยงจาก AI hallucination เพิ่มผลลัพธ์ที่ตรวจสอบได้ เสริมระบบหน่วยความจำ และวางโครงสร้างการใช้งาน AI ให้สอดคล้องกับ governance และข้อกำหนดด้านความปลอดภัย",
+              "Delentia OS เป็นรันไทม์ AI agent โอเพนซอร์สที่รันบนเครื่องของคุณ ปัญหาที่มันตั้งใจแก้คือเมื่อให้ agent ทำงานแทน คุณจะคุมได้ว่ามันทำอะไรได้บ้างและตรวจย้อนหลังได้ว่าทำอะไรไปจริง: ทุกการเรียกเครื่องมือถูกตัดสินก่อน งานเสี่ยงต้องรอลายเซ็นของคุณ และบันทึกการทำงานเชื่อมกันด้วย hash และตรวจแบบออฟไลน์ได้ มันไม่ได้ทำให้โมเดลถูกต้องขึ้น และไม่ได้ตรวจว่าคำตอบเป็นจริง",
           },
           {
-            question: "ควรเริ่มประเมินแพลตฟอร์มจากส่วนใดก่อน?",
+            question: "ลองใช้ได้อย่างไร และต้องมีโมเดลหรือไม่?",
             answer:
-              "โดยทั่วไปควรเริ่มจาก whitepaper เพื่อเข้าใจสถาปัตยกรรม จากนั้นดู solutions, pricing และ research เพื่อประเมินความเหมาะสมเชิงธุรกิจและเชิงเทคนิค",
+              "ติดตั้งด้วยตัวติดตั้ง Windows หรือ pip install delentia-os แล้วรัน delentia demo init --lang en ตามด้วย delentia demo run compare --scripted ใช้เวลาราวสองนาทีและไม่ต้องมีโมเดลหรือคีย์ โปรแกรมสคริปต์ทำหน้าที่แทนโมเดลเท่านั้น ส่วนเครื่องมือ ด่านความปลอดภัย การรอลายเซ็น และ audit log เป็นของจริง",
           },
           {
-            question: "Delentia Labs รองรับการใช้งานระดับองค์กรหรือไม่?",
+            question: "พร้อมใช้งานจริงหรือยัง?",
             answer:
-              "รองรับ โดยเน้นสถาปัตยกรรม 10 ชั้น การตรวจสอบหลายโมเดล ระบบหน่วยความจำ RCTDB และแนวทางการ deploy ที่เหมาะกับงานระดับองค์กร",
+              "ยัง เป็นงานทดลองที่ผู้พัฒนาคนเดียวสร้าง ยังไม่มีผลที่วัดกับโมเดลโฮสต์ที่เก่ง ยังไม่มีผู้ใช้ภายนอก ไม่มีบริการโฮสต์ และไม่มีการรับรองด้านความปลอดภัยหรือการปฏิบัติตามกฎหมายใด ๆ ดูหน้า Known limitations และ Threat model ในเอกสาร",
           },
         ]
       : [
           {
-            question: "What problems does Delentia Labs solve for enterprise teams?",
+            question: "What is Delentia OS and what problem does it address?",
             answer:
-              "Delentia Labs helps enterprises reduce hallucination risk, add verifiable outputs, strengthen memory and orchestration, and improve AI governance for production environments.",
+              "Delentia OS is an open-source AI agent runtime that runs on your own machine. It addresses one problem: when an agent acts for you, can you control what it may do and check afterwards what it actually did? Every tool call is judged first, risky actions wait for your signature, and the record is hash-chained and can be verified offline. It does not make a model more correct, and it does not check that an answer is true.",
           },
           {
-            question: "How should teams evaluate the platform?",
+            question: "How do I try it, and do I need a model?",
             answer:
-              "Most teams should begin with the whitepaper, then compare solutions, review pricing, and inspect research releases to evaluate technical and commercial fit.",
+              "Install the Windows installer or run pip install delentia-os, then delentia demo init --lang en and delentia demo run compare --scripted. It takes about two minutes and needs no model and no key. A fixed program stands in for the model only; the tools, the safety gate, the wait for a signature and the audit log are real.",
           },
           {
-            question: "Is Delentia Labs designed for enterprise deployment?",
+            question: "Is it ready for production?",
             answer:
-              "Yes. The platform is positioned around a 10-layer architecture, multi-model verification, RCTDB memory, and deployment paths suitable for enterprise requirements.",
+              "No. It is experimental software built by one person. There are no results yet with a strong hosted model, no outside users, no hosted service, and no security or compliance certification. See the Known limitations and Threat model pages in the documentation.",
           },
         ]
   )

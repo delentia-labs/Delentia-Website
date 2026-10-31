@@ -22,22 +22,22 @@ export default function FDIASection() {
       eyebrow: isEn ? "Outcome" : "ผลลัพธ์",
       title: isEn ? "Future is constructed" : "Future คือสิ่งที่ถูกสร้าง",
       body: isEn
-        ? "The section should read as a systems blueprint: every visual choice needs to reinforce that F is produced by the full pipeline."
-        : "section นี้ควรถูกอ่านเหมือน systems blueprint เพื่อย้ำว่า F เป็นผลลัพธ์ที่เกิดจากทั้ง pipeline",
+        ? "F is not a prediction. It is what actually happens once data, intent and an accountable owner are all present."
+        : "F ไม่ใช่การพยากรณ์ แต่คือสิ่งที่เกิดขึ้นจริงเมื่อมีข้อมูล เจตนา และเจ้าของผู้รับผิดชอบครบ",
     },
     {
       eyebrow: isEn ? "Exponent" : "ยกกำลัง",
       title: isEn ? "Intent changes the curve" : "Intent เปลี่ยนเส้นโค้งของผลลัพธ์",
       body: isEn
-        ? "Intent is the dramatic lever, so the visual hierarchy now lifts it physically and chromatically above the system."
-        : "Intent เป็นคันโยกสำคัญที่สุด จึงถูกยกสถานะขึ้นทั้งทางตำแหน่งและโทนสีในเลย์เอาต์ใหม่",
+        ? "In the life equation a larger intent amplifies the data. In the agent gate the data is a score between 0 and 1, so the same exponent works as strictness: the clearer and riskier the intent, the better the data must be. No intent gives no future."
+        : "ในสมการชีวิต เจตนาที่ใหญ่ขึ้นขยายข้อมูล ส่วนในด่านของ agent ข้อมูลเป็นคะแนน 0 ถึง 1 เลขชี้กำลังเดียวกันจึงทำหน้าที่เป็นความเข้มงวด: เจตนายิ่งชัดและเสี่ยง ข้อมูลยิ่งต้องดี ไม่มีเจตนาก็ไม่มีอนาคต",
     },
     {
       eyebrow: isEn ? "Governance" : "การกำกับดูแล",
       title: isEn ? "Architect stays human" : "Architect ยังคงเป็นมนุษย์",
       body: isEn
-        ? "Architect is no longer a decorative label. It is the governance multiplier that keeps AI outputs accountable."
-        : "Architect ไม่ใช่ label เชิงตกแต่งอีกต่อไป แต่เป็น governance multiplier ที่ทำให้ผลลัพธ์ AI รับผิดชอบได้",
+        ? "A is a person who decides and signs. If A is zero, F is zero: nothing risky runs without an accountable human."
+        : "A คือคนที่ตัดสินใจและลงนาม ถ้า A เป็นศูนย์ F ก็เป็นศูนย์: ไม่มีสิ่งเสี่ยงใดทำงานโดยไม่มีมนุษย์ผู้รับผิดชอบ",
     },
   ]
 

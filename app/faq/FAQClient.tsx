@@ -195,7 +195,8 @@ const faqCategories = [
 ] as const
 
 const versions = [
-  { ver: "2.4.0", name: "Desk pages in the package, Windows installer, device approval", date: "2026-10-26", status: "LATEST" },
+  { ver: "2.4.1", name: "Setup assistant in the Desk, bilingual stage label, demo reset", date: "2026-11-01", status: "LATEST" },
+  { ver: "2.4.0", name: "Desk pages in the package, Windows installer, device approval", date: "2026-10-26", status: "PUBLIC" },
   { ver: "2.3.1", name: "Optional OpenCV and faiss extras", date: "2026-10-16", status: "PUBLIC" },
   { ver: "2.3.0", name: "Agent runtime, model-free demo", date: "2026-10-13", status: "PUBLIC" },
   { ver: "2.2.6", name: "Earlier SDK release", date: "2026-06-06", status: "PUBLIC" },

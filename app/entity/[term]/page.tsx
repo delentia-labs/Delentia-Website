@@ -155,10 +155,18 @@ export async function generateMetadata({ params }: EntityPageProps): Promise<Met
   const entity = entities[term]
   if (!entity) return { title: "Entity Not Found" }
 
+  const locale = await getRequestLocale()
   return {
     title: `${entity.name} — Defined`,
     description: entity.definition,
-    alternates: { canonical: `https://delentia.com/en/entity/${term}` },
+    alternates: {
+      canonical: `https://delentia.com/${locale}/entity/${term}`,
+      languages: {
+        en: `https://delentia.com/en/entity/${term}`,
+        th: `https://delentia.com/th/entity/${term}`,
+        "x-default": `https://delentia.com/en/entity/${term}`,
+      },
+    },
   }
 }
 

@@ -119,17 +119,17 @@ const nextConfig = {
       // SDK docs redirect — /docs and /th/docs both point to GitHub Pages
       {
         source: "/docs",
-        destination: "https://delentia-labs.github.io/delentia-os/",
+        destination: "https://delentia-labs.github.io/Delentia-OS/",
         permanent: false,
       },
       {
         source: "/en/docs",
-        destination: "https://delentia-labs.github.io/delentia-os/",
+        destination: "https://delentia-labs.github.io/Delentia-OS/",
         permanent: false,
       },
       {
         source: "/th/docs",
-        destination: "https://delentia-labs.github.io/delentia-os/",
+        destination: "https://delentia-labs.github.io/Delentia-OS/",
         permanent: false,
       },
       // Product page redirects: old brand URLs → new brand URLs
@@ -166,7 +166,7 @@ const nextConfig = {
       // Compare page redirects
       {
         source: "/compare/rctdb-vs-vector-databases",
-        destination: "/compare/rctdb-vs-vector-databases",
+        destination: "/compare/delentiadb-vs-vector-databases",
         permanent: true,
       },
       {

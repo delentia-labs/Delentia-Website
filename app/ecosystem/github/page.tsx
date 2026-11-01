@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { getRequestLocale } from "@/lib/request-locale"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import Link from "next/link"
 
@@ -12,8 +13,8 @@ type LocalePageProps = {
   params: Promise<{ locale: "en" | "th" }>
 }
 
-export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
-  const { locale } = await params
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale()
   return createBilingualMetadata(
     locale,
     "GitHub Repositories — Source & Logic Hub",
@@ -24,8 +25,8 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
   )
 }
 
-export default async function GitHubHubPage({ params }: LocalePageProps) {
-  const { locale } = await params
+export default async function GitHubHubPage() {
+  const locale = await getRequestLocale()
   const isTH = locale === "th"
   const localePrefix = isTH ? "/th" : "/en"
 

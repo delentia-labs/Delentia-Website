@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
+import { getRequestLocale } from "@/lib/request-locale"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import Link from "next/link"
-import { SITE_VERSION } from "@/lib/site-config"
+import { SITE_VERSION, SITE_PUBLIC_SDK_COVERAGE, SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
 import { fetchGithubReadme } from "@/lib/github-api"
 import { MDXContent } from "@/components/mdx-content"
 
@@ -15,8 +16,8 @@ type LocalePageProps = {
   params: Promise<{ locale: "en" | "th" }>
 }
 
-export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
-  const { locale } = await params
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale()
   return createBilingualMetadata(
     locale,
     "Delentia OS Source & Architecture — GitHub Hub",
@@ -27,8 +28,8 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
   )
 }
 
-export default async function DelentiaOSGithubPage({ params }: LocalePageProps) {
-  const { locale } = await params
+export default async function DelentiaOSGithubPage() {
+  const locale = await getRequestLocale()
   const isTH = locale === "th"
   const localePrefix = isTH ? "/th" : "/en"
 
@@ -86,11 +87,11 @@ export default async function DelentiaOSGithubPage({ params }: LocalePageProps) 
           </div>
           <div className="space-y-1">
             <span className="text-xs text-gray-400 uppercase tracking-wider">{isTH ? "ภาษาหลัก" : "Language"}</span>
-            <p className="font-bold text-sm">Python / C++</p>
+            <p className="font-bold text-sm">Python</p>
           </div>
           <div className="space-y-1">
             <span className="text-xs text-gray-400 uppercase tracking-wider">{isTH ? "การครอบคลุมเทส" : "Test Coverage"}</span>
-            <p className="font-bold text-sm">94.8% (105k cases)</p>
+            <p className="font-bold text-sm">{SITE_PUBLIC_SDK_COVERAGE} ({SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US")} tests)</p>
           </div>
         </div>
       </div>

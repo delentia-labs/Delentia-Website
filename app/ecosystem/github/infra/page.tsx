@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { getRequestLocale } from "@/lib/request-locale"
 import { createBilingualMetadata } from "@/lib/seo-bilingual"
 import Link from "next/link"
 import { fetchGithubReadme } from "@/lib/github-api"
@@ -15,8 +16,8 @@ type LocalePageProps = {
   params: Promise<{ locale: "en" | "th" }>
 }
 
-export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
-  const { locale } = await params
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale()
   return createBilingualMetadata(
     locale,
     "Delentia Infra Architecture — GitHub Hub",
@@ -27,8 +28,8 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
   )
 }
 
-export default async function DelentiaInfraGithubPage({ params }: LocalePageProps) {
-  const { locale } = await params
+export default async function DelentiaInfraGithubPage() {
+  const locale = await getRequestLocale()
   const isTH = locale === "th"
   const localePrefix = isTH ? "/th" : "/en"
 

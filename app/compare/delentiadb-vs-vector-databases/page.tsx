@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
     "หน่วยความจำของ Delentia เทียบกับ vector database — คนละหน้าที่",
     "A vector database finds similar items fast. Delentia's agent memory is a hash-chained event log with revocation, time travel and per-person erasure. They do different jobs; Delentia's recall by meaning is opt-in and was measured against mem0 (24 of 30 for mem0, 22 of 30 for Delentia with embeddings, 7 of 30 for its default word matching).",
     "vector database ทำหน้าที่หาของที่คล้ายกันให้เร็ว หน่วยความจำของ agent ใน Delentia เป็นบันทึกเหตุการณ์ที่เชื่อม hash มีการเพิกถอน การย้อนดู และการลบรายบุคคล คนละหน้าที่ การเรียกคืนตามความหมายของ Delentia เป็นแบบเลือกเปิดและวัดเทียบ mem0 แล้ว (mem0 24 จาก 30, Delentia ที่ใช้ embedding 22 จาก 30, การจับคำเริ่มต้น 7 จาก 30)",
-    "/compare/rctdb-vs-vector-databases",
+    "/compare/delentiadb-vs-vector-databases",
     ["vector database", "agent memory", "event log", "memory erasure"]
   )
 }
@@ -70,7 +70,7 @@ export default async function RCTDBvsVectorDBs() {
   const breadcrumb = getBreadcrumbSchema([
     { name: "Home", url: `https://delentia.com${localePrefix}` },
     { name: "Compare", url: `https://delentia.com${localePrefix}/compare` },
-    { name: "Memory vs vector databases", url: `https://delentia.com${localePrefix}/compare/rctdb-vs-vector-databases` },
+    { name: "Memory vs vector databases", url: `https://delentia.com${localePrefix}/compare/delentiadb-vs-vector-databases` },
   ])
   const faq = getFAQSchema(FAQS)
 

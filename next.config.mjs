@@ -200,6 +200,16 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/en/compare/rctdb-vs-vector-databases",
+        destination: "/en/compare/delentiadb-vs-vector-databases",
+        permanent: true,
+      },
+      {
+        source: "/th/compare/rctdb-vs-vector-databases",
+        destination: "/th/compare/delentiadb-vs-vector-databases",
+        permanent: true,
+      },
+      {
         source: "/compare/rct-labs-vs-llm-apis",
         destination: "/compare/delentia-labs-vs-llm-apis",
         permanent: true,

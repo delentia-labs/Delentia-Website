@@ -7,6 +7,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { getLocaleFromPathname } from "@/lib/i18n"
 import { Brain, RefreshCw } from "lucide-react"
+import { SITE_PUBLIC_SDK_TESTS } from "@/lib/site-config"
 
 const intentLoopStates = [
   { state: "IDLE", num: 1, color: "#89B4C8", descEn: "Quiescent state — the system monitors for incoming signals, maintains heartbeat checks, and pre-warms model caches for low-latency response.", descTh: "สถานะพักตัว — ระบบตรวจสอบ Signal ขาเข้า รักษา Heartbeat และ Pre-warm Cache โมเดลสำหรับ Response ที่เร็ว" },
@@ -105,14 +106,14 @@ export default function Rct7Client({ locale: propLocale }: { locale?: string }) 
       <section className="bg-muted/30 py-16">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-foreground text-center mb-8">
-            {isTh ? "RCT-7 ใน Production" : "RCT-7 in Production"}
+            {isTh ? "RCT-7 ในรันไทม์ ณ ตอนนี้" : "RCT-7 in the runtime today"}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { value: "7", label: isTh ? "สถานะ IntentLoop" : "IntentLoop States", color: "#D4A853" },
-              { value: "<50ms", label: isTh ? "Routing Latency" : "Routing Latency", color: "#7B9E87" },
-              { value: "8,585", label: isTh ? "Tests Passed" : "Tests Passed", color: "#89B4C8" },
-              { value: "G7→G1", label: isTh ? "Feedback Loop" : "Feedback Loop", color: "#C4745B" },
+              { value: "7", label: isTh ? "ขั้นตอน R1–R7" : "Steps R1–R7", color: "#D4A853" },
+              { value: isTh ? "บางส่วน" : "Partial", label: isTh ? "สถานะของทุกขั้นตอนตอนนี้" : "Status of every step today", color: "#7B9E87" },
+              { value: SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US"), label: isTh ? "เทสต์ที่ผ่านใน CI สาธารณะ" : "Tests passing in public CI", color: "#89B4C8" },
+              { value: isTh ? "ยังไม่มี" : "None yet", label: isTh ? "ผลกับโมเดลโฮสต์ที่เก่ง" : "Results with a strong hosted model", color: "#C4745B" },
             ].map((s, i) => (
               <m.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="p-5 rounded-2xl border border-border bg-card text-center">

@@ -26,9 +26,9 @@ const features = [
   },
   {
     iconSrc: pixelIcons.shield, color: "#C4745B",
-    titleEn: "8,585 Verified Tests / 0 Failures", titleTh: "8,585 Tests ผ่าน / 0 ครั้งผิดพลาด",
-    descEn: "Public repository CI (Python 3.12, 2026-10-25): 8,585 passed, 0 failed.",
-    descTh: "CI ของรีโป public (Python 3.12, 12 ต.ค. 2026): ผ่าน 8,585, ล้มเหลว 0",
+    titleEn: "9,069 Verified Tests / 0 Failures", titleTh: "9,069 Tests ผ่าน / 0 ครั้งผิดพลาด",
+    descEn: "Public repository CI (Python 3.12, 2026-10-30): 9,069 passed, 0 failed.",
+    descTh: "CI ของรีโป public (Python 3.12, 12 ต.ค. 2026): ผ่าน 9,069, ล้มเหลว 0",
   },
   {
     iconSrc: pixelIcons.genome, color: "#89B4C8",
@@ -73,7 +73,7 @@ export default function DelentiaPlatformPage() {
       <section className="mx-auto max-w-4xl px-4 pb-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {([
-            { value: "8,585", label: isTh ? "Tests ผ่าน / 0 ผิด" : "Verified Tests" },
+            { value: "9,069", label: isTh ? "Tests ผ่าน / 0 ผิด" : "Verified Tests" },
             { value: "41", label: isTh ? "Production Algorithms" : "Production Algorithms" },
             { value: "62", label: isTh ? "Microservices" : "Microservices" },
             { value: "7", label: isTh ? "Genome System" : "Genome System" },
@@ -118,13 +118,13 @@ export default function DelentiaPlatformPage() {
           </p>
           <p>
             {isTh
-              ? "8,585 Tests ผ่าน / 0 ที่ล้มเหลว (CI ของรีโป public, 12 ตุลาคม 2026) ครอบคลุม 41 algorithms ของรีโป"
-              : "8,585 tests passing / 0 failures (public CI, 2026-10-25). Covers the 41 algorithms and the agent runtime in the public repository."}
+              ? "9,069 Tests ผ่าน / 0 ที่ล้มเหลว (CI ของรีโป public, 12 ตุลาคม 2026) ครอบคลุม 41 algorithms ของรีโป"
+              : "9,069 tests passing / 0 failures (public CI, 2026-10-30). Covers the 41 algorithms and the agent runtime in the public repository."}
           </p>
           <p>
             {isTh
-              ? "ด้วย Test Cases อัตโนมัติ 8,585 รายการที่ผ่าน / 0 ล้มเหลว Delentia Platform ครอบคลุม Unit Testing, Integration Testing, Performance Benchmarking และ Regression Analysis ซึ่งแต่ละ Test Case ถูกสร้างเพื่อให้ Algorithm Tier สามารถทำงานได้อย่างถูกต้องใน Production"
-              : "With 8,585 verified passing tests / 0 failures, Delentia Platform covers unit testing, integration testing, performance benchmarking, and regression analysis. Passing tests show the code does what the tests check; they do not measure production behaviour."}
+              ? "ด้วย Test Cases อัตโนมัติ 9,069 รายการที่ผ่าน / 0 ล้มเหลว Delentia Platform ครอบคลุม Unit Testing, Integration Testing, Performance Benchmarking และ Regression Analysis ซึ่งแต่ละ Test Case ถูกสร้างเพื่อให้ Algorithm Tier สามารถทำงานได้อย่างถูกต้องใน Production"
+              : "With 9,069 verified passing tests / 0 failures, Delentia Platform covers unit testing, integration testing, performance benchmarking, and regression analysis. Passing tests show the code does what the tests check; they do not measure production behaviour."}
           </p>
           <p>
             {isTh

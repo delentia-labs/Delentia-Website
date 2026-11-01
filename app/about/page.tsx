@@ -474,7 +474,7 @@ export default async function AboutPage() {
                 : "Built on the FDIA equation and a 10-Layer Architecture, Delentia OS orchestrates models into a governed enterprise runtime. We engineer deterministic pathways where every output is verifiable, making AI safe for highly-regulated workflows."}
             </p>
             <p className="mt-8 text-sm font-medium uppercase tracking-[0.16em] text-warm-amber">
-              {isTh ? "ผู้ก่อตั้งและสถาปนิก • 41 Algorithms • CI สาธารณะผ่าน 8,585 การทดสอบ" : "Founder & Architect • 41 Algorithms • Public CI passes 8,585 tests"}
+              {isTh ? "ผู้ก่อตั้งและสถาปนิก • 41 Algorithms • CI สาธารณะผ่าน 9,069 การทดสอบ" : "Founder & Architect • 41 Algorithms • Public CI passes 9,069 tests"}
             </p>
             <p className="text-xs text-muted-foreground">
               {isTh

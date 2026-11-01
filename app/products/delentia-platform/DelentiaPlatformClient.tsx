@@ -28,7 +28,7 @@ const features = [
     iconSrc: pixelIcons.shield, color: "#C4745B",
     titleEn: "9,069 Verified Tests / 0 Failures", titleTh: "9,069 Tests ผ่าน / 0 ครั้งผิดพลาด",
     descEn: "Public repository CI (Python 3.12, 2026-10-30): 9,069 passed, 0 failed.",
-    descTh: "CI ของรีโป public (Python 3.12, 12 ต.ค. 2026): ผ่าน 9,069, ล้มเหลว 0",
+    descTh: "CI ของรีโป public (Python 3.12, 30 ต.ค. 2026): ผ่าน 9,069, ล้มเหลว 0",
   },
   {
     iconSrc: pixelIcons.genome, color: "#89B4C8",
@@ -118,7 +118,7 @@ export default function DelentiaPlatformPage() {
           </p>
           <p>
             {isTh
-              ? "9,069 Tests ผ่าน / 0 ที่ล้มเหลว (CI ของรีโป public, 12 ตุลาคม 2026) ครอบคลุม 41 algorithms ของรีโป"
+              ? "9,069 Tests ผ่าน / 0 ที่ล้มเหลว (CI ของรีโป public, 30 ตุลาคม 2026) ครอบคลุม 41 algorithms ของรีโป"
               : "9,069 tests passing / 0 failures (public CI, 2026-10-30). Covers the 41 algorithms and the agent runtime in the public repository."}
           </p>
           <p>

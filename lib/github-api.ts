@@ -45,10 +45,13 @@ export async function fetchGithubReadme(repoName: string, locale: "en" | "th" = 
   }
 }
 
-function sanitizeMarkdown(content: string): string {
+export function sanitizeMarkdown(content: string): string {
   // Replace '<' when followed by a number or space to prevent MDX compiler from parsing it as a JSX tag
   // e.g., <50ms -> &lt;50ms, < 16GB -> &lt; 16GB
-  return content.replace(/<(?=\d|\s)/g, "&lt;")
+  // Close HTML void tags (<img ...> -> <img ... />): MDX is JSX and refuses an unclosed <img>, and the README is allowed to use one.
+  return content
+    .replace(/<(?=\d|\s)/g, "&lt;")
+    .replace(/<(img|br|hr|source|input)\b([^>]*?)(?<!\/)>/gi, "<$1$2 />")
 }
 
 function getFallbackReadme(repoName: string, locale: "en" | "th"): string {

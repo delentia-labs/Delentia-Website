@@ -38,3 +38,5 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Forms through the real resolver
         run: node --test scripts/form-schemas.test.mjs
+      - name: Site integrity (sitemap routes, redirects, canonicals, README as MDX)
+        run: node --test scripts/site-integrity.test.mjs

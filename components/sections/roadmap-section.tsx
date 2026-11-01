@@ -14,114 +14,114 @@ const PIXEL_ROCKET = pixelIcons.rocket
 const roadmapData = {
   en: [
     {
-      phase: "Phase 1", title: "Foundations, FDIA, and Core Documentation", status: "done" as const,
+      phase: "Phase 1", title: "Foundations", status: "done" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
-      summary: "The constitutional base layer was defined before productization began.",
-      tasks: ["FDIA equation defined", "10-layer architecture + 7 Genome references published"],
+      summary: "The ideas were written down before anything was built.",
+      tasks: ["The FDIA equation, the JITNA packet format and RCT-7 defined", "41 algorithm modules written, with tests"],
     },
     {
-      phase: "Phase 2", title: "Model infrastructure", status: "done" as const,
+      phase: "Phase 2", title: "The governed runtime", status: "done" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
-      summary: "Core infrastructure moved from concept into verifiable runtime foundations.",
-      tasks: ["Key handling, model registry, routing and vote arithmetic shipped", "53 targeted tests passed at 100%"],
+      summary: "A runtime in which the model proposes and a gate decides.",
+      tasks: ["Agent loop, tool gate, signed approvals and a rule for untrusted text", "A hash-chained, signed audit log, a notary and witnesses (built; the witness is not yet independent of the author)"],
     },
     {
-      phase: "Phase 3", title: "Content, Schema & SEO Hardening", status: "done" as const,
+      phase: "Phase 3", title: "Public release", status: "done" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
-      summary: "Trust, explainability, and discovery surfaces were hardened for public review.",
-      tasks: ["22 research articles + author system published", "Schema, glossary, editorial policy, and methodology hardened"],
+      summary: "Something a stranger can install and run on their own machine.",
+      tasks: ["pip install delentia-os (PyPI), a Windows installer and the Desk web pages", "A model-free demo that shows the gate stopping a hijacked model; release 2.4.1 (1 Nov 2026)"],
     },
     {
-      phase: "Phase 4", title: "Website Content-Complete & Pre-Launch Hardening", status: "done" as const,
+      phase: "Phase 4", title: "Honest evidence", status: "done" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
-      summary: "Launch-facing surfaces are being refined to look, read, and rank like an enterprise platform.",
-      tasks: ["Enterprise blog + compare surfaces refined", "Schema normalization and domain cutover completed"],
+      summary: "What is claimed is what can be checked.",
+      tasks: ["Withdrawn claims listed; the test count on this site comes from public CI", "A threat model, known limitations and a comparison with other runtimes published"],
     },
     {
-      phase: "Phase 5", title: "Production Launch & SEO Warmup", status: "in-progress" as const,
+      phase: "Phase 5", title: "First measurements with strong hosted models", status: "in-progress" as const,
       color: "#D4A853", bg: "#FEF3C7", darkBg: "#3A2E15",
-      summary: "The public launch window focuses on discovery, monetization, and first feedback loops.",
-      tasks: ["DNS, Search Console, and SEO warmup go live", "Early Access, Lifetime Plan, and public feedback loop open"],
+      summary: "No strong hosted model has driven the runtime yet; this phase changes that.",
+      tasks: ["A capability screen of models from many vendors against rules written before the run", "Every result goes into a public register, whether good or poor"],
     },
     {
-      phase: "Phase 6", title: "Backend Phase 1 — Full Delentia OS", status: "planned" as const,
+      phase: "Phase 6", title: "Public Technical Preview 0.1", status: "planned" as const,
       color: "#C4745B", bg: "#FEE2E2", darkBg: "#3A1E15",
-      summary: "This phase converts the public narrative into a real backend operating state.",
-      tasks: ["The agent runtime runs against a capable model on a real host", "Public documentation and design-partner pilots"],
+      summary: "The stage is declared only after it has been earned.",
+      tasks: ["A real Windows Hello test and an install on a second computer", "A handful of outside testers, with their reports counted"],
     },
     {
-      phase: "Phase 7", title: "Product Launches & Adoption", status: "planned" as const,
+      phase: "Phase 7", title: "Independent verification", status: "planned" as const,
       color: "#89B4C8", bg: "#DBEAFE", darkBg: "#152A3A",
-      summary: "Productization shifts from system readiness to adoption readiness.",
-      tasks: ["DelentiaAI and SignedAI platforms launch", "Enterprise onboarding and adoption optimization begin"],
+      summary: "Evidence that does not depend on the author.",
+      tasks: ["A witness for the audit log that the author does not control", "Code-signing for the Windows installer; someone else reproducing a measurement"],
     },
     {
-      phase: "Phase 8", title: "API Layer & Scale-Out", status: "planned" as const,
+      phase: "Phase 8", title: "Design-partner pilots", status: "planned" as const,
       color: "#B8A9C9", bg: "#EDE9FE", darkBg: "#2A1E3A",
-      summary: "The platform expands from product delivery into API, cloud, and deployment scale.",
-      tasks: ["v6 API layer + OpenAPI hardening", "v7 Helm charts and multi-cloud runway"],
+      summary: "A real workflow, measured against a plain agent.",
+      tasks: ["One workflow per partner, with the pass rule written before the first run", "Results published with the partner's permission, failures included"],
     },
     {
-      phase: "Phase 9", title: "Developer Ecosystem & Marketplace", status: "planned" as const,
+      phase: "Phase 9", title: "Not planned unless a partner asks", status: "planned" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
-      summary: "The final layer broadens the ecosystem around developers, adapters, and marketplace motion.",
-      tasks: ["TUI/CLI beta and power-user toolchain mature", "v8 marketplace + 20+ adapters target within 2027"],
+      summary: "Said plainly so nobody plans around it.",
+      tasks: ["A hosted service, accounts, billing and multi-tenant isolation", "A marketplace of adapters"],
     },
   ],
   th: [
     {
-      phase: "Phase 1", title: "Foundation, FDIA และเอกสารแกนหลัก", status: "done" as const,
+      phase: "Phase 1", title: "รากฐาน", status: "done" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
-      summary: "ชั้นรัฐธรรมนูญของระบบถูกกำหนดให้ชัดก่อนเริ่ม productization จริง",
-      tasks: ["กำหนด FDIA และโครงสร้าง 10 ชั้น", "เผยแพร่เอกสาร 7 Genome และ JITNA แกนหลัก"],
+      summary: "เขียนแนวคิดไว้ก่อนสร้างอะไร",
+      tasks: ["นิยามสมการ FDIA, รูปแบบแพ็กเก็ต JITNA และ RCT-7", "เขียนโมดูลอัลกอริทึม 41 ตัวพร้อมเทสต์"],
     },
     {
-      phase: "Phase 2", title: "โครงสร้างพื้นฐานของโมเดล", status: "done" as const,
+      phase: "Phase 2", title: "รันไทม์ที่มีการกำกับ", status: "done" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
-      summary: "โครงสร้างพื้นฐานหลักขยับจากแนวคิดไปสู่ runtime ที่ตรวจสอบได้จริง",
-      tasks: ["ส่งมอบการจัดการคีย์ ทะเบียนโมเดล การเลือกเส้นทาง และการนับคะแนนโหวต", "targeted tests 53 รายการผ่าน 100%"],
+      summary: "รันไทม์ที่โมเดลเป็นฝ่ายเสนอและประตูเป็นฝ่ายตัดสิน",
+      tasks: ["วงจร agent ประตูเครื่องมือ ลายเซ็นอนุมัติ และกฎสำหรับข้อความที่ไว้ใจไม่ได้", "audit log ที่เชื่อมด้วยแฮชและลงลายเซ็น notary และ witness (สร้างแล้ว แต่ witness ยังไม่อิสระจากผู้เขียน)"],
     },
     {
-      phase: "Phase 3", title: "Content, Schema และการเสริมความแข็งแกร่ง SEO", status: "done" as const,
+      phase: "Phase 3", title: "เปิดให้ใช้สาธารณะ", status: "done" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
-      summary: "ผิวหน้า trust, explainability และ discovery ถูกเสริมให้พร้อมต่อการตรวจสอบภายนอก",
-      tasks: ["บทความวิจัย 22 ชิ้น + ระบบผู้เขียนเผยแพร่แล้ว", "schema, glossary, editorial policy และ methodology ถูก harden"],
+      summary: "สิ่งที่คนแปลกหน้าติดตั้งและรันบนเครื่องตัวเองได้",
+      tasks: ["pip install delentia-os (PyPI) ตัวติดตั้ง Windows และหน้าเว็บ Desk", "เดโมที่ไม่ต้องมีโมเดล แสดงประตูหยุดโมเดลที่ถูกยึด รุ่น 2.4.1 (1 พ.ย. 2026)"],
     },
     {
-      phase: "Phase 4", title: "เว็บไซต์ Content-Complete และ Pre-Launch Hardening", status: "done" as const,
+      phase: "Phase 4", title: "หลักฐานที่ซื่อสัตย์", status: "done" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
-      summary: "พื้นผิวก่อนเปิดตัวกำลังถูกเก็บให้ดูและอ่านแบบ enterprise platform มากขึ้น",
-      tasks: ["blog และ compare surfaces ถูกยกระดับ", "schema normalization และ domain cutover เสร็จแล้ว"],
+      summary: "สิ่งที่อ้างคือสิ่งที่ตรวจสอบได้",
+      tasks: ["ลิสต์ข้ออ้างที่ถอนแล้ว จำนวนเทสต์บนเว็บนี้มาจาก CI สาธารณะ", "เผยแพร่ threat model ข้อจำกัดที่ทราบ และการเทียบกับ runtime อื่น"],
     },
     {
-      phase: "Phase 5", title: "เปิดตัว Production & SEO Warmup", status: "in-progress" as const,
+      phase: "Phase 5", title: "วัดผลกับโมเดลโฮสต์ที่เก่งเป็นครั้งแรก", status: "in-progress" as const,
       color: "#D4A853", bg: "#FEF3C7", darkBg: "#3A2E15",
-      summary: "ช่วงเปิดตัวสาธารณะจะเน้น discovery, monetization และ feedback loop ชุดแรก",
-      tasks: ["DNS, Search Console และ SEO warmup เปิดใช้งาน", "Early Access, Lifetime Plan และ public feedback loop เริ่มทำงาน"],
+      summary: "ยังไม่มีโมเดลโฮสต์ที่เก่งขับรันไทม์นี้ ระยะนี้คือการเปลี่ยนข้อนั้น",
+      tasks: ["คัดกรองความสามารถของโมเดลจากหลายค่ายด้วยกฎที่เขียนไว้ก่อนรัน", "ทุกผลลงทะเบียนสาธารณะ ไม่ว่าดีหรือไม่ดี"],
     },
     {
-      phase: "Phase 6", title: "Backend Phase 1 — Full Delentia OS", status: "planned" as const,
+      phase: "Phase 6", title: "Public Technical Preview 0.1", status: "planned" as const,
       color: "#C4745B", bg: "#FEE2E2", darkBg: "#3A1E15",
-      summary: "เฟสนี้คือการย้ายระบบจาก narrative สาธารณะไปสู่ backend operating state ที่ทำงานจริง",
-      tasks: ["รันไทม์ agent ทำงานกับโมเดลที่เก่งพอบน host จริง", "เอกสารสาธารณะและ pilot กับ design partner"],
+      summary: "ประกาศระยะนี้เมื่อได้มาจริงแล้วเท่านั้น",
+      tasks: ["ทดสอบ Windows Hello จริงและติดตั้งบนเครื่องที่สอง", "ผู้ทดสอบภายนอกจำนวนหนึ่ง และนับรายงานของพวกเขา"],
     },
     {
-      phase: "Phase 7", title: "Product Launches & Adoption", status: "planned" as const,
+      phase: "Phase 7", title: "การตรวจสอบโดยอิสระ", status: "planned" as const,
       color: "#89B4C8", bg: "#DBEAFE", darkBg: "#152A3A",
-      summary: "น้ำหนักงานขยับจาก system readiness ไปสู่ adoption readiness",
-      tasks: ["เปิดตัว DelentiaAI และ SignedAI Platform", "เริ่ม onboarding และ adoption optimization"],
+      summary: "หลักฐานที่ไม่ขึ้นกับผู้เขียน",
+      tasks: ["witness ของ audit log ที่ผู้เขียนควบคุมไม่ได้", "ลงลายเซ็นโค้ดให้ตัวติดตั้ง Windows และมีคนอื่นทำซ้ำการวัด"],
     },
     {
-      phase: "Phase 8", title: "API Layer & Scale-Out", status: "planned" as const,
+      phase: "Phase 8", title: "pilot กับ design partner", status: "planned" as const,
       color: "#B8A9C9", bg: "#EDE9FE", darkBg: "#2A1E3A",
-      summary: "แพลตฟอร์มจะขยายจาก product delivery ไปสู่ API และ deployment scale",
-      tasks: ["v6 API layer + OpenAPI hardening", "v7 Helm charts และ multi-cloud runway"],
+      summary: "งานจริงหนึ่งงาน วัดเทียบกับ agent ธรรมดา",
+      tasks: ["หนึ่ง workflow ต่อหนึ่งพาร์ตเนอร์ โดยเขียนกฎผ่าน/ไม่ผ่านก่อนรันครั้งแรก", "เผยแพร่ผลเมื่อพาร์ตเนอร์อนุญาต รวมถึงความล้มเหลว"],
     },
     {
-      phase: "Phase 9", title: "Developer Ecosystem & Marketplace", status: "planned" as const,
+      phase: "Phase 9", title: "ไม่ได้วางแผน เว้นแต่มีพาร์ตเนอร์ขอ", status: "planned" as const,
       color: "#7B9E87", bg: "#D1FAE5", darkBg: "#1E3A25",
-      summary: "ชั้นสุดท้ายคือการขยาย ecosystem รอบนักพัฒนา adapter และ marketplace motion",
-      tasks: ["TUI/CLI beta และ power-user toolchain โตเต็มขึ้น", "เป้า v8 marketplace + 20+ adapters ภายในปี 2027"],
+      summary: "บอกตรง ๆ เพื่อไม่ให้ใครวางแผนตามนี้",
+      tasks: ["บริการโฮสต์ บัญชีผู้ใช้ การเรียกเก็บเงิน และการแยกผู้เช่า", "ตลาด adapter"],
     },
   ],
 }
@@ -136,8 +136,8 @@ const devFactors = {
   en: [
     {
       icon: Heart,
-      title: "Community Feedback & Funding",
-      description: "Early Access and Lifetime Plan support directly translates to operational capital — accelerating development, enabling new tools, and growing the team sooner.",
+      title: "Community Feedback",
+      description: "Install reports, bug reports and people who try to break the gate are the most useful input there is. There is no paid plan and no funding programme.",
       impact: "Accelerator",
       impactType: "positive" as const,
       highlight: true,
@@ -145,15 +145,15 @@ const devFactors = {
     {
       icon: Users,
       title: "Team Growth",
-      description: "Solo development now. Future team additions — whether through collaboration, hiring, or community contributors — can multiply delivery speed significantly.",
+      description: "One author, directing AI coding assistants. More contributors and design partners would speed things up, and would also add review the project lacks today.",
       impact: "Accelerator",
       impactType: "positive" as const,
       highlight: false,
     },
     {
       icon: Scale,
-      title: "Legal & Compliance",
-      description: "Post-launch legal processes (entity formation, contracts, compliance review) may run in parallel with development. Legal timelines can occasionally shift product launch dates.",
+      title: "Compliance: not claimed",
+      description: "Nothing here is certified for PDPA, GDPR or anything else, and no compliance work is promised. A design partner who needs it would set the scope.",
       impact: "Risk Factor",
       impactType: "neutral" as const,
       highlight: false,
@@ -162,8 +162,8 @@ const devFactors = {
   th: [
     {
       icon: Heart,
-      title: "ผลตอบรับและเงินทุนจากชุมชน",
-      description: "การสนับสนุนผ่าน Early Access และ Lifetime Plan แปลงเป็นทุนหมุนเวียนโดยตรง — เร่งการพัฒนา เปิดใช้เครื่องมือใหม่ และขยายทีมได้เร็วขึ้น",
+      title: "ผลตอบรับจากชุมชน",
+      description: "รายงานการติดตั้ง รายงานบั๊ก และคนที่พยายามเจาะประตู คือข้อมูลที่มีประโยชน์ที่สุด ไม่มีแผนแบบชำระเงินและไม่มีโครงการระดมทุน",
       impact: "ตัวเร่ง",
       impactType: "positive" as const,
       highlight: true,
@@ -171,15 +171,15 @@ const devFactors = {
     {
       icon: Users,
       title: "การขยายทีม",
-      description: "ปัจจุบันพัฒนาโดยคนเดียว การเพิ่มสมาชิกทีมในอนาคต ไม่ว่าจะเป็นผู้ร่วมงาน นักพัฒนาที่จ้างมา หรือ contributor จากชุมชน สามารถเพิ่มความเร็วการพัฒนาได้หลายเท่า",
+      description: "ผู้เขียนคนเดียว สั่งงานผู้ช่วยเขียนโค้ด AI ผู้ร่วมพัฒนาและ design partner เพิ่มจะเร่งงานได้ และเพิ่มการรีวิวที่โครงการยังขาดอยู่",
       impact: "ตัวเร่ง",
       impactType: "positive" as const,
       highlight: false,
     },
     {
       icon: Scale,
-      title: "กฎหมายและการปฏิบัติตามข้อกำหนด",
-      description: "กระบวนการทางกฎหมายหลังเปิดตัว (จัดตั้งนิติบุคคล สัญญา การตรวจสอบ compliance) อาจดำเนินควบคู่กับการพัฒนา และอาจส่งผลต่อกำหนดการเปิดตัวผลิตภัณฑ์",
+      title: "การปฏิบัติตามกฎหมาย: ไม่ได้อ้าง",
+      description: "ไม่มีอะไรที่นี่ที่ผ่านการรับรอง PDPA, GDPR หรืออื่น ๆ และไม่ได้สัญญางานด้านนี้ design partner ที่ต้องการจะเป็นผู้กำหนดขอบเขต",
       impact: "ปัจจัยเสี่ยง",
       impactType: "neutral" as const,
       highlight: false,
@@ -206,8 +206,8 @@ export default function RoadmapSection() {
           title="Development Roadmap"
           italicWord="Roadmap"
           description={isEn
-            ? "Strategic phases aligned to the actual March 2026 engineering state, not an abstract marketing roadmap."
-            : "ภาพรวมระยะการพัฒนาที่ยึดตามสถานะงานจริงของเดือนมีนาคม 2026 ไม่ใช่ roadmap เชิงการตลาดแบบตัดบริบท"}
+            ? "The phases of the work in the order they are happening, with what is done, what is in progress and what is not promised. Last reviewed 1 Nov 2026."
+            : "ระยะของงานตามลำดับที่กำลังเกิดขึ้น พร้อมสิ่งที่เสร็จแล้ว กำลังทำ และไม่ได้สัญญา ตรวจล่าสุด 1 พ.ย. 2026"}
           pixelIcon={PIXEL_ROCKET}
         />
 
@@ -238,6 +238,7 @@ export default function RoadmapSection() {
           <div className="rounded-2xl border border-border bg-card p-6">
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-warm-amber">Public releases (PyPI: delentia-os)</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>2.4.1 — 2026-11-01 (Setup assistant, bilingual stage label, demo reset)</li>
               <li>2.4.0 — 2026-10-26 (Desk pages in the package, Windows installer)</li>
               <li>2.3.1 — 2026-10-16</li>
               <li>2.3.0 — 2026-10-13 (agent runtime, model-free demo)</li>

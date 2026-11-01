@@ -125,7 +125,7 @@ export default async function PressPage() {
                 { value: "41", label: isTh ? "Algorithms ในรีโพสาธารณะ" : "Algorithms in the public repository" },
                 { value: "9,069", label: isTh ? "Tests ผ่าน (public repository, CI-verified)" : "Tests Passing (public repository, CI-verified)" },
                 { value: "not claimed", label: isTh ? "เป้าหมาย Benchmark Hallucination" : "Benchmark Hallucination Target" },
-                { value: "no SLA", label: isTh ? "เป้าหมาย Design SLA" : "Uptime Design SLA Target" },
+                { value: "no SLA", label: isTh ? "ความพร้อมใช้งาน" : "Availability" },
               ].map((s) => (
                 <div key={s.label} className="rounded-xl border border-warm-amber/20 bg-warm-amber/5 px-4 py-3">
                   <p className="text-2xl font-bold text-warm-amber">{s.value}</p>

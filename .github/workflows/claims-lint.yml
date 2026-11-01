@@ -23,6 +23,8 @@ jobs:
         run: node --test scripts/version-lint.test.mjs
       - name: Version lint (the site names only delentia-os versions that PyPI has; falls back to lib/pypi-releases.json if PyPI cannot be reached)
         run: node scripts/version-lint.mjs
+      - name: Facts lint (a test count typed into a page must equal lib/site-config.ts)
+        run: node scripts/facts-lint.mjs
 
   # The two public forms validate with zod through @hookform/resolvers. A version pair that type-checks can still throw on the first invalid submit
   # (zod 4 with resolvers 3.x did), so this runs the real resolver on bad input. A Dependabot bump of either package is checked here too.

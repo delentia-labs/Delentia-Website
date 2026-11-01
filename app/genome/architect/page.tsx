@@ -78,7 +78,7 @@ const CHECKS: { what: Row; how: Row }[] = [
   },
   {
     what: { en: "Releases", th: "การเผยแพร่รุ่น" },
-    how: { en: "pypi.org/project/delentia-os: 2.0.0 on 28 May 2026 to 2.4.0 on 26 October 2026.", th: "pypi.org/project/delentia-os: 2.0.0 วันที่ 28 พ.ค. 2026 ถึง 2.4.0 วันที่ 26 ต.ค. 2026" },
+    how: { en: "pypi.org/project/delentia-os: 2.0.0 on 28 May 2026 to 2.4.1 on 1 November 2026.", th: "pypi.org/project/delentia-os: 2.0.0 วันที่ 28 พ.ค. 2026 ถึง 2.4.1 วันที่ 1 พ.ย. 2026" },
   },
   {
     what: { en: "That the tests pass", th: "ว่าการทดสอบผ่าน" },

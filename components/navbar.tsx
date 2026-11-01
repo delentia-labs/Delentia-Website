@@ -14,8 +14,6 @@ import { getLocalePrefix, resolveLocale } from "@/lib/i18n"
 import { buildSearchIndex, findActiveResourceTrack, navigationGroups, resourceTracks } from "@/lib/navigation"
 import { useTheme } from "@/components/theme-provider"
 
-import { LiveStreamTicker } from "@/components/sections/live-stream-ticker"
-
 const SearchModal = dynamic(() => import("@/components/search/search-modal"), {
   ssr: false,
   loading: () => null,
@@ -259,7 +257,6 @@ export function Navbar({ variant = "default", locale: forcedLocale }: NavbarProp
 
   return (
     <header role="banner" className="fixed left-0 right-0 top-0 z-50 w-full">
-      <LiveStreamTicker locale={locale} />
       <nav
         className={`w-full transition-all duration-300 ${
           isArticleVariant

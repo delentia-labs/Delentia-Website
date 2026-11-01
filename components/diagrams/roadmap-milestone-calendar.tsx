@@ -31,107 +31,70 @@ const milestoneTypeColors: Record<Milestone["type"], { color: string; bg: string
 
 const calendarData: TimelineWindow[] = [
   {
-    periodEn: "Mar",
-    periodTh: "มี.ค.",
+    periodEn: "May",
+    periodTh: "พ.ค.",
+    yearLabelEn: "2026",
+    yearLabelTh: "2569",
+    isCurrent: false,
+    milestones: [
+      { label: "delentia-os 2.0.0 on PyPI (28 May)", labelTh: "delentia-os 2.0.0 บน PyPI (28 พ.ค.)", type: "launch" },
+    ],
+  },
+  {
+    periodEn: "Sep",
+    periodTh: "ก.ย.",
+    yearLabelEn: "2026",
+    yearLabelTh: "2569",
+    isCurrent: false,
+    milestones: [
+      { label: "The agent runtime built; unmeasured claims withdrawn", labelTh: "สร้างรันไทม์ agent ถอนข้ออ้างที่ไม่ได้วัด", type: "dev" },
+      { label: "MCP connector and Delentia Guard on npm", labelTh: "MCP connector และ Delentia Guard บน npm", type: "product" },
+    ],
+  },
+  {
+    periodEn: "Oct",
+    periodTh: "ต.ค.",
+    yearLabelEn: "2026",
+    yearLabelTh: "2569",
+    isCurrent: false,
+    milestones: [
+      { label: "2.3.0: the agent runtime on PyPI (13 Oct)", labelTh: "2.3.0: รันไทม์ agent บน PyPI (13 ต.ค.)", type: "launch" },
+      { label: "2.4.0: the Desk and a Windows installer (26 Oct)", labelTh: "2.4.0: Desk และตัวติดตั้ง Windows (26 ต.ค.)", type: "launch" },
+    ],
+  },
+  {
+    periodEn: "Nov",
+    periodTh: "พ.ย.",
     yearLabelEn: "2026",
     yearLabelTh: "2569",
     isCurrent: true,
     milestones: [
-      { label: "Frontend SEO complete", labelTh: "จบงาน Frontend + SEO", type: "launch" },
-      { label: "Website soft launch", labelTh: "เปิดตัวเว็บไซต์รอบแรก", type: "launch" },
-      { label: "Primary domain routed to delentia.com", labelTh: "โยกโดเมนหลักไปยัง delentia.com", type: "launch" },
+      { label: "2.4.1: English demo, hijacked-model demo (1 Nov)", labelTh: "2.4.1: เดโมภาษาอังกฤษ และเดโมโมเดลที่ถูกยึด (1 พ.ย.)", type: "launch" },
+      { label: "First measurements with strong hosted models", labelTh: "วัดผลกับโมเดลโฮสต์ที่เก่งเป็นครั้งแรก", type: "feature" },
+      { label: "A real Windows Hello test; an install on a second computer", labelTh: "ทดสอบ Windows Hello จริง และติดตั้งบนเครื่องที่สอง", type: "dev" },
     ],
   },
   {
-    periodEn: "Apr",
-    periodTh: "เม.ย.",
-    yearLabelEn: "2026",
-    yearLabelTh: "2569",
+    periodEn: "Next",
+    periodTh: "ถัดไป",
+    yearLabelEn: "",
+    yearLabelTh: "",
     isCurrent: false,
     milestones: [
-      { label: "delentia.com DNS live", labelTh: "DNS delentia.com เปิดใช้งาน", type: "launch" },
-      { label: "Google Search Console submission", labelTh: "ส่ง Google Search Console", type: "launch" },
-      { label: "Early Access program open", labelTh: "เปิดแผนงาน Early Access", type: "community" },
-      { label: "Lifetime Plan available", labelTh: "Lifetime Plan พร้อมใช้งาน", type: "community" },
-      { label: "DelentiaAI static soft launch", labelTh: "DelentiaAI เปิดตัว static mode", type: "feature" },
+      { label: "Public Technical Preview 0.1, declared once earned", labelTh: "ประกาศ Public Technical Preview 0.1 เมื่อได้มาจริง", type: "community" },
+      { label: "Outside testers; a witness the author does not control", labelTh: "ผู้ทดสอบภายนอก และ witness ที่ผู้เขียนควบคุมไม่ได้", type: "community" },
+      { label: "Code-signing for the installer", labelTh: "ลงลายเซ็นโค้ดให้ตัวติดตั้ง", type: "dev" },
     ],
   },
   {
-    periodEn: "May–Jun",
-    periodTh: "พ.ค.–มิ.ย.",
-    yearLabelEn: "2026",
-    yearLabelTh: "2569",
+    periodEn: "Later",
+    periodTh: "ภายหลัง",
+    yearLabelEn: "",
+    yearLabelTh: "",
     isCurrent: false,
     milestones: [
-      { label: "Backend Phase 1: Full RCT OS", labelTh: "Backend Phase 1: Full RCT OS", type: "feature" },
-      { label: "DelentiaAI: real backend connected", labelTh: "DelentiaAI: เชื่อมต่อ Backend จริง", type: "feature" },
-      { label: "Typhoon LLM integration", labelTh: "เชื่อมต่อ Typhoon Regional LLM", type: "feature" },
-      { label: "GitHub Public launch", labelTh: "เปิด GitHub Public", type: "community" },
-      { label: "Full Docs: RCT Ecosystem", labelTh: "Full Docs: RCT Ecosystem", type: "community" },
-      { label: "GitHub Coffee (Sponsors) live", labelTh: "GitHub Coffee/Sponsors เปิดแล้ว", type: "community" },
-    ],
-  },
-  {
-    periodEn: "Jul–Aug",
-    periodTh: "ก.ค.–ส.ค.",
-    yearLabelEn: "2026",
-    yearLabelTh: "2569",
-    isCurrent: false,
-    milestones: [
-      { label: "DelentiaAI Platform launch", labelTh: "เปิดตัว DelentiaAI Platform", type: "product" },
-      { label: "SignedAI Platform launch", labelTh: "เปิดตัว SignedAI Platform", type: "product" },
-      { label: "Product suite: all core products live", labelTh: "Product suite ครบ: เปิดใช้งานทั้งหมด", type: "product" },
-      { label: "Enterprise onboarding pipeline", labelTh: "Enterprise onboarding pipeline เปิด", type: "product" },
-      { label: "Platform optimization cycle", labelTh: "รอบ optimization แพลตฟอร์ม", type: "feature" },
-    ],
-  },
-  {
-    periodEn: "Sep–Dec",
-    periodTh: "ก.ย.–ธ.ค.",
-    yearLabelEn: "2026",
-    yearLabelTh: "2569",
-    isCurrent: false,
-    milestones: [
-      { label: "TUI/CLI Beta — Backend Mode test", labelTh: "TUI/CLI Beta: เริ่ม Test Backend Mode", type: "dev" },
-      { label: "TUI/CLI Dev Mode: full access", labelTh: "TUI/CLI Dev Mode: เข้าถึงได้เต็มรูปแบบ", type: "dev" },
-      { label: "Developer toolchain hardening", labelTh: "จัดระเบียบ developer toolchain ให้เสถียร", type: "dev" },
-      { label: "Operational trust surfaces refined", labelTh: "ปรับพื้นผิวความน่าเชื่อถือเชิงปฏิบัติการ", type: "feature" },
-    ],
-  },
-  {
-    periodEn: "Q1",
-    periodTh: "ไตรมาส 1",
-    yearLabelEn: "2027",
-    yearLabelTh: "2570",
-    isCurrent: false,
-    milestones: [
-      { label: "v6.0.0 — Full API Layer", labelTh: "v6.0.0 — Full API Layer", type: "feature" },
-      { label: "OpenAPI 3.1 documentation", labelTh: "เอกสาร OpenAPI 3.1", type: "feature" },
-      { label: "API trust and governance review", labelTh: "ทบทวน trust และ governance ของ API", type: "community" },
-    ],
-  },
-  {
-    periodEn: "Q2",
-    periodTh: "ไตรมาส 2",
-    yearLabelEn: "2027",
-    yearLabelTh: "2570",
-    isCurrent: false,
-    milestones: [
-      { label: "v7.0.0 — Kubernetes Helm Charts", labelTh: "v7.0.0 — Kubernetes Helm Charts", type: "dev" },
-      { label: "Multi-cloud deployment runway", labelTh: "เตรียม runway สำหรับ multi-cloud deployment", type: "dev" },
-      { label: "AWS, GCP, Azure deployment patterns", labelTh: "รูปแบบ deployment สำหรับ AWS, GCP, Azure", type: "dev" },
-    ],
-  },
-  {
-    periodEn: "H2",
-    periodTh: "ครึ่งหลังปี",
-    yearLabelEn: "2027",
-    yearLabelTh: "2570",
-    isCurrent: false,
-    milestones: [
-      { label: "v8.0.0 — 20+ Universal Adapters", labelTh: "v8.0.0 — 20+ Universal Adapters", type: "product" },
-      { label: "Community marketplace foundation", labelTh: "วางฐาน community marketplace", type: "community" },
-      { label: "Product and developer ecosystem expansion", labelTh: "ขยาย product และ developer ecosystem", type: "product" },
+      { label: "Design-partner pilots, by invitation", labelTh: "pilot กับ design partner โดยเชิญ", type: "product" },
+      { label: "No hosted service, billing or marketplace is planned unless a partner asks", labelTh: "ไม่มีแผนบริการโฮสต์ การเรียกเก็บเงิน หรือ marketplace เว้นแต่มีพาร์ตเนอร์ขอ", type: "product" },
     ],
   },
 ]
@@ -150,11 +113,11 @@ export default function RoadmapMilestoneCalendar() {
         <div className="flex items-center gap-2">
           <div className="h-2 w-2 rounded-full bg-warm-amber" />
           <h3 className={`text-sm font-semibold uppercase tracking-wider ${isDark ? "text-warm-light-gray" : "text-warm-charcoal"}`}>
-            {isEn ? "2026–2027 Milestone Calendar" : "ปฏิทินหมุดหมาย 2026 - 2027"}
+            {isEn ? "Milestone calendar: what happened, what is next" : "ปฏิทินหมุดหมาย: สิ่งที่เกิดแล้ว และสิ่งถัดไป"}
           </h3>
         </div>
         <span className={`text-xs ${isDark ? "text-warm-dim" : "text-warm-gray"}`}>
-          {isEn ? "Mar 2026 — H2 2027" : "มี.ค. 2569 — ครึ่งหลังปี 2570"}
+          {isEn ? "May 2026 — next" : "พ.ค. 2569 — ถัดไป"}
         </span>
       </div>
 

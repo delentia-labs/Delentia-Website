@@ -51,7 +51,7 @@ export default function CompanyClient() {
         {
           question: "Delentia Labs พร้อมใช้งานใน production จริงหรือไม่",
           answer:
-            `ใช่ แต่เราแยก evidence lane ชัดเจน: public SDK proof lane ปัจจุบันยืนยัน ${SITE_PUBLIC_SDK_TESTS} tests ที่ ${SITE_PUBLIC_SDK_COVERAGE} coverage ส่วน enterprise private snapshot ใช้สำหรับ runtime validation วงกว้างกว่า (${SITE_TEST_COUNT} tests) และมี availability target สำหรับโปรแกรมที่ deploy จริง`,
+            `ยังไม่พร้อม Delentia OS เป็นซอฟต์แวร์วิจัยเชิงทดลองของผู้เขียนคนเดียว ชุดทดสอบสาธารณะผ่าน (${SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US")} tests, ${SITE_PUBLIC_SDK_COVERAGE} coverage) ซึ่งเป็นหลักฐานเรื่องโค้ด ไม่ใช่เรื่องโมเดลใช้มันได้ดีแค่ไหน: ยังไม่มีโมเดลโฮสต์ที่เก่งขับรันไทม์นี้ ไม่มีอะไรผ่านการรับรอง และรันเฉพาะที่ที่คุณติดตั้ง อย่าใช้กับงานสำคัญในตอนนี้`,
         },
         {
           question: "อะไรทำให้ Delentia Labs แตกต่างจาก LangChain หรือ AutoGPT",
@@ -63,12 +63,12 @@ export default function CompanyClient() {
         {
           question: "Is Delentia Labs production-ready?",
           answer:
-            `Yes, with separated evidence lanes. The current public SDK proof lane verifies ${SITE_PUBLIC_SDK_TESTS} tests at ${SITE_PUBLIC_SDK_COVERAGE} coverage, while the enterprise private snapshot covers broader runtime validation (${SITE_TEST_COUNT} tests) and an availability target for deployed programs.`,
+            `No. Delentia OS is experimental research software by one author. The public test suite passes (${SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US")} tests, ${SITE_PUBLIC_SDK_COVERAGE} coverage), which is evidence about the code and not about how well a model uses it: no strong hosted model has driven the runtime yet, nothing is certified, and it runs only where you install it. Do not use it for critical work yet.`,
         },
         {
           question: "What makes this different from LangChain or AutoGPT?",
           answer:
-            "Delentia Labs uses a constitutional architecture where every AI output must pass governance and policy verification before execution. Unlike orchestration-only frameworks, Delentia Labs provides full audit trails, Delta Engine delta storage (39–90% smaller than full snapshots, measured in bytes), PDPA compliance by design, and an FDIA rank accuracy of 11 of 12 on a tiny hand-written set (a smoke test, not a benchmark).",
+            "Delentia Labs uses a constitutional architecture where every AI output must pass governance and policy verification before execution. Unlike orchestration-only frameworks, Delentia Labs provides signed, hash-chained audit trails, Delta Engine delta storage (39–90% smaller than full snapshots, measured in bytes), a data-residency policy and per-person erasure (no compliance certification), and an FDIA rank accuracy of 11 of 12 on a tiny hand-written set (a smoke test, not a benchmark).",
         },
       ]
 

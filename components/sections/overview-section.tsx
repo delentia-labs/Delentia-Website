@@ -123,20 +123,20 @@ const PIPELINE = [
   {
     Icon: CheckCircle2,
     color: "#C4745B",
-    badge: "no rate claimed",
-    titleEn: "Trusted Output",
-    titleTh: "คำตอบที่เชื่อถือได้",
-    descEn: "Auditable, provable enterprise-grade response with full provenance.",
-    descTh: "คำตอบองค์กรที่ตรวจสอบและพิสูจน์ได้พร้อม provenance เต็มรูปแบบ",
+    badge: "Record",
+    titleEn: "A record you can check",
+    titleTh: "บันทึกที่ตรวจสอบได้",
+    descEn: "Every step is in a hash-chained, signed log you can verify offline. It shows what happened; it does not prove that an answer is true.",
+    descTh: "ทุกขั้นอยู่ในบันทึกที่เชื่อมด้วย hash และลงนาม ตรวจแบบออฟไลน์ได้ บันทึกบอกว่าเกิดอะไรขึ้น ไม่ได้พิสูจน์ว่าคำตอบเป็นจริง",
     href: "/benchmark",
   },
 ]
 
 const STATS = [
   { value: "5",       labelEn: "Pipeline Stages",  labelTh: "ขั้นตอน Pipeline" },
-  { value: "<50ms",  labelEn: "Routing Latency",   labelTh: "ความหน่วง Routing" },
-  { value: "ED25519", labelEn: "Signed Outputs",   labelTh: "Output ที่เซ็น" },
-  { value: "100%",   labelEn: "Auditable",         labelTh: "ตรวจสอบได้" },
+  { value: "0 of 23", labelEn: "scripted-attack side effects that ran with the gate on", labelTh: "ผลข้างเคียงจากการโจมตีแบบสคริปต์ที่รันได้เมื่อเปิดด่าน" },
+  { value: "ED25519", labelEn: "Signed approvals and audit rows", labelTh: "การอนุมัติและบันทึกที่ลงนาม" },
+  { value: "Offline", labelEn: "The audit log can be verified without the server", labelTh: "ตรวจบันทึกได้โดยไม่ต้องใช้เซิร์ฟเวอร์" },
 ]
 
 type OverviewSectionProps = {
@@ -180,7 +180,7 @@ export default function OverviewSection({ locale }: OverviewSectionProps) {
           {/* Desktop: horizontal row */}
           <div className="hidden md:flex items-stretch gap-0">
             {PIPELINE.map(({ Icon, color, badge, titleEn, titleTh, descEn, descTh, href }, i) => (
-              <div key={badge} className="group/pipeline flex items-stretch gap-0 flex-1">
+              <div key={`${badge}-${titleEn}`} className="group/pipeline flex items-stretch gap-0 flex-1">
                 {/* Card */}
                 <Link href={`${localePrefix}${href}`} className="flex-1 min-w-0">
                   <m.div
@@ -240,7 +240,7 @@ export default function OverviewSection({ locale }: OverviewSectionProps) {
           {/* Mobile: vertical numbered list */}
           <div className="flex flex-col gap-0 md:hidden">
             {PIPELINE.map(({ Icon, color, badge, titleEn, titleTh, descEn, descTh, href }, i) => (
-              <div key={badge} className="flex gap-3">
+              <div key={`${badge}-${titleEn}`} className="flex gap-3">
                 {/* Spine with dot + line */}
                 <div className="flex flex-col items-center shrink-0 w-8">
                   <span

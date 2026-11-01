@@ -3,10 +3,9 @@ import Link from "next/link"
 import { ArrowDown } from "lucide-react"
 import { getLocalePrefix } from "@/lib/i18n"
 import { pixelIcons } from "@/lib/pixel-icons"
-import { SITE_MCP_LIVE_TOOL_COUNT, SITE_MCP_TEST_COUNT, SITE_ALGORITHM_COUNT } from "@/lib/site-config"
+import { SITE_VERSION, SITE_PUBLIC_SDK_TESTS, SITE_ALGORITHM_COUNT } from "@/lib/site-config"
 import { AsciinemaTerminalPlayer } from "@/components/ui/asciinema-terminal-player"
 import { HeroOrbActivator } from "@/components/sections/hero-orb-activator"
-import { WaitlistCtaButton } from "@/components/sections/waitlist-cta-button"
 
 type HeroServerProps = {
   locale: "en" | "th"
@@ -17,43 +16,49 @@ export function HeroServer({ locale }: HeroServerProps) {
   const isThai = locale === "th"
   const copy = isThai
     ? {
-        badge: "Live on Cloudflare Workers · npx delentia-mcp",
+        badge: "โอเพนซอร์ส · งานทดลอง · รันบนเครื่องของคุณเอง",
         titleLine1: "Delentia OS:",
-        titleLine2: "Deterministic AI",
-        titleLine3: "Guardrails",
-        titleLine4: "สำหรับ Agentic Systems",
+        titleLine2: "ระบบรัน AI Agent",
+        titleLine3: "ที่คุมสิทธิ์ได้",
+        titleLine4: "และตรวจสอบย้อนหลังได้",
         subtitle:
-          "MCP gateway ที่ใช้งานจริงวันนี้ — บังคับ authorization ด้วยสมการคณิตศาสตร์ (FDIA), reasoning แบบมีโครงสร้าง (RCT-7) และ policy control สำหรับ AI agent ติดตั้งผ่าน npx ได้ทันที ส่วนหนึ่งของสถาปัตยกรรม constitutional AI ที่กำลังพัฒนาต่อเนื่อง",
-        ctaExplore: "สำรวจสถาปัตยกรรม",
-        ctaDemo: "ดู Live MCP Terminal",
-        statAlgorithms: "Live Tools",
-        statLayers: "Tests Passing",
-        statGenomes: "Algorithms (open source)",
-        statUptime: "Deployed",
+          "ทุกการกระทำของ agent ถูกตัดสินก่อนลงมือ งานเสี่ยงต้องรอลายเซ็นของคุณ และตรวจย้อนหลังได้ว่าเกิดอะไรขึ้นจริง ติดตั้งเองฟรี ไม่มีบริการโฮสต์ เป็นงานทดลอง: ยังไม่มีผลกับโมเดลที่เก่ง และเราบอกตรง ๆ",
+        ctaPrimary: "ลองเดโม 2 นาที (ไม่ต้องมีโมเดล)",
+        ctaInstaller: "ดาวน์โหลดสำหรับ Windows",
+        ctaMeasured: "อะไรที่วัดแล้ว อะไรที่ยังไม่ได้วัด",
+        ctaSimulation: "จำลองด่าน FDIA ในเบราว์เซอร์",
+        statVersion: "รุ่นล่าสุด (PyPI + ตัวติดตั้ง)",
+        statTests: "เทสต์ที่ผ่านใน CI สาธารณะ",
+        statGenomes: "Algorithms (โอเพนซอร์ส)",
+        statStrongModel: "ผลกับโมเดลโฮสต์ที่เก่ง",
+        statStrongModelValue: "ยังไม่มี",
         scroll: "เลื่อนเพื่อสำรวจ",
       }
     : {
-        badge: "Live on Cloudflare Workers · npx delentia-mcp",
+        badge: "Open source · experimental · runs on your own machine",
         titleLine1: "Delentia OS:",
-        titleLine2: "Deterministic AI",
-        titleLine3: "Guardrails",
-        titleLine4: "for Agentic Systems",
+        titleLine2: "A governed",
+        titleLine3: "AI agent runtime",
+        titleLine4: "you can verify",
         subtitle:
-          "A live MCP gateway enforcing mathematical authorization (FDIA), structured reasoning (RCT-7), and policy control for AI agents — installable via npx today. Part of a broader constitutional AI architecture still in active development.",
-        ctaExplore: "Explore Architecture",
-        ctaDemo: "View Live MCP Terminal",
-        statAlgorithms: "Live Tools",
-        statLayers: "Tests Passing",
+          "Every action your agent takes is judged first. Risky ones wait for your signature, and afterwards you can check exactly what happened. Free to install; no hosted service. Experimental: there are no results with a strong model yet, and we say so.",
+        ctaPrimary: "Try the 2-minute demo (no model needed)",
+        ctaInstaller: "Download for Windows",
+        ctaMeasured: "What is measured, and what is not",
+        ctaSimulation: "Simulate the FDIA gate in your browser",
+        statVersion: "Latest release (PyPI + installer)",
+        statTests: "Tests passing in public CI",
         statGenomes: "Algorithms (open source)",
-        statUptime: "Deployed",
+        statStrongModel: "Results with a strong hosted model",
+        statStrongModelValue: "Not yet",
         scroll: "Scroll to explore",
       }
 
   const stats = [
-    { value: String(SITE_MCP_LIVE_TOOL_COUNT), label: copy.statAlgorithms, iconSrc: pixelIcons.brain },
-    { value: String(SITE_MCP_TEST_COUNT), sublabel: "CI", label: copy.statLayers, iconSrc: pixelIcons.layers },
+    { value: SITE_VERSION, label: copy.statVersion, iconSrc: pixelIcons.brain },
+    { value: SITE_PUBLIC_SDK_TESTS.toLocaleString("en-US"), sublabel: "CI", label: copy.statTests, iconSrc: pixelIcons.layers },
     { value: String(SITE_ALGORITHM_COUNT), label: copy.statGenomes, iconSrc: pixelIcons.genome },
-    { value: "Cloudflare", sublabel: "Workers", label: copy.statUptime, iconSrc: pixelIcons.cpu },
+    { value: copy.statStrongModelValue, label: copy.statStrongModel, iconSrc: pixelIcons.cpu },
   ]
 
   return (
@@ -101,15 +106,27 @@ export function HeroServer({ locale }: HeroServerProps) {
             </div>
 
             <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
-              <WaitlistCtaButton
-                locale={locale}
+              <a
+                href="https://github.com/delentia-labs/Delentia-OS#try-it-in-two-minutes-no-model-no-api-key"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-xl bg-warm-charcoal px-6 py-3 text-sm font-semibold text-white shadow-md transition-[background-color,box-shadow,transform] duration-200 hover:bg-[#333333] hover:shadow-lg dark:bg-amber-400 dark:text-neutral-950 dark:hover:bg-amber-300 cursor-pointer"
-              />
-              <Link
-                href={`${localePrefix}/demo/fdia`}
+              >
+                {copy.ctaPrimary}
+              </a>
+              <a
+                href="https://github.com/delentia-labs/Delentia-OS/releases/latest/download/Delentia-Setup.exe"
                 className="inline-flex items-center gap-2 rounded-xl border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-900 transition-[background-color,box-shadow,transform] duration-200 hover:bg-neutral-50 hover:shadow-sm dark:border-neutral-700 dark:bg-neutral-800/90 dark:text-white dark:hover:bg-neutral-700 dark:shadow-md cursor-pointer"
               >
-                {copy.ctaDemo}
+                {copy.ctaInstaller}
+              </a>
+            </div>
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm lg:justify-start">
+              <Link href={`${localePrefix}/benchmark`} className="font-medium text-neutral-700 underline underline-offset-4 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white">
+                {copy.ctaMeasured}
+              </Link>
+              <Link href={`${localePrefix}/demo/fdia`} className="font-medium text-neutral-700 underline underline-offset-4 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white">
+                {copy.ctaSimulation}
               </Link>
             </div>
 

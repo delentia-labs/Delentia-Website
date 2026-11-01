@@ -152,8 +152,6 @@ export const PUBLIC_ROUTES = [
   "/about",
   "/pricing",
   "/products",
-  "/products/delentia-platform",
-  "/products/delentia-ai",
   "/products/signed-ai",
   "/solutions",
   "/solutions/ai-hallucination-prevention",

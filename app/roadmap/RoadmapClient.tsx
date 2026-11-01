@@ -56,7 +56,7 @@ export default function RoadmapClient() {
       ]}
       stats={[
         { label: language === "th" ? "Planned phases" : "Planned phases", value: "9", detail: language === "th" ? "public roadmap sequence" : "public roadmap sequence" },
-        { label: language === "th" ? "Current emphasis" : "Current emphasis", value: language === "th" ? "Phase 5" : "Phase 5", detail: language === "th" ? "production launch, SEO warmup, and Early Access" : "production launch, SEO warmup, and Early Access" },
+        { label: language === "th" ? "Current emphasis" : "Current emphasis", value: language === "th" ? "Phase 5" : "Phase 5", detail: language === "th" ? "การวัดผลกับโมเดลโฮสต์ที่เก่งเป็นครั้งแรก" : "the first measurements with strong hosted models" },
         { label: language === "th" ? "Primary role" : "Primary role", value: language === "th" ? "Track" : "Track", detail: language === "th" ? "movement and milestones" : "movement and milestones" },
         { label: language === "th" ? "Connected layers" : "Connected layers", value: "Research / Changelog / Community", detail: language === "th" ? "evidence, history, feedback" : "evidence, history, feedback" },
       ]}

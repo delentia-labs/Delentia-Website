@@ -35,14 +35,22 @@ export function ClaimsCorrectionNotice({ locale, localePrefix }: { locale: strin
     >
       <div className="mb-1 flex items-center gap-2 font-semibold">
         <AlertTriangle className="h-4 w-4 text-amber-500" aria-hidden="true" />
-        {isTh ? "หมายเหตุการแก้ไข (29 ก.ย. 2026)" : "Correction (29 Sep 2026)"}
+        {isTh ? "บทความประวัติ: ไม่ได้อธิบายระบบปัจจุบัน" : "Historical article: not a description of the current system"}
       </div>
       <p className="text-muted-foreground">
         {isTh
-          ? "บทความนี้เขียนก่อนการตรวจหลักฐานรอบล่าสุด ตัวเลขบางตัวในบทความถูกถอนแล้ว เช่น อัตรา hallucination 0.3%, 4,849 tests ของชุดทดสอบ enterprise, uptime/SLA 99.9x%, การบีบอัด 74.2–91.5%, ต้นทุนลดลง 3.74 เท่า, ความแม่นยำ 96.1%, FDIA accuracy 0.92, เลขเวอร์ชัน v5.4.5, HexaCore ฉันทามติ 7/9 โมเดล (ไม่มีรายชื่อโมเดลแบบนี้ทำงานจริง โมเดลเป็นค่าที่ตั้งเลือก), ตัวเลข 62 microservices และคำว่า zero-knowledge หรือ tamper-proof เพราะวัดซ้ำหรือพิสูจน์ไม่ได้ ตัวเลขที่วัดจริงและเหตุผลของแต่ละข้ออยู่ที่"
-          : "This article predates our latest evidence review. Some figures in it have been withdrawn because they could not be reproduced or verified: the 0.3% hallucination rate, 4,849 enterprise tests, 99.9x% uptime/SLA, 74.2–91.5% compression, a 3.74x cost reduction, 96.1% accuracy, an FDIA accuracy of 0.92, the version label v5.4.5, the HexaCore seven/nine-model consensus (no such roster runs; the model is a setting), the 62-microservices count, and the terms zero-knowledge and tamper-proof. The measured figures and the reason for each correction are on the"}{" "}
+          ? "บทความนี้บันทึกช่วงก่อนหน้าของโครงการ เขียนก่อนทิศทางปัจจุบัน (รันไทม์ AI agent เชิงทดลองที่ติดตั้งเอง) และมีตัวเลขหรือแบบที่ภายหลังถูกถอนหรือไม่เคยถูกสร้าง ให้อ่านเป็นประวัติการพัฒนา ไม่ใช่คำอธิบายระบบวันนี้ สิ่งที่เป็นจริงวันนี้: "
+          : "This article records an earlier stage of the project. It was written before the current direction (an experimental, self-hosted agent runtime) and contains figures or designs that were later withdrawn or never built. Read it as history, not as a description of today's system. What is true today: "}
+        <Link href={localePrefix || "/"} className="font-medium text-amber-600 underline underline-offset-2 dark:text-amber-400">
+          Delentia OS
+        </Link>
+        {" · "}
+        <Link href={`${localePrefix}/benchmark`} className="font-medium text-amber-600 underline underline-offset-2 dark:text-amber-400">
+          {isTh ? "อะไรวัดแล้ว" : "what is measured"}
+        </Link>
+        {" · "}
         <Link href={`${localePrefix}/corrections`} className="font-medium text-amber-600 underline underline-offset-2 dark:text-amber-400">
-          {isTh ? "หน้าการแก้ไขข้อมูล" : "corrections page"}
+          {isTh ? "หน้าการแก้ไขข้อมูล" : "corrections"}
         </Link>
         .
       </p>

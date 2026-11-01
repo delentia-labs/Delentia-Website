@@ -83,12 +83,12 @@ export default async function PlatformPage() {
   ]
 
   const performanceMetrics = [
-    { metric: p("metric_hallucination"), rct: SITE_HALLUCINATION_RATE, industry: "n/a", improvement: locale === "th" ? "ไม่เคยวัด" : "Never measured" },
-    { metric: p("metric_compression"), rct: "39–90% smaller than full snapshots, measured in bytes", industry: "n/a", improvement: locale === "th" ? "วัดเป็นไบต์" : "Measured in bytes" },
-    { metric: p("metric_latency"), rct: locale === "th" ? "ขึ้นกับโมเดล (CPU: หลายสิบวินาทีต่อเป้าหมาย)" : "Depends on the model (CPU: tens of seconds per goal)", industry: "n/a", improvement: locale === "th" ? "ไม่ได้เปรียบเทียบ" : "Not compared" },
-    { metric: locale === "th" ? "เป้าหมายความพร้อมใช้งาน" : "Availability Target", rct: SITE_UPTIME, industry: "99.5%", improvement: locale === "th" ? "เป้าหมายปฏิบัติการ" : "Operational target" },
-    { metric: p("metric_coverage"), rct: `${SITE_PUBLIC_SDK_TESTS} verified / ${SITE_PUBLIC_SDK_COVERAGE}`, industry: "70-80%", improvement: locale === "th" ? "public SDK proof lane" : "Public SDK proof lane" },
-    { metric: p("metric_cost"), rct: "not measured", industry: "1x baseline", improvement: locale === "th" ? "ประมาณการภายใน" : "Internal estimate" },
+    { metric: p("metric_hallucination"), rct: SITE_HALLUCINATION_RATE, improvement: locale === "th" ? "ไม่เคยวัด" : "Never measured" },
+    { metric: p("metric_compression"), rct: "39–90% smaller than full snapshots, measured in bytes", improvement: locale === "th" ? "วัดเป็นไบต์" : "Measured in bytes" },
+    { metric: p("metric_latency"), rct: locale === "th" ? "ขึ้นกับโมเดล (CPU: หลายสิบวินาทีต่อเป้าหมาย)" : "Depends on the model (CPU: tens of seconds per goal)", improvement: locale === "th" ? "ไม่ได้เปรียบเทียบ" : "Not compared" },
+    { metric: locale === "th" ? "เป้าหมายความพร้อมใช้งาน" : "Availability Target", rct: SITE_UPTIME, improvement: locale === "th" ? "ไม่มี SLA" : "No SLA offered" },
+    { metric: p("metric_coverage"), rct: `${SITE_PUBLIC_SDK_TESTS} verified / ${SITE_PUBLIC_SDK_COVERAGE}`, improvement: locale === "th" ? "public SDK proof lane" : "Public SDK proof lane" },
+    { metric: p("metric_cost"), rct: "not measured", improvement: locale === "th" ? "ยังไม่วัด" : "Not measured" },
   ]
 
   const regionalMarkets = [
@@ -517,8 +517,7 @@ export default async function PlatformPage() {
                 <tr className="border-b border-border">
                   <th className="text-left py-3 px-4 text-xs font-mono text-warm-amber uppercase">{locale === 'th' ? 'ตัวชี้วัด' : 'Metric'}</th>
                   <th className="text-left py-3 px-4 text-xs font-mono text-warm-amber uppercase">{SITE_VERSION}</th>
-                  <th className="text-left py-3 px-4 text-xs font-mono text-warm-amber uppercase">{locale === 'th' ? 'ค่าเฉลี่ยอุตสาหกรรม' : 'Industry Avg'}</th>
-                  <th className="text-left py-3 px-4 text-xs font-mono text-warm-amber uppercase">{locale === 'th' ? 'การปรับปรุง' : 'Improvement'}</th>
+                  <th className="text-left py-3 px-4 text-xs font-mono text-warm-amber uppercase">{locale === 'th' ? 'สถานะ' : 'Status'}</th>
                 </tr>
               </thead>
               <tbody>
@@ -526,7 +525,6 @@ export default async function PlatformPage() {
                   <tr key={i} className="border-b border-border/50">
                     <td className="py-3 px-4 font-medium text-foreground">{row.metric}</td>
                     <td className="py-3 px-4 font-mono text-warm-amber">{row.rct}</td>
-                    <td className="py-3 px-4 font-mono text-muted-foreground">{row.industry}</td>
                     <td className="py-3 px-4 text-success text-xs">{row.improvement}</td>
                   </tr>
                 ))}

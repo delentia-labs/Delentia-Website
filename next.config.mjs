@@ -135,32 +135,62 @@ const nextConfig = {
       // Product page redirects: old brand URLs → new brand URLs
       {
         source: "/products/artent-ai",
-        destination: "/products/delentia-ai",
+        destination: "/products",
         permanent: true,
       },
       {
         source: "/en/products/artent-ai",
-        destination: "/en/products/delentia-ai",
+        destination: "/en/products",
         permanent: true,
       },
       {
         source: "/th/products/artent-ai",
-        destination: "/th/products/delentia-ai",
+        destination: "/th/products",
         permanent: true,
       },
       {
         source: "/products/rctlabs",
-        destination: "/products/delentia-platform",
+        destination: "/products",
         permanent: true,
       },
       {
         source: "/en/products/rctlabs",
-        destination: "/en/products/delentia-platform",
+        destination: "/en/products",
         permanent: true,
       },
       {
         source: "/th/products/rctlabs",
-        destination: "/th/products/delentia-platform",
+        destination: "/th/products",
+        permanent: true,
+      },
+      {
+        source: "/products/delentia-ai",
+        destination: "/products",
+        permanent: true,
+      },
+      {
+        source: "/en/products/delentia-ai",
+        destination: "/en/products",
+        permanent: true,
+      },
+      {
+        source: "/th/products/delentia-ai",
+        destination: "/th/products",
+        permanent: true,
+      },
+      {
+        source: "/products/delentia-platform",
+        destination: "/products",
+        permanent: true,
+      },
+      {
+        source: "/en/products/delentia-platform",
+        destination: "/en/products",
+        permanent: true,
+      },
+      {
+        source: "/th/products/delentia-platform",
+        destination: "/th/products",
         permanent: true,
       },
       // Compare page redirects

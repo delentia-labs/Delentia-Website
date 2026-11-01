@@ -10,7 +10,6 @@ import { MainPageOrchestrator } from "@/components/main-page/main-page-orchestra
 import { MainPageSection } from "@/components/main-page/main-page-section"
 import { DeferredSection } from "@/components/performance/deferred-section"
 
-import { LiveStreamTicker } from "@/components/sections/live-stream-ticker"
 import { InteractiveMcpWidget } from "@/components/sections/interactive-mcp-widget"
 import { SovereignPricingSection } from "@/components/sections/sovereign-pricing-section"
 

@@ -135,7 +135,7 @@ export default async function AboutPage() {
     { value: SITE_PUBLIC_SDK_TESTS.toLocaleString(), label: isTh ? "Public SDK Tests" : "Public SDK Tests", detail: isTh ? `${SITE_PUBLIC_SDK_EVIDENCE_LABEL.toLowerCase()} • ${SITE_PUBLIC_SDK_COVERAGE}` : `${SITE_PUBLIC_SDK_EVIDENCE_LABEL.toLowerCase()} • ${SITE_PUBLIC_SDK_COVERAGE}` },
     { value: runtimeFootprint, label: isTh ? "Enterprise Runtime" : "Enterprise Runtime", detail: isTh ? "private snapshot" : "private snapshot" },
     { value: SITE_HALLUCINATION_RATE, label: isTh ? "Benchmark Hallucination" : "Benchmark Hallucination", detail: isTh ? "controlled workload scope" : "controlled workload scope" },
-    { value: SITE_UPTIME, label: isTh ? "Design SLA Target" : "Design SLA Target", detail: isTh ? "availability design goal" : "availability design goal" },
+    { value: SITE_UPTIME, label: isTh ? "ความพร้อมใช้งาน" : "Availability", detail: isTh ? "ไม่มี SLA ไม่มีบริการโฮสต์" : "no SLA, no hosted service" },
   ]
 
   const proofPillars = [

@@ -132,7 +132,7 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
           </h2>
           <div className="mt-6 grid gap-4">
             {posts.map((post) => (
-              <Link key={post.slug} href={`${localePrefix}/blog/${post.slug}`} className="rounded-xl border border-border bg-card p-5 transition hover:border-warm-amber/30">
+              <Link key={post.slug} href={`${localePrefix}/blog/${encodeURIComponent(post.slug)}`} className="rounded-xl border border-border bg-card p-5 transition hover:border-warm-amber/30">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
                   <span className="text-warm-amber uppercase font-medium">{post.category}</span>
                   <span>·</span>

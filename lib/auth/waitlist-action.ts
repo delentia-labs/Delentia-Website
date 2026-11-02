@@ -1,8 +1,8 @@
 "use server"
 
 import { getSupabaseAdmin } from "@/lib/supabase"
+import { isPlausibleEmail } from "@/lib/email-valid"
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const freeEmailDomains = new Set([
   "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "live.com",
   "aol.com", "icloud.com", "mail.com", "yandex.com", "proton.me", "protonmail.com"
@@ -83,7 +83,7 @@ export async function submitWaitlistAction(input: WaitlistInput): Promise<Waitli
     const { email, primaryIntent, keyConstraint, infrastructure, locale = "en" } = input
 
     // 1. Validation
-    if (!email || !emailRegex.test(email.trim())) {
+    if (!isPlausibleEmail(email)) {
       return { 
         success: false, 
         error: locale === "th" 

@@ -42,3 +42,5 @@ jobs:
         run: node --test scripts/form-schemas.test.mjs
       - name: Site integrity (sitemap routes, redirects, canonicals, README as MDX)
         run: node --test scripts/site-integrity.test.mjs
+      - name: E-mail check (length first, then the pattern: no polynomial case)
+        run: node --test scripts/email-valid.test.mjs

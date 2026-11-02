@@ -292,7 +292,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="border-t border-border pt-12">
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 {prevPost ? (
-                  <Link href={`${localePrefix}/blog/${prevPost.slug}`} className="group">
+                  <Link href={`${localePrefix}/blog/${encodeURIComponent(prevPost.slug)}`} className="group">
                     <div className="rounded-3xl border border-border/70 bg-card/80 p-5 transition group-hover:border-warm-amber/35 group-hover:shadow-[0_12px_36px_rgba(0,0,0,0.05)]">
                       <p className="text-xs font-semibold text-muted-foreground uppercase">{locale === "th" ? "บทความก่อนหน้า" : "Previous Post"}</p>
                       <h3 className="mt-2 text-lg font-bold text-foreground transition group-hover:text-warm-amber">
@@ -305,7 +305,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <div />
                 )}
                 {nextPost ? (
-                  <Link href={`${localePrefix}/blog/${nextPost.slug}`} className="group md:text-right">
+                  <Link href={`${localePrefix}/blog/${encodeURIComponent(nextPost.slug)}`} className="group md:text-right">
                     <div className="rounded-3xl border border-border/70 bg-card/80 p-5 transition group-hover:border-warm-amber/35 group-hover:shadow-[0_12px_36px_rgba(0,0,0,0.05)]">
                       <p className="text-xs font-semibold text-muted-foreground uppercase">{locale === "th" ? "บทความถัดไป" : "Next Post"}</p>
                       <h3 className="mt-2 text-lg font-bold text-foreground transition group-hover:text-warm-amber">
@@ -384,7 +384,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {relatedPosts.map((relPost) => (
-                <Link key={relPost.slug} href={`${localePrefix}/blog/${relPost.slug}`} className="group">
+                <Link key={relPost.slug} href={`${localePrefix}/blog/${encodeURIComponent(relPost.slug)}`} className="group">
                   <article className="flex h-full flex-col rounded-3xl border border-border/70 bg-card/80 p-6 transition duration-200 group-hover:border-warm-amber/40 group-hover:shadow-[0_12px_36px_rgba(0,0,0,0.06)]">
                     <div className="mb-3">
                       <span className="inline-block rounded-full border border-border/60 bg-background/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">

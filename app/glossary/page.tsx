@@ -272,8 +272,8 @@ const glossaryTerms = [
   {
     term: "Evaluation Harness",
     termTh: "Evaluation Harness (ชุดประเมินอัตโนมัติ)",
-    definition: "A systematic, automated set of quality gates that an AI system must pass before deployment. The public repository's CI runs 9,069 automated tests (Python 3.12, 2026-10-30).",
-    definitionTh: "ชุดทดสอบอัตโนมัติที่ระบบ AI ต้องผ่านก่อน deploy CI ของรีโป public รัน 9,069 tests (Python 3.12, 12 ต.ค. 2026)",
+    definition: "A systematic, automated set of quality gates that an AI system must pass before deployment. The public repository's CI runs 9,625 automated tests (Python 3.12, 2026-11-01).",
+    definitionTh: "ชุดทดสอบอัตโนมัติที่ระบบ AI ต้องผ่านก่อน deploy CI ของรีโป public รัน 9,625 tests (Python 3.12, 12 ต.ค. 2026)",
   },
   {
     term: "Mathematical Invariant",

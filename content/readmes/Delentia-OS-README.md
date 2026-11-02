@@ -55,7 +55,7 @@ Prefer a web page to a terminal? In one window run `delentia serve`, in another 
 
 | Measured (and where) | Not yet |
 |---|---|
-| The public test suite: 8,585 passed, 46 skipped, 0 failed, 91.79% coverage ([CI run](https://github.com/delentia-labs/Delentia-OS/actions/runs/40166394493)) | A strong hosted model driving the runtime for days with real users |
+| The public test suite: 8,585 passed, 47 skipped, 0 failed, 91.79% coverage ([CI run](https://github.com/delentia-labs/Delentia-OS/actions/runs/40166394493)) | A strong hosted model driving the runtime for days with real users |
 | The gate, the approvals and the taint rule against a scripted attacker (a hijacked model: 18 harmful side effects without the gate, 0 with it) | Independent witnesses for the audit chain: until they exist, the log is hash-chained and signed, **not** tamper-proof |
 | Local small models: they complete some simple tasks, not reliably (3 of 5 and 0 of 5 on a probe) | A public hosted service. Nothing here runs anywhere except on your machine |
 
@@ -161,7 +161,7 @@ If you're arriving from social media or seeing RCT Platform for the first time a
 | Docker Compose + full infra | ❌ | ✅ |
 | Private test suite (count not published) | ❌ | ✅ private |
 
-> **Status: experimental.** The SDK surface is versioned and the full suite is **8,585 passed, 46 skipped, 0 failed** (CI, 2026-10-25, see [TESTING_CANONICAL](docs/testing/TESTING_CANONICAL.md)), CI enforces a 72% coverage floor (`--cov-fail-under=72`; Codecov separately targets 90% with tolerance), packages published on PyPI + npm. A passing suite is evidence about the code, not about how well a model uses it: no capable hosted model has driven the agent yet (see the table above).  
+> **Status: experimental.** The SDK surface is versioned and the full suite is **8,585 passed, 47 skipped, 0 failed** (CI, 2026-10-25, see [TESTING_CANONICAL](docs/testing/TESTING_CANONICAL.md)), CI enforces a 72% coverage floor (`--cov-fail-under=72`; Codecov separately targets 90% with tolerance), packages published on PyPI + npm. A passing suite is evidence about the code, not about how well a model uses it: no capable hosted model has driven the agent yet (see the table above).  
 > **Enterprise** (not in this repository) means a separate proprietary layer; this repository does not offer it as a running service — contact for licensing or a design-partner conversation.
 
 ---

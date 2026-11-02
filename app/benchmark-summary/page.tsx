@@ -28,8 +28,8 @@ const BENCHMARK_FAQS = [
     answer: "The only FDIA accuracy measured in the public repository is 11 of 12 cases on a tiny hand-written rank test. It is a smoke test, not a benchmark, and no larger figure is claimed.",
   },
   {
-    question: "What does the 9,069 passed / 0 failed test result mean?",
-    answer: `It is the result of the public repository's continuous-integration run (Python 3.12, 2026-10-30, commit dc0b2df): 9,069 passed, 46 skipped, 1 expected failure, 0 failed, 91.95% coverage. Anyone can re-run it from the public repository. The earlier 4,849 figure from a private suite was withdrawn because it could not be independently verified.`,
+    question: "What does the 9,625 passed / 0 failed test result mean?",
+    answer: `It is the result of the public repository's continuous-integration run (Python 3.12, 2026-11-01, commit 75e18b4): 9,625 passed, 47 skipped, 1 expected failure, 0 failed, 92.18% coverage. Anyone can re-run it from the public repository. The earlier 4,849 figure from a private suite was withdrawn because it could not be independently verified.`,
   },
   {
     question: "What is warm recall and how fast is it?",

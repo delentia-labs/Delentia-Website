@@ -59,12 +59,12 @@ const pillars = [
     en: {
       title: "One Person, Built in the Open",
       subtitle: "An experimental runtime you can inspect",
-      body: "Delentia Labs shows that one person without external funding, directing AI coding assistants, can build an open-source agent runtime that anyone can install, test and criticise in public. It is experimental and not yet proven in production: there are no results with a strong hosted model and no outside users yet. What it offers is a reproducible blueprint: 41 algorithms, and a public repository CI with 9,069 passing tests that you can rerun yourself.",
+      body: "Delentia Labs shows that one person without external funding, directing AI coding assistants, can build an open-source agent runtime that anyone can install, test and criticise in public. It is experimental and not yet proven in production: there are no results with a strong hosted model and no outside users yet. What it offers is a reproducible blueprint: 41 algorithms, and a public repository CI with 9,625 passing tests that you can rerun yourself.",
     },
     th: {
       title: "คนคนเดียว สร้างอย่างเปิดเผย",
       subtitle: "รันไทม์ทดลองที่ตรวจสอบได้",
-      body: "Delentia Labs แสดงให้เห็นว่าคนคนเดียวที่ไม่มีเงินทุนภายนอก โดยสั่งงานผู้ช่วยเขียนโค้ด AI สามารถสร้างรันไทม์ AI agent โอเพนซอร์สที่ใครก็ติดตั้ง ทดสอบ และวิจารณ์ต่อสาธารณะได้ งานนี้ยังเป็นงานทดลองและยังไม่พิสูจน์ใน production: ยังไม่มีผลกับโมเดลโฮสต์ที่เก่งและยังไม่มีผู้ใช้ภายนอก สิ่งที่มีให้คือแบบที่ทำซ้ำได้: 41 algorithms และ public repository CI ที่มี 9,069 passing tests ซึ่งคุณรันซ้ำเองได้",
+      body: "Delentia Labs แสดงให้เห็นว่าคนคนเดียวที่ไม่มีเงินทุนภายนอก โดยสั่งงานผู้ช่วยเขียนโค้ด AI สามารถสร้างรันไทม์ AI agent โอเพนซอร์สที่ใครก็ติดตั้ง ทดสอบ และวิจารณ์ต่อสาธารณะได้ งานนี้ยังเป็นงานทดลองและยังไม่พิสูจน์ใน production: ยังไม่มีผลกับโมเดลโฮสต์ที่เก่งและยังไม่มีผู้ใช้ภายนอก สิ่งที่มีให้คือแบบที่ทำซ้ำได้: 41 algorithms และ public repository CI ที่มี 9,625 passing tests ซึ่งคุณรันซ้ำเองได้",
     },
   },
   {

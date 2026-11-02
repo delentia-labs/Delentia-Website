@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { getSupabaseAdmin } from "@/lib/supabase"
-
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+import { isPlausibleEmail } from "@/lib/email-valid"
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,7 +8,7 @@ export async function POST(request: NextRequest) {
     const { email, locale = "en", source = "footer" } = body
 
     // Validate email input — reject obviously invalid formats
-    if (!email || typeof email !== "string" || !emailRegex.test(email.trim())) {
+    if (!isPlausibleEmail(email)) {
       return NextResponse.json({ success: false, error: "Please provide a valid email address" }, { status: 400 })
     }
 

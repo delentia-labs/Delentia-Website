@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { getSupabaseAdmin } from "@/lib/supabase"
+import { isPlausibleEmail } from "@/lib/email-valid"
 
 interface ContactInsertPayload {
   name: string
@@ -29,7 +30,7 @@ const validateContactForm = (data: Record<string, unknown>) => {
   if (!data.name || typeof data.name !== "string" || data.name.trim().length < 2)
     errors.name = "Name must be at least 2 characters"
 
-  if (!data.email || typeof data.email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
+  if (!isPlausibleEmail(data.email, { trim: false }))
     errors.email = "Please provide a valid email address"
 
   if (!data.subject || typeof data.subject !== "string" || data.subject.trim().length < 5)

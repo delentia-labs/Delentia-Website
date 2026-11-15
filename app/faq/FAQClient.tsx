@@ -63,8 +63,8 @@ const faqCategories = [
       {
         qEn: "What are the 41 Algorithms?",
         qTh: "41 Algorithms คืออะไร?",
-        aEn: "The 41 algorithms span across the 10-layer architecture, covering everything from data ingestion (Layer 1) to autonomous improvement (Layer 10). They include algorithms for intent classification, context compression, hallucination detection, and cost-aware routing. The public repository's CI (Python 3.12, 2026-11-01) reports 9,625 passing tests.",
-        aTh: "41 Algorithms กระจายอยู่ใน 10 ชั้นของสถาปัตยกรรม ครอบคลุมตั้งแต่ Data Ingestion ถึง Autonomous Improvement รวมถึง Intent Classification, Context Compression, Hallucination Detection และ Cost-aware routing โดย public engineering snapshot ปัจจุบันรายงานผลการทดสอบที่ผ่านทั้งหมด 9,625 รายการในรีโป public (CI)",
+        aEn: "The 41 algorithms span across the 10-layer architecture, covering everything from data ingestion (Layer 1) to autonomous improvement (Layer 10). They include algorithms for intent classification, context compression, hallucination detection, and cost-aware routing. The public repository's CI (Python 3.12, 2026-11-01) reports 9,912 passing tests.",
+        aTh: "41 Algorithms กระจายอยู่ใน 10 ชั้นของสถาปัตยกรรม ครอบคลุมตั้งแต่ Data Ingestion ถึง Autonomous Improvement รวมถึง Intent Classification, Context Compression, Hallucination Detection และ Cost-aware routing โดย public engineering snapshot ปัจจุบันรายงานผลการทดสอบที่ผ่านทั้งหมด 9,912 รายการในรีโป public (CI)",
       },
       {
         qEn: "What LLM providers are supported?",
@@ -195,7 +195,10 @@ const faqCategories = [
 ] as const
 
 const versions = [
-  { ver: "2.4.1", name: "Setup assistant in the Desk, bilingual stage label, demo reset", date: "2026-11-01", status: "LATEST" },
+  { ver: "2.4.4", name: "First-run fixes from a second-computer install: adding a device, the picture tool counted against the cap", date: "2026-11-12", status: "LATEST" },
+  { ver: "2.4.3", name: "Model key kept on this computer, reference-video analyzer, goal-aware compression", date: "2026-11-07", status: "PUBLIC" },
+  { ver: "2.4.2", name: "The code window opens from the installed program", date: "2026-11-02", status: "PUBLIC" },
+  { ver: "2.4.1", name: "Setup assistant in the Desk, bilingual stage label, demo reset", date: "2026-11-01", status: "PUBLIC" },
   { ver: "2.4.0", name: "Desk pages in the package, Windows installer, device approval", date: "2026-10-26", status: "PUBLIC" },
   { ver: "2.3.1", name: "Optional OpenCV and faiss extras", date: "2026-10-16", status: "PUBLIC" },
   { ver: "2.3.0", name: "Agent runtime, model-free demo", date: "2026-10-13", status: "PUBLIC" },

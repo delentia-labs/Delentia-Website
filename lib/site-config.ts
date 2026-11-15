@@ -2,18 +2,18 @@ export const SITE_URL = "https://delentia.com"
 export const SITE_NAME = "Delentia Labs"
 export const SITE_DESCRIPTION = "Open-source agent runtime with a safety gate before tool calls, human-signed approvals and a signed audit log. Built by one person; no hosted service yet."
 export const SITE_OG_IMAGE = `${SITE_URL}/opengraph-image`
-export const SITE_VERSION = "2.4.1" // the newest delentia-os on PyPI (2026-11-01). scripts/version-lint.mjs fails the build if this is a version PyPI does not have
+export const SITE_VERSION = "2.4.4" // the newest delentia-os on PyPI (2026-11-12). scripts/version-lint.mjs fails the build if this is a version PyPI does not have
 // Round 50: the private enterprise count (4,849) is not independently verifiable and was
 // withdrawn (see /corrections). Every page that shows "verified tests" now shows the
 // CI-verified public count below.
-export const SITE_TEST_COUNT = 9625 // same suite as SITE_PUBLIC_SDK_TESTS: the public repository CI (the private suite is not counted anywhere)
-export const SITE_PUBLIC_SDK_VERSION = "2.4.1" // matches pyproject.toml / `delentia --version` in delentia-labs/delentia-os as of 2026-11-01 (release v2.4.1)
-export const SITE_PUBLIC_SDK_TESTS = 9625 // Delentia-OS CI run 41300747145 (commit 75e18b4, 2026-11-01): 9625 passed · 47 skipped · 1 xfailed · 0 failed on Python 3.12, coverage 92.18%. Update from a real green CI run only.
+export const SITE_TEST_COUNT = 9912 // same suite as SITE_PUBLIC_SDK_TESTS: the public repository CI (the private suite is not counted anywhere)
+export const SITE_PUBLIC_SDK_VERSION = "2.4.4" // matches pyproject.toml / `delentia --version` in delentia-labs/delentia-os as of 2026-11-14 (release v2.4.4)
+export const SITE_PUBLIC_SDK_TESTS = 9912 // Delentia-OS CI run 43570824206 (commit 98b0688, 2026-11-14): 9912 passed · 62 skipped · 0 failed on Python 3.12, coverage 92.10%. Update from a real green CI run only.
 // Compatibility evidence labels reused across public pages, metadata, and blog stat cards.
 export const SITE_PUBLIC_SDK_EVIDENCE_LABEL = "Public SDK verification lane"
 export const SITE_ENTERPRISE_EVIDENCE_LABEL = "CI-verified full suite" // was "Enterprise runtime snapshot" (withdrawn: not verifiable)
 export const SITE_RESEARCH_EVIDENCE_LABEL = "Research evaluation lane"
-export const SITE_PUBLIC_SDK_COVERAGE = "92.18%"
+export const SITE_PUBLIC_SDK_COVERAGE = "92.10%"
 export const SITE_EVIDENCE_LAST_UPDATED = "2026-10-30"
 export const SITE_MICROSERVICE_COUNT = 52 // measured 2026-10-12: 52 services of the private layer answered at the same time as containers on one machine (a 53rd cannot run yet); not a production figure. 62 was a count of folders and is withdrawn
 export const SITE_ALGORITHM_COUNT = 41
